@@ -1,0 +1,296 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  {% set traineeRecord %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Add personal information</h2>
+        {{ govukInput({
+          label: {
+            text: "First names",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Or given names"
+          },
+          id: "first-names",
+          name: "first-names"
+        }) }} 
+
+        {{ govukInput({
+          label: {
+            text: "Last name",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Or family name"
+          },
+          id: "last-name",
+          name: "last-name"
+        }) }} 
+
+        {{ govukRadios({
+          idPrefix: "gender", 
+          name: "gender",
+          fieldset: {
+            legend: {
+              text: "Gender",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "male",
+              text: "Male"
+            },
+            {
+              value: "female",
+              text: "Female"
+            },
+            {
+              value: "other",
+              text: "Other"
+            }
+          ]
+        }) }}
+
+        {{ govukDateInput({
+          id: "Date of birth",
+          namePrefix: "dob",
+          fieldset: {
+            legend: {
+              text: "Date of birth",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          }
+        }) }}
+
+        {{ govukSelect({
+          id: "nationality",
+          name: "nationality",
+          classes: "govuk-grid-column-full",
+          label: {
+            text: "Nationality",
+            classes: "govuk-label--s"
+          },
+          items: [
+            {
+              value: "",
+              text: "Please select",
+              disabled: true,
+              selected: true
+            },
+            {
+              value: "afghan",
+              text: "Afghan"
+            },
+            {
+              value: "bahamian",
+              text: "Bahamian"
+            },
+            {
+              value: "british",
+              text: "British"
+            },
+            {
+              value: "macanese",
+              text: "Macanese"
+            }
+          ]
+        }) }}
+
+        <fieldset class="govuk-fieldset address">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h2 class="govuk-fieldset__heading">
+              Address
+            </h2>
+          </legend>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-line-1">
+              Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-line-2">
+              <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+            </label>
+            <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-town">
+              Town or city
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-county">
+              County
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-postcode">
+              Postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
+          </div>
+
+        </fieldset>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="phone-number">
+            Phone number
+          </label>
+          <span id="phone-number-hint" class="govuk-hint">
+            Enter a landline or mobile. For non-UK numbers, include the country code
+          </span>
+          <input class="govuk-input" id="phone-number" name="phone-number" type="text">
+        </div>
+        
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="email">
+            Email
+          </label>
+          <input class="govuk-input" id="email" name="email" type="text">
+        </div>
+        
+        {{ govukSelect({
+          id: "disability",
+          name: "disability",
+          classes: "govuk-grid-column-full",
+          placeholder: "Booyah",
+          label: {
+            text: "Disability",
+            classes: "govuk-label--s"
+          },
+          items: [
+            {
+              value: "",
+              text: "Please select",
+              disabled: true,
+              selected: true
+            },
+            {
+              value: "no",
+              text: "No"
+            },
+            {
+              value: "idea",
+              text: "Idea"
+            },
+            {
+              value: "what",
+              text: "What"
+            },
+            {
+              value: "goes-here",
+              text: "Goes here"
+            }
+          ]
+        }) }}
+        
+        {{ govukSelect({
+          id: "ethnicity",
+          name: "ethnicity",
+          classes: "govuk-grid-column-full",
+          placeholder: "Booyah",
+          label: {
+            text: "Ethnicity",
+            classes: "govuk-label--s"
+          },
+          items: [
+            {
+              value: "",
+              text: "Please select",
+              disabled: true,
+              selected: true
+            },
+            {
+              value: "this",
+              text: "This"
+            },
+            {
+              value: "should",
+              text: "Should"
+            },
+            {
+              value: "be",
+              text: "Be"
+            },
+            {
+              value: "a-radio",
+              text: "A radio"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue",
+          classes: "govuk-button--secondary govuk-!-margin-right-1"
+        }) }}
+
+        {{ govukButton({
+          text: "Next - previous education",
+          classes: "govuk-!-margin-right-1",
+          href: "/previous-education.html"
+        }) }}
+
+        <p>
+          <a href="#" class="govuk-link">Cancel</a>
+        </p>
+
+      </div>
+    </div>
+    {% endset -%}
+    {% set deferralWithdrawal %}
+      <h2 class="govuk-heading-l">Deferral/Withdrawal</h2>
+      Not implemented in the prototype
+    {% endset -%}
+    {% set qtsRecommend %}
+      <h2 class="govuk-heading-l">QTS recommend</h2>
+      Not implemented in the prototype
+    {% endset -%}
+
+    {{ govukTabs({
+      items: [
+        {
+          label: "Trainee record",
+          id: "trainee-record",
+          panel: {
+            html: traineeRecord
+          }
+        },
+        {
+          label: "Deferral/Withdrawal",
+          id: "deferral-withdrawal",
+          panel: {
+            html: deferralWithdrawal
+          }
+        },
+        {
+          label: "QTS recommend",
+          id: "qts-recommend",
+          panel: {
+            html: qtsRecommend
+          }
+        }
+      ]
+    }) }}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
