@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l">Applications</h1>
+
+    {% if data.applications.length %}
+
+      <div class="app-application-cards">
+        {% for record in data.applications %}
+
+            {% include "_includes/trainee-record-card.njk" %}
+
+        {% endfor %}
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</div>
+
+{{data.applications | log}}
+{% endblock %}

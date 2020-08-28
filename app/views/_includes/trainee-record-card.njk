@@ -1,0 +1,26 @@
+<div class="app-application-card">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
+        <a href="/application/{{ record.id }}" class="govuk-link govuk-link--no-visited-state">
+          {{ record.personalDetails.givenName }} {{ record.personalDetails.familyName }}
+        </a>
+      </h3>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body">DOB: {{record.personalDetails.dateOfBirth}}</p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      <p class="govuk-body">{{record.assessmentDetails.subject}}</p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+      {{govukTag({
+        text: record.status
+      })}}
+      <p class="govuk-body">{{record.id}}</p>
+    </div>
+
+  </div>
+
+</div>

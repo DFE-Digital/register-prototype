@@ -1,0 +1,33 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Create a trainee record</h2>
+        <p class="govuk-body">Complete the training record, check it and send for TRN registration.</p>
+        <p class="govuk-body">The training record is divided into:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>personal details</li>
+          <li>contact details</li>
+          <li>previous education</li>
+          <li>training details</li>
+          <li>course details</li>
+        </ul>
+
+        {{ govukButton({
+          text: "Start record",
+          href: "/personal-details.html",
+          isStartButton: true
+        }) }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{data.applications | log}}
+{% endblock %}
