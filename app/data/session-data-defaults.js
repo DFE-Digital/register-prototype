@@ -1,7 +1,7 @@
-let applications = require('./applications.json')
+let records = require('./records.json')
 
 module.exports = {
-  applications
+  records
   // Insert values here
 
 }

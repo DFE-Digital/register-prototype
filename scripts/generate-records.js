@@ -149,4 +149,4 @@ const generateApplicationsFile = (filePath) => {
   )
 }
 
-generateApplicationsFile(path.join(__dirname, '../app/data/applications.json'))
+generateApplicationsFile(path.join(__dirname, '../app/data/records.json'))
