@@ -14,6 +14,8 @@
     <h1 class="govuk-heading-l">{{record.id}}</h1>
 
     <h2 class="govuk-heading-m">{{record.personalDetails.givenName}} {{record.personalDetails.familyName}}</h2>
+
+    {% include "_includes/summaryCards/personalDetails.njk" %}
   </div>
 
 </div>
