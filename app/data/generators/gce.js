@@ -44,10 +44,6 @@ module.exports = (faker, isInternationCandidate) => {
         startDate
       }
     } else {
-      const type = weighted.select({
-        'A level': 0.9,
-        'Scottish Highers': 0.1
-      })
       const grade = faker.helpers.randomize(singleGrades)
 
       return {
