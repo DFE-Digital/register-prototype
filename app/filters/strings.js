@@ -8,6 +8,7 @@ var filters = {}
 
 
 
+
 // Create url / slugs from text
 // This is a heading => this-is-a-heading
 filters.slugify = (input) => {
@@ -29,6 +30,8 @@ filters.sentenceCase = (input) => {
   }
   else return input
 }
+
+
 
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app

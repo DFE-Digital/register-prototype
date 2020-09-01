@@ -78,9 +78,88 @@ filters.cleanArray = (array) => {
   return newArray
 }
 
+const joinArray = (array, options={}) => {
+
+  var defaults = {
+    delimiter: ', ',
+    append: '',
+    prepend: ''
+  }
+
+  // Duck-type check for direct Nunjucks macro returns
+
+  // Macro object string
+  if (typeof array == 'object' && 'toString' in array && !_.isArray(array)) {
+    console.log('Error in joinArray: not a string or array', array)
+  }
+
+  // Array contains object string
+  if(_.isArray(array)){
+    array.forEach (item => {
+      if (typeof item == 'object' && 'toString' in item) {
+        console.log('Error in joinArray: not a string or array', array)
+      }
+    })
+  }
+
+  // Deal with strings
+  if (_.isString(array)) {
+    array = [array]
+  }
+  if (_.isString(options)) options = {delimiter: options}
+
+  // Merge options and defaults
+  options = Object.assign({}, defaults, options)
+  // Set to be options.delimiter if it doesn't already exist
+  options.lastDelimiter = options.lastDelimiter || options.delimiter
+
+  // console.log('Input array is', array)
+  // Clean up array
+  array = filters.cleanArray(array)
+  if (!_.isArray(array)) return
+
+  // Don't output anything if no array or items
+  if (!array || array.length == 0) return // return nothing if no items
+
+  // No delimiters if only one item
+  if (array.length == 1) {
+    // console.log(array[0])
+    return options.prepend + array[0] + options.append // just return item
+  }
+
+  // Create string
+  // console.log(array)
+  var last = array.pop();
+  return options.prepend + array.join(options.delimiter) + options.lastDelimiter + last + options.append;
+}
+
+filters.joinArray = joinArray
+
+// A, B, C and D
+filters.joinify = (items) => filters.joinArray(items, {delimiter:', ', lastDelimiter: ' and '})
+
+// A, B, C, and D
+filters.oxfordComma = (items) => filters.joinArray(items, {delimiter:', ', lastDelimiter: ', and '})
+
+//  A, B, C, D
+filters.commaSeparate = (items) => filters.joinArray(items, {delimiter:', '})
+
+// A and B and C and D
+filters.andSeparate = (items)=> filters.joinArray(items, {delimiter: ' and '})
+
+// A B C D
+filters.spaceSeparate = (items) => filters.joinArray(items, {delimiter:' '})
+
+// A. B. C. D.
+filters.joinAsSentences = (items) => filters.joinArray(items, {delimiter:'. ', append: '.'})
 
 
-
+filters.removeArrayItem = (array, itemToRemove) =>{
+  if (_.isArray(array)){
+    return filteredItems = array.filter(item => item != itemToRemove)
+  }
+  else return array
+}
 
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app

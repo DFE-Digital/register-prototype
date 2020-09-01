@@ -67,7 +67,6 @@ module.exports = function (env) {
     }
   }
 
-  console.log('filters is', filters)
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

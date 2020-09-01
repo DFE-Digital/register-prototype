@@ -80,12 +80,23 @@ filters.todayGovuk = () => {
 */
 
 filters.dateToGovukDate = (date) => {
-  let theDate = moment(date)
-  if (theDate.isValid()){
-    return theDate.format('D MMMM YYYY')
+  if (date){
+    let theDate = moment(date)
+    if (theDate.isValid()){
+      return theDate.format('D MMMM YYYY')
+    }
   }
-  else return ''
+  return ''
 }
+
+filters.govukDate = (date) => {
+  if (_.isArray(date)){
+    return filters.arrayToGovukDate(date)
+  }
+  else return filters.dateToGovukDate(date)
+}
+
+
 
 /*
   ====================================================================
