@@ -42,7 +42,7 @@ const generateFakeApplication = (params = {}) => {
   const diversity = { ...generateDiversity(faker), ...params.diversity }
 
 
-  const isInternationalCandidate = !(diversity.nationality.includes('British') || diversity.nationality.includes('Irish'))
+  const isInternationalCandidate = !(personalDetails.nationality.includes('British') || personalDetails.nationality.includes('Irish'))
 
   let person = Object.assign({}, personalDetails)
   person.isInternationalCandidate = isInternationalCandidate

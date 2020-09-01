@@ -20,10 +20,27 @@ module.exports = faker => {
 
   const middleName = middleNames[selectedMiddleName]
 
+  const nationalities = {
+    british: ['British'],
+    irish: ['Irish'],
+    french: ['French'],
+    dual: ['French', 'Swiss'],
+    multiple: ['British', 'French', 'Swiss']
+  }
+  const selectedNationality = weighted.select({
+    british: 0.65,
+    irish: 0.05,
+    french: 0.1,
+    dual: 0.1,
+    multiple: 0.1
+  })
+  const nationality = nationalities[selectedNationality]
+
   return {
     givenName: faker.name.firstName(sexInteger),
     familyName: faker.name.lastName(sexInteger),
     middleNames: middleName,
+    nationality,
     sex,
     dateOfBirth: faker.date.between('1958-01-01', '1998-01-01')
   }
