@@ -1,0 +1,36 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "New record overview" %}
+
+{# {% set formAction = "disabilities" %} #}
+
+{% block formContent %}
+  <h2 class="govuk-heading-m">New record</h2>
+  {{ appTaskList({
+    classes: "govuk-!-margin-bottom-8",
+    items: [{
+      text: "Record type",
+      href: "hi",
+      id: "application-type",
+      tag: {
+        classes: choiceTagClass,
+        text: 'Completed'
+      }
+    }]
+  }) if not closed }}
+
+  <h2 class="govuk-heading-m">Candidate details</h2>
+  {{ appTaskList({
+    classes: "govuk-!-margin-bottom-8",
+    items: [{
+      text: "Personal details",
+      href: "personal-details",
+      id: "application-type",
+      tag: {
+        classes: choiceTagClass,
+        text: record.completed.personalDetails | getStatusText
+      }
+    }]
+  }) if not closed }}
+{% endblock %}
+

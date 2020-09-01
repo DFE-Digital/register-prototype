@@ -1,0 +1,10 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Edit personal details" %}
+
+{% set formAction = "./personal-details/confirm" %}
+
+{% block formContent %}
+  {% include "_includes/forms/personal-details.html" %}
+{% endblock %}
+

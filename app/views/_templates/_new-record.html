@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% set report = data.new.report %}
+
+
+{% if not backLink %}
+    {% set backLink      = 'javascript:history.back();' %}
+{% endif %}
+{% if not backText %}
+    {% set backText      = 'Back'  %}
+{% endif %}
+
+{% if backLink == 'false' %}
+    {% set backLink = false %}
+{% endif %}
+
+{% if backText == 'false' %}
+    {% set backText = '' %}
+{% endif %}
+
+
+{% block pageTitle %}
+  {{ pageHeading }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block pageNavigation %}
+  {% if backLink %}
+    {{ govukBackLink({
+      text: backText,
+      href: backLink
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% set record = data.record %}
+
+{{'record' | log}}
+{{ record | log }}
+
+{% block content %}
+  {% block beforePageTitle %}{% endblock %}
+  <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% block formContent %}
+
+        {% endblock %}
+
+        {% if not hideReturnLink %}
+          {% if returnLink %}
+            <p class="govuk-body"><a href="{{returnLink.href}}" class="govuk-link">{{returnLink.text}}</a></p>
+          {% else %}
+            <p class="govuk-body"><a href="/new-record/overview" class="govuk-link">Return to record</a></p>
+          {% endif %}
+        {% endif %}
+      </div>
+      {% if hasSecondary %}
+        <div class="govuk-grid-column-one-third">
+          {% block secondary %}{% endblock %}
+        </div>
+      {% endif %}
+
+
+    </div>
+  </form>
+{% endblock %}
+
+
