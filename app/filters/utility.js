@@ -33,8 +33,12 @@ filters.debug = (item) => {
 filters.falsify = (input) => {
   if (_.isNumber(input)) return input
   else if (input == false) return false
-  else if (input == 'true') return true
-  else if (input == 'false') return false
+  if (_.isString(input)){
+    let truthyValues = ['yes','true']
+    let falsyValues = ['no', 'false']
+    if (truthyValues.includes(input.toLowerCase())) return true
+    else if (falsyValues.includes(input.toLowerCase())) return false
+  }
   return input;
 }
 

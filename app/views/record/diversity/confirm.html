@@ -1,0 +1,28 @@
+{% extends "_templates/_record.html" %}
+
+{% set pageHeading = "Confirm diversity information" %}
+
+{% set formAction = "./update" %}
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  {% include "_includes/summary-cards/diversity.html" %}
+
+  {# {{ govukCheckboxes({
+  idPrefix: "waste",
+  name: "record[diversity][status]",
+  items: [
+    {
+      value: "Completed",
+      text: "I have completed this section",
+      checked: checked(record.diversity.status, "Completed")
+    }
+  ]
+  }) }} #}
+
+  {{ govukButton({
+    text: "Update record"
+  }) }}
+
+{% endblock %}
+

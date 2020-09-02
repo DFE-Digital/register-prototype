@@ -1,0 +1,80 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+{% set ethnicities = data.ethnicities | push('Prefer not to say') %}
+{# {{ appAutocomplete({
+  label: {
+    text: "Ethnicity",
+    classes: "govuk-label--s"
+  },
+  id: 'ethnicities',
+  name: "record[diversity][ethnicGroup]",
+  items: ethnicities,
+  value: record.diversity.ethnicGroup
+  }
+) }} #}
+
+{{ govukRadios({
+    name: "record[diversity][ethnicGroup]",
+    items: [{
+      text: "Asian or Asian British",
+      value: "Asian or Asian British",
+      checked: checked(record.diversity.ethnicGroup, "Asian or Asian British"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani)"
+      }
+    }, {
+      text: "Black, African, Black British or Caribbean",
+      value: "Black, African, Black British or Caribbean",
+      checked: checked(record.diversity.ethnicGroup, "Black, African, Black British or Caribbean"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(includes any Black background)"
+      }
+    }, {
+      text: "Mixed or multiple ethnic groups",
+      value: "Mixed or multiple ethnic groups",
+      checked: checked(record.diversity.ethnicGroup, "Mixed or multiple ethnic groups"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(includes any Mixed background)"
+      }
+    }, {
+      text: "White",
+      value: "White",
+      checked: checked(record.diversity.ethnicGroup, "White"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(includes any White background)"
+      }
+    }, {
+      text: "Another ethnic group",
+      value: "Another ethnic group",
+      checked: checked(record.diversity.ethnicGroup, "Another ethnic group"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(includes any other ethnic group, for example, Arab)"
+      }
+    }, {
+      divider: "or"
+    }, {
+      text: "Not provided",
+      value: "Not provided",
+      checked: checked(record.diversity.ethnicGroup, "Not provided")
+    }]
+  }) }}
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}

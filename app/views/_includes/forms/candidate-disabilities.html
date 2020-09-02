@@ -1,0 +1,98 @@
+{{ govukCheckboxes({
+    idPrefix: "disabilities",
+    name: "record[diversity][disabilities]",
+    fieldset: {
+      legend: {
+        text: pageHeading,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: [{
+      text: "Blind",
+      value: "Blind",
+      checked: checked(record.diversity.disabilities, "Blind"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(or a serious visual impairment which is not corrected by glasses)"
+      }
+    }, {
+      text: "Deaf",
+      value: "Deaf",
+      checked: checked(record.diversity.disabilities, "Deaf"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(or a serious hearing impairment)"
+      }
+    }, {
+      text: "Learning difficulty",
+      value: "Learning difficulty",
+      checked: checked(record.diversity.disabilities, "Learning difficulty"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(for example, dyslexia, dyspraxia or ADHD)"
+      }
+    }, {
+      text: "Long-standing illness",
+      value: "Long-standing illness",
+      checked: checked(record.diversity.disabilities, "Long-standing illness"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(for example, cancer, HIV, diabetes, chronic heart disease or epilepsy)"
+      }
+    }, {
+      text: "Mental health condition",
+      value: "Mental health condition",
+      checked: checked(record.diversity.disabilities, "Mental health condition"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(for example, depression, schizophrenia or anxiety disorder)"
+      }
+    }, {
+      text: "Physical disability or mobility issue",
+      value: "Physical disability or mobility issue",
+      checked: checked(record.diversity.disabilities, "Physical disability or mobility issue"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(for example,impaired use of arms or legs, use of a wheelchair or crutches)"
+      }
+    }, {
+      text: "Social or communication impairment",
+      value: "Social or communication impairment",
+      checked: checked(record.diversity.disabilities, "Social or communication impairment"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: "(for example Asperger’s, or another autistic spectrum disorder)"
+      }
+    }, {
+      text: "Other",
+      value: "Other",
+      checked: checked(record.diversity.disabilities, "Other"),
+      label: {
+        classes: "govuk-label--s"
+      },
+      conditional: {
+        html: otherDisabilityHtml
+      }
+    }]
+  }) }}
+
+{{record.diversity.disabilities | log}}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

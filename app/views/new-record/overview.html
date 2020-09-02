@@ -32,6 +32,15 @@
         classes: record.personalDetails | getStatusText | getStatusClass,
         text: record.personalDetails | getStatusText
       }
+    },
+    {
+      text: "Diversity information",
+      href: "diversity-disclosed" | reviewIfInProgress(record.diversity, 'diversity'),
+      id: "application-type",
+      tag: {
+        classes: record.diversity | getStatusText | getStatusClass,
+        text: record.diversity | getStatusText
+      }
     }]
   }) if not closed }}
 

@@ -55,11 +55,14 @@ filters.sectionIsCompleted = data =>{
   return (data && data.status == "Completed")
 }
 
-filters.reviewIfInProgress = (url, data) => {
+filters.reviewIfInProgress = (url, data, path) => {
   if (!filters.sectionIsInProgress(data)){
     return url
   }
-  else return url + "/confirm"
+  else {
+    if (path) return path + '/confirm'
+    else return url + "/confirm"
+  }
 }
 
 

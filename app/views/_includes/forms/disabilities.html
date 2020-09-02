@@ -1,0 +1,40 @@
+{{ govukRadios({
+  idPrefix: "disabilities",
+  name: "record[diversity][disabledAnswer]",
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: checked(record.diversity.disabledAnswer, "Yes")
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: checked(record.diversity.disabledAnswer, "No")
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "Not provided",
+      text: "Not provided",
+      checked: checked(record.diversity.disabledAnswer, "Not provided")
+    }
+  ]
+}) }}
+
+{{record.diversity.disabledAnswer | log}}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

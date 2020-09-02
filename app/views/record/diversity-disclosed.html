@@ -1,0 +1,10 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Has the candidate disclosed diversity information?" %}
+
+{% set formAction = "./diversity/confirm" %}
+
+{% block formContent %}
+  {% include "_includes/forms/diversity-disclosed.html" %}
+{% endblock %}
+

@@ -1,0 +1,32 @@
+{{ govukRadios({
+  idPrefix: "diversity-disclosed",
+  name: "record[diversity][diversityDisclosed]",
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Includes ethnicity and disabilities"
+  },
+  items: [
+    {
+      value: "true",
+      text: "Yes",
+      checked: checked(record.diversity.diversityDisclosed, "true")
+    },
+    {
+      value: "false",
+      text: "No",
+      checked: checked(record.diversity.diversityDisclosed, "false")
+    }
+  ]
+}) }}
+
+{{record.diversity.diversityDisclosed | log}}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

@@ -1,32 +1,54 @@
 const weighted = require('weighted')
 
 module.exports = faker => {
-  // const nationalities = {
-  //   british: ['British'],
-  //   irish: ['Irish'],
-  //   french: ['French'],
-  //   dual: ['French', 'Swiss'],
-  //   multiple: ['British', 'French', 'Swiss']
-  // }
-  // const selectedNationality = weighted.select({
-  //   british: 0.65,
-  //   irish: 0.05,
-  //   french: 0.1,
-  //   dual: 0.1,
-  //   multiple: 0.1
-  // })
-  // const nationality = nationalities[selectedNationality]
 
   // Equality and diversity
-  const diversityQuestionnaireAnswered=faker.helpers.randomize([true, true, false])
+  const diversityQuestionnaireAnswered=faker.helpers.randomize(["true", "true", "false"])
 
   let diversityQuestionnaire
 
   let ethnicGroup
+  let ethnicGroupSpecific
   let disabledAnswer
   let disabilities
 
-  if (diversityQuestionnaireAnswered){
+  const ethnicGroups = {
+    "Asian or Asian British" : [
+      "Bangladeshi",
+      "Chinese",
+      "Indian",
+      "Pakistani",
+      "Another Asian background",
+      "Prefer not to say"
+    ],
+    "Black, African, Black British or Caribbean" : [
+      "African",
+      "Caribbean",
+      "Another Black background",
+      "Prefer not to say"
+    ],
+    "Mixed or multiple ethnic groups" : [
+      "Asian and White",
+      "Black African and White",
+      "Black Caribbean and White",
+      "Another Mixed background",
+      "Prefer not to say"
+    ],
+    "White" : [
+      "British, English, Northern Irish, Scottish",
+      "Irish",
+      "Irish Traveller or Gypsy",
+      "Another White background",
+      "Prefer not to say"
+    ],
+    "Another ethnic group" : [
+      "Arab",
+      "Another ethnic background",
+      "Prefer not to say"
+    ]
+  }
+
+  if (diversityQuestionnaireAnswered == "true"){
 
     ethnicGroup = faker.helpers.randomize([
       "Asian or Asian British",
@@ -37,7 +59,13 @@ module.exports = faker => {
       "Prefer not to say"
     ])
 
-    disabledAnswer = faker.helpers.randomize(["Yes", "No", "Prefer not to say"])
+    if (ethnicGroup != "Prefer not to say"){
+      ethnicGroupSpecific = faker.helpers.randomize(
+        ethnicGroups[ethnicGroup]
+        )
+    }
+
+    disabledAnswer = faker.helpers.randomize(["Yes", "No", "Not provided"])
 
     disabilityCount = faker.random.number(3); // up to 3 disabilities
 
@@ -62,7 +90,9 @@ module.exports = faker => {
 
   return {
     // nationality,
+    diversityDisclosed: diversityQuestionnaireAnswered,
     ethnicGroup,
+    ethnicGroupSpecific,
     disabledAnswer,
     disabilities
   }

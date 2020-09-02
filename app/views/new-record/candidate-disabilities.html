@@ -1,0 +1,10 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Which disabilities were disclosed?" %}
+
+{% set formAction = "diversity/confirm" %}
+
+{% block formContent %}
+  {% include "_includes/forms/candidate-disabilities.html" %}
+{% endblock %}
+

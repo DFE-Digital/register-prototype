@@ -1,0 +1,145 @@
+{% set recordPath = "" %}
+
+{% if record.id %}
+  {% set recordPath = "/record/" + record.id %}
+{% else %}
+  {% set recordPath = "/new-record" %}
+{% endif %}
+
+{% set canAmend = true %}
+{% set nameText %}
+  {% if record.personalDetails.givenName or record.personalDetails.familyName %}
+    {{ record.personalDetails.givenName }} {{record.personalDetails.middleNames}} {{ record.personalDetails.familyName }}
+  {% else %}
+    Not entered
+  {% endif %}
+{% endset %}
+
+{% set diversityInformationDisclosed = (record.diversity.diversityDisclosed | falsify) %}
+{% set diversityDisclosedText = 'Information disclosed' if diversityInformationDisclosed else 'Not disclosed' %}
+
+{% set diversityRows = [
+  {
+    key: {
+      text: "Diversity information"
+    },
+    value: {
+      text: diversityDisclosedText
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/diversity-disclosed?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "diversity disclosed"
+        }
+      ]
+    }
+  }
+  ] %}
+
+{% set ethnicGroup = record.diversity.ethnicGroup %}
+
+{% set ethnicGroupRow = {
+    key: {
+      text: "Ethnic group"
+    },
+    value: {
+      text: ethnicGroup
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/ethnic-group?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "ethnic group"
+        }
+      ]
+    }
+  } %}
+
+{% if diversityInformationDisclosed and ethnicGroup %}
+  {% set diversityRows = diversityRows | push(ethnicGroupRow) %}
+{% endif %}
+
+{% set ethnicGroupSpecific = record.diversity.ethnicGroupSpecific %}
+
+{% set ethnicGroupSpecificRow = {
+  key: {
+    text: "Ethnic group background"
+  },
+  value: {
+    text: ethnicGroupSpecific
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/ethnic-group-specific?referrer=" + referrer,
+        text: "Change",
+        visuallyHiddenText: "ethnic group background"
+      }
+    ]
+  }
+} %}
+
+{% if diversityInformationDisclosed and ethnicGroupSpecific %}
+  {% set diversityRows = diversityRows | push(ethnicGroupSpecificRow) %}
+{% endif %}
+
+{% set disabilitiesAnswerRow = {
+    key: {
+      text: "Candidate is disabled"
+    },
+    value: {
+      text: record.diversity.disabledAnswer
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/disabilities?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "disabilities answer"
+        }
+      ]
+    }
+  } %}
+
+{% if diversityInformationDisclosed %}
+  {% set diversityRows = diversityRows | push(disabilitiesAnswerRow) %}
+{% endif %}
+
+{% set disabilitiesRow = {
+    key: {
+      text: "Disabilities"
+    },
+    value: {
+      text: record.diversity.disabilities | joinify | lower | sentenceCase
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/candidate-disabilities?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "candidate disabilities"
+        }
+      ]
+    }
+  } %}
+{{record.diversity.disabledAnswer | falsify | log}}
+{% if diversityInformationDisclosed and record.diversity.disabledAnswer == "Yes" %}
+  {% set diversityRows = diversityRows | push(disabilitiesRow) %}
+{% endif %}
+
+{% set diversityHtml %}
+  {{ govukSummaryList({
+    rows: diversityRows
+  }) }}
+{% endset %}
+
+
+{{ appSummaryCard({
+  classes: "govuk-!-margin-bottom-6",
+  titleText: "Diversity information",
+  html: diversityHtml
+}) }}
+
