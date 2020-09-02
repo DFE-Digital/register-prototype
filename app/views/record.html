@@ -1,12 +1,10 @@
 
-{% extends "layout.html" %}
+{% extends "_templates/_page.html" %}
+
+{% set backLink = '/records' %}
 
 {% block content %}
 
-{{ govukBackLink({
-  text: "Back",
-  href: "/records"
-}) }}
 
 <div class="govuk-grid-row">
 

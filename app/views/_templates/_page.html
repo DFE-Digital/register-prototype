@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% if not backLink %}
+    {% set backLink      = 'javascript:history.back();' %}
+{% endif %}
+{% if not backText %}
+    {% set backText      = 'Back'  %}
+{% endif %}
+
+{% if backLink == 'false' %}
+    {% set backLink = false %}
+{% endif %}
+
+{% if backText == 'false' %}
+    {% set backText = '' %}
+{% endif %}
+
+
+{% block pageTitle %}
+  {{ pageHeading }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block pageNavigation %}
+  {% if backLink %}
+    {{ govukBackLink({
+      text: backText,
+      href: backLink
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+
