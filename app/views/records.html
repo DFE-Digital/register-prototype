@@ -5,12 +5,12 @@
 
 <h1 class="govuk-heading-l">Applications</h1>
 <div class="applications-header">
-  
+
   {{ govukButton({
     text: "Add a record",
     href: "./new-record/new"
   }) }}
-  
+
   {{ govukSelect({
     id: "sort",
     name: "sort",
@@ -50,18 +50,27 @@
         <div>
           {% if data.records.length %}
 
-            {% set records = data.records | sort(attribute="submittedDate") | reverse %}
 
-            {% for record in records %}
-              {{record.submittedDate | log}}
-            {% endfor %}
-
-            {# {% set records = data.records | reverse %} #}
 
             {{records | log}}
 
             <div class="app-application-cards">
-              {% for record in records %}
+              {% set records = data.records | sort(attribute="submittedDate") | reverse %}
+
+              {% set draftRecords = records | filterAttr("status", "Draft") %}
+
+              {% if draftRecords %}
+                <div class="govuk-!-margin-bottom-8">
+                  <h2 class="govuk-heading-m">Draft records</h2>
+                  {% for record in draftRecords %}
+                    {% include "_includes/trainee-record-card.njk" %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              {% set nonDraftRecords = records | removeAttr("status", "Draft") %}
+              <h2 class="govuk-heading-m">Submitted records</h2>
+              {% for record in nonDraftRecords %}
 
                   {% include "_includes/trainee-record-card.njk" %}
 
