@@ -34,19 +34,18 @@ const generateGce = require('../app/data/generators/gce')
 const generateFakeApplication = (params = {}) => {
 
   const status = params.status || generateStatus(faker)
-  // const submittedDate = params.submittedDate || DateTime.fromISO('2019-08-15').minus({ days: 20 })
+
   const submittedDate = params.submittedDate || faker.date.between(
     moment(),
     moment().subtract(100, 'days'))
+
   const personalDetails = { ...generatePersonalDetails(faker), ...params.personalDetails }
+
   const diversity = { ...generateDiversity(faker), ...params.diversity }
 
-
   const isInternationalCandidate = !(personalDetails.nationality.includes('British') || personalDetails.nationality.includes('Irish'))
-
   let person = Object.assign({}, personalDetails)
   person.isInternationalCandidate = isInternationalCandidate
-
   const contactDetails = params.contactDetails || generateContactDetails(faker, person)
 
   const assessmentDetails = { ...generateAssessmentDetails(faker), ...params.assessmentDetails }
@@ -54,7 +53,7 @@ const generateFakeApplication = (params = {}) => {
   let trn
 
   if (!status.includes('Incomplete') && !status.includes('Submitted')){
-    trn = faker.random.number({
+    trn = params.trn || faker.random.number({
       'min': 1000000,
       'max': 9999999
     })
@@ -63,10 +62,8 @@ const generateFakeApplication = (params = {}) => {
   // const provider = faker.helpers.randomize(organisations.filter(org => !org.isAccreditedBody))
 
   return {
-    // id: faker.random.alphaNumeric(7).toUpperCase(),
-    id: faker.random.uuid(),
-    candidateId: faker.random.alphaNumeric(8).toUpperCase(),
-    // provider: provider.name,
+    id: params.id || faker.random.uuid(),
+    candidateId: params.candidateId || faker.random.alphaNumeric(8).toUpperCase(),
     status,
     trn,
     submittedDate,
@@ -96,28 +93,70 @@ const generateFakeApplication = (params = {}) => {
 const generateFakeApplications = () => {
   let applications = []
 
-  // applications.push(generateFakeApplication({
-  //   status: 'Deferred',
-  //   offerCanNotBeReconfirmed: {
-  //     reason: 'location'
-  //   },
-  //   cycle: 'Previous cycle (2019 to 2020)',
-  //   personalDetails: {
-  //     givenName: 'Becky',
-  //     familyName: 'Brother',
-  //     sex: 'Female'
-  //   }
-  // }))
+  // Manually create specific applications
+  applications.push(generateFakeApplication({
+    status: 'Submitted',
+    submittedDate: new Date(),
+    personalDetails: {
+      givenName: "Becky",
+      familyName: "Brothers",
+      nationality: ["British"],
+      sex: 'Female'
+    },
+    diversity: {
+      "diversityDisclosed": "true",
+      "ethnicGroup": "Black, African, Black British or Caribbean",
+      "ethnicGroupSpecific": "Caribbean",
+      "disabledAnswer": "Not provided"
+    }
+  }))
 
-
-  for (var i = 0; i < 20; i++) {
+  // Draft applications
+  for (var i = 0; i < 5; i++) {
     const application = generateFakeApplication({
-      status: 'Submitted'
+      status: 'Draft',
+      submittedDate: faker.date.between(
+        moment(),
+        moment().subtract(16, 'days'))
+    })
+    applications.push(application)
+  }
+
+  // Submitted applications
+  for (var i = 0; i < 5; i++) {
+    const application = generateFakeApplication({
+      status: 'Submitted',
+      submittedDate: faker.date.between(
+        moment(),
+        moment().subtract(6, 'days'))
     })
     applications.push(application)
   }
 
   for (var i = 0; i < 20; i++) {
+    const application = generateFakeApplication({
+      status: 'TRN received',
+      submittedDate: faker.date.between(
+        moment().subtract(5, 'days'),
+        moment().subtract(400, 'days'))
+    })
+    applications.push(application)
+  }
+
+  // Submitted applications
+  for (var i = 0; i < 5; i++) {
+    const application = generateFakeApplication({
+      status: 'QTS complete',
+      submittedDate: faker.date.between(
+        moment().subtract(200, 'days'),
+        moment().subtract(800, 'days'))
+    })
+    applications.push(application)
+  }
+
+
+
+  for (var i = 0; i < 10; i++) {
     const application = generateFakeApplication()
     applications.push(application)
   }

@@ -1,0 +1,10 @@
+{% extends "_templates/_record.html" %}
+
+{% set pageHeading = "Contact details" %}
+
+{% set formAction = "./contact-details/confirm" %}
+
+{% block formContent %}
+  {% include "_includes/forms/contact-details.html" %}
+{% endblock %}
+

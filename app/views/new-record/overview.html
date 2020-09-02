@@ -34,6 +34,15 @@
       }
     },
     {
+      text: "Contact details",
+      href: "contact-details" | reviewIfInProgress(record.contactDetails),
+      id: "application-type",
+      tag: {
+        classes: record.contactDetails | getStatusText | getStatusClass,
+        text: record.contactDetails | getStatusText
+      }
+    },
+    {
       text: "Diversity information",
       href: "diversity-disclosed" | reviewIfInProgress(record.diversity, 'diversity'),
       id: "application-type",

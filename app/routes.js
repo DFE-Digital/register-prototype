@@ -46,6 +46,7 @@ router.post('/record/:uuid/:page/update', (req, res) => {
     //   delete newRecord.diversity.disabledAnswer
     //   delete newRecord.diversity.disabilities
     // }
+    console.log('record is', newRecord)
     const records = data.records
     const recordIndex = records.findIndex(record => record.id == req.params.uuid)
     records[recordIndex] = newRecord

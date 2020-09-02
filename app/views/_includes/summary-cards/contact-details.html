@@ -1,0 +1,89 @@
+{% set recordPath = "" %}
+
+{% if record.id %}
+  {% set recordPath = "/record/" + record.id %}
+{% else %}
+  {% set recordPath = "/new-record" %}
+{% endif %}
+
+{% set canAmend = true %}
+
+{% set addressCombined %}
+  {% for item, value in record.contactDetails.address %}
+    {% if value | falsify %}
+      {{value}}{% if not loop.last -%}
+        ,<br>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% set contactDetailsRows = [
+  {
+    key: {
+      text: "Address"
+    },
+    value: {
+      text: addressCombined | safe
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/contact-details?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "address"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Phone number"
+    },
+    value: {
+      text: record.contactDetails.phoneNumber
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/contact-details?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "phone number"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Email address"
+    },
+    value: {
+      text: record.contactDetails.email
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/contact-details?referrer=" + referrer,
+          text: "Change",
+          visuallyHiddenText: "email"
+        }
+      ]
+    }
+  }
+  ] %}
+
+
+
+{% set contactDetailsHtml %}
+  {{ govukSummaryList({
+    rows: contactDetailsRows
+  }) }}
+{% endset %}
+
+
+{{ appSummaryCard({
+  classes: "govuk-!-margin-bottom-6",
+  titleText: "Contact details",
+  html: contactDetailsHtml
+}) }}
+
