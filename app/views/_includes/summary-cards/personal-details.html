@@ -9,7 +9,7 @@
 {% set canAmend = true %}
 {% set nameText %}
   {% if record.personalDetails.givenName or record.personalDetails.familyName %}
-    {{ record.personalDetails.givenName }} {{record.PersonalDetails.middleNames}} {{ record.personalDetails.familyName }}
+    {{ record.personalDetails.givenName }} {{record.personalDetails.middleNames}} {{ record.personalDetails.familyName }}
   {% else %}
     Not entered
   {% endif %}
@@ -90,23 +90,6 @@
           href: recordPath + "/personal-details?referrer=" + referrer,
           text: "Change",
           visuallyHiddenText: "gender"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "Date of birth"
-    },
-    value: {
-      text: record.personalDetails.dateOfBirth | govukDate or 'Not entered'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/personal-details?referrer=" + referrer,
-          text: "Change",
-          visuallyHiddenText: "date of birth"
         }
       ]
     }

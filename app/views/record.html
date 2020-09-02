@@ -18,13 +18,6 @@
 
     <h2 class="govuk-heading-m">Candidate details</h2>
 
-    {% set names = ['Fred','Jesse','Sarah'] %}
-    <p class="govuk-body">{{ names | joinAsSentences }}</p>
-
-    {% for name in names %}
-      {{name}} {% if not loop.last %},{% endif %}
-    {% endfor %}
-
     {% include "_includes/summary-cards/personal-details.html" %}
 
 

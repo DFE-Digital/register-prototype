@@ -8,10 +8,25 @@
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-l">Applications</h1>
 
+    {{ govukButton({
+      text: "Add a record",
+      href: "./new-record/new"
+    }) }}
+
     {% if data.records.length %}
 
+      {% set records = data.records | sort(attribute="submittedDate") | reverse %}
+
+      {% for record in records %}
+        {{record.submittedDate | log}}
+      {% endfor %}
+
+      {# {% set records = data.records | reverse %} #}
+
+      {{records | log}}
+
       <div class="app-application-cards">
-        {% for record in data.records %}
+        {% for record in records %}
 
             {% include "_includes/trainee-record-card.njk" %}
 

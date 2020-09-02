@@ -23,10 +23,43 @@ var filters = {}
 
 */
 
-filters.getStatusText = (completed, data) => {
-  if (completed) return "Completed"
-  else if (data) return "Started"
-  else return "Not started"
+filters.getStatusText = (data) => {
+  if (!data) return "Not started"
+  if (data.status) return data.status
+  else return "In progress"
+}
+
+filters.getStatusClass = (status) => {
+  switch (status) {
+    // States that currently use the default tag style
+    // - 'Enrolled'
+    // - 'Conditions met'
+    // - 'Conditions not met'
+    // - 'Completed'
+
+    // Application phases
+    case 'Not started':
+      return 'govuk-tag--grey'
+    case 'In progress':
+      return 'govuk-tag--grey'
+    case 'Completed':
+      return 'govuk-tag--blue'
+  }
+}
+
+filters.sectionIsInProgress = data =>{
+  return (data)
+}
+
+filters.sectionIsCompleted = data =>{
+  return (data && data.status == "Completed")
+}
+
+filters.reviewIfInProgress = (url, data) => {
+  if (!filters.sectionIsInProgress(data)){
+    return url
+  }
+  else return url + "/confirm"
 }
 
 

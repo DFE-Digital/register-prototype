@@ -161,6 +161,13 @@ filters.removeArrayItem = (array, itemToRemove) =>{
   else return array
 }
 
+filters.removeArrayItems = (array, itemsToRemove) =>{
+  if (_.isArray(array)){
+    return filteredItems = array.filter(item => !itemsToRemove.includes(item))
+  }
+  else return array
+}
+
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app
 // -------------------------------------------------------------------

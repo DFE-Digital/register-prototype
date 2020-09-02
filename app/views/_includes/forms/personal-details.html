@@ -36,6 +36,9 @@
   value: record.personalDetails['familyName']
 }) }}
 
+{# Date of birth may be a date object #}
+{% set dateOfBirthArray = record.personalDetails.dateOfBirth | toDateArray %}
+
 {{ govukDateInput({
   id: "date-of-birth",
   namePrefix: "record[personalDetails][dateOfBirth]",
@@ -52,17 +55,17 @@
       {
         name: "day",
         classes: "govuk-input--width-2",
-        value: record.personalDetails.dateOfBirth["0"]
+        value: dateOfBirthArray["0"]
       },
       {
         name: "month",
         classes: "govuk-input--width-2",
-        value: record.personalDetails.dateOfBirth["1"]
+        value: dateOfBirthArray["1"]
       },
       {
         name: "year",
         classes: "govuk-input--width-4",
-        value: record.personalDetails.dateOfBirth["2"]
+        value: dateOfBirthArray["2"]
       }
     ]
 }) }}
@@ -95,20 +98,29 @@
   ]
 }) }}
 
-{% set nationalityOtherHtml %}
-  {% set nationalityOther = record.personalDetails.nationality | removeArrayItem('Other') %}
-  {% set nationalityOther = nationalityOther | removeArrayItem('British') %}
-  {% set nationalityOther = nationalityOther | removeArrayItem('Irish') %}
+{% set otherNationalities = record.personalDetails.nationality | removeArrayItems(['British','Irish','Other'])%}
+{% set hasOtherNationality = otherNationalities | length > 0 %}
 
-  {{ govukInput({
-    label: {
-      text: "Nationality",
-      classes: "govuk-label--s"
-    },
-    id: "nationality-other",
-    name: "record[personalDetails][nationality][3]",
-    value: nationalityOther
-  }) }}
+{% set nationalityOtherHtml %}
+  {% set nationalityOther = otherNationalities %}
+  {% if nationalityOther | length > 1 %}
+    {% set nationalityOther = nationalityOther[0] %}
+  {% endif %}
+
+  {% for nationality in otherNationalities %}
+    {% set nationalityIndex = loop.index0 + 3 %}
+    {{ govukInput({
+      label: {
+        text: "Nationality",
+        classes: "govuk-label--s"
+      },
+      id: "nationality-other" + loop.index0,
+      name: "record[personalDetails][nationality][" + nationalityIndex + "]",
+      value: nationality
+    }) }}
+  {% endfor %}
+
+
 
   <div class="govuk-form-group">
     {{ govukButton({
@@ -119,6 +131,8 @@
   </div>
 
 {% endset %}
+
+
 
 {{ govukCheckboxes({
   idPrefix: "nationality",
@@ -146,7 +160,7 @@
     {
       value: "Other",
       text: "Other",
-      checked: checked(record.personalDetails.nationality, "Other"),
+      checked: hasOtherNationality,
       conditional: {
         html: nationalityOtherHtml
       }

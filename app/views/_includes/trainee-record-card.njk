@@ -9,7 +9,8 @@
       </h3>
     </div>
     <div class="govuk-grid-column-one-quarter">
-      <p class="govuk-body">DOB: {{record.personalDetails.dateOfBirth}}</p>
+      <p class="govuk-body">DOB: {{record.personalDetails.dateOfBirth | govukDate}}</p>
+      <p class="govuk-body">Submitted {{record.submittedDate | govukDate}}</p>
     </div>
     <div class="govuk-grid-column-one-quarter">
       <p class="govuk-body">{{record.assessmentDetails.subject}}</p>

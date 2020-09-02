@@ -26,6 +26,14 @@ filters.arrayToDateObject = (array) => {
   return new Date(array[2], array[1] -1, array[0])
 }
 
+// Output date array - for use in design system macros macros
+filters.toDateArray = (date) => {
+  if (!date) return []
+  if (_.isArray(date)) return date
+  else {
+    return [moment(date).date(), moment(date).month(), moment(date).year()]
+  }
+}
 /*
   ====================================================================
   today

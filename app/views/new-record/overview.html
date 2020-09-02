@@ -2,7 +2,7 @@
 
 {% set pageHeading = "New record overview" %}
 
-{# {% set formAction = "disabilities" %} #}
+{% set formAction = "./save" %}
 
 {% block formContent %}
   <h2 class="govuk-heading-m">New record</h2>
@@ -19,18 +19,25 @@
     }]
   }) if not closed }}
 
+  {{record | log}}
+
   <h2 class="govuk-heading-m">Candidate details</h2>
   {{ appTaskList({
     classes: "govuk-!-margin-bottom-8",
     items: [{
       text: "Personal details",
-      href: "personal-details",
+      href: "personal-details" | reviewIfInProgress(record.personalDetails),
       id: "application-type",
       tag: {
-        classes: choiceTagClass,
-        text: record.completed.personalDetails | getStatusText
+        classes: record.personalDetails | getStatusText | getStatusClass,
+        text: record.personalDetails | getStatusText
       }
     }]
   }) if not closed }}
+
+  {{ govukButton({
+    text: "Submit record"
+  }) }}
+
 {% endblock %}
 
