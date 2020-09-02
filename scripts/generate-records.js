@@ -133,33 +133,48 @@ const generateFakeApplications = () => {
     applications.push(application)
   }
 
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 5; i++) {
     const application = generateFakeApplication({
       status: 'TRN received',
       submittedDate: faker.date.between(
-        moment().subtract(5, 'days'),
-        moment().subtract(400, 'days'))
+        moment().subtract(2, 'days'),
+        moment().subtract(6, 'days'))
+    })
+    applications.push(application)
+  }
+
+  for (var i = 0; i < 15; i++) {
+    const application = generateFakeApplication({
+      status: 'TRN received',
+      submittedDate: faker.date.between(
+        moment().subtract(2, 'days'),
+        moment().subtract(600, 'days'))
     })
     applications.push(application)
   }
 
   // Submitted applications
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 15; i++) {
     const application = generateFakeApplication({
       status: 'QTS complete',
       submittedDate: faker.date.between(
-        moment().subtract(200, 'days'),
+        moment().subtract(300, 'days'),
         moment().subtract(800, 'days'))
     })
     applications.push(application)
   }
 
-
-
-  for (var i = 0; i < 10; i++) {
-    const application = generateFakeApplication()
+  // Submitted applications
+  for (var i = 0; i < 3; i++) {
+    const application = generateFakeApplication({
+      status: 'Withdrawn',
+      submittedDate: faker.date.between(
+        moment().subtract(50, 'days'),
+        moment().subtract(300, 'days'))
+    })
     applications.push(application)
   }
+
 
   applications = applications.sort(sortBySubmittedDate)
 
