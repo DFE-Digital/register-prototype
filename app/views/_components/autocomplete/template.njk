@@ -1,0 +1,91 @@
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+{% set selectItems = [{
+  value: "",
+  text: "Please select",
+  disabled: true,
+  selected: params.value === undefined
+}] %}
+
+{% for item in params.items %}
+  {% set selectItems = selectItems | push({
+    value: item,
+    text: item,
+    selected: params.value == item
+  }) %}
+{% endfor %}
+
+{{ govukSelect({
+  label: params.label,
+  hint: params.hint,
+  id: params.id,
+  classes: params.classes,
+  name: params.name,
+  items: selectItems
+}) }}
+
+{# {% if data.class %}
+  {% set class = data.class %}
+{% else %}
+  {% set class = 'govuk-fieldset__legend govuk-fieldset__legend--l' %}
+{% endif %}
+
+{% if data.legend %}
+  <legend for="{{data.idPrefix}}-autocomplete" class="{{class}} ">
+    {{data.legend}}
+  </legend>
+{% endif %}
+
+{% if data.hint %}
+  <span class="govuk-hint">{{data.hint | safe}}</span>
+{% endif %}
+
+{% if not data.width %}
+  {% set width = 'govuk-!-width-one-half' %}
+{% else %}
+  {% set width = data.width %}
+{% endif %} #}
+
+<script src="/public/javascripts/autocomplete.min.js"></script>
+<script>
+
+  var values = [{% for value in params.items %}"{{value}}",{% endfor %}];
+
+  element = document.querySelector('#{{params.id}}');
+  id = '{{params.id}}-autocomplete';
+  defaultValue = '{{params.value}}';
+
+  confirmFunction = function(val) {
+    {% if params.conditional %}
+
+      if (val == 'Other'){
+        $('.{{params.idPrefix}}-conditional-container').removeClass("hidden")
+        console.log('removing hidden class')
+      }
+      else if (typeof(val) != 'undefined') {
+        $('.{{params.idPrefix}}-conditional-container').addClass("hidden")
+        console.log('adding hidden class')
+      }
+    {% endif %}
+  }
+
+  accessibleAutocomplete.enhanceSelectElement({
+    selectElement: element,
+    name: "{{params.name}}",
+    showAllValues: true,
+    source: values,
+    defaultValue: defaultValue,
+    onConfirm: confirmFunction
+  });
+
+
+
+</script>
+
+{% if data.conditional %}
+  {# In case the autocomplete starts with 'Other' #}
+  {% set hiddenClass = 'hidden' if data.value != 'Other' else '' %}
+  {{ govukInsetText({
+    html: data.conditional,
+    classes: data.idPrefix + "-conditional-container app-inset-conditional " + hiddenClass
+  }) }}
+{% endif %}
