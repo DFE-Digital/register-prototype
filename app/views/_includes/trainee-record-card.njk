@@ -15,7 +15,8 @@
     </div>
     <div class="app-application-card_col">
       {{govukTag({
-        text: record.status
+        text: record.status,
+        classes: record.status | getStatusClass
       })}}
       <p class="govuk-caption-m govuk-!-font-size-16 govuk-!-margin-top-2 app-application-card__submitted">Submitted: <span>{{record.submittedDate | govukDate}}</span></p>
     </div>

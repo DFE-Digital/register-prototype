@@ -44,6 +44,16 @@ filters.getStatusClass = (status) => {
       return 'govuk-tag--grey'
     case 'Completed':
       return 'govuk-tag--blue'
+    case 'Draft':
+      return 'govuk-tag--yellow'
+    case 'Withdrawn':
+      return 'govuk-tag--red'
+    case 'QTS complete':
+      return 'govuk-tag--purple'
+    case 'Submitted':
+      return 'govuk-tag--turquoise'
+    default:
+      return 'govuk-tag--blue'
   }
 }
 

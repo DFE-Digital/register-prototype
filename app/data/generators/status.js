@@ -1,10 +1,10 @@
 module.exports = (faker) => {
   return faker.helpers.randomize([
     // 'Deferred',
-    'Incomplete',
+    'Draft',
     'Submitted',
     'TRN received',
-    'Rejected',
+    'Withdrawn',
     'QTS complete'
   ])
 }
