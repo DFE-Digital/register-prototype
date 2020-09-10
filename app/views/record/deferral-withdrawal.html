@@ -1,0 +1,12 @@
+{% extends "_templates/_record.html" %}
+
+{% set pageHeading = "Deferral/Withdrawl" %}
+{% set activeTab = 'deferral-withdrawal' %}
+
+{% set formAction = "./personal-details/confirm" %}
+
+{% block tabContent %}
+
+  {% include "_includes/forms/deferrel-withdrawal.html" %}
+
+{% endblock %}

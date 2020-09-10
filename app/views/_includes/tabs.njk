@@ -1,0 +1,25 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full govuk-!-margin-top-2 govuk-!-margin-bottom-6">
+
+    <ul class="govuk-tabs__list">
+      <li class="govuk-tabs__list-item {% if activeTab == 'record' %} govuk-tabs__list-item--selected{% endif %}">
+        <a class="govuk-tabs__tab" href="{{recordPath}}">
+          Trainee record
+        </a>
+      </li>
+      <li class="govuk-tabs__list-item {% if activeTab == 'deferral-withdrawal' %} govuk-tabs__list-item--selected {% endif %}">
+        <a class="govuk-tabs__tab" href="{{recordPath}}/deferral-withdrawal">
+          Deferral/Withdrawl
+        </a>
+      </li>
+      {% if record.status | getCanRecommendForQts %}
+        <li class="govuk-tabs__list-item {% if activeTab == 'qts-recommend' %} govuk-tabs__list-item--selected{% endif %}">
+        <a class="govuk-tabs__tab" href="{{recordPath}}/qts-recommend">
+          QTS recommend
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+
+  </div>
+</div>

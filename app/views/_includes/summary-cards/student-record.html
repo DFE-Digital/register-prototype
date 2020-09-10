@@ -54,12 +54,21 @@
 {% endif %}
 
 {% if record.status == "QTS awarded" %}
+
+  {% set qtsContent %}
+    {{govukTag({
+      text: "QTS awarded",
+      classes: "govuk-tag--purple govuk-!-margin-bottom-2"
+    })}} <br>
+    2 September 2020
+  {% endset %}
+
   {% set studentRecordRows = studentRecordRows | push({
     key: {
       text: "QTS"
     },
     value: {
-      text: "Awarded - 2 September 2020"
+      html: qtsContent
     }
   }) %}
 {% endif %}

@@ -1,0 +1,191 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+{{ govukInput({
+  label: {
+    text: "First names",
+    classes: "govuk-label--s"
+  },
+  hint: {
+    text: "Or given names"
+  },
+  id: "first-names",
+  name: "record[personalDetails][givenName]",
+  value: record.personalDetails["givenName"],
+  classes: "govuk-!-width-two-thirds"
+}) }}
+
+{{ govukInput({
+  label: {
+    text: "Middle names",
+    classes: "govuk-label--s"
+  },
+  id: "middle-name",
+  name: "record[personalDetails][middleNames]",
+  value: record.personalDetails['middleNames'],
+  classes: "govuk-!-width-two-thirds"
+}) }}
+
+{{ govukInput({
+  label: {
+    text: "Last name",
+    classes: "govuk-label--s"
+  },
+  hint: {
+    text: "Or family name"
+  },
+  id: "last-name",
+  name: "record[personalDetails][familyName]",
+  value: record.personalDetails['familyName'],
+  classes: "govuk-!-width-two-thirds"
+}) }}
+
+{# Date of birth may be a date object #}
+{% set dateOfBirthArray = record.personalDetails.dateOfBirth | toDateArray %}
+
+{{ govukDateInput({
+  id: "date-of-birth",
+  namePrefix: "record[personalDetails][dateOfBirth]",
+  fieldset: {
+    legend: {
+      text: "Date of birth",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, 31 3 1980"
+  },
+  items: [
+      {
+        name: "day",
+        classes: "govuk-input--width-2",
+        value: dateOfBirthArray["0"]
+      },
+      {
+        name: "month",
+        classes: "govuk-input--width-2",
+        value: dateOfBirthArray["1"]
+      },
+      {
+        name: "year",
+        classes: "govuk-input--width-4",
+        value: dateOfBirthArray["2"]
+      }
+    ]
+}) }}
+
+{{ govukRadios({
+  idPrefix: "gender",
+  name: "record[personalDetails][sex]",
+  fieldset: {
+    legend: {
+      text: "Gender",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "Male",
+      text: "Male",
+      checked: checked(record.personalDetails.sex, "Male")
+    },
+    {
+      value: "Female",
+      text: "Female",
+      checked: checked(record.personalDetails.sex, "Female")
+    },
+    {
+      value: "Other",
+      text: "Other",
+      checked: checked(record.personalDetails.sex, "Other")
+    }
+  ]
+}) }}
+
+{% set otherNationalities = record.personalDetails.nationality | removeArrayItems(['British','Irish','Other'] | removeEmpty )%}
+
+{% set otherNationalities = otherNationalities | removeEmpty %}
+{% set hasOtherNationality = otherNationalities | length > 0 %}
+
+{% set nationalityOtherHtml %}
+  {% set nationalityOther = otherNationalities %}
+  {% if nationalityOther | length > 1 %}
+    {% set nationalityOther = nationalityOther[0] %}
+  {% endif %}
+
+  {# Make sure there's enough inputs to cover existing nationalities #}
+  {% for nationality in otherNationalities %}
+    {% set nationalityIndex = loop.index0 + 3 %}
+    {{ govukInput({
+      label: {
+        text: "Nationality"
+      },
+      id: "nationality-other" + loop.index0,
+      name: "record[personalDetails][nationality][" + nationalityIndex + "]",
+      value: nationality,
+      classes: "govuk-!-width-two-thirds"
+    }) }}
+  {% endfor %}
+
+  {# Make sure there's at least one extra input #}
+  {% if not otherNationalities | length %}
+    {{ govukInput({
+      label: {
+        text: "Other nationality"
+      },
+      id: "nationality-other",
+      name: "record[personalDetails][nationality][3]",
+      value: nationality,
+      classes: "govuk-!-width-two-thirds"
+    }) }}
+  {% endif %}
+
+
+  <div class="govuk-form-group">
+    {{ govukButton({
+      text: "Add another nationality",
+      classes: "govuk-button--secondary govuk-!-margin-bottom-1",
+      href: "#"
+    }) }}
+  </div>
+
+{% endset %}
+
+
+
+{{ govukCheckboxes({
+  idPrefix: "nationality",
+  name: "record[personalDetails][nationality]",
+  fieldset: {
+    legend: {
+      text: "Nationality",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "British",
+      text: "British",
+      checked: checked(record.personalDetails.nationality, "British")
+    },
+    {
+      value: "Irish",
+      text: "Irish",
+      checked: checked(record.personalDetails.nationality, "Irish")
+    },
+    {
+      value: "Other",
+      text: "Other",
+      checked: hasOtherNationality,
+      conditional: {
+        html: nationalityOtherHtml
+      }
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

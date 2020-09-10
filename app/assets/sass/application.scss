@@ -25,6 +25,7 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Overrides
 @import "overrides/moj-filter";
+@import "overrides/tabs";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
@@ -67,19 +68,6 @@ div.summary-panel {
       }
     }
 
-  }
-}
-
-li.govuk-tabs__list-item--selected {
-  font-weight: bold;
-  border-top: 5px solid #1d70b8 !important;
-  padding-top: 10px;
-}
-
-li.govuk-tabs__list-item {
-  font-weight: bold;
-  a {
-    text-decoration: none;
   }
 }
 

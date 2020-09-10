@@ -1,11 +1,11 @@
 
-{% extends "_templates/_page.html" %}
+{% extends "_templates/_record.html" %}
 
 {% set backLink = '/records' %}
 {% set pageHeading = record.personalDetails | getShortName %}
+{% set activeTab = 'record' %}
 
-
-{% block content %}
+{% block tabContent %}
 
 {% set canAmend = record.status | getAmendsAllowed %}
 
@@ -14,14 +14,7 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-full">
-    {% if record.trn %}
-      <span class="govuk-caption-l">TRN: {{record.trn}}
-      </span>
-    {% endif %}{{govukTag({
-        text: record.status,
-        classes: record.status | getStatusClass
-      })}}
-    <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+    
     <h2 class="govuk-heading-m">Trainee record</h2>
     {% include "_includes/summary-cards/student-record.html" %}
 

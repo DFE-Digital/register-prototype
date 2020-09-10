@@ -1,3 +1,7 @@
+// To generate new records:
+
+// node scripts/generate-records.js
+
 const fs = require('fs')
 const path = require('path')
 const faker = require('faker')
@@ -264,6 +268,7 @@ const generateFakeApplications = () => {
  */
 const generateApplicationsFile = (filePath) => {
   const applications = generateFakeApplications()
+  console.log(`Generated ${applications.length} fake records`)
   const filedata = JSON.stringify(applications, null, 2)
   fs.writeFile(
     filePath,
