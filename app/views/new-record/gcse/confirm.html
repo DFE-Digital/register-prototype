@@ -2,9 +2,10 @@
 
 {% set pageHeading = "Confirm GCSE details" %}
 
-{% set formAction = "./../overview" %}
+{% set formAction = "./../overview" | orReferrer(referrer) %}
 
 {% block formContent %}
+
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
   {% include "_includes/summary-cards/gcse-details.html" %}
 

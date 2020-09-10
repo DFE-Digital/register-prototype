@@ -27,6 +27,21 @@ filters.getFullName = ({
   return names.filter(Boolean).join(' ')
 }
 
+// Adds referrer as query string if it exists
+filters.addReferrer = (url, referrer) => {
+  if (!referrer || referrer == 'undefined') return url
+  else {
+    return `${url}?referrer=${referrer}`
+  }
+}
+
+filters.orReferrer = (url, referrer) => {
+  if (!referrer || referrer == 'undefined') return url
+  else {
+    return referrer
+  }
+}
+
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app
 // -------------------------------------------------------------------

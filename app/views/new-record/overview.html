@@ -5,6 +5,7 @@
 {% set hideReturnLink = true %}
 {% set backLink = '/records' %}
 {% set backText = "All records" %}
+{% set referrer = recordPath + "/overview" %}
 
 
 {% block formContent %}
@@ -57,17 +58,29 @@
   }]
 }) if not closed }}
 
+{{record | log}}
+{{record.qualifications.gceStatus | log}}
+
 <h2 class="govuk-heading-m">Education</h2>
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [
   {
+    text: "A Level",
+    href: "alevels" | reviewIfInProgress(record.qualifications.gce),
+    id: "qualification-gce",
+    tag: {
+      classes: (record.qualifications.gceStatus.status or (record.qualifications.gce | getStatusText)) | getStatusClass,
+      text: record.qualifications.gceStatus.status or (record.qualifications.gce | getStatusText)
+    }
+  } if false,
+  {
     text: "GCSE",
     href: "gcse" | reviewIfInProgress(record.qualifications.gcse),
     id: "qualification-gcse",
     tag: {
-      classes: record.qualifications.gcse | getStatusText | getStatusClass,
-      text: record.qualifications.gcse | getStatusText
+      classes: (record.qualifications.gcseStatus.status or (record.qualifications.gcse | getStatusText)) | getStatusClass,
+      text: record.qualifications.gcseStatus.status or (record.qualifications.gcse | getStatusText)
     }
   },
   {
@@ -83,8 +96,6 @@
 
     {#   classes: record.qualifications.degreeStatus | getStatusText | getStatusClass,
       text: record.qualifications.degreeStatus | getStatusText #}
-{{ record | log}}
-{{record.qualifications | log}}
 
 <h2 class="govuk-heading-m">Assessment</h2>
 {{ appTaskList({
@@ -92,7 +103,7 @@
   items: [
   {
     text: "Assessment details",
-    href: "assessment-details" | reviewIfInProgress(record.qualifications.assessmentDetails),
+    href: "assessment-details" | reviewIfInProgress(record.assessmentDetails),
     id: "assessment-details",
     tag: {
       classes: record.assessmentDetails | getStatusText | getStatusClass,

@@ -12,8 +12,15 @@
 
     <div class="govuk-form-group">
       {{ govukButton({
+        text: "Service start",
+        href: "/start-page"
+      }) }}
+    </div>
+
+    <div class="govuk-form-group">
+      {{ govukButton({
         text: "All records",
-        href: "/records.html",
+        href: "/records",
         isStartButton: false
       }) }}
     </div>
@@ -25,12 +32,7 @@
       }) }}
     </div>
 
-    <div class="govuk-form-group">
-      {{ govukButton({
-        text: "Add a trainee journey (archive)",
-        href: "/start-page.html"
-      }) }}
-    </div>
+
 
   </div>
 

@@ -5,8 +5,13 @@
 {% set formAction = "./save" %}
 
 {% set hideReturnLink = true %}
+{% set showIncomplete = true %}
+{% set backLink = './overview' %}
+
 
 {% block formContent %}
+{% set referrer = recordPath + "/check-record" %}
+
 
 <span class="govuk-caption-l">New record</span>
 <h1 class="govuk-heading-l">Check before submitting for TRN</h1>
@@ -23,9 +28,10 @@
 {% include "_includes/summary-cards/gcse-details.html" %}
 
 <h3 class="govuk-heading-s">{{ "Degree" | pluralise(record.qualifications.degree | length)}}</h3>
-{% for degree in record.qualifications.degree %}
-  {% include "_includes/summary-cards/degree-details.html" %}
-{% endfor %}
+{# {% for degree in record.qualifications.degree %} #}
+{% set degrees = record.qualifications.degree %}
+{% include "_includes/summary-cards/degree-details.html" %}
+{# {% endfor %} #}
 
 <h2 class="govuk-heading-m">Assessment details</h2>
 {% include "_includes/summary-cards/assessment-details.html" %}
@@ -35,6 +41,7 @@
   text: "Submit for TRN"
 }) }}
 
+<p class="govuk-body"><a href="./save-as-draft" class="govuk-link">Save as draft</a></p>
 
 {% endblock %}
 

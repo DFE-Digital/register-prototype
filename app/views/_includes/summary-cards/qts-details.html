@@ -1,57 +1,36 @@
 
-{# Merge fields and strip empty #}
-{% set addressCombined = record.contactDetails.address | objectToArray | commaSeparateLines %}
-{% set addressCombined = addressCombined or 'Not provided' %}
 
-
-{% set contactDetailsRows = [
+{% set qtsDetailsRows = [
   {
     key: {
-      text: "Address"
+      text: "Assessment outcome"
     },
     value: {
-      text: addressCombined | safe
+      text: "Passed"
     },
     actions: {
       items: [
         {
-          href: recordPath + "/contact-details" | addReferrer(referrer),
+          href: recordPath + "/qts-recommend-edit" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "address"
+          visuallyHiddenText: "assessment outcome"
         }
       ]
     } if canAmend
   },
   {
     key: {
-      text: "Phone number"
+      text: "Date of assessment"
     },
     value: {
-      text: record.contactDetails.phoneNumber or 'Not provided'
+      text: "20 August 2020"
     },
     actions: {
       items: [
         {
-          href: recordPath + "/contact-details" | addReferrer(referrer),
+          href: recordPath + "/qts-recommend-edit" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "phone number"
-        }
-      ]
-    } if canAmend
-  },
-  {
-    key: {
-      text: "Email address"
-    },
-    value: {
-      text: record.contactDetails.email or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/contact-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "email"
+          visuallyHiddenText: "date of assessment"
         }
       ]
     } if canAmend
@@ -60,9 +39,9 @@
 
 
 
-{% set contactDetailsHtml %}
+{% set qtsDetailsHtml %}
   {{ govukSummaryList({
-    rows: contactDetailsRows
+    rows: qtsDetailsRows
   }) }}
 {% endset %}
 
@@ -87,8 +66,8 @@
 
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
-    titleText: "Contact details",
-    html: contactDetailsHtml
+    titleText: "QTS details",
+    html: qtsDetailsHtml
   }) }}
   
 {% endif %}

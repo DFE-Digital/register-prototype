@@ -2,16 +2,15 @@
 
 {% set pageHeading = "Confirm degree details" %}
 
-{% set formAction = "./../overview" %}
+{% set formAction = "./../overview" | orReferrer(referrer) %}
 
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
   {% set degreeCount = record.qualifications.degree | length %}
 
-  {% for degree in record.qualifications.degree %}
-    {% include "_includes/summary-cards/degree-details.html" %}
-  {% endfor %}
+  {% set degrees = record.qualifications.degree %}
+  {% include "_includes/summary-cards/degree-details.html" %}
 
   <div class="govuk-form-group">
     {{ govukButton({

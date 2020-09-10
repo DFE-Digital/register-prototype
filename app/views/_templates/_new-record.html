@@ -45,7 +45,17 @@
 
 {% block content %}
   {% block beforePageTitle %}{% endblock %}
-  <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post">
+  {# {{referrer}} #}
+  {% set hasReferrer = '' | addReferrer(referrer) | falsify %}
+  {% set formActionHtml -%}
+  {%- if formAction -%}
+    action={{- formAction -}}
+  {%- elseif hasReferrer -%}
+    action={{- '' | addReferrer(referrer) -}}
+  {%- endif -%} 
+  {%- endset %}
+
+  <form {{formActionHtml}} method="post">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         {% block formContent %}

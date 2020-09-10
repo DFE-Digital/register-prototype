@@ -1,15 +1,15 @@
-{% extends "_templates/_new-record.html" %}
+{% extends "_templates/_record-form.html" %}
 
-{% set pageHeading = "Confirm personal details" %}
+{% set pageHeading = "Confirm QTS details" %}
 
-{% set formAction = "./../overview" | orReferrer(referrer) %}
+{% set formAction = "./qts-recommended" %}
 
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
-  {% include "_includes/summary-cards/contact-details.html" %}
+  {% include "_includes/summary-cards/qts-details.html" %}
 
-  {{ govukCheckboxes({
-  idPrefix: "contact-details",
+  {# {{ govukCheckboxes({
+  idPrefix: "waste",
   name: "record[contactDetails][status]",
   items: [
     {
@@ -18,10 +18,10 @@
       checked: checked(record.contactDetails.status, "Completed")
     }
   ]
-  }) }}
+  }) }} #}
 
   {{ govukButton({
-    text: "Continue"
+    text: "Recommend for QTS"
   }) }}
 
 {% endblock %}

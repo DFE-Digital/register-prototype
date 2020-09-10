@@ -13,7 +13,7 @@
     actions: {
       items: [
         {
-          href: recordPath + "/diversity-disclosed?referrer=" + referrer,
+          href: recordPath + "/diversity-disclosed" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "diversity disclosed"
         }
@@ -42,7 +42,7 @@
   actions: {
     items: [
       {
-        href: recordPath + "/ethnic-group?referrer=" + referrer,
+        href: recordPath + "/ethnic-group" | addReferrer(referrer),
         text: "Change",
         visuallyHiddenText: "ethnic group"
       }
@@ -66,7 +66,7 @@
   actions: {
     items: [
       {
-        href: recordPath + "/ethnic-background?referrer=" + referrer,
+        href: recordPath + "/ethnic-background" | addReferrer(referrer),
         text: "Change",
         visuallyHiddenText: "ethnic group background"
       }
@@ -89,7 +89,7 @@
     actions: {
       items: [
         {
-          href: recordPath + "/disabilities?referrer=" + referrer,
+          href: recordPath + "/disabilities" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "disabilities answer"
         }
@@ -111,7 +111,7 @@
     actions: {
       items: [
         {
-          href: recordPath + "/candidate-disabilities?referrer=" + referrer,
+          href: recordPath + "/candidate-disabilities" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "candidate disabilities"
         }
@@ -130,9 +130,32 @@
 {% endset %}
 
 
-{{ appSummaryCard({
-  classes: "govuk-!-margin-bottom-6",
-  titleText: "Diversity information",
-  html: diversityHtml
-}) }}
 
+
+
+{% set complete = true if (record.diversity | sectionIsCompleted ) %}
+{% set status  = record.diversity | getStatusText %}
+
+{% if showIncomplete and not complete %}
+
+  {% set incompleteType = "warning" if errorList %}
+  {% set incompleteId = "diversity-details" %}
+  {% if status == "In progress" %}
+    {% set incompleteText = "Diversity information not marked as complete" %}
+    {% set incompleteLink = recordPath + "/diversity/confirm" | addReferrer(referrer) %}
+  {% else %}
+    {% set incompleteText = "Diversity information not started" %}
+    {% set incompleteLink = recordPath + "/diversity-disclosed" | addReferrer(referrer) %}
+  {% endif %}
+
+  {% include "_includes/incomplete.njk" %}
+
+{% else %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Diversity information",
+    html: diversityHtml
+  }) }}
+  
+{% endif %}

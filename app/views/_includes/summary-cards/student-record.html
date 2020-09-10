@@ -15,7 +15,7 @@
     actions: {
       items: [
         {
-          href: recordPath + "/degree-details?referrer=" + referrer,
+          href: recordPath + "/degree-details" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "candidate ID"
         }
@@ -49,6 +49,26 @@
     },
     value: {
       text: record.trn or 'Not provided'
+    }
+  }) %}
+{% endif %}
+
+{% if record.status == "Pending QTS" %}
+
+  {% set qtsContent %}
+    {{govukTag({
+      text: "Pending QTS",
+      classes: "govuk-tag--green govuk-!-margin-bottom-2"
+    })}} <br>
+    Recommended: 2 September 2020
+  {% endset %}
+
+  {% set studentRecordRows = studentRecordRows | push({
+    key: {
+      text: "QTS"
+    },
+    value: {
+      html: qtsContent
     }
   }) %}
 {% endif %}

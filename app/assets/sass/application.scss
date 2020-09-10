@@ -17,6 +17,8 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/summary-card";
 @import "components/task-list";
 @import "components/autocomplete";
+@import "components/banner";
+
 
 // Components that aren't in Frontend
 @import "components/application-card";

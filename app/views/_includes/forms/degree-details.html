@@ -82,9 +82,10 @@
 {% if isInternational %}
 
   {% set storedGrade = degreeTemp.grade %}
+  {{storedGrade | log('stored grade')}}
   {% set storedGradeOther = false %}
 
-  {% if not storedGrade in [
+  {% if storedGrade and not storedGrade in [
     "Not applicable",
     "Unknown",
     "The candidate is still studying for their degree"] %}
@@ -145,7 +146,7 @@
   {% set storedGrade = degreeTemp.grade %}
   {{storedGrade | log}}
   {% set storedGradeOther = false %}
-  {% if not storedGrade in [
+  {% if storedGrade and not storedGrade in [
     "First-class honours",
     "Upper second-class honours (2:1)",
     "Lower second-class honours (2:2)",

@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Candidate personal details" %}
 
-{% set formAction = "./personal-details/confirm" %}
+{% set formAction = "./personal-details/confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/personal-details.html" %}

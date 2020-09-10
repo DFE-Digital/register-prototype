@@ -1,0 +1,164 @@
+
+{% set expectedDuration = 'Not provided' %}
+{% if record.assessmentDetails.duration | falsify %}
+  {% set expectedDuration = record.assessmentDetails.duration + " years" %}
+{% endif %}
+
+{% set degreeDetailsRows = [
+  {
+    key: {
+      text: "Degree type"
+    },
+    value: {
+      text: degree.type or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/degree/" + loop.index0 + "/type" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "degree type"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
+      text: "Subject"
+    },
+    value: {
+      text: degree.subject or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/degree/" + loop.index0 + "/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "degree subject"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
+      text: "Institution"
+    },
+    value: {
+      text: degree.org or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/degree/" + loop.index0 + "/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "degree institution"
+        }
+      ]
+    } if canAmend
+  }] %}
+
+{% set degreeCountryRow = {
+  key: {
+    text: "Country"
+  },
+  value: {
+    text: degree.country or "Not provided"
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/degree/" + loop.index0 + "/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "degree country"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% if degree.country and degree.country != 'United Kingdom' %}
+  {% set degreeDetailsRows = degreeDetailsRows | push(degreeCountryRow) %}
+{% endif %}
+
+{% set degreeYears = [{
+    key: {
+      text: "Start year"
+    },
+    value: {
+      text: degree.startDate or "Not provided"
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/degree/" + loop.index0 + "/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "degree start year"
+        }
+      ]
+    } if canAmend
+  } if false,
+  {
+    key: {
+      text: "Graduation year"
+    },
+    value: {
+      text: degree.endDate or "Not provided"
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/degree/" + loop.index0 + "/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "degree graduation year"
+        }
+      ]
+    } if canAmend
+  }] %}
+
+{% set degreeDetailsRows = degreeDetailsRows | combineArrays(degreeYears) %}
+
+{% set gradeRow = {
+    key: {
+      text: "Grade"
+    },
+    value: {
+      text: degree.grade or "Not provided"
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/degree/" + loop.index0 + "/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "degree grade"
+        }
+      ]
+    } if canAmend
+  } %}
+
+{% set degreeDetailsRows = degreeDetailsRows | push(gradeRow) %}
+
+
+{% set degreeDetailsHtml %}
+  {{ govukSummaryList({
+    rows: degreeDetailsRows
+  }) }}
+{% endset %}
+
+{% if degree.country == "United Kingdom" %}
+  {% set titleText = degree.type + " " + degree.subject %}
+{% else %}
+  {% set titleText = degree.type + ": " + degree.subject %}
+{% endif %}
+
+
+{{ appSummaryCard({
+  classes: "govuk-!-margin-bottom-6",
+  titleText: titleText,
+  actions: {
+    items: [{
+      href: recordPath + "/degree/" + loop.index0 + "/delete" | addReferrer(referrer),
+      text: "Delete degree"
+    }]
+  } if canAmend,
+  html: degreeDetailsHtml
+}) }}
+

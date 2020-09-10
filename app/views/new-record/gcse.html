@@ -1,0 +1,33 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "GCSE details" %}
+
+{# {% set formAction = "./contact-details/confirm" %} #}
+{% set formAction = "./overview" | orReferrer(referrer) %}
+
+{% block formContent %}
+  {# {% include "_includes/forms/contact-details.html" %} #}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+  {{ govukInsetText({
+    text: "Page still being built"
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "gcse-section-complete",
+    name: "record[qualifications][gcseStatus][status]",
+    items: [
+      {
+        value: "Completed",
+        text: "I have completed this section",
+        checked: checked(record.qualifications.gcseStatus.status, "Completed")
+      }
+    ]
+    }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+{% endblock %}
+

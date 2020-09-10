@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Which disabilities were disclosed?" %}
 
-{% set formAction = "diversity/confirm" %}
+{% set formAction = "diversity/confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/candidate-disabilities.html" %}

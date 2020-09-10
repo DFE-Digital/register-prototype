@@ -3,7 +3,7 @@
     <div class="app-application-card_col">
       <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
         <a href="/record/{{ record.id }}" class="govuk-link govuk-link--no-visited-state">
-          {{ record.personalDetails | getShortName }}
+          {{ record.personalDetails | getShortName or "Draft record" }}
         </a>
       </h3>
       <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">Candidate ID: {{record.candidateId}}</p>

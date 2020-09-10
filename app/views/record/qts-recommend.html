@@ -9,21 +9,21 @@
   <h2 class="govuk-heading-l">{{pageSubHeading}}</h1>
 
   {# Empty state  - show if not yet recommended for QTS#}
-  <p class="govuk-body">{{pageHeading}} has not yet been recomended for QTS.</p>
+  {# <p class="govuk-body">{{pageHeading}} has not yet been recomended for QTS.</p>
 
   <div class="govuk-form-group">
     {{ govukButton({
       text: "Recommend for QTS",
       href: "qts-recommend-edit"
     }) }}
-  </div>
+  </div> #}
   
   {# End empty state #}
 
   {# Summary card state - show if QTS has been recommended #}
   
-  {# <p class="govuk-body">[candiate name] has been recomended for QTS.</p>
-  {% include "_includes/summary-cards/degree-details.html" %}  #}
+  <p class="govuk-body">[candiate name] has been recomended for QTS.</p>
+  {% include "_includes/summary-cards/contact-details.html" %} 
   
   {# End summary card state #}
 

@@ -15,6 +15,43 @@ const deleteTempData = (req) => {
   delete data.record
 }
 
+const getReferrer = referrer => {
+  if (referrer && referrer != 'undefined'){
+    return `?referrer=${referrer}`
+  }
+  else return '' 
+}
+
+const recordIsComplete = record => {
+  if (!record) return false
+  let regularSections = [
+    'personalDetails',
+    'contactDetails',
+    'diversity',
+    'assessmentDetails',
+    // 'qualifications.gceStatus', //a levels not implimented yet
+    'qualifications.gcseStatus',
+    'qualifications.degreeStatus'
+  ]
+
+  let recordIsComplete = true
+
+  regularSections.forEach(section => {
+    if (_.get(record, `${section}.status`) != "Completed"){
+      recordIsComplete = false
+    }
+  })
+
+  return recordIsComplete
+}
+
+// Pass referrer to page
+router.all('*', function(req, res, next){
+  const referrer = req.query.referrer
+  res.locals.referrer = referrer
+  next()
+})
+
 // Set up data when viewing a record
 router.get('/record/:uuid', function (req, res) {
   deleteTempData(req)
@@ -39,6 +76,27 @@ router.get('/record/:uuid', function (req, res) {
 
 
 
+// Copy qts data back to real record
+router.post('/record/:uuid/qts/qts-recommended', (req, res) => {
+  const data = req.session.data
+  const records = data.records
+  const newRecord = data.record
+  // Update failed or no data
+  if (!newRecord){
+    res.redirect('/record/:uuid')
+  }
+  else {
+    // Delete temp data
+    deleteTempData(req)
+    newRecord.status = 'Pending QTS'
+    newRecord.updatedDate = new Date()
+    const recordIndex = records.findIndex(record => record.id == req.params.uuid)
+    // Overwrite record with temp record
+    records[recordIndex] = newRecord
+    res.redirect('/record/' + req.params.uuid)
+  }
+})
+
 // Copy temp record back to real record
 router.post('/record/:uuid/:page/update', (req, res) => {
   const data = req.session.data
@@ -51,6 +109,7 @@ router.post('/record/:uuid/:page/update', (req, res) => {
   else {
     // Delete temp data
     deleteTempData(req)
+    newRecord.updatedDate = new Date()
     const recordIndex = records.findIndex(record => record.id == req.params.uuid)
     // Overwrite record with temp record
     records[recordIndex] = newRecord
@@ -70,16 +129,17 @@ router.get(['/new-record/new', '/new-record'], function (req, res) {
 router.post(['/:recordtype/:uuid/diversity-disclosed','/:recordtype/diversity-disclosed'], function (req, res) {
   const data = req.session.data
   let diversityDisclosed = _.get(data, 'record.diversity.diversityDisclosed')
+  let referrer = getReferrer(req.query.referrer)
   let recordPath = getRecordPath(req)
   // No data, return to page
   if (!diversityDisclosed){
-    res.redirect(`${recordPath}/diversity-disclosed`)
+    res.redirect(`${recordPath}/diversity-disclosed${referrer}`)
   }
   else if (diversityDisclosed == true || diversityDisclosed == "true"){
-    res.redirect(`${recordPath}/ethnic-group`)
+    res.redirect(`${recordPath}/ethnic-group${referrer}`)
   }
   else {
-    res.redirect(`${recordPath}/diversity/confirm`)
+    res.redirect(`${recordPath}/diversity/confirm${referrer}`)
   }
 })
 
@@ -88,15 +148,16 @@ router.post(['/:recordtype/:uuid/ethnic-group','/:recordtype/ethnic-group'], fun
   let data = req.session.data
   let ethnicGroup = _.get(data, 'record.diversity.ethnicGroup')
   let recordPath = getRecordPath(req)
+  let referrer = getReferrer(req.query.referrer)
   // No data, return to page
   if (!ethnicGroup){
-    res.redirect(`${recordPath}/ethnic-group`)
+    res.redirect(`${recordPath}/ethnic-group${referrer}`)
   }
   else if (ethnicGroup.includes("Not provided")){
-    res.redirect(`${recordPath}/disabilities`)
+    res.redirect(`${recordPath}/disabilities${referrer}`)
   }
   else {
-    res.redirect(`${recordPath}/ethnic-background`)
+    res.redirect(`${recordPath}/ethnic-background${referrer}`)
   }
 })
 
@@ -105,15 +166,17 @@ router.post(['/:recordtype/:uuid/disabilities','/:recordtype/disabilities'], fun
   let data = req.session.data
   let hasDisabilities = _.get(data, 'record.diversity.disabledAnswer')
   let recordPath = getRecordPath(req)
+  let referrer = getReferrer(req.query.referrer)
+
   // No data, return to page
   if (!hasDisabilities){
-    res.redirect(`${recordPath}/disabilities`)
+    res.redirect(`${recordPath}/disabilities${referrer}`)
   }
   else if (hasDisabilities == "Yes"){
-    res.redirect(`${recordPath}/candidate-disabilities`)
+    res.redirect(`${recordPath}/candidate-disabilities${referrer}`)
   }
   else {
-    res.redirect(`${recordPath}/diversity/confirm`)
+    res.redirect(`${recordPath}/diversity/confirm${referrer}`)
   }
 })
 
@@ -123,7 +186,8 @@ router.get(['/:recordtype/:uuid/degree/add','/:recordtype/degree/add'], function
   let degrees = _.get(data, "record.qualifications.degree")
   let degreeCount = (degrees) ? degrees.length : 0
   let recordPath = getRecordPath(req)
-  res.redirect(`${recordPath}/degree/${degreeCount}/type`)
+  let referrer = getReferrer(req.query.referrer)
+  res.redirect(`${recordPath}/degree/${degreeCount}/type${referrer}`)
 })
 
 // Delete degree at index
@@ -131,6 +195,8 @@ router.get(['/:recordtype/:uuid/degree/:index/delete','/:recordtype/degree/:inde
   const data = req.session.data
   let recordPath = getRecordPath(req)
   degreeIndex = req.params.index
+  let referrer = getReferrer(req.query.referrer)
+
   if (_.get(data, "record.qualifications.degree[" + degreeIndex + "]")){
     _.pullAt(data.record.qualifications.degree, [degreeIndex]) //delete item at index
     // Clear data if there are no more degrees - so the task list thinks the section is not started
@@ -139,12 +205,14 @@ router.get(['/:recordtype/:uuid/degree/:index/delete','/:recordtype/degree/:inde
       delete data.record.qualifications.degreeStatus
     }
   }
-  res.redirect(`${recordPath}/degree/confirm`)
+  res.redirect(`${recordPath}/degree/confirm${referrer}`)
 })
 
 // Forward degree requests to the right template, including the index
 router.get(['/:recordtype/:uuid/degree/:index/:page','/:recordtype/degree/:index/:page'], function (req, res) {
   let recordPath = getRecordPath(req)
+  let referrer = getReferrer(req.query.referrer)
+
   res.render(`${req.params.recordtype}/degree/${req.params.page}`, {itemIndex: req.params.index})
 })
 
@@ -153,6 +221,8 @@ router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:in
   const data = req.session.data
   let newDegree = data.degreeTemp
   delete data.degreeTemp
+  let referrer = getReferrer(req.query.referrer)
+
 
   // Save the correct type
   if (newDegree.isInternational == "true" && newDegree.typeInt){
@@ -195,13 +265,15 @@ router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:in
 
   _.set(data, 'record.qualifications.degree', existingDegrees)
 
-  res.redirect(`${recordPath}/degree/confirm`)
+  res.redirect(`${recordPath}/degree/confirm${referrer}`)
 })
 
 // Diversity branching
 router.post(['/:recordtype/:uuid/assessment-details','/:recordtype/assessment-details'], function (req, res) {
   const data = req.session.data
   let record = data.record
+  let referrer = getReferrer(req.query.referrer)
+
   let assessmentDetails = _.get(data, 'record.assessmentDetails')
   let recordPath = getRecordPath(req)
   // No data, return to page
@@ -217,7 +289,7 @@ router.post(['/:recordtype/:uuid/assessment-details','/:recordtype/assessment-de
 
   record.assessmentDetails = assessmentDetails
 
-  res.redirect(`${recordPath}/assessment-details/confirm`)
+  res.redirect(`${recordPath}/assessment-details/confirm${referrer}`)
 })
 
 // Save a record and put in data store
@@ -232,7 +304,7 @@ router.get('/new-record/save-as-draft', (req, res) => {
   else {
     delete data.record
     record.status = "Draft" // just in case
-    record.lastUpdated = new Date()
+    record.updatedDate = new Date()
     // Could be an existing draft
     if (record.id){
       const recordIndex = records.findIndex(record => record.id == req.params.uuid)
@@ -253,9 +325,10 @@ router.post('/new-record/save', (req, res) => {
   let data = req.session.data
   let records = data.records
   let newRecord = _.get(data, 'record') // copy record
-  // No data, return to page
-  if (!newRecord){
-    res.redirect('/new-record/overview')
+
+  if (!recordIsComplete(newRecord)){
+    console.log('Record is incomplete, returning to check record')
+    res.redirect('/new-record/check-record')
   }
   else {
     newRecord.status = "Pending TRN"
@@ -282,6 +355,8 @@ router.post('/new-record/save', (req, res) => {
 // Existing record pages
 router.get('/record/:uuid/:page*', function (req, res) {
   let records = req.session.data.records
+  const referrer = req.query.referrer
+  res.locals.referrer = referrer
   const record = records.find(record => record.id == req.params.uuid)
   if (!record){
     res.redirect('/records')

@@ -43,12 +43,13 @@
         text: subject | sentenceCase
       },
       value: {
-        text: grades or 'Not provided'
+        text: grades or 'Not provided',
+        text: '????'
       },
       actions: {
         items: [
           {
-            href: recordPath + "/degree/" + loop.index0 + "/type?referrer=" + referrer,
+            href: recordPath + "/degree/" + loop.index0 + "/type" | addReferrer(referrer),
             text: "Change",
             visuallyHiddenText: "degree type"
           }
@@ -69,22 +70,37 @@
   }) }}
 {% endset %}
 
-{# {% if degree.country == "United Kingdom" %}
-  {% set titleText = degree.type + " " + degree.subject %}
+
+
+{% set complete = true if (record.qualifications.gcseStatus | sectionIsCompleted ) %}
+{% set status  = record.qualifications.gcseStatus.status or (record.qualifications.gcse | getStatusText) %}
+
+{% if showIncomplete and not complete %}
+
+  {% set incompleteType = "warning" if errorList %}
+  {% set incompleteId = "gcse-details" %}
+  {% if status == "In progress" %}
+    {% set incompleteText = "GCSE details not marked as complete" %}
+    {% set incompleteLink = recordPath + "/gcse/confirm" | addReferrer(referrer) %}
+  {% else %}
+    {% set incompleteText = "GCSE details not started" %}
+    {% set incompleteLink = recordPath + "/gcse" | addReferrer(referrer) %}
+  {% endif %}
+
+  {% include "_includes/incomplete.njk" %}
+
 {% else %}
-  {% set titleText = degree.type + ": " + degree.subject %}
-{% endif %} #}
 
-
-{{ appSummaryCard({
-  classes: "govuk-!-margin-bottom-6",
-  titleText: "GCSE or equivalent",
-  actions: {
-    items: [{
-      href: recordPath + "/degree/" + loop.index0 + "/delete?referrer=" + referrer,
-      text: "Delete degree"
-    }]
-  } if false,
-  html: gcseDetailsHtml
-}) }}
-
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "GCSE or equivalent",
+    actions: {
+      items: [{
+        href: recordPath + "/degree/" + loop.index0 + "/delete" | addReferrer(referrer),
+        text: "Delete degree"
+      }]
+    } if false,
+    html: gcseDetailsHtml
+  }) }}
+  
+{% endif %}

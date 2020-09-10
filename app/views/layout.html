@@ -31,6 +31,7 @@
 
 {# custom components #}
 {% from "_components/autocomplete/macro.njk"   import appAutocomplete %}
+{% from "_components/banner/macro.njk"         import appBanner %}
 {% from "_components/summary-card/macro.njk"   import appSummaryCard %}
 {% from "_components/task-list/macro.njk"   import appTaskList %}
 
@@ -52,7 +53,7 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
-    serviceUrl: "/",
+    serviceUrl: "/records",
     containerClasses: "govuk-width-container",
     navigation: [
       {
