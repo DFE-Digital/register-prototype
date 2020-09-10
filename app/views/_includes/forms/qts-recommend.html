@@ -1,11 +1,3 @@
-<h2 class="govuk-heading-l">{{pageSubHeading}}</h1>
-
-<p class="govuk-body">This candidate has not yet been recomended for QTS.</p>
-
-{{ govukButton({
-  text: "Recommend for QTS"
-}) }}
-
 {% set dateFinishedTrainingArray = record.personalDetails.dateOfBirth | toDateArray %}
 
 {{ govukDateInput({
@@ -39,7 +31,33 @@
     ]
 }) }}
 
-<!-- <p class="govuk-body"><strong>Standards assessment outcome</strong> might go here?</p> -->
+{{ govukRadios({
+  idPrefix: "standards-assessed-outcome",
+  name: "standards-assessed-outcome",
+  fieldset: {
+    legend: {
+      text: "What is the standards assessed outcome?",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "Standards not taken",
+      text: "Standards not taken",
+      checked: checked(record.personalDetails.sex, "Standards not taken")
+    },
+    {
+      value: "Standards not passed",
+      text: "Standards not passed",
+      checked: checked(record.personalDetails.sex, "Standards not passed")
+    },
+    {
+      value: "Standards passed",
+      text: "Standards passed",
+      checked: checked(record.personalDetails.sex, "Standards passed")
+    }
+  ]
+}) }}
 
 {% set dateStandardsAssessmentPassed = record.personalDetails.dateOfBirth | toDateArray %}
 
@@ -74,36 +92,24 @@
     ]
 }) }}
 
-{# Qualification awarded is likely to be a autocomplete  #}
-
-{{ govukRadios({
-  idPrefix: "gender",
-  name: "qualification-awarded",
-  fieldset: {
-    legend: {
-      text: "Qualification awarded",
-      classes: "govuk-fieldset__legend--s"
-    }
+{{ appAutocomplete({
+  label: {
+    text: "What is the qualification awarded?",
+    classes: "govuk-label--s"
   },
-  items: [
-    {
-      value: "qualification-1",
-      text: "Qualification 1",
-      checked: checked(record.personalDetails.sex, "Qualification 1")
-    },
-    {
-      value: "qualification-2",
-      text: "Qualification 2",
-      checked: checked(record.personalDetails.sex, "Qualification 2")
-    },
-    {
-      value: "qualification-2",
-      text: "Qualification 2",
-      checked: checked(record.personalDetails.sex, "Qualification 2")
-    }
-  ]
-}) }}
+  id: 'degree-country',
+  name: "degreeTemp[country]",
+  items: data.awards,
+  classes: "govuk-!-width-two-thirds",
+  value: degreeTemp.country
+  }
+) }}
 
 {{ govukButton({
-  text: "Recommend for QTS"
+  text: "Continue",
+  href: ""
 }) }}
+
+<p class="govuk-body"><a href="{{recordPath}}" class="govuk-link">Cancel and return to record</a></p>
+
+

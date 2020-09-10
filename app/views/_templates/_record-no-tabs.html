@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% if not backLink %}
+    {% set backLink      = 'javascript:history.back();' %}
+{% endif %}
+{% if not backText %}
+    {% set backText      = 'Back'  %}
+{% endif %}
+
+{% if backLink == 'false' %}
+    {% set backLink = false %}
+{% endif %}
+
+{% if backText == 'false' %}
+    {% set backText = '' %}
+{% endif %}
+
+
+{% block pageTitle %}
+  {{ pageHeading }} - {{serviceName}} - GOV.UK
+{% endblock %}
+
+{% block pageNavigation %}
+  {% if backLink %}
+    {{ govukBackLink({
+      text: backText,
+      href: backLink
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{# Record could be set by locals, or in session data #}
+{% set record = record or data.record %}
+{% if not record %}
+  {% set record = {} %}
+{% endif %}
+
+
+
+{% set canAmend = record.status | getAmendsAllowed %}
+
+{# Used by summary cards #}
+{% set recordPath = "/record/" + record.id %}
+
+{% block content %}
+
+  {% if record.trn %}
+    <span class="govuk-caption-l">TRN: {{record.trn}}
+    </span>
+  {% endif %}
+  {{govukTag({
+      text: record.status,
+      classes: record.status | getStatusClass
+  })}}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    {% block bodyContent %}
+      
+    {% endblock %}
+
+    </div>
+  </div>
+
+{% endblock %}
+
+

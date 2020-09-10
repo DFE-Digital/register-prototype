@@ -8,6 +8,7 @@ let degreeTypes = degreeData.types.undergraduate.map(type => type.text)
 let subjects = degreeData.subjects
 let degreeOrganisations = degreeData.orgs
 let countries = require('./countries')
+let awards = require('./awards')
 
 
 module.exports = {
@@ -18,7 +19,8 @@ module.exports = {
   subjects,
   degreeOrganisations,
   degreeTypes,
-  countries
+  countries,
+  awards
   // Insert values here
 
 }
