@@ -1,0 +1,109 @@
+<h2 class="govuk-heading-l">{{pageSubHeading}}</h1>
+
+<p class="govuk-body">This candidate has not yet been recomended for QTS.</p>
+
+{{ govukButton({
+  text: "Recommend for QTS"
+}) }}
+
+{% set dateFinishedTrainingArray = record.personalDetails.dateOfBirth | toDateArray %}
+
+{{ govukDateInput({
+  id: "date-of-birth",
+  namePrefix: "date-finished-training",
+  fieldset: {
+    legend: {
+      text: "Date candidate finished training placement",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, 31 06 2020"
+  },
+  items: [
+      {
+        name: "day",
+        classes: "govuk-input--width-2",
+        value: dateFinishedTrainingArray["0"]
+      },
+      {
+        name: "month",
+        classes: "govuk-input--width-2",
+        value: dateFinishedTrainingArray["1"]
+      },
+      {
+        name: "year",
+        classes: "govuk-input--width-4",
+        value: dateFinishedTrainingArray["2"]
+      }
+    ]
+}) }}
+
+<!-- <p class="govuk-body"><strong>Standards assessment outcome</strong> might go here?</p> -->
+
+{% set dateStandardsAssessmentPassed = record.personalDetails.dateOfBirth | toDateArray %}
+
+{{ govukDateInput({
+  id: "date-of-birth",
+  namePrefix: "date-standards-assessment-passed",
+  fieldset: {
+    legend: {
+      text: "Date candidate passed standards assessment",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, 31 06 2020"
+  },
+  items: [
+      {
+        name: "day",
+        classes: "govuk-input--width-2",
+        value: dateStandardsAssessmentPassed["0"]
+      },
+      {
+        name: "month",
+        classes: "govuk-input--width-2",
+        value: dateStandardsAssessmentPassed["1"]
+      },
+      {
+        name: "year",
+        classes: "govuk-input--width-4",
+        value: dateStandardsAssessmentPassed["2"]
+      }
+    ]
+}) }}
+
+{# Qualification awarded is likely to be a autocomplete  #}
+
+{{ govukRadios({
+  idPrefix: "gender",
+  name: "qualification-awarded",
+  fieldset: {
+    legend: {
+      text: "Qualification awarded",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "qualification-1",
+      text: "Qualification 1",
+      checked: checked(record.personalDetails.sex, "Qualification 1")
+    },
+    {
+      value: "qualification-2",
+      text: "Qualification 2",
+      checked: checked(record.personalDetails.sex, "Qualification 2")
+    },
+    {
+      value: "qualification-2",
+      text: "Qualification 2",
+      checked: checked(record.personalDetails.sex, "Qualification 2")
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "Recommend for QTS"
+}) }}
