@@ -9,38 +9,29 @@ faker.locale = 'en_GB'
 const moment = require('moment')
 const _ = require('lodash')
 
+// Settings
+let simpleGcseGrades = true //output pass/fail rather than full detail
+
 const sortBySubmittedDate = (x, y) => {
   return new Date(y.submittedDate) - new Date(x.submittedDate);
 }
 
-// Fake data generators: general
 const generateStatus = require('../app/data/generators/status')
-// const generateCourse = require('../app/data/generators/course')
-// const generateTrainingLocation = require('../app/data/generators/training-location')
-
-// Fake data generators: application
 const generatePersonalDetails = require('../app/data/generators/personal-details')
 const generateDiversity = require('../app/data/generators/diversity')
-
 const generateContactDetails = require('../app/data/generators/contact-details')
-
 const generateAssessmentDetails = require('../app/data/generators/assessment-details')
 const generateDegree = require('../app/data/generators/degree')
-
 const generateGce = require('../app/data/generators/gce')
 const generateGcse = require('../app/data/generators/gcse')
-// const generateEnglishLanguageQualification = require('../app/data/generators/english-language-qualification')
-// const generateOtherQualifications = require('../app/data/generators/other-qualifications')
-// const generateWorkHistory = require('../app/data/generators/work-history')
-// const generateSchoolExperience = require('../app/data/generators/school-experience')
 
 // Populate application data object with fake data
 const generateFakeApplication = (params = {}) => {
 
   const status = params.status || generateStatus(faker)
 
+  // Dates
   let updatedDate, submittedDate
-
   // Make sure updated is after submitted
   if (params.submittedDate){
     updatedDate = params.updatedDate || faker.date.between(
@@ -53,9 +44,6 @@ const generateFakeApplication = (params = {}) => {
       moment(),
       moment().subtract(500, 'days'))
   }
-
-
-
   // Submitted some time before it was updated
   if (status != 'Draft'){
     submittedDate = params.submittedDate || faker.date.between(
@@ -63,23 +51,24 @@ const generateFakeApplication = (params = {}) => {
     moment().subtract(500, 'days'))
   }
 
-
+  // Personal details
   const personalDetails = (params.personalDetails === null) ? null : { ...generatePersonalDetails(faker), ...params.personalDetails }
 
+  // Diversity
   const diversity = (params.diversity === null) ? undefined : { ...generateDiversity(faker), ...params.diversity }
 
+  // Contact details
   const isInternationalCandidate = !(personalDetails.nationality.includes('British') || personalDetails.nationality.includes('Irish'))
   let person = Object.assign({}, personalDetails)
   person.isInternationalCandidate = isInternationalCandidate
   const contactDetails = (params.contactDetails === null) ? undefined : { ...generateContactDetails(faker, person), ...params.contactDetails }
 
-
-
+  // Assessment details
   const assessmentDetails = (params.assessmentDetails === null) ? undefined : { ...generateAssessmentDetails(faker), ...params.assessmentDetails }
 
+  // Qualifications
   let qualifications = {}
-
-  qualifications.gcse = (params.qualifications && params.qualifications.gcse === null) ? undefined : generateGcse(faker, isInternationalCandidate)
+  qualifications.gcse = (params.qualifications && params.qualifications.gcse === null) ? undefined : generateGcse(faker, isInternationalCandidate, simpleGcseGrades)
   qualifications.gce = (params.qualifications && params.qualifications.gce === null) ? undefined : generateGce(faker, isInternationalCandidate)
   qualifications.degree = (params.qualifications && params.qualifications.degree === null) ? undefined : generateDegree(faker, isInternationalCandidate)
 

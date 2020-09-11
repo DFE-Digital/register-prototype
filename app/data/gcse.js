@@ -387,11 +387,20 @@ module.exports = function () {
     '4-4'
   ]
 
+  // Pass / fail for each
+  const simpleGradeBoundaries = [
+    '4 and above',
+    '3 and below',
+    'Not completed or not passed',
+    'Not provided'
+  ]
+
   return {
     subjects,
     singleGrades,
     singleGrades2017,
     doubleGrades,
-    doubleGrades2017
+    doubleGrades2017,
+    simpleGradeBoundaries
   }
 }
