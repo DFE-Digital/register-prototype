@@ -76,9 +76,11 @@
   {% if status == "In progress" %}
     {% set incompleteText = "Contact details not marked as complete" %}
     {% set incompleteLink = recordPath + "/contact-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "Contact details not started" %}
     {% set incompleteLink = recordPath + "/contact-details" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
   {% endif %}
 
   {% include "_includes/incomplete.njk" %}

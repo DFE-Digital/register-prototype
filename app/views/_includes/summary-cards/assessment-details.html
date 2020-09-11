@@ -114,9 +114,11 @@
   {% if status == "In progress" %}
     {% set incompleteText = "Assessment details not marked as complete" %}
     {% set incompleteLink = recordPath + "/assessment-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "Assessment details not started" %}
     {% set incompleteLink = recordPath + "/assessment-details" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
   {% endif %}
 
   {% include "_includes/incomplete.njk" %}

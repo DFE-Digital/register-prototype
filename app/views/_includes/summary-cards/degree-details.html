@@ -15,9 +15,11 @@
   {% if status == "In progress" %}
     {% set incompleteText = "Degree details not marked as complete" %}
     {% set incompleteLink = recordPath + "/degree/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Complete section" %}
   {% else %}
     {% set incompleteText = "Degree details not started" %}
     {% set incompleteLink = recordPath + "/degree/add" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
   {% endif %}
 
   {% include "_includes/incomplete.njk" %}

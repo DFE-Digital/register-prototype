@@ -143,9 +143,11 @@
   {% if status == "In progress" %}
     {% set incompleteText = "Diversity information not marked as complete" %}
     {% set incompleteLink = recordPath + "/diversity/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "Diversity information not started" %}
     {% set incompleteLink = recordPath + "/diversity-disclosed" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
   {% endif %}
 
   {% include "_includes/incomplete.njk" %}
