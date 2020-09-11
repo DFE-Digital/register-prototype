@@ -1,3 +1,5 @@
+{# Summary card for showing rich GCSE information (full grade, country, etc) #}
+
 
 {% set expectedDuration = 'Not provided' %}
 {% if record.assessmentDetails.duration | falsify %}
@@ -9,7 +11,7 @@
 {% set gcseSubjects = ["english", "maths", "science"] %}
 
 {# Force to false until edit journey is built #}
-{# {% set canAmend = false %} #}
+{% set canAmend = false %}
 
 {% for subject in gcseSubjects %}
 
@@ -38,21 +40,20 @@
     
   {% endif %}
 
-  {{record | log}}
-
   {% set gcseRow = {
       key: {
         text: subject | sentenceCase
       },
       value: {
-        text: gcse.gradeBoundary or 'Not provided'
+        text: grades or 'Not provided',
+        text: '????'
       },
       actions: {
         items: [
           {
-            href: recordPath + "/gcse-details" | addReferrer(referrer),
+            href: recordPath + "/degree/" + loop.index0 + "/type" | addReferrer(referrer),
             text: "Change",
-            visuallyHiddenText: "gcse details"
+            visuallyHiddenText: "degree type"
           }
         ]
       } if canAmend
@@ -73,8 +74,8 @@
 
 
 
-{% set complete = true if (record.qualifications.gcse | sectionIsCompleted ) %}
-{% set status  = record.qualifications.gcse.status or (record.qualifications.gcse | getStatusText) %}
+{% set complete = true if (record.qualifications.gcseStatus | sectionIsCompleted ) %}
+{% set status  = record.qualifications.gcseStatus.status or (record.qualifications.gcse | getStatusText) %}
 
 {% if showIncomplete and not complete %}
 

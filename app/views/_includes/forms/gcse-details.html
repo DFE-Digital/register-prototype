@@ -1,0 +1,112 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "English GCSE grade",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For non-UK qualifications, choose the equivalent grade."
+  },
+  items: [
+    {
+      text: "4 and above",
+      hint: {
+        text: 'C for grades prior to 2017'
+      }
+    },
+    {
+      text: "3 and below",
+      hint: {
+        text: 'D and below for grades prior to 2017'
+      }
+    },
+    {
+      text: "Not completed or not passed"
+    },
+    {
+      divider: "or"
+    },
+    {
+      text: "Not provided"
+    }
+  ]
+} | decorateAttributes(record, "record.qualifications.gcse.english.gradeBoundary")) }}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Maths GCSE grade",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For non-UK qualifications, choose the equivalent grade."
+  },
+  items: [
+    {
+      text: "4 and above",
+      hint: {
+        text: 'C for grades prior to 2017'
+      }
+    },
+    {
+      text: "3 and below",
+      hint: {
+        text: 'D and below for grades prior to 2017'
+      }
+    },
+    {
+      text: "Not completed or not passed"
+    },
+    {
+      divider: "or"
+    },
+    {
+      text: "Not provided"
+    }
+  ]
+} | decorateAttributes(record, "record.qualifications.gcse.maths.gradeBoundary")) }}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Science GCSE grade",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For non-UK qualifications, choose the equivalent grade."
+  },
+  items: [
+    {
+      text: "4 and above",
+      hint: {
+        text: 'C for grades prior to 2017'
+      }
+    },
+    {
+      text: "3 and below",
+      hint: {
+        text: 'D and below for grades prior to 2017'
+      }
+    },
+    {
+      text: "Not completed or not passed"
+    },
+    {
+      divider: "or"
+    },
+    {
+      text: "Not provided"
+    }
+  ]
+} | decorateAttributes(record, "record.qualifications.gcse.science.gradeBoundary")) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+

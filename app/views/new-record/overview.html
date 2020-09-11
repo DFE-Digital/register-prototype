@@ -76,11 +76,11 @@
   } if false,
   {
     text: "GCSE",
-    href: "gcse" | reviewIfInProgress(record.qualifications.gcse),
+    href: "gcse-details" | reviewIfInProgress(record.qualifications.gcse, 'gcse'),
     id: "qualification-gcse",
     tag: {
-      classes: (record.qualifications.gcseStatus.status or (record.qualifications.gcse | getStatusText)) | getStatusClass,
-      text: record.qualifications.gcseStatus.status or (record.qualifications.gcse | getStatusText)
+      classes: (record.qualifications.gcse.status or (record.qualifications.gcse | getStatusText)) | getStatusClass,
+      text: record.qualifications.gcse.status or (record.qualifications.gcse | getStatusText)
     }
   },
   {
