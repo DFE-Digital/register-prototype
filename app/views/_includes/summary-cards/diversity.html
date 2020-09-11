@@ -74,7 +74,6 @@
   }
 } %}
 
-{{ethnicBackground | log}}
 {% if diversityInformationDisclosed and ethnicBackground %}
   {% set diversityRows = diversityRows | push(ethnicBackgroundRow) %}
 {% endif %} #}
@@ -118,7 +117,6 @@
       ]
     } if canAmend
   } %}
-{{record.diversity.disabledAnswer | falsify | log}}
 {% if diversityInformationDisclosed and record.diversity.disabledAnswer == "Yes" %}
   {% set diversityRows = diversityRows | push(disabilitiesRow) %}
 {% endif %}

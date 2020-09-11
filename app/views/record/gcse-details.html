@@ -1,0 +1,11 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "GCSE details" %}
+
+{# {% set formAction = "./contact-details/confirm" %} #}
+{% set formAction = "./gcse/confirm" | addReferrer(referrer) %}
+
+{% block formContent %}
+  {% include "_includes/forms/gcse-details.html" %}
+{% endblock %}
+

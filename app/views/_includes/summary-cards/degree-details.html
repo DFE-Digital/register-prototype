@@ -1,12 +1,8 @@
-
-
-
-
-
-
-
 {% set complete = true if (record.qualifications.degreeStatus | sectionIsCompleted ) %}
 {% set status  = record.qualifications.degreeStatus.status or (record.qualifications.degree | getStatusText) %}
+
+{% set degrees = record.qualifications.degree %}
+
 
 {% if showIncomplete and not complete %}
 

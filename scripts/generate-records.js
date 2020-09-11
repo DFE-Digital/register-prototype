@@ -68,11 +68,15 @@ const generateFakeApplication = (params = {}) => {
 
   // Qualifications
   let qualifications = {}
+  // GCSEs
   qualifications.gcse = (params.qualifications && params.qualifications.gcse === null) ? undefined : generateGcse(faker, isInternationalCandidate, simpleGcseGrades)
+  // A Levels
   qualifications.gce = (params.qualifications && params.qualifications.gce === null) ? undefined : generateGce(faker, isInternationalCandidate)
+  // Degrees
   qualifications.degree = (params.qualifications && params.qualifications.degree === null) ? undefined : generateDegree(faker, isInternationalCandidate)
 
-  qualifications = (params.qualifications) ? Object.assign(qualifications, params.qualifications) : qualifications
+  // Deep merge
+  qualifications = (params.qualifications) ? _.merge(qualifications, params.qualifications) : qualifications
   
   let trn
 
@@ -187,7 +191,7 @@ const generateFakeApplications = () => {
         gceStatus: {
           status: 'Completed'
         },
-        gcseStatus: {
+        gcse: {
           status: 'Completed'
         },
         degreeStatus: {

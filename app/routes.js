@@ -30,7 +30,7 @@ const recordIsComplete = record => {
     'diversity',
     'assessmentDetails',
     // 'qualifications.gceStatus', //a levels not implimented yet
-    'qualifications.gcseStatus',
+    'qualifications.gcse',
     'qualifications.degreeStatus'
   ]
 
