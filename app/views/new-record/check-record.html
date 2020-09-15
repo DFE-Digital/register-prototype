@@ -40,7 +40,7 @@
 <h2 class="govuk-heading-m">Education</h2>
 {% include "_includes/summary-cards/gcse-details.html" %}
 
-<h3 class="govuk-heading-s">{{ "Degree" | pluralise(record.qualifications.degree | length)}}</h3>
+<h3 class="govuk-heading-s">{{ "Degree" | pluralise(record.degree.items | length)}}</h3>
 {% include "_includes/summary-cards/degree-details.html" %}
 
 <h2 class="govuk-heading-m">Assessment details</h2>

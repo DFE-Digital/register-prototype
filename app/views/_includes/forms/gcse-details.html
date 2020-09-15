@@ -24,16 +24,10 @@
       }
     },
     {
-      text: "Not completed or not passed"
-    },
-    {
-      divider: "or"
-    },
-    {
-      text: "Not provided"
+      text: "Not passed or not provided"
     }
   ]
-} | decorateAttributes(record, "record.qualifications.gcse.english.gradeBoundary")) }}
+} | decorateAttributes(record, "record.gcse.english.gradeBoundary")) }}
 
 {{ govukRadios({
   fieldset: {
@@ -59,16 +53,10 @@
       }
     },
     {
-      text: "Not completed or not passed"
-    },
-    {
-      divider: "or"
-    },
-    {
-      text: "Not provided"
+      text: "Not passed or not provided"
     }
   ]
-} | decorateAttributes(record, "record.qualifications.gcse.maths.gradeBoundary")) }}
+} | decorateAttributes(record, "record.gcse.maths.gradeBoundary")) }}
 
 {{ govukRadios({
   fieldset: {
@@ -94,16 +82,10 @@
       }
     },
     {
-      text: "Not completed or not passed"
-    },
-    {
-      divider: "or"
-    },
-    {
-      text: "Not provided"
+      text: "Not passed or not provided"
     }
   ]
-} | decorateAttributes(record, "record.qualifications.gcse.science.gradeBoundary")) }}
+} | decorateAttributes(record, "record.gcse.science.gradeBoundary")) }}
 
 {{ govukButton({
   text: "Continue"

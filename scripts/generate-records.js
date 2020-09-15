@@ -67,19 +67,17 @@ const generateFakeApplication = (params = {}) => {
   const assessmentDetails = (params.assessmentDetails === null) ? undefined : { ...generateAssessmentDetails(faker), ...params.assessmentDetails }
 
   // Qualifications
-  let qualifications = {}
-  // GCSEs
-  qualifications.gcse = (params.qualifications && params.qualifications.gcse === null) ? undefined : generateGcse(faker, isInternationalCandidate, simpleGcseGrades)
-  // A Levels
-  qualifications.gce = (params.qualifications && params.qualifications.gce === null) ? undefined : generateGce(faker, isInternationalCandidate)
-  // Degrees
-  qualifications.degree = (params.qualifications && params.qualifications.degree === null) ? undefined : generateDegree(faker, isInternationalCandidate)
 
-  // Deep merge
-  qualifications = (params.qualifications) ? _.merge(qualifications, params.qualifications) : qualifications
+  // GCSEs
+  let gcse = (params.gcse === null) ? undefined : { ...generateGcse(faker, isInternationalCandidate, simpleGcseGrades), ...params.gcse }
+
+  // A Levels - not used currently
+  // qualifications.gce = (params.gce === null) ? undefined : generateGce(faker, isInternationalCandidate)
+
+  // Degrees
+  let degree = (params.degree === null) ? undefined : { ...generateDegree(faker, isInternationalCandidate), ...params.degree }
   
   let trn
-
   if (!status.includes('Draft') && !status.includes('Pending TRN')){
     trn = params.trn || faker.random.number({
       'min': 1000000,
@@ -102,7 +100,8 @@ const generateFakeApplication = (params = {}) => {
     isInternationalCandidate,
     contactDetails,
     assessmentDetails,
-    qualifications
+    gcse,
+    degree
 
     // gcse: params.gcse || generateGcse(faker, personalDetails.isInternationalCandidate),
     // englishLanguageQualification: params.englishLanguageQualification || generateEnglishLanguageQualification(faker),
@@ -155,7 +154,7 @@ const generateFakeApplications = () => {
     applications.push(application)
   }
 
-  // Semi complete draft applications
+  // // Semi complete draft applications
   for (var i = 0; i < 3; i++) {
     const application = generateFakeApplication({
       status: 'Draft',
@@ -188,16 +187,11 @@ const generateFakeApplications = () => {
       diversity: {
         status: 'Completed'
       },
-      qualifications: {
-        gceStatus: {
-          status: 'Completed'
-        },
-        gcse: {
-          status: 'Completed'
-        },
-        degreeStatus: {
-          status: 'Completed'
-        }
+      gcse: {
+        status: 'Completed'
+      },
+      degree: {
+        status: 'Completed'
       },
       assessmentDetails: {
         status: 'Completed'
@@ -209,7 +203,7 @@ const generateFakeApplications = () => {
     applications.push(application)
   }
 
-  // Submitted applications
+  // // Submitted applications
   for (var i = 0; i < 5; i++) {
     let updatedDate = faker.date.between(
         moment(),

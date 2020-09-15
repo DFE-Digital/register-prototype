@@ -62,5 +62,5 @@ module.exports = (faker, isInternationCandidate) => {
     items.push(item(faker))
   }
 
-  return items
+  return {items: items}
 }

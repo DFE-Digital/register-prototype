@@ -15,7 +15,7 @@
 
 {% for subject in gcseSubjects %}
 
-  {% set gcse = record.qualifications.gcse[subject] %}
+  {% set gcse = record.gcse[subject] %}
 
   {# Show empty row if missing #}
   {% if gcse %}
@@ -64,18 +64,14 @@
 {% endfor %}
 
 
-
-
 {% set gcseDetailsHtml %}
   {{ govukSummaryList({
     rows: gcseRows
   }) }}
 {% endset %}
 
-
-
-{% set complete = true if (record.qualifications.gcseStatus | sectionIsCompleted ) %}
-{% set status  = record.qualifications.gcseStatus.status or (record.qualifications.gcse | getStatusText) %}
+{% set complete = true if (record.gcse | sectionIsCompleted ) %}
+{% set status  = record.gcse | getStatusText %}
 
 {% if showIncomplete and not complete %}
 

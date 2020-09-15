@@ -1,9 +1,3 @@
-
-{% set expectedDuration = 'Not provided' %}
-{% if record.assessmentDetails.duration | falsify %}
-  {% set expectedDuration = record.assessmentDetails.duration + " years" %}
-{% endif %}
-
 {% set degreeDetailsRows = [
   {
     key: {

@@ -32,9 +32,9 @@ const recordIsComplete = record => {
     'contactDetails',
     'diversity',
     'assessmentDetails',
-    // 'qualifications.gceStatus', //a levels not implimented yet
-    'qualifications.gcse',
-    'qualifications.degreeStatus'
+    // 'qualifications.gceStatus', // A levels not implimented yet
+    'gcse',
+    'degree'
   ]
 
   let recordIsComplete = true
@@ -139,8 +139,10 @@ router.post(['/:recordtype/:uuid/disabilities','/:recordtype/disabilities'], fun
 // Add a degree - sends you to index one greater than current number of degrees
 router.get(['/:recordtype/:uuid/degree/add','/:recordtype/degree/add'], function (req, res) {
   const data = req.session.data
-  let degrees = _.get(data, "record.qualifications.degree")
+  let degrees = _.get(data, "record.degree.items")
+  console.log('degrees is', degrees)
   let degreeCount = (degrees) ? degrees.length : 0
+  console.log('degree count', degreeCount)
   let recordPath = getRecordPath(req)
   let referrer = getReferrer(req.query.referrer)
   res.redirect(`${recordPath}/degree/${degreeCount}/type${referrer}`)
@@ -153,12 +155,11 @@ router.get(['/:recordtype/:uuid/degree/:index/delete','/:recordtype/degree/:inde
   degreeIndex = req.params.index
   let referrer = getReferrer(req.query.referrer)
 
-  if (_.get(data, "record.qualifications.degree[" + degreeIndex + "]")){
-    _.pullAt(data.record.qualifications.degree, [degreeIndex]) //delete item at index
+  if (_.get(data, "record.degree.items[" + degreeIndex + "]")){
+    _.pullAt(data.record.degree.items, [degreeIndex]) //delete item at index
     // Clear data if there are no more degrees - so the task list thinks the section is not started
-    if (data.record.qualifications.degree.length == 0){
-      delete data.record.qualifications.degree
-      delete data.record.qualifications.degreeStatus
+    if (data.record.degree.items.length == 0){
+      delete data.record.degree.items
     }
   }
   if (referrer){
@@ -210,7 +211,7 @@ router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:in
     }
   }
 
-  let existingDegrees = _.get(data, "record.qualifications.degree")
+  let existingDegrees = _.get(data, "record.degree.items")
   let degreeIndex = req.params.index
   let recordPath = getRecordPath(req)
 
@@ -223,7 +224,7 @@ router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:in
     existingDegrees.push(newDegree)
   }
 
-  _.set(data, 'record.qualifications.degree', existingDegrees)
+  _.set(data, 'record.degree.items', existingDegrees)
 
   res.redirect(`${recordPath}/degree/confirm${referrer}`)
 })

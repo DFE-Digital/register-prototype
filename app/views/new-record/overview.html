@@ -13,6 +13,8 @@
 <span class="govuk-caption-l">{{'Add a trainee' if not record.id else 'Draft record'}}</span>
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
+{{record.status}}
+
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [{
@@ -58,44 +60,29 @@
   }]
 }) if not closed }}
 
-{{record | log}}
-{{record.qualifications.gceStatus | log}}
-
 <h2 class="govuk-heading-m">Education</h2>
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [
   {
-    text: "A Level",
-    href: "alevels" | reviewIfInProgress(record.qualifications.gce),
-    id: "qualification-gce",
-    tag: {
-      classes: (record.qualifications.gceStatus.status or (record.qualifications.gce | getStatusText)) | getStatusClass,
-      text: record.qualifications.gceStatus.status or (record.qualifications.gce | getStatusText)
-    }
-  } if false,
-  {
     text: "GCSE",
-    href: "gcse-details" | reviewIfInProgress(record.qualifications.gcse, 'gcse'),
+    href: "gcse-details" | reviewIfInProgress(record.gcse, 'gcse'),
     id: "qualification-gcse",
     tag: {
-      classes: (record.qualifications.gcse.status or (record.qualifications.gcse | getStatusText)) | getStatusClass,
-      text: record.qualifications.gcse.status or (record.qualifications.gcse | getStatusText)
+      classes: record.gcse | getStatusText | getStatusClass,
+      text: record.gcse | getStatusText
     }
   },
   {
     text: "Degree",
-    href: "degree/confirm" if (record.qualifications.degree | length) else "degree/add",
+    href: "degree/confirm" if (record.degree.items | length) else "degree/add",
     id: "qualification-degree",
     tag: {
-      classes: (record.qualifications.degreeStatus.status or (record.qualifications.degree | getStatusText)) | getStatusClass,
-      text: record.qualifications.degreeStatus.status or (record.qualifications.degree | getStatusText)
+      classes: record.degree | getStatusText | getStatusClass,
+      text: record.degree.status | getStatusText
     }
   }]
 }) if not closed }}
-
-    {#   classes: record.qualifications.degreeStatus | getStatusText | getStatusClass,
-      text: record.qualifications.degreeStatus | getStatusText #}
 
 <h2 class="govuk-heading-m">Assessment</h2>
 {{ appTaskList({

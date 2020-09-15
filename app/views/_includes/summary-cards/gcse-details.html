@@ -1,9 +1,3 @@
-
-{% set expectedDuration = 'Not provided' %}
-{% if record.assessmentDetails.duration | falsify %}
-  {% set expectedDuration = record.assessmentDetails.duration + " years" %}
-{% endif %}
-
 {% set gcseRows = [] %}
 
 {% set gcseSubjects = ["english", "maths", "science"] %}
@@ -13,7 +7,7 @@
 
 {% for subject in gcseSubjects %}
 
-  {% set gcse = record.qualifications.gcse[subject] %}
+  {% set gcse = record.gcse[subject] %}
 
   {# Show empty row if missing #}
   {% if gcse %}
@@ -72,8 +66,8 @@
 
 
 
-{% set complete = true if (record.qualifications.gcse | sectionIsCompleted ) %}
-{% set status  = record.qualifications.gcse.status or (record.qualifications.gcse | getStatusText) %}
+{% set complete = true if (record.gcse | sectionIsCompleted ) %}
+{% set status  = record.gcse | getStatusText %}
 
 {% if showIncomplete and not complete %}
 

@@ -1,9 +1,9 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-{% set degreeCount = record.qualifications.degree | length %}
+{% set degreeCount = record.degree.items | length %}
 
 {# Get degree (if it exists) from existing data #}
-{% set degree = record.qualifications.degree[itemIndex] %}
+{% set degree = record.degree.items[itemIndex] %}
 {# Merge with temp store (temp store has) #}
 {% set degreeTemp = degree | mergeObjects(data.degreeTemp) %}
 {% set isInternational = degreeTemp.isInternational | falsify %}
@@ -19,8 +19,6 @@
 <p class="govuk-body">Enter the details of the degree as they appear on the certificate, translating them into English if necessary</p>
 
 <p class="govuk-body">If the candidate has further postgraduate degrees, you’ll be able to add them next.</p>
-{{degreeTemp |log}}
-{{degreeTemp.type | log}}
 
 {% set ukConditionalHtml %}
   {{ appAutocomplete({

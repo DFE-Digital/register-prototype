@@ -1,7 +1,7 @@
-{% set complete = true if (record.qualifications.degreeStatus | sectionIsCompleted ) %}
-{% set status  = record.qualifications.degreeStatus.status or (record.qualifications.degree | getStatusText) %}
+{% set complete = true if (record.degree | sectionIsCompleted ) %}
+{% set status  = record.degree | getStatusText %}
 
-{% set degrees = record.qualifications.degree %}
+{% set degrees = record.degree.items %}
 
 
 {% if showIncomplete and not complete %}
@@ -24,7 +24,6 @@
 
   {% for degree in degrees %}
     {% include "_includes/summary-cards/single-degree-details.html" %}
-
   {% endfor %}
   
 {% endif %}

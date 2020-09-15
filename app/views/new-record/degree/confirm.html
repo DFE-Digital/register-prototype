@@ -7,7 +7,7 @@
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-  {% set degreeCount = record.qualifications.degree | length %}
+  {% set degreeCount = record.degree.items | length %}
 
   {% include "_includes/summary-cards/degree-details.html" %}
 
@@ -19,18 +19,16 @@
     }) }}
   </div>
 
-  {{record.qualifications | log}}
-
   {# Don't show checkbox if there are no degrees #}
   {% if degreeCount > 0 %}
     {{ govukCheckboxes({
       idPrefix: "degree-section-complete",
-      name: "record[qualifications][degreeStatus][status]",
+      name: "record[degree][status]",
       items: [
         {
           value: "Completed",
           text: "I have completed this section",
-          checked: checked(record.qualifications.degreeStatus.status, "Completed")
+          checked: checked(record.degree.status, "Completed")
         }
       ]
       }) }}

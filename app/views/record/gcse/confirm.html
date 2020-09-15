@@ -9,14 +9,14 @@
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
   {% include "_includes/summary-cards/gcse-details.html" %}
 
-{#   {{ govukCheckboxes({
-  idPrefix: "waste",
-  name: "record[qualifications][gcse][status]",
+{# {{ govukCheckboxes({
+  idPrefix: "gcse-status",
+  name: "record[gcse][status]",
   items: [
     {
       value: "Completed",
       text: "I have completed this section",
-      checked: checked(record.qualifications.gcse.status, "Completed")
+      checked: checked(record.gcse.status, "Completed")
     }
   ]
   }) }} #}
