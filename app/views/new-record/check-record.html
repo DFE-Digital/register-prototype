@@ -32,12 +32,12 @@
     <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
     {% if recordIsComplete %}
-      <p class="govuk-body-l">
+      {# <p class="govuk-body-l">
         You have completed all sections of the candidate’s record. Check that the information is correct before submitting for TRN registration.
-      </p>
+      </p> #}
       {% else %}
       {% set insetTextHtml %}
-        <p class="govuk-body">This record is not complete and cannot be submitted for TRN. If you don’t have all the required information now, you can <a href="./save-as-draft" class="govuk-link">save as a draft record</a>.</p>
+        <p class="govuk-body">This record is not complete and cannot be submitted for TRN. If you do not have all the required information now, you can <a href="./save-as-draft" class="govuk-link">save as a draft record</a>.</p>
       {% endset %}
         {{ govukInsetText({
           html: insetTextHtml
