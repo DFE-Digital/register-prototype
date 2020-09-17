@@ -277,7 +277,7 @@ router.post('/new-record/record-setup', function (req, res) {
   if (!recordType){
     res.redirect(`/new-record/record-setup${referrer}`)
   }
-  else if (recordType === "Assessment only"){
+  else if (recordType === "Assessment Only"){
     if (referrer){
       res.redirect(req.query.referrer)
     }

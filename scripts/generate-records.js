@@ -90,7 +90,7 @@ const generateFakeApplication = (params = {}) => {
   return {
     id: params.id || faker.random.uuid(),
     route: "Assessment Only",
-    candidateId: params.candidateId || faker.random.alphaNumeric(8).toUpperCase(),
+    traineeId: params.traineeId || faker.random.alphaNumeric(8).toUpperCase(),
     status,
     trn,
     updatedDate,

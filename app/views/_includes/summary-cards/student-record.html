@@ -7,17 +7,17 @@
 {% set studentRecordRows = [
   {
     key: {
-      text: "Candidate ID"
+      text: "Trainee ID"
     },
     value: {
-      text: record.candidateId or 'Not provided'
+      text: record.traineeId or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/candidate-id" | addReferrer(referrer),
+          href: recordPath + "/trainee-id" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "candidate ID"
+          visuallyHiddenText: "trainee ID"
         }
       ]
     } if canAmend
