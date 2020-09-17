@@ -433,16 +433,33 @@ router.get('/record/:uuid/:page*', function (req, res) {
 // Filters
 router.get('/records', function (req, res) {
   const data = req.session.data
-  let filterStatus = data.filterStatus
-  if (!filterStatus) {
+  let filterStatus = req.query.filterStatus
+  let searchQuery = req.query.search
+  if (!filterStatus || filterStatus == '_unchecked') {
     filterStatus = []
   }
   let records = data.records
   let filteredRecords = []
-  if (filterStatus.length) {
+  console.log(searchQuery, typeof searchQuery, filterStatus)
+  if (filterStatus.length ||  searchQuery) {
     filteredRecords = records.filter(record => {
       let statusMatch = filterStatus.includes(record.status)
-      return statusMatch
+      let recordIdMatch = (searchQuery) ? (record.traineeId.toLowerCase().includes(searchQuery.toLowerCase())) : false
+      // console.log('statusMatch', statusMatch, 'recordIdMatch', recordIdMatch)
+
+      let fullName = `${record.personalDetails.givenName} ${record.personalDetails.middleNames} ${record.personalDetails.familyName}`
+      fullName = fullName.toLowerCase()
+      let searchParts = searchQuery.toLowerCase().split(' ')
+      let nameMatch = true
+      searchParts.forEach(part => {
+        if (!fullName.includes(part)) {
+          nameMatch = false
+        }
+      })
+
+      console.log(fullName, 'match', nameMatch, 'parts', searchParts)
+      
+      return statusMatch || recordIdMatch || nameMatch
     })
   } else {
     filteredRecords = records
