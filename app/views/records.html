@@ -104,40 +104,42 @@
 
             </div>
 
-            {# Hardcode some fake pagination #}
-            {% set pagination = {
-              from: 1,
-              to: 50,
-              count: 346,
-              next: {
-                text: 'Next',
-                href: '?page=' + 2
-              },
-              items: [{
-                text: '1',
-                href: '?page=1',
-                selected: true
-                }, {
-                text: '2',
-                href: '?page=2',
-                selected: false
-                }, {
-                text: '3',
-                href: '?page=3'
-                }]
-            } %}
+            {# Don't show pagination when it's clear there's not many results #}
+            {% if filteredRecords | length > 20 %}
+              {% set pagination = {
+                from: 1,
+                to: 50,
+                count: 346,
+                next: {
+                  text: 'Next',
+                  href: '?page=' + 2
+                },
+                items: [{
+                  text: '1',
+                  href: '?page=1',
+                  selected: true
+                  }, {
+                  text: '2',
+                  href: '?page=2',
+                  selected: false
+                  }, {
+                  text: '3',
+                  href: '?page=3'
+                  }]
+              } %}
 
-            {{ mojPagination({
-              results: {
-                from: pagination.from,
-                to: pagination.to,
-                count: pagination.count
-              },
-              previous: pagination.previous,
-              next: pagination.next,
-              items: pagination.items,
-              classes: 'govuk-!-margin-bottom-3'
-            }) }}
+              {{ mojPagination({
+                results: {
+                  from: pagination.from,
+                  to: pagination.to,
+                  count: pagination.count
+                },
+                previous: pagination.previous,
+                next: pagination.next,
+                items: pagination.items,
+                classes: 'govuk-!-margin-bottom-3'
+              }) }}
+            {% endif %}
 
           {% else %}
             <p class="govuk-body">No records found. Try <a href="#">clearing your filters</a>.</p>
