@@ -4,8 +4,9 @@
 {# Make postcode uppercase #}
 {% set address = address | setAttribute('postcode', address.postcode | upper) %}
 {% set addressCombined = address | objectToArray | commaSeparateLines %}
-{% set addressCombined = addressCombined or 'Not provided' %}
-
+{# Hacky support for international addresses #}
+{% set internationalAddress = record.contactDetails.internationalAddress | nl2br %}
+{% set addressCombined = addressCombined or internationalAddress or 'Not provided' %}
 
 {% set contactDetailsRows = [
   {
@@ -13,7 +14,7 @@
       text: "Address"
     },
     value: {
-      text: addressCombined | safe
+      html: addressCombined | safe
     },
     actions: {
       items: [

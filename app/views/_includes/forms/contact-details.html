@@ -83,13 +83,16 @@
       text: "Enter the address"
     },
     autocomplete: "street-address",
-    classes: "govuk-!-margin-bottom-0"
+    classes: "govuk-!-margin-bottom-0",
+    name: "record[contactDetails][internationalAddress]",
+    value: record.contactDetails.internationalAddress
   }) }}
 {% endset %}
 
 {{ govukDetails({
   summaryText: "Add an international address",
-  html: internationalAddressInputHtml
+  html: internationalAddressInputHtml,
+  open: true if record.contactDetails.internationalAddress
 }) }}
 
 {{ govukInput({
