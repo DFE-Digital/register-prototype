@@ -10,7 +10,9 @@
         {{ record.personalDetails | getShortName or "Draft record" }}
       </a>
     </h3>
-    <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">Trainee ID: {{record.traineeId}}</p>
+    {% if record.traineeId %}
+      <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">Trainee ID: {{record.traineeId}}</p>
+    {% endif %}
     {% if record.trn %}
       <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">TRN: {{record.trn}}</p>
     {% endif %}
