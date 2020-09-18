@@ -24,6 +24,11 @@
           href: referrer + '/recommend-for-qts',
           classes: "govuk-!-margin-bottom-0"
         }) }}
+        {% elseif record.status == "Pending TRN" %}
+          {{ govukInsetText({
+            text: "This record is pending a TRN",
+            classes: "govuk-!-margin-0"
+          }) }}
       {% endif %}
 
       <div class="record-actions__links">

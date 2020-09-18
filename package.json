@@ -12,6 +12,7 @@
     "test": "npm run lint && gulp generate-assets && jest"
   },
   "dependencies": {
+    "@ministryofjustice/frontend": "0.0.19-alpha",
     "acorn": "^7.1.1",
     "ansi-colors": "^4.1.1",
     "basic-auth": "^2.0.0",
@@ -19,6 +20,7 @@
     "body-parser": "^1.14.1",
     "browser-sync": "^2.11.1",
     "client-sessions": "^0.8.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "cross-spawn": "^7.0.2",
     "csv-string": "^4.0.1",
@@ -50,8 +52,7 @@
     "sync-request": "^6.0.0",
     "universal-analytics": "^0.4.16",
     "uuid": "^7.0.3",
-    "weighted": "^0.3.0",
-    "@ministryofjustice/frontend": "0.0.19-alpha"
+    "weighted": "^0.3.0"
   },
   "greenkeeper": {
     "ignore": [

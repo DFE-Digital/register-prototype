@@ -10,6 +10,8 @@ let degreeOrganisations = degreeData.orgs
 let countries = require('./countries')
 let awards = require('./awards')
 
+let ittSubjects = require('./itt-subjects').map( subject => subject.attributes.subject_name )
+
 
 module.exports = {
   assessmentOnlyAgeRanges,
@@ -20,7 +22,8 @@ module.exports = {
   degreeOrganisations,
   degreeTypes,
   countries,
-  awards
+  awards,
+  ittSubjects
   // Insert values here
 
 }

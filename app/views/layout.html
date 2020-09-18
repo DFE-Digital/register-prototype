@@ -55,7 +55,7 @@
   {% include "_includes/cookie-banner.html" %}
   {# Set serviceName in config.js. #}
   {{ govukHeader({
-    homepageUrl: "/",
+    homepageUrl: "/start-page",
     serviceName: serviceName,
     serviceUrl: "/records",
     containerClasses: "govuk-width-container",
@@ -68,7 +68,7 @@
         href: "#3",
         text: "Sign out"
       }
-    ]
+    ] if not hideNav
   }) }}
 {% endblock %}
 

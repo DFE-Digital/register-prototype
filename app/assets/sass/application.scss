@@ -36,6 +36,9 @@ $govuk-assets-path: '/govuk/assets/';
 @import "overrides/moj-pagination";
 @import "overrides/tabs";
 
+// Misc
+@import "helpers";
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
 h1.register-main-heading {

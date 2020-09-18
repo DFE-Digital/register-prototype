@@ -44,6 +44,12 @@
 {% set recordPath = "/new-record" %}
 
 {% block content %}
+  {{ appBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash | falsify }}
+
   {% block beforePageTitle %}{% endblock %}
   {# {{referrer}} #}
   {% set hasReferrer = '' | addReferrer(referrer) | falsify %}

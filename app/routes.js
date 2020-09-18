@@ -73,6 +73,7 @@ router.all('*', function(req, res, next){
   const referrer = req.query.referrer
   res.locals.referrer = referrer
   res.locals.query = req.query
+  res.locals.flash = req.flash('success') // pass through 'success' messages only
   next()
 })
 
@@ -159,11 +160,19 @@ router.get(['/:recordtype/:uuid/degree/:index/delete','/:recordtype/degree/:inde
   if (_.get(data, "record.degree.items[" + degreeIndex + "]")){
     _.pullAt(data.record.degree.items, [degreeIndex]) //delete item at index
     // Clear data if there are no more degrees - so the task list thinks the section is not started
+    req.flash('success', 'Trainee degree deleted')
     if (data.record.degree.items.length == 0){
       delete data.record.degree.items
     }
   }
   if (referrer){
+    if (req.params.recordtype == 'record'){
+      // This updates the record immediately without a confirmation.
+      // Probably needs a bespoke confirmation page as the empty degree
+      // confirmation page looks weird - and we probably don't want
+      // records without a dregree anyway.
+      updateRecord(data, data.record)
+    }
     res.redirect(req.query.referrer)
   }
   else {
@@ -317,6 +326,7 @@ router.get('/new-record/save-as-draft', (req, res) => {
     newRecord.status = "Draft" // just in case
     deleteTempData(data)
     updateRecord(data, newRecord)
+    req.flash('success', 'Record saved as draft')
     res.redirect('/records')
   }
 })
@@ -361,12 +371,35 @@ router.get('/record/:uuid', function (req, res) {
 
   // Redirect to task list journey if still a draft
   if (record.status == 'Draft'){
+    // req.flash('success', 'Restoring saved draft')
     res.redirect('/new-record/overview')
   }
   // Only submitted records
   else {
     res.locals.record = record
     res.render('record')
+  }
+})
+
+// Manually advance an application from pending to trn received
+router.get('/record/:uuid/trn', (req, res) => {
+  const data = req.session.data
+  const newRecord = data.record
+  // Update failed or no data
+  if (!newRecord){
+    res.redirect('/record/:uuid')
+  }
+  else {
+    if (newRecord.status == 'Pending TRN'){
+      newRecord.status = 'TRN received'
+      newRecord.trn = faker.random.number({
+        'min': 1000000,
+        'max': 9999999
+      })
+      deleteTempData(data)
+      updateRecord(data, newRecord)
+    }
+    res.redirect('/record/' + req.params.uuid)
   }
 })
 
@@ -383,6 +416,7 @@ router.post('/record/:uuid/qts/qts-recommended', (req, res) => {
     newRecord.qtsRecommendedDate = new Date()
     deleteTempData(data)
     updateRecord(data, newRecord)
+    req.flash('success', 'Trainee recommended for QTS')
     res.redirect('/record/' + req.params.uuid)
   }
 })
@@ -398,6 +432,7 @@ router.post(['/record/:uuid/:page/update', '/record/:uuid/update'], (req, res) =
   else {
     deleteTempData(data)
     updateRecord(data, newRecord)
+    req.flash('success', 'Trainee record updated')
 
     if (req.params.page && req.params.page != 'assessment-details'){
       res.redirect(`/record/${req.params.uuid}/details-and-education`)
@@ -407,13 +442,6 @@ router.post(['/record/:uuid/:page/update', '/record/:uuid/update'], (req, res) =
     }
   }
 })
-
-
-
-
-
-
-
 
 
 // Existing record pages

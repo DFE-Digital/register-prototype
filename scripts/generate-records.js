@@ -137,6 +137,48 @@ const generateFakeApplications = () => {
     }
   }))
 
+  // Manually create specific applications
+  applications.push(generateFakeApplication({
+    status: "TRN received",
+    traineeId: "FLD38X59",
+    submittedDate: "2020-05-28T12:37:21.384Z",
+    updatedDate: "2020-08-04T04:26:19.269Z",
+    trn: 8405624,
+    personalDetails: {
+      givenName: "Bea",
+      familyName: "Waite",
+      sex: "Female"
+    },
+  }))
+
+  // Manually create specific applications
+  applications.push(generateFakeApplication({
+    status: "TRN received",
+    traineeId: "TLQGB1N1",
+    submittedDate: "2020-06-28T12:37:21.384Z",
+    updatedDate: "2020-07-04T04:26:19.269Z",
+    trn: 8594837,
+    personalDetails: {
+      givenName: "Janine",
+      familyName: "Newman",
+      sex: "Female"
+    },
+  }))
+
+  // Manually create specific applications
+  applications.push(generateFakeApplication({
+    status: "TRN received",
+    traineeId: "K9BKXNTX",
+    submittedDate: "2020-05-28T12:37:21.384Z",
+    updatedDate: "2020-07-15T04:26:19.269Z",
+    trn: 8694898,
+    personalDetails: {
+      givenName: "Martin",
+      familyName: "Cable",
+      sex: "Male"
+    },
+  }))
+
   // Incomplete draft applications
   for (var i = 0; i < 1; i++) {
     const application = generateFakeApplication({
