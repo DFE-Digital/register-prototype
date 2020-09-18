@@ -115,8 +115,8 @@ filters.decorateAttributes = (obj, data, value) => {
         }
       }
 
-      item.checked = (item.checked) ? item.checked : checked
-      item.selected = (item.selected) ? item.selected : selected
+      item.checked = (item.checked !== undefined) ? item.checked : checked
+      item.selected = (item.selected !== undefined) ? item.selected : selected
       return item
     })
 

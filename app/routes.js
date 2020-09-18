@@ -463,36 +463,44 @@ router.get('/records', function (req, res) {
   const data = req.session.data
   let filterStatus = req.query.filterStatus
   let searchQuery = req.query.search
+
   if (!filterStatus || filterStatus == '_unchecked') {
-    filterStatus = []
+    filterStatus = false
   }
-  let records = data.records
-  let filteredRecords = []
-  console.log(searchQuery, typeof searchQuery, filterStatus)
-  if (filterStatus.length ||  searchQuery) {
-    filteredRecords = records.filter(record => {
-      let statusMatch = filterStatus.includes(record.status)
+
+  let filteredRecords = data.records
+
+  if (searchQuery){
+    filteredRecords = filteredRecords.filter(record => {
       let recordIdMatch = (searchQuery) ? (record.traineeId.toLowerCase().includes(searchQuery.toLowerCase())) : false
-      // console.log('statusMatch', statusMatch, 'recordIdMatch', recordIdMatch)
+      let nameMatch = false
+  
+        // Combine names in to one string
+        // Todo: there's probably an easier way to do this
+        let names = []
+        names.push(record.personalDetails.givenName)
+        names.push(record.personalDetails.middleNames)
+        names.push(record.personalDetails.familyName)
+        let fullName = names.filter(Boolean).join(' ').toLowerCase()
 
-      let fullName = `${record.personalDetails.givenName} ${record.personalDetails.middleNames} ${record.personalDetails.familyName}`
-      fullName = fullName.toLowerCase()
-      let searchParts = searchQuery.toLowerCase().split(' ')
-      let nameMatch = true
-      searchParts.forEach(part => {
-        if (!fullName.includes(part)) {
-          nameMatch = false
-        }
-      })
-
-      console.log(fullName, 'match', nameMatch, 'parts', searchParts)
-      
-      return statusMatch || recordIdMatch || nameMatch
+        // Split query in to parts
+        let searchParts = searchQuery.toLowerCase().split(' ')
+       
+        // Check that each part exists in the trainee's name
+        nameMatch = true
+        searchParts.forEach(part => {
+          if (!fullName.includes(part)) {
+            nameMatch = false
+          }
+        })
+      return recordIdMatch || nameMatch
     })
-  } else {
-    filteredRecords = records
   }
-  res.render('records', {filteredRecords})
+
+  if ( filterStatus ) {
+    filteredRecords = filteredRecords.filter(record => filterStatus.includes(record.status))  
+  }
+  res.render('records', { filteredRecords })
 })
 
 

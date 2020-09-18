@@ -19,6 +19,7 @@
       ]
     } | decorateAttributes(data, "data.filterCycle"))}}
     
+    {{query | log}}
     {{ govukCheckboxes({
       classes: "govuk-checkboxes--small",
       fieldset: {
@@ -30,25 +31,32 @@
       },
       items: [
         {
-          text: "Draft"
+          text: "Draft",
+          checked: checked(query.filterStatus, "Draft")
         },
         {
-          text: "Pending TRN"
+          text: "Pending TRN",
+          checked: checked(query.filterStatus, "Pending TRN")
         },
         {
-          text: "TRN received"
+          text: "TRN received",
+          checked: checked(query.filterStatus, "TRN received")
         },
         {
-          text: "Pending QTS"
+          text: "Pending QTS",
+          checked: checked(query.filterStatus, "Pending QTS")
         },
         {
-          text: "QTS awarded"
+          text: "QTS awarded",
+          checked: checked(query.filterStatus, "QTS awarded")
         },
         {
-          text: "Deferred"
+          text: "Deferred",
+          checked: checked(query.filterStatus, "Deferred")
         },
         {
-          text: "Withdrawn"
+          text: "Withdrawn",
+          checked: checked(query.filterStatus, "Withdrawn")
         }
       ]
     } | decorateAttributes(data, "data.filterStatus"))}}
