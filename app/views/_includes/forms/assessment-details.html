@@ -1,5 +1,7 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
+{{data.ittSubjects | log}}
+
 {{ appAutocomplete({
   label: {
     text: "Subject",
@@ -10,7 +12,7 @@
   },
   id: 'subject',
   name: "record[assessmentDetails][subject]",
-  items: data.subjects,
+  items: data.ittSubjects,
   value: record.assessmentDetails.subject
   }
 ) }}
