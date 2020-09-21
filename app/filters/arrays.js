@@ -16,7 +16,6 @@ filters.combineArrays = (arr1=[], arr2=[]) => {
 
 filters.isArray = arr => {
   let isArray = _.isArray(arr)
-  console.log('is array', isArray, arr)
   return _.isArray(arr)
 }
 
