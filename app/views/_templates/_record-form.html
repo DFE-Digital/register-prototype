@@ -46,7 +46,7 @@
     icon: false
   }) if flash | falsify }}
   {% block beforePageTitle %}{% endblock %}
-  <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post">
+  <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post" novalidate>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         {% block formContent %}
