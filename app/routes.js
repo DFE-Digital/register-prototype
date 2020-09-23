@@ -403,6 +403,24 @@ router.get('/record/:uuid/trn', (req, res) => {
   }
 })
 
+// Manually advance an application from pending to trn received
+router.get('/record/:uuid/qts', (req, res) => {
+  const data = req.session.data
+  const newRecord = data.record
+  // Update failed or no data
+  if (!newRecord){
+    res.redirect('/record/:uuid')
+  }
+  else {
+    if (newRecord.status == 'Pending QTS'){
+      newRecord.status = 'QTS awarded'
+      deleteTempData(data)
+      updateRecord(data, newRecord)
+    }
+    res.redirect('/record/' + req.params.uuid)
+  }
+})
+
 // Copy qts data back to real record
 router.post('/record/:uuid/qts/qts-recommended', (req, res) => {
   const data = req.session.data
