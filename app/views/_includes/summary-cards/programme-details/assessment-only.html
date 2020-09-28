@@ -99,11 +99,11 @@
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "programme-details" %}
   {% if status == "In progress" %}
-    {% set incompleteText = "Assessment details not marked as complete" %}
+    {% set incompleteText = "Programme details not marked as complete" %}
     {% set incompleteLink = recordPath + "/programme-details/confirm" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
-    {% set incompleteText = "Assessment details not started" %}
+    {% set incompleteText = "Programme details not started" %}
     {% set incompleteLink = recordPath + "/programme-details" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
