@@ -1,5 +1,5 @@
 module.exports = (faker, personalDetails) => {
-  if (personalDetails.isInternationalCandidate) {
+  if (personalDetails.isInternationalTrainee) {
     faker.locale = 'fr'
   } else {
     faker.locale = 'en_GB'
@@ -12,10 +12,10 @@ module.exports = (faker, personalDetails) => {
       line1: faker.address.streetAddress(),
       line2: '',
       level2: faker.address.city(),
-      level1: personalDetails.isInternationalCandidate ? faker.address.state() : faker.address.county(),
+      level1: personalDetails.isInternationalTrainee ? faker.address.state() : faker.address.county(),
       postcode: faker.address.zipCode(),
-      ...(personalDetails.isInternationalCandidate && { country: 'France' })
+      ...(personalDetails.isInternationalTrainee && { country: 'France' })
     },
-    addressType: (personalDetails.isInternationalCandidate) ? 'international' : 'domestic'
+    addressType: (personalDetails.isInternationalTrainee) ? 'international' : 'domestic'
   }
 }

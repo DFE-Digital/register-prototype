@@ -131,7 +131,7 @@ router.post(['/:recordtype/:uuid/disabilities','/:recordtype/disabilities'], fun
     res.redirect(`${recordPath}/disabilities${referrer}`)
   }
   else if (hasDisabilities == "Yes"){
-    res.redirect(`${recordPath}/candidate-disabilities${referrer}`)
+    res.redirect(`${recordPath}/trainee-disabilities${referrer}`)
   }
   else {
     res.redirect(`${recordPath}/diversity/confirm${referrer}`)

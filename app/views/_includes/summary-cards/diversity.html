@@ -80,7 +80,7 @@
 
 {% set disabilitiesAnswerRow = {
     key: {
-      text: "Candidate is disabled"
+      text: "Trainee is disabled"
     },
     value: {
       text: record.diversity.disabledAnswer
@@ -110,9 +110,9 @@
     actions: {
       items: [
         {
-          href: recordPath + "/candidate-disabilities" | addReferrer(referrer),
+          href: recordPath + "/trainee-disabilities" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "candidate disabilities"
+          visuallyHiddenText: "trainee disabilities"
         }
       ]
     } if canAmend

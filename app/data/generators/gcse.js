@@ -1,7 +1,7 @@
 const weighted = require('weighted')
 const gcseData = require('../gcse')
 
-module.exports = (faker, isInternationCandidate, simpleGcseGrades) => {
+module.exports = (faker, isInternationalTrainee, simpleGcseGrades) => {
   let year = faker.date.between('1970', '2016')
   year = year.getFullYear()
 
@@ -100,7 +100,7 @@ module.exports = (faker, isInternationCandidate, simpleGcseGrades) => {
     }
   }
   else {
-      if (isInternationCandidate) {
+      if (isInternationalTrainee) {
         return {
           maths: {
             type: 'Baccalauréat Général',

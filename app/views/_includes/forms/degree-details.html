@@ -88,7 +88,7 @@
   {% if storedGrade and not storedGrade in [
     "Not applicable",
     "Unknown",
-    "The candidate is still studying for their degree"] %}
+    "The trainee is still studying for their degree"] %}
     {% set storedGradeOther = true %}
     
   {% endif %}
@@ -136,7 +136,7 @@
         divider: "or"
       },
       {
-        text: "The candidate is still studying for their degree"
+        text: "The trainee is still studying for their degree"
       }
     ]
   } | decorateAttributes(degreeTemp, "degreeTemp.grade")) }}
@@ -152,7 +152,7 @@
     "Lower second-class honours (2:2)",
     "Third-class honours",
     "Pass",
-    "The candidate is still studying for their degree"] %}
+    "The trainee is still studying for their degree"] %}
     {% set storedGradeOther = true %}
   {% endif %}
   {% set degreeGradeOtherHtml %}
@@ -205,7 +205,7 @@
         divider: "or"
       },
       {
-        text: "The candidate is still studying for their degree"
+        text: "The trainee is still studying for their degree"
       }
     ]
   } | decorateAttributes(degreeTemp, "degreeTemp.grade")) }}

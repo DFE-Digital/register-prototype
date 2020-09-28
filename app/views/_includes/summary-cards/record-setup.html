@@ -19,7 +19,7 @@
   },
   {
     key: {
-      text: "Record ID"
+      text: "Trainee ID"
     },
     value: {
       text: record.traineeId or "Not provided"
@@ -29,7 +29,7 @@
         {
           href: recordPath + "/record-setup" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "candidate ID"
+          visuallyHiddenText: "trainee ID"
         }
       ]
     } if canAmend

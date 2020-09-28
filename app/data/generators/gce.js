@@ -1,7 +1,7 @@
 const weighted = require('weighted')
 const gceData = require('../gce')
 
-module.exports = (faker, isInternationCandidate) => {
+module.exports = (faker, isInternationalTrainee) => {
   let year = faker.date.between('1970', '2016')
   year = year.getFullYear()
 
@@ -12,7 +12,7 @@ module.exports = (faker, isInternationCandidate) => {
 
   let country = null
 
-  if (isInternationCandidate){
+  if (isInternationalTrainee){
     country = faker.helpers.randomize(['France','Italy','Germany','Ireland'])
   }
 
@@ -26,7 +26,7 @@ module.exports = (faker, isInternationCandidate) => {
     const startDate = '2017'
     const endDate = '2020'
 
-    if (isInternationCandidate) {
+    if (isInternationalTrainee) {
       return {
         type: 'Baccalauréat Général',
         subject,
