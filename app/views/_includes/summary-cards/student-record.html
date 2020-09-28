@@ -59,7 +59,7 @@
   {% set qtsContent %}
     {{govukTag({
       text: "Pending QTS",
-      classes: "govuk-tag--green govuk-!-margin-bottom-2"
+      classes: record.status | getStatusClass + " govuk-!-margin-bottom-2"
     })}} <br>
     {% if record.qtsRecommendedDate %}
       Recommended: {{record.qtsRecommendedDate | govukDate}}
@@ -81,7 +81,7 @@
   {% set qtsContent %}
     {{govukTag({
       text: "QTS awarded",
-      classes: "govuk-tag--purple govuk-!-margin-bottom-2"
+      classes: record.status | getStatusClass + " govuk-!-margin-bottom-2"
     })}} <br>
     Awarded: 2 September 2020
   {% endset %}
