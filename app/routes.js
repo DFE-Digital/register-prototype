@@ -492,22 +492,16 @@ router.get('/records', function (req, res) {
     filteredRecords = filteredRecords.filter(record => {
       let recordIdMatch = (searchQuery) ? (record.traineeId.toLowerCase().includes(searchQuery.toLowerCase())) : false
       let nameMatch = false
-  
-        // Combine names in to one string
-        // Todo: there's probably an easier way to do this
-        let names = []
-        names.push(record.personalDetails.givenName)
-        names.push(record.personalDetails.middleNames)
-        names.push(record.personalDetails.familyName)
-        let fullName = names.filter(Boolean).join(' ').toLowerCase()
+
+        let fullName = record.personalDetails.fullName
 
         // Split query in to parts
-        let searchParts = searchQuery.toLowerCase().split(' ')
+        let searchParts = searchQuery.split(' ')
        
         // Check that each part exists in the trainee's name
         nameMatch = true
         searchParts.forEach(part => {
-          if (!fullName.includes(part)) {
+          if (!fullName.toLowerCase().includes(part.toLowerCase())) {
             nameMatch = false
           }
         })

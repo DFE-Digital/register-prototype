@@ -1,6 +1,6 @@
 {% extends "_templates/_new-record.html" %}
 
-{% set pageHeading = "Overview" if not data.record.id else (data.record.personalDetails | getShortName) %}
+{% set pageHeading = "Overview" if not data.record.id else (data.record.personalDetails.shortName or "Overview") %}
 
 {% set hideReturnLink = true %}
 {% set backLink = '/records' %}

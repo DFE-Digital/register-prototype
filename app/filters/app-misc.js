@@ -6,6 +6,7 @@
 var filters = {}
 
 // Return firstname + lastname
+// Likely no longer needed - done with a getter now
 filters.getShortName = ({
   givenName="", 
   familyName=""} = false) => {
@@ -16,6 +17,7 @@ filters.getShortName = ({
 }
 
 // Return full name with middle names if present
+// Likely no longer needed - done with a getter now
 filters.getFullName = ({
   givenName="", 
   middleNames="", 

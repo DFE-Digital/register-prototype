@@ -7,7 +7,7 @@
   <div class="app-application-card_col">
     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
       <a href="/record/{{ record.id }}" class="govuk-link govuk-link--no-visited-state">
-        {{ record.personalDetails | getShortName or "Draft record" }}
+        {{ record.personalDetails.shortName or "Draft record" }}
       </a>
     </h3>
     {% if record.traineeId %}

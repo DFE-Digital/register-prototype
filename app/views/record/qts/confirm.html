@@ -1,5 +1,5 @@
 {% extends "_templates/_record-form.html" %}
-{% set pageHeadingTraineeName = data.record.personalDetails | getShortName %}
+{% set pageHeadingTraineeName = data.record.personalDetails.shortName %}
 {% set pageHeading = "Check assessment details" %}
 
 {% set formAction = "./qts-recommended" %}

@@ -3,7 +3,7 @@
 
 {% set backLink = '/records' %}
 {% set backText = 'All records' %}
-{% set pageHeading = record.personalDetails | getShortName %}
+{% set pageHeading = record.personalDetails.shortName %}
 {% set activeTab = 'record' %}
 
 {% block tabContent %}

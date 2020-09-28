@@ -1,6 +1,6 @@
 {% extends "_templates/_record.html" %}
 
-{% set pageHeading = data.record.personalDetails | getShortName %}
+{% set pageHeading = data.record.personalDetails.shortName %}
 {% set pageSubHeading = "QTS recommend" %}
 {% set activeTab = 'qts-recommend' %}
 {% set formAction = "./personal-details/confirm" %}
