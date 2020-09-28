@@ -81,6 +81,8 @@
   ]
 } | decorateAttributes(record, "record.personalDetails.sex"))}}
 
+{% set nationalitiesWithoutBritishAndIrish = data.nationalities | removeArrayItems(['British', 'Irish']) %}
+
 {# Separate out nationalities #}
 {% set otherNationalities = record.personalDetails.nationality | removeArrayItems(['British','Irish','Other'] | removeEmpty )%}
 
@@ -96,28 +98,37 @@
   {# Make sure there's enough inputs to cover existing nationalities #}
   {% for nationality in otherNationalities %}
     {% set nationalityIndex = loop.index0 + 3 %}
-    {{ govukInput({
+
+    {{ appAutocomplete({
       label: {
-        text: "Nationality"
+        text: "Other nationality",
+        classes: "govuk-label--s"
       },
-      id: "nationality-other" + loop.index0,
+      id: 'nationality-other-' + nationalityIndex,
       name: "record[personalDetails][nationality][" + nationalityIndex + "]",
-      value: nationality,
-      classes: "govuk-!-width-two-thirds"
-    }) }}
+      items: nationalitiesWithoutBritishAndIrish,
+      classes: "govuk-!-width-two-thirds",
+      value: nationality
+      }
+    ) }}
+
   {% endfor %}
 
   {# Make sure there's at least one extra input #}
   {% if not otherNationalities | length %}
-    {{ govukInput({
+  
+    {{ appAutocomplete({
       label: {
-        text: "Other nationality"
+        text: "Other nationality",
+        classes: "govuk-label--s"
       },
-      id: "nationality-other",
+      id: 'nationality-other',
       name: "record[personalDetails][nationality][3]",
-      value: nationality,
-      classes: "govuk-!-width-two-thirds"
-    }) }}
+      items: nationalitiesWithoutBritishAndIrish,
+      classes: "govuk-!-width-two-thirds",
+      value: nationality
+      }
+    ) }}
   {% endif %}
 
 
@@ -138,12 +149,21 @@
       classes: "govuk-fieldset__legend--s"
     }
   },
+  hint: {
+    text: "Select all that apply"
+  },
   items: [
     {
-      text: "British"
+      text: "British",
+      hint: {
+        text: "including English, Scottish, Welsh or from Northern Ireland"
+      }
     },
     {
-      text: "Irish"
+      text: "Irish",
+      hint: {
+        text: "including from Northern Ireland"
+      }
     },
     {
       text: "Other",
