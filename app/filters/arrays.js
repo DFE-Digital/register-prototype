@@ -162,6 +162,8 @@ filters.commaSeparate = (items) => filters.joinArray(items, {delimiter:', '})
 //  D
 filters.commaSeparateLines = (items) => filters.joinArray(items, {delimiter:', ', newlines: true })
 
+filters.separateLines = (items) => filters.joinArray(items, {delimiter:'', newlines: true })
+
 // A and B and C and D
 filters.andSeparate = (items)=> filters.joinArray(items, {delimiter: ' and '})
 
