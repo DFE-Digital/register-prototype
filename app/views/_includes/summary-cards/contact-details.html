@@ -3,7 +3,7 @@
 {% set address = record.contactDetails.address %}
 {# Make postcode uppercase #}
 {% set address = address | setAttribute('postcode', address.postcode | upper) %}
-{% set addressCombined = address | objectToArray | commaSeparateLines %}
+{% set addressCombined = address | objectToArray | separateLines %}
 {# Hacky support for international addresses #}
 {% set internationalAddress = record.contactDetails.internationalAddress | nl2br %}
 {% set addressCombined = addressCombined or internationalAddress or 'Not provided' %}
