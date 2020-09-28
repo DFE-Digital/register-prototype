@@ -120,17 +120,17 @@
     },
     items: [
       {
-        text: "Not applicable"
+        text: "Grade known",
+        checked: storedGradeOther,
+        conditional: {
+          html: internationalDegreeGradeOtherHtml
+        }
       },
       {
         text: "Unknown"
       },
       {
-        text: "Other",
-        checked: storedGradeOther,
-        conditional: {
-          html: internationalDegreeGradeOtherHtml
-        }
+        text: "Not applicable"
       },
       {
         divider: "or"
