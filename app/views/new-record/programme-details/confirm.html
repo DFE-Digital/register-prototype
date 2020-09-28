@@ -1,21 +1,21 @@
 {% extends "_templates/_new-record.html" %}
 
-{% set pageHeading = "Confirm assessment details" %}
+{% set pageHeading = "Confirm programme details" %}
 
 {% set formAction = "./../overview" | orReferrer(referrer) %}
 
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
-  {% include "_includes/summary-cards/assessment-details.html" %}
+  {% include "_includes/summary-cards/programme-details.html" %}
 
   {{ govukCheckboxes({
   idPrefix: "waste",
-  name: "record[assessmentDetails][status]",
+  name: "record[programmeDetails][status]",
   items: [
     {
       value: "Completed",
       text: "I have completed this section",
-      checked: checked(record.assessmentDetails.status, "Completed")
+      checked: checked(record.programmeDetails.status, "Completed")
     }
   ]
   }) }}

@@ -11,9 +11,9 @@
     text: 'Select the closest matching subject'
   },
   id: 'subject',
-  name: "record[assessmentDetails][subject]",
+  name: "record[programmeDetails][subject]",
   items: data.ittSubjects,
-  value: record.assessmentDetails.subject
+  value: record.programmeDetails.subject
   }
 ) }}
 
@@ -36,7 +36,7 @@
 {% set uncommonAgeRanges = data.assessmentOnlyAgeRanges | removeArrayItems(commonAgeRanges) %}
 
 {# Prefil existing answer #}
-{% set ageRangeExistingValue = record.assessmentDetails.ageRange %}
+{% set ageRangeExistingValue = record.programmeDetails.ageRange %}
 {% if ageRangeExistingValue in commonAgeRanges %}
   {% set ageRangeExistingValue = undefined %}
 {% endif %}
@@ -48,7 +48,7 @@
       classes: "govuk-label--s"
     },
     id: 'age-range',
-    name: "record[assessmentDetails][ageRangeOther]",
+    name: "record[programmeDetails][ageRangeOther]",
     items: uncommonAgeRanges,
     value: ageRangeExistingValue
     }
@@ -79,13 +79,13 @@
     text: ""
   },
   items: ageRangeRadioItems
-} | decorateAttributes(record, "record.assessmentDetails.ageRange")) }}
+} | decorateAttributes(record, "record.programmeDetails.ageRange")) }}
 
-{% set assessmentStartDateArray = record.assessmentDetails.startDate | toDateArray %}
+{% set assessmentStartDateArray = record.programmeDetails.startDate | toDateArray %}
 
 {{ govukDateInput({
   id: "assessment-start-date",
-  namePrefix: "record[assessmentDetails][startDate]",
+  namePrefix: "record[programmeDetails][startDate]",
   fieldset: {
     legend: {
       text: "Assessment start date",
@@ -118,10 +118,10 @@
 {# Likely it can never be seen on this page, as we don't currently
 allow editing after you submit for QTS #}
 {% if record.status == "Pending QTS" or record.status == "QTS Awarded" %}
-  {% set assessmentEndDateArray = record.assessmentDetails.endDate | toDateArray %}
+  {% set assessmentEndDateArray = record.programmeDetails.endDate | toDateArray %}
   {{ govukDateInput({
     id: "assessment-end-date",
-    namePrefix: "record[assessmentDetails][endDate]",
+    namePrefix: "record[programmeDetails][endDate]",
     fieldset: {
       legend: {
         text: "Assessment end date",

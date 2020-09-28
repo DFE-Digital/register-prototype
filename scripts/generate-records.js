@@ -20,7 +20,7 @@ const generateStatus = require('../app/data/generators/status')
 const generatePersonalDetails = require('../app/data/generators/personal-details')
 const generateDiversity = require('../app/data/generators/diversity')
 const generateContactDetails = require('../app/data/generators/contact-details')
-const generateAssessmentDetails = require('../app/data/generators/assessment-details')
+const generateAssessmentOnlyDetails = require('../app/data/generators/assessment-only-details')
 const generateDegree = require('../app/data/generators/degree')
 const generateGce = require('../app/data/generators/gce')
 const generateGcse = require('../app/data/generators/gcse')
@@ -64,7 +64,7 @@ const generateFakeApplication = (params = {}) => {
   const contactDetails = (params.contactDetails === null) ? undefined : { ...generateContactDetails(faker, person), ...params.contactDetails }
 
   // Assessment details
-  const assessmentDetails = (params.assessmentDetails === null) ? undefined : { ...generateAssessmentDetails(faker, status), ...params.assessmentDetails }
+  const programmeDetails = (params.programmeDetails === null) ? undefined : { ...generateAssessmentOnlyDetails(faker, status), ...params.programmeDetails }
 
   // Qualifications
 
@@ -99,7 +99,7 @@ const generateFakeApplication = (params = {}) => {
     diversity,
     isInternationalCandidate,
     contactDetails,
-    assessmentDetails,
+    programmeDetails,
     gcse,
     degree
 
@@ -235,7 +235,7 @@ const generateFakeApplications = () => {
       degree: {
         status: 'Completed'
       },
-      assessmentDetails: {
+      programmeDetails: {
         status: 'Completed'
       },
       updatedDate: faker.date.between(

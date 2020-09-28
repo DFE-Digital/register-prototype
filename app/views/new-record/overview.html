@@ -82,17 +82,17 @@
   }]
 }) if not closed }}
 
-<h2 class="govuk-heading-m">Assessment</h2>
+<h2 class="govuk-heading-m">Programme</h2>
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [
   {
-    text: "Assessment details",
-    href: "assessment-details" | reviewIfInProgress(record.assessmentDetails),
-    id: "assessment-details",
+    text: "Programme details",
+    href: "programme-details" | reviewIfInProgress(record.programmeDetails),
+    id: "programme-details",
     tag: {
-      classes: record.assessmentDetails | getStatusText | getStatusClass,
-      text: record.assessmentDetails | getStatusText
+      classes: record.programmeDetails | getStatusText | getStatusClass,
+      text: record.programmeDetails | getStatusText
     }
   }]
 }) if not closed }}
