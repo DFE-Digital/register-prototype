@@ -9,25 +9,32 @@
 
 
 {% block formContent %}
+
 {{ govukPanel({
   titleText: "Trainee submitted for TRN",
-  html: "Your reference number<br><strong>HDJ2123F</strong>" if false
+  html: "Your reference number<br><strong>HDJ2123F</strong>" if false,
+  classes: "govuk-!-margin-bottom-6"
 }) }}
 
+<p class="govuk-body">It usually takes 2 to 3 working days to issue a TRN and update the trainee record in Register trainee teachers.</p>
+
 <p class="govuk-body">
-  We will update their record status when we receive the TRN.
+  We do not notify the trainee when we issue a TRN. If you think there is a problem with the TRN, contact <a href="mailto:itt.datamanagement@education.gov.uk">itt.datamanagement@education.gov.uk</a>.
 </p>
 
+
+
 <h2 class="govuk-heading-m">Next steps:</h2>
+<p class="govuk-body">You can recommend the trainee for QTS once their record is marked ‘TRN received’ and they have met the requirements.</p>
 <ul class="govuk-list govuk-list--bullet">
   <li>
-    <a href="{{ '/record/' + data.recordId }}" class="govuk-link">View this record</a>
+    <a href="{{ '/record/' + data.recordId }}" class="govuk-link">View this trainee’s record</a>
   </li>
   <li>
-    <a href="/records" class="govuk-link">Return to the records list</a>
+    <a href="/records" class="govuk-link">View your trainee records list</a>
   </li>
   <li>
-    <a href="/new-record/new" class="govuk-link">Add another trainee record</a>
+    <a href="/new-record/new" class="govuk-link">Add another trainee</a>
   </li>
 </ul>
 
