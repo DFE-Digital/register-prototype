@@ -1,22 +1,11 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-{# Todo: think about how to handle international addresses #}
-
-{# {% if record.isInternationalTrainee %}
-  {{ govukTextarea({
-    label: {
-      text: "Enter your address"
-    },
-    autocomplete: "street-address"
-  }) }}
-{% else %} #}
-
-
+{% set ukAddressHtml %}
 
   {% call govukFieldset({
     legend: {
-      text: "Address",
-      classes: "govuk-fieldset__legend--m",
+      text: "Home address",
+      classes: "govuk-fieldset__legend--s",
       isPageHeading: false
     }
   }) %}
@@ -75,25 +64,63 @@
     }) }}
 
   {% endcall %}
-{# {% endif %} #}
 
-{% set internationalAddressInputHtml %}
+{% endset %}
+
+{% set nonUkAddressHtml %}
+
+{% set addressCombined = record.contactDetails.address %}
+  {# {% set addressCombined = addressCombined | setAttribute('postcode', addressCombined.postcode | upper) %} #}
+  {% set addressCombined = addressCombined | objectToArray | separateLines | safe %}
+
+  {% if record.contactDetails.addressType == "international" %}
+    {% set internationalAddress = record.contactDetails.internationalAddress or addressCombined %}
+  {% endif %}
+
   {{ govukTextarea({
     label: {
-      text: "Enter the address"
+      text: "Home address"
     },
     autocomplete: "street-address",
     classes: "govuk-!-margin-bottom-0",
     name: "record[contactDetails][internationalAddress]",
-    value: record.contactDetails.internationalAddress
+    value: internationalAddress
   }) }}
 {% endset %}
-
+{# 
 {{ govukDetails({
   summaryText: "Add an international address",
-  html: internationalAddressInputHtml,
+  html: ukAddressHtml,
   open: true if record.contactDetails.internationalAddress
-}) }}
+}) }} #}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Where does the trainee live?",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      text: "Outside the UK",
+      value: "international",
+      conditional: {
+        html: nonUkAddressHtml
+      }
+    },
+    {
+      text: "In the UK",
+      value: "domestic",
+      conditional: {
+        html: ukAddressHtml
+      }
+    }
+  ]
+} | decorateAttributes(record, "record.contactDetails.addressType")) }}
 
 {{ govukInput({
   id: "phone-number",

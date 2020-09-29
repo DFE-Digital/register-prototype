@@ -1,12 +1,21 @@
 
 {# Merge fields and strip empty #}
-{% set address = record.contactDetails.address %}
+{% set ukAddress = record.contactDetails.address %}
 {# Make postcode uppercase #}
-{% set address = address | setAttribute('postcode', address.postcode | upper) %}
-{% set addressCombined = address | objectToArray | separateLines %}
+{% set ukAddress = ukAddress | setAttribute('postcode', ukAddress.postcode | upper) %}
+{% set ukAddress = ukAddress | objectToArray | separateLines | nl2br %}
 {# Hacky support for international addresses #}
 {% set internationalAddress = record.contactDetails.internationalAddress | nl2br %}
-{% set addressCombined = addressCombined or internationalAddress or 'Not provided' %}
+
+{% if record.contactDetails.addressType == "domestic" %}
+{{ukAddress | log}}
+  {% set address = ukAddress %}
+{% else %}
+  {% set address = internationalAddress %}
+{% endif %}
+{% set address = address or 'Not provided' %}
+
+
 
 {% set contactDetailsRows = [
   {
@@ -14,7 +23,7 @@
       text: "Address"
     },
     value: {
-      html: addressCombined | safe
+      html: address | safe
     },
     actions: {
       items: [

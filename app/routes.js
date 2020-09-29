@@ -55,6 +55,12 @@ const updateRecord = (data, newRecord) => {
   
   let records = data.records
   newRecord.updatedDate = new Date()
+  if (newRecord.addressType == "domestic"){
+    delete newRecord.contactDetails.internationalAddress
+  }
+  if (newRecord.addressType == "international"){
+    delete newRecord.contactDetails.address
+  }
   data.record = newRecord
   
   if (!newRecord.id){
