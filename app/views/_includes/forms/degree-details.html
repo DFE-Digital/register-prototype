@@ -25,7 +25,7 @@
 
 {% if isInternational %}
 
-  {{ govukInput({
+  {# {{ govukInput({
     label: {
       text: "Institution",
       classes: "govuk-label--s"
@@ -37,11 +37,11 @@
     name: "degreeTemp[org]",
     value: degreeTemp.org,
     classes: "govuk-!-width-two-thirds"
-  }) }}
+  }) }} #}
 
   {{ appAutocomplete({
     label: {
-      text: "In which country is this institution based?",
+      text: "Country where the degree was obtained",
       classes: "govuk-label--s"
     },
     id: 'degree-country',

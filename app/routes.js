@@ -215,7 +215,7 @@ router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:in
 
   // Combine radio and text inputs
   if (newDegree.baseGrade){
-    if (newDegree.baseGrade == "Other"){
+    if (newDegree.baseGrade == "Grade known"){
       newDegree.grade = newDegree.otherGrade
       delete newDegree.baseGrade
       delete newDegree.otherGrade

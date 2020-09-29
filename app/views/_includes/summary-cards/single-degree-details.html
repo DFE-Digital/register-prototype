@@ -1,10 +1,17 @@
+
+{% if degree.isInternational == 'true' %}
+  {% set degreeType = "Non-UK degree" %}
+{% else %}
+  {% set degreeType = degree.type %}  
+{% endif %}
+
 {% set degreeDetailsRows = [
   {
     key: {
       text: "Degree type"
     },
     value: {
-      text: degree.type or 'Not provided'
+      text: degreeType or 'Not provided'
     },
     actions: {
       items: [
@@ -32,8 +39,9 @@
         }
       ]
     } if canAmend
-  },
-  {
+  }] %}
+
+{% set degreeInstitutionRow = {
     key: {
       text: "Institution"
     },
@@ -49,7 +57,11 @@
         }
       ]
     } if canAmend
-  }] %}
+  } %}
+
+{% if degree.isInternational == 'false' %}
+  {% set degreeDetailsRows = degreeDetailsRows | push(degreeInstitutionRow) %}
+{% endif %}
 
 {% set degreeCountryRow = {
   key: {
@@ -137,10 +149,10 @@
   }) }}
 {% endset %}
 
-{% if degree.country == "United Kingdom" %}
+{% if degree.isInternational == "false" %}
   {% set titleText = degree.type + " " + degree.subject %}
 {% else %}
-  {% set titleText = degree.type + ": " + degree.subject %}
+  {% set titleText = "Non-UK degree: " + degree.subject %}
 {% endif %}
 
 
