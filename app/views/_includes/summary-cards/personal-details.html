@@ -5,7 +5,7 @@
       text: "Full name"
     },
     value: {
-      text: record.personalDetails.fullName or 'Not entered'
+      text: record.personalDetails | getFullName or 'Not entered'
     },
     actions: {
       items: [{
