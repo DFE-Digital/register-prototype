@@ -65,6 +65,25 @@ const updateRecord = (data, newRecord) => {
   
   if (!newRecord.id){
     newRecord.id = faker.random.uuid()
+    Object.defineProperty(newRecord.personalDetails, 'fullName', {
+      get() {
+        let names = []
+        names.push(this.givenName)
+        names.push(this.middleNames)
+        names.push(this.familyName)
+        return names.filter(Boolean).join(' ')
+      },
+      enumerable: true
+    })
+    Object.defineProperty(newRecord.personalDetails, 'shortName', {
+      get() {
+        let names = []
+        names.push(this.givenName)
+        names.push(this.familyName)
+        return names.filter(Boolean).join(' ')
+      },
+      enumerable: true
+    })
     records.push(newRecord)
   }
   else {
