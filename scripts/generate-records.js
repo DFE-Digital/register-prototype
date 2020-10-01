@@ -280,7 +280,7 @@ const generateFakeApplications = () => {
 
   for (var i = 0; i < 10; i++) {
     const application = generateFakeApplication({
-      status: 'Pending QTS',
+      status: 'QTS recommended',
       updatedDate: faker.date.between(
         moment().subtract(400, 'days'),
         moment().subtract(600, 'days'))

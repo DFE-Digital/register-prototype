@@ -4,7 +4,7 @@ module.exports = (faker) => {
     'Draft',
     'Pending TRN',
     'TRN received',
-    'Pending QTS',
+    'QTS recommended',
     'QTS awarded',
     'Deferred',
     'Withdrawn'

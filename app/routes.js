@@ -437,7 +437,7 @@ router.get('/record/:uuid/qts', (req, res) => {
     res.redirect('/record/:uuid')
   }
   else {
-    if (newRecord.status == 'Pending QTS'){
+    if (newRecord.status == 'QTS recommended'){
       newRecord.status = 'QTS awarded'
       deleteTempData(data)
       updateRecord(data, newRecord)
@@ -455,7 +455,7 @@ router.post('/record/:uuid/qts/qts-recommended', (req, res) => {
     res.redirect('/record/:uuid')
   }
   else {
-    newRecord.status = 'Pending QTS'
+    newRecord.status = 'QTS recommended'
     newRecord.qtsRecommendedDate = new Date()
     deleteTempData(data)
     updateRecord(data, newRecord)

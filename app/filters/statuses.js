@@ -53,7 +53,7 @@ filters.getStatusClass = (status) => {
       return 'govuk-tag--turquoise'
     case 'TRN received':
       return 'govuk-tag--blue'
-    case 'Pending QTS':
+    case 'QTS recommended':
       // return 'govuk-tag--green'
       return 'govuk-tag--purple'
     case 'QTS awarded':

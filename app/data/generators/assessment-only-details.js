@@ -35,7 +35,7 @@ module.exports = (faker, status) => {
     "Chemistry"])
 
   const statusesWithEndDates = [
-    "Pending QTS",
+    "QTS recommended",
     "QTS awarded"
   ]
 

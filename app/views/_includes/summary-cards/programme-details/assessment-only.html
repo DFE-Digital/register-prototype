@@ -77,7 +77,7 @@
   }  %}
 
 {# End date only collected when submitting for QTS #}
-{% if record.programmeDetails.endDate and (record.status == "Pending QTS" or record.status == "QTS Awarded" )%}
+{% if record.programmeDetails.endDate and (record.status == "QTS recommended" or record.status == "QTS Awarded" )%}
   {% set programmeDetailsRows = programmeDetailsRows | push(endDateRow) %}  
 {% endif %}
 

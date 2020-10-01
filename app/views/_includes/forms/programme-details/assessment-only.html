@@ -117,7 +117,7 @@
 {# We only want to collect this once they go to submit for QTS #}
 {# Likely it can never be seen on this page, as we don't currently
 allow editing after you submit for QTS #}
-{% if record.status == "Pending QTS" or record.status == "QTS Awarded" %}
+{% if record.status == "QTS recommended" or record.status == "QTS Awarded" %}
   {% set assessmentEndDateArray = record.programmeDetails.endDate | toDateArray %}
   {{ govukDateInput({
     id: "assessment-end-date",

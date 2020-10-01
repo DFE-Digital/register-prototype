@@ -1,7 +1,7 @@
 
 {% set expectedDuration = 'Not provided' %}
-{% if record.assessmentDetails.duration | falsify %}
-  {% set expectedDuration = record.assessmentDetails.duration + " years" %}
+{% if record.programmeDetails.duration | falsify %}
+  {% set expectedDuration = record.programmeDetails.duration + " years" %}
 {% endif %}
 
 {% set studentRecordRows = [
@@ -53,12 +53,12 @@
   }) %}
 {% endif %}
 
-{% if record.status == "Pending QTS" %}
+{% if record.status == "QTS recommended" %}
 {% set recommendedDate = record.qtsRecommendedDate | formatDate('relative') %}
 
   {% set qtsContent %}
     {{govukTag({
-      text: "Pending QTS",
+      text: "QTS recommended",
       classes: record.status | getStatusClass + " govuk-!-margin-bottom-2"
     })}} <br>
     {% if record.qtsRecommendedDate %}
