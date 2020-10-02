@@ -68,13 +68,13 @@
 
         {% endblock %}
 
-        {% if not hideReturnLink %}
-          {% if returnLink %}
-            <p class="govuk-body"><a href="{{returnLink.href}}" class="govuk-link">{{returnLink.text}}</a></p>
-          {% else %}
-            <p class="govuk-body"><a href="{{ '/new-record/overview' | orReferrer(referrer)}}" class="govuk-link">Cancel</a></p>
-          {% endif %}
+        {% if returnLink %}
+          <p class="govuk-body"><a href="{{returnLink.href}}" class="govuk-link">{{returnLink.text}}</a></p>
         {% endif %}
+
+        {# {% if not hideReturnLink %}
+          <p class="govuk-body"><a href="{{ '/new-record/overview' | orReferrer(referrer)}}" class="govuk-link">Cancel</a></p>
+        {% endif %} #}
       </div>
       {% if hasSecondary %}
         <div class="govuk-grid-column-one-third">

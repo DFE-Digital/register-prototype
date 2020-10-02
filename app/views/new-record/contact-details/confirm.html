@@ -1,6 +1,8 @@
 {% extends "_templates/_new-record.html" %}
 
 {% set pageHeading = "Confirm personal details" %}
+{% set backLink = './../overview' %}
+{% set backText = "Back to overview" %}
 
 {% set formAction = "./../overview" | orReferrer(referrer) %}
 
