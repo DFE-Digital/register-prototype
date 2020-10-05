@@ -1,0 +1,18 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Confirm trainee ID" %}
+
+{% set formAction = "./update" %}
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  {% include "_includes/summary-cards/trainee-id.html" %}
+
+
+
+  {{ govukButton({
+    text: "Update record"
+  }) }}
+
+{% endblock %}
+

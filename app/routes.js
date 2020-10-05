@@ -609,7 +609,7 @@ router.post(['/record/:uuid/:page/update', '/record/:uuid/update'], (req, res) =
     updateRecord(data, newRecord)
     req.flash('success', 'Trainee record updated')
 
-    if (req.params.page && req.params.page != 'programme-details'){
+    if (req.params.page && req.params.page != 'programme-details' && req.params.page != 'trainee-id'){
       res.redirect(`/record/${req.params.uuid}/details-and-education`)
     }
     else {
