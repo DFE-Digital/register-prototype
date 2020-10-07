@@ -524,8 +524,8 @@ router.post('/record/:uuid/qts/confirm', (req, res) => {
     newRecord.qtsRecommendedDate = new Date()
     deleteTempData(data)
     updateRecord(data, newRecord, "Trainee recommended for QTS")
-    req.flash('success', 'Trainee recommended for QTS')
-    res.redirect(`/record/${req.params.uuid}`)
+    // req.flash('success', 'Trainee recommended for QTS')
+    res.redirect(`/record/${req.params.uuid}/qts/recommended`)
   }
 })
 

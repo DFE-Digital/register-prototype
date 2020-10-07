@@ -1,0 +1,47 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Trainee recommended for QTS" %}
+
+{# {% set formAction = "./save" %} #}
+
+{% set hideReturnLink = true %}
+{% set backLink = "/record/" + data.record.id %}
+{% set backText = 'Return to trainee' %}
+
+
+{% block formContent %}
+
+{{ govukPanel({
+  titleText: pageHeading,
+  html: "Your reference number<br><strong>HDJ2123F</strong>" if false,
+  classes: "govuk-!-margin-bottom-6"
+}) }}
+
+<p class="govuk-body">QTS is usually awarded overnight. It could take 2 to 3 working days in some cases.</p>
+
+<p class="govuk-body">
+  If you think there is a problem with the QTS award, contact <a href="mailto:itt.datamanagement@education.gov.uk">itt.datamanagement@education.gov.uk</a>.
+</p>
+
+<h2 class="govuk-heading-m">Next steps:</h2>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a href="{{ recordPath }}" class="govuk-link">View this trainee’s record</a>
+  </li>
+  <li>
+    <a href="/records" class="govuk-link">View your trainee records list</a>
+  </li>
+</ul>
+
+{# {{ govukButton({
+  text: "View record",
+  href: "/record/" + data.recordId
+}) }}
+
+{{ govukButton({
+  text: "Add another record",
+  href: "/new-record/new"
+}) }}
+ #}
+
+{% endblock %}
