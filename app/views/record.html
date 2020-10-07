@@ -21,7 +21,7 @@
       {% if record.status | getCanRecommendForQts %}
         {{ govukButton({
           text: "Recommend for QTS",
-          href: referrer + '/recommend-for-qts',
+          href: referrer + '/qts/outcome',
           classes: "govuk-!-margin-bottom-0"
         }) }}
         {% elseif record.status == "Pending TRN" %}

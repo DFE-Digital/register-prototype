@@ -1,0 +1,65 @@
+{% set assessmentEndDateArray = record.programmeDetails.endDate | toDateArray %}
+
+{% set assessmentEndDateHtml %}
+  {# Collected now because they won't know the date before this #}
+  {{ govukDateInput({
+    id: "assessment-end-date",
+    namePrefix: "record[programmeDetails][endDate]",
+    fieldset: {
+      legend: {
+        text: "On what date?",
+        classes: "govuk-fieldset__legend--ss"
+      }
+    },
+    hint: {
+      text: "For example, " + "" | today | toDateArray | spaceSeparate
+    },
+    items: [
+        {
+          name: "day",
+          classes: "govuk-input--width-2",
+          value: assessmentEndDateArray["0"]
+        },
+        {
+          name: "month",
+          classes: "govuk-input--width-2",
+          value: assessmentEndDateArray["1"]
+        },
+        {
+          name: "year",
+          classes: "govuk-input--width-4",
+          value: assessmentEndDateArray["2"]
+        }
+      ]
+  }) }}
+{% endset %}
+
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      classes: "govuk-fieldset__legend--l",
+      isPageHeading: true
+    }
+  },
+  items: [
+    {
+      text: "Passed",
+      conditional: {
+        html: assessmentEndDateHtml
+      }
+    },
+    {
+      text: "Not passed"
+    },
+    {
+      text: "Not taken"
+    } if false
+  ]
+} | decorateAttributes(record, "record.qtsDetails.standardsAssessedOutcome"))}}
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}

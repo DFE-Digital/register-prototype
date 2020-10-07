@@ -477,8 +477,10 @@ router.get('/record/:uuid/qts', (req, res) => {
     res.redirect('/record/:uuid')
   }
   else {
-    if (newRecord.status == 'QTS recommended'){
+    if (newRecord.status == 'QTS recommended' || newRecord.status == 'TRN received'){
       newRecord.status = 'QTS awarded'
+      _.set(newRecord, 'programmeDetails.endDate', new Date())
+      _.set(newRecord, 'qtsDetails.qtsDetails.standardsAssessedOutcome', "Passed")
       deleteTempData(data)
       addEvent(newRecord, "Trainee recommended for QTS")
       updateRecord(data, newRecord, "QTS awarded")
@@ -499,7 +501,18 @@ router.get('/record/:uuid/timeline', (req, res) => {
 })
 
 // Copy qts data back to real record
-router.post('/record/:uuid/qts/qts-recommended', (req, res) => {
+router.post('/record/:uuid/qts/outcome', (req, res) => {
+  const data = req.session.data
+  if (_.get(data, "record.qtsDetails.standardsAssessedOutcome") == 'Not passed'){
+    res.redirect(`/record/${req.params.uuid}/qts/assessment-not-passed`)
+  }
+  else {
+    res.redirect(`/record/${req.params.uuid}/qts/confirm`)
+  }
+})
+
+// Copy qts data back to real record
+router.post('/record/:uuid/qts/confirm', (req, res) => {
   const data = req.session.data
   const newRecord = data.record
   // Update failed or no data

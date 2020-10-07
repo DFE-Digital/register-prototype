@@ -2,11 +2,11 @@
 {% set pageHeadingTraineeName = data.record.personalDetails.shortName %}
 {% set pageHeading = "Check assessment details" %}
 
-{% set formAction = "./qts-recommended" %}
+{% set formAction = "./confirm" %}
 
 {% block formContent %}
   <h1 class="govuk-heading-l">
-    <span class="govuk-caption-xl">{{pageHeadingTraineeName}}</span>
+    <span class="govuk-caption-l">{{pageHeadingTraineeName}}</span>
     {{pageHeading}}
   </h1>
   {% include "_includes/summary-cards/qts-assessment-details.html" %}

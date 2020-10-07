@@ -1,0 +1,27 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Trainees must pass their assessment to be recommended for QTS" %}
+{% set hideReturnLink = true %}
+
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  
+  <p class="govuk-body">Only trainees that have passed their standards assessment can be recommended for QTS.</p>
+
+  <p class="govuk-body">You can:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      <a href="{{ './outcome' }}" class="govuk-link">go back and change your answer</a>
+    </li>
+    <li>
+      <a href="./../withdraw" class="govuk-link">withdraw this trainee</a>
+    </li>
+  </ul>
+
+
+{% endblock %}
+
+
+
+

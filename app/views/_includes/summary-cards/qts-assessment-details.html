@@ -1,23 +1,6 @@
 {% set qtsDetailsRows = [
   {
     key: {
-      text: "Assessment end date"
-    },
-    value: {
-      text: record.programmeDetails.endDate | govukDate or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/recommend-for-qts" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "assessment end date"
-        }
-      ]
-    } if canAmend
-  },
-  {
-    key: {
       text: "Assessment outcome"
     },
     value: {
@@ -26,9 +9,26 @@
     actions: {
       items: [
         {
-          href: recordPath + "/recommend-for-qts" | addReferrer(referrer),
+          href: recordPath + "/qts/outcome" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "assessment outcome"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
+      text: "Assessment end date"
+    },
+    value: {
+      text: record.programmeDetails.endDate | govukDate or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/qts/outcome" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "assessment end date"
         }
       ]
     } if canAmend
@@ -43,13 +43,13 @@
     actions: {
       items: [
         {
-          href: recordPath + "/recommend-for-qts" | addReferrer(referrer),
+          href: recordPath + "/qts/outcome" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "date of assessment"
         }
       ]
     } if canAmend
-  }
+  } if false
   ] %}
 
 {% set qtsDetailsHtml %}

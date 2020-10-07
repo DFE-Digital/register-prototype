@@ -1,0 +1,13 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeadingTraineeName = data.record.personalDetails.shortName %}
+{% set pageHeading = "Has the trainee passed their assessment?" %}
+{# {% set formAction = "./confirm" %} #}
+  
+{% block formContent %}
+
+  <span class="govuk-caption-l">{{pageHeadingTraineeName}}</span>
+
+  {% include "_includes/forms/assessment-only/outcome.html" %}
+
+{% endblock %}
