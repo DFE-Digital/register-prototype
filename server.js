@@ -110,8 +110,13 @@ app.set('view engine', 'html')
 // Middleware to serve static assets
 app.use('/public', express.static(path.join(__dirname, '/public')))
 
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend/moj/assets')))
+
+
 // Serve govuk-frontend in from node_modules (so not to break pre-extenstions prototype kits)
 app.use('/node_modules/govuk-frontend', express.static(path.join(__dirname, '/node_modules/govuk-frontend')))
+
+app.use('/node_modules/moj-frontend', express.static(path.join(__dirname, '/node_modules/@ministryofjustice/frontend')))
 
 // Set up documentation app
 if (useDocumentation) {
@@ -318,10 +323,10 @@ if (useV6) {
 app.post(/^\/([^.]+)$/, function (req, res) {
   // res.redirect('/' + req.params[0])
   res.redirect(url.format({
-   pathname: '/' + req.params[0],
-   query:req.query,
-   })
- )
+    pathname: '/' + req.params[0],
+    query:req.query,
+    })
+   )
 })
 
 // Catch 404 and forward to error handler
