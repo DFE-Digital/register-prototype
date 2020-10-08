@@ -8,3 +8,9 @@ if (window.console && window.console.info) {
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
 })
+
+// Submit form when any change detected
+// Todo: is this too slopppy?
+$('.moj-filter').on('change', function(){
+  $(this).closest('form').submit();
+});

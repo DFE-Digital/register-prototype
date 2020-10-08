@@ -695,6 +695,7 @@ router.get('/records', function (req, res) {
   const data = req.session.data
   let filterStatus = req.query.filterStatus
   let searchQuery = req.query.search
+  let filterSubject = req.query.filterSubject
 
   if (!filterStatus || filterStatus == '_unchecked') {
     filterStatus = false
@@ -723,9 +724,14 @@ router.get('/records', function (req, res) {
     })
   }
 
-  if ( filterStatus ) {
-    filteredRecords = filteredRecords.filter(record => filterStatus.includes(record.status))  
+  if (filterStatus){
+    filteredRecords = filteredRecords.filter(record => filterStatus.includes(record.status))
   }
+
+  if (filterSubject && filterSubject != "All subjects"){
+    filteredRecords = filteredRecords.filter(record => record.programmeDetails.subject == filterSubject)
+  }
+
   res.render('records', { filteredRecords })
 })
 

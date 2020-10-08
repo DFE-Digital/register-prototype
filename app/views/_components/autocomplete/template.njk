@@ -70,6 +70,7 @@
   element = document.querySelector('#{{params.id}}');
   // id = '{{params.id}}--autocomplete';
   defaultValue = '{{params.value}}';
+  autoSelect = ('{{params.autoSelect}}' == 'false') ? false : true;
 
   // Conditional not used
   // confirmFunction = function(val) {
@@ -89,7 +90,7 @@
   accessibleAutocomplete.enhanceSelectElement({
     selectElement: element,
     showAllValues: true,
-    // autoselect: false,
+    autoselect: autoSelect,
     // source: values,
     defaultValue: defaultValue
 

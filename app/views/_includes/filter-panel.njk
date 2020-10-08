@@ -19,9 +19,13 @@
       ]
     } | decorateAttributes(data, "data.filterCycle"))}}
     
-    {{query | log}}
+    {# {{query | log}} #}
     {{ govukCheckboxes({
       classes: "govuk-checkboxes--small",
+      attributes: {
+        "id": 'filterStatusCheckboxes'
+      }
+      ,
       fieldset: {
         legend: {
           text: "Status",
@@ -61,12 +65,54 @@
       ]
     } | decorateAttributes(data, "data.filterStatus"))}}
 
+
+    {% set subjectItems = [] %}
+
+    {# Default state #}
+    {% set subjectItems = subjectItems | push({
+        value: "All subjects",
+        text: "All subjects",
+        selected: true if (not query.filterSubject or query.filterSubject ==  "All subjects")
+      }) %}
+    
+    {# Remaining subjects #}
+    {% for subject in data.ittSubjects %}
+      {% set subjectItems = subjectItems | push({
+        value: subject,
+        text: subject,
+        selected: true if subject == query.filterSubject
+      }) %}
+    {% endfor %}
+
+    {{ govukSelect({
+      id: "subject-select",
+      name: "filterSubject",
+      label: {
+        text: "Subject"
+      },
+      items: subjectItems
+    }) }}
+
+    {# Disabled because of usability issues with clearing answer #}
+    {# {{ appAutocomplete({
+      label: {
+        text: "Subject",
+        classes: "govuk-label--s"
+      },
+      id: 'subject',
+      name: "filterSubject",
+      autoSelect: false,
+      items: subjects,
+      value: query.filterSubject
+      }
+    ) }} #}
+
   {% endset %}
 
   <div class="moj-filter" tabindex="-1">
     <div class="moj-filter__header">
       <div class="moj-filter__header-title">
-        <h2 class="govuk-heading-m">Filter</h2>
+        <h2 class="govuk-heading-m">Filters</h2>
       </div>
       <div class="moj-filter__header-action"></div>
     </div>
@@ -93,10 +139,14 @@
         </div>
       {% endif %}
       <div class="moj-filter__options">
-        <button class="govuk-button" data-module="govuk-button">
+        {# Button for no-js only #}
+        <button class="govuk-button app-no-js-only" data-module="govuk-button">
           Apply filters
         </button>
         {{filterOptionsHtml | safe}}
+        <script>
+          
+        </script>
       </div>
     </div>
   </div>
