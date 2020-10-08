@@ -5,134 +5,10 @@ const path = require('path')
 const moment = require('moment')
 const filters = require('./filters.js')()
 const _ = require('lodash')
+const utils = require('./routes/route-utils')
 
-// Return first part of url to use in redirects
-const getRecordPath = req => {
-  let recordType = req.params.recordtype
-  return (recordType == 'record') ? (`/record/${req.params.uuid}`) : '/new-record'
-}
-
-// Delete temporary stores of data
-const deleteTempData = (data) => {
-  delete data.degreeTemp
-  delete data.record
-}
-
-const addEvent = (record, content) => {
-  record.events.items.push({
-    title: content,
-    user: 'Provider',
-    date: new Date()
-  })
-}
-
-// Append referrer to string if it exists
-const getReferrer = referrer => {
-  if (referrer && referrer != 'undefined'){
-    return `?referrer=${referrer}`
-  }
-  else return '' 
-}
-
-// Stolen from manage
-const getTimeline = (record) => {
-  return record.events.items.map(item => {
-    return {
-      label: {
-        text: item.title
-      },
-      datetime: {
-        timestamp: item.date,
-        type: 'datetime'
-      },
-      byline: {
-        text: item.user
-      }
-      // link: getLink(item, record)
-    }
-  }).reverse()
-}
-
-
-// Check if all sections are complete
-const recordIsComplete = record => {
-  if (!record) return false
-  let regularSections = [
-    'personalDetails',
-    'contactDetails',
-    'diversity',
-    'programmeDetails',
-    // 'qualifications.gceStatus', // A levels not implimented yet
-    'gcse',
-    'degree'
-  ]
-
-  let recordIsComplete = true
-
-  regularSections.forEach(section => {
-    if (_.get(record, `${section}.status`) != "Completed"){
-      recordIsComplete = false
-    }
-  })
-
-  return recordIsComplete
-}
-
-// Update or create a record
-const updateRecord = (data, newRecord, timelineMessage) => {
-
-  if (!newRecord) return false
-  
-  let records = data.records
-  newRecord.updatedDate = new Date()
-  if (timelineMessage !== false){
-    let message = (timelineMessage) ? timelineMessage : "Record updated"
-    addEvent(newRecord, message)
-  }
-  if (newRecord.addressType == "domestic"){
-    delete newRecord.contactDetails.internationalAddress
-  }
-  if (newRecord.addressType == "international"){
-    delete newRecord.contactDetails.address
-  }
-  data.record = newRecord
-
-  if (newRecord.personalDetails && !newRecord.personalDetails.fullName){
-    Object.defineProperty(newRecord.personalDetails, 'fullName', {
-      get() {
-        let names = []
-        names.push(this.givenName)
-        names.push(this.middleNames)
-        names.push(this.familyName)
-        return names.filter(Boolean).join(' ')
-      },
-      enumerable: true
-    })
-  }
-  if (newRecord.personalDetails && !newRecord.personalDetails.shortName){
-    Object.defineProperty(newRecord.personalDetails, 'shortName', {
-      get() {
-        let names = []
-        names.push(this.givenName)
-        names.push(this.familyName)
-        return names.filter(Boolean).join(' ')
-      },
-      enumerable: true
-    })
-  }
-
-  if (!newRecord.id){
-    newRecord.id = faker.random.uuid()
-    records.push(newRecord)
-  }
-  else {
-    let recordIndex = records.findIndex(record => record.id == newRecord.id)
-    records[recordIndex] = newRecord
-  }
-  return true
-}
-
-// Pass referrer and query to page
+// Catch all to pass common data to views
+// Needs to be before other routes
 router.all('*', function(req, res, next){
   const referrer = req.query.referrer
   res.locals.referrer = referrer
@@ -140,6 +16,9 @@ router.all('*', function(req, res, next){
   res.locals.flash = req.flash('success') // pass through 'success' messages only
   next()
 })
+
+// Records page with filters
+require('./routes/records-page')(router)
 
 // =============================================================================
 // Edit routes - add / edit record data
@@ -151,8 +30,8 @@ router.all('*', function(req, res, next){
 router.post(['/:recordtype/:uuid/diversity-disclosed','/:recordtype/diversity-disclosed'], function (req, res) {
   const data = req.session.data
   let diversityDisclosed = _.get(data, 'record.diversity.diversityDisclosed')
-  let referrer = getReferrer(req.query.referrer)
-  let recordPath = getRecordPath(req)
+  let referrer = utils.getReferrer(req.query.referrer)
+  let recordPath = utils.getRecordPath(req)
   // No data, return to page
   if (!diversityDisclosed){
     res.redirect(`${recordPath}/diversity-disclosed${referrer}`)
@@ -169,8 +48,8 @@ router.post(['/:recordtype/:uuid/diversity-disclosed','/:recordtype/diversity-di
 router.post(['/:recordtype/:uuid/ethnic-group','/:recordtype/ethnic-group'], function (req, res) {
   let data = req.session.data
   let ethnicGroup = _.get(data, 'record.diversity.ethnicGroup')
-  let recordPath = getRecordPath(req)
-  let referrer = getReferrer(req.query.referrer)
+  let recordPath = utils.getRecordPath(req)
+  let referrer = utils.getReferrer(req.query.referrer)
   // No data, return to page
   if (!ethnicGroup){
     res.redirect(`${recordPath}/ethnic-group${referrer}`)
@@ -187,8 +66,8 @@ router.post(['/:recordtype/:uuid/ethnic-group','/:recordtype/ethnic-group'], fun
 router.post(['/:recordtype/:uuid/disabilities','/:recordtype/disabilities'], function (req, res) {
   let data = req.session.data
   let hasDisabilities = _.get(data, 'record.diversity.disabledAnswer')
-  let recordPath = getRecordPath(req)
-  let referrer = getReferrer(req.query.referrer)
+  let recordPath = utils.getRecordPath(req)
+  let referrer = utils.getReferrer(req.query.referrer)
 
   // No data, return to page
   if (!hasDisabilities){
@@ -209,17 +88,17 @@ router.get(['/:recordtype/:uuid/degree/add','/:recordtype/degree/add'], function
   console.log('degrees is', degrees)
   let degreeCount = (degrees) ? degrees.length : 0
   console.log('degree count', degreeCount)
-  let recordPath = getRecordPath(req)
-  let referrer = getReferrer(req.query.referrer)
+  let recordPath = utils.getRecordPath(req)
+  let referrer = utils.getReferrer(req.query.referrer)
   res.redirect(`${recordPath}/degree/${degreeCount}/type${referrer}`)
 })
 
 // Delete degree at index
 router.get(['/:recordtype/:uuid/degree/:index/delete','/:recordtype/degree/:index/delete'], function (req, res) {
   const data = req.session.data
-  let recordPath = getRecordPath(req)
+  let recordPath = utils.getRecordPath(req)
   degreeIndex = req.params.index
-  let referrer = getReferrer(req.query.referrer)
+  let referrer = utils.getReferrer(req.query.referrer)
 
   if (_.get(data, "record.degree.items[" + degreeIndex + "]")){
     _.pullAt(data.record.degree.items, [degreeIndex]) //delete item at index
@@ -235,7 +114,7 @@ router.get(['/:recordtype/:uuid/degree/:index/delete','/:recordtype/degree/:inde
       // Probably needs a bespoke confirmation page as the empty degree
       // confirmation page looks weird - and we probably don't want
       // records without a dregree anyway.
-      updateRecord(data, data.record)
+      utils.updateRecord(data, data.record)
     }
     res.redirect(req.query.referrer)
   }
@@ -246,8 +125,8 @@ router.get(['/:recordtype/:uuid/degree/:index/delete','/:recordtype/degree/:inde
 
 // Forward degree requests to the right template, including the index
 router.get(['/:recordtype/:uuid/degree/:index/:page','/:recordtype/degree/:index/:page'], function (req, res) {
-  let recordPath = getRecordPath(req)
-  let referrer = getReferrer(req.query.referrer)
+  let recordPath = utils.getRecordPath(req)
+  let referrer = utils.getReferrer(req.query.referrer)
 
   res.render(`${req.params.recordtype}/degree/${req.params.page}`, {itemIndex: req.params.index})
 })
@@ -257,7 +136,7 @@ router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:in
   const data = req.session.data
   let newDegree = data.degreeTemp
   delete data.degreeTemp
-  let referrer = getReferrer(req.query.referrer)
+  let referrer = utils.getReferrer(req.query.referrer)
 
   // Save the correct type
   if (newDegree.isInternational == "true" && newDegree.typeInt){
@@ -287,7 +166,7 @@ router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:in
 
   let existingDegrees = _.get(data, "record.degree.items")
   let degreeIndex = req.params.index
-  let recordPath = getRecordPath(req)
+  let recordPath = utils.getRecordPath(req)
 
   if (existingDegrees && existingDegrees[degreeIndex]) {
     // Might be a partial update, so merge the new with the old
@@ -307,10 +186,10 @@ router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:in
 router.post(['/:recordtype/:uuid/programme-details','/:recordtype/programme-details'], function (req, res) {
   const data = req.session.data
   let record = data.record
-  let referrer = getReferrer(req.query.referrer)
+  let referrer = utils.getReferrer(req.query.referrer)
 
   let programmeDetails = _.get(data, 'record.programmeDetails')
-  let recordPath = getRecordPath(req)
+  let recordPath = utils.getRecordPath(req)
   // No data, return to page
   if (!programmeDetails){
     res.redirect(`${recordPath}/programme-details`)
@@ -335,7 +214,7 @@ router.post(['/:recordtype/:uuid/programme-details','/:recordtype/programme-deta
 // Delete data when starting new
 router.get(['/new-record/new', '/new-record'], function (req, res) {
   const data = req.session.data
-  deleteTempData(data)
+  utils.deleteTempData(data)
   _.set(data, 'record', { status: 'Draft' })
   _.set(data, 'record.events.items', [])
   res.redirect('/new-record/record-setup')
@@ -345,7 +224,7 @@ router.get(['/new-record/new', '/new-record'], function (req, res) {
 router.post('/new-record/record-setup', function (req, res) {
   const data = req.session.data
   let recordType = _.get(data, 'record.route') // Assessment only or not
-  let referrer = getReferrer(req.query.referrer)
+  let referrer = utils.getReferrer(req.query.referrer)
 
   // No data, return to page
   if (!recordType){
@@ -370,7 +249,7 @@ router.get('/new-record/check-record', function (req, res) {
   const data = req.session.data
   let errors = req.query.errors
   let newRecord = _.get(data, 'record') // copy record
-  let isComplete = recordIsComplete(newRecord)
+  let isComplete = utils.recordIsComplete(newRecord)
   let errorList = false
   if (errors){
     errorList = true
@@ -389,8 +268,8 @@ router.get('/new-record/save-as-draft', (req, res) => {
   }
   else {
     newRecord.status = "Draft" // just in case
-    deleteTempData(data)
-    updateRecord(data, newRecord)
+    utils.deleteTempData(data)
+    utils.updateRecord(data, newRecord)
     req.flash('success', 'Record saved as draft')
     res.redirect('/records')
   }
@@ -401,15 +280,15 @@ router.post('/new-record/save', (req, res) => {
   const data = req.session.data
   let newRecord = _.get(data, 'record') // copy record
 
-  if (!recordIsComplete(newRecord)){
+  if (!utils.recordIsComplete(newRecord)){
     console.log('Record is incomplete, returning to check record')
     res.redirect('/new-record/check-record?errors=true')
   }
   else {
     newRecord.status = "Pending TRN"
     newRecord.submittedDate = new Date()
-    deleteTempData(data)
-    updateRecord(data, newRecord, "Trainee submitted for TRN")
+    utils.deleteTempData(data)
+    utils.updateRecord(data, newRecord, "Trainee submitted for TRN")
     req.session.data.recordId = newRecord.id //temp store for id to link to the record
     res.redirect('/new-record/submitted')
   }
@@ -425,7 +304,7 @@ router.post('/new-record/save', (req, res) => {
 router.get('/record/:uuid', function (req, res) {
   const data = req.session.data
 
-  deleteTempData(data)
+  utils.deleteTempData(data)
   const records = req.session.data.records
   const record = records.find(record => record.id == req.params.uuid)
   if (!record){
@@ -461,8 +340,8 @@ router.get('/record/:uuid/trn', (req, res) => {
         'min': 1000000,
         'max': 9999999
       })
-      deleteTempData(data)
-      updateRecord(data, newRecord, "TRN received")
+      utils.deleteTempData(data)
+      utils.updateRecord(data, newRecord, "TRN received")
     }
     res.redirect(`/record/${req.params.uuid}`)
   }
@@ -481,9 +360,9 @@ router.get('/record/:uuid/qts', (req, res) => {
       newRecord.status = 'QTS awarded'
       _.set(newRecord, 'programmeDetails.endDate', (new Date()))
       _.set(newRecord, 'qtsDetails.qtsDetails.standardsAssessedOutcome', "Passed")
-      deleteTempData(data)
-      addEvent(newRecord, "Trainee recommended for QTS")
-      updateRecord(data, newRecord, "QTS awarded")
+      utils.deleteTempData(data)
+      utils.addEvent(newRecord, "Trainee recommended for QTS")
+      utils.updateRecord(data, newRecord, "QTS awarded")
     }
     res.redirect(`/record/${req.params.uuid}`)
   }
@@ -496,7 +375,7 @@ router.get('/record/:uuid/timeline', (req, res) => {
   if (!record){
     res.redirect('/record/:uuid')
   }
-  let timeline = getTimeline(record)
+  let timeline = utils.getTimeline(record)
   res.render(`record/timeline`, {timeline})
 })
 
@@ -522,8 +401,8 @@ router.post('/record/:uuid/qts/confirm', (req, res) => {
   else {
     newRecord.status = 'QTS recommended'
     newRecord.qtsRecommendedDate = new Date()
-    deleteTempData(data)
-    updateRecord(data, newRecord, "Trainee recommended for QTS")
+    utils.deleteTempData(data)
+    utils.updateRecord(data, newRecord, "Trainee recommended for QTS")
     // req.flash('success', 'Trainee recommended for QTS')
     res.redirect(`/record/${req.params.uuid}/qts/recommended`)
   }
@@ -542,8 +421,8 @@ router.post('/record/:uuid/defer/confirm', (req, res) => {
     newRecord.previousStatus = newRecord.status
     newRecord.status = 'Deferred'
     delete newRecord.deferredDateRadio
-    deleteTempData(data)
-    updateRecord(data, newRecord, "Trainee deferred")
+    utils.deleteTempData(data)
+    utils.updateRecord(data, newRecord, "Trainee deferred")
     req.flash('success', 'Trainee deferred')
     res.redirect(`/record/${req.params.uuid}`)
   }
@@ -581,8 +460,8 @@ router.post('/record/:uuid/reinstate/confirm', (req, res) => {
   else {
     newRecord.status = newRecord.previousStatus || 'TRN received'
     delete newRecord.previousStatus
-    deleteTempData(data)
-    updateRecord(data, newRecord, "Trainee reinstated")
+    utils.deleteTempData(data)
+    utils.updateRecord(data, newRecord, "Trainee reinstated")
     req.flash('success', 'Trainee reinstated')
     res.redirect(`/record/${req.params.uuid}`)
   }
@@ -625,8 +504,8 @@ router.post('/record/:uuid/withdraw/confirm', (req, res) => {
     if (newRecord.withdrawalReason != "For another reason") {
       delete newRecord.withdrawalReasonOther
     }
-    deleteTempData(data)
-    updateRecord(data, newRecord, "Trainee withdrawn")
+    utils.deleteTempData(data)
+    utils.updateRecord(data, newRecord, "Trainee withdrawn")
     req.flash('success', 'Trainee withdrawn')
     res.redirect('/record/' + req.params.uuid)
   }
@@ -662,8 +541,8 @@ router.post(['/record/:uuid/:page/update', '/record/:uuid/update'], (req, res) =
     res.redirect('/record/:uuid')
   }
   else {
-    deleteTempData(data)
-    updateRecord(data, newRecord)
+    utils.deleteTempData(data)
+    utils.updateRecord(data, newRecord)
     req.flash('success', 'Trainee record updated')
 
     if (req.params.page && req.params.page != 'programme-details' && req.params.page != 'trainee-id'){
@@ -690,50 +569,7 @@ router.get('/record/:uuid/:page*', function (req, res) {
   }
 })
 
-// Filters
-router.get('/records', function (req, res) {
-  const data = req.session.data
-  let filterStatus = req.query.filterStatus
-  let searchQuery = req.query.search
-  let filterSubject = req.query.filterSubject
 
-  if (!filterStatus || filterStatus == '_unchecked') {
-    filterStatus = false
-  }
-
-  let filteredRecords = data.records
-
-  if (searchQuery){
-    filteredRecords = filteredRecords.filter(record => {
-      let recordIdMatch = (searchQuery) ? (record.traineeId.toLowerCase().includes(searchQuery.toLowerCase())) : false
-      let nameMatch = false
-
-        let fullName = record.personalDetails.fullName
-
-        // Split query in to parts
-        let searchParts = searchQuery.split(' ')
-       
-        // Check that each part exists in the trainee's name
-        nameMatch = true
-        searchParts.forEach(part => {
-          if (!fullName.toLowerCase().includes(part.toLowerCase())) {
-            nameMatch = false
-          }
-        })
-      return recordIdMatch || nameMatch
-    })
-  }
-
-  if (filterStatus){
-    filteredRecords = filteredRecords.filter(record => filterStatus.includes(record.status))
-  }
-
-  if (filterSubject && filterSubject != "All subjects"){
-    filteredRecords = filteredRecords.filter(record => record.programmeDetails.subject == filterSubject)
-  }
-
-  res.render('records', { filteredRecords })
-})
 
 
 module.exports = router
