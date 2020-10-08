@@ -6,7 +6,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         {% set legendHtml %}
-          {% if parent %}<span class="govuk-caption-xl">{{ parent }}</span>{% endif %}
+          {% if parent %}<span class="govuk-caption-l">{{ parent }}</span>{% endif %}
           {{ title | safe }}
         {% endset %}
         {% call govukFieldset({
