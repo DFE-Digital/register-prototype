@@ -70,7 +70,9 @@
   element = document.querySelector('#{{params.id}}');
   // id = '{{params.id}}--autocomplete';
   defaultValue = '{{params.value}}';
+  showAllValues = ('{{params.showAllValues}}' == 'false') ? false : true;
   autoSelect = ('{{params.autoSelect}}' == 'false') ? false : true;
+  minLength = ('{{params.minLength}}' == false) ? 0 : parseInt('{{params.minLength}}');
 
   // Conditional not used
   // confirmFunction = function(val) {
@@ -89,8 +91,9 @@
 
   accessibleAutocomplete.enhanceSelectElement({
     selectElement: element,
-    showAllValues: true,
+    showAllValues: showAllValues,
     autoselect: autoSelect,
+    minLength: minLength,
     // source: values,
     defaultValue: defaultValue
 
