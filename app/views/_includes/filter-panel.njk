@@ -11,10 +11,12 @@
       },
       items: [
         {
-          text: "2020 to 2021 (Current)"
+          text: "2020 to 2021 (Current)",
+          checked: checked(query.filterCycle, "2020 to 2021 (Current)")
         },
         {
-          text: "2019 to 2020"
+          text: "2019 to 2020",
+          checked: checked(query.filterCycle, "2019 to 2020")
         }
       ]
     } | decorateAttributes(data, "data.filterCycle"))}}
@@ -124,7 +126,7 @@
               <h2 class="govuk-heading-m">Selected filters</h2>
             </div>
             <div class="moj-filter__heading-action">
-              <p><a class="govuk-link govuk-link--no-visited-state" href="/remove-all-filters">Clear</a></p>
+              <p><a class="govuk-link govuk-link--no-visited-state" href="/records">Clear</a></p>
             </div>
           </div>
 
