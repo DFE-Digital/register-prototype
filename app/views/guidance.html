@@ -2,6 +2,8 @@
 {% extends "_templates/_page.html" %}
 {% set backLink = '/start-page' %}
 
+{% set pageHeading = 'Assessment Only (AO) route guidance' %}
+
 {% block pageNavigation %}
   {% if backLink %}
     {{ govukBackLink({
@@ -17,7 +19,7 @@
   <div class="govuk-grid-column-full">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Assessment Only (AO) route guidance</h1>
+        <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
         <h2 class="govuk-heading-m">About the Assessment Only route</h2>
 
