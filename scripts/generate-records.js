@@ -32,6 +32,9 @@ const generateFakeApplication = (params = {}) => {
   const status = params.status || generateStatus(faker)
   const events = generateEvents(faker, { status })
 
+  let route = params.route || faker.helpers.randomize(['Assessment Only', 'Provider-led'])
+
+
   // Dates
   let updatedDate, submittedDate, deferredDate, withdrawalDate
   // Make sure updated date is after submitted date
@@ -100,11 +103,12 @@ const generateFakeApplication = (params = {}) => {
     })
   }
 
+
   // const provider = faker.helpers.randomize(organisations.filter(org => !org.isAccreditedBody))
 
   return {
     id: params.id || faker.random.uuid(),
-    route: "Assessment Only",
+    route,
     traineeId: params.traineeId || faker.random.alphaNumeric(8).toUpperCase(),
     status,
     trn,
@@ -207,7 +211,7 @@ const generateFakeApplications = () => {
       },
       diversity: null,
       contactDetails: null,
-
+      route: "Assessment Only",
       updatedDate: faker.date.between(
         moment(),
         moment().subtract(16, 'days'))
@@ -228,6 +232,7 @@ const generateFakeApplications = () => {
       diversity: {
         status: 'Completed'
       },
+      route: "Assessment Only",
       updatedDate: faker.date.between(
         moment(),
         moment().subtract(16, 'days'))
@@ -257,6 +262,7 @@ const generateFakeApplications = () => {
       programmeDetails: {
         status: 'Completed'
       },
+      route: "Assessment Only",
       updatedDate: faker.date.between(
         moment(),
         moment().subtract(1, 'days'))
