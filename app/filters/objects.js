@@ -139,7 +139,7 @@ filters.deleteBlankAttributes = (dictionary) => {
 }
 
 // Filter results for only those containing attribute and value
-filters.filterAttr = function (arr, attr, test) {
+filters.where = function (arr, attr, test) {
   var result = arr.filter(function (item) {
      return item[attr] === test;
   });
@@ -148,7 +148,7 @@ filters.filterAttr = function (arr, attr, test) {
 
 
 // Remove items with a specified attribute and value
-filters.removeAttr = function (arr, attr, test) {
+filters.removeWhere = function (arr, attr, test) {
   var result = arr.filter(function (item) {
      return item[attr] !== test;
   });

@@ -79,7 +79,7 @@
             <div class="app-application-cards">
               {% set sortedFilterRecords = filteredRecords | sort(attribute="updatedDate") | reverse %}
 
-              {% set draftRecords = sortedFilterRecords | filterAttr("status", "Draft") %}
+              {% set draftRecords = sortedFilterRecords | where("status", "Draft") %}
              
               {% if (draftRecords | length) %}
                 <div class="govuk-!-margin-bottom-8">
@@ -91,7 +91,7 @@
                 </div>
               {% endif %}
 
-              {% set nonDraftRecords = sortedFilterRecords | removeAttr("status", "Draft") %}
+              {% set nonDraftRecords = sortedFilterRecords | removeWhere("status", "Draft") %}
               {% if (nonDraftRecords | length) %} 
                 <h2 class="govuk-heading-m">Records ({{nonDraftRecords | length}})</h2>
                 {% for record in nonDraftRecords %}

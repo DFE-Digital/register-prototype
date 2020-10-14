@@ -1,6 +1,8 @@
 // -------------------------------------------------------------------
 // Imports and setup
 // -------------------------------------------------------------------
+const _ = require('lodash')
+const programmes = require('./../data/programmes')
 
 // Leave this filters line
 var filters = {}
@@ -42,6 +44,17 @@ filters.orReferrer = (url, referrer) => {
   else {
     return referrer
   }
+}
+
+// Check if the course route requires this section
+filters.requiresSection = (record, sectionName) => {
+  let route = _.get(record, "route")
+  if (!route) {
+    console.log("Missing route in requiresSection")
+    return false
+  }
+  let requiredSections = _.get(programmes, `${route}.sections`)
+  return requiredSections.includes(sectionName)
 }
 
 // -------------------------------------------------------------------

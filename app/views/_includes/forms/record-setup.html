@@ -1,5 +1,15 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
+{% set programmes = data.programmes | objectToArray | where('enabled', true) %}
+
+{% set enabledProgrammes = [] %}
+{% for programme in data.settings.enabledProgrammes %}
+  {% set enabledProgrammes = enabledProgrammes | push({text: programme}) %}
+{% endfor %}
+{% set enabledProgrammes = enabledProgrammes | push({text: "Other"}) %}
+
+{{enabledProgrammes | log}}
+
 {{ govukRadios({
   fieldset: {
     legend: {
@@ -10,15 +20,7 @@
   hint: {
     text: ""
   },
-  items: [
-    {
-      value: "Assessment Only",
-      text: "Assessment Only (AO)"
-    },
-    {
-      text: "Other"
-    }
-  ]
+  items: enabledProgrammes
 } | decorateAttributes(record, "record.route")) }}
 
 {{ govukInput({
