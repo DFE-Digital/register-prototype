@@ -21,31 +21,31 @@
     ]
   } | decorateAttributes(data, "data.filterCycle"))}}
 
-  {% set enabledProgrammes = data.settings.enabledProgrammes %}
+  {% set enabledTrainingRoutes = data.settings.enabledTrainingRoutes %}
 
   {# Only show route filter if there's more than 1 route #}
-  {% if enabledProgrammes | length > 1 %}
+  {% if enabledTrainingRoutes | length > 1 %}
 
-    {% set programmeItems = [] %}
-    {% for programme in enabledProgrammes %}
-      {% set programmeItems = programmeItems | push({
-        text: programme,
-        checked: checked(query.filterProgrammes, programme)
+    {% set routeItems = [] %}
+    {% for route in enabledTrainingRoutes %}
+      {% set routeItems = routeItems | push({
+        text: route,
+        checked: checked(query.filterTrainingRoutes, route)
       }) %}
     {% endfor %}
     {{ govukCheckboxes({
       classes: "govuk-checkboxes--small",
       fieldset: {
         legend: {
-          text: "Programmes",
+          text: "Routes",
           classes: "govuk-fieldset__legend--m"
         }
       },
       hint: {
         text: ""
       },
-      items: programmeItems
-    } | decorateAttributes(data, "data.filterProgrammes")) }}
+      items: routeItems
+    } | decorateAttributes(data, "data.filterTrainingRoutes")) }}
     
   {% endif %}
 

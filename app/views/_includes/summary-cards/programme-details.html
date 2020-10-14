@@ -1,7 +1,7 @@
 {% set sectionIsRequired = record | requiresSection("programmeDetails") %}
 
 {% if sectionIsRequired %}
-  {% if record.route == 'Assessment Only' %}
+  {# {% if record.route == 'Assessment Only' %} #}
     {% include "_includes/summary-cards/programme-details/assessment-only.html" %}
-  {% endif %}
+  {# {% endif %} #}
 {% endif %}

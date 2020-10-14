@@ -13,18 +13,19 @@ let degreeOrganisations     = degreeData.orgs
 // Assessment only
 let assessmentOnlyAgeRanges = require('./assessmentOnlyAgeRanges')
 let ittSubjects             = require('./itt-subjects').map( subject => subject.attributes.subject_name )
-let withdrawalReasons = require('./withdrawal-reasons')
+let withdrawalReasons       = require('./withdrawal-reasons')
 
-// Different programmes
-let programmes              = require('./programmes')
+// Different training routes
+let trainingRoutes          = require('./training-routes')
+let allTrainingRoutes       = Object.values(trainingRoutes).map(route => route.name)
+
+// Things that can be changed from the /admin page
 let settings = {}
-settings.enabledProgrammes = Object.values(programmes).filter(programme => programme.enabled == true).map(programme => programme.name)
+// Simplify structure so it can be worked with from admin page
+settings.enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.enabled == true).map(route => route.name)
 settings.includeTimeline = 'true'
 
-let allProgrammes = Object.values(programmes).map(programme => programme.name)
-
-console.log(settings)
-
+// Supliment records with getter for name
 let records = require('./records.json')
 records = records.map(record => {
   Object.defineProperty(record.personalDetails, 'fullName', {
@@ -49,12 +50,8 @@ records = records.map(record => {
   return record
 })
 
-
-
-
-
 module.exports = {
-  allProgrammes,
+  allTrainingRoutes,
   assessmentOnlyAgeRanges,
   awards,
   countries,
@@ -63,12 +60,10 @@ module.exports = {
   ethnicities,
   ittSubjects,
   nationalities,
-  programmes,
   records,
   settings,
   subjects,
+  trainingRoutes,
   ukComparableDegrees,
   withdrawalReasons
-  // Insert values here
-
 }

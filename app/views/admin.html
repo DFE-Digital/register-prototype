@@ -22,22 +22,22 @@
         ]
       } | decorateAttributes(data, "data.settings.includeTimeline")) }}
 
-      {% set allProgrammes = [] %}
-      {% for programme in data.allProgrammes %}
-        {% set allProgrammes = allProgrammes | push({
-          text: programme
+      {% set allTrainingRoutes = [] %}
+      {% for route in data.allTrainingRoutes %}
+        {% set allTrainingRoutes = allTrainingRoutes | push({
+          text: route
         }) %}
       {% endfor %}
 
       {{ govukCheckboxes({
         fieldset: {
           legend: {
-            text: "Enabled programmes",
+            text: "Enabled training routes",
             classes: "govuk-fieldset__legend--s"
           }
         },
-        items: allProgrammes
-      } | decorateAttributes(data, "data.settings.enabledProgrammes")) }}
+        items: allTrainingRoutes
+      } | decorateAttributes(data, "data.settings.enabledTrainingRoutes")) }}
 
       {{ govukButton({
         "text": "Update"

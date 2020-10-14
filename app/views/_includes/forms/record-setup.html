@@ -1,26 +1,22 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-{% set programmes = data.programmes | objectToArray | where('enabled', true) %}
-
-{% set enabledProgrammes = [] %}
-{% for programme in data.settings.enabledProgrammes %}
-  {% set enabledProgrammes = enabledProgrammes | push({text: programme}) %}
+{% set enabledTrainingRoutes = [] %}
+{% for route in data.settings.enabledTrainingRoutes %}
+  {% set enabledTrainingRoutes = enabledTrainingRoutes | push({text: route}) %}
 {% endfor %}
-{% set enabledProgrammes = enabledProgrammes | push({text: "Other"}) %}
-
-{{enabledProgrammes | log}}
+{% set enabledTrainingRoutes = enabledTrainingRoutes | push({text: "Other"}) %}
 
 {{ govukRadios({
   fieldset: {
     legend: {
-      text: "What type of route is this?",
+      text: "What type of training route is this?",
       classes: "govuk-fieldset__legend--s"
     }
   },
   hint: {
     text: ""
   },
-  items: enabledProgrammes
+  items: enabledTrainingRoutes
 } | decorateAttributes(record, "record.route")) }}
 
 {{ govukInput({

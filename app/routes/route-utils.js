@@ -3,7 +3,7 @@ const path = require('path')
 const moment = require('moment')
 const filters = require('./../filters.js')()
 const _ = require('lodash')
-const programmes = require('./../data/programmes')
+const trainingRoutes = require('./../data/training-routes')
 
 
 // Return first part of url to use in redirects
@@ -58,7 +58,7 @@ exports.getTimeline = (record) => {
 exports.recordIsComplete = record => {
   if (!record || !_.get(record, "route")) return false
 
-  let requiredSections = _.get(programmes, `${record.route}.sections`)
+  let requiredSections = _.get(trainingRoutes, `${record.route}.sections`)
   if (!requiredSections) return false // something went wrong
 
   let recordIsComplete = true

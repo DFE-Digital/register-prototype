@@ -24,17 +24,17 @@ module.exports = router => {
     // Clean up radio and checkbox data
     if (query.filterStatus) query.filterStatus = cleanInputData(query.filterStatus)
     if (query.filterCycle) query.filterCycle = cleanInputData(query.filterCycle)
-    if (query.filterProgrammes) query.filterProgrammes = cleanInputData(query.filterProgrammes)
+    if (query.filterTrainingRoutes) query.filterTrainingRoutes = cleanInputData(query.filterTrainingRoutes)
 
-    let { filterStatus, searchQuery, filterSubject, filterCycle, filterProgrammes } = query
+    let { filterStatus, searchQuery, filterSubject, filterCycle, filterTrainingRoutes } = query
 
-    const hasFilters = !!(filterStatus) || !!(searchQuery) || !!(filterSubject && filterSubject != 'All subjects') || !!(filterCycle) || !!(filterProgrammes)
+    const hasFilters = !!(filterStatus) || !!(searchQuery) || !!(filterSubject && filterSubject != 'All subjects') || !!(filterCycle) || !!(filterTrainingRoutes)
 
     let filteredRecords = data.records
 
-    // Only show records for programmes that are enabled
-    let enabledProgrammes = data.settings.enabledProgrammes
-    filteredRecords = filteredRecords.filter(record => enabledProgrammes.includes(record.route))
+    // Only show records for training routes that are enabled
+    let enabledTrainingRoutes = data.settings.enabledTrainingRoutes
+    filteredRecords = filteredRecords.filter(record => enabledTrainingRoutes.includes(record.route))
 
     // Search traineeId and full name
     if (searchQuery){
@@ -65,8 +65,8 @@ module.exports = router => {
     //   filteredRecords = filteredRecords.filter(record => filterCycle.includes(record.cycle))
     // }
 
-    if (filterProgrammes){
-      filteredRecords = filteredRecords.filter(record => filterProgrammes.includes(record.route))
+    if (filterTrainingRoutes){
+      filteredRecords = filteredRecords.filter(record => filterTrainingRoutes.includes(record.route))
     }
 
     if (filterStatus){
@@ -117,16 +117,16 @@ module.exports = router => {
         })
       }
 
-      if (filterProgrammes) {
+      if (filterTrainingRoutes) {
         selectedFilters.categories.push({
-          heading: { text: 'Programme' },
-          items: filterProgrammes.map((programme) => {
+          heading: { text: 'Training route' },
+          items: filterTrainingRoutes.map((route) => {
 
             let newQuery = Object.assign({}, query)
-            newQuery.filterProgrammes = newQuery.filterProgrammes.filter(a => a != programme)
+            newQuery.filterTrainingRoutes = newQuery.filterTrainingRoutes.filter(a => a != route)
 
             return {
-              text: programme,
+              text: route,
               href: url.format({
                 pathname: '/records',
                 query: newQuery,
