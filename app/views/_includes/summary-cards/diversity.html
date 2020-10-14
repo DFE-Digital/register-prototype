@@ -133,8 +133,11 @@
 
 {% set complete = true if (record.diversity | sectionIsCompleted ) %}
 {% set status  = record.diversity | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("diversity") %}
 
-{% if showIncomplete and not complete %}
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "diversity-details" %}

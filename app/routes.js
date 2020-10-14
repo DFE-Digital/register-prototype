@@ -7,17 +7,25 @@ const filters = require('./filters.js')()
 const _ = require('lodash')
 const utils = require('./routes/route-utils')
 
-// Catch all to pass common data to views
+
+// =============================================================================
+// Catch all
+// Used to pass common data to views
 // Needs to be before other routes
+// =============================================================================
 router.all('*', function(req, res, next){
-  res.locals.referrer = req.query.referrer // not really needed as this in query
+  // referrer not really needed as this in query
   // but too late now as it's used everywhere
+  res.locals.referrer = req.query.referrer
   res.locals.query = req.query
   res.locals.flash = req.flash('success') // pass through 'success' messages only
   next()
 })
 
-// Records list with filters
+// =============================================================================
+// Individual pages
+// =============================================================================
+// Records list
 require('./routes/records-list')(router)
 
 // =============================================================================

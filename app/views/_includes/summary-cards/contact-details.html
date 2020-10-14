@@ -81,8 +81,11 @@
 
 {% set complete = true if (record.contactDetails | sectionIsCompleted ) %}
 {% set status  = record.contactDetails | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("contactDetails") %}
 
-{% if showIncomplete and not complete %}
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "contact-details" %}

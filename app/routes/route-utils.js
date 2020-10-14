@@ -3,6 +3,7 @@ const path = require('path')
 const moment = require('moment')
 const filters = require('./../filters.js')()
 const _ = require('lodash')
+const programmes = require('./../data/programmes')
 
 
 // Return first part of url to use in redirects
@@ -55,20 +56,13 @@ exports.getTimeline = (record) => {
 
 // Check if all sections are complete
 exports.recordIsComplete = record => {
-  if (!record) return false
-  let regularSections = [
-    'personalDetails',
-    'contactDetails',
-    'diversity',
-    'programmeDetails',
-    // 'qualifications.gceStatus', // A levels not implimented yet
-    'gcse',
-    'degree'
-  ]
+  if (!record || !_.get(record, "route")) return false
+
+  let requiredSections = _.get(programmes, `${record.route}.sections`)
+  if (!requiredSections) return false // something went wrong
 
   let recordIsComplete = true
-
-  regularSections.forEach(section => {
+  requiredSections.forEach(section => {
     if (_.get(record, `${section}.status`) != "Completed"){
       recordIsComplete = false
     }
@@ -84,6 +78,7 @@ exports.updateRecord = (data, newRecord, timelineMessage) => {
   
   let records = data.records
   newRecord.updatedDate = new Date()
+  
   if (timelineMessage !== false){
     let message = (timelineMessage) ? timelineMessage : "Record updated"
     exports.addEvent(newRecord, message)

@@ -38,6 +38,8 @@
 
 
 {% set canAmend = record.status | getAmendsAllowed %}
+{# {% set showIncomplete = true %} #}
+
 
 {# Used by summary cards #}
 {% set recordPath = "/record/" + record.id %}

@@ -37,7 +37,7 @@
       classes: record.personalDetails | getStatusText | getStatusClass,
       text: record.personalDetails | getStatusText
     }
-  },
+  } if record | requiresSection("personalDetails"),
   {
     text: "Contact details",
     href: "contact-details" | reviewIfInProgress(record.contactDetails),
@@ -46,7 +46,7 @@
       classes: record.contactDetails | getStatusText | getStatusClass,
       text: record.contactDetails | getStatusText
     }
-  },
+  } if record | requiresSection("contactDetails"),
   {
     text: "Diversity information",
     href: "diversity-disclosed" | reviewIfInProgress(record.diversity, 'diversity'),
@@ -55,7 +55,8 @@
       classes: record.diversity | getStatusText | getStatusClass,
       text: record.diversity | getStatusText
     }
-  }]
+  } if record | requiresSection("diversity")
+  ]
 }) if not closed }}
 
 <h2 class="govuk-heading-m">Education</h2>
@@ -70,7 +71,7 @@
       classes: record.gcse | getStatusText | getStatusClass,
       text: record.gcse | getStatusText
     }
-  },
+  } if record | requiresSection("gcse"),
   {
     text: "Degree",
     href: "degree/confirm" if (record.degree.items | length) else "degree/add",
@@ -79,7 +80,8 @@
       classes: record.degree | getStatusText | getStatusClass,
       text: record.degree | getStatusText
     }
-  }]
+  } if record | requiresSection("degree")
+  ]
 }) if not closed }}
 
 <h2 class="govuk-heading-m">Programme</h2>
@@ -94,7 +96,8 @@
       classes: record.programmeDetails | getStatusText | getStatusClass,
       text: record.programmeDetails | getStatusText
     }
-  }]
+  } if record | requiresSection("programmeDetails")
+  ]
 }) if not closed }}
 
 

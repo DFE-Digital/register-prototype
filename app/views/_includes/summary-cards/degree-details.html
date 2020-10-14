@@ -2,9 +2,11 @@
 {% set status  = record.degree | getStatusText %}
 
 {% set degrees = record.degree.items %}
+{% set sectionIsRequired = record | requiresSection("degree") %}
 
-
-{% if showIncomplete and not complete %}
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "degree-details" %}

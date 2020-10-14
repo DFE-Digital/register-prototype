@@ -52,6 +52,7 @@
 
 <h2 class="govuk-heading-m">Trainee details</h2>
 
+
 {% include "_includes/summary-cards/personal-details.html" %}
 
 {% include "_includes/summary-cards/contact-details.html" %}
@@ -61,7 +62,6 @@
 <h2 class="govuk-heading-m">Education</h2>
 {% include "_includes/summary-cards/gcse-details.html" %}
 
-<h3 class="govuk-heading-s">{{ "Degree" | pluralise(record.degree.items | length)}}</h3>
 {% include "_includes/summary-cards/degree-details.html" %}
 
 <h2 class="govuk-heading-m">Programme details</h2>

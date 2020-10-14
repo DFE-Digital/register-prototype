@@ -27,17 +27,20 @@ module.exports = router => {
     if (!recordType){
       res.redirect(`/new-record/record-setup${referrer}`)
     }
-    else if (recordType === "Assessment Only"){
+    // Route not supported
+    else if (recordType == "Other") {
+      res.redirect(`/new-record/route-not-supported${referrer}`)
+    }
+    else {
+      // Coming from the check answers page
       if (referrer){
         res.redirect(req.query.referrer)
       }
       else {
         res.redirect(`/new-record/overview`)
-      }  
+      }
     }
-    else {
-      res.redirect(`/new-record/route-not-supported${referrer}`)
-    }
+   
   })
 
   // Task list confirmation page - pass errors to page

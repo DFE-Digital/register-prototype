@@ -72,8 +72,11 @@
 
 {% set complete = true if (record.gcse | sectionIsCompleted ) %}
 {% set status  = record.gcse | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("gcseComplex") %}
 
-{% if showIncomplete and not complete %}
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "gcse-details" %}

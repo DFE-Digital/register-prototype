@@ -8,27 +8,40 @@
 
 {% block content %}
 
-
 <div class="govuk-grid-row">
-
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-      <form action="" method="post">
-        {{data.settings | log}}
+    <form action="" method="post">
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: 'true',
+            text: "Include timeline on records"
+          }
+        ]
+      } | decorateAttributes(data, "data.settings.includeTimeline")) }}
 
-        {{ govukCheckboxes({
-          items: [
-            {
-              value: 'true',
-              text: "Include timeline on records"
-            }
-          ]
-        } | decorateAttributes(data, "data.settings.includeTimeline")) }}
+      {% set allProgrammes = [] %}
+      {% for programme in data.allProgrammes %}
+        {% set allProgrammes = allProgrammes | push({
+          text: programme
+        }) %}
+      {% endfor %}
 
-        {{ govukButton({
-          "text": "Update"
-        }) }}
+      {{ govukCheckboxes({
+        fieldset: {
+          legend: {
+            text: "Enabled programmes",
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: allProgrammes
+      } | decorateAttributes(data, "data.settings.enabledProgrammes")) }}
+
+      {{ govukButton({
+        "text": "Update"
+      }) }}
    
     </form>
 

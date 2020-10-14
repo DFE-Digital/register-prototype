@@ -43,7 +43,7 @@
       actions: {
         items: [
           {
-            href: recordPath + "/gcse" | addReferrer(referrer),
+            href: recordPath + "/gcse-details" | addReferrer(referrer),
             text: "Change",
             visuallyHiddenText: "gcse details"
           }
@@ -68,8 +68,11 @@
 
 {% set complete = true if (record.gcse | sectionIsCompleted ) %}
 {% set status  = record.gcse | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("gcse") %}
 
-{% if showIncomplete and not complete %}
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "gcse-details" %}
@@ -79,7 +82,7 @@
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "GCSE details not started" %}
-    {% set incompleteLink = recordPath + "/gcse" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/gcse-details" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 
@@ -90,12 +93,6 @@
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
     titleText: "GCSE or equivalent",
-    actions: {
-      items: [{
-        href: recordPath + "/degree/" + loop.index0 + "/delete" | addReferrer(referrer),
-        text: "Delete degree"
-      }]
-    } if false,
     html: gcseDetailsHtml
   }) }}
   
