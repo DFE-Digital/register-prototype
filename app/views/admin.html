@@ -7,11 +7,10 @@
 {# {% set pageAction = value %} #}
 
 {% block content %}
-
+{{super()}}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <h1 class="govuk-heading-l">{{pageHeading}}</h1>
-
     <form action="" method="post">
       {{ govukCheckboxes({
         items: [
@@ -42,7 +41,9 @@
       {{ govukButton({
         "text": "Update"
       }) }}
-   
+
+      <input name="successFlash" type="hidden" value="Prototype settings updated">
+
     </form>
 
   </div>

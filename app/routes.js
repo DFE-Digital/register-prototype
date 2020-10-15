@@ -22,6 +22,13 @@ router.all('*', function(req, res, next){
   next()
 })
 
+router.post('*', function(req, res, next){
+  if (req.session.data.successFlash) {
+    req.flash('success', req.session.data.successFlash)
+    delete req.session.data.successFlash
+  }
+  next()
+})
 // =============================================================================
 // Individual pages
 // =============================================================================

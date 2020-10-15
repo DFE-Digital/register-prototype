@@ -22,7 +22,7 @@ let allTrainingRoutes       = Object.values(trainingRoutes).map(route => route.n
 // Things that can be changed from the /admin page
 let settings = {}
 // Simplify structure so it can be worked with from admin page
-settings.enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.enabled == true).map(route => route.name)
+settings.enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name).sort()
 settings.includeTimeline = 'true'
 
 // Supliment records with getter for name
