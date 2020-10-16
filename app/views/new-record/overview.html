@@ -26,6 +26,22 @@
   }]
 }) if not closed }}
 
+<h2 class="govuk-heading-m">Programme</h2>
+{{ appTaskList({
+  classes: "govuk-!-margin-bottom-8",
+  items: [
+  {
+    text: "Programme details",
+    href: "programme-details" | reviewIfInProgress(record.programmeDetails),
+    id: "programme-details",
+    tag: {
+      classes: record.programmeDetails | getStatusText | getStatusClass,
+      text: record.programmeDetails | getStatusText
+    }
+  } if record | requiresSection("programmeDetails")
+  ]
+}) if not closed }}
+
 <h2 class="govuk-heading-m">Trainee details</h2>
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
@@ -49,7 +65,7 @@
   } if record | requiresSection("contactDetails"),
   {
     text: "Diversity information",
-    href: "diversity-disclosed" | reviewIfInProgress(record.diversity, 'diversity'),
+    href: "diversity/information-disclosed" | reviewIfInProgress(record.diversity, 'diversity'),
     id: "diversity",
     tag: {
       classes: record.diversity | getStatusText | getStatusClass,
@@ -84,21 +100,7 @@
   ]
 }) if not closed }}
 
-<h2 class="govuk-heading-m">Programme</h2>
-{{ appTaskList({
-  classes: "govuk-!-margin-bottom-8",
-  items: [
-  {
-    text: "Programme details",
-    href: "programme-details" | reviewIfInProgress(record.programmeDetails),
-    id: "programme-details",
-    tag: {
-      classes: record.programmeDetails | getStatusText | getStatusClass,
-      text: record.programmeDetails | getStatusText
-    }
-  } if record | requiresSection("programmeDetails")
-  ]
-}) if not closed }}
+
 
 
 {{ govukButton({

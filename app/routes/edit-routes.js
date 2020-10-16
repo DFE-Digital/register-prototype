@@ -9,17 +9,17 @@ const utils = require('./route-utils')
 module.exports = router => {
 
   // Diversity branching
-  router.post(['/:recordtype/:uuid/diversity-disclosed','/:recordtype/diversity-disclosed'], function (req, res) {
+  router.post(['/:recordtype/:uuid/diversity/information-disclosed','/:recordtype/diversity/information-disclosed'], function (req, res) {
     const data = req.session.data
     let diversityDisclosed = _.get(data, 'record.diversity.diversityDisclosed')
     let referrer = utils.getReferrer(req.query.referrer)
     let recordPath = utils.getRecordPath(req)
     // No data, return to page
     if (!diversityDisclosed){
-      res.redirect(`${recordPath}/diversity-disclosed${referrer}`)
+      res.redirect(`${recordPath}/diversity/information-disclosed${referrer}`)
     }
     else if (diversityDisclosed == true || diversityDisclosed == "true"){
-      res.redirect(`${recordPath}/ethnic-group${referrer}`)
+      res.redirect(`${recordPath}/diversity/ethnic-group${referrer}`)
     }
     else {
       res.redirect(`${recordPath}/diversity/confirm${referrer}`)
@@ -27,25 +27,25 @@ module.exports = router => {
   })
 
   // Ethnic group branching
-  router.post(['/:recordtype/:uuid/ethnic-group','/:recordtype/ethnic-group'], function (req, res) {
+  router.post(['/:recordtype/:uuid/diversity/ethnic-group','/:recordtype/diversity/ethnic-group'], function (req, res) {
     let data = req.session.data
     let ethnicGroup = _.get(data, 'record.diversity.ethnicGroup')
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
     // No data, return to page
     if (!ethnicGroup){
-      res.redirect(`${recordPath}/ethnic-group${referrer}`)
+      res.redirect(`${recordPath}/diversity/ethnic-group${referrer}`)
     }
     else if (ethnicGroup.includes("Not provided")){
-      res.redirect(`${recordPath}/disabilities${referrer}`)
+      res.redirect(`${recordPath}/diversity/disabilities${referrer}`)
     }
     else {
-      res.redirect(`${recordPath}/ethnic-background${referrer}`)
+      res.redirect(`${recordPath}/diversity/ethnic-background${referrer}`)
     }
   })
 
   // Disabilities branching
-  router.post(['/:recordtype/:uuid/disabilities','/:recordtype/disabilities'], function (req, res) {
+  router.post(['/:recordtype/:uuid/diversity/disabilities','/:recordtype/diversity/disabilities'], function (req, res) {
     let data = req.session.data
     let hasDisabilities = _.get(data, 'record.diversity.disabledAnswer')
     let recordPath = utils.getRecordPath(req)
@@ -53,10 +53,10 @@ module.exports = router => {
 
     // No data, return to page
     if (!hasDisabilities){
-      res.redirect(`${recordPath}/disabilities${referrer}`)
+      res.redirect(`${recordPath}/diversity/disabilities${referrer}`)
     }
     else if (hasDisabilities == "Yes"){
-      res.redirect(`${recordPath}/trainee-disabilities${referrer}`)
+      res.redirect(`${recordPath}/diversity/trainee-disabilities${referrer}`)
     }
     else {
       res.redirect(`${recordPath}/diversity/confirm${referrer}`)

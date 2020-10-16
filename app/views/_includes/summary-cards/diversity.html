@@ -13,7 +13,7 @@
     actions: {
       items: [
         {
-          href: recordPath + "/diversity-disclosed" | addReferrer(referrer),
+          href: recordPath + "/diversity/information-disclosed" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "diversity disclosed"
         }
@@ -42,7 +42,7 @@
   actions: {
     items: [
       {
-        href: recordPath + "/ethnic-group" | addReferrer(referrer),
+        href: recordPath + "/diversity/ethnic-group" | addReferrer(referrer),
         text: "Change",
         visuallyHiddenText: "ethnic group"
       }
@@ -88,7 +88,7 @@
     actions: {
       items: [
         {
-          href: recordPath + "/disabilities" | addReferrer(referrer),
+          href: recordPath + "/diversity/disabilities" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "disabilities answer"
         }
@@ -110,7 +110,7 @@
     actions: {
       items: [
         {
-          href: recordPath + "/trainee-disabilities" | addReferrer(referrer),
+          href: recordPath + "/diversity/trainee-disabilities" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "trainee disabilities"
         }
@@ -147,7 +147,7 @@
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "Diversity information not started" %}
-    {% set incompleteLink = recordPath + "/diversity-disclosed" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/diversity/information-disclosed" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

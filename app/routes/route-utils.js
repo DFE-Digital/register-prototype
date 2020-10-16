@@ -125,3 +125,31 @@ exports.updateRecord = (data, newRecord, timelineMessage) => {
   }
   return true
 }
+
+// Loosely copied from lib/utils
+// Needed because some templates live at /index and default res.render
+// won't look for them in the right folder
+exports.render = (path, res, next, ...args) => {
+
+  // Try to render the path
+  res.render(path, ...args, function (error, html) {
+    if (!error) {
+      // Success - send the response
+      res.set({ 'Content-type': 'text/html; charset=utf-8' })
+      res.end(html)
+      return
+    }
+    if (!error.message.startsWith('template not found')) {
+      // We got an error other than template not found - call next with the error
+      next(error)
+      return
+    }
+    if (!path.endsWith('/index')) {
+      // Maybe it's a folder - try to render [path]/index.html
+      exports.render(path + '/index', res, next, ...args)
+      return
+    }
+    // We got template not found both times - call next to trigger the 404 page
+    next()
+  })
+}

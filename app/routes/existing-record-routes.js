@@ -4,6 +4,7 @@ const moment = require('moment')
 const filters = require('./../filters.js')()
 const _ = require('lodash')
 const utils = require('./route-utils')
+const libUtils = require('./../../lib/utils')
 
 
 module.exports = router => {
@@ -263,7 +264,7 @@ module.exports = router => {
 
 
   // Existing record pages
-  router.get('/record/:uuid/:page*', function (req, res) {
+  router.get('/record/:uuid/:page*', function (req, res, next) {
     let records = req.session.data.records
     const referrer = req.query.referrer
     res.locals.referrer = referrer
@@ -272,7 +273,9 @@ module.exports = router => {
       res.redirect('/records')
     }
     else {
-      res.render(path.join('record', req.params.page, req.params[0]))
+      // Use our own render as some templates live at /index.html
+      utils.render(path.join('record', req.params.page, req.params[0]), res, next)
+      // res.render(path.join('record', req.params.page, req.params[0]))
     }
   })
 }

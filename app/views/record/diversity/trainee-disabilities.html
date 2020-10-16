@@ -1,8 +1,8 @@
-{% extends "_templates/_new-record.html" %}
+{% extends "_templates/_record-form.html" %}
 
 {% set pageHeading = "Which disabilities were disclosed?" %}
 
-{% set formAction = "diversity/confirm" | addReferrer(referrer) %}
+{% set formAction = "./confirm" %}
 
 {% block formContent %}
   {% include "_includes/forms/trainee-disabilities.html" %}
