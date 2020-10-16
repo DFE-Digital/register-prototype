@@ -1,50 +1,50 @@
 
 {% set ethnicGroup = record.diversity.ethnicGroup %}
 
-{# {% set asianOtherHtml %}
+{% set asianOtherHtml %}
   {{ govukInput({
     classes: "govuk-!-width-two-thirds",
     label: {
-      text: "Your Asian background (optional)"
+      text: "Describe their Asian background (optional)"
     }
-  } | decorateApplicationAttributes(["equality-monitoring", "ethnic-background-other"])) }}
+  } | decorateAttributes(record, "record.diversity.ethnicBackgroundOther"))}}
 {% endset -%}
 
 {% set blackOtherHtml %}
   {{ govukInput({
     classes: "govuk-!-width-two-thirds",
     label: {
-      text: "Your Black background (optional)"
+      text: "Describe their Black background (optional)"
     }
-  } | decorateApplicationAttributes(["equality-monitoring", "ethnic-background-other"])) }}
+  } | decorateAttributes(record, "record.diversity.ethnicBackgroundOther"))}}
 {% endset -%}
 
 {% set mixedOtherHtml %}
   {{ govukInput({
     classes: "govuk-!-width-two-thirds",
     label: {
-      text: "Your Mixed background (optional)"
+      text: "Describe their Mixed background (optional)"
     }
-  } | decorateApplicationAttributes(["equality-monitoring", "ethnic-background-other"])) }}
+  } | decorateAttributes(record, "record.diversity.ethnicBackgroundOther"))}}
 {% endset -%}
 
 {% set whiteOtherHtml %}
   {{ govukInput({
     classes: "govuk-!-width-two-thirds",
     label: {
-      text: "Your White background (optional)"
+      text: "Describe their White background (optional)"
     }
-  } | decorateApplicationAttributes(["equality-monitoring", "ethnic-background-other"])) }}
+  } | decorateAttributes(record, "record.diversity.ethnicBackgroundOther"))}}
 {% endset -%}
 
 {% set otherOtherHtml %}
   {{ govukInput({
     classes: "govuk-!-width-two-thirds",
     label: {
-      text: "Describe your ethnic background (optional)"
+      text: "Describe their ethnic background (optional)"
     }
-  } | decorateApplicationAttributes(["equality-monitoring", "ethnic-background-other"])) }}
-{% endset -%} #}
+  } | decorateAttributes(record, "record.diversity.ethnicBackgroundOther"))}}
+{% endset -%}
 
 {% if ethnicGroup == "Asian or Asian British" %}
 

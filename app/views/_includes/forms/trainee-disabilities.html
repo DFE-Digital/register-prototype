@@ -1,3 +1,12 @@
+{% set otherDisabilityHtml %}
+  {{ govukInput({
+    classes: "govuk-!-width-two-thirds",
+    label: {
+      text: "Describe their disability (optional)"
+    }
+  } | decorateAttributes(record, "record.diversity.disabilitiesOther"))}}
+{% endset -%}
+
 {{ govukCheckboxes({
     idPrefix: "disabilities",
     name: "record[diversity][disabilities]",

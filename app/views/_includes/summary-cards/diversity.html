@@ -24,20 +24,27 @@
 
 {% set ethnicGroup = record.diversity.ethnicGroup %}
 {% set ethnicBackground = record.diversity.ethnicBackground %}
+{% set ethnicBackgroundOther = record.diversity.ethnicBackgroundOther %}
 
-{% if ethnicBackground and ethnicGroup != 'Not provided' and ethnicBackground != 'Not provided' %}
-  {% set ethnicGroup %}
-  {{ethnicGroup}}
-  ({{ethnicBackground}})
-  {% endset %}
+{# Use freetext ethnic background if provided #}
+{% if "Another" in ethnicBackground %}
+  {% set ethnicBackground = ethnicBackgroundOther or ethnicBackground %}
 {% endif %}
+
+{# Combine ethnic group and ethnic background #}
+{% set ethnicity %}
+  {{ethnicGroup}}
+  {% if ethnicBackground != 'Not provided' %}
+    ({{ethnicBackground}})
+  {% endif %}
+{% endset %}
 
 {% set ethnicGroupRow = {
   key: {
-    text: "Ethnic group"
+    text: "Ethnicity"
   },
   value: {
-    text: ethnicGroup
+    text: ethnicity or 'Not provided'
   },
   actions: {
     items: [
@@ -53,30 +60,6 @@
 {% if diversityInformationDisclosed and ethnicGroup %}
   {% set diversityRows = diversityRows | push(ethnicGroupRow) %}
 {% endif %}
-
-
-
-{# {% set ethnicBackgroundRow = {
-  key: {
-    text: "Ethnic group background"
-  },
-  value: {
-    text: ethnicBackground
-  },
-  actions: {
-    items: [
-      {
-        href: recordPath + "/ethnic-background" | addReferrer(referrer),
-        text: "Change",
-        visuallyHiddenText: "ethnic group background"
-      }
-    ]
-  }
-} %}
-
-{% if diversityInformationDisclosed and ethnicBackground %}
-  {% set diversityRows = diversityRows | push(ethnicBackgroundRow) %}
-{% endif %} #}
 
 {% set disabilitiesAnswerRow = {
     key: {
@@ -100,12 +83,20 @@
   {% set diversityRows = diversityRows | push(disabilitiesAnswerRow) %}
 {% endif %}
 
+{% set disabilities = record.diversity.disabilities | joinify | lower | sentenceCase %}
+
+{% if 'other' in disabilities and record.diversity.disabilitiesOther%}
+  {% set disabilities %}
+    {{disabilities}} ({{record.diversity.disabilitiesOther}})
+  {% endset %}
+{% endif %}
+
 {% set disabilitiesRow = {
     key: {
       text: "Disabilities"
     },
     value: {
-      text: record.diversity.disabilities | joinify | lower | sentenceCase or "Not provided"
+      text: disabilities or "Not provided"
     },
     actions: {
       items: [
