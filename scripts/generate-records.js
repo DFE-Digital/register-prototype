@@ -2,12 +2,12 @@
 
 // node scripts/generate-records.js
 
-const fs = require('fs')
-const path = require('path')
-const faker = require('faker')
-faker.locale = 'en_GB'
-const moment = require('moment')
-const _ = require('lodash')
+const fs      = require('fs')
+const path    = require('path')
+const faker   = require('faker')
+faker.locale  = 'en_GB'
+const moment  = require('moment')
+const _       = require('lodash')
 
 // Settings
 let simpleGcseGrades = true //output pass/fail rather than full detail
@@ -16,14 +16,27 @@ const sortBySubmittedDate = (x, y) => {
   return new Date(y.submittedDate) - new Date(x.submittedDate);
 }
 
+// Route into teaching
 const generateStatus = require('../app/data/generators/status')
-const generatePersonalDetails = require('../app/data/generators/personal-details')
-const generateDiversity = require('../app/data/generators/diversity')
-const generateContactDetails = require('../app/data/generators/contact-details')
+const trainingRoutes = Object.keys(require('../app/data/training-routes'))
+console.log(trainingRoutes)
+const enabledTrainingRoutes = Object.values(require('../app/data/training-routes')).filter(route => route.defaultEnabled == true).map(route => route.name)
+console.log(enabledTrainingRoutes)
+
+// const generateProgrammeDetails = require('../app/data/generators/programme-details')
 const generateAssessmentOnlyDetails = require('../app/data/generators/assessment-only-details')
+
+// Personal details
+const generatePersonalDetails = require('../app/data/generators/personal-details')
+const generateContactDetails = require('../app/data/generators/contact-details')
+const generateDiversity = require('../app/data/generators/diversity')
+
+// Education
 const generateDegree = require('../app/data/generators/degree')
 const generateGce = require('../app/data/generators/gce')
 const generateGcse = require('../app/data/generators/gcse')
+
+// Timeline
 const generateEvents = require('../app/data/generators/events')
 
 // Populate application data object with fake data
@@ -32,7 +45,7 @@ const generateFakeApplication = (params = {}) => {
   const status = params.status || generateStatus(faker)
   const events = generateEvents(faker, { status })
 
-  let route = params.route || faker.helpers.randomize(['Assessment Only', 'Provider-led'])
+  let route = params.route || faker.helpers.randomize(enabledTrainingRoutes)
 
 
   // Dates
@@ -342,6 +355,15 @@ const generateFakeApplications = () => {
       updatedDate: faker.date.between(
         moment().subtract(50, 'days'),
         moment().subtract(300, 'days'))
+    })
+    applications.push(application)
+  }
+
+  // Generate random other applications for all routes including those
+  // not enabled
+  for (var i = 0; i < 100; i++) {
+    const application = generateFakeApplication({
+      route: faker.helpers.randomize(trainingRoutes)
     })
     applications.push(application)
   }
