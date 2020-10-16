@@ -27,15 +27,15 @@
 {% set ethnicBackgroundOther = record.diversity.ethnicBackgroundOther %}
 
 {# Use freetext ethnic background if provided #}
-{% if "Another" in ethnicBackground %}
+{% if ethnicBackground and "Another" in ethnicBackground %}
   {% set ethnicBackground = ethnicBackgroundOther or ethnicBackground %}
 {% endif %}
 
 {# Combine ethnic group and ethnic background #}
 {% set ethnicity %}
   {{ethnicGroup}}
-  {% if ethnicBackground != 'Not provided' %}
-    ({{ethnicBackground}})
+  {% if ethnicBackground and ethnicBackground != 'Not provided' %}
+    ({{ethnicBackground | replace('Another', 'another')}})
   {% endif %}
 {% endset %}
 
@@ -85,7 +85,7 @@
 
 {% set disabilities = record.diversity.disabilities | joinify | lower | sentenceCase %}
 
-{% if 'other' in disabilities and record.diversity.disabilitiesOther%}
+{% if disabilities and 'other' in (disabilities | lower) and record.diversity.disabilitiesOther%}
   {% set disabilities %}
     {{disabilities}} ({{record.diversity.disabilitiesOther}})
   {% endset %}
