@@ -5,10 +5,16 @@
 {# {% set formAction = "./save" %} #}
 
 {% set hideReturnLink = true %}
-{% set backLink = 'false' %}
+{% set backLink = '/records' %}
+{% set backText = 'All records' %}
+
 
 
 {% block formContent %}
+
+{# For this one page, we no longer have record in session data, so have to look it up #}
+{% set recordArray = data.records | where("route", data.recordId) %}
+{% set record = recordArray[0] %}
 
 {{ govukPanel({
   titleText: "Trainee submitted for TRN",
@@ -20,14 +26,11 @@
 
 <p class="govuk-body">When the TRN is received, the trainee record status will be automatically updated. You can <a href="/records" class="govuk-link">check trainee statuses from your list of records</a>.</p>
 
-<p class="govuk-body">You can recommend the trainee for QTS once their TRN is received and they’ve met the requirements.</p>
+{% if record.route == "Assessment Only" %}
+  <p class="govuk-body">You can recommend the trainee for QTS once their TRN is received and they’ve met the requirements.</p>
+{% endif %}
 
 <p class="govuk-body">Would you like to <a href="/new-record/new" class="govuk-link">add another trainee</a>?</p>
-
-
-
-  </li>
-</ul>
 
 {# {{ govukButton({
   text: "View record",
