@@ -16,8 +16,14 @@
 {% set recordArray = data.records | where("route", data.recordId) %}
 {% set record = recordArray[0] %}
 
+{% set panelTitleText %}
+
+  {{ record.personalDetails.shortName or "Trainee" }}’s record submitted for TRN
+
+{% endset %}
+
 {{ govukPanel({
-  titleText: "Trainee submitted for TRN",
+  titleText: panelTitleText,
   html: "Your reference number<br><strong>HDJ2123F</strong>" if false,
   classes: "govuk-!-margin-bottom-6"
 }) }}
