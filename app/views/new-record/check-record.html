@@ -35,7 +35,7 @@
     {% endset %}
 
     <span class="govuk-caption-l">{{'Draft record' + draftRecordName}}</span>
-    <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-8">{{pageHeading}}</h1>
 
     {% if recordIsComplete %}
       {# <p class="govuk-body-l">
@@ -48,17 +48,17 @@
         {{ govukInsetText({
           html: insetTextHtml
         }) }}
-      
+
     {% endif %}
 
   </div>
 </div>
 
-<h2 class="govuk-heading-m">Route into teaching</h2>
+<h2 class="govuk-heading-m">Training details</h2>
 {% include "_includes/summary-cards/record-setup.html" %}
 {% include "_includes/summary-cards/programme-details.html" %}
 
-<h2 class="govuk-heading-m">Trainee details</h2>
+<h2 class="govuk-heading-m">About the trainee</h2>
 
 
 {% include "_includes/summary-cards/personal-details.html" %}
@@ -67,7 +67,6 @@
 
 {% include "_includes/summary-cards/diversity.html" %}
 
-<h2 class="govuk-heading-m">Education</h2>
 {% include "_includes/summary-cards/gcse-details.html" %}
 
 {% include "_includes/summary-cards/degree-details.html" %}
@@ -76,10 +75,9 @@
 
 
 {{ govukButton({
-  text: "Submit this record for a teacher reference number"
+  text: "Submit record and request TRN"
 }) }}
 
 <p class="govuk-body"><a href="./save-as-draft" class="govuk-link">Return to this draft record later</a></p>
 
 {% endblock %}
-

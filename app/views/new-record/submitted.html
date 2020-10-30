@@ -18,7 +18,7 @@
 
 {% set panelTitleText %}
 
-  {{ record.personalDetails.shortName or "Trainee" }}’s record submitted for TRN
+  Record submitted for {{ record.personalDetails.shortName or "trainee" }}
 
 {% endset %}
 
@@ -28,25 +28,17 @@
   classes: "govuk-!-margin-bottom-6"
 }) }}
 
-<p class="govuk-body">The Department for Education will issue the TRN within 3 working days.</p>
+<p class="govuk-body">The Department for Education will issue a TRN within 3 working days.</p>
 
-<p class="govuk-body">When the TRN is received, the trainee record status will be automatically updated. You can <a href="/records" class="govuk-link">check trainee statuses from your list of records</a>.</p>
-
-{% if record.route == "Assessment Only" %}
-  <p class="govuk-body">You can recommend the trainee for QTS once their TRN is received and they’ve met the requirements.</p>
-{% endif %}
-
-<p class="govuk-body">Would you like to <a href="/new-record/new" class="govuk-link">add another trainee</a>?</p>
-
-{# {{ govukButton({
-  text: "View record",
-  href: "/record/" + data.recordId
-}) }}
+<p class="govuk-body govuk-!-margin-bottom-7">Keep the trainee record up to date and record the outcome of their training, even if you do not recommend them for a teacher status.</p>
 
 {{ govukButton({
   text: "Add another record",
   href: "/new-record/new"
 }) }}
- #}
+
+<p class="govuk-body">or</p>
+
+<p class="govuk-body"><a href="/records" class="govuk-link">Check trainee statuses from your list of records</a></p>
 
 {% endblock %}

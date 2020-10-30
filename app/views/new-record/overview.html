@@ -20,7 +20,7 @@
 <h1 class="govuk-heading-l govuk-!-margin-bottom-8">{{pageHeading}}</h1>
 
 
-<h2 class="govuk-heading-m">Route into teaching</h2>
+<h2 class="govuk-heading-m">Training details</h2>
 
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
@@ -45,7 +45,7 @@
   ]
 }) if not closed }}
 
-<h2 class="govuk-heading-m">Trainee details</h2>
+<h2 class="govuk-heading-m">About the trainee</h2>
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [{
@@ -74,11 +74,20 @@
       classes: record.diversity | getStatusText | getStatusClass,
       text: record.diversity | getStatusText
     }
-  } if record | requiresSection("diversity")
+  } if record | requiresSection("diversity"),
+  {
+    text: "Degree",
+    href: "degree/confirm" if (record.degree.items | length) else "degree/add",
+    id: "qualification-degree",
+    tag: {
+      classes: record.degree | getStatusText | getStatusClass,
+      text: record.degree | getStatusText
+    }
+  } if record | requiresSection("degree")
   ]
 }) if not closed }}
 
-<h2 class="govuk-heading-m">Education</h2>
+{# }<h2 class="govuk-heading-m">Degree</h2>
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [
@@ -101,10 +110,10 @@
     }
   } if record | requiresSection("degree")
   ]
-}) if not closed }}
+}) if not closed }} #}
 
 
-<h2 class="govuk-heading-m">Check and submit</h2>
+<h2 class="govuk-heading-m">Review and submit</h2>
 
 {{ govukButton({
   text: "Review this record",

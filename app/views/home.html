@@ -3,7 +3,7 @@
 {% block content %}
 
     <h1 class="govuk-heading-l">{{serviceName}}</h1>
-    <p class="govuk-body">Collect and manage trainee teacher registration data.</p>
+      <p class="govuk-body govuk-!-margin-bottom-6">Register trainees with the Department for Education and record the outcome of their training.</p>
     {{ govukButton({
       text: "Add a trainee",
       href: "./new-record/new",
@@ -25,7 +25,7 @@
         </div>
       {% endif %}
       <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-m"><a href="/data-requirements" class="govuk-link govuk-link--no-visited-state">Data requirements</a></h2>
+        <h2 class="govuk-heading-m"><a href="/data-requirements" class="govuk-link govuk-link--no-visited-state">Check what data you need</a></h2>
         <p class="govuk-body">Route specific data requirements.</p>
       </div>
 
@@ -34,11 +34,11 @@
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
     <h2 class="govuk-heading-m">Trainee status overview</h2>
-    
+
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
 
       {% set records = data.records | filterDisabledTrainingRoutes %}
-      
+
       <div class="govuk-grid-column-one-third">
         <div class="status-card status-card--draft">
           {% set draftRecordCount = records | where("status", "Draft") | length %}
@@ -64,7 +64,7 @@
     </div>
 
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
-        
+
       <div class="govuk-grid-column-one-quarter">
         <div class="status-card status-card--qts-recommended">
           {% set qtsRecommendedRecordCount = records | where("status", "QTS recommended") | length %}
