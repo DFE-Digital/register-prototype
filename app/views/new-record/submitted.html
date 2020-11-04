@@ -1,6 +1,6 @@
 {% extends "_templates/_new-record.html" %}
 
-{% set pageHeading = "Trainee submitted for TRN" %}
+{% set pageHeading = "Record submitted" %}
 
 {# {% set formAction = "./save" %} #}
 
@@ -18,7 +18,7 @@
 
 {% set panelTitleText %}
 
-  Record submitted for {{ record.personalDetails.shortName or "trainee" }}
+  Record submitted {{ ("for " + record.personalDetails.shortName) if record.personalDetails.shortName }}
 
 {% endset %}
 
@@ -28,17 +28,15 @@
   classes: "govuk-!-margin-bottom-6"
 }) }}
 
-<p class="govuk-body">The Department for Education will issue a TRN within 3 working days.</p>
+<p class="govuk-body">The Department for Education (DfE) will issue a teacher reference number (TRN) within 3 working days. </p>
 
-<p class="govuk-body govuk-!-margin-bottom-7">Keep the trainee record up to date and record the outcome of their training, even if you do not recommend them for a teacher status.</p>
+<p class="govuk-body govuk-!-margin-bottom-7">DfE will contact trainees to give them their TRN.</p>
 
 {{ govukButton({
   text: "Add another record",
   href: "/new-record/new"
 }) }}
 
-<p class="govuk-body">or</p>
-
-<p class="govuk-body"><a href="/records" class="govuk-link">Check trainee statuses from your list of records</a></p>
+<p class="govuk-body">or <a href="/records" class="govuk-link">check trainee statuses and manage records</a> </p>
 
 {% endblock %}

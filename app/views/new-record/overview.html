@@ -76,22 +76,6 @@
     }
   } if record | requiresSection("diversity"),
   {
-    text: "Degree",
-    href: "degree/confirm" if (record.degree.items | length) else "degree/add",
-    id: "qualification-degree",
-    tag: {
-      classes: record.degree | getStatusText | getStatusClass,
-      text: record.degree | getStatusText
-    }
-  } if record | requiresSection("degree")
-  ]
-}) if not closed }}
-
-{# }<h2 class="govuk-heading-m">Degree</h2>
-{{ appTaskList({
-  classes: "govuk-!-margin-bottom-8",
-  items: [
-  {
     text: "GCSE",
     href: "gcse-details" | reviewIfInProgress(record.gcse, 'gcse'),
     id: "qualification-gcse",
@@ -110,8 +94,7 @@
     }
   } if record | requiresSection("degree")
   ]
-}) if not closed }} #}
-
+}) if not closed }}
 
 <h2 class="govuk-heading-m">Review and submit</h2>
 

@@ -2,13 +2,18 @@
 
 {% block content %}
 
-    <h1 class="govuk-heading-l">{{serviceName}}</h1>
-      <p class="govuk-body govuk-!-margin-bottom-6">Register trainees with the Department for Education and record the outcome of their training.</p>
-    {{ govukButton({
-      text: "Add a trainee",
-      href: "./new-record/new",
-      isStartButton: true
-    }) }}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">{{serviceName}}</h1>
+        <p class="govuk-body-l">Register trainees with the Department for Education and record the outcome of their training.</p>
+        {{ govukButton({
+          text: "Add a trainee",
+          href: "./new-record/new",
+          isStartButton: true
+        }) }}
+      </div>
+    </div>
+
 
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
