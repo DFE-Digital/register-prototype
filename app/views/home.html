@@ -40,69 +40,39 @@
 
     <h2 class="govuk-heading-m">Trainee status overview</h2>
 
+    {% set records = data.records | filterDisabledTrainingRoutes %}
+
+    {% macro statusCard(records, status) %}
+      <a href="/records?filterStatus={{status}}" class="status-card status-card--{{status | lower | kebabCase }}">
+        {% set recordCount = records | where("status", status) | length %}
+        <span class="status-card__count">{{recordCount}}</span>
+        {{status}}
+      </a>
+    {% endmacro %}
+
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
-
-      {% set records = data.records | filterDisabledTrainingRoutes %}
-
-      <div class="govuk-grid-column-one-third">
-        <div class="status-card status-card--draft">
-          {% set draftRecordCount = records | where("status", "Draft") | length %}
-          <span class="status-card__count">{{draftRecordCount}}</span>
-          Draft
+      {% set statuses = ['Draft', 'Pending TRN', 'TRN received'] %}
+      {% for status in statuses %}
+        <div class="govuk-grid-column-one-third">
+          {{ statusCard(records, status) }}
         </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="status-card status-card--pending-trn">
-          {% set pendingTrnRecordCount = records | where("status", "Pending TRN") | length %}
-          <span class="status-card__count">{{pendingTrnRecordCount}}</span>
-          Pending TRN
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <div class="status-card status-card--trn-received">
-          {% set trnReceivedRecordCount = records | where("status", "TRN received") | length %}
-          <span class="status-card__count">{{trnReceivedRecordCount}}</span>
-          TRN received
-        </div>
-      </div>
-
+      {% endfor %}
     </div>
-
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
-
-      <div class="govuk-grid-column-one-quarter">
-        <div class="status-card status-card--qts-recommended">
-          {% set qtsRecommendedRecordCount = records | where("status", "QTS recommended") | length %}
-          <span class="status-card__count">{{qtsRecommendedRecordCount}}</span>
-          QTS recommended
+      {% set statuses = ['QTS recommended', 'QTS awarded', 'Deferred', 'Withdrawn'] %}
+      {% for status in statuses %}
+        <div class="govuk-grid-column-one-quarter">
+          {{ statusCard(records, status) }}
         </div>
-      </div>
-      <div class="govuk-grid-column-one-quarter">
-        <div class="status-card status-card--qts-awarded">
-          {% set qtsAwardedRecordCount = records | where("status", "QTS awarded") | length %}
-          <span class="status-card__count">{{qtsAwardedRecordCount}}</span>
-          QTS awarded
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-quarter">
-        <div class="status-card status-card--deferred">
-          {% set deferredRecordCount = records | where("status", "Deferred") | length %}
-          <span class="status-card__count">{{deferredRecordCount}}</span>
-          Deferred
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-quarter">
-        <div class="status-card status-card--withdrawn">
-          {% set withdrawnRecordCount = records | where("status", "Withdrawn") | length %}
-          <span class="status-card__count">{{withdrawnRecordCount}}</span>
-          Withdrawn
-        </div>
-      </div>
-
+      {% endfor %}
     </div>
 
   </div>
 
 </div>
 
+
+
 {% endblock %}
+
+

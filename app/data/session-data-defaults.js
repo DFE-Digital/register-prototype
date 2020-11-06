@@ -1,6 +1,7 @@
 let countries               = require('./countries')
 let ethnicities             = require('./ethnicities')
 let nationalities           = require('./nationalities')
+let statuses                = require('./status')
 
 // Degree stuff
 let awards                  = require('./awards') // Types of degree
@@ -68,6 +69,7 @@ module.exports = {
   records,
   settings,
   subjects,
+  statuses,
   trainingRoutes,
   ukComparableDegrees,
   withdrawalReasons
