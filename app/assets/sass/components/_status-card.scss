@@ -18,21 +18,11 @@
 
 }
 
-
 .status-card, .status-card:visited {
   color: inherit;
 }
 
 // Colours sourced from here: https://github.com/alphagov/govuk-frontend/blob/61aabca3d440edee6bdecdd20ea54a241c7bbdd5/src/govuk/components/tag/_index.scss#L42
-
-// Colours
-// $status-card-draft-colour: govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 30);
-// $status-card-draft-background-colour: govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 90);
-// $status-card-draft-hover-colour: govuk-shade($status-card-draft-background-colour, 10%);
-
-// $status-card-qts-recommended-colour: govuk-shade(govuk-colour("purple"), 20);
-// $status-card-qts-recommended-background-colour: govuk-tint(govuk-colour("purple"), 80);
-// $status-card-qts-recommended-hover-colour: govuk-tint(govuk-colour("purple"), 70);
 
 $statuses: (
   "draft": (
@@ -72,11 +62,6 @@ $statuses: (
   )
 );
 
-
-// $status-card-qts-recommended-colour: 
-// $status-card-qts-recommended-background-colour: 
-// $status-card-qts-recommended-hover-colour: 
-
 @each $status, $data in $statuses
 {
   .status-card--#{$status} {
@@ -89,61 +74,6 @@ $statuses: (
     }
   }
 }
-
-// .status-card--draft {
-//   &, &:link, &:visited {
-//     color: $status-card-draft-colour;
-//     background: $status-card-draft-background-colour;
-//   }
-//   &:hover {
-//     background: $status-card-draft-hover-colour;
-//   }
-// }
-
-// .status-card--qts-recommended {
-//   &, &:link, &:visited {
-//     color: $status-card-qts-recommended-colour;
-//     background: $status-card-qts-recommended-background-colour;
-//   }
-//   &:hover {
-//     background: $status-card-qts-recommended-hover-colour;
-//   }
-// }
-
-// .status-card--qts-awarded {
-//   &, &:link, &:visited {
-//     color:  #fff;
-//     background: $govuk-brand-colour;
-//   }
-// }
-
-// .status-card--pending-trn {
-//   &, &:link, &:visited {
-//     color: govuk-shade(govuk-colour("turquoise"), 60);
-//     background: govuk-tint(govuk-colour("turquoise"), 70);
-//   }
-// }
-
-// .status-card--trn-received {
-//   &, &:link, &:visited {
-//     color: govuk-shade(govuk-colour("blue"), 30);
-//     background: govuk-tint(govuk-colour("blue"), 80);
-//   }
-// }
-
-// .status-card--deferred {
-//   &, &:link, &:visited {
-//     color: govuk-shade(govuk-colour("yellow"), 65);
-//     background: govuk-tint(govuk-colour("yellow"), 75);
-//   }
-// }
-
-// .status-card--withdrawn {
-//   &, &:link, &:visited {
-//     color: govuk-shade(govuk-colour("red"), 30);
-//     background: govuk-tint(govuk-colour("red"), 80);
-//   }
-// }
 
 .status-card__count {
   &, &:link, &:visited {
