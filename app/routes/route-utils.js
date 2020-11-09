@@ -90,7 +90,7 @@ exports.updateRecord = (data, newRecord, timelineMessage) => {
   }
   data.record = newRecord
 
-  if (newRecord.personalDetails && !newRecord.personalDetails.fullName){
+  if (newRecord.personalDetails){
     Object.defineProperty(newRecord.personalDetails, 'fullName', {
       get() {
         let names = []
@@ -102,7 +102,7 @@ exports.updateRecord = (data, newRecord, timelineMessage) => {
       enumerable: true
     })
   }
-  if (newRecord.personalDetails && !newRecord.personalDetails.shortName){
+  if (newRecord.personalDetails){
     Object.defineProperty(newRecord.personalDetails, 'shortName', {
       get() {
         let names = []

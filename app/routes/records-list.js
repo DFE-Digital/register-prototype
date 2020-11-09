@@ -176,6 +176,8 @@ module.exports = router => {
 
     }
 
+    filteredRecords.sort((a, b) => new Date(b.updatedDate).getTime() - new Date(a.updatedDate).getTime())
+
     if (query.sortOrder){
       switch (query.sortOrder) {
         case "lastName":
@@ -198,7 +200,7 @@ module.exports = router => {
         //   filteredRecords.sort((a,b) => new Date(b.submittedDate).getTime() - new Date(a.submittedDate).getTime())
         //   break
         default:
-          filteredRecords.sort((a, b) => new Date(b.updatedDate).getTime() - new Date(a.updatedDate).getTime())
+          // filteredRecords.sort((a, b) => new Date(b.updatedDate).getTime() - new Date(a.updatedDate).getTime())
           break
       }
     }
