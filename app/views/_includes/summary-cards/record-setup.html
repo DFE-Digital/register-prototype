@@ -2,7 +2,7 @@
 {% set recordBaseRows = [
   {
     key: {
-      text: "Route"
+      text: "Type of training"
     },
     value: {
       text: record.route or "Not provided"
@@ -48,7 +48,6 @@
 
 {{ appSummaryCard({
   classes: "govuk-!-margin-bottom-6",
-  titleText: "Record",
+  titleText: "Type of training",
   html: recordBaseHtml
 }) }}
-
