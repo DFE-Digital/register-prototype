@@ -2,15 +2,24 @@
 {% extends "_templates/_page.html" %}
 {% set backLink = '/home' %}
 
-{% set pageHeading = 'Cookies' %}
+{% set pageHeading = 'Cookies on Register trainee teachers' %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
-    <h1 class="govuk-heading-l">{{pageHeading}}</h1>
-    <p class="govuk-body">Content goes here</p>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-9">{{pageHeading}}</h1>
+    <p class="govuk-body">This service puts small files (known as ‘cookies’) onto your computer, phone or tablet to collect information about how you use the service.</p>
+    <h2 class="govuk-heading-m">What cookies we use</h2>
+    <p class="govuk-body">We only use essential cookies.</p>
+    <h3 class="govuk-heading-s">A cookie to remind us who you are when you're signed in</h3>
+    <p class="govuk-body">"Register_trainee_teachers_session" is a cookie that:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>reminds the service who you are when you’re signed in</li>
+      <li>expires when you sign out, or after 6 hours on the service</li>
+    </ul>
   </div>
 </div>
-
 {% endblock %}
+
+Cookie name: "register_trainee_teachers_session"
