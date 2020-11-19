@@ -7,8 +7,15 @@ seedRecords.push({
     "items": []
   },
   "route": "Provider-led",
-  "traineeId": "73RTQRQL",
+  "trainingDetails": {
+    "traineeStarted": "false",
+    "traineeId": "2020/21-053",
+    "status": [
+      "Completed"
+    ]
+  },
   "programmeDetails": {
+    "isPublishCourse" : false,
     "subject": "Physical education",
     "ageRange": "14 - 19 programme",
     "startDate": [
@@ -118,7 +125,9 @@ seedRecords.push({
 
 seedRecords.push({
   status: "TRN received",
-  traineeId: "FLD38X59",
+  trainingDetails: {
+    traineeId: "2020/21-023"
+  },
   submittedDate: "2020-05-28T12:37:21.384Z",
   updatedDate: "2020-08-04T04:26:19.269Z",
   trn: 8405624,
@@ -132,7 +141,9 @@ seedRecords.push({
 
 seedRecords.push({
   status: "TRN received",
-  traineeId: "TLQGB1N1",
+  trainingDetails: {
+    traineeId: "2020/21-074"
+  },
   submittedDate: "2020-06-28T12:37:21.384Z",
   updatedDate: "2020-07-04T04:26:19.269Z",
   trn: 8594837,
@@ -145,7 +156,9 @@ seedRecords.push({
 
 seedRecords.push({
   status: "TRN received",
-  traineeId: "K9BKXNTX",
+  trainingDetails: {
+    traineeId: "2020/21-092"
+  },
   submittedDate: "2020-05-28T12:37:21.384Z",
   updatedDate: "2020-07-15T04:26:19.269Z",
   trn: 8694898,
@@ -156,5 +169,5 @@ seedRecords.push({
   },
 })
 
-console.log({seedRecords})
+// console.log({seedRecords})
 module.exports = seedRecords

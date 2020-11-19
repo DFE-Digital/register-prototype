@@ -23,6 +23,9 @@ const sortBySubmittedDate = (x, y) => {
   return new Date(y.submittedDate) - new Date(x.submittedDate);
 }
 
+const generateTrainingDetails = require('../app/data/generators/training-details')
+
+
 // Route into teaching
 const trainingRoutes = Object.keys(trainingRouteData.trainingRoutes)
 const enabledTrainingRoutes = trainingRouteData.enabledTrainingRoutes
@@ -51,10 +54,19 @@ const generateFakeApplication = (params = {}) => {
   const status = params.status || faker.helpers.randomize(statuses)
   const events = generateEvents(faker, { status })
 
+
+
   let route = (params.route) ? params.route : undefined
 
   // NB: this will in effect overwrite the route
-  const isPublishCourse = (params.isPublishCourse !== undefined) ? params.isPublishCourse : faker.helpers.randomize([true, false])
+  let isPublishCourse
+  if (params?.programmeDetails?.isPublishCourse !== undefined){
+    if (params.programmeDetails.isPublishCourse == 'true'){
+      isPublishCourse = true
+    }
+    else isPublishCourse = false
+  }
+  else isPublishCourse = faker.helpers.randomize([true, false])
 
   // Programme details
   let programmeDetails
@@ -109,6 +121,8 @@ const generateFakeApplication = (params = {}) => {
     withdrawalDate = params.updatedDate
   }
 
+  const trainingDetails = (params.trainingDetails === null) ? undefined : { ...generateTrainingDetails({submittedDate, status}), ...params.trainingDetails }
+
   // Personal details
   const personalDetails = (params.personalDetails === null) ? null : { ...generatePersonalDetails(faker), ...params.personalDetails }
 
@@ -143,7 +157,6 @@ const generateFakeApplication = (params = {}) => {
   return {
     id: params.id || faker.random.uuid(),
     route,
-    traineeId: params.traineeId || faker.random.alphaNumeric(8).toUpperCase(),
     status,
     trn,
     updatedDate,
@@ -154,6 +167,7 @@ const generateFakeApplication = (params = {}) => {
     diversity,
     isInternationalTrainee,
     contactDetails,
+    trainingDetails,
     programmeDetails,
     gcse,
     degree,
