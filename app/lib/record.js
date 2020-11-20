@@ -29,8 +29,9 @@ exports.requiresField = (record, fieldName) => {
 exports.requiresSection = (record, sectionName) => {
   let route = _.get(record, "route")
   if (!route) {
-    console.log("Missing route in requiresSection")
-    return false
+    console.log("No route provided, using default sections")
+    let requiredSections = trainingRouteData.defaultSections
+    return requiredSections.includes(sectionName)
   }
   let requiredSections = _.get(trainingRoutes, `${route}.sections`)
   return requiredSections.includes(sectionName)

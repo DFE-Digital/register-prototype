@@ -1,0 +1,89 @@
+{% set commencementDateLabel -%}
+  {%- if record.trainingDetails.traineeStarted | falsify -%}
+    {{- record.trainingDetails.commencementDate | govukDate -}}
+  {%- else -%}
+    Trainee yet to start course
+  {%- endif -%}
+{%- endset %}
+
+{% set traineeStarted = record.trainingDetails.traineeStarted | falsify %}
+
+{% set trainingDetailsRows = [
+  {
+    key: {
+      text: "Commencement date"
+    },
+    value: {
+      text: (record.trainingDetails.commencementDate | govukDate) if traineeStarted else "Trainee yet to start course"
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/training-details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "commencement date"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
+      text: "Trainee ID"
+    },
+    value: {
+      text: record.trainingDetails.traineeId or "Not provided"
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/training-details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "trainee ID"
+        }
+      ]
+    } if canAmend
+  }
+  ] %}
+
+
+{% set trainingDetailsHtml %}
+  {{ govukSummaryList({
+    rows: trainingDetailsRows
+  }) }}
+{% endset %}
+
+
+
+
+{% set complete = true if (record.trainingDetails | sectionIsCompleted ) %}
+
+{% set status  = record.trainingDetails | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("trainingDetails") %}
+
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
+
+  {% set incompleteType = "warning" if errorList %}
+  {% set incompleteId = "training-details" %}
+  {% if status == "In progress" %}
+    {% set incompleteText = "Training details not marked as complete" %}
+    {% set incompleteLink = recordPath + "/training-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Continue section" %}
+  {% else %}
+    {% set incompleteText = "Training details not started" %}
+    {% set incompleteLink = recordPath + "/training-details" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
+  {% endif %}
+
+  {% include "_includes/incomplete.njk" %}
+
+{% else %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Training details",
+    html: trainingDetailsHtml
+  }) }}
+  
+{% endif %}

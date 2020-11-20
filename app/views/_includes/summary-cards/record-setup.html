@@ -22,7 +22,7 @@
       text: "Trainee ID"
     },
     value: {
-      text: record.traineeId or "Not provided"
+      text: record.trainingDetails.traineeId or "Not provided"
     },
     actions: {
       items: [
@@ -45,9 +45,20 @@
 
 
 
+{% set complete = true if (record.recordSetup | sectionIsCompleted ) %}
 
-{{ appSummaryCard({
-  classes: "govuk-!-margin-bottom-6",
-  titleText: "Type of training",
-  html: recordBaseHtml
-}) }}
+{% set status  = record.recordSetup | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("recordSetup") %}
+
+{% if not sectionIsRequired %}
+  {# Section not required #}
+
+{% else %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Type of training",
+    html: recordBaseHtml
+  }) }}
+  
+{% endif %}

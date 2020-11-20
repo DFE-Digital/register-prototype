@@ -9,7 +9,7 @@
       text: "Trainee ID"
     },
     value: {
-      text: record.traineeId or 'Not provided'
+      text: record.trainingDetails.traineeId or 'Not provided'
     },
     actions: {
       items: [
@@ -171,22 +171,52 @@
   {% endif %}
 {% endset %}
 
+{% set traineeStarted = record.trainingDetails.traineeStarted | falsify %}
+{{traineeStarted | log}}
+{{record | log}}
+
+{% set commencementDateLabel %}
+  {% if traineeStarted %}
+    {{(record.trainingDetails.commencementDate | govukDate) or 'Not provided'}}
+  {% else %}
+    Trainee yet to start course 
+  {% endif %}
+{% endset %}
+
 {% set datesRows = [{
-  key: {
-    text: "Last updated"
+    key: {
+      text: "Last updated"
+    },
+    value: {
+      html: updatedDate
+    }
   },
-  value: {
-    html: updatedDate
-  }
-},
-{
-  key: {
-    text: "Record created"
+  {
+    key: {
+      text: "Record created"
+    },
+    value: {
+      text: record.submittedDate | govukDate or 'Not provided'
+    }
   },
-  value: {
-    text: record.submittedDate | govukDate or 'Not provided'
+  {
+    key: {
+      text: "Trainee commencement date"
+    },
+    value: {
+      text: commencementDateLabel or "Not provided"
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/training-details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "trainee commencement date"
+        }
+      ]
+    } if canAmend
   }
-}] %}
+] %}
 
 {% set studentRecordRows = studentRecordRows | combineArrays(datesRows) %}
 
@@ -198,6 +228,6 @@
 
 {{ appSummaryCard({
   classes: "govuk-!-margin-bottom-6",
-  titleText: "Record details",
+  titleText: "Training details",
   html: studentRecordHtml
 }) }}

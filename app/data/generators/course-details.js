@@ -165,7 +165,6 @@ module.exports = (params) => {
       startDate,
       duration,
       endDate,
-      allocatedPlace,
       qualifications,
       summary,
       studyMode

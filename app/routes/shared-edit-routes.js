@@ -9,10 +9,100 @@ const utils = require('./route-utils')
 module.exports = router => {
 
   // =============================================================================
+  // Training details
+  // =============================================================================
+
+  // Clear commencement date if trainee hasn't started
+  router.post(['/:recordtype/:uuid/training-details','/:recordtype/training-details'], function (req, res) {
+    let data = req.session.data
+    let record = data.record
+    let traineeStarted = _.get(record, 'trainingDetails.traineeStarted')
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+    if (traineeStarted == "false"){
+      delete record.trainingDetails.commencementDate
+    }   
+    res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+
+  })
+
+  // =============================================================================
   // Programme details
   // =============================================================================
 
+  // Picking a course or a route
   router.post(['/:recordtype/:uuid/programme-details','/:recordtype/programme-details'], function (req, res) {
+    const data = req.session.data
+    let record = data.record
+    let referrer = utils.getReferrer(req.query.referrer)
+    let enabledRoutes = data.settings.enabledTrainingRoutes
+    // Todo: make this selection of providers dynamic
+    let providerCourses = data.courses["University of Southampton"].courses
+    let selectedCourse = _.get(data, 'record.programmeDetailsSelectedCourse')
+
+    let recordPath = utils.getRecordPath(req)
+    // No data, return to page
+    if (!selectedCourse){
+      res.redirect(`${recordPath}/programme-details${referrer}`)
+    }
+    // One of the routes we support
+    if (enabledRoutes.includes(selectedCourse)){
+      if (_.get(record, 'programmeDetails.isPublishCourse')){
+        // User has swapped from publish to non publish course. Delete existing data
+        delete record.programmeDetails
+      }
+      record.route = selectedCourse
+      res.redirect(`${recordPath}/programme-details/details${referrer}`)
+    }
+    else if (selectedCourse == "Other"){
+      res.redirect(`/new-record/route-not-supported${referrer}`)
+    }
+    else {
+      courseIndex = providerCourses.findIndex(course => course.id == selectedCourse)
+      if (courseIndex < 0){
+        console.log(`Provider course ${selectedCourse} not recognised`)
+        res.redirect(`${recordPath}/programme-details${referrer}`)
+      }
+      else {
+        record.programmeDetailsTemp = providerCourses[courseIndex]
+        res.redirect(`${recordPath}/programme-details/confirm-publish-details${referrer}`)
+      }
+    }
+  })
+
+  // Copy over temp programe details
+  router.post(['/:recordtype/:uuid/confirm-publish-details','/:recordtype/confirm-publish-details'], function (req, res) {
+    const data = req.session.data
+    let record = data.record
+    let referrer = utils.getReferrer(req.query.referrer)
+    let recordPath = utils.getRecordPath(req)
+    record.programmeDetails = record.programmeDetailsTemp
+    delete record.programmeDetailstemp
+    record.route = record.programmeDetails.route
+
+    let isAllocated = recordUtils.hasAllocatedPlaces(record)
+    if (isAllocated) {
+      res.redirect(`${recordPath}/programme-details/allocated-place${referrer}`)
+    }
+    else {
+      record.programmeDetails.status = "Completed"
+      if (referrer){
+        if (req.params.recordtype == 'record'){
+          utils.updateRecord(data, data.record)
+        }
+        res.redirect(req.query.referrer)
+      }
+      else {
+        if (req.params.recordtype == 'record'){
+          res.redirect(`${recordPath}/details-and-education`)
+        }
+        res.redirect(`${recordPath}/overview`)
+      }
+    }
+  })
+
+
+  router.post(['/:recordtype/:uuid/programme-details/details','/:recordtype/programme-details/details'], function (req, res) {
     const data = req.session.data
     let record = data.record
     let referrer = utils.getReferrer(req.query.referrer)

@@ -1,15 +1,15 @@
 
 {% set expectedDuration = 'Not provided' %}
-{% if record.programmeDetails.duration | falsify %}
-  {% set expectedDuration = record.programmeDetails.duration + " years" %}
+{% if programmeDetails.duration | falsify %}
+  {% set expectedDuration = programmeDetails.duration + " years" %}
 {% endif %}
 
 {% set courseName %}
-  {{record.programmeDetails.subject}} ({{record.programmeDetails.code}})<br>
-  {{record.programmeDetails.summary}}
+  {{programmeDetails.subject}} ({{programmeDetails.code}})<br>
+  {{programmeDetails.summary}}
 {% endset %}
 
-{% set canAmend = false %}
+{# {% set canAmend = false %} #}
 
 {% set programmeDetailsRows = [
   {
@@ -23,18 +23,18 @@
       items: [
         {
           href: recordPath + "/programme-details" | addReferrer(referrer),
-          text: "Change",
+          text: "Change course",
           visuallyHiddenText: "training course"
         }
       ]
-    } if canAmend and false
+    } if canAmend
   },
   {
     key: {
       text: "Route"
     },
     value: {
-      text: record.programmeDetails.route | safe or 'Not provided'
+      text: programmeDetails.route | safe or 'Not provided'
     },
     actions: {
       items: [
@@ -51,7 +51,7 @@
       text: "Subject"
     },
     value: {
-      text: record.programmeDetails.subject or 'Not provided'
+      text: programmeDetails.subject or 'Not provided'
     },
     actions: {
       items: [
@@ -61,14 +61,14 @@
           visuallyHiddenText: "subject"
         }
       ]
-    } if canAmend
+    } if canAmend and false and false
   },
   {
     key: {
       text: "Level"
     },
     value: {
-      text: record.programmeDetails.level | sentenceCase or 'Not provided'
+      text: programmeDetails.level | sentenceCase or 'Not provided'
     },
     actions: {
       items: [
@@ -78,14 +78,14 @@
           visuallyHiddenText: "level"
         }
       ]
-    } if canAmend
+    } if canAmend and false
   },
   {
     key: {
       text: "Age range"
     },
     value: {
-      text: record.programmeDetails.ageRange or 'Not provided'
+      text: programmeDetails.ageRange or 'Not provided'
     },
     actions: {
       items: [
@@ -95,14 +95,14 @@
           visuallyHiddenText: "age range"
         }
       ]
-    } if canAmend
+    } if canAmend and false
   },
   {
     key: {
-      text: "Programme start date"
+      text: "Start date"
     },
     value: {
-      text: record.programmeDetails.startDate | govukDate("MMMM YYYY") or 'Not provided'
+      text: programmeDetails.startDate | govukDate("MMMM YYYY") or 'Not provided'
     },
     actions: {
       items: [
@@ -112,14 +112,14 @@
           visuallyHiddenText: "programme start date"
         }
       ]
-    } if canAmend
+    } if canAmend and false
   },
   {
     key: {
-      text: "Programme end date"
+      text: "End date"
     },
     value: {
-      text: record.programmeDetails.endDate | govukDate("MMMM YYYY") or 'Not provided'
+      text: programmeDetails.endDate | govukDate("MMMM YYYY") or 'Not provided'
     },
     actions: {
       items: [
@@ -129,14 +129,14 @@
           visuallyHiddenText: "programme end date"
         }
       ]
-    } if canAmend
-  },
+    } if canAmend and false
+  } if false,
   {
     key: {
       text: "Duration"
     },
     value: {
-      text: record.programmeDetails.duration + (' year' | pluralise(record.programmeDetails.duration)) or 'Not provided'
+      text: programmeDetails.duration + (' year' | pluralise(programmeDetails.duration)) or 'Not provided'
     },
     actions: {
       items: [
@@ -146,14 +146,14 @@
           visuallyHiddenText: "duration"
         }
       ]
-    } if canAmend
+    } if canAmend and false
   },
   {
     key: {
       text: "Trainee using an allocated place"
     },
     value: {
-      text: record.programmeDetails.allocatedPlace or 'Not provided'
+      text: programmeDetails.allocatedPlace or 'Not provided'
     },
     actions: {
       items: [
@@ -179,8 +179,8 @@
 
 
 
-{% set complete = true if (record.programmeDetails | sectionIsCompleted ) %}
-{% set status  = record.programmeDetails | getStatusText %}
+{% set complete = true if (programmeDetails | sectionIsCompleted ) %}
+{% set status  = programmeDetails | getStatusText %}
 
 {% if showIncomplete and not complete %}
 
@@ -201,7 +201,7 @@
 {% else %}
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
-    titleText: record.route + " programme details",
+    titleText: programmeDetails.route + " programme details",
     html: programmeDetailsHtml
   }) }}
   

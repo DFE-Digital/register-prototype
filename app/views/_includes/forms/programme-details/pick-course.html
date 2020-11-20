@@ -1,0 +1,43 @@
+{# <h1 class="govuk-heading-l">{{pageHeading}}</h1> #}
+
+{% set providerCourses = data.courses["University of Southampton"].courses | limitTo(8) %}
+
+{% set courseItems = [] %}
+
+{% for course in providerCourses %}
+  {% set courseItems = courseItems | push({
+    text: course.subject + " (" + course.code + ")",
+    value: course.id,
+    hint: {
+      text: course.summary
+    }
+  }) %}
+{% endfor %}
+
+{% set courseItems = courseItems | push({divider: 'Or'}) %}
+
+{% for route in data.settings.enabledTrainingRoutes %}
+  
+  {% set courseItems = courseItems | push({
+    value: route,
+    text: route | lower | prependWithAOrAn | sentenceCase + " course"
+  }) %}
+{% endfor %}
+{% set courseItems = courseItems | push({text: "Other"}) %}
+
+
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: courseItems
+} | decorateAttributes(record, "record.programmeDetailsSelectedCourse")) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

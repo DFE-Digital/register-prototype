@@ -43,7 +43,7 @@ module.exports = router => {
     // Search traineeId and full name
     if (searchQuery){
       filteredRecords = filteredRecords.filter(record => {
-        let recordIdMatch = (searchQuery) ? (record.traineeId.toLowerCase().includes(searchQuery.toLowerCase())) : false
+        let recordIdMatch = (searchQuery) ? (record?.trainingDetails?.traineeId.toLowerCase().includes(searchQuery.toLowerCase())) : false
         let nameMatch = false
 
         let fullName = _.get(record, "personalDetails.fullName")

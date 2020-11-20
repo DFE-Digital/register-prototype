@@ -22,7 +22,7 @@ module.exports = router => {
     utils.deleteTempData(data)
     _.set(data, 'record', { status: 'Draft' })
     _.set(data, 'record.events.items', [])
-    res.redirect('/new-record/record-setup')
+    res.redirect('/new-record/overview')
   })
 
   // Show error if route is not assessment only

@@ -1,0 +1,32 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Confirm training details" %}
+{% set backLink = './../overview' %}
+{% set backText = "Back to draft record" %}
+
+{% set formAction = "./../overview" | orReferrer(referrer) %}
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  {% include "_includes/summary-cards/training-details.html" %}
+
+  {{record.trainingDetails | log}}
+
+  {{ govukCheckboxes({
+  idPrefix: "waste",
+  name: "record[trainingDetails][status]",
+  items: [
+    {
+      value: "Completed",
+      text: "I have completed this section",
+      checked: checked(record.trainingDetails.status, "Completed")
+    }
+  ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+{% endblock %}
+

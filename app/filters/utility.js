@@ -132,6 +132,30 @@ filters.decorateAttributes = (obj, data, value) => {
   return obj
 }
 
+
+filters.limitTo = (input, limit) =>{
+
+  if(typeof limit !== 'number'){
+    return input;
+  }
+  if(typeof input === 'string'){
+    if(limit >= 0){
+      return input.substring(0, limit);
+    } else {
+      return input.substr(limit);
+    }
+  }
+  if(Array.isArray(input)){
+    limit = Math.min(limit, input.length);
+    if(limit >= 0){
+      return input.slice(0, limit);
+    } else {
+      return input.slice(input.length + limit, input.length);
+    }
+  }
+  return input;
+}
+
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app
 // -------------------------------------------------------------------

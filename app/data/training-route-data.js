@@ -1,8 +1,20 @@
+let defaultSections = [
+  // 'recordSetup',
+  'trainingDetails',
+  'programmeDetails',
+  'personalDetails',
+  'contactDetails',
+  'diversity',
+  'degree'
+]
+
 let mainTrainingRoutes = {
   "Assessment only": {
     name: "Assessment only",
     defaultEnabled: true,
     sections: [
+      // 'recordSetup',
+      'trainingDetails',
       'programmeDetails',
       'personalDetails',
       'contactDetails',
@@ -15,6 +27,8 @@ let mainTrainingRoutes = {
     defaultEnabled: true,
     hasAllocatedPlaces: true,
     sections: [
+      // 'recordSetup',
+      'trainingDetails',
       'programmeDetails',
       'personalDetails',
       'contactDetails',
@@ -45,7 +59,10 @@ extraRoutes.forEach(route => {
   trainingRoutes[route] = {
     name: route,
     defaultEnabled: false,
+    hasAllocatedPlaces: true,
     sections: [
+      // 'recordSetup',
+      'trainingDetails',
       'programmeDetails',
       'personalDetails',
       'contactDetails',
@@ -119,5 +136,6 @@ module.exports = {
   trainingRoutes,
   allocatedSubjects,
   enabledTrainingRoutes,
-  levels
+  levels,
+  defaultSections
 }

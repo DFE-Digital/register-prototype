@@ -1,11 +1,14 @@
 {% set sectionIsRequired = record | requiresSection("programmeDetails") %}
 
+{% set programmeDetails = record.programmeDetails %}
+
 {% if sectionIsRequired %}
   {% if record.route == 'Assessment Only' %}
     {% include "_includes/summary-cards/programme-details/assessment-only.html" %}
   {% elseif record.programmeDetails.isPublishCourse %}
     {% include "_includes/summary-cards/programme-details/publish-course.html" %}
   {% else %}
+    
     {% include "_includes/summary-cards/programme-details/provider-led.html" %}
   {% endif %}
 {% endif %}

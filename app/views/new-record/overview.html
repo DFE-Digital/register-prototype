@@ -32,7 +32,16 @@
       classes: 'Completed' | getStatusClass,
       text: 'Completed'
     }
-  },
+  } if record | requiresSection("recordSetup"),
+  {
+    text: "Training details",
+    href: "training-details" | reviewIfInProgress(record.trainingDetails),
+    id: "training-details",
+    tag: {
+      classes: record.trainingDetails | getStatusText | getStatusClass,
+      text: record.trainingDetails | getStatusText
+    }
+  } if record | requiresSection("trainingDetails"),
   {
     text: "Programme details",
     href: "programme-details" | reviewIfInProgress(record.programmeDetails),

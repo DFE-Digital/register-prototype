@@ -11,6 +11,8 @@
 
 {% set canAmend = record.status | getAmendsAllowed %}
 
+{% set hasCommencementDate = record.trainingDetails.traineeStarted | falsify %}
+
 {% set recordPath = "/record/" + record.id %}
 
 <div class="govuk-grid-row">
@@ -21,21 +23,28 @@
     {% if (record.status | getCanDefer) or (record.status | getCanReinstate) %}
       <div class="record-actions">
         {% if record.status | getCanRecommendForQts %}
-          {{ govukButton({
-            text: "Record QTS outcome",
-            href: referrer + '/qts/outcome',
-            classes: "govuk-!-margin-bottom-0"
+          {% if hasCommencementDate%}
+            {{ govukButton({
+              text: "Record QTS outcome",
+              href: referrer + '/qts/outcome',
+              classes: "govuk-!-margin-bottom-0"
+            }) }}
+          {% else %}
+            {{ govukInsetText({
+              text: "This record is pending a commencement date",
+              classes: "govuk-!-margin-0"
+            }) }}
+          {% endif %}
+        {% elseif record.status == "Pending TRN" %}
+          {{ govukInsetText({
+            text: "This record is pending a TRN",
+            classes: "govuk-!-margin-0"
           }) }}
-          {% elseif record.status == "Pending TRN" %}
-            {{ govukInsetText({
-              text: "This record is pending a TRN",
-              classes: "govuk-!-margin-0"
-            }) }}
-          {% elseif record.status == "Deferred" %}
-            {{ govukInsetText({
-              text: "This record is deferred",
-              classes: "govuk-!-margin-0"
-            }) }}
+        {% elseif record.status == "Deferred" %}
+          {{ govukInsetText({
+            text: "This record is deferred",
+            classes: "govuk-!-margin-0"
+          }) }}
         {% endif %}
 
         <div class="record-actions__links">

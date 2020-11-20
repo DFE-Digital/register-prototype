@@ -35,6 +35,19 @@ filters.isString = str => {
   return _.isString(str)
 }
 
+// Assessment only => an Assesment only
+// Provider-led => a provider led
+filters.prependWithAOrAn = string => {
+  var vowelRegex = '^[aieouAIEOU].*'
+  var matched = string.match(vowelRegex)
+  if(matched){
+    return `an ${string}`
+  }
+  else{
+    return `a ${string}`
+  }
+}
+
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app
 // -------------------------------------------------------------------
