@@ -8,7 +8,18 @@
 
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
-  <p class="govuk-body">These are the course details as listed on Publish teacher training courses. If the details are incorrect, your organisation should update the course on Publish.</p>
+  <p class="govuk-body">These are the course details as listed on Publish teacher training courses.</p>
+
+  {% set detailsHtml %}
+    <p class="govuk-body">If the details are incorrect for all trainees, you should <a href="#">update the course on Publish</a>.</p>
+    <p class="govuk-body">If the details are wrong for this trainee only, you can edit them here.</p>
+
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: "What if the details are incorrect?",
+    html: detailsHtml
+  }) }}
   {% set programmeDetails = record.programmeDetailsTemp %}
   {% include "_includes/summary-cards/programme-details/publish-course.html" %}
 
@@ -27,6 +38,9 @@
   {{ govukButton({
     text: "Confirm course"
   }) }}
+
+  <p class="govuk-body"><a href="#" class="govuk-link">Edit details for this trainee only</a></p>
+  
 
 {% endblock %}
 

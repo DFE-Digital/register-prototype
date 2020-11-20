@@ -10,7 +10,7 @@
     namePrefix: "record[trainingDetails][commencementDate]",
     fieldset: {
       legend: {
-        text: "Commencement date",
+        text: "Start date",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -45,7 +45,7 @@
     }
   },
   hint: {
-    text: "If the trainee has not started yet, you can still submit for TRN, but will need to provide their commencement date later"
+    text: "If the trainee has not started yet, you can still submit their record, but will need to provide their start date later"
   },
   items: [
     {
@@ -57,7 +57,7 @@
     },
     {
       value: "false",
-      text: "No, trainee yet to start"
+      text: "No, the trainee has not started yet"
     }
   ]
 } | decorateAttributes(record, "record.trainingDetails.traineeStarted")) }}

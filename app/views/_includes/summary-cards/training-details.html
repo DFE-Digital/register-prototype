@@ -11,7 +11,7 @@
 {% set trainingDetailsRows = [
   {
     key: {
-      text: "Commencement date"
+      text: "Start date"
     },
     value: {
       text: (record.trainingDetails.commencementDate | govukDate) if traineeStarted else "Trainee yet to start course"
@@ -21,7 +21,7 @@
         {
           href: recordPath + "/training-details" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "commencement date"
+          visuallyHiddenText: "start date"
         }
       ]
     } if canAmend
