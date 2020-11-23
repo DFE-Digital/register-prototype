@@ -46,10 +46,7 @@ seedRecords.push({
       "12",
       "1987"
     ],
-    "sex": "Female",
-    "status": [
-      "Completed"
-    ]
+    "sex": "Female"
   },
   "contactDetails": {
     "internationalAddress": "",
