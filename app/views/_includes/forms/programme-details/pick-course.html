@@ -2,12 +2,22 @@
 
 {% set providerCourses = data.courses["University of Southampton"].courses | limitTo(8) %}
 
+{% if record.programmeDetails.isPublishCourse | falsify %}
+  {% set selectedCourse = record.programmeDetails.id %}
+{% elseif record.programmeDetails %}
+  {% set selectedCourse = record.programmeDetails.route %}
+{% endif %}
+
+{% set test = {selectedCourse: selectedCourse} %}
+
+
 {% set courseItems = [] %}
 
 {% for course in providerCourses %}
   {% set courseItems = courseItems | push({
     text: course.subject + " (" + course.code + ")",
     value: course.id,
+    checked: checked(selectedCourse, course.id),
     hint: {
       text: course.summary
     }
@@ -20,10 +30,12 @@
   
   {% set courseItems = courseItems | push({
     value: route,
-    text: route | lower | prependWithAOrAn | sentenceCase + " course"
+    text: route | lower | prependWithAOrAn | sentenceCase + " course",
+    checked: checked(selectedCourse, course.id)
   }) %}
 {% endfor %}
 {% set courseItems = courseItems | push({text: "Other"}) %}
+
 
 
 
@@ -36,7 +48,7 @@
     }
   },
   items: courseItems
-} | decorateAttributes(record, "record.programmeDetailsSelectedCourse")) }}
+} | decorateAttributes(record, "record.selectedCourseTemp")) }}
 
 {{ govukButton({
   text: "Continue"

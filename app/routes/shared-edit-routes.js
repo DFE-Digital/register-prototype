@@ -12,7 +12,7 @@ module.exports = router => {
   // Training details
   // =============================================================================
 
-  // Clear commencement date if trainee hasn't started
+  // Clear commencement date if trainee hasn’t started
   router.post(['/:recordtype/:uuid/training-details','/:recordtype/training-details'], function (req, res) {
     let data = req.session.data
     let record = data.record
@@ -38,7 +38,7 @@ module.exports = router => {
     let enabledRoutes = data.settings.enabledTrainingRoutes
     // Todo: make this selection of providers dynamic
     let providerCourses = data.courses["University of Southampton"].courses
-    let selectedCourse = _.get(data, 'record.programmeDetailsSelectedCourse')
+    let selectedCourse = _.get(data, 'record.selectedCourseTemp')
 
     let recordPath = utils.getRecordPath(req)
     // No data, return to page
@@ -48,56 +48,76 @@ module.exports = router => {
     // One of the routes we support
     if (enabledRoutes.includes(selectedCourse)){
       if (_.get(record, 'programmeDetails.isPublishCourse')){
-        // User has swapped from publish to non publish course. Delete existing data
+        // User has swapped from a publish to a non-publish course. Delete existing data
         delete record.programmeDetails
       }
-      record.route = selectedCourse
+      record.route = selectedCourse // selected course *is* a route
       res.redirect(`${recordPath}/programme-details/details${referrer}`)
     }
     else if (selectedCourse == "Other"){
       res.redirect(`/new-record/route-not-supported${referrer}`)
     }
     else {
+      // Assume everything else is a course id
       courseIndex = providerCourses.findIndex(course => course.id == selectedCourse)
       if (courseIndex < 0){
+        // Nothing found for current provider (something has gone wrong)
         console.log(`Provider course ${selectedCourse} not recognised`)
         res.redirect(`${recordPath}/programme-details${referrer}`)
       }
       else {
-        record.programmeDetailsTemp = providerCourses[courseIndex]
+        // Copy over that provider's course data
+        record.programmeDetails = providerCourses[courseIndex]
         res.redirect(`${recordPath}/programme-details/confirm-publish-details${referrer}`)
       }
     }
   })
 
-  // Copy over temp programe details
-  router.post(['/:recordtype/:uuid/confirm-publish-details','/:recordtype/confirm-publish-details'], function (req, res) {
+  // Confirm that the pubish course is correct. This is shown instead of the regular /confirm
+  // page when selecting a publish course. The regular /confirm page is still shown when 
+  // reviewing from a summary page, or after editing other details.
+  // This route is needed because we need to conditionally pass on to /allocated-place if
+  // the route and subject match certain conditions.
+  router.post(['/:recordtype/:uuid/programme-details/confirm-publish-details','/:recordtype/programme-details/confirm-publish-details'], function (req, res) {
     const data = req.session.data
     let record = data.record
     let referrer = utils.getReferrer(req.query.referrer)
     let recordPath = utils.getRecordPath(req)
-    record.programmeDetails = record.programmeDetailsTemp
-    delete record.programmeDetailstemp
     record.route = record.programmeDetails.route
+    delete record.selectedCourseTemp
 
     let isAllocated = recordUtils.hasAllocatedPlaces(record)
     if (isAllocated) {
+      // After /allocated-place the journey will match other programme-details routes
       res.redirect(`${recordPath}/programme-details/allocated-place${referrer}`)
     }
     else {
-      record.programmeDetails.status = "Completed"
-      if (referrer){
-        if (req.params.recordtype == 'record'){
-          utils.updateRecord(data, data.record)
+      if (req.params.recordtype == 'record'){
+        // This is basically the same as the /update route
+        utils.deleteTempData(data)
+        utils.updateRecord(data, record)
+        req.flash('success', 'Trainee record updated')
+        // Referrer or non-referrer probably goes to the same place
+        if (referrer){
+          res.redirect(req.query.referrer)
         }
-        res.redirect(req.query.referrer)
+        else {
+          res.redirect(`${recordPath}`)
+        }
       }
       else {
-        if (req.params.recordtype == 'record'){
-          res.redirect(`${recordPath}/details-and-education`)
+        // No checkbox as the button text is explicitly 'confirm course'
+        // Instead hardcode the status here
+        record.programmeDetails.status = "Completed"
+        if (referrer){
+          // Return to check-record page
+          res.redirect(req.query.referrer)
         }
-        res.redirect(`${recordPath}/overview`)
+        else {
+          res.redirect(`${recordPath}/overview`)
+        }
       }
+
     }
   })
 
@@ -130,7 +150,6 @@ module.exports = router => {
     else {
       res.redirect(`${recordPath}/programme-details/confirm${referrer}`)
     }
-
 
   })
 
