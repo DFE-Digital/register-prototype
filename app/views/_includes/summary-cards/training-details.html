@@ -14,7 +14,7 @@
       text: "Start date"
     },
     value: {
-      text: (record.trainingDetails.commencementDate | govukDate) if traineeStarted else "Trainee yet to start course"
+      text: (record.trainingDetails.commencementDate | govukDate or "Not provided") if traineeStarted else "Trainee yet to start course"
     },
     actions: {
       items: [

@@ -61,7 +61,7 @@
           visuallyHiddenText: "subject"
         }
       ]
-    } if canAmend and false and false
+    } if canAmend and false
   },
   {
     key: {
@@ -164,7 +164,7 @@
         }
       ]
     } if canAmend
-  } if record | hasAllocatedPlaces
+  } if record | hasAllocatedPlaces and not hideAllocationRow
   ] %}
 
 
