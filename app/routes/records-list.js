@@ -38,7 +38,7 @@ module.exports = router => {
 
     // Only show records for training routes that are enabled
     let enabledTrainingRoutes = data.settings.enabledTrainingRoutes
-    filteredRecords = filteredRecords.filter(record => enabledTrainingRoutes.includes(record.route))
+    filteredRecords = filteredRecords.filter(record => enabledTrainingRoutes.includes(record.route) || (record.route == undefined))
 
     // Search traineeId and full name
     if (searchQuery){
