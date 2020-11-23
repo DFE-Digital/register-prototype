@@ -184,31 +184,40 @@ const generateFakeApplication = (params = {}) => {
 const generateFakeApplications = () => {
   let applications = []
 
+  console.log({seedRecords})
   seedRecords.forEach(seedRecord => {
     applications.push(generateFakeApplication(seedRecord))
   })
 
   // Incomplete draft applications
-  for (var i = 0; i < 1; i++) {
-    const application = generateFakeApplication({
-      status: 'Draft',
-      personalDetails: {
-        status: 'Completed'
-      },
-      diversity: null,
-      contactDetails: null,
-      route: getRandomEnabledRoute(),
-      updatedDate: faker.date.between(
-        moment(),
-        moment().subtract(16, 'days'))
-    })
-    applications.push(application)
-  }
+  // for (var i = 0; i < 1; i++) {
+  //   const application = generateFakeApplication({
+  //     status: 'Draft',
+  //     trainingDetails: {
+  //       status: 'Completed'
+  //     },
+  //     programmeDetails: null,
+  //     personalDetails: {
+  //       status: 'Completed'
+  //     },
+  //     contactDetails: null,
+  //     diversity: null,
+  //     degree: null,
+  //     route: getRandomEnabledRoute(),
+  //     updatedDate: faker.date.between(
+  //       moment(),
+  //       moment().subtract(16, 'days'))
+  //   })
+  //   applications.push(application)
+  // }
 
   // // Semi complete draft applications
   for (var i = 0; i < 1; i++) {
     const application = generateFakeApplication({
       status: 'Draft',
+      trainingDetails: {
+        status: 'Completed'
+      },
       personalDetails: {
         status: 'Completed'
       },
@@ -218,6 +227,7 @@ const generateFakeApplications = () => {
       diversity: {
         status: 'Completed'
       },
+      degree: null,
       route: getRandomEnabledRoute(),
       updatedDate: faker.date.between(
         moment(),
@@ -226,35 +236,35 @@ const generateFakeApplications = () => {
     applications.push(application)
   }
 
-    // Complete draft applications
-  for (var i = 0; i < 1; i++) {
-    const application = generateFakeApplication({
-      status: 'Draft',
-      personalDetails: {
-        status: 'Completed'
-      },
-      contactDetails: {
-        status: 'Completed'
-      },
-      diversity: {
-        status: 'Completed'
-      },
-      gcse: {
-        status: 'Completed'
-      },
-      degree: {
-        status: 'Completed'
-      },
-      programmeDetails: {
-        status: 'Completed'
-      },
-      route: getRandomEnabledRoute(),
-      updatedDate: faker.date.between(
-        moment(),
-        moment().subtract(1, 'days'))
-    })
-    applications.push(application)
-  }
+  // Complete draft application
+  // for (var i = 0; i < 1; i++) {
+  //   const application = generateFakeApplication({
+  //     status: 'Draft',
+  //     personalDetails: {
+  //       status: 'Completed'
+  //     },
+  //     contactDetails: {
+  //       status: 'Completed'
+  //     },
+  //     diversity: {
+  //       status: 'Completed'
+  //     },
+  //     gcse: {
+  //       status: 'Completed'
+  //     },
+  //     degree: {
+  //       status: 'Completed'
+  //     },
+  //     programmeDetails: {
+  //       status: 'Completed'
+  //     },
+  //     route: getRandomEnabledRoute(),
+  //     updatedDate: faker.date.between(
+  //       moment(),
+  //       moment().subtract(1, 'days'))
+  //   })
+  //   applications.push(application)
+  // }
 
   // // Submitted applications
   for (var i = 0; i < 5; i++) {

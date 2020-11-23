@@ -15,7 +15,7 @@ seedRecords.push({
     ]
   },
   "programmeDetails": {
-    "isPublishCourse" : false,
+    "isPublishCourse" : true,
     "subject": "Physical education",
     "ageRange": "14 - 19 programme",
     "startDate": [
@@ -107,6 +107,27 @@ seedRecords.push({
 
 // Static names for ur
 seedRecords.push({
+  status: 'Draft',
+  personalDetails: {
+    givenName: "Samantha",
+    familyName: "Koch",
+    sex: 'Female',
+    status: 'Completed'
+  },
+  route: 'Assessment only',
+  trainingDetails: {
+    status: 'Completed'
+  },
+  programmeDetails: {
+    status: 'Completed',
+    isPublishCourse: false
+  },
+  contactDetails: null,
+  diversity: null,
+  degree: null
+})
+
+seedRecords.push({
   status: 'Pending TRN',
   submittedDate: new Date(),
   personalDetails: {
@@ -120,6 +141,10 @@ seedRecords.push({
     "ethnicGroup": "Black, African, Black British or Caribbean",
     "ethnicGroupSpecific": "Caribbean",
     "disabledAnswer": "Not provided"
+  },
+  route: 'Assessment only',
+  programmeDetails: {
+    isPublishCourse: false
   }
 })
 
@@ -131,6 +156,10 @@ seedRecords.push({
   submittedDate: "2020-05-28T12:37:21.384Z",
   updatedDate: "2020-08-04T04:26:19.269Z",
   trn: 8405624,
+  route: 'Provider-led',
+  programmeDetails: {
+    isPublishCourse: false
+  },
   personalDetails: {
     givenName: "Bea",
     familyName: "Waite",
@@ -147,6 +176,10 @@ seedRecords.push({
   submittedDate: "2020-06-28T12:37:21.384Z",
   updatedDate: "2020-07-04T04:26:19.269Z",
   trn: 8594837,
+  route: 'Provider-led',
+  programmeDetails: {
+    isPublishCourse: 'false'
+  },
   personalDetails: {
     givenName: "Janine",
     familyName: "Newman",
@@ -158,6 +191,10 @@ seedRecords.push({
   status: "TRN received",
   trainingDetails: {
     traineeId: "2020/21-092"
+  },
+  route: 'Provider-led',
+  programmeDetails: {
+    isPublishCourse: false
   },
   submittedDate: "2020-05-28T12:37:21.384Z",
   updatedDate: "2020-07-15T04:26:19.269Z",
