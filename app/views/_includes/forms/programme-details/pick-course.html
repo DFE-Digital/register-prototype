@@ -5,11 +5,11 @@
 {% if record.programmeDetails.isPublishCourse | falsify %}
   {% set selectedCourse = record.programmeDetails.id %}
 {% elseif record.programmeDetails %}
-  {% set selectedCourse = record.programmeDetails.route %}
+  {# Todo: stop storing route in two places #}
+  {% set selectedCourse = record.programmeDetails.route or record.route %}
+{% else %}
+  {% set selectedCourse = record.route %}
 {% endif %}
-
-{% set test = {selectedCourse: selectedCourse} %}
-
 
 {% set courseItems = [] %}
 
@@ -31,13 +31,10 @@
   {% set courseItems = courseItems | push({
     value: route,
     text: route | lower | prependWithAOrAn | sentenceCase + " course",
-    checked: checked(selectedCourse, course.id)
+    checked: checked(selectedCourse, route)
   }) %}
 {% endfor %}
-{% set courseItems = courseItems | push({text: "Other"}) %}
-
-
-
+{% set courseItems = courseItems | push({text: "Other"}) %}s
 
 {{ govukRadios({
   fieldset: {

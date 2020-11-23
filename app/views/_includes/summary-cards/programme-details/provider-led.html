@@ -7,6 +7,23 @@
 {% set programmeDetailsRows = [
   {
     key: {
+      text: "Training course"
+    },
+    value: {
+      text: record.route | safe or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/programme-details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "training course"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
       text: "Subject"
     },
     value: {
