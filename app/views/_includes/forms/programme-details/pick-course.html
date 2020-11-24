@@ -19,7 +19,8 @@
     value: course.id,
     checked: checked(selectedCourse, course.id),
     hint: {
-      text: course.route + " — " + course.summary
+      _text: course.route + " — " + course.summary,
+      text: course.summary
     }
   }) %}
 {% endfor %}
