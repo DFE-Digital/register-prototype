@@ -19,7 +19,7 @@
     value: course.id,
     checked: checked(selectedCourse, course.id),
     hint: {
-      text: course.summary
+      text: course.route + " — " + course.summary
     }
   }) %}
 {% endfor %}
@@ -27,14 +27,27 @@
 {% set courseItems = courseItems | push({divider: 'or'}) %}
 
 {% for route in data.settings.enabledTrainingRoutes %}
-  
+
+  {% if route == 'Assessment only' %}
+    {# Singluar because publish doesn’t have assessment only courses #}
+    {% set labelText = "An assessment only course" %}
+  {% else %}
+    {# 'Another' because most should already be listed in publish #}
+    {% set labelText = "Another " + (route | lower) + " course" %}
+  {% endif %}
+
   {% set courseItems = courseItems | push({
     value: route,
-    text: route | lower | prependWithAOrAn | sentenceCase + " course",
+    text: labelText,
     checked: checked(selectedCourse, route)
   }) %}
+  
 {% endfor %}
-{% set courseItems = courseItems | push({text: "Other"}) %}
+
+{% set courseItems = courseItems | push({
+  value: "Other",
+  text: "Another type of course"
+}) %}
 
 {{ govukRadios({
   fieldset: {
