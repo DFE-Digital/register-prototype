@@ -5,6 +5,10 @@
 
 
 {% set commencementDateInputHtml %}
+  {% set hintHtml %}
+    When this trainee started, rather than the programme start date.<br>
+    For example, {{ "" | today | toDateArray | spaceSeparate }}
+  {% endset %}
   {{ govukDateInput({
     id: "commencement-start-date",
     namePrefix: "record[trainingDetails][commencementDate]",
@@ -15,7 +19,7 @@
       }
     },
     hint: {
-      text: "For example, " + "" | today | toDateArray | spaceSeparate
+      html: hintHtml
     },
     items: [
         {
