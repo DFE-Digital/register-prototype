@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Has the trainee disclosed diversity information?" %}
 
-{% set formAction = "./confirm" %}
+{% set formAction = "./confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/diversity-disclosed.html" %}

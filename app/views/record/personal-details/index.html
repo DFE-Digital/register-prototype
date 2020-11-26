@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Edit personal details" %}
 
-{% set formAction = "./personal-details/confirm" %}
+{% set formAction = "./personal-details/confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
 

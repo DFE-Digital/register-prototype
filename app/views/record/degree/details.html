@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Degree details" %}
 
-{% set formAction = "./confirm" %}
+{% set formAction = "./confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/degree-details.html" %}

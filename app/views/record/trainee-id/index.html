@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Trainee ID (optional)" %}
 
-{% set formAction = "./trainee-id/confirm" %}
+{% set formAction = "./trainee-id/confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/trainee-id.html" %}

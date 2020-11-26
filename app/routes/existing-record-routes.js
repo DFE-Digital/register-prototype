@@ -293,6 +293,7 @@ module.exports = router => {
   router.post(['/record/:uuid/:page/update', '/record/:uuid/update'], (req, res) => {
     const data = req.session.data
     const newRecord = data.record
+    let referrer = utils.getReferrer(req.query.referrer)
     // Update failed or no data
     if (!newRecord){
       res.redirect('/record/:uuid')
@@ -302,11 +303,12 @@ module.exports = router => {
       utils.updateRecord(data, newRecord)
       req.flash('success', 'Trainee record updated')
 
-      if (req.params.page && req.params.page != 'programme-details' && req.params.page != 'trainee-id'){
-        res.redirect(`/record/${req.params.uuid}/details-and-education`)
+      if (referrer){
+        res.redirect(req.query.referrer)
       }
       else {
-        res.redirect(`/record/${req.params.uuid}`)
+        // More likely we've come from this tab where most things are on
+        res.redirect(`/record/${req.params.uuid}/details-and-education`)
       }
     }
   })

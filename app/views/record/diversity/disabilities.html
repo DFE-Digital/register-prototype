@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Has the trainee shared that they are disabled?" %}
 
-{% set formAction = "./confirm" %}
+{% set formAction = "./confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/disabilities.html" %}

@@ -2,7 +2,7 @@
 
 {% set pageHeading = "This course has allocated places" %}
 
-{% set formAction = "./confirm" %}
+{% set formAction = "./confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/programme-details/allocated-place.html" %}

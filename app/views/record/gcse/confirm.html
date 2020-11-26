@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Confirm GCSE details" %}
 
-{% set formAction = "./update" %}
+{% set formAction = "./update" | addReferrer(referrer) %}
 
 {% block formContent %}
 

@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Confirm degree details" %}
 
-{% set formAction = "./update" %}
+{% set formAction = "./update" | addReferrer(referrer) %}
 
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>

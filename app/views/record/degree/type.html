@@ -4,7 +4,7 @@
 
 {% set pageHeading = "Add undergraduate degree" if degreeCount == 0 else "Add a degree" %}
 
-{% set formAction = "./details" %}
+{% set formAction = "./details" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/degree-type.html" %}
