@@ -1,0 +1,49 @@
+{% set traineeStarted = record.trainingDetails.traineeStarted | falsify %}
+{{traineeStarted | log}}
+{{record | log}}
+
+{% set commencementDateLabel %}
+  {% if traineeStarted %}
+    {{(record.trainingDetails.commencementDate | govukDate) or 'Not provided'}}
+  {% else %}
+    Trainee yet to start course 
+  {% endif %}
+{% endset %}
+
+
+{% set recordBaseRows = [
+  {
+    key: {
+      text: "Trainee start date"
+    },
+    value: {
+      text: commencementDateLabel or "Not provided"
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/trainee-start-date" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "trainee start date"
+        }
+      ]
+    } if canAmend
+  }
+  ] %}
+
+
+{% set recordBaseHtml %}
+  {{ govukSummaryList({
+    rows: recordBaseRows
+  }) }}
+{% endset %}
+
+
+
+
+{{ appSummaryCard({
+  classes: "govuk-!-margin-bottom-6",
+  titleText: "Record",
+  html: recordBaseHtml
+}) }}
+

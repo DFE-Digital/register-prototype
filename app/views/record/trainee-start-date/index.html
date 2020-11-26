@@ -1,0 +1,11 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Date trainee started" %}
+
+{% set formAction = "./trainee-start-date/confirm" | addReferrer(referrer) %}
+
+{% block formContent %}
+  {% include "_includes/forms/trainee-start-date.html" %}
+{% endblock %}
+
+

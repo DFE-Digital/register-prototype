@@ -1,0 +1,42 @@
+{% set commencementStartDateArray = record.trainingDetails.commencementDate | toDateArray %}
+
+
+{{ govukDateInput({
+  id: "commencement-start-date",
+  namePrefix: "record[trainingDetails][commencementDate]",
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    html: hintHtml
+  },
+  items: [
+      {
+        name: "day",
+        classes: "govuk-input--width-2",
+        value: commencementStartDateArray["0"]
+      },
+      {
+        name: "month",
+        classes: "govuk-input--width-2",
+        value: commencementStartDateArray["1"]
+      },
+      {
+        name: "year",
+        classes: "govuk-input--width-4",
+        value: commencementStartDateArray["2"]
+      }
+    ]
+}) }}
+
+<input type="hidden" name="record[trainingDetails][traineeStarted]" value="true">
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
