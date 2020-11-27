@@ -42,11 +42,8 @@
 {% set recordPath = "/record/" + record.id %}
 
 {% block content %}
-  {{ appBanner({
-    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
-    type: "success",
-    icon: false
-  }) if flash | falsify }}
+  {% include "_includes/app-flash-message.html" %}
+
   {% block beforePageTitle %}{% endblock %}
   <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post" novalidate>
     <div class="govuk-grid-row">

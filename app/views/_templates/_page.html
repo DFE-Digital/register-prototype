@@ -30,11 +30,7 @@
 {% endblock %}
 
 {% block content %}
-{{ appBanner({
-    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
-    type: "success",
-    icon: false
-  }) if flash | falsify }}
+  {% include "_includes/app-flash-message.html" %}
 {% endblock %}
 
 
