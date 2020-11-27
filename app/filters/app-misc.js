@@ -9,10 +9,15 @@ const recordUtils = require('./../lib/record')
 // Leave this filters line
 var filters = {}
 
-// Return firstname + lastname
+// Return whether a record has a first or last name
+filters.hasName = (record) => {
+  return (record?.personalDetails?.givenName || record?.personalDetails?.familyName)
+}
+
+// Return "Firstname Lastname"
 // Likely no longer needed - done with a getter now
 filters.getShortName = ({
-  givenName="", 
+  givenName="",
   familyName=""} = false) => {
   let names = []
   names.push(givenName)
@@ -20,11 +25,21 @@ filters.getShortName = ({
   return names.filter(Boolean).join(' ')
 }
 
+// Return "Lastname, Firstname"
+filters.getShortNameReversed = ({
+  givenName="",
+  familyName=""} = false) => {
+  let names = []
+  names.push(familyName)
+  names.push(givenName)
+  return names.filter(Boolean).join(', ')
+}
+
 // Return full name with middle names if present
 // Likely no longer needed - done with a getter now
 filters.getFullName = ({
-  givenName="", 
-  middleNames="", 
+  givenName="",
+  middleNames="",
   familyName=""} = false) => {
   let names = []
   names.push(givenName)
