@@ -9,7 +9,9 @@
 {# Merge with temp store #}
 {% set degreeTemp = degree | mergeObjects(data.degreeTemp) %}
 
-<p class="govuk-body">If the trainee has any other degrees, you can add them next.</p>
+{% if degreeCount < 1 %}
+  <p class="govuk-body">If the trainee has any other degrees, you can add them next.</p>
+{% endif %}
 
 {{ govukRadios({
   fieldset: {
