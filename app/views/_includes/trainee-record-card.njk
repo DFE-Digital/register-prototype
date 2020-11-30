@@ -7,11 +7,23 @@
   <div class="app-application-card_col">
     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
       <a href="/record/{{ record.id }}" class="govuk-link govuk-link--no-visited-state">
-        {{ record.personalDetails.shortName or "Draft record" }}
+        {% if record | hasName %}
+          {% if query.sortOrder == "lastName" %}
+            {{ record.personalDetails | getShortNameReversed }}
+          {% else %}
+            {{ record.personalDetails | getShortName }}
+          {% endif %} 
+        {% else %}
+          {% if record.status == "Draft" %}
+            Draft record
+          {% else %}
+            Name not known {# Shouldn't be possible - non drafts should always have a name #}
+          {% endif %}
+        {% endif %}
       </a>
     </h3>
-    {% if record.traineeId %}
-      <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">Trainee ID: {{record.traineeId}}</p>
+    {% if record.trainingDetails.traineeId %}
+      <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">Trainee ID: {{record.trainingDetails.traineeId}}</p>
     {% endif %}
     {% if record.trn %}
       <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">TRN: {{record.trn}}</p>

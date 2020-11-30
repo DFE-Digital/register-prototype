@@ -1,7 +1,7 @@
 {% extends "_templates/_record-form.html" %}
 {% set pageHeadingTraineeName = data.record.personalDetails | getShortName %}
 {% set pageHeading = "Check withdrawal details" %}
-
+{% set gridColumn = 'govuk-grid-column-full' %}
 {% set formAction = "./update" %}
 
 {% block formContent %}

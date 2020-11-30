@@ -44,11 +44,7 @@
 {% set recordPath = "/new-record" %}
 
 {% block content %}
-  {{ appBanner({
-    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
-    type: "success",
-    icon: false
-  }) if flash | falsify }}
+  {% include "_includes/app-flash-message.html" %}
 
   {% block beforePageTitle %}{% endblock %}
   {# {{referrer}} #}
@@ -60,7 +56,7 @@
     action={{- '' | addReferrer(referrer) -}}
   {%- endif -%} 
   {%- endset %}
-
+  
   <form {{formActionHtml}} method="post" novalidate>
     <div class="govuk-grid-row">
       <div class="{{ gridColumn or 'govuk-grid-column-two-thirds-from-desktop'}}">

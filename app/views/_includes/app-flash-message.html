@@ -1,23 +1,18 @@
 {% set flash = flash[0] %}
 
-{% set appFlashMessage %}
+{% if flash | falsify %}
   {% if flash | isString %}
-    <h2 class="govuk-heading-m">{{flash}}</h2>
+    {# Todo: rework flash usage in routes to avoid sending strings directly #}
+    {{ govukNotificationBanner({
+      text: flash,
+      type: 'success'
+    }) }}
   {% else %}
-    {% if flash.title %}
-      <h2 class="govuk-heading-m">{{flash.title}}</h2>
-    {% endif %}
-    {% if flash.html %}
-      {{flash.html | safe}}      
-    {% elseif flash.text %}
-      <p class="govuk-body">{{flash.text}}</p>
-    {% endif %}
+    {{ govukNotificationBanner({
+      title: flash.title,
+      html: flash.html,
+      text: flash.text,
+      type: 'success'
+    }) }}
   {% endif %}
-
-{% endset %}
-
-{{ appBanner({
-  html: appFlashMessage,
-  type: "success",
-  icon: false
-}) if flash | falsify }}
+{% endif %}
