@@ -44,8 +44,9 @@ const generateFakeCourses = () => {
     let providerCourses = []
     let courseCount = generateCourseCount() // semi-random number of courses per provider
     
-    // hardcode 8 courses for Southmampton
-    if (provider == "University of Southampton") courseCount = 8 
+    // hardcode lots courses for Southmampton
+    // A separate setting limits this later
+    if (provider == "University of Southampton") courseCount = 100
 
     for (var i = 0; i < courseCount; i++){
       providerCourses.push(generateCourseDetails({isPublishCourse: true}))

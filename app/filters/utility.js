@@ -136,7 +136,7 @@ filters.decorateAttributes = (obj, data, value) => {
 filters.limitTo = (input, limit) =>{
 
   if(typeof limit !== 'number'){
-    return input;
+    limit = parseInt(limit) // assume limit is a string of a number
   }
   if(typeof input === 'string'){
     if(limit >= 0){

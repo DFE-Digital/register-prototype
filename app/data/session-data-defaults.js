@@ -29,6 +29,7 @@ let settings = {}
 // Simplify structure so it can be worked with from admin page
 settings.enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name).sort()
 settings.includeTimeline = 'true'
+settings.courseLimit = 50
 
 // Supliment records with getter for name
 let records = require('./records.json')

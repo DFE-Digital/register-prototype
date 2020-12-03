@@ -63,4 +63,10 @@ filters.orReferrer = (url, referrer) => {
   }
 }
 
+filters.getCourseNamesForAutocomplete = (courses) => {
+  return courses.map(course => {
+    return `${course.subject} (${course.code}) | ${course.route}`
+  })
+}
+
 exports.filters = filters

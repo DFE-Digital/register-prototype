@@ -48,6 +48,17 @@
         ]
       } | decorateAttributes(data, "data.settings.includeDeclaration")) }}
 
+      {{ govukInput({
+        label: {
+          text: "Number of publish courses provider offers",
+          classes: "govuk-label--s"
+        },
+        suffix: {
+          text: "courses"
+        },
+        classes: "app-!-max-width-one-quarter"
+      } | decorateAttributes(data, "data.settings.courseLimit")) }}
+
 
       {% set allTrainingRoutes = [] %}
       {% for route in data.allTrainingRoutes %}
