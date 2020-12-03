@@ -9,28 +9,19 @@
 
   {% set referrer = recordPath + "/details-and-education" %}
 
-  <h2 class="govuk-heading-m">Trainee details</h2>
-
   {% include "_includes/summary-cards/personal-details.html" %}
 
   {% include "_includes/summary-cards/contact-details.html" %}
 
   {% include "_includes/summary-cards/diversity.html" %}
 
-  <h2 class="govuk-heading-m">Education</h2>
-
   {% include "_includes/summary-cards/gcse-details.html" %}
 
-  <h3 class="govuk-heading-s">{{ "Degree" | pluralise(record.qualifications.degree | length)}}</h3>
-  {# {% for degree in record.qualifications.degree %} #}
   {% include "_includes/summary-cards/degree-details.html" %}
-  {# {% endfor %} #}
-  {{record | log}}
 
-  {# {{record | log}} #}
   {% set degreeCount = record.qualifications.degree | length %}
 
-   <div class="govuk-form-group">
+  <div class="govuk-form-group">
     {{ govukButton({
       "text": "Add another degree" if degreeCount > 0 else "Add a degree",
       href: recordPath + "/degree/add",

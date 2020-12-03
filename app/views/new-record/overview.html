@@ -20,41 +20,8 @@
 <h1 class="govuk-heading-l govuk-!-margin-bottom-8">{{pageHeading}}</h1>
 
 
-<h2 class="govuk-heading-m">Training details</h2>
 
-{{ appTaskList({
-  classes: "govuk-!-margin-bottom-8",
-  items: [{
-    text: "Type of training",
-    href: "record-setup",
-    id: "record-type",
-    tag: {
-      classes: 'Completed' | getStatusClass,
-      text: 'Completed'
-    }
-  } if record | requiresSection("recordSetup"),
-  {
-    text: "Training details",
-    href: "training-details" | reviewIfInProgress(record.trainingDetails),
-    id: "training-details",
-    tag: {
-      classes: record.trainingDetails | getStatusText | getStatusClass,
-      text: record.trainingDetails | getStatusText
-    }
-  } if record | requiresSection("trainingDetails"),
-  {
-    text: "Programme details",
-    href: "programme-details" | reviewIfInProgress(record.programmeDetails),
-    id: "programme-details",
-    tag: {
-      classes: record.programmeDetails | getStatusText | getStatusClass,
-      text: record.programmeDetails | getStatusText
-    }
-  } if record | requiresSection("programmeDetails")
-  ]
-}) if not closed }}
-
-<h2 class="govuk-heading-m">About the trainee</h2>
+<h2 class="govuk-heading-m">Personal details and education</h2>
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [{
@@ -102,6 +69,41 @@
       text: record.degree | getStatusText
     }
   } if record | requiresSection("degree")
+  ]
+}) if not closed }}
+
+
+<h2 class="govuk-heading-m">Training record</h2>
+
+{{ appTaskList({
+  classes: "govuk-!-margin-bottom-8",
+  items: [{
+    text: "Type of training",
+    href: "record-setup",
+    id: "record-type",
+    tag: {
+      classes: 'Completed' | getStatusClass,
+      text: 'Completed'
+    }
+  } if record | requiresSection("recordSetup"),
+  {
+    text: "Programme details",
+    href: "programme-details" | reviewIfInProgress(record.programmeDetails),
+    id: "programme-details",
+    tag: {
+      classes: record.programmeDetails | getStatusText | getStatusClass,
+      text: record.programmeDetails | getStatusText
+    }
+  } if record | requiresSection("programmeDetails"),
+  {
+    text: "Training details",
+    href: "training-details" | reviewIfInProgress(record.trainingDetails),
+    id: "training-details",
+    tag: {
+      classes: record.trainingDetails | getStatusText | getStatusClass,
+      text: record.trainingDetails | getStatusText
+    }
+  } if record | requiresSection("trainingDetails")
   ]
 }) if not closed }}
 
