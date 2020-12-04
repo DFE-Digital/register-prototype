@@ -1,65 +1,194 @@
 {# <h1 class="govuk-heading-l">{{pageHeading}}</h1> #}
 
-{% set providerCourses = data.courses["University of Southampton"].courses | limitTo(8) %}
+{# Todo: should the filtered data be passed to this view instead? #}
+{% set providerCourses = data.courses["University of Southampton"].courses %}
 
+{# Filter out routes that aren't enabled yet #}
+{% set providerCourses = providerCourses | where("route", data.settings.enabledTrainingRoutes)   %}
+
+{# Artificially truncate number of courses to test different scenarios #}
+{% set providerCourses = providerCourses | limitTo(data.settings.courseLimit)  %}
+
+{# Sort by subject and code #}
+{% set providerCourses = providerCourses | sortPublishCourses  %}
+
+{# Pull out the right thing so we can pre-select the right options #}
 {% if record.programmeDetails.isPublishCourse | falsify %}
   {% set selectedCourse = record.programmeDetails.id %}
-{% elseif record.programmeDetails %}
-  {# Todo: stop storing route in two places #}
-  {% set selectedCourse = record.programmeDetails.route or record.route %}
-{% else %}
-  {% set selectedCourse = record.route %}
+{% elseif record.route %}
+  {% set selectedCourse = 'Other' %}
 {% endif %}
 
-{% set courseItems = [] %}
 
-{% for course in providerCourses %}
+{# Show all courses as radios #}
+{% set providerHasFewPublishCourses %}
+
+  {% set courseItems = [] %}
+
+  {% for course in providerCourses %}
+    {% set courseItems = courseItems | push({
+      text: course.subject + " (" + course.code + ")",
+      value: course.id,
+      checked: checked(selectedCourse, course.id),
+      hint: {
+        _text: course.route + " — " + course.summary,
+        text: course.route
+      }
+    }) %}
+  {% endfor %}
+
+  {% set courseItems = courseItems | push({divider: 'or'}) %}
+
+  {# Advance to route selection page #}
   {% set courseItems = courseItems | push({
-    text: course.subject + " (" + course.code + ")",
-    value: course.id,
-    checked: checked(selectedCourse, course.id),
-    hint: {
-      _text: course.route + " — " + course.summary,
-      text: course.route
-    }
+    value: "Other",
+    text: "Another course not listed",
+    checked: checked(selectedCourse, "Other")
   }) %}
-{% endfor %}
 
-{% set courseItems = courseItems | push({divider: 'or'}) %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: pageHeading,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: courseItems
+  } | decorateAttributes(record, "record.selectedCourseTemp")) }}
 
-{% for route in data.settings.enabledTrainingRoutes %}
+{% endset %}
 
-  {% if route == 'Assessment only' %}
-    {# Singluar because publish doesn’t have assessment only courses #}
-    {% set labelText = "An assessment only course" %}
-  {% else %}
-    {# 'Another' because most should already be listed in publish #}
-    {% set labelText = "Another " + (route | lower) + " course" %}
+
+{# Lots of courses - show them in an autocomplete instead #}
+{% set providerHasManyPublishCourses %}
+
+  {% set courseItems = [] %}
+
+  {# Remap names so route is a hint, and course ID is what gets stored #}
+  {% set courseNames = providerCourses | getCourseNamesForAutocomplete %}
+
+  {% if record.programmeDetails.isPublishCourse | falsify %}
+    {% set selectedCourse -%}
+      {{- record.programmeDetails.subject}} ({{record.programmeDetails.code}})
+    {%- endset %}
   {% endif %}
 
-  {% set courseItems = courseItems | push({
-    value: route,
-    text: labelText,
-    checked: checked(selectedCourse, route)
-  }) %}
+  {% set courseAutocompleteHtml %}
+    {{ appAutocomplete({
+      label: {
+        text: "Select the course"
+      },
+      id: 'publishCourse',
+      autoSelect: false,
+      showAllValues: true,
+      name: "record[selectedCourseAutocompleteTemp]",
+      items: courseNames,
+      classes: "app-!-autocomplete--max-width-two-thirds",
+      value: selectedCourse
+      }
+    ) }}
+  {% endset %}
+
+  {# Todo: make sure this is checked if selectedCourse is an id #}
+  {% set isPublishCourse = true if (selectedCourse == 'publish-course') or record.programmeDetails.isPublishCourse | falsify %}
+
+  {% set publishRadioText %}
+    {% if data.settings.enabledTrainingRoutes | length < 3 %}
+      A provider-led course on Publish
+    {% else %}
+      A course on Publish
+    {% endif %}
+  {% endset %}
   
-{% endfor %}
+  {% set courseItems = courseItems | push({
+    value: 'publish-course',
+    text: publishRadioText,
+    conditional: {
+      html: courseAutocompleteHtml
+    },
+    checked: isPublishCourse
+  }) %}
 
-{% set courseItems = courseItems | push({
-  value: "Other",
-  text: "Another type of course"
-}) %}
+  {# {% set courseItems = courseItems | push({divider: 'or'}) %} #}
 
-{{ govukRadios({
-  fieldset: {
-    legend: {
-      text: pageHeading,
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  },
-  items: courseItems
-} | decorateAttributes(record, "record.selectedCourseTemp")) }}
+{#   {% for route in data.settings.enabledTrainingRoutes %}
+    {% if route == 'Assessment only' %}
+      Singluar because publish doesn’t have assessment only courses
+      {% set labelText = "An assessment only course" %}
+    {% else %}
+      'Another' because most should already be listed in publish
+      {% set labelText = "Another " + (route | lower) + " course" %}
+      {% set courseItems = courseItems | push({
+        value: route,
+        text: labelText,
+        checked: checked(selectedCourse, route)
+      }) %}
+    {% endif %}
+
+    
+  {% endfor %} #}
+
+  {# {% set courseItems = courseItems | push({divider: 'or'}) %} #}
+
+  {% set courseItems = courseItems | push({
+    value: 'Other',
+    text: "Another type of course" if (data.settings.enabledTrainingRoutes | length < 3) else 'A course not on Publish'
+  }) %}
+
+  {# Treat assessment only separately because we want it last #}
+  {# {% set courseItems = courseItems | push({
+    value: 'Assessment only',
+    text: "An assessment only course",
+    checked: checked(selectedCourse, "Assessment only")
+  }) %} #}
+
+  {# {% set courseItems = courseItems | push({divider: 'or'}) %} #}
+  {# {% set courseItems = courseItems | push({
+    value: "Other",
+    text: "Another type of course"
+  }) %} #}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: pageHeading,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    items: courseItems
+  } | decorateAttributes(record, "record.selectedCourseTemp")) }}
+{% endset %}
+
+
+
+
+{% if providerHasPublishCourses == false %}
+
+  {{ providerWithNoPublishCourses | safe }}
+
+{% elseif providerCourses | length < 10 %}
+  
+  {{ providerHasFewPublishCourses | safe }}
+
+{% else %}
+  {{ providerHasManyPublishCourses | safe }}
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {{ govukButton({
   text: "Continue"

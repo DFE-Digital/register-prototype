@@ -1,8 +1,9 @@
 {% extends "_templates/_new-record.html" %}
 
 {% set pageHeading = "Is this the course you want to add?" %}
-{% set backLink = './../overview' %}
-{% set backText = "Back to draft record" %}
+{# {% set backLink = './../overview' %}
+{% set backText = "Back to draft record" %} #}
+{% set gridColumn = 'govuk-grid-column-full' %}
 
 {# {% set formAction = "./../overview" | orReferrer(referrer) %} #}
 
@@ -21,20 +22,10 @@
     html: detailsHtml
   }) }}
   {% set programmeDetails = record.programmeDetails %}
+
+  {# Don't show allocation row as that question comes later #}
   {% set hideAllocationRow = true %}
   {% include "_includes/summary-cards/programme-details/publish-course.html" %}
-
- {#  {{ govukCheckboxes({
-  idPrefix: "waste",
-  name: "record[programmeDetails][status]",
-  items: [
-    {
-      value: "Completed",
-      text: "I have completed this section",
-      checked: checked(record.programmeDetails.status, "Completed")
-    }
-  ]
-  }) }} #}
 
   {{ govukButton({
     text: "Confirm course"

@@ -1,0 +1,31 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "This service only supports assessment only and provider-led training" %}
+{% set hideReturnLink = true %}
+
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  
+  {# <p class="govuk-body">Assessment Only is the only route currently supported by this service. More routes will be added soon.</p> #}
+
+  <p class="govuk-body">We’re working on supporting other types of training.</p>
+
+  <p class="govuk-body">You can still <a href="#" class="govuk-link">use DTTP to register this trainee</a>.</p>
+
+{#   <p class="govuk-body">You can:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      <a href="{{ './programme-details' | addReferrer(referrer) }}" class="govuk-link">go back and change your answer</a>
+    </li>
+    <li>
+      <a class="govuk-link" href="#">use DTTP to register a different route</a>
+    </li>
+  </ul> #}
+
+
+{% endblock %}
+
+
+
+

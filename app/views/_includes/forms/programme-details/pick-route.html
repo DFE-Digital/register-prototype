@@ -1,0 +1,41 @@
+{# <h1 class="govuk-heading-l">{{pageHeading}}</h1> #}
+
+
+{% if record.programmeDetails.isPublishCourse | falsify %}
+  {% set selectedCourse = record.programmeDetails.id %}
+{% elseif record.programmeDetails %}
+  {# Todo: stop storing route in two places #}
+  {% set selectedCourse = record.programmeDetails.route or record.route %}
+{% else %}
+  {% set selectedCourse = record.route %}
+{% endif %}
+
+{# No publish courses #}
+
+{% set courseItems = [] %}
+{% for route in data.settings.enabledTrainingRoutes %}
+  {% set courseItems = courseItems | push({
+    text: route,
+    checked: checked(selectedCourse, route)
+  }) %}
+{% endfor %}
+{% set courseItems = courseItems | push({divider: 'or'}) %}
+{% set courseItems = courseItems | push({
+  value: "Other",
+  text: "Another type"
+}) %}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: courseItems
+} | decorateAttributes(record, "record.route")) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

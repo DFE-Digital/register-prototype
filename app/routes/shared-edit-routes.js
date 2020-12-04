@@ -30,40 +30,62 @@ module.exports = router => {
   // Programme details
   // =============================================================================
 
-  // Picking a course or a route
-  router.post(['/:recordtype/:uuid/programme-details','/:recordtype/programme-details'], function (req, res) {
+  // Show pick-course or pick-route depending on if current provider has courses
+  // on Publish
+  router.get(['/:recordtype/:uuid/programme-details','/:recordtype/programme-details'], function (req, res) {
+    const data = req.session.data
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+    let providerCourses = data.courses["University of Southampton"].courses
+    // Filter routes we're not yet supporting
+    let filteredCourses = providerCourses.filter(course => {
+      return data.settings.enabledTrainingRoutes.includes(course.route)
+    })
+    let limitedCourses = filteredCourses.splice(0, data.settings.courseLimit)
+
+    if (limitedCourses.length) {
+      res.redirect(`${recordPath}/programme-details/pick-course${referrer}`)
+    }
+    else {
+      res.redirect(`${recordPath}/programme-details/pick-route${referrer}`)
+    }
+  })
+
+  // Picking a course
+  router.post(['/:recordtype/:uuid/programme-details/pick-course','/:recordtype/programme-details/pick-course'], function (req, res) {
     const data = req.session.data
     let record = data.record
+    let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
     let enabledRoutes = data.settings.enabledTrainingRoutes
     // Todo: make this selection of providers dynamic
     let providerCourses = data.courses["University of Southampton"].courses
     let selectedCourse = _.get(data, 'record.selectedCourseTemp')
 
-    let recordPath = utils.getRecordPath(req)
     // No data, return to page
     if (!selectedCourse){
-      res.redirect(`${recordPath}/programme-details${referrer}`)
+      res.redirect(`${recordPath}/programme-details/pick-course${referrer}`)
     }
-    // One of the routes we support
-    if (enabledRoutes.includes(selectedCourse)){
+    else if (selectedCourse == "Other"){
       if (_.get(record, 'programmeDetails.isPublishCourse')){
         // User has swapped from a publish to a non-publish course. Delete existing data
         delete record.programmeDetails
+        delete record.route
       }
-      record.route = selectedCourse // selected course *is* a route
-      res.redirect(`${recordPath}/programme-details/details${referrer}`)
+      res.redirect(`${recordPath}/programme-details/pick-route${referrer}`)
     }
-    else if (selectedCourse == "Other"){
-      res.redirect(`/new-record/route-not-supported${referrer}`)
-    }
+
     else {
+      // selectedCourse could be an id of a course or a radio that contains an autocomplete
+      if (selectedCourse == "publish-course") {
+        selectedCourse = _.get(data, 'record.selectedCourseAutocompleteTemp')
+      }
       // Assume everything else is a course id
       courseIndex = providerCourses.findIndex(course => course.id == selectedCourse)
       if (courseIndex < 0){
         // Nothing found for current provider (something has gone wrong)
         console.log(`Provider course ${selectedCourse} not recognised`)
-        res.redirect(`${recordPath}/programme-details${referrer}`)
+        res.redirect(`${recordPath}/programme-details/pick-course${referrer}`)
       }
       else {
         // Copy over that provider's course data
@@ -83,10 +105,13 @@ module.exports = router => {
     let record = data.record
     let referrer = utils.getReferrer(req.query.referrer)
     let recordPath = utils.getRecordPath(req)
+    // Copy route up to higher level
     record.route = record.programmeDetails.route
     delete record.selectedCourseTemp
+    delete record.selectedCourseAutocompleteTemp
 
     let isAllocated = recordUtils.hasAllocatedPlaces(record)
+    isAllocated = true
     if (isAllocated) {
       // After /allocated-place the journey will match other programme-details routes
       res.redirect(`${recordPath}/programme-details/allocated-place${referrer}`)
@@ -94,8 +119,8 @@ module.exports = router => {
     else {
       if (req.params.recordtype == 'record'){
         // This is basically the same as the /update route
-        utils.deleteTempData(data)
         utils.updateRecord(data, record)
+        utils.deleteTempData(data)
         req.flash('success', 'Trainee record updated')
         // Referrer or non-referrer probably goes to the same place
         if (referrer){
@@ -106,8 +131,7 @@ module.exports = router => {
         }
       }
       else {
-        // No checkbox as the button text is explicitly 'confirm course'
-        // Instead hardcode the status here
+        // Implicitly confirm the section by confirming it
         record.programmeDetails.status = "Completed"
         if (referrer){
           // Return to check-record page
@@ -118,6 +142,27 @@ module.exports = router => {
         }
       }
 
+    }
+  })
+
+  // Picking a course
+  router.post(['/:recordtype/:uuid/programme-details/pick-route','/:recordtype/programme-details/pick-route'], function (req, res) {
+    const data = req.session.data
+    let record = data.record
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+    let enabledRoutes = data.settings.enabledTrainingRoutes
+    let selectedRoute = _.get(data, 'record.route')
+
+    // No data, return to page
+    if (!selectedRoute){
+      res.redirect(`${recordPath}/programme-details/pick-route${referrer}`)
+    }
+    else if (selectedRoute == "Other"){
+      res.redirect(`/new-record/programme-details/route-not-supported${referrer}`)
+    }
+    else {
+      res.redirect(`${recordPath}/programme-details/details${referrer}`)
     }
   })
 
