@@ -122,7 +122,8 @@
   ]
 } | decorateAttributes(record, "record.contactDetails.addressType")) }}
 
-{{ govukInput({
+{# For now we don't think we need phone number #}
+{# {{ govukInput({
   id: "phone-number",
   name: "record[contactDetails][phoneNumber]",
   value: record.contactDetails.phoneNumber,
@@ -134,7 +135,7 @@
   hint: {
     text: "Enter a landline or mobile. For non-UK numbers, include the country code"
   }
-}) }}
+}) }} #}
 
 {{ govukInput({
   id: "email-address",
