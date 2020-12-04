@@ -3,16 +3,16 @@ const _ = require('lodash')
 
 // Kit checkboxes will output a string or array depending on number of options
 // selected. This coerces to arrays so it's easier to work with.
-const cleanInputData = radios => {
-  if (!radios || radios == '_unchecked') {
-    radios = undefined
+const cleanInputData = checkboxes => {
+  if (!checkboxes || checkboxes == '_unchecked') {
+    return undefined
   }
-  else if (!_.isArray(radios)) radios = [radios] // coerce to arrays so we can filter them
-  if (_.isArray(radios)){
-    radios = radios.filter(item => item != '_unchecked')
-    radios = (radios.length == 0) ? undefined : radios
+  else {
+    checkboxes = [].concat(checkboxes) // coerce to arrays so we can filter them
+    checkboxes = checkboxes.filter(item => item != '_unchecked') // _unchecked sometimes appears - can't track down what's causing it
+    checkboxes = (checkboxes.length == 0) ? undefined : checkboxes // return undefined if array now empty
+    return checkboxes
   }
-  return radios
 }
 
 
