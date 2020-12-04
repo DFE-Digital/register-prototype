@@ -63,9 +63,22 @@ filters.orReferrer = (url, referrer) => {
   }
 }
 
+// Sort by subject, including course code
+filters.sortPublishCourses = courses => {
+  let sorted = courses.sort((a, b) => {
+    let aString = `${a.subject} (${a.code})`
+    let bString = `${b.subject} (${b.code})`
+    return recordUtils.sortAlphabetical(aString, bString)
+  })
+  return sorted
+}
+
+// Map course names so in autocomplete we get:
+// Subject (code)
+// Route
 filters.getCourseNamesForAutocomplete = (courses) => {
   return courses.map(course => {
-    return `${course.subject} (${course.code}) | ${course.route}`
+    return [`${course.subject} (${course.code}) | ${course.route}`, course.id]
   })
 }
 
