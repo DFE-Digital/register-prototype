@@ -177,7 +177,7 @@
   {% if traineeStarted %}
     {{(record.trainingDetails.commencementDate | govukDate) or 'Not provided'}}
   {% else %}
-    Trainee yet to start course 
+    Trainee yet to start course
   {% endif %}
 {% endset %}
 
@@ -226,6 +226,6 @@
 
 {{ appSummaryCard({
   classes: "govuk-!-margin-bottom-6",
-  titleText: "Training details",
+  titleText: "Trainee progress",
   html: studentRecordHtml
 }) }}

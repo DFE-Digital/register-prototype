@@ -73,7 +73,7 @@
 }) if not closed }}
 
 
-<h2 class="govuk-heading-m">Training record</h2>
+<h2 class="govuk-heading-m">About their training</h2>
 
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
@@ -96,7 +96,7 @@
     }
   } if record | requiresSection("programmeDetails"),
   {
-    text: "Training details",
+    text: "Trainee start date and ID",
     href: "training-details" | reviewIfInProgress(record.trainingDetails),
     id: "training-details",
     tag: {
