@@ -24,6 +24,16 @@
 
 {% else %}
 
+  {# Show a banner on existing records when last degree deleted #}
+  {# TODO: should this reuse the 'incomplete' above?
+  done separately as seed records don't have 'complete' as a concept #}
+  {% if degrees | length == 0 %}
+    {% set incompleteText = "Degree details not provided" %}
+    {% set incompleteLink = recordPath + "/degree/add" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Add degree details" %}
+    {% include "_includes/incomplete.njk" %}
+  {% endif %}
+
   {% for degree in degrees %}
     {% include "_includes/summary-cards/single-degree-details.html" %}
   {% endfor %}

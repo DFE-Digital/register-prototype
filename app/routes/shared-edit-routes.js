@@ -240,8 +240,9 @@ module.exports = router => {
       _.pullAt(data.record.degree.items, [degreeIndex]) //delete item at index
       // Clear data if there are no more degrees - so the task list thinks the section is not started
       req.flash('success', 'Trainee degree deleted')
+      // Delete degree section if it’s empty
       if (data.record.degree.items.length == 0){
-        delete data.record.degree.items
+        delete data.record.degree
       }
     }
     if (referrer){

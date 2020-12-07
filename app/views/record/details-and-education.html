@@ -19,14 +19,16 @@
 
   {% include "_includes/summary-cards/degree-details.html" %}
 
-  {% set degreeCount = record.qualifications.degree | length %}
+  {% set degreeCount = record.degree.items | length %}
 
-  <div class="govuk-form-group">
-    {{ govukButton({
-      "text": "Add another degree" if degreeCount > 0 else "Add a degree",
-      href: recordPath + "/degree/add",
-      classes: "govuk-button--secondary"
-    }) }}
-  </div>
+  {% if degreeCount %}
+    <div class="govuk-form-group">
+      {{ govukButton({
+        text: "Add another degree",
+        href: recordPath + "/degree/add",
+        classes: "govuk-button--secondary"
+      }) }}
+    </div>
+  {% endif %}
 
 {% endblock %}
