@@ -78,7 +78,8 @@ filters.sortPublishCourses = courses => {
 // Route
 filters.getCourseNamesForAutocomplete = (courses) => {
   return courses.map(course => {
-    return [`${course.subject} (${course.code}) | ${course.route}`, course.id]
+    // return [`${course.subject} (${course.code}) | ${course.route}`, course.id]
+    return [`${course.subject} (${course.code})`, course.id]
   })
 }
 
