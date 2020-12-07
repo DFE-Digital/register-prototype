@@ -37,6 +37,7 @@ exports.requiresSection = (record, sectionName) => {
   return requiredSections.includes(sectionName)
 }
 
+// Sort two things alphabetically. Not case sensitive.
 exports.sortAlphabetical = (x, y) => {
   if(x.toLowerCase() !== y.toLowerCase()) {
     x = x.toLowerCase();
