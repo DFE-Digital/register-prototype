@@ -1,6 +1,15 @@
 {% extends "_templates/_record-form.html" %}
 
 {% set pageHeadingTraineeName = data.record.personalDetails.shortName %}
+
+{% set pageHeading %}
+  {% if data.record.qtsDetails.standardsAssessedOutcome == "Yes" %}
+    When did they meet the standards? 
+  {% else %} 
+    When should they be recorded as having not met the standards?
+  {% endif %}
+{% endset %}
+
 {% set formAction = "./outcome-date-answer" %}
   
 {% block formContent %}

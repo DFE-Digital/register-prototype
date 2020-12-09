@@ -36,18 +36,10 @@
   }) }}
 {% endset %}
 
-{% set qtsOutcomeDateheading %}
-  {% if record.qtsDetails.standardsAssessedOutcome == "Yes" %}
-    When did they meet the standards? 
-  {% else %} 
-    When should they be recorded as having not met the standards?
-  {% endif %}
-{% endset %}
-
 {{ govukRadios({
   fieldset: {
     legend: {
-      text: qtsOutcomeDateheading,
+      text: pageHeading,
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l govuk-!-margin-bottom-4"
     }
