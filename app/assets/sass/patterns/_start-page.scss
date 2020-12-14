@@ -30,7 +30,7 @@
 .start-page-banner__actions {
   font-family: "GDS Transport", Arial, sans-serif;
   color: #fff;
-  
+
   @include govuk-media-query($from: tablet) {
     display: flex;
     align-items: center;
@@ -38,6 +38,9 @@
 }
 
 .start-page-banner__text,
+.start-page-banner__link,
+.start-page-banner__link:link,
+.start-page-banner__link:visited,
 .start-page-banner__actions .govuk-link {
   color: #fff;
 }
@@ -47,8 +50,8 @@
 }
 
 .start-page-banner__button.govuk-button:link,
-.start-page-banner__button.govuk-button:visited, 
-.start-page-banner__button.govuk-button:active, 
+.start-page-banner__button.govuk-button:visited,
+.start-page-banner__button.govuk-button:active,
 .start-page-banner__button.govuk-button:hover {
   margin-bottom: govuk-spacing(3);
   color: govuk-colour("blue");
@@ -64,4 +67,3 @@
 .start-page-banner__button.govuk-button:hover {
   background-color: #e8f1f8;
 }
-
