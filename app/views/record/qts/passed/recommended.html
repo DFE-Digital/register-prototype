@@ -19,7 +19,7 @@
 
 <p class="govuk-body">The Department for Education will award QTS where appropriate within 3 working days.</p>
 
-<p class="govuk-body"><a href="/records" class="govuk-link">Check trainee statuses from your list of records</a>.</p>
+<p class="govuk-body govuk-!-margin-bottom-9"><a href="/records" class="govuk-link">Check trainee statuses from your list of records</a></p>
 
 {# {{ govukButton({
   text: "View record",
@@ -31,5 +31,14 @@
   href: "/new-record/new"
 }) }}
  #}
+
+ {% set insetTextHtml %}
+   <h2 class="govuk-heading-s">How are you finding this process?</h2>
+   <p class="govuk-body"><a href="#" class="govuk-link">Give feedback to help improve the process of recommending trainees for QTS</a></p>
+ {% endset %}
+
+ {{ govukInsetText({
+   html: insetTextHtml
+ }) }}
 
 {% endblock %}
