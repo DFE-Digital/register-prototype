@@ -11,9 +11,12 @@
 
 {% block formContent %}
 
+{% set panelTitleText %}
+  {{ record.personalDetails.shortName or 'Trainee' }} recommended for QTS
+{% endset %}
+
 {{ govukPanel({
-  titleText: pageHeading,
-  html: "Your reference number<br><strong>HDJ2123F</strong>" if false,
+  titleText: panelTitleText,
   classes: "govuk-!-margin-bottom-6"
 }) }}
 
