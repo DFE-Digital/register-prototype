@@ -124,6 +124,33 @@ seedRecords.push({
   degree: null
 })
 
+// Static names for ur
+seedRecords.push({
+  status: 'Draft',
+  personalDetails: {
+    givenName: "Jill",
+    familyName: "Bachmann",
+    sex: 'Female',
+    status: 'Completed'
+  },
+  route: 'Assessment only',
+  trainingDetails: {
+    status: 'Completed'
+  },
+  programmeDetails: {
+    status: 'Completed'
+  },
+  contactDetails: {
+    status: 'Completed'
+  },
+  diversity: {
+    status: 'Completed'
+  },
+  degree: {
+    status: 'Completed'
+  }
+})
+
 seedRecords.push({
   status: 'Pending TRN',
   submittedDate: new Date(),

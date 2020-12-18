@@ -98,9 +98,17 @@ const generateFakeApplication = (params = {}) => {
   }
   else {
     // Updated at some point in last 500 days
-    updatedDate = params.updatedDate || faker.date.between(
+    if (status == 'Draft'){
+      updatedDate = params.updatedDate || faker.date.between(
+      moment(),
+      moment().subtract(50, 'days'))
+    }
+    else {
+      updatedDate = params.updatedDate || faker.date.between(
       moment(),
       moment().subtract(500, 'days'))
+    }
+    
   }
   // Submitted some time before it was updated
   if (status != 'Draft'){
