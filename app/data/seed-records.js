@@ -1,6 +1,6 @@
 let seedRecords = []
 
-// Very detailed draft for use in user research
+// Very detailed draft for user research - matches seed data
 seedRecords.push({
   "status": "Draft",
   "events": {
@@ -102,7 +102,7 @@ seedRecords.push({
   }
 })
 
-// Static names for ur
+// Partially complete draft
 seedRecords.push({
   status: 'Draft',
   personalDetails: {
@@ -124,7 +124,7 @@ seedRecords.push({
   degree: null
 })
 
-// Static names for ur
+// Fully complete draft - ready to submit
 seedRecords.push({
   status: 'Draft',
   personalDetails: {
@@ -230,5 +230,4 @@ seedRecords.push({
   },
 })
 
-// console.log({seedRecords})
 module.exports = seedRecords
