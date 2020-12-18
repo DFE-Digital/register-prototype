@@ -29,6 +29,10 @@ filters.debug = (item) => {
   return item;
 }
 
+// Expose all of lodash
+filters.lodash = function(test, name, ...args) {
+  return _[name](test, ...args)
+}
 
 filters.falsify = (input) => {
   if (_.isNumber(input)) return input
