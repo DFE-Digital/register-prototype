@@ -6,19 +6,6 @@ const url = require('url')
 const utils = require('./route-utils')
 const filters = require('./../filters.js')()
 
-// Some hardcoded trainees for testing
-// Will need to be regenerated if we create new seeds
-let exampleTrainees = [
-  '6272d7bd-7d6c-4a06-896f-19e5b095917d',
-  '08619666-f282-4fb9-a235-8e23dc4e40e5',
-  'f886b087-2ebd-452c-9ab1-ec59638fe5c5',
-  '99d60780-24af-4b50-9563-78c6bb227362',
-  '86e632e9-3c9b-465f-8bb9-37928d13793e',
-  '71c6dd59-1fe2-44b6-bbef-14483dbd5cbe',
-  'a0657735-eee5-4fb4-9872-6545aea5040c',
-  'fd612d5c-fe5d-41f3-8657-319fa361b452',
-  '011d7170-b227-478b-8401-369d35cd6b08'
-]
 
 module.exports = router => {
 
@@ -53,14 +40,22 @@ module.exports = router => {
   router.get('/bulk-action/example', (req, res) => {
     const data = req.session.data
 
-    // Grab list of trainees and delete everything else
-    // let filteredTrainees = data?.bulk?.filteredTrainees
-    let filteredTrainees = exampleTrainees
+    let bulkOptions = {
+      trainingRoutes: ['Provider-led'],
+      status: ["TRN received"],
+      subject: "All subjects"
+    }
+
+    let filteredTrainees = utils.filterRecords(data.records, data, bulkOptions)
+
+    // Grab first 6 trainees that match
+    let traineeGroup = recordUtils.sortRecordsByLastName(filteredTrainees.slice(0, 6))
+      .map(record => record.id)
 
     // Overwrites existing bulk object
     data.bulk = {
-      filteredTrainees,
-      selectedTrainees: filteredTrainees, // preselect all trainees
+      filteredTrainees: traineeGroup,
+      selectedTrainees: traineeGroup, // preselect all trainees
       action: "Recommend a group of trainees for QTS",
       directAction: true
     }
