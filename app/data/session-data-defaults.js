@@ -30,7 +30,7 @@ let settings = {}
 settings.enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name).sort()
 settings.includeTimeline = 'true'
 // Default number of Publish courses that the provider offers
-settings.courseLimit = 8 
+settings.courseLimit = 20
 
 // Supliment records with getter for name
 let records = require('./records.json')
