@@ -6,6 +6,22 @@ const url = require('url')
 const utils = require('./route-utils')
 const filters = require('./../filters.js')()
 
+const getExampleBulkTrainees = data => {
+
+  let bulkOptions = {
+    trainingRoutes: ['Provider-led'],
+    status: ["TRN received"],
+    subject: "All subjects"
+  }
+
+  let filteredTrainees = utils.filterRecords(data.records, data, bulkOptions)
+
+  // Grab first 6 trainees that match
+  let traineeGroup = recordUtils.sortRecordsByLastName(filteredTrainees.slice(0, 6))
+    .map(record => record.id)
+
+  return traineeGroup
+}
 
 module.exports = router => {
 
@@ -36,30 +52,26 @@ module.exports = router => {
     res.redirect(`/bulk-action/filter-trainees`)
   })
 
-  // TODO: this should be a POST
+  // WIP example for starting with a predefined list of trainees
   router.get('/bulk-action/example', (req, res) => {
     const data = req.session.data
 
-    let bulkOptions = {
-      trainingRoutes: ['Provider-led'],
-      status: ["TRN received"],
-      subject: "All subjects"
-    }
-
-    let filteredTrainees = utils.filterRecords(data.records, data, bulkOptions)
-
-    // Grab first 6 trainees that match
-    let traineeGroup = recordUtils.sortRecordsByLastName(filteredTrainees.slice(0, 6))
-      .map(record => record.id)
+    let exampleTrainees = getExampleBulkTrainees(data)
 
     // Overwrites existing bulk object
     data.bulk = {
-      filteredTrainees: traineeGroup,
-      selectedTrainees: traineeGroup, // preselect all trainees
+      filteredTrainees: exampleTrainees,
+      selectedTrainees: exampleTrainees, // preselect all trainees
       action: "Recommend a group of trainees for QTS",
       directAction: true
     }
-    res.redirect(`/bulk-action/date`)
+    if (exampleTrainees.length > 0){
+      res.redirect(`/bulk-action/date`)
+    }
+    else {
+      res.redirect(`/bulk-action/select-trainees`)
+    }
+    
   })
 
   // Needs to provid filtered and selected trainees to view
@@ -78,7 +90,7 @@ module.exports = router => {
     let selectedTrainees = bulk?.selectedTrainees || []
 
     // Hardcode a list of trainees
-    // _.set(bulk, "filteredTrainees", exampleTrainees)
+    // _.set(bulk, "filteredTrainees", getExampleBulkTrainees(data))
 
     // Something has gone wrong - can’t continue without an action
     if (!bulk?.action){
