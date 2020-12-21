@@ -1,4 +1,4 @@
-{# <span class="govuk-caption-l">{{'Add a trainee'}}</span> #}
+
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
 {% set commencementStartDateArray = record.trainingDetails.commencementDate | toDateArray %}
@@ -41,30 +41,38 @@
   }) }}
 {% endset %}
 
-{{ govukRadios({
-  fieldset: {
-    legend: {
-      text: "Has the trainee started the course?",
-      classes: "govuk-fieldset__legend--s"
-    }
-  },
-  hint: {
-    text: "If the trainee has not started yet, you can still submit their record, but will need to provide their start date later"
-  },
-  items: [
-    {
-      value: "true",
-      text: "Yes",
-      conditional: {
-        html: commencementDateInputHtml
+{% if data.settings.requireTraineeStartDate %}
+
+  {{ commencementDateInputHtml | safe }}
+
+{% else %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Has the trainee started the course?",
+        classes: "govuk-fieldset__legend--s"
       }
     },
-    {
-      value: "false",
-      text: "No, the trainee has not started yet"
-    }
-  ]
-} | decorateAttributes(record, "record.trainingDetails.traineeStarted")) }}
+    hint: {
+      text: "If the trainee has not started yet, you can still submit their record, but will need to provide their start date later"
+    },
+    items: [
+      {
+        value: "true",
+        text: "Yes",
+        conditional: {
+          html: commencementDateInputHtml
+        }
+      },
+      {
+        value: "false",
+        text: "No, the trainee has not started yet"
+      }
+    ]
+  } | decorateAttributes(record, "record.trainingDetails.traineeStarted")) }}
+{% endif %}
+
 
 {{ govukInput({
   label: {

@@ -57,6 +57,15 @@
         ]
       } | decorateAttributes(data, "data.settings.showBulkLinks")) }}
 
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: 'true',
+            text: "Trainees need a start date to register for TRN"
+          }
+        ]
+      } | decorateAttributes(data, "data.settings.requireTraineeStartDate")) }}
+
       {{ govukInput({
         label: {
           text: "Number of publish courses the provider offers",

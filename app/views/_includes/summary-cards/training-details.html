@@ -1,5 +1,5 @@
 {% set commencementDateLabel -%}
-  {%- if record.trainingDetails.traineeStarted | falsify -%}
+  {%- if (record.trainingDetails.traineeStarted | falsify) or data.settings.requireTraineeStartDate -%}
     {{- record.trainingDetails.commencementDate | govukDate -}}
   {%- else -%}
     Trainee yet to start course
@@ -14,7 +14,7 @@
       text: "Start date"
     },
     value: {
-      text: (record.trainingDetails.commencementDate | govukDate or "Not provided") if traineeStarted else "Trainee yet to start course"
+      text: commencementDateLabel
     },
     actions: {
       items: [

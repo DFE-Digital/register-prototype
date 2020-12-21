@@ -46,6 +46,9 @@ settings.includeDeclaration = false
 // Enable timeline on records
 settings.showBulkLinks = false
 
+// Start date is required when registering trainees
+settings.requireTraineeStartDate = 'true'
+
 // Default number of Publish courses that the provider offers
 settings.courseLimit = 20
 
