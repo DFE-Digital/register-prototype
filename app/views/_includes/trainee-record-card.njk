@@ -3,7 +3,18 @@
 {% endif %}
 
 <div class="app-application-card {{justNowClass}}">
-
+  {% if data.settings.showBulkLinks %}
+    <div class="app-application-card_col">
+      <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+        {% if record.status == 'TRN received' or (record.status == 'Draft' and record | recordIsComplete) %}
+          <input type="checkbox" name="[bulk][filteredTrainees]" class="govuk-checkboxes__input" id="checkbox-{{record.id}}" value="{{record.id}}">
+          <label class="govuk-label govuk-checkboxes__label" for="checkbox-{{record.id}}">
+            <span class="govuk-visually-hidden">Select {{record.personalDetails.shortName}}</span>
+          </label>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
   <div class="app-application-card_col">
     <h3 class="govuk-heading-m govuk-!-margin-bottom-3">
       <a href="/record/{{ record.id }}" class="govuk-link govuk-link--no-visited-state">

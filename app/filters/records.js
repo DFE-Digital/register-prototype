@@ -5,9 +5,12 @@ const _ = require('lodash')
 const trainingRouteData = require('./../data/training-route-data')
 const trainingRoutes = trainingRouteData.trainingRoutes
 const recordUtils = require('./../lib/record')
+const routeUtils = require('./../routes/route-utils')
 
 // Leave this filters line
 var filters = {}
+
+filters.recordIsComplete = routeUtils.recordIsComplete
 
 // Check if the course route requires this field
 filters.requiresField = recordUtils.requiresField

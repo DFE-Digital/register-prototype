@@ -52,6 +52,25 @@ module.exports = router => {
     res.redirect(`/bulk-action/filter-trainees`)
   })
 
+  // Bypass action page
+  router.get('/bulk-action/new/direct', (req, res) => {
+    const data = req.session.data
+    let bulk = data.bulk
+    bulk.directAction = true
+
+    if (bulk.filteredTrainees){
+      bulk.selectedTrainees = bulk.filteredTrainees
+      if (bulk.action != "Recommend a group of trainees for QTS") res.redirect(`/bulk-action/confirm`)
+
+      // Date answer needed
+      else res.redirect(`/bulk-action/date`)
+    }
+    else {
+      res.redirect(`/bulk-action/filter-trainees`)
+    }
+
+  })
+
   // WIP example for starting with a predefined list of trainees
   router.get('/bulk-action/example', (req, res) => {
     const data = req.session.data

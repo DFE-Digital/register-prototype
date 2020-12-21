@@ -24,11 +24,28 @@ let trainingRoutes = trainingRouteData.trainingRoutes
 let allTrainingRoutes       = Object.values(trainingRoutes).map(route => route.name)
 
 let courses                 = require('./courses.json')
-// Things that can be changed from the /admin page
+
+// =============================================================================
+// Settings - things that can be changed from /admin
+// =============================================================================
+
 let settings = {}
-// Simplify structure so it can be worked with from admin page
+
+// Currently enabled routes
 settings.enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name).sort()
+
+// Enable timeline on records
 settings.includeTimeline = 'true'
+
+// Enable timeline on records
+settings.includeGuidance = false
+
+// Enable timeline on records
+settings.includeDeclaration = false
+
+// Enable timeline on records
+settings.showBulkLinks = false
+
 // Default number of Publish courses that the provider offers
 settings.courseLimit = 20
 

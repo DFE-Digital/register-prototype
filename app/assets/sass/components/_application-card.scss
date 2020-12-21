@@ -15,6 +15,14 @@
 }
 
 // Trainee column
+.app-application-card_col:nth-last-child(4) {
+  @include govuk-media-query($from: tablet) {
+    width: 5%;
+    padding-right: 10px;
+  }
+}
+
+// Trainee column
 .app-application-card_col:nth-last-child(3) {
   @include govuk-media-query($from: tablet) {
     width: 40%;

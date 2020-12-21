@@ -72,102 +72,130 @@
   <div class="govuk-grid-column-full">
 
     <div class="moj-filter-layout">
-      
-      <form method="get" action="">
-      
-        <div class="moj-filter-layout__filter-wrapper">
-          
+
+      <div class="moj-filter-layout__filter-wrapper">
+        <form method="get" action="">
           <div class="moj-filter-layout__filter">
             {% include "_includes/filter-panel.njk" %}
           </div>
+        </form>
+        <p class="govuk-body"><a href="#" class="govuk-link">Export these records</a></p>
+      </div>
 
-          <p class="govuk-body"><a href="#" class="govuk-link">Export these records</a></p>
+      <div class="moj-filter-layout__content">
 
+        <div class="moj-action-bar">
+          <div class="moj-action-bar__filter">   
+          </div>
         </div>
 
-        <div class="moj-filter-layout__content">
+        {# Only sort if there's at least two items #}
+        {% if filteredRecords.length > 1 %}
+          {% include "_includes/record-sort-order.njk" %}
+        {% endif %}
 
-          <div class="moj-action-bar">
-            <div class="moj-action-bar__filter">   
-            </div>
-          </div>
-          
+        {% if filteredRecords.length %}
 
-          {# Only sort if there's at least two items #}
-          {% if filteredRecords.length > 1 %}
-            {% include "_includes/record-sort-order.njk" %}
-          {% endif %}
+          <div class="app-application-cards">
 
-          {% if filteredRecords.length %}
+            {% set draftRecords = filteredRecords | where("status", "Draft") %}
 
-
-            <div class="app-application-cards">
-
-              {% set draftRecords = filteredRecords | where("status", "Draft") %}
-             
-              {% if (draftRecords | length) %}
+            {% if (draftRecords | length) %}
+              <form action="/bulk-action/new/direct" method="post" novalidate>
                 <div class="govuk-!-margin-bottom-8">
-                  <h2 class="govuk-heading-m">Draft records ({{draftRecords | length}})</h2>
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-half">
+                      <h2 class="govuk-heading-m">Draft records ({{draftRecords | length}})</h2>
+                    </div>
+                    {% if data.settings.showBulkLinks %}
+                      <div class="govuk-grid-column-one-half">
+                        <input type="hidden" name="[bulk][action]" value="Submit a group of records and request TRNs">
+                        <button role="link" class="govuk-body app-button-as-link govuk-link align-right">Submit draft records for TRN</button>
+                      </div>
+                    {% endif %}
+
+                  </div>
+
                   {% for record in draftRecords %}
                     {% include "_includes/trainee-record-card.njk" %}
                   {% endfor %}
-                </div>
-              {% endif %}
 
-              {% set nonDraftRecords = filteredRecords | removeWhere("status", "Draft") %}
-              {% if (nonDraftRecords | length) %} 
-                <h2 class="govuk-heading-m">Records ({{nonDraftRecords | length}})</h2>
+                </div>
+              </form>
+
+            {% endif %}
+
+            {% set nonDraftRecords = filteredRecords | removeWhere("status", "Draft") %}
+            {% if (nonDraftRecords | length) %} 
+              <form action="/bulk-action/new/direct" method="post" novalidate>
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-one-half">
+                    <h2 class="govuk-heading-m">Records ({{nonDraftRecords | length}})</h2>
+                  </div>
+                  {% if data.settings.showBulkLinks %}
+                    <div class="govuk-grid-column-one-half">
+                      <input type="hidden" name="[bulk][action]" value="Recommend a group of trainees for QTS">
+                      {# <button role="link" class="govuk-body app-button-as-link govuk-link align-right">Recommend trainees for QTS</button> #}
+                      {{ govukButton({
+                        "text": "Recommend trainees for QTS",
+                        classes: "govuk-button--secondary align-right"
+                      }) }}
+                  </div>
+                  {% endif %}
+                  
+                </div>
+
                 {% for record in nonDraftRecords %}
                     {% include "_includes/trainee-record-card.njk" %}
                 {% endfor %}
-              {% endif %}
 
-            </div>
-
-            {# Don't show pagination when it's clear there's not many results #}
-            {% if filteredRecords | length > 20 %}
-              {% set pagination = {
-                from: 1,
-                to: 50,
-                count: 346,
-                next: {
-                  text: 'Next',
-                  href: '?page=' + 2
-                },
-                items: [{
-                  text: '1',
-                  href: '?page=1',
-                  selected: true
-                  }, {
-                  text: '2',
-                  href: '?page=2',
-                  selected: false
-                  }, {
-                  text: '3',
-                  href: '?page=3'
-                  }]
-              } %}
-
-              {{ mojPagination({
-                results: {
-                  from: pagination.from,
-                  to: pagination.to,
-                  count: pagination.count
-                },
-                previous: pagination.previous,
-                next: pagination.next,
-                items: pagination.items,
-                classes: 'govuk-!-margin-bottom-3'
-              }) }}
+              </form>
             {% endif %}
+          </div>
           
-          {% else %}
-            <h2 class="govuk-heading-m">No records found.</h2>
-            <p class="govuk-body">Try <a href="/records">clearing your search and filters</a>.</p>
-          {% endif %}
-        </div>
 
-      </form>
+          {# Don't show pagination when it's clear there's not many results #}
+          {% if filteredRecords | length > 20 %}
+            {% set pagination = {
+              from: 1,
+              to: 50,
+              count: 346,
+              next: {
+                text: 'Next',
+                href: '?page=' + 2
+              },
+              items: [{
+                text: '1',
+                href: '?page=1',
+                selected: true
+                }, {
+                text: '2',
+                href: '?page=2',
+                selected: false
+                }, {
+                text: '3',
+                href: '?page=3'
+                }]
+            } %}
+
+            {{ mojPagination({
+              results: {
+                from: pagination.from,
+                to: pagination.to,
+                count: pagination.count
+              },
+              previous: pagination.previous,
+              next: pagination.next,
+              items: pagination.items,
+              classes: 'govuk-!-margin-bottom-3'
+            }) }}
+          {% endif %}
+        
+        {% else %}
+          <h2 class="govuk-heading-m">No records found.</h2>
+          <p class="govuk-body">Try <a href="/records">clearing your search and filters</a>.</p>
+        {% endif %}
+      </div>
 
     </div>
   </div>
