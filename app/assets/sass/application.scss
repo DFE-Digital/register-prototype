@@ -32,6 +32,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/all-records-header";
 @import "components/all-records-search";
 @import "components/banner";
+@import "components/button-as-link";
 @import "components/cookie-banner";
 @import "components/record-header";
 @import "components/record-actions";
@@ -185,3 +186,9 @@ span.summary-validation-symbol {
 .confirmation-next-button {
   margin-right: 20px;
 }
+
+.align-right {
+  text-align: right;
+  float: right;
+}
+
