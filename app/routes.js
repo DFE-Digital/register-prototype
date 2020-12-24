@@ -3,7 +3,6 @@ const router = express.Router()
 const faker = require('faker')
 const path = require('path')
 const moment = require('moment')
-const filters = require('./filters.js')()
 const _ = require('lodash')
 const utils = require('./../lib/utils')
 
@@ -33,7 +32,7 @@ router.post('*', function(req, res, next){
 // Individual pages
 // =============================================================================
 // Records list
-require('./routes/records-list')(router)
+require('./routes/records-list-routes')(router)
 
 // =============================================================================
 // Shared routes - add / edit record data
