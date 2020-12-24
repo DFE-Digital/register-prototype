@@ -111,7 +111,7 @@ module.exports = router => {
     delete record.selectedCourseAutocompleteTemp
 
     let isAllocated = recordUtils.hasAllocatedPlaces(record)
-    isAllocated = true
+
     if (isAllocated) {
       // After /allocated-place the journey will match other programme-details routes
       res.redirect(`${recordPath}/programme-details/allocated-place${referrer}`)

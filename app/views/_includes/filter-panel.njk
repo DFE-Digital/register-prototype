@@ -4,15 +4,15 @@
     classes: "govuk-checkboxes--small js-auto-submit",
     fieldset: {
       legend: {
-        text: "Cycle",
+        text: "Course start",
         isPageHeading: false,
-        classes: "govuk-fieldset__legend--m"
+        classes: "govuk-fieldset__legend--s"
       }
     },
     items: [
       {
         text: "2020 to 2021 (current)",
-        checked: checked(query.filterCycle, "2020 to 2021 (current)")
+        checked: checked(query.filterCycle, "2020 to 2021 (current)") if query.filterCycle else 'checked'
       },
       {
         text: "2019 to 2020",
@@ -38,7 +38,7 @@
       fieldset: {
         legend: {
           text: "Routes",
-          classes: "govuk-fieldset__legend--m"
+          classes: "govuk-fieldset__legend--s"
         }
       },
       hint: {
@@ -59,7 +59,7 @@
       legend: {
         text: "Status",
         isPageHeading: false,
-        classes: "govuk-fieldset__legend--m"
+        classes: "govuk-fieldset__legend--s"
       }
     },
     items: [
@@ -118,7 +118,8 @@
     name: "filterSubject",
     classes: "js-auto-submit",
     label: {
-      text: "Subject"
+      text: "Subject",
+      classes: "govuk-label--s"
     },
     items: subjectItems
   }) }}

@@ -221,7 +221,6 @@ module.exports = router => {
     //   pathname: '/records',
     //   query: newQuery,
     // })
-    console.log(`Original filtered length: ${filteredRecords.length}`)
 
     res.render('records', {
       filteredRecords,
