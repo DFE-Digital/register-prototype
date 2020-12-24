@@ -5,8 +5,7 @@ const path = require('path')
 const moment = require('moment')
 const filters = require('./filters.js')()
 const _ = require('lodash')
-const utils = require('./routes/route-utils')
-
+const utils = require('./../lib/utils')
 
 // =============================================================================
 // Catch all
@@ -29,6 +28,7 @@ router.post('*', function(req, res, next){
   }
   next()
 })
+
 // =============================================================================
 // Individual pages
 // =============================================================================

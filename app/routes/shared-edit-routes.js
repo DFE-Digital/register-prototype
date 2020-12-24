@@ -1,9 +1,8 @@
 const faker = require('faker')
 const path = require('path')
 const moment = require('moment')
-const recordUtils = require('./../lib/record.js')
+const utils = require('./../lib/utils')
 const _ = require('lodash')
-const utils = require('./route-utils')
 
 
 module.exports = router => {
@@ -110,7 +109,7 @@ module.exports = router => {
     delete record.selectedCourseTemp
     delete record.selectedCourseAutocompleteTemp
 
-    let isAllocated = recordUtils.hasAllocatedPlaces(record)
+    let isAllocated = utils.hasAllocatedPlaces(record)
 
     if (isAllocated) {
       // After /allocated-place the journey will match other programme-details routes
@@ -187,7 +186,7 @@ module.exports = router => {
 
     record.programmeDetails = programmeDetails
 
-    let isAllocated = recordUtils.hasAllocatedPlaces(record)
+    let isAllocated = utils.hasAllocatedPlaces(record)
 
     if (isAllocated) {
       res.redirect(`${recordPath}/programme-details/allocated-place${referrer}`)

@@ -1,9 +1,8 @@
 const _ = require('lodash')
 const moment = require('moment')
 const path = require('path')
-const recordUtils = require('./../lib/record.js')
+const utils = require('./../lib/utils')
 const url = require('url')
-const utils = require('./route-utils')
 const filters = require('./../filters.js')()
 
 const getExampleBulkTrainees = data => {
@@ -17,7 +16,7 @@ const getExampleBulkTrainees = data => {
   let filteredTrainees = utils.filterRecords(data.records, data, bulkOptions)
 
   // Grab first 6 trainees that match
-  let traineeGroup = recordUtils.sortRecordsByLastName(filteredTrainees.slice(0, 6))
+  let traineeGroup = utils.sortRecordsByLastName(filteredTrainees.slice(0, 6))
     .map(record => record.id)
 
   return traineeGroup
@@ -99,7 +98,7 @@ module.exports = router => {
     const bulk = data.bulk || {}
     const autoSelectTrainees = false // unsure if this is good
 
-    let allRecords = recordUtils.sortRecordsByLastName(data.records)
+    let allRecords = utils.sortRecordsByLastName(data.records)
     let filteredRecords
     let incompleteDraftCount = 0 // Only for QTS flow
 
@@ -129,7 +128,7 @@ module.exports = router => {
       if (bulk?.filteredTrainees) {
 
         // Look up records from list
-        filteredRecords = recordUtils.getRecordsById(allRecords, bulk.filteredTrainees)
+        filteredRecords = utils.getRecordsById(allRecords, bulk.filteredTrainees)
 
         // If no pre-selected trainees, default to selecting them all
         if (autoSelectTrainees && !bulk?.selectedTrainees) selectedTrainees = bulk.filteredTrainees
@@ -222,7 +221,7 @@ module.exports = router => {
     let failCount = 0
 
     // Look up records from IDs
-    let selectedRecords = recordUtils.getRecordsById(records, bulk.selectedTrainees)
+    let selectedRecords = utils.getRecordsById(records, bulk.selectedTrainees)
 
     // Loop through each record
     selectedRecords.forEach(record => {

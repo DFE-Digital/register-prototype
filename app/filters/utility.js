@@ -2,28 +2,15 @@
 // Imports and setup
 // -------------------------------------------------------------------
 var _ = require('lodash');
-// Leave this filters line
 var filters = {}
 
+// Utils has a bunch of shared functions used by filters and routes
+const utils = require('./../lib/utils')
 
-/*
-  ====================================================================
-  filterName
-  --------------------------------------------------------------------
-  Short description for the filter
-  ====================================================================
+// expose general utils as filters
+filters = utils
 
-  Usage:
-
-  [Usage here]
-
-  filters.sayHi = (name) => {
-    return 'Hi ' + name + '!'
-  }
-
-*/
-
-// set attribute on object
+// Log to terminal
 filters.debug = (item) => {
   console.log('Debug', item)
   return item;
@@ -34,11 +21,13 @@ filters.lodash = function(test, name, ...args) {
   return _[name](test, ...args)
 }
 
+// Cooerce falsy inputs to real true and false
+// Needed as Nunjucks doesn't treat all falsy values as false
 filters.falsify = (input) => {
   if (_.isNumber(input)) return input
   else if (input == false) return false
   if (_.isString(input)){
-    let truthyValues = ['yes','true']
+    let truthyValues = ['yes', 'true']
     let falsyValues = ['no', 'false']
     if (truthyValues.includes(input.toLowerCase())) return true
     else if (falsyValues.includes(input.toLowerCase())) return false
@@ -46,15 +35,16 @@ filters.falsify = (input) => {
   return input;
 }
 
+// Adds an index for each object in array
 filters.addIndexCount = array => {
-
   array.forEach((item, index) =>{
     item.index = index
   })
   return array;
 }
 
-// Add name, value, id, idPrefix and checked attributes to GOVUK form inputs
+// Decorate attributes
+// Add name, value, id, idPrefix and checked attributes to GOVUK form components
 // Generate the attributes based on the application ID and the section they’re in
 
 // Copied from Apply, but modified to work with data directly
@@ -82,7 +72,6 @@ filters.addIndexCount = array => {
 
 Will populate name and id, and add value and checked for each item
 */
-
 filters.decorateAttributes = (obj, data, value) => {
 
   // Map dot or bracket notation to path parts
@@ -136,12 +125,13 @@ filters.decorateAttributes = (obj, data, value) => {
   return obj
 }
 
-
+// Return first x items of array / string
 filters.limitTo = (input, limit) =>{
 
   if(typeof limit !== 'number'){
     limit = parseInt(limit) // assume limit is a string of a number
   }
+
   if(typeof input === 'string'){
     if(limit >= 0){
       return input.substring(0, limit);

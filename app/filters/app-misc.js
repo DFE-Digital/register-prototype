@@ -4,7 +4,7 @@
 const _ = require('lodash')
 const trainingRouteData = require('./../data/training-route-data')
 const trainingRoutes = trainingRouteData.trainingRoutes
-const recordUtils = require('./../lib/record')
+const utils = require('./../lib/utils')
 
 // Leave this filters line
 var filters = {}
@@ -63,15 +63,12 @@ filters.orReferrer = (url, referrer) => {
   }
 }
 
-// Sort by last name or draft record
-filters.sortRecordsByLastName = recordUtils.sortRecordsByLastName
-
 // Sort by subject, including course code
 filters.sortPublishCourses = courses => {
   let sorted = courses.sort((a, b) => {
     let aString = `${a.subject} (${a.code})`
     let bString = `${b.subject} (${b.code})`
-    return recordUtils.sortAlphabetical(aString, bString)
+    return utils.sortAlphabetical(aString, bString)
   })
   return sorted
 }
@@ -85,11 +82,5 @@ filters.getCourseNamesForAutocomplete = (courses) => {
     return [`${course.subject} (${course.code})`, course.id]
   })
 }
-
-// Look up a record using it's UUID
-filters.getRecordById = recordUtils.getRecordById
-
-// Look up several records using array of  UUIDs
-filters.getRecordsById = recordUtils.getRecordsById
 
 exports.filters = filters

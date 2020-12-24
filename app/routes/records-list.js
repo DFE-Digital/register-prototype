@@ -1,6 +1,6 @@
 const url = require('url')
 const _ = require('lodash')
-const utils = require('./route-utils')
+const utils = require('./../lib/utils')
 
 
 // Kit checkboxes will output a string or array depending on number of options

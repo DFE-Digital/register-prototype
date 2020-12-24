@@ -3,7 +3,7 @@ const path = require('path')
 const moment = require('moment')
 const filters = require('./../filters.js')()
 const _ = require('lodash')
-const utils = require('./route-utils')
+const utils = require('./../lib/utils')
 
 module.exports = router => {
 
