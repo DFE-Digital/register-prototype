@@ -1,0 +1,68 @@
+{# <h1 class="govuk-heading-l">{{pageHeading}}</h1> #}
+
+{% set degreeCount = record.degree.items | length %}
+
+{# Get degree (if it exists) from existing data #}
+{% set degrees = record.degree.items %}
+
+{% set degreeItems = [] %}
+
+{% for degree in degrees %}
+  {% set isInternational = degree.isInternational | falsify %}
+  {% if isInternational %}
+    {% if degree.type != 'NARIC not provided' %}
+      {% set typeText = "Non-UK " + degree.type + ": " %}
+    {% else %}
+        {% set typeText = "Non-UK degree: " %}
+    {% endif %}
+    {% set titleText = typeText + (degree.subject | lower) %}
+  {% else %}
+    {% set titleText = degree.type + ": " + (degree.subject | lower) %}
+  {% endif %}
+
+  {% set hintText %}
+    {% if isInternational %}
+      {{degree.country}} ({{degree.endDate}})
+    {% else %}
+      {{degree.org}}, UK ({{degree.endDate}})
+    {% endif %}
+  {% endset %}
+
+  {% set degreeItems = degreeItems | push({
+    text: titleText,
+    value: degree.id,
+    hint: {
+      text: hintText 
+    }
+  }) %}
+
+  
+
+  
+{% endfor %}
+
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: degreeItems
+} | decorateAttributes(record, "record.degree.bursarySelection")) }}
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+
+
+
