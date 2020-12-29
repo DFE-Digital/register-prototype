@@ -345,16 +345,17 @@ module.exports = router => {
       }
     }
 
-    let existingDegrees = _.get(data, "record.degree.items")
+    newDegree.id = faker.random.uuid()
+
+    let existingDegrees = _.get(data, "record.degree.items") || []
     let degreeIndex = req.params.index
     let recordPath = utils.getRecordPath(req)
 
-    if (existingDegrees && existingDegrees[degreeIndex]) {
+    if (existingDegrees[degreeIndex]) {
       // Might be a partial update, so merge the new with the old
       existingDegrees[degreeIndex] = Object.assign({}, existingDegrees[degreeIndex], newDegree)
     }
     else {
-      existingDegrees = (!existingDegrees) ? [] : existingDegrees
       existingDegrees.push(newDegree)
     }
 

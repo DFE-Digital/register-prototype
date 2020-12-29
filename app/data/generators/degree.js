@@ -7,6 +7,7 @@ module.exports = (faker, isInternationalTrainee) => {
     const predicted = faker.random.boolean()
     const endDate = faker.helpers.randomize(['2020','2019','2018','2017','2016','2015'])
     const startDate = (parseInt(endDate) - 4).toString()
+    const id = faker.random.uuid()
 
     if (isInternationalTrainee) {
       return {
@@ -20,10 +21,11 @@ module.exports = (faker, isInternationalTrainee) => {
         predicted,
         naric: {
           reference: '4000228363',
-          comparable: 'Bachelor (Honours) degree'
+          comparable: 'Bachelor degree'
         },
         startDate,
-        endDate
+        endDate,
+        id
       }
     } else {
       const type = faker.helpers.randomize(degreeData().types.all)
@@ -49,7 +51,8 @@ module.exports = (faker, isInternationalTrainee) => {
         grade,
         predicted,
         startDate,
-        endDate
+        endDate,
+        id
       }
     }
   }
