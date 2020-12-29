@@ -8,37 +8,15 @@
 {% set degreeItems = [] %}
 
 {% for degree in degrees %}
-  {% set isInternational = degree.isInternational | falsify %}
-  {% if isInternational %}
-    {% if degree.type != 'NARIC not provided' %}
-      {% set typeText = "Non-UK " + degree.type + ": " %}
-    {% else %}
-        {% set typeText = "Non-UK degree: " %}
-    {% endif %}
-    {% set titleText = typeText + (degree.subject | lower) %}
-  {% else %}
-    {% set titleText = degree.type + ": " + (degree.subject | lower) %}
-  {% endif %}
-
-  {% set hintText %}
-    {% if isInternational %}
-      {{degree.country}} ({{degree.endDate}})
-    {% else %}
-      {{degree.org}}, UK ({{degree.endDate}})
-    {% endif %}
-  {% endset %}
 
   {% set degreeItems = degreeItems | push({
-    text: titleText,
+    text: degree | getDegreeName,
     value: degree.id,
     hint: {
-      text: hintText 
+      text: degree | getDegreeHint
     }
   }) %}
 
-  
-
-  
 {% endfor %}
 
 

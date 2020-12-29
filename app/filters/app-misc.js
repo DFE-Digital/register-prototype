@@ -83,4 +83,31 @@ filters.getCourseNamesForAutocomplete = (courses) => {
   })
 }
 
+filters.getDegreeName = (degree) => {
+  if (!degree) return ''
+  console.log(degree)
+  let typeText
+
+  if (utils.falsify(degree.isInternational)){
+    if (degree.type == 'NARIC not provided'){
+      typeText = "Non-UK degree"
+    }
+    else typeText = `Non-UK ${degree.type}`
+  }
+  else {
+    typeText = degree.type
+  }
+  return `${typeText}: ${degree.subject.toLowerCase()}`
+}
+
+filters.getDegreeHint = (degree) =>{
+  if (!degree) return ''
+  if (utils.falsify(degree.isInternational)){
+    return `${degree.country} (${degree.endDate})`
+  }
+  else {
+    return `${degree.org} (${degree.endDate})`
+  } 
+}
+
 exports.filters = filters
