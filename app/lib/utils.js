@@ -12,6 +12,20 @@ const trainingRoutes = trainingRouteData.trainingRoutes
 // General
 // -------------------------------------------------------------------
 
+// Cooerce falsy inputs to real true and false
+// Needed as Nunjucks doesn't treat all falsy values as false
+exports.falsify = (input) => {
+  if (_.isNumber(input)) return input
+  else if (input == false) return false
+  if (_.isString(input)){
+    let truthyValues = ['yes', 'true']
+    let falsyValues = ['no', 'false']
+    if (truthyValues.includes(input.toLowerCase())) return true
+    else if (falsyValues.includes(input.toLowerCase())) return false
+  }
+  return input;
+}
+
 // Sort two things alphabetically, case insentitively
 exports.sortAlphabetical = (x, y) => {
   if(x.toLowerCase() !== y.toLowerCase()) {

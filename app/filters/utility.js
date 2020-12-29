@@ -21,20 +21,6 @@ filters.lodash = function(test, name, ...args) {
   return _[name](test, ...args)
 }
 
-// Cooerce falsy inputs to real true and false
-// Needed as Nunjucks doesn't treat all falsy values as false
-filters.falsify = (input) => {
-  if (_.isNumber(input)) return input
-  else if (input == false) return false
-  if (_.isString(input)){
-    let truthyValues = ['yes', 'true']
-    let falsyValues = ['no', 'false']
-    if (truthyValues.includes(input.toLowerCase())) return true
-    else if (falsyValues.includes(input.toLowerCase())) return false
-  }
-  return input;
-}
-
 // Adds an index for each object in array
 filters.addIndexCount = array => {
   array.forEach((item, index) =>{
