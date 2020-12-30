@@ -98,6 +98,7 @@ seedRecords.push({
         "id": "1faf0ae6-4c01-4224-9e49-06beffc0c5d0"
       }
     ],
+    "degreeToBeUsedForBursaries": "31dc5e93-b521-425c-98d8-dec96eb2388c",
     "status": [
       "Completed"
     ]
