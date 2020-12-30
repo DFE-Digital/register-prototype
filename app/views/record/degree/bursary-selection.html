@@ -1,0 +1,12 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set degreeCount = data.record.degree.items | length %}
+
+{% set pageHeading = "Which degree should be used for busary selection?" %}
+
+{% set formAction = "./confirm" | addReferrer(referrer) %}
+
+{% block formContent %}
+  {% include "_includes/forms/degree/bursary-selection.html" %}
+{% endblock %}
+

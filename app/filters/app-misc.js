@@ -83,6 +83,8 @@ filters.getCourseNamesForAutocomplete = (courses) => {
   })
 }
 
+// Return a pretty name for the degree
+
 filters.getDegreeName = (degree) => {
   if (!degree) return ''
   console.log(degree)

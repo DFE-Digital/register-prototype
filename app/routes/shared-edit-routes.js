@@ -265,9 +265,7 @@ module.exports = router => {
   router.get(['/:recordtype/:uuid/degree/add','/:recordtype/degree/add'], function (req, res) {
     const data = req.session.data
     let degrees = _.get(data, "record.degree.items")
-    console.log('degrees is', degrees)
     let degreeCount = (degrees) ? degrees.length : 0
-    console.log('degree count', degreeCount)
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
     res.redirect(`${recordPath}/degree/${degreeCount}/type${referrer}`)
@@ -361,7 +359,13 @@ module.exports = router => {
 
     _.set(data, 'record.degree.items', existingDegrees)
 
-    res.redirect(`${recordPath}/degree/confirm${referrer}`)
+    if (existingDegrees?.length > 1){
+      res.redirect(`${recordPath}/degree/bursary-selection${referrer}`)
+    }
+    else {
+      res.redirect(`${recordPath}/degree/confirm${referrer}`)
+    }
+
   })
 
 }

@@ -108,12 +108,32 @@
   } if canAmend
 } %}
 
+{# Bursary row only relevant if trainee has multiple degrees #}
+{% set bursaryRow = {
+  key: {
+    text: "Degree selected for bursaries"
+  },
+  value: {
+    text: "Yes" if (record.degree.degreeToBeUsedForBursaries == degree.id) else "No"
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/degree/bursary-selection" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "bursary selection"
+      }
+    ]
+  } if canAmend
+} if degrees | length > 1 %}
+
 {% if isInternational %}
   {% set degreeDetailsRows = [
     subjectRow,
     countryRow,
     graduationRow,
-    degreeTypeRow
+    degreeTypeRow,
+    bursaryRow
   ] %}
 {% else %}
   {% set degreeDetailsRows = [
@@ -121,7 +141,8 @@
     degreeTypeRow,
     institutionRow,
     graduationRow,
-    gradeRow
+    gradeRow,
+    bursaryRow
   ] %}  
 {% endif %}
 

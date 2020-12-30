@@ -1,0 +1,63 @@
+{{record | log}}
+
+{% set bursaryDegree = record.degree.items | find('id', record.degree.degreeToBeUsedForBursaries) %}
+
+{% set rows = [
+  {
+    key: {
+      text: "Degree to be used for busaries"
+    },
+    value: {
+      html: (bursaryDegree | getDegreeName) or "Not provided"
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/degree/bursary-selection" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "address"
+        }
+      ]
+    } if canAmend
+  }
+  ] %}
+
+
+{% set bursaryDetailsHtml %}
+  {{ govukSummaryList({
+    rows: rows
+  }) }}
+{% endset %}
+
+{% set complete = true if (record.contactDetails | sectionIsCompleted ) %}
+{% set status  = record.contactDetails | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("contactDetails") %}
+
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
+
+  {% set incompleteType = "warning" if errorList %}
+  {% set incompleteId = "contact-details" %}
+  {% if status == "In progress" %}
+    {% set incompleteText = "Contact details not marked as complete" %}
+    {% set incompleteLink = recordPath + "/contact-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Continue section" %}
+  {% else %}
+    {% set incompleteText = "Contact details not started" %}
+    {% set incompleteLink = recordPath + "/contact-details" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
+  {% endif %}
+
+  {% include "_includes/incomplete.njk" %}
+
+{% else %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Bursary details",
+    html: bursaryDetailsHtml
+  }) }}
+  
+{% endif %}
+
