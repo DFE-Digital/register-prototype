@@ -2,6 +2,9 @@
 
 {% set pageHeading = "Confirm contact details" %}
 
+{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backText = "Back to record" %}
+
 {% set gridColumn = 'govuk-grid-column-full' %}
 {% set formAction = "./update" | addReferrer(referrer) %}
 

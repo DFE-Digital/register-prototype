@@ -1,6 +1,10 @@
 {% extends "_templates/_record-form.html" %}
 {% set pageHeadingTraineeName = data.record.personalDetails | getShortName %}
 {% set pageHeading = "Check withdrawal details" %}
+
+{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backText = "Back to record" %}
+
 {% set gridColumn = 'govuk-grid-column-full' %}
 {% set formAction = "./update" %}
 

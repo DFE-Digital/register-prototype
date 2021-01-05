@@ -2,6 +2,9 @@
 
 {% set pageHeading = "Confirm trainee start date" %}
 
+{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backText = "Back to record" %}
+
 {% set formAction = "./update" | addReferrer(referrer) %}
 
 {% block formContent %}

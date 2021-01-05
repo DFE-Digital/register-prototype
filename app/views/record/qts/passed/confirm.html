@@ -1,6 +1,10 @@
 {% extends "_templates/_record-form.html" %}
 {% set pageHeadingTraineeName = data.record.personalDetails.shortName %}
 {% set pageHeading = "Check QTS details" %}
+
+{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backText = "Back to record" %}
+
 {% set gridColumn = 'govuk-grid-column-full' %}
 {% set formAction = "./update" %}
 
