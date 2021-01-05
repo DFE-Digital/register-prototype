@@ -13,14 +13,6 @@
   
   {% include "_includes/summary-cards/degree/details.html" %}
 
-  <div class="govuk-form-group">
-    {{ govukButton({
-      "text": "Add another degree" if degreeCount > 0 else "Add a degree",
-      href: "./add",
-      classes: "govuk-button--secondary"
-    }) }}
-  </div>
-
   {# Don't show checkbox if there are no degrees #}
   {% if degreeCount > 0 %}
     {{ govukCheckboxes({

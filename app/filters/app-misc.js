@@ -87,7 +87,7 @@ filters.getCourseNamesForAutocomplete = (courses) => {
 
 filters.getDegreeName = (degree) => {
   if (!degree) return ''
-  console.log(degree)
+
   let typeText
 
   if (utils.falsify(degree.isInternational)){

@@ -1,6 +1,13 @@
-{{record | log}}
 
 {% set bursaryDegree = record.degree.items | find('id', record.degree.degreeToBeUsedForBursaries) %}
+
+{% if bursaryDegree %}
+  {% set bursaryHtml %}
+    <p class="govuk-body">{{ bursaryDegree | getDegreeName }}</p>
+    <span class="govuk-hint">{{ bursaryDegree | getDegreeHint }}</span>
+  {% endset %}
+{% endif %}
+
 
 {% set rows = [
   {
@@ -8,7 +15,7 @@
       text: "Degree to be used for busaries"
     },
     value: {
-      html: (bursaryDegree | getDegreeName) or "Not provided"
+      html: bursaryHtml or "Not provided"
     },
     actions: {
       items: [

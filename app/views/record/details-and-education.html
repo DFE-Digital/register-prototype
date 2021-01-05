@@ -19,16 +19,8 @@
 
   {% include "_includes/summary-cards/degree/details.html" %}
 
-  {% set degreeCount = record.degree.items | length %}
+ 
 
-  {% if degreeCount %}
-    <div class="govuk-form-group">
-      {{ govukButton({
-        text: "Add another degree",
-        href: recordPath + "/degree/add",
-        classes: "govuk-button--secondary"
-      }) }}
-    </div>
-  {% endif %}
+  
 
 {% endblock %}

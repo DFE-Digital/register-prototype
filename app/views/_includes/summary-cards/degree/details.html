@@ -2,6 +2,7 @@
 {% set status  = record.degree | getStatusText %}
 
 {% set degrees = record.degree.items %}
+{% set degreeCount = degrees | length %}
 {% set sectionIsRequired = record | requiresSection("degree") %}
 
 {% if not sectionIsRequired %}
@@ -37,6 +38,20 @@
   {% for degree in degrees %}
     {% include "_includes/summary-cards/degree/single-degree-details.html" %}
   {% endfor %}
-  
-  {# {% include "_includes/summary-cards/degree/bursary-details.html" %} #}
+
+{% endif %}
+
+{# Add a degree button #}
+{% if (degreeCount | length > 0) %}
+  <div class="govuk-form-group govuk-!-margin-bottom-0">
+    {{ govukButton({
+      text: "Add another degree" if degreeCount > 0 else "Add a degree",
+      href: recordPath + "/degree/add",
+      classes: "govuk-button--secondary"
+    }) }}
+  </div>
+{% endif %}
+
+{% if degreeCount > 1 %}
+  {% include "_includes/summary-cards/degree/bursary-details.html" %}
 {% endif %}
