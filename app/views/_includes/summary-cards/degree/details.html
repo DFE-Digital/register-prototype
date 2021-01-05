@@ -42,7 +42,7 @@
 {% endif %}
 
 {# Add a degree button #}
-{% if (degreeCount | length > 0) %}
+{% if (degreeCount > 0) %}
   <div class="govuk-form-group govuk-!-margin-bottom-0">
     {{ govukButton({
       text: "Add another degree" if degreeCount > 0 else "Add a degree",
