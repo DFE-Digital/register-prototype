@@ -104,6 +104,9 @@ var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
 
+// Add Nunjucks functions (**Register trainee teachers addition**)
+utils.addNunjucksFunctions(nunjucksAppEnv)
+
 // Set views engine
 app.set('view engine', 'html')
 

@@ -2,7 +2,7 @@
 // Imports and setup
 // -------------------------------------------------------------------
 const moment = require("moment");
-var _ = require('lodash');
+const _ = require('lodash');
 
 // Leave this filters line
 var filters = {}
