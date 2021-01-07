@@ -19,6 +19,14 @@
 
 {% endfor %}
 
+{% set degreeItems = degreeItems | push({
+  divider: "Or"
+}) %}
+
+{% set degreeItems = degreeItems | push({
+  text: "Not applicable"
+}) %}
+
 
 {{ govukRadios({
   fieldset: {

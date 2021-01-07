@@ -6,13 +6,15 @@
     <p class="govuk-body">{{ bursaryDegree | getDegreeName }}</p>
     <span class="govuk-hint">{{ bursaryDegree | getDegreeHint }}</span>
   {% endset %}
+{% elseif record.degree.degreeToBeUsedForBursaries %}
+  {% set bursaryHtml = record.degree.degreeToBeUsedForBursaries %}
 {% endif %}
 
 
 {% set rows = [
   {
     key: {
-      text: "Degree to be used for busaries"
+      text: "Degree that relates to awarded bursary"
     },
     value: {
       html: bursaryHtml or "Not provided"
