@@ -22,41 +22,36 @@
 <h1 class="govuk-heading-l govuk-!-margin-bottom-8">{{pageHeading}}</h1>
 
 
+{# Text shown if user belongs to multiple providers #}
+{% set providerText %}
+  {# Include a link if using blended model #}
+  {% if data.signedInProviders | length > 1 %}
+    Training with <a href="{{'./pick-provider' | addReferrer(referrer) }}" class="govuk-link">{{record.provider}}</a>
+  {# Don’t link if using hat model - they need to back out and pick a different provider to work as #}
+  {% else %}
+    Training with {{record.provider}}
+  {% endif %}
+{% endset %}
+
+{% set routeText %}
+  on the <a href="{{ './select-route' | addReferrer(referrer) }}" class="govuk-link">{{ record.route | lower or "route not set" }}</a> route.
+{% endset %}
 
 {# Don’t show anything if user doesn't have multiple providers #}
 {% if data.settings.userProviders | length > 1  %}
+  {% set insetTextHtml %}
+    {{providerText | safe}} {{routeText | safe}}
+  {% endset %}
 
-  {# Include a link if using blended model #}
-  {% if data.signedInProviders | length > 1 %}
-    {% set insetProviderText %}
-      Training with <a href="./pick-provider" class="govuk-link">{{record.provider}}</a>.
-    {% endset %}
-
-  {# Don’t link if using hat model - they need to back out and pick a different provider to work as #}
-  {% else %}
-    {% set insetProviderText %}
-      Training with {{record.provider}}.
-    {% endset %}
-  {% endif %}
-
-  {{ govukInsetText({
-    html: insetProviderText
-  }) }}
+{% else %}
+  {% set insetTextHtml %}
+    Trainee {{routeText | safe}}
+  {% endset %}
 {% endif %}
 
-
-{% set routeTextHtml %}
-  {% if record.route %}
-    <p class="govuk-body">Trainee on the <a href="{{ './select-route' | addReferrer(referrer) }}" class="govuk-link">{{ record.route | lower }}</a> route.</p>
-  {% else %}
-    {# We should always have a route - but just in case show a link to set it #}
-    <p class="govuk-body"><a href="{{ './select-route' | addReferrer(referrer) }}" class="govuk-link">Route needs to be set.</a></p>
-  {% endif %}
-{% endset %}
 {{ govukInsetText({
-  html: routeTextHtml
+  html: insetTextHtml 
 }) }}
-
 
 <h2 class="govuk-heading-m">Personal details and education</h2>
 {{ appTaskList({
