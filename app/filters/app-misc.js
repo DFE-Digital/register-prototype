@@ -63,12 +63,10 @@ filters.orReferrer = (url, referrer) => {
   }
 }
 
-
 // eg Biology (J482)
 filters.getCourseName = (course) => {
   return `${course.subject} (${course.code})`
 }
-
 
 // Biology (J482)
 filters.getCourseNamesForSelect = (courses) => {
