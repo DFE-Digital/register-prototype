@@ -90,6 +90,11 @@ for *each* autocomplete
   var showAllValues = ('{{params.showAllValues}}' == 'false') ? false : true;
   var autoSelect = ('{{params.autoSelect}}' == 'false') ? false : true;
   var minLength = ('{{params.minLength}}' == false) ? 0 : parseInt('{{params.minLength}}');
+
+  // rawName used for cases where we need the *actual* value typed in the input, 
+  // not the value set by the auotcomplete js (eg setting the select). it starts 
+  // with an understore so that the kit auto-store data doesn’t capture it. Instead
+  // we need to grab it manually from req.body each time.
   var rawName = '_autocompleteRawValue_{{params.id}}'
 
   // Conditional not used
