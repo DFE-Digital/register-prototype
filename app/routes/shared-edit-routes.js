@@ -124,7 +124,6 @@ module.exports = router => {
     let referrer = utils.getReferrer(req.query.referrer)
     let recordPath = utils.getRecordPath(req)
     // Copy route up to higher level
-    // record.route = record.programmeDetails.route
     delete record.selectedCourseTemp
     delete record.selectedCourseAutocompleteTemp
 
