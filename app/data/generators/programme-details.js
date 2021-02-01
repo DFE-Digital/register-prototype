@@ -24,7 +24,7 @@ module.exports = (params, application) => {
   let programmeDetails
 
   if (params?.programmeDetails?.isPublishCourse !== undefined){
-    isPublishCourse = (params.programmeDetails.isPublishCourse == 'true') ? true : false
+    isPublishCourse = params.programmeDetails.isPublishCourse
   }
   else isPublishCourse = publishRoutes.includes(application.route)
 

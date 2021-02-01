@@ -15,7 +15,7 @@ seedRecords.push({
     ]
   },
   "programmeDetails": {
-    "isPublishCourse" : true,
+    "isPublishCourse" : false,
     "subject": "Physical education",
     "ageRange": "14 to 19 programme",
     "startDate": [
