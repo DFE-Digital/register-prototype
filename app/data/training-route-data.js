@@ -81,9 +81,7 @@ Object.keys(trainingRoutes).sort().forEach(function(key) {
 trainingRoutes = orderedTrainingRoutes
 
 allocatedSubjects = [
-  "Physical education",
-  "Primary with physical education",
-  "Sport and Physical Education"
+  "Physical education"
 ]
 
 let enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name)
