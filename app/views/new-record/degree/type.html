@@ -2,11 +2,10 @@
 
 {% set degreeCount = data.record.degree.items | length %}
 
-{% set pageHeading = "Add undergraduate degree" if degreeCount == 0 else "Add another degree" %}
+{% set pageHeading = "Add their undergraduate degree" if degreeCount == 0 else "Add another degree" %}
 
 {% set formAction = "./details" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/degree/type.html" %}
 {% endblock %}
-

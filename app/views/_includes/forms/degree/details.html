@@ -33,6 +33,8 @@
   }
 ) }}
 
+{#If the drop down arrow in the field above is displayed, add the following hint text to let users know they do not have to scroll: You can start typing to narrow down your search.#}
+
 {% if not isInternational %}
   {{ appAutocomplete({
     label: {
@@ -107,7 +109,7 @@
     "Unknown",
     "The trainee is still studying for their degree"] %}
     {% set storedGradeOther = true %}
-    
+
   {% endif %}
   {% set internationalDegreeGradeOtherHtml %}
     {{ govukInput({
@@ -197,7 +199,7 @@
     },
     items: naricItems
   } | decorateAttributes(degreeTemp, "degreeTemp.typeInt")) }}
-  
+
 {% else %}
 
   {% set storedGrade = degreeTemp.grade %}
@@ -267,9 +269,3 @@
 {{ govukButton({
   text: "Continue"
 }) }}
-
-
-
-
-
-

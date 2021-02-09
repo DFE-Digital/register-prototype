@@ -22,7 +22,7 @@
   } | decorateAttributes(data, "data.filterCycle"))}}
 
   {% if data.signedInProviders | length > 1 %}
-    
+
     {% set userProviders = data.settings.userProviders %}
 
     {# Only show route filter if there's more than 1 route #}
@@ -66,7 +66,7 @@
       classes: "govuk-checkboxes--small js-auto-submit",
       fieldset: {
         legend: {
-          text: "Routes",
+          text: "Type of training",
           classes: "govuk-fieldset__legend--s"
         }
       },
@@ -75,7 +75,7 @@
       },
       items: routeItems
     } | decorateAttributes(data, "data.filterTrainingRoutes")) }}
-    
+
   {% endif %}
 
   {{ govukCheckboxes({
@@ -132,7 +132,7 @@
     text: "All subjects",
     selected: true if (not query.filterSubject or query.filterSubject ==  "All subjects")
   }) %}
-  
+
   {# Remaining subjects #}
   {% for subject in data.ittSubjects %}
     {% set subjectItems = subjectItems | push({

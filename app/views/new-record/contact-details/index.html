@@ -1,10 +1,9 @@
 {% extends "_templates/_new-record.html" %}
 
-{% set pageHeading = "Contact details" %}
+{% set pageHeading = "Trainee contact details" %}
 
 {% set formAction = "./contact-details/confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/contact-details.html" %}
 {% endblock %}
-

@@ -1,10 +1,9 @@
 {% extends "_templates/_new-record.html" %}
 
-{% set pageHeading = "Which is their provider?" %}
+{% set pageHeading = "Who is their provider?" %}
 
 {% set formAction = "./pick-provider-answer" | addReferrer(referrer) %}
 
 {% block formContent %}
   {% include "_includes/forms/pick-provider.html" %}
 {% endblock %}
-
