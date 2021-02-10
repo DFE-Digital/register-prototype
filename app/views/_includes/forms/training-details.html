@@ -7,7 +7,8 @@
 {% set commencementDateInputHtml %}
   {% set hintHtml %}
     When the trainee started on the course. This may be different to your overall programme start date.<br>
-    For example, {{ "" | today | toDateArray | spaceSeparate }}
+
+    <br>For example, {{ "" | today | toDateArray | spaceSeparate }}<br>
   {% endset %}
   {{ govukDateInput({
     id: "commencement-start-date",
@@ -76,11 +77,11 @@
 
 {{ govukInput({
   label: {
-    text: "Trainee ID",
+    text: "Assign a trainee ID",
     classes: "govuk-label--s"
   },
   hint: {
-    text: "Assign your own ID for this trainee to help you identify them and search for them in your trainee records. You'll also use it if you get in touch with DfE about this trainee."
+    text: "This will help you to identify them and search for them in your trainee records. You can also use it if you get in touch with DfE about this trainee."
   },
   classes: "govuk-!-width-one-half"
 } | decorateAttributes(record, "record.trainingDetails.traineeId"))}}
