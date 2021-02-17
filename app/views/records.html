@@ -1,18 +1,20 @@
 {% extends "_templates/_page.html" %}
-{% set pageHeading = "Trainee records" %}
+{% set pageHeading %}
+Trainee records ({{data.records | length}} {{ "record" | pluralise(data.records | length)}})
+{% endset %}
 
 {% set backLink = 'false' %}
 {% set navActive = "records" %}
 
 {% block skipLink %}
-  <div class="app-skip-link--container">
-    <span class="app-skip-link--item">
+  <div class="app-skip-link__container">
+    <span class="app-skip-link__item">
       {{ govukSkipLink({
         href: '#main-content',
         text: 'Skip to main content'
       }) }}
     </span>
-    <span class="app-skip-link--item">
+    <span class="app-skip-link__item">
       {{ govukSkipLink({
         href: '#records-list',
         text: 'Skip to results' if selectedFilters else 'Skip to records'
@@ -45,7 +47,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+    <h1 class="govuk-heading-xl">Trainee records ({{data.records | length}}<span class="govuk-visually-hidden"> {{ "record" | pluralise(data.records | length)}}</span>)</h1>
     <div class="records-header">
       {{ govukButton({
         text: "Add a trainee",
@@ -122,7 +124,7 @@
                 <div class="govuk-!-margin-bottom-8">
                   <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-half">
-                      <h2 class="govuk-heading-m">Draft records ({{draftRecords | length}})</h2>
+                      <h2 class="govuk-heading-m">Draft records</h2>
                     </div>
                     {% if data.settings.showBulkLinks %}
                       <div class="govuk-grid-column-one-half">
@@ -147,7 +149,7 @@
               <form action="/bulk-action/new/direct" method="post" novalidate>
                 <div class="govuk-grid-row">
                   <div class="govuk-grid-column-one-half">
-                    <h2 class="govuk-heading-m">Records ({{nonDraftRecords | length}})</h2>
+                    <h2 class="govuk-heading-m">Records</h2>
                   </div>
                   {% if data.settings.showBulkLinks %}
                     <div class="govuk-grid-column-one-half">
