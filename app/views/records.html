@@ -1,6 +1,6 @@
 {% extends "_templates/_page.html" %}
 {% set pageHeading %}
-Trainee records ({{data.records | length}} {{ "record" | pluralise(data.records | length)}})
+Trainee records ({{filteredRecords | length}} {{ "record" | pluralise(filteredRecords | length)}})
 {% endset %}
 
 {% set backLink = 'false' %}
@@ -47,7 +47,7 @@ Trainee records ({{data.records | length}} {{ "record" | pluralise(data.records 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Trainee records ({{data.records | length}}<span class="govuk-visually-hidden"> {{ "record" | pluralise(data.records | length)}}</span>)</h1>
+    <h1 class="govuk-heading-xl">Trainee records ({{filteredRecords | length}}<span class="govuk-visually-hidden"> {{ "record" | pluralise(filteredRecords | length)}}</span>)</h1>
     <div class="records-header">
       {{ govukButton({
         text: "Add a trainee",
