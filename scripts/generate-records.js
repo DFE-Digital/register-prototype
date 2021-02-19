@@ -57,7 +57,7 @@ const generateDegree = require('../app/data/generators/degree')
 const generateGce = require('../app/data/generators/gce')
 const generateGcse = require('../app/data/generators/gcse')
 const generateEvents = require('../app/data/generators/events')
-
+const generatePlacement = require('../app/data/generators/placement')
 
 // Populate application data object with fake data
 const generateFakeApplication = (params = {}) => {
@@ -93,6 +93,8 @@ const generateFakeApplication = (params = {}) => {
   // application.gce = (params.gce === null) ? undefined : generateGce(faker, isInternationalTrainee)
   // Degrees
   application.degree           = (params.degree === null) ? undefined : { ...generateDegree(application.isInternationalTrainee), ...params.degree }
+  // Placements
+  application.placement        = (params.placement === null) ? undefined : { ...generatePlacement(application), ...params.placement }
 
   return application
 

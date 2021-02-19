@@ -3,6 +3,7 @@ let defaultSections = [
   'trainingDetails',
   'programmeDetails',
   'personalDetails',
+  'placement',
   'contactDetails',
   'diversity',
   'degree'
@@ -17,6 +18,7 @@ let mainTrainingRoutes = {
       'trainingDetails',
       'programmeDetails',
       'personalDetails',
+      'placement',
       'contactDetails',
       'diversity',
       'degree'
@@ -31,6 +33,7 @@ let mainTrainingRoutes = {
       'trainingDetails',
       'programmeDetails',
       'personalDetails',
+      'placement',
       'contactDetails',
       'diversity',
       'degree'
@@ -65,6 +68,7 @@ extraRoutes.forEach(route => {
       'trainingDetails',
       'programmeDetails',
       'personalDetails',
+      'placement',
       'contactDetails',
       'diversity',
       'degree'

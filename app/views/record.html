@@ -20,21 +20,21 @@
   {{record | log}}
 
   <div class="govuk-grid-column-full">
-    
+
     {# Hide the record actions ui if it's empty #}
     {% if (record.status | getCanDefer) or (record.status | getCanReinstate) %}
       <div class="record-actions">
         {% if record.status | getCanRecommendForQts %}
-          {% if hasCommencementDate%}
+          {% if record | hasOutstandingActions %}
+            {{ govukInsetText({
+              text: "This record requires additional details",
+              classes: "govuk-!-margin-0"
+            }) }}
+          {% else %}
             {{ govukButton({
               text: "Recommend trainee for QTS",
               href: referrer + '/qts/outcome-date',
               classes: "govuk-!-margin-bottom-0"
-            }) }}
-          {% else %}
-            {{ govukInsetText({
-              text: "You need to give a start date for this trainee",
-              classes: "govuk-!-margin-0"
             }) }}
           {% endif %}
         {% elseif record.status == "Pending TRN" %}
@@ -61,11 +61,14 @@
       <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
     {% endif %}
 
-    {# <h2 class="govuk-heading-m">Trainee record</h2> #}
+    <h2 class="govuk-heading-s">Trainee progress</h2>
     {% include "_includes/summary-cards/student-record.html" %}
-    {# <h2 class="govuk-heading-m">Programme details</h2> #}
+    <h2 class="govuk-heading-s">Programme details</h2>
     {% include "_includes/summary-cards/programme-details.html" %}
-
+    {% if record | requiresSection("placement") %}
+      <h2 class="govuk-heading-s">Placement details</h2>
+      {% include "_includes/summary-cards/placements/placement-overview.html" %}
+    {% endif %}
   </div>
 <div>
 

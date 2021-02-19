@@ -3,3 +3,21 @@
   font-weight: 700;
 }
 
+// New notification banner
+
+.govuk-notification-banner .govuk-error-summary__list a {
+  @include govuk-link-style-no-visited-state;
+   text-decoration: underline;
+   cursor: pointer;
+ }
+ 
+ .govuk-notification-banner .govuk-error-summary__list a:hover {
+   color: $govuk-brand-colour;
+ }
+ 
+ .govuk-notification-banner .govuk-error-summary__list,
+ .govuk-notification-banner .govuk-error-summary__list a:link, 
+ .govuk-notification-banner .govuk-error-summary__list a:visited {
+   color: $govuk-brand-colour;
+ }
+ 

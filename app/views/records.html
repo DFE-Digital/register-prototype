@@ -1,8 +1,27 @@
 {% extends "_templates/_page.html" %}
-{% set pageHeading = "Trainee records" %}
+{% set pageHeading %}
+  Trainee records ({{filteredRecords | length}} {{ "record" | pluralise(filteredRecords | length)}})
+{% endset %}
 
 {% set backLink = 'false' %}
 {% set navActive = "records" %}
+
+{% block skipLink %}
+  <div class="app-skip-link__container">
+    <span class="app-skip-link__item">
+      {{ govukSkipLink({
+        href: '#main-content',
+        text: 'Skip to main content'
+      }) }}
+    </span>
+    <span class="app-skip-link__item">
+      {{ govukSkipLink({
+        href: '#records-list',
+        text: 'Skip to results' if selectedFilters else 'Skip to records'
+      }) }}
+    </span>
+  </div>
+{% endblock %}
 
 {% block content %}
 {# super pulling in flash message banner #}
@@ -28,7 +47,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+    <h1 class="govuk-heading-xl">Trainee records ({{filteredRecords | length}}<span class="govuk-visually-hidden"> {{ "record" | pluralise(filteredRecords | length)}}</span>)</h1>
     <div class="records-header">
       {{ govukButton({
         text: "Add a trainee",
@@ -82,7 +101,7 @@
         <p class="govuk-body"><a href="#" class="govuk-link">Export these records</a></p>
       </div>
 
-      <div class="moj-filter-layout__content">
+      <div class="moj-filter-layout__content" id="records-list">
 
         <div class="moj-action-bar">
           <div class="moj-action-bar__filter">   
@@ -105,7 +124,7 @@
                 <div class="govuk-!-margin-bottom-8">
                   <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-half">
-                      <h2 class="govuk-heading-m">Draft records ({{draftRecords | length}})</h2>
+                      <h2 class="govuk-heading-m">Draft records</h2>
                     </div>
                     {% if data.settings.showBulkLinks %}
                       <div class="govuk-grid-column-one-half">
@@ -130,7 +149,7 @@
               <form action="/bulk-action/new/direct" method="post" novalidate>
                 <div class="govuk-grid-row">
                   <div class="govuk-grid-column-one-half">
-                    <h2 class="govuk-heading-m">Records ({{nonDraftRecords | length}})</h2>
+                    <h2 class="govuk-heading-m">Records</h2>
                   </div>
                   {% if data.settings.showBulkLinks %}
                     <div class="govuk-grid-column-one-half">
@@ -192,7 +211,7 @@
           {% endif %}
         
         {% else %}
-          <h2 class="govuk-heading-m">No records found.</h2>
+          <h2 class="govuk-heading-m">No records found</h2>
           <p class="govuk-body">Try <a href="/records">clearing your search and filters</a>.</p>
         {% endif %}
       </div>

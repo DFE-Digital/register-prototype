@@ -168,7 +168,9 @@
   ) }} #}
 
 {% endset %}
-
+<div class="app-filters-skip-link">
+  <a class="govuk-skip-link" href="#records-list">Skip to results</a>
+</div>
 <div class="moj-filter" tabindex="-1">
   <div class="moj-filter__header">
     <div class="moj-filter__header-title">
@@ -192,7 +194,11 @@
           <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{ category.heading.text }}</h3>
           <ul class="moj-filter-tags">
             {% for item in category.items %}
-              <li><a class="moj-filter__tag" href="{{item.href}}"><span class="govuk-visually-hidden">Remove this filter</span> {{item.text}}</a></li>
+              <li>
+                <a class="moj-filter__tag" href="{{item.href}}" daria-label="Remove {{item.text}}">
+                  {# <span class="govuk-visually-hidden">Remove this filter</span> #} {{item.text}}
+                </a>
+              </li>
             {% endfor %}
           </ul>
         {% endfor %}

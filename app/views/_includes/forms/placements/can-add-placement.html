@@ -1,0 +1,23 @@
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes, I can add at least one of them now"
+    },
+    {
+      value: "Not yet",
+      text: "No, I’ll add them later"
+    }
+  ]
+} | decorateAttributes(record, "record.placement.hasPlacements"))}}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

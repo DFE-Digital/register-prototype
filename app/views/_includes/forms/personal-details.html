@@ -84,8 +84,6 @@
   ]
 } | decorateAttributes(record, "record.personalDetails.sex"))}}
 
-{% set nationalitiesWithoutBritishAndIrish = data.nationalities | removeArrayItems(['British', 'Irish']) %}
-
 {# Separate out nationalities #}
 {% set otherNationalities = record.personalDetails.nationality | removeArrayItems(['British', 'Irish', 'Other'] | removeEmpty )%}
 
@@ -109,7 +107,7 @@
       },
       id: 'nationality-other-' + nationalityIndex,
       name: "record[personalDetails][nationality][" + nationalityIndex + "]",
-      items: nationalitiesWithoutBritishAndIrish,
+      items: data.nationalities,
       classes: "app-!-autocomplete--max-width-one-half",
       value: nationality
       }

@@ -1,0 +1,61 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Confirm placement details" %}
+
+{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backText = "Back to record" %}
+
+{% set gridColumn = 'govuk-grid-column-full' %}
+
+{% set formAction = "./update" | addReferrer(referrer) %}
+
+{% set placementCount = record.placement.items | length %}
+{% set minPlacementsRequired = data.settings.minPlacementsRequired %}
+{% set canAmend = record.status | getAmendsAllowed %}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+  {% set placementCount = record.placement.items | length %}
+
+  {{ record.placement | log }}
+
+  {% include "_includes/summary-cards/placements/placement-details.html" %}
+
+  {% if canAmend %}
+    <div class="govuk-form-group">
+      {{ govukButton({
+        "text": "Add another placement" if placementCount > 0 else "Add a placement",
+        href: recordPath + '/placements/add' | addReferrer(referrer),
+        classes: "govuk-button--secondary govuk-!-margin-bottom-0"
+      }) }}
+    </div>
+  {% endif %}
+
+  {# Hide the checkbox until enough placements have been added #}
+  {% if placementCount >= minPlacementsRequired and canAmend %}
+    {{ govukCheckboxes({
+      fieldset: {
+        legend: {
+          text: "Have all placements been added?",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      idPrefix: "placement-section-complete",
+      name: "record[placement][status]",
+      items: [
+        {
+          value: "Complete",
+          text: "Yes, all placements have been added",
+          checked: checked(record.placement.status, "Complete")
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+{% endblock %}

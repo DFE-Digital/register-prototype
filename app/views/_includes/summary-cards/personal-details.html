@@ -51,7 +51,7 @@
       text: "Nationality"
     },
     value: {
-      text: record.personalDetails.nationality | removeArrayItem("Other") | joinify or 'Not entered'
+      text: record.personalDetails.nationality | uniq | removeArrayItem("Other") | joinify or 'Not entered'
     },
     actions: {
       items: [

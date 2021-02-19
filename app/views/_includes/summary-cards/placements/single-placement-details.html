@@ -1,0 +1,88 @@
+{% set placements = record.placement.items %}
+{% set placementCount = record.placement.items | length %}
+
+{% set placementLocationRow = {
+  key: {
+    text: "Location"
+  },
+  value: {
+    text: placement.location or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/placements/" + placement.id + "/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "placement location"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set placementStartMonth  %}
+  {{ placement.startMonth | prettyMonth }}
+{% endset %}
+
+{% set placementStartMonthRow = {
+  key: {
+    text: "Start month"
+  },
+  value: {
+    text: placementStartMonth or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/placements/" + placement.id + "/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "placement start month"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set placementDurationLabel %}
+  {{placement.duration}} {{ 'week' | pluralise (placement.duration | int) }}
+{% endset %}
+
+{% set placementDurationRow = {
+  key: {
+    text: "Duration"
+  },
+  value: {
+    text: placementDurationLabel or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/placements/" + placement.id + "/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "placement duration"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set placementDetailsRows = [
+  placementLocationRow,
+  placementStartMonthRow,
+  placementDurationRow
+] %}
+
+{% set placementDetailsHtml %}
+  {{ govukSummaryList({
+    rows: placementDetailsRows
+  }) }}
+{% endset %}
+
+{{ appSummaryCard({
+  classes: "govuk-!-margin-bottom-6",
+  titleText: 'Placement details',
+  actions: {
+    items: [{
+      href: recordPath + "/placements/" + placement.id + "/delete" | addReferrer(referrer),
+      text: "Delete placement"
+    }]
+  } if canAmend,
+  html: placementDetailsHtml
+}) }}

@@ -1,0 +1,10 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Placement details" %}
+
+{% set formAction = "./confirm" | addReferrer(referrer) %}
+
+{% block formContent %}
+  {% include "_includes/forms/placements/placement-details.html" %}
+{% endblock %}
+

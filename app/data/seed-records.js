@@ -137,10 +137,15 @@ seedRecords.push({
     status: 'Completed'
   },
   route: 'Assessment only',
-  trainingDetails: {
-    status: 'Completed'
+  "trainingDetails": {
+    // "traineeStarted": "true",
+    "traineeId": "2020/21-053",
+    "status": [
+      "Completed"
+    ]
   },
   programmeDetails: {
+    "isPublishCourse" : false,
     status: 'Completed'
   },
   contactDetails: {
@@ -151,7 +156,8 @@ seedRecords.push({
   },
   degree: {
     status: 'Completed'
-  }
+  },
+  placement: null
 })
 
 seedRecords.push({

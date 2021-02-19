@@ -49,9 +49,9 @@
   padding-top: 12px;
   padding-bottom: 17px;
   padding-left: govuk-spacing(3);
-  // text-decoration: none;
+  text-decoration: none;
   position: relative;
-  // font-weight: bold;
+  font-weight: bold;
 
   @include govuk-media-query($from: 375px) {
     padding-left: 0;

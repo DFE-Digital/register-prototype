@@ -1,0 +1,19 @@
+.notice-banner {
+  border-color: $govuk-brand-colour;
+}
+
+.notice-banner .govuk-error-summary__list a {
+  @include govuk-link-style-no-visited-state;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.notice-banner .govuk-error-summary__list a:hover {
+  color: $govuk-brand-colour;
+}
+
+.notice-banner .govuk-error-summary__list,
+.notice-banner .govuk-error-summary__list a:link, 
+.notice-banner .govuk-error-summary__list a:visited {
+  color: $govuk-brand-colour;
+}

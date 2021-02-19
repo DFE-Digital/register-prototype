@@ -1,0 +1,9 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Can you add placement details for this trainee?"  %}
+
+{% set formAction = "./can-add-placement-answer" | addReferrer(referrer) %}
+
+{% block formContent %}
+  {% include "_includes/forms/placements/can-add-placement.html" %}
+{% endblock %}

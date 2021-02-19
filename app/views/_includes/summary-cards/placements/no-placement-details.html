@@ -1,0 +1,33 @@
+{% set placementsDetailsNotAvailableRow = {
+  key: {
+    text: "Placements"
+  },
+  value: {
+    text: 'Placements are not yet known' or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/placements/can-add-placement" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "placement details"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set placementDetailsRows = [
+  placementsDetailsNotAvailableRow
+] %}
+
+{% set placementDetailsHtml %}
+  {{ govukSummaryList({
+    rows: placementDetailsRows
+  }) }}
+{% endset %}
+
+{{ appSummaryCard({
+  classes: "govuk-!-margin-bottom-6",
+  titleText: 'Placement details',
+  html: placementDetailsHtml
+}) }}

@@ -158,6 +158,29 @@ exports.recordIsComplete = record => {
   return recordIsComplete
 }
 
+// Check if there are outsanding actions (Either adding start date or placements details)
+exports.hasOutstandingActions = function(record, data = false) {
+
+  data = Object.assign({}, (data || this.ctx.data || false))
+  
+  let hasOutstandingActions = false
+  let traineeStarted = record?.trainingDetails?.commencementDate
+  let placementCount = (record?.placement?.items) ? record.placement.items.length : 0
+  let minPlacementsRequired = data.settings.minPlacementsRequired
+  let needsPlacementDetails = (record?.placement?.status != 'Complete') || (placementCount < minPlacementsRequired)
+  
+  // TODO Use this to test if placements are required
+  // exports.requiresSection(record, 'placement')
+  
+  if (!traineeStarted) {
+    hasOutstandingActions = true
+  }
+  else if (needsPlacementDetails) {
+    hasOutstandingActions = true
+  }
+  return hasOutstandingActions
+}
+
 // Look up a record using it’s UUID
 exports.getRecordById = (records, id) => {
   return records.find(record => record.id == id)
@@ -227,6 +250,7 @@ exports.deleteTempData = (data) => {
   delete data.degreeTemp
   delete data.record
   delete data.submittedRecordId
+  delete data.placementTemp
 }
 
 // Stolen from Manage
@@ -353,6 +377,7 @@ exports.registerForTRN = (record) => {
   }
   else {
     record.status = 'Pending TRN'
+    delete record.placement.status
     record.submittedDate = new Date()
     record.updatedDate = new Date()
     record.programmeDetails = {

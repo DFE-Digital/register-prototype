@@ -135,7 +135,16 @@
       classes: record.trainingDetails | getStatusText | getStatusClass,
       text: record.trainingDetails | getStatusText
     }
-  } if record | requiresSection("trainingDetails")
+  } if record | requiresSection("trainingDetails"),
+  {
+    text: "Placement details",
+    href: "placements/confirm" if (record.placement) else "placements/can-add-placement",
+    id: "placement-details",
+    tag: {
+      classes: record.placement | getStatusText | getStatusClass,
+      text: record.placement | getStatusText
+    }
+  } if record | requiresSection("placement") 
   ]
 }) if not closed }}
 

@@ -386,4 +386,154 @@ module.exports = router => {
 
   })
 
+  // =============================================================================
+  // Placements
+  // =============================================================================
+  
+  // Record: Can they add placements? Sends them onwards or marks placements complete
+  router.post(['/:recordtype/:uuid/placements/can-add-placement-answer','/:recordtype/placements/can-add-placement-answer'], function (req, res) {
+    const data = req.session.data
+    
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+    let record = data.record // copy record
+    
+    if (!record?.placement?.hasPlacements) {
+      res.redirect(`${recordPath}/placements/can-add-placement${referrer}`)
+    }
+    // Are they able to add placement details? (Shared on both draft and record)
+    if (record.placement.hasPlacements == 'Yes'){
+      // carry on and add one
+      delete record.placement.status
+      res.redirect(`${recordPath}/placements/add${referrer}`)
+    }
+    // Record specific routes
+    if (req.params.recordtype == 'record') {
+      utils.updateRecord(data, record)
+
+      if (record.placement.hasPlacements == 'Not yet'){
+    
+        // send them back to the record
+        if (referrer){
+          res.redirect(req.query.referrer)
+        }
+        else {
+          res.redirect(`${recordPath}`)
+        }
+      }
+    } 
+    // Draft specific routes
+    else if (req.params.recordtype != 'record') {
+      if (record.placement.hasPlacements == 'Not yet') {
+        
+        // mark the Placements section as complete
+        _.set(record,'placement.status',"Completed")
+        
+        // send them to the confirmation
+        if (referrer){
+          res.redirect(req.query.referrer)
+        }
+        else {
+          res.redirect(`${recordPath}/overview`)
+          // res.redirect(`${recordPath}/placements/confirm${referrer}`)
+        }
+      }
+    }
+    else {
+      res.redirect(`${recordPath}/placements/can-add-placement${referrer}`)
+    }
+    
+  })
+
+  // Add a placement - generate a UUID and send the user to it
+  router.get(['/:recordtype/:uuid/placements/add','/:recordtype/placements/add'], function (req, res) {
+    const data = req.session.data
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+    let placementUuid = faker.random.uuid()
+    
+    // delete data.placementTemp
+    
+    res.redirect(`${recordPath}/placements/${placementUuid}/details${referrer}`)
+  }) 
+
+  // Delete placement at a given UUID
+  router.get(['/:recordtype/:uuid/placements/:placementUuid/delete','/:recordtype/placements/:placementUuid/delete'], function (req, res) {
+    const data = req.session.data
+    let recordPath = utils.getRecordPath(req)
+    let placementUuid = req.params.placementUuid
+    let referrer = utils.getReferrer(req.query.referrer)
+    let placements = data.record?.placement?.items || []
+    let placementIndex = placements.findIndex(placement => placement.id == placementUuid)
+    let minPlacementsRequired = data.settings.minPlacementsRequired
+    
+    if (_.get(data, "record.placement.items[" + placementIndex + "]")){
+      _.pullAt(data.record.placement.items, [placementIndex]) //delete item at index
+      // Clear data if there are no more degrees - so the task list thinks the section is not started
+      req.flash('success', 'Trainee placement deleted')
+      
+      // Delete degree section if it’s empty
+      if (data.record.placement.items.length == 0){
+        delete data.record.placement
+      }
+      // Ensure section can't be complete if less than required placements
+      else if (data.record.placement.items.length < minPlacementsRequired) {
+        delete data.record.placement.status
+      }
+    }
+    if (req.params.recordtype == 'record'){
+      // This updates the record immediately without a confirmation.
+      // Probably needs a bespoke confirmation page as the empty placement
+      // confirmation page looks weird - and we probably don't want
+      // records without a placement anyway.
+      utils.updateRecord(data, data.record)
+    }
+    if (!data.record?.placement){
+      res.redirect(`${recordPath}/placements/can-add-placement${referrer}`)
+    } 
+    else if (referrer){
+      res.redirect(req.query.referrer)
+    }
+    else {
+      res.redirect(`${recordPath}/placements/confirm${referrer}`)
+    }
+  })
+
+  // Forward placement requests to the right template, including the index
+  router.get(['/:recordtype/:uuid/placements/:placementUuid/:page','/:recordtype/placements/:placementUuid/:page'], function (req, res) {
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+
+    res.render(`${req.params.recordtype}/placements/${req.params.page}`, {placementUuid: req.params.placementUuid})
+  })
+
+  // Save placement data from temporary store
+  router.post(['/:recordtype/:uuid/placements/:placementUuid/confirm','/:recordtype/placements/:placementUuid/confirm'], function (req, res) {
+    const data = req.session.data
+    let placement = data.placementTemp
+    delete data.placementTemp
+    let referrer = utils.getReferrer(req.query.referrer)
+    
+    let placementUuid = req.params.placementUuid
+    let existingPlacements = data.record?.placement?.items || []
+    let placementIndex = existingPlacements.findIndex(placement => placement.id == placementUuid)
+    let recordPath = utils.getRecordPath(req)
+
+    if (existingPlacements.length && existingPlacements[placementIndex]) {
+      // Might be a partial update, so merge the new with the old
+      existingPlacements[placementIndex] = Object.assign({}, existingPlacements[placementIndex], placement)
+    }
+    else {
+      placement.id = placementUuid
+      existingPlacements.push(placement)
+    }
+
+    delete data.record.placement.hasPlacements
+    delete data.record.placement.placementsNotRequiredReason
+    
+    _.set(data, 'record.placement.items', existingPlacements)
+
+    res.redirect(`${recordPath}/placements/confirm${referrer}`)
+  })
+
 }

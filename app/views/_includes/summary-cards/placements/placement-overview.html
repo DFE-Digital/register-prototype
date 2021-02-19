@@ -1,0 +1,54 @@
+{% set placements = record.placement.items %}
+{% set placementCount = record.placement.items | length %}
+
+{% set placementsList %}
+  <ul class="govuk-list">
+    {% for placement in placements %}
+    <li>
+      {{placement.location}}
+    </li>
+    {% endfor %}
+  </ul>
+{% endset %}
+
+{% set placementLocationRow = {
+  key: {
+    text: "Placements"
+  },
+  value: {
+    html: placementsList
+  }
+} %}
+
+{% set placementLocationRows = [
+  placementLocationRow
+] %}
+
+{% set placementDetailsHtml %}
+  {{ govukSummaryList({
+      rows: placementLocationRows
+  }) }}
+{% endset %}
+
+{% if placementCount == 0 %}
+  <p class="govuk-body">You have not added any placements yet.</p>
+  <div class="govuk-form-group">
+    {{ govukButton({
+      "text": "Add a placement",
+      href: recordPath + '/placements/add' | addReferrer(referrer),
+      classes: "govuk-button--secondary govuk-!-margin-bottom-0"
+    }) }}
+  </div>
+{% else %}
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: 'Placement details',
+    actions: {
+      items: [{
+        href: recordPath + "/placements/confirm" | addReferrer(referrer),
+        text: "Manage placements" if canAmend else "View placements"
+      }]
+    },
+    html: placementDetailsHtml
+  }) }}
+{% endif %}

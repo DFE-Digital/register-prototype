@@ -45,6 +45,7 @@
 
 {# Used by summary cards #}
 {% set recordPath = "/record/" + record.id %}
+{% set referrer = recordPath %}
 
 {% block content %}
 
@@ -64,12 +65,14 @@
     {% endif %}
   </div>
 
+  {% include "_includes/actions-banner.njk" %}
+
   {% include "_includes/record-sub-nav.njk" %}
 
   {% block tabContent %}
-    
+  
   {% endblock %}
-
+    
 {% endblock %}
 
 

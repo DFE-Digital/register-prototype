@@ -1,0 +1,99 @@
+$important: true;
+
+// This is basically a copy of the Design System govuk-visually-hidden-focusable mixin
+// except it targets the :focus-within pseudo selector rather than :focus
+@mixin visually-hidden-focus-withinable {
+  position: absolute if($important, !important, null);
+
+  width: 1px if($important, !important, null);
+  height: 1px if($important, !important, null);
+  // If margin is set to a negative value it can cause text to be announced in
+  // the wrong order in VoiceOver for OSX
+  margin: 0 if($important, !important, null);
+
+  overflow: hidden if($important, !important, null);
+  clip: rect(0 0 0 0) if($important, !important, null);
+  clip-path: inset(50%) if($important, !important, null);
+
+  // For long content, line feeds are not interpreted as spaces and small width
+  // causes content to wrap 1 word per line:
+  // https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+  white-space: nowrap if($important, !important, null);
+
+  &:focus-within:active,
+  &:focus-within {
+    position: static if($important, !important, null);
+
+    width: auto if($important, !important, null);
+    height: auto if($important, !important, null);
+    margin: inherit if($important, !important, null);
+
+    overflow: visible if($important, !important, null);
+    clip: auto if($important, !important, null);
+    clip-path: none if($important, !important, null);
+
+    white-space: inherit if($important, !important, null);
+  }
+}
+
+// The :focus parts of @mixin govuk-visually-hidden-focusable and .govuk-skip-link
+@mixin clear-visually-hidden-focusable {
+  position: static if($important, !important, null);
+
+  width: auto if($important, !important, null);
+  height: auto if($important, !important, null);
+  margin: inherit if($important, !important, null);
+
+  overflow: visible if($important, !important, null);
+  clip: auto if($important, !important, null);
+  clip-path: none if($important, !important, null);
+
+  white-space: inherit if($important, !important, null);
+}
+
+// Selecting :focus-within and :not(:focus-within) together should mean this rule only
+// applies to browsers that support the :focus-within pseudo property. 
+// Using this instead of @supports as it doens’t support pseudo properties well yet.
+// Many of the styles within are from the .govuk-skip-link class
+.app-skip-link__container:focus-within, .app-skip-link__container:not(:focus-within) {
+  @include visually-hidden-focus-withinable;
+  display: block;
+  padding: govuk-spacing(2) govuk-spacing(3);
+
+  // Respect 'display cutout' safe area (avoids notches and rounded corners)
+  @supports (padding: unquote("max(calc(0px))")) {
+    $padding-safe-area-right: calc(#{govuk-spacing(3)} + env(safe-area-inset-right));
+    $padding-safe-area-left: calc(#{govuk-spacing(3)} + env(safe-area-inset-left));
+
+    // Use max() to pick largest padding, default or with safe area
+    // Escaped due to Sass max() vs. CSS native max()
+    padding-right: unquote("max(#{govuk-spacing(3)}, #{$padding-safe-area-right})");
+    padding-left: unquote("max(#{govuk-spacing(3)}, #{$padding-safe-area-left})");
+  }
+
+  // Override default .govuk-skip-link styles
+  .govuk-skip-link {
+    display: inline-block;
+    padding: 0;
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline-offset: 0;
+    background-color: $govuk-focus-colour;
+    @include clear-visually-hidden-focusable; // Override design system styles
+
+    &:focus {
+      @include govuk-focused-text; // Thick black underline on focus
+    }
+  }
+
+  .app-skip-link__item {
+    padding: govuk-spacing(1);
+  }
+}
+
+// Same styling as .govuk-skip-link
+.app-skip-link__container:focus-within {
+  outline: $govuk-focus-width solid $govuk-focus-colour;
+  outline-offset: 0;
+  background-color: $govuk-focus-colour;
+}
+

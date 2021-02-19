@@ -1,0 +1,108 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+{% set placementCount = record.placement.items | length %}
+
+{# Placement data is stored in a temp location before being merged back to array #}
+
+{# Get placement (if it exists) from existing data #}
+
+{% set placement = {} %}
+
+{% if record.placement.items %}
+  {% set placement = record.placement.items | getRecordById(placementUuid) %}
+{% endif %}
+
+{# Merge with temp store #}
+{% set placementTemp = placement | mergeObjects(data.placementTemp) %}
+
+{{ govukInput({
+  label: {
+    text: "Enter the unique reference number (URN) of the placement school or college.",
+    classes: "govuk-label--s"
+  },
+  hint: {
+    html: "You can <a href='https://www.get-information-schools.service.gov.uk/'>find URNs on the Get information about schools service</a>."
+  },
+  classes: "govuk-!-width-two-thirds"
+}| decorateAttributes(placementTemp, "placementTemp.location"))}}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "What month did this placement start?",
+      classes: "govuk-label--s"
+    }
+  },
+  items: [
+    {
+      value: "1",
+      text: "January"
+    },
+    {
+      value: "2",
+      text: "February"
+    },
+    {
+      value: "3",
+      text: "March"
+    },
+    {
+      value: "4",
+      text: 'April'
+    },
+    {
+      value: "5",
+      text: "May"
+    },
+    {
+      value: "6",
+      text: "June"
+    },
+    {
+      value: "7",
+      text: "July"
+    },
+    {
+      value: "8",
+      text: "August"
+    },
+    {
+      value: "9",
+      text: "September"
+    },
+    {
+      value: "10",
+      text: "October"
+    },
+    {
+      value: "11",
+      text: "November"
+    },
+    {
+      value: "12",
+      text: "December"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "Not provided",
+      text: "Not known"
+    }
+  ]
+} | decorateAttributes(placementTemp, "placementTemp.startMonth"))}}
+
+{{ govukInput({
+  label: {
+    text: "Approximate duration in weeks",
+    classes: "govuk-label--s"
+  },
+  suffix: {
+    text: "weeks"
+  },
+  classes: "govuk-!-width-one-quarter"
+}| decorateAttributes(placementTemp, "placementTemp.duration"))}}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

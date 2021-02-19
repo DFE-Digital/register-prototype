@@ -19,6 +19,10 @@ filters.isArray = arr => {
   return _.isArray(arr)
 }
 
+filters.uniq = arr => {
+  return [...new Set(arr || [])]
+}
+
 
 /*
   ====================================================================
