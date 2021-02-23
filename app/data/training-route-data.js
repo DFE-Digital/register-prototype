@@ -1,20 +1,26 @@
-let defaultSections = [
-  // 'recordSetup',
-  'trainingDetails',
-  'programmeDetails',
-  'personalDetails',
-  'placement',
-  'contactDetails',
-  'diversity',
-  'degree'
-]
+// These get applied to all routes unless overridden
+let defaultRouteData = {
+  defaultEnabled: false,
+  qualifications: [
+    "QTS"
+  ],
+  qualificationSummary: "QTS",
+  duration: 1,
+  sections: [
+    'trainingDetails',
+    'programmeDetails',
+    'personalDetails',
+    'contactDetails',
+    'placement',
+    'diversity',
+    'degree'
+  ]
+}
 
-let mainTrainingRoutes = {
-  "Assessment only": {
-    name: "Assessment only",
+let baseRouteData = {
+  "Assessment only PG": {
     defaultEnabled: true,
     sections: [
-      // 'recordSetup',
       'trainingDetails',
       'programmeDetails',
       'personalDetails',
@@ -23,71 +29,61 @@ let mainTrainingRoutes = {
       'degree'
     ]
   },
-  "Provider-led": {
-    name: "Provider-led",
+  "Provider-led PG": {
     defaultEnabled: true,
     hasAllocatedPlaces: true,
-    sections: [
-      // 'recordSetup',
-      'trainingDetails',
-      'programmeDetails',
-      'personalDetails',
-      'placement',
-      'contactDetails',
-      'diversity',
-      'degree'
+  },
+  "School Direct (salaried)": {
+    defaultEnabled: true
+  },
+  "School Direct (tuition fee)": {
+    defaultEnabled: true
+  },
+  "Teach first PG": {},
+  "Apprenticeship PG": {},
+  "Assessment only UG": {},
+  "Opt in undergraduate": {},
+  "Early years - grad emp": {
+    qualifications: [
+      "EYTS"
     ],
-    fields: [
-      'programmeEndDate',
-    ]
+    qualificationSummary: "EYTS full time"
+  },
+  "Early years - grad entry": {
+    qualifications: [
+      "EYTS"
+    ],
+    qualificationSummary: "EYTS full time"
+  },
+  "Early years - assessment only": {
+    qualifications: [
+      "EYTS"
+    ],
+    qualificationSummary: "EYTS full time"
+  },
+  "Early years - undergraduate": {
+    defaultEnabled: true,
+    qualifications: [
+      "EYTS"
+    ],
+    qualificationSummary: "EYTS full time"
   }
 }
 
-let extraRoutes = [
-  "Teach first PG",
-  "Early years - grad emp",
-  "Early years - grad entry",
-  "Early years - assessment only",
-  "Early years - undergraduate",
-  "School direct salaried",
-  "School direct tuition fee",
-  "Apprenticeship PG",
-  "Opt in undergraduate"
-]
+let trainingRoutes = {}
 
-let trainingRoutes = Object.assign({}, mainTrainingRoutes)
-
-extraRoutes.forEach(route => {
-  trainingRoutes[route] = {
-    name: route,
-    defaultEnabled: false,
-    hasAllocatedPlaces: true,
-    sections: [
-      // 'recordSetup',
-      'trainingDetails',
-      'programmeDetails',
-      'personalDetails',
-      'placement',
-      'contactDetails',
-      'diversity',
-      'degree'
-    ]
-  }
+// Combine route data
+Object.keys(baseRouteData).sort().forEach(routeName => {
+  let tempRoute = Object.assign({}, defaultRouteData, baseRouteData[routeName])
+  tempRoute.name = routeName
+  trainingRoutes[routeName] = tempRoute
 })
 
-// Sort alphabetically
-const orderedTrainingRoutes = {}
-Object.keys(trainingRoutes).sort().forEach(function(key) {
-  orderedTrainingRoutes[key] = trainingRoutes[key];
-});
+let enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name)
 
-trainingRoutes = orderedTrainingRoutes
-
-allocatedSubjects = [
+let allocatedSubjects = [
   "Physical education"
 ]
-
-let enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name)
 
 let levels = {
   "Early years": {
@@ -126,7 +122,7 @@ let nonPublishRoutes = [
   'Provider-led',
   'Assessment only',
   'Teach first PG',
-  // 'Early years - grad amp',
+  // 'Early years - grad emp',
   'Early years - grad entry',
   // 'Early years - assessment only',
   'Early years - undergraduate',
@@ -152,13 +148,12 @@ let nonPublishRoutes = [
 // ]
 
 
-
 module.exports = {
   trainingRoutes,
   allocatedSubjects,
   enabledTrainingRoutes,
   levels,
-  defaultSections,
+  defaultSections: defaultRouteData.sections,
   publishRoutes,
   nonPublishRoutes
 }
