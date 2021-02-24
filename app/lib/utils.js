@@ -99,6 +99,7 @@ exports.requiresSection = (record, sectionName) => {
   return requiredSections.includes(sectionName)
 }
 
+// Check if qualifications array contains an item
 exports.qualificationIs = (record, qualification) => {
   return (record?.programmeDetails?.qualifications) ? record.programmeDetails.qualifications.includes(qualification) : false
 }
@@ -112,7 +113,7 @@ exports.qualificationIsPGCE = record => exports.qualificationIs(record, "PGCE")
 exports.qualificationIsPGDE = record => exports.qualificationIs(record, "PGDE")
 
 exports.getQualificationText = record => {
-  return (exports.qualificationIsQTS(record)) ? "QTS" : "EYTS"
+  return (exports.qualificationIsEYTS(record)) ? "EYTS" : "QTS"
 }
 
 // Sort by subject, including course code

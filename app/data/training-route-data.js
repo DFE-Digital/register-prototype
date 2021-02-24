@@ -1,4 +1,42 @@
-// These get applied to all routes unless overridden
+// A non-exhaustive list of routes
+// Publish and non publish can overlap
+
+// Not all these routes will be enabled
+let publishRoutes = [
+  'Apprenticeship (postgrad)',
+  'Provider-led (postgrad)',
+  'Provider-led (undergrad)',
+  'School direct (salaried)',
+  'School direct (tuition fee)',
+  'Teaching apprenticeship',
+]
+
+let nonPublishRoutes = [
+  'Provider-led (postgrad)',
+  'Provider-led (undergrad)',
+  'Assessment only',
+  'Teach first (postgrad)',
+  'Early years (graduate placement)',
+  'Early years (graduate entry)',
+  'Early years (assessment only)',
+  'Early years (undergrad)',
+  'Opt-in (undergrad)'
+]
+
+// Create array of unique values
+let allRoutesArray = [...new Set([...publishRoutes, ...nonPublishRoutes])].sort()
+let allRoutes = {}
+
+// Add detail about publish or non publish
+allRoutesArray.forEach(route => {
+  allRoutes[route] = {
+    isPublishRoute: publishRoutes.includes(route),
+    isNonPublishRoute: nonPublishRoutes.includes(route)
+  }
+})
+
+
+// Sensible defaults for route data
 let defaultRouteData = {
   defaultEnabled: false,
   qualifications: [
@@ -17,8 +55,9 @@ let defaultRouteData = {
   ]
 }
 
+// Data for each route
 let baseRouteData = {
-  "Assessment only PG": {
+  "Assessment only": {
     defaultEnabled: true,
     sections: [
       'trainingDetails',
@@ -29,7 +68,7 @@ let baseRouteData = {
       'degree'
     ]
   },
-  "Provider-led PG": {
+  "Provider-led (postgrad)": {
     defaultEnabled: true,
     hasAllocatedPlaces: true,
   },
@@ -39,29 +78,28 @@ let baseRouteData = {
   "School Direct (tuition fee)": {
     defaultEnabled: true
   },
-  "Teach first PG": {},
-  "Apprenticeship PG": {},
-  "Assessment only UG": {},
-  "Opt in undergraduate": {},
-  "Early years - grad emp": {
+  "Teach first (postgrad)": {},
+  "Apprenticeship (postgrad)": {},
+  "Opt-in undergrad": {},
+  "Early years (graduate placement)": {
     qualifications: [
       "EYTS"
     ],
     qualificationSummary: "EYTS full time"
   },
-  "Early years - grad entry": {
+  "Early years (graduate entry)": {
     qualifications: [
       "EYTS"
     ],
     qualificationSummary: "EYTS full time"
   },
-  "Early years - assessment only": {
+  "Early years (assessment only)": {
     qualifications: [
       "EYTS"
     ],
     qualificationSummary: "EYTS full time"
   },
-  "Early years - undergraduate": {
+  "Early years (undergrad)": {
     defaultEnabled: true,
     qualifications: [
       "EYTS"
@@ -72,12 +110,15 @@ let baseRouteData = {
 
 let trainingRoutes = {}
 
+
 // Combine route data
-Object.keys(baseRouteData).sort().forEach(routeName => {
-  let tempRoute = Object.assign({}, defaultRouteData, baseRouteData[routeName])
-  tempRoute.name = routeName
-  trainingRoutes[routeName] = tempRoute
+Object.keys(allRoutes).forEach(routeName => {
+  let routeData = Object.assign({}, defaultRouteData, allRoutes[routeName], baseRouteData[routeName])
+  routeData.name = routeName
+  trainingRoutes[routeName] = routeData
 })
+
+console.log({trainingRoutes})
 
 let enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name)
 
@@ -111,24 +152,6 @@ let levels = {
   }
 }
 
-let publishRoutes = [
-  'School direct salaried',
-  'School direct tuition fee',
-  'Apprenticeship PG',
-  'Provider-led'
-]
-
-let nonPublishRoutes = [
-  'Provider-led',
-  'Assessment only',
-  'Teach first PG',
-  // 'Early years - grad emp',
-  'Early years - grad entry',
-  // 'Early years - assessment only',
-  'Early years - undergraduate',
-  'Opt in undergraduate'
-]
-
 // remainingAgeRanges = [
 //   "0 to 5 programme", // 0.99%
 //   "5 to 14 programme", // 0.01%
@@ -149,6 +172,7 @@ let nonPublishRoutes = [
 
 
 module.exports = {
+  allRoutes: allRoutesArray,
   trainingRoutes,
   allocatedSubjects,
   enabledTrainingRoutes,

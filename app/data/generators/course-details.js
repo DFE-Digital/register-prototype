@@ -8,7 +8,11 @@ const weighted = require('weighted')
 const faker   = require('faker')
 faker.locale  = 'en_GB'
 const trainingRouteData = require('./../training-route-data')
+
 const ittSubjects = require('./../itt-subjects')
+
+let enabledRoutes = {}
+trainingRouteData.enabledTrainingRoutes.forEach(route => enabledRoutes[route] = trainingRouteData.trainingRoutes[route])
 
 // One letter followed by three numbers
 // Older course codes are a different format, but this is what
@@ -29,49 +33,40 @@ const generateCourseCode = () => {
 let qualificationOptions = {
   'one': {
     qualifications: ['QTS'],
-    summary: 'QTS'
+    qualificationsSummary: 'QTS full time'
   },
   'two': {
     qualifications: ['QTS', 'PGCE'],
-    summary: 'PGCE with QTS full time'
+    qualificationsSummary: 'PGCE with QTS full time'
   },
   'three': {
     qualifications: ['QTS', 'PGDE'],
-    summary: 'PGDE with QTS full time'
+    qualificationsSummary: 'PGDE with QTS full time'
   },
   'four': {
     qualifications: ['QTS'],
-    summary: 'QTS part time'
+    qualificationsSummary: 'QTS part time'
   },
   'five': {
     qualifications: ['QTS', 'PGDE'],
-    summary: 'PGDE with QTS part time'
+    qualificationsSummary: 'PGDE with QTS part time'
   }
 }
 
-// These names need to align with those in training-route-data.js
+// Pick an enabled route
 const pickRoute = (isPublishCourse = false) => {
   if (isPublishCourse){
-    return faker.helpers.randomize([
-      'School direct salaried',
-      'School direct tuition fee',
-      'Apprenticeship PG',
-      'Provider-led'
-      // 'Higher education programme', // falls under provider led
-      // 'SCITT programme'  // falls under provider led
-    ])
+    let publishRoutes = Object.keys(enabledRoutes).filter(route => {
+      return enabledRoutes[route].isPublishRoute
+    })
+    return faker.helpers.randomize(publishRoutes)
   }
   else {
-    return faker.helpers.randomize([
-      'Provider-led',
-      'Assessment only',
-      'Teach first PG',
-      // 'Early years - grad amp',
-      'Early years - grad entry',
-      // 'Early years - assessment only',
-      'Early years - undergraduate',
-      'Opt in undergraduate'
-    ])
+    let nonPublishRoutes = Object.keys(enabledRoutes).filter(route => {
+      return enabledRoutes[route].isNonPublishRoute
+    })
+    // let nonPublishRoutes = enabledRoutes.filter(route => route.isNonPublishRoute)
+    return faker.helpers.randomize(nonPublishRoutes)
   }
 }
 
@@ -81,7 +76,7 @@ module.exports = (params) => {
 
   const route = params.route || pickRoute(isPublishCourse)
 
-  let level, qualifications, summary, studyMode
+  let level, qualifications, qualificationsSummary, studyMode
 
   if (route.includes('Early years')){
     level = 'Primary'
@@ -91,7 +86,7 @@ module.exports = (params) => {
   const ageRange = faker.helpers.randomize(trainingRouteData.levels[level].ageRanges)
 
   let subject
-  if (level == 'primary'){
+  if (level == 'Primary'){
     subject = faker.helpers.randomize(ittSubjects.primarySubjects)
   }
   else {
@@ -109,6 +104,7 @@ module.exports = (params) => {
     ])
   }
 
+  // This lets all routes except AO have part time courses - unsure if this is right
   const duration = (route == 'Assessment only') ? 1 : parseInt(weighted.select({
     '1': 0.8, // assume most courses are 1 year
     '2': 0.15,
@@ -118,28 +114,45 @@ module.exports = (params) => {
   // Full time
   if (duration == 1){
     studyMode = "Full time"
-    let selected = weighted.select({
-      'one': 0.2,   // QTS
-      'two': 0.75,  // QTS with PGCE
-      'three': 0.05 // QTS with PGDE
-    })
-    if (route == 'Assessment only') selected = 'one'
-    qualifications = qualificationOptions[selected].qualifications
-    summary = qualificationOptions[selected].summary
+    // If early years or AO, just use route defaults
+    // Todo: extend this to add academic qualifications possible for early years
+    if (route.includes('Early years') || route.includes('Assessment only')){
+      qualifications = enabledRoutes[route].qualifications
+      qualificationSummary = enabledRoutes[route].qualificationSummary
+    }
+    else {
+      let selected = weighted.select({
+        'one': 0.2,   // QTS
+        'two': 0.75,  // QTS with PGCE
+        'three': 0.05 // QTS with PGDE
+      })
+      qualifications = qualificationOptions[selected].qualifications
+      qualificationsSummary = qualificationOptions[selected].qualificationsSummary
+    }
+    
   }
   // Part time
   else {
     studyMode = "Part time"
-    let selected = weighted.select({
-      'four': 0.2,  // QTS
-      'five': 0.8   // QTS with PGDE
-    })
-    qualifications = qualificationOptions[selected].qualifications
-    summary = qualificationOptions[selected].summary
+    if (route.includes('Early years')){
+      qualifications = enabledRoutes[route].qualifications
+      qualificationSummary = enabledRoutes[route].qualificationSummary
+    }
+    else {
+      let selected = weighted.select({
+        'four': 0.2,  // QTS
+        'five': 0.8   // QTS with PGDE
+      })
+      qualifications = qualificationOptions[selected].qualifications
+      qualificationsSummary = qualificationOptions[selected].qualificationsSummary
+    }
   }
 
   // PE only has allocated places
-  let allocatedPlace = (subject == "Physical education") ? "Yes" : undefined // assume PE is always allocated
+  let allocatedPlace
+  if (trainingRouteData.trainingRoutes[route].hasAllocatedPlaces && subject == "Physical education"){
+    allocatedPlace = true
+  }
 
   // Assume most courses start in Autumn
   let startMonth = faker.helpers.randomize([8,9,10]) // August, September, October
@@ -155,35 +168,36 @@ module.exports = (params) => {
 
   if (isPublishCourse) {
     return {
-      id,
-      isPublishCourse,
-      route,
-      code,
-      level,
       ageRange,
-      subject,
-      startDate,
+      allocatedPlace,
+      code,
       duration,
       endDate,
+      id,
+      isPublishCourse,
+      level,
       qualifications,
-      summary,
-      studyMode
+      qualificationsSummary,
+      route,
+      startDate,
+      studyMode,
+      subject,
     }
   }
 
   else {
     return {
-      isPublishCourse,
-      route,
-      level,
       ageRange,
-      subject,
-      startDate,
+      allocatedPlace,
       duration,
       endDate,
-      allocatedPlace,
+      isPublishCourse,
+      level,
       qualifications,
-      summary
+      qualificationsSummary,
+      route,
+      startDate,
+      subject,
     }
   }
 

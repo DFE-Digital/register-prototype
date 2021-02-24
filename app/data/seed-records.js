@@ -6,7 +6,7 @@ seedRecords.push({
   "events": {
     "items": []
   },
-  "route": "Provider-led",
+  "route": "Provider-led (postgrad)",
   "trainingDetails": {
     "traineeStarted": "false",
     "traineeId": "2020/21-053",
@@ -189,7 +189,7 @@ seedRecords.push({
   submittedDate: "2020-05-28T12:37:21.384Z",
   updatedDate: "2020-08-04T04:26:19.269Z",
   trn: 8405624,
-  route: 'Provider-led',
+  route: 'Provider-led (postgrad)',
   programmeDetails: {
     isPublishCourse: false
   },
@@ -209,7 +209,7 @@ seedRecords.push({
   submittedDate: "2020-06-28T12:37:21.384Z",
   updatedDate: "2020-07-04T04:26:19.269Z",
   trn: 8594837,
-  route: 'Provider-led',
+  route: 'Provider-led (postgrad)',
   programmeDetails: {
     isPublishCourse: 'false'
   },
@@ -225,7 +225,7 @@ seedRecords.push({
   trainingDetails: {
     traineeId: "2020/21-092"
   },
-  route: 'Provider-led',
+  route: 'Provider-led (postgrad)',
   programmeDetails: {
     isPublishCourse: false
   },
