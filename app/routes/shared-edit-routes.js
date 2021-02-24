@@ -39,16 +39,25 @@ module.exports = router => {
     let referrer = utils.getReferrer(req.query.referrer)
 
     let route = data.record?.route
-    let providerCourses = utils.getProviderCourses(data.courses, record.provider, route, data)
 
-    // Some courses for selected route
-    if (providerCourses.length) {
-      res.redirect(`${recordPath}/programme-details/pick-course${referrer}`)
+    if (!route || !record.provider) {
+      if (!route) console.log("Error: route not set")
+      if (!record?.provider) console.log("Error: provider not set")
+      res.redirect("/records")
     }
-    // If no courses, go straight to programme details
     else {
-      res.redirect(`${recordPath}/programme-details/details${referrer}`)
+      let providerCourses = utils.getProviderCourses(data.courses, record.provider, route, data)
+
+      // Some courses for selected route
+      if (providerCourses.length) {
+        res.redirect(`${recordPath}/programme-details/pick-course${referrer}`)
+      }
+      // If no courses, go straight to programme details
+      else {
+        res.redirect(`${recordPath}/programme-details/details${referrer}`)
+      }
     }
+
   })
 
   // Picking a course

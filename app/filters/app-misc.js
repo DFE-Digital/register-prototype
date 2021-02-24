@@ -81,7 +81,7 @@ filters.getCourseNamesForSelect = (courses) => {
 // QTS with PGCE full-time
 filters.getCourseNamesForAutocomplete = (courses) => {
   return courses.map(course => {
-    return [`${filters.getCourseName(course)} | ${course.summary}`, course.id]
+    return [`${filters.getCourseName(course)} | ${course.qualificationsSummary}`, course.id]
   })
 }
 

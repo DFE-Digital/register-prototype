@@ -121,7 +121,7 @@ module.exports = (params) => {
     // Todo: extend this to add academic qualifications possible for early years
     if (route.includes('Early years') || route.includes('Assessment only')){
       qualifications = enabledRoutes[route].qualifications
-      qualificationSummary = enabledRoutes[route].qualificationSummary
+      qualificationsSummary = enabledRoutes[route].qualificationsSummary
     }
     else {
       let selected = weighted.select({
@@ -139,7 +139,7 @@ module.exports = (params) => {
     studyMode = "Part time"
     if (route.includes('Early years')){
       qualifications = enabledRoutes[route].qualifications
-      qualificationSummary = enabledRoutes[route].qualificationSummary
+      qualificationsSummary = enabledRoutes[route].qualificationsSummary
     }
     else {
       let selected = weighted.select({

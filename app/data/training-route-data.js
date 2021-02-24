@@ -42,7 +42,7 @@ let defaultRouteData = {
   qualifications: [
     "QTS"
   ],
-  qualificationSummary: "QTS",
+  qualificationsSummary: "QTS",
   duration: 1,
   sections: [
     'trainingDetails',
@@ -85,26 +85,26 @@ let baseRouteData = {
     qualifications: [
       "EYTS"
     ],
-    qualificationSummary: "EYTS full time"
+    qualificationsSummary: "EYTS full time"
   },
   "Early years (graduate entry)": {
     qualifications: [
       "EYTS"
     ],
-    qualificationSummary: "EYTS full time"
+    qualificationsSummary: "EYTS full time"
   },
   "Early years (assessment only)": {
     qualifications: [
       "EYTS"
     ],
-    qualificationSummary: "EYTS full time"
+    qualificationsSummary: "EYTS full time"
   },
   "Early years (undergrad)": {
     defaultEnabled: true,
     qualifications: [
       "EYTS"
     ],
-    qualificationSummary: "EYTS full time"
+    qualificationsSummary: "EYTS full time"
   }
 }
 

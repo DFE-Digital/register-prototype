@@ -384,7 +384,7 @@ exports.registerForTRN = (record) => {
   let routeData = trainingRoutes[record.route]
   let routeDefaults = {
     qualifications: routeData.qualifications,
-    qualificationSummary: routeData.qualificationSummary,
+    qualificationsSummary: routeData.qualificationsSummary,
     duration: routeData.duration
   }
 
