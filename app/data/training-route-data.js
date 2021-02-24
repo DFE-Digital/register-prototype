@@ -15,7 +15,7 @@ let nonPublishRoutes = [
   'Provider-led (postgrad)',
   'Provider-led (undergrad)',
   'Assessment only',
-  'Teach first (postgrad)',
+  'Teach First (postgrad)',
   'Early years (graduate placement)',
   'Early years (graduate entry)',
   'Early years (assessment only)',
@@ -72,10 +72,10 @@ let baseRouteData = {
     defaultEnabled: true,
     hasAllocatedPlaces: true,
   },
-  "School Direct (salaried)": {
+  "School direct (salaried)": {
     defaultEnabled: true
   },
-  "School Direct (tuition fee)": {
+  "School direct (tuition fee)": {
     defaultEnabled: true
   },
   "Teach first (postgrad)": {},

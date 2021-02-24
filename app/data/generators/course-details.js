@@ -65,7 +65,6 @@ const pickRoute = (isPublishCourse = false) => {
     let nonPublishRoutes = Object.keys(enabledRoutes).filter(route => {
       return enabledRoutes[route].isNonPublishRoute
     })
-    // let nonPublishRoutes = enabledRoutes.filter(route => route.isNonPublishRoute)
     return faker.helpers.randomize(nonPublishRoutes)
   }
 }
@@ -86,7 +85,11 @@ module.exports = (params) => {
   const ageRange = faker.helpers.randomize(trainingRouteData.levels[level].ageRanges)
 
   let subject
-  if (level == 'Primary'){
+
+  if (route.includes('Early years')){
+    subject = 'Primary'
+  }
+  else if (level == 'Primary'){
     subject = faker.helpers.randomize(ittSubjects.primarySubjects)
   }
   else {
