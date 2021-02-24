@@ -99,6 +99,22 @@ exports.requiresSection = (record, sectionName) => {
   return requiredSections.includes(sectionName)
 }
 
+exports.qualificationIs = (record, qualification) => {
+  return (record?.programmeDetails?.qualifications) ? record.programmeDetails.qualifications.includes(qualification) : false
+}
+
+exports.qualificationIsQTS = record => exports.qualificationIs(record, "QTS")
+
+exports.qualificationIsEYTS = record => exports.qualificationIs(record, "EYTS")
+
+exports.qualificationIsPGCE = record => exports.qualificationIs(record, "PGCE")
+
+exports.qualificationIsPGDE = record => exports.qualificationIs(record, "PGDE")
+
+exports.getQualificationText = record => {
+  return (exports.qualificationIsQTS(record)) ? "QTS" : "EYTS"
+}
+
 // Sort by subject, including course code
 exports.sortPublishCourses = courses => {
   let sorted = courses.sort((a, b) => {
@@ -362,14 +378,13 @@ exports.doBulkAction = (action, record, params) => {
 // Advance a record to 'QTS recommended' status
 exports.registerForTRN = (record) => {
 
-  // We get this if it's a publish route - otherwise hardcode it
-  // Todo: in the future we could derive this from the route
-  const programmeDetailsDefaults = {
-    qualifications: [
-      "QTS"
-    ],
-    summary: "QTS",
-    duration: 1
+  // Set default qualifcation, duration, etc
+  // Publish course data may override this
+  let routeData = trainingRoutes[record.route]
+  let routeDefaults = {
+    qualifications: routeData.qualifications,
+    qualificationSummary: routeData.qualificationSummary,
+    duration: routeData.duration
   }
 
   if (!record) return false
@@ -392,7 +407,7 @@ exports.registerForTRN = (record) => {
     record.submittedDate = new Date()
     record.updatedDate = new Date()
     record.programmeDetails = {
-      ...programmeDetailsDefaults,
+      ...routeDefaults,
       ...record.programmeDetails
     }
     exports.addEvent(record, "Trainee submitted for TRN")
