@@ -85,6 +85,23 @@ filters.getCourseNamesForAutocomplete = (courses) => {
   })
 }
 
+// Combine type with abbreviation if abbreviation is different
+// The autocomplete will split these and make the abbreviation
+// display in bold
+// 
+// Bachelor of Science (BSc)
+filters.getDegreeTypesForAutocomplete = (degreeTypes) => {
+  return degreeTypes.map(type => {
+    let suggestion
+    if (type.short == type.full) suggestion = type.full
+    else suggestion = `${type.text} | ${type.short}`
+    return {
+      value: type.text, // The text that’s ultimately submitted / stored
+      suggestion
+    }
+  })
+}
+
 // Return a pretty name for the degree
 filters.getDegreeName = (degree) => {
   if (!degree) return ''

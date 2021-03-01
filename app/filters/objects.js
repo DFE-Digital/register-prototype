@@ -11,6 +11,9 @@ filters.mergeObjects = (...items) => {
   return Object.assign({}, ...items)
 }
 
+filters.isObject = item => {
+  return _.isObject(item)
+}
 
 /*
   ====================================================================

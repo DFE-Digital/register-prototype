@@ -1,323 +1,403 @@
 module.exports = () => {
   const types = [{
-    value: 'BA Education',
+    short: 'BA Education',
     text: 'BA Education',
+    full: 'BA Education',
     level: 6
   }, {
-    value: 'BEd',
+    short: 'BEd',
     text: 'BEd',
+    full: 'BEd',
     level: 6
   }, {
-    value: 'BSc Education',
+    short: 'BSc Education',
     text: 'BSc Education',
+    full: 'BSc Education',
     level: 6
   }, {
-    value: 'BTech Education',
+    short: 'BTech Education',
     text: 'BTech Education',
+    full: 'BTech Education',
     level: 6
   }, {
-    value: 'BA Combined Studies/Education of the Deaf',
+    short: 'BA Combined Studies/Education of the Deaf',
     text: 'BA Combined Studies/Education of the Deaf',
+    full: 'BA Combined Studies/Education of the Deaf',
     level: 6
   }, {
-    value: 'BA with intercalated PGCE',
+    short: 'BA with intercalated PGCE',
     text: 'BA with intercalated PGCE',
+    full: 'BA with intercalated PGCE',
     level: 6
   }, {
-    value: 'BA',
-    text: 'BA - Bachelor of Arts',
+    short: 'BA',
+    text: 'Bachelor of Arts',
+    full: 'BA - Bachelor of Arts',
     level: 6
   }, {
-    value: 'BAEcon',
-    text: 'BAEcon - Bachelor of Arts in Economics',
+    short: 'BAEcon',
+    text: 'Bachelor of Arts in Economics',
+    full: 'BAEcon - Bachelor of Arts in Economics',
     level: 6
   }, {
-    value: 'BAArch',
-    text: 'BAArch - Bachelor of Arts in Architecture',
+    short: 'BAArch',
+    text: 'Bachelor of Arts in Architecture',
+    full: 'BAArch - Bachelor of Arts in Architecture',
     level: 6
   }, {
-    value: 'BAO',
-    text: 'BAO - Bachelor of the Art of Obstetrics',
+    short: 'BAO',
+    text: 'Bachelor of the Art of Obstetrics',
+    full: 'BAO - Bachelor of the Art of Obstetrics',
     level: 6
   }, {
-    value: 'BArch',
-    text: 'BArch - Bachelor of Architecture',
+    short: 'BArch',
+    text: 'Bachelor of Architecture',
+    full: 'BArch - Bachelor of Architecture',
     level: 6
   }, {
-    value: 'BASc',
-    text: 'BASc - Bachelor of Applied Science',
+    short: 'BASc',
+    text: 'Bachelor of Applied Science',
+    full: 'BASc - Bachelor of Applied Science',
     level: 6
   }, {
-    value: 'BAgr',
-    text: 'BAgr - Bachelor of Agriculture',
+    short: 'BAgr',
+    text: 'Bachelor of Agriculture',
+    full: 'BAgr - Bachelor of Agriculture',
     level: 6
   }, {
-    value: 'BAcc',
+    short: 'BAcc',
     text: 'BAcc - Bachelor of Accountancy',
+    full: 'BAcc - Bachelor of Accountancy',
     level: 6
   }, {
-    value: 'BAdmin',
-    text: 'BAdmin - Bachelor of Administration',
+    short: 'BAdmin',
+    text: 'Bachelor of Administration',
+    full: 'BAdmin - Bachelor of Administration',
     level: 6
   }, {
-    value: 'BBA',
-    text: 'BBA - Bachelor of Business Administration',
+    short: 'BBA',
+    text: 'Bachelor of Business Administration',
+    full: 'BBA - Bachelor of Business Administration',
     level: 6
   }, {
-    value: 'BCh',
-    text: 'BCh - Bachelor of Chirurgiae',
+    short: 'BCh',
+    text: 'Bachelor of Chirurgiae',
+    full: 'BCh - Bachelor of Chirurgiae',
     level: 6
   }, {
-    value: 'BCombSt',
-    text: 'BCombSt - Bachelor of Combined Studies',
+    short: 'BCombSt',
+    text: 'Bachelor of Combined Studies',
+    full: 'BCombSt - Bachelor of Combined Studies',
     level: 6
   }, {
-    value: 'BCom',
-    text: 'BCom - Bachelor of Commerce',
+    short: 'BCom',
+    text: 'Bachelor of Commerce',
+    full: 'BCom - Bachelor of Commerce',
     level: 6
   }, {
-    value: 'BD',
-    text: 'BD - Bachelor of Divinity',
+    short: 'BD',
+    text: 'Bachelor of Divinity',
+    full: 'BD - Bachelor of Divinity',
     level: 6
   }, {
-    value: 'BDS',
-    text: 'BDS - Bachelor of Dental Surgery',
+    short: 'BDS',
+    text: 'Bachelor of Dental Surgery',
+    full: 'BDS - Bachelor of Dental Surgery',
     level: 6
   }, {
-    value: 'BEd',
-    text: 'BEd - Bachelor of Education Scotland & Northern Ireland',
+    short: 'BEd',
+    text: 'Bachelor of Education Scotland & Northern Ireland',
+    full: 'BEd - Bachelor of Education Scotland & Northern Ireland',
     level: 6
   }, {
-    value: 'BEng',
-    text: 'BEng - Bachelor of Engineering',
+    short: 'BEng',
+    text: 'Bachelor of Engineering',
+    full: 'BEng - Bachelor of Engineering',
     level: 6
   }, {
-    value: 'BEng/BS',
-    text: 'BEng/BS - Bachelor of Engineering with Business Studies',
+    short: 'BEng/BS',
+    text: 'Bachelor of Engineering with Business Studies',
+    full: 'BEng/BS - Bachelor of Engineering with Business Studies',
     level: 6
   }, {
-    value: 'BFA',
-    text: 'BFA - Bachelor of Fine Art',
+    short: 'BFA',
+    text: 'Bachelor of Fine Art',
+    full: 'BFA - Bachelor of Fine Art',
     level: 6
   }, {
-    value: 'BGS',
-    text: 'BGS - Bachelor of General Studies',
+    short: 'BGS',
+    text: 'Bachelor of General Studies',
+    full: 'BGS - Bachelor of General Studies',
     level: 6
   }, {
-    value: 'BH',
-    text: 'BH - Bachelor of Humanities',
+    short: 'BH',
+    text: 'Bachelor of Humanities',
+    full: 'BH - Bachelor of Humanities',
     level: 6
   }, {
-    value: 'BHy',
-    text: 'BHy - Bachelor of Hygiene',
+    short: 'BHy',
+    text: 'Bachelor of Hygiene',
+    full: 'BHy - Bachelor of Hygiene',
     level: 6
   }, {
-    value: 'BL',
-    text: 'BL - Bachelor of Law',
+    short: 'BL',
+    text: 'Bachelor of Law',
+    full: 'BL - Bachelor of Law',
     level: 6
   }, {
-    value: 'BLib',
-    text: 'BLib - Bachelor of Librarianship',
+    short: 'BLib',
+    text: 'Bachelor of Librarianship',
+    full: 'BLib - Bachelor of Librarianship',
     level: 6
   }, {
-    value: 'BLS',
-    text: 'BLS - Bachelor of Librarianship and Information Studies',
+    short: 'BLS',
+    text: 'Bachelor of Librarianship and Information Studies',
+    full: 'BLS - Bachelor of Librarianship and Information Studies',
     level: 6
   }, {
-    value: 'BLitt',
-    text: 'BLitt - Bachelor of Literature',
+    short: 'BLitt',
+    text: 'Bachelor of Literature',
+    full: 'BLitt - Bachelor of Literature',
     level: 6
   }, {
-    value: 'BLE',
-    text: 'BLE - Bachelor of Land Economy',
+    short: 'BLE',
+    text: 'Bachelor of Land Economy',
+    full: 'BLE - Bachelor of Land Economy',
     level: 6
   }, {
-    value: 'BMedSc',
-    text: 'BMedSc - Bachelor of Medical Science',
+    short: 'BMedSc',
+    text: 'Bachelor of Medical Science',
+    full: 'BMedSc - Bachelor of Medical Science',
     level: 6
   }, {
-    value: 'BM',
-    text: 'BM - Bachelor of Medicine',
+    short: 'BM',
+    text: 'Bachelor of Medicine',
+    full: 'BM - Bachelor of Medicine',
     level: 6
   }, {
-    value: 'BMet',
-    text: 'BMet - Bachelor of Metallurgy',
+    short: 'BMet',
+    text: 'Bachelor of Metallurgy',
+    full: 'BMet - Bachelor of Metallurgy',
     level: 6
   }, {
-    value: 'BMet/Eng',
-    text: 'BMet/Eng - Bachelor of Metallurgy and Engineering',
+    short: 'BMet/Eng',
+    text: 'Bachelor of Metallurgy and Engineering',
+    full: 'BMet/Eng - Bachelor of Metallurgy and Engineering',
     level: 6
   }, {
-    value: 'BMus',
-    text: 'BMus - Bachelor of Music',
+    short: 'BMus',
+    text: 'Bachelor of Music',
+    full: 'BMus - Bachelor of Music',
     level: 6
   }, {
-    value: 'BN',
-    text: 'BN - Bachelor of Nursing',
+    short: 'BN',
+    text: 'Bachelor of Nursing',
+    full: 'BN - Bachelor of Nursing',
     level: 6
   }, {
-    value: 'BPharm',
-    text: 'BPharm - Bachelor of Pharmacy',
+    short: 'BPharm',
+    text: 'Bachelor of Pharmacy',
+    full: 'BPharm - Bachelor of Pharmacy',
     level: 6
   }, {
-    value: 'BSc',
-    text: 'BSc - Bachelor of Science',
+    short: 'BSc',
+    text: 'Bachelor of Science',
+    full: 'BSc - Bachelor of Science',
     level: 6
   }, {
-    value: 'BScEcon',
-    text: 'BScEcon - Bachelor of Science Economics',
+    short: 'BScEcon',
+    text: 'Bachelor of Science Economics',
+    full: 'BScEcon - Bachelor of Science Economics',
     level: 6
   }, {
-    value: 'BScEng',
-    text: 'BScEng - Bachelor of Science & Engineering',
+    short: 'BScEng',
+    text: 'Bachelor of Science & Engineering',
+    full: 'BScEng - Bachelor of Science & Engineering',
     level: 6
   }, {
-    value: 'BScTech',
-    text: 'BScTech - Bachelor of Science & Technology',
+    short: 'BScTech',
+    text: 'Bachelor of Science & Technology',
+    full: 'BScTech - Bachelor of Science & Technology',
     level: 6
   }, {
-    value: 'BSc SS',
-    text: 'BSc SS - Bachelor of Science in Social Science',
+    short: 'BSc SS',
+    text: 'Bachelor of Science in Social Science',
+    full: 'BSc SS - Bachelor of Science in Social Science',
     level: 6
   }, {
-    value: 'BSc SPT',
-    text: 'BSc SPT - Bachelor of Science in Speech Therapy',
+    short: 'BSc SPT',
+    text: 'Bachelor of Science in Speech Therapy',
+    full: 'BSc SPT - Bachelor of Science in Speech Therapy',
     level: 6
   }, {
-    value: 'BSocSc',
-    text: 'BSocSc - Bachelor of Social Science',
+    short: 'BSocSc',
+    text: 'Bachelor of Social Science',
+    full: 'BSocSc - Bachelor of Social Science',
     level: 6
   }, {
-    value: 'BS',
-    text: 'BS - Bachelor of Surgery',
+    short: 'BS',
+    text: 'Bachelor of Surgery',
+    full: 'BS - Bachelor of Surgery',
     level: 6
   }, {
-    value: 'BTech',
-    text: 'BTech - Bachelor of Technology',
+    short: 'BTech',
+    text: 'Bachelor of Technology',
+    full: 'BTech - Bachelor of Technology',
     level: 6
   }, {
-    value: 'BTheol',
-    text: 'BTheol - Bachelor of Theology',
+    short: 'BTheol',
+    text: 'Bachelor of Theology',
+    full: 'BTheol - Bachelor of Theology',
     level: 6
   }, {
-    value: 'BVetMed',
-    text: 'BVetMed - Bachelor of Veterinary Medicine',
+    short: 'BVetMed',
+    text: 'Bachelor of Veterinary Medicine',
+    full: 'BVetMed - Bachelor of Veterinary Medicine',
     level: 6
   }, {
-    value: 'BVMS',
-    text: 'BVMS - Bachelor of Veterinary Medicine and Surgery',
+    short: 'BVMS',
+    text: 'Bachelor of Veterinary Medicine and Surgery',
+    full: 'BVMS - Bachelor of Veterinary Medicine and Surgery',
     level: 6
   }, {
-    value: 'BVSc',
-    text: 'BVSc - Bachelor of Veterinary Science',
+    short: 'BVSc',
+    text: 'Bachelor of Veterinary Science',
+    full: 'BVSc - Bachelor of Veterinary Science',
     level: 6
   }, {
-    value: 'BPhil',
-    text: 'BPhil - Bachelor of Philosophy',
+    short: 'BPhil',
+    text: 'Bachelor of Philosophy',
+    full: 'BPhil - Bachelor of Philosophy',
     level: 6
   }, {
-    value: 'CMCU',
-    text: 'CMCU - Certificate of Membership of Cranfield Institute of Technology',
+    short: 'CMCU',
+    text: 'Certificate of Membership of Cranfield Institute of Technology',
+    full: 'CMCU - Certificate of Membership of Cranfield Institute of Technology',
     level: 6
   }, {
-    value: 'MA',
-    text: 'MA - Master of Arts',
+    short: 'MA',
+    text: 'Master of Arts',
+    full: 'MA - Master of Arts',
     level: 7
   }, {
-    value: 'MBA',
-    text: 'MBA - Master of Business Administration',
+    short: 'MBA',
+    text: 'Master of Business Administration',
+    full: 'MBA - Master of Business Administration',
     level: 7
   }, {
-    value: 'MBS',
-    text: 'MBS - Master of Business Studies',
+    short: 'MBS',
+    text: 'Master of Business Studies',
+    full: 'MBS - Master of Business Studies',
     level: 7
   }, {
-    value: 'MChem',
-    text: 'MChem - Master of Chemistry',
+    short: 'MChem',
+    text: 'Master of Chemistry',
+    full: 'MChem - Master of Chemistry',
     level: 7
   }, {
-    value: 'MEd',
-    text: 'MEd - Master of Education',
+    short: 'MEd',
+    text: 'Master of Education',
+    full: 'MEd - Master of Education',
     level: 7
   }, {
-    value: 'MEng',
-    text: 'MEng - Master of Engineering',
+    short: 'MEng',
+    text: 'Master of Engineering',
+    full: 'MEng - Master of Engineering',
     level: 7
   }, {
-    value: 'MLaw',
-    text: 'MLaw - Master of Law',
+    short: 'MLaw',
+    text: 'Master of Law',
+    full: 'MLaw - Master of Law',
     level: 7
   }, {
-    value: 'MLib',
-    text: 'MLib - Master of Librarianship',
+    short: 'MLib',
+    text: 'Master of Librarianship',
+    full: 'MLib - Master of Librarianship',
     level: 7
   }, {
-    value: 'MLit',
-    text: 'MLit - Master of Literature',
+    short: 'MLit',
+    text: 'Master of Literature',
+    full: 'MLit - Master of Literature',
     level: 7
   }, {
-    value: 'MMus',
-    text: 'MMus - Master of Music',
+    short: 'MMus',
+    text: 'Master of Music',
+    full: 'MMus - Master of Music',
     level: 7
   }, {
-    value: 'MPhil',
-    text: 'MPhil - Master of Philosophy',
+    short: 'MPhil',
+    text: 'Master of Philosophy',
+    full: 'MPhil - Master of Philosophy',
     level: 7
   }, {
-    value: 'MPhys',
-    text: 'MPhys - Master of Physics',
+    short: 'MPhys',
+    text: 'Master of Physics',
+    full: 'MPhys - Master of Physics',
     level: 7
   }, {
-    value: 'MSc',
-    text: 'MSc - Master of Science',
+    short: 'MSc',
+    text: 'Master of Science',
+    full: 'MSc - Master of Science',
     level: 7
   }, {
-    value: 'MSocStud',
-    text: 'MSocStud - Master of Social Studies',
+    short: 'MSocStud',
+    text: 'Master of Social Studies',
+    full: 'MSocStud - Master of Social Studies',
     level: 7
   }, {
-    value: 'MTheol',
-    text: 'MTheol - Master of Theology',
+    short: 'MTheol',
+    text: 'Master of Theology',
+    full: 'MTheol - Master of Theology',
     level: 7
   }, {
-    value: 'DCL',
-    text: 'DCL - Doctor of Civil Law',
+    short: 'DCL',
+    text: 'Doctor of Civil Law',
+    full: 'DCL - Doctor of Civil Law',
     level: 7
   }, {
-    value: 'DD',
-    text: 'DD - Doctor of Divinity',
+    short: 'DD',
+    text: 'Doctor of Divinity',
+    full: 'DD - Doctor of Divinity',
     level: 8
   }, {
-    value: 'MD',
-    text: 'MD - Doctor of Medicine',
+    short: 'MD',
+    text: 'Doctor of Medicine',
+    full: 'MD - Doctor of Medicine',
     level: 8
   }, {
-    value: 'DMus',
-    text: 'DMus - Doctor of Music',
+    short: 'DMus',
+    text: 'Doctor of Music',
+    full: 'DMus - Doctor of Music',
     level: 8
   }, {
-    value: 'DPhil',
-    text: 'DPhil - Doctor of Philosophy',
+    short: 'DPhil',
+    text: 'Doctor of Philosophy',
+    full: 'DPhil - Doctor of Philosophy',
     level: 8
   }, {
-    value: 'PhD',
-    text: 'PhD - Doctor of Philosophy',
+    short: 'PhD',
+    text: 'Doctor of Philosophy',
+    full: 'PhD - Doctor of Philosophy',
     level: 8
   }, {
-    value: 'DSc',
-    text: 'DSc - Doctor of Science',
+    short: 'DSc',
+    text: 'Doctor of Science',
+    full: 'DSc - Doctor of Science',
     level: 8
   }, {
-    value: 'First Degree',
+    short: 'First Degree',
     text: 'First Degree',
+    full: 'First Degree',
     type: 'other'
   }, {
-    value: 'Higher Degree',
+    short: 'Higher Degree',
     text: 'Higher Degree',
+    full: 'Higher Degree',
     type: 'other'
   }, {
-    value: 'Degree equivalent',
+    short: 'Degree equivalent',
     text: 'Degree equivalent',
+    full: 'Degree equivalent',
     type: 'other'
   }]
 

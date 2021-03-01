@@ -6,7 +6,8 @@ let statuses                = require('./status')
 // Degree stuff
 let awards                  = require('./awards') // Types of degree
 let degreeData              = require('./degree')()
-let degreeTypes             = degreeData.types.undergraduate.map(type => type.text).sort()
+let degreeTypes             = degreeData.types.all
+let degreeTypesSimple             = degreeData.types.all.map(type => type.text).sort()
 let subjects                = degreeData.subjects
 let ukComparableDegrees     = degreeData.ukComparableDegrees
 let degreeOrganisations     = degreeData.orgs
@@ -113,6 +114,7 @@ module.exports = {
   currentYear,
   degreeOrganisations,
   degreeTypes,
+  degreeTypesSimple,
   ethnicities,
   ittSubjects,
   nationalities,

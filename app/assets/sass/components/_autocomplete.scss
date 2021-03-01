@@ -109,6 +109,10 @@
   color: $govuk-secondary-text-colour;
 }
 
+.autocomplete__option--bold {
+  @include govuk-typography-weight-bold;
+}
+
 .autocomplete__option--focused,
 .autocomplete__option:hover {
   background-color: govuk-colour("blue");

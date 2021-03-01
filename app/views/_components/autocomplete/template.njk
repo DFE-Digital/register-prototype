@@ -35,7 +35,7 @@ This needs margin manually applied because the design system removes
 bottom margin from the last govuk-form-group in a div - which happens
 for *each* autocomplete 
 #}
-<div class="{{params.classes}} govuk-!-margin-bottom-6">
+<div class="govuk-!-margin-bottom-6 {{params.classes}} ">
   {{ govukSelect({
     label: params.label,
     hint: params.hint,
@@ -44,44 +44,26 @@ for *each* autocomplete
     name: params.name,
     items: selectItems
   }) }}
-  {# <div class="govuk-form-group"></div> #}
 </div>
-
-
-{# {% if data.class %}
-  {% set class = data.class %}
-{% else %}
-  {% set class = 'govuk-fieldset__legend govuk-fieldset__legend--l' %}
-{% endif %}
-
-{% if data.legend %}
-  <legend for="{{data.idPrefix}}-autocomplete" class="{{class}} ">
-    {{data.legend}}
-  </legend>
-{% endif %}
-
-{% if data.hint %}
-  <span class="govuk-hint">{{data.hint | safe}}</span>
-{% endif %}
-
-{% if not data.width %}
-  {% set width = 'govuk-!-width-one-half' %}
-{% else %}
-  {% set width = data.width %}
-{% endif %} #}
-
-
 
 <script src="/public/javascripts/autocomplete.min.js"></script>
 <script>
 
   // Support an alt set of values than the one provided by the select
   // This is used where we want the autocomplete to have more advanced functionality
+  // Todo: this is messy! clean this up!
   var values = false
   {% if params.itemsAutocomplete %}
-    values = [{% for value in params.itemsAutocomplete %}
-      "{{ value[0] if value | isArray else value }}",
-      {% endfor %}]
+    values = [
+    {% for value in params.itemsAutocomplete %}
+      {% if value | isArray %}
+        "{{ value[0] }}",
+      {% elseif value | isObject %}
+        "{{value.suggestion}}",
+      {% else %}
+      "{{value}}",
+      {% endif %}
+    {% endfor %}]
   {% endif %}
 
   var element = document.querySelector('#{{params.id}}');
@@ -115,7 +97,8 @@ for *each* autocomplete
   var inputValue = (result) => {
       if (result) {
         const name = result.split(' | ')
-        if (name[1]) {
+
+        if (name.length > 1) {
           return name[0] && name[0]
         }
         return result && result
@@ -126,7 +109,14 @@ for *each* autocomplete
   var suggestion = (result) => {
       const name = result.split(' | ')
       if (name[1]) {
-        return name[0] && name[0] + '<span class="autocomplete__option-hint">' + name[1] + '</span>'
+        // Display second part in bold
+        if ('{{params.displayStyle}}' == 'bold'){
+          return name[0] &&  name[0] + '<span class="autocomplete__option--bold"> (' + name[1] + ')</span>'
+        }
+        // Display second part as hint on new line
+        else {
+          return name[0] && name[0] + '<span class="autocomplete__option-hint">' + name[1] + '</span>'
+        }
       }
       else {
         return result && result
@@ -140,12 +130,13 @@ for *each* autocomplete
     showAllValues: showAllValues,
     autoselect: autoSelect,
     minLength: minLength,
-    ...(values ? { source: values } : {}), // conditionally pass values along
+    ...(values ? { source: values } : {}), // conditionally pass values
     defaultValue: defaultValue,
     name: rawName,
     templates: {
       inputValue,
-      suggestion}
+      suggestion
+    }
 
   });
 

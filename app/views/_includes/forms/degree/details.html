@@ -35,6 +35,8 @@
 
 {#If the drop down arrow in the field above is displayed, add the following hint text to let users know they do not have to scroll: You can start typing to narrow down your search.#}
 
+{% set degreeTypesAutocomplete = data.degreeTypes | getDegreeTypesForAutocomplete | sort(attribute='value') %}
+
 {% if not isInternational %}
   {{ appAutocomplete({
     label: {
@@ -46,7 +48,10 @@
     },
     id: 'degree-type',
     name: "degreeTemp[typeUK]",
-    items: data.degreeTypes,
+    items: data.degreeTypesSimple,
+    itemsAutocomplete: degreeTypesAutocomplete,
+    displayStyle: "bold",
+    autoSelect: false,
     classes: "app-!-autocomplete--max-width-two-thirds",
     value: (degreeTemp.type or degreeTemp.typeUK) if not isInternational
     }
