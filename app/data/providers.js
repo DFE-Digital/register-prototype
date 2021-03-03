@@ -309,9 +309,9 @@ const permProviders = [
 
 // Returns a smaller set of providers as the real set is too big
 const getSelectedProviders = () => {
-  // One in 10 providers
+  // One in 30 providers
   let reducedProviders = allProviders.filter((provider, index) => { 
-    return (index % 10 === 0)
+    return (index % 30 === 0)
   })
   
   reducedProviders = reducedProviders.concat(permProviders).sort()

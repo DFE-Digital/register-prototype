@@ -7,12 +7,7 @@ const trainingRouteData = require('./../training-route-data')
 const ittSubjects = require('./../itt-subjects')
 const courses           = require('./../courses.json')
 
-const publishRoutes = [
-  'School direct salaried',
-  'School direct tuition fee',
-  'Apprenticeship PG',
-  'Provider-led'
-]
+const publishRoutes = trainingRouteData.publishRoutes
 
 const generateCourseDetails = require('./course-details')
 
@@ -36,7 +31,7 @@ module.exports = (params, application) => {
     // Todo: seed courses for a provider might not align with selected or enabled routes. 
     // Think of a better way of handling this
     if (!providerCourses.length) {
-      console.log(`No courses found for ${application.route} for ${application.provider}. Using all routes`)
+      console.log(`No courses found for ${application.route} for ${application.provider}. Using all routes instead - ${application.id}`)
       providerCourses = courses[application.provider].courses
     }
     // Pick a random course

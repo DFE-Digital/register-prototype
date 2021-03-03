@@ -1,6 +1,12 @@
 // A non-exhaustive list of routes
 // Publish and non publish can overlap
 
+let applyRoutes = [
+  'Provider-led (postgrad)',
+  'School direct (salaried)',
+  'School direct (tuition fee)',
+]
+
 // Not all these routes will be enabled
 let publishRoutes = [
   'Apprenticeship (postgrad)',
@@ -118,8 +124,6 @@ Object.keys(allRoutes).forEach(routeName => {
   trainingRoutes[routeName] = routeData
 })
 
-console.log({trainingRoutes})
-
 let enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name)
 
 let allocatedSubjects = [
@@ -178,6 +182,7 @@ module.exports = {
   enabledTrainingRoutes,
   levels,
   defaultSections: defaultRouteData.sections,
+  applyRoutes,
   publishRoutes,
   nonPublishRoutes
 }

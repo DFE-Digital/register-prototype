@@ -21,13 +21,13 @@ const generateCourseDetails = require('../app/data/generators/course-details')
 // Most have 1-3, but then about 1/3 have up to 80
 const generateCourseCount = () => {
   let count = weighted.select({
-    "1": 0.2,
-    "2": 0.2,
-    "3": 0.05,
-    "4": 0.05,
-    "5": 0.05,
-    "7": 0.05,
-    "15": 0.05,
+    // "1": 0.2,
+    // "2": 0.2,
+    // "3": 0.05,
+    // "4": 0.05,
+    // "5": 0.05,
+    // "7": 0.05,
+    // "15": 0.05,
     "20": 0.05,
     "25": 0.05,
     "30": 0.05,
@@ -47,7 +47,7 @@ const generateFakeCourses = () => {
     let courseCount = generateCourseCount() // semi-random number of courses per provider
     
     // Hardcode lots courses our default providers
-    // A separate setting limits this later so that we can quickly change the number of courses
+    // A separate setting limits this later so that we can quickly change the number of courses offered in the ui
     if (provider == "Coventry University" || provider == "University of Buckingham") courseCount = 100
 
     for (var i = 0; i < courseCount; i++){

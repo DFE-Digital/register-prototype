@@ -43,7 +43,14 @@ const getRandomArbitrary = (min, max) => {
 // Training routes
 const trainingRoutes = Object.keys(trainingRouteData.trainingRoutes)
 const enabledTrainingRoutes = trainingRouteData.enabledTrainingRoutes
+const enabledApplyRoutes = enabledTrainingRoutes.filter(route => trainingRouteData.applyRoutes.includes(route))
 const getRandomEnabledRoute = () => faker.helpers.randomize(enabledTrainingRoutes)
+const getRandomEnabledApplyRoute = () => faker.helpers.randomize(enabledApplyRoutes)
+
+const getRandomRoute = (params) => {
+  if (params?.source == 'Apply') return getRandomEnabledApplyRoute()
+  else return getRandomEnabledRoute()
+}
 
 // Generators
 const generateTrainingDetails = require('../app/data/generators/training-details')
@@ -69,7 +76,8 @@ const generateFakeApplication = (params = {}) => {
   application.id              = params.id || faker.random.uuid()
   application.personalDetails = (params.personalDetails === null) ? undefined : { ...generatePersonalDetails(), ...params.personalDetails }
   application.provider        = params.provider || faker.helpers.randomize(providers)
-  application.route           = (params.route === null) ? undefined : (params.route || getRandomEnabledRoute())
+  application.source          = (params.source) ? params.source : "Manual"
+  application.route           = (params.route === null) ? undefined : (params.route || getRandomRoute(application))
   application.status          = params.status || faker.helpers.randomize(statuses)
   if (application.status == "Deferred") {
     application.previousStatus = "TRN received" // set a state to go back to
@@ -83,6 +91,11 @@ const generateFakeApplication = (params = {}) => {
   // Training
   application.trn              = (params.trn === null) ? undefined : (params.trn || generateTrn(application.status) )
   application.programmeDetails = (params.programmeDetails === null) ? undefined : { ...generateProgrammeDetails(params, application), ...params.programmeDetails }
+  // There's a slight edge case that programme details might return with a different route - if so save it back up
+  if (application.programmeDetails.route && application.programmeDetails.route != application.route){
+    console.log("Overwriting route")
+    application.route = application.programmeDetails.route
+  }
   application.trainingDetails  = (params.trainingDetails === null) ? undefined : { ...generateTrainingDetails(application), ...params.trainingDetails }
   // Contact details
   application.isInternationalTrainee = !(application.personalDetails.nationality.includes('British') || application.personalDetails.nationality.includes('Irish'))
@@ -115,11 +128,24 @@ const generateFakeApplications = () => {
     applications.push(generateFakeApplication(seed))
   })
 
-  // let reducedProviders = providers.slice(0, 5) // shorter for testing
-  let reducedProviders = providers
+  // Make some apply drafts
+  for (var i = 0; i < 20; i++) {
+    let seed = {
+        provider: "Coventry University",
+        source: "Apply",
+        status: "Draft",
+        academicYear: currentYear,
+        placement: null,
+        programmeDetails: {
+          isPublishCourse: true
+        },
+        trainingDetails: null
+      }
+    applications.push(generateFakeApplication(seed))
+  }
 
   // Generate trainees for each provider
-  reducedProviders.forEach(provider => {
+  providers.forEach(provider => {
 
     // Approximate size of provider
     // TODO: store provider size somewhere so it can be used here and
@@ -134,12 +160,12 @@ const generateFakeApplications = () => {
 
   })
 
-  // Logging
-  let applicationCounts = {}
-  statuses.forEach(status => {
-    applicationCounts[status] = applications.filter(application => application.status == status).length
-  })
-  console.log({applicationCounts})
+  // // Logging
+  // let applicationCounts = {}
+  // statuses.forEach(status => {
+  //   applicationCounts[status] = applications.filter(application => application.status == status).length
+  // })
+  // console.log({applicationCounts})
 
   applications = applications.sort(sortBySubmittedDate)
 
@@ -261,7 +287,15 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
 const generateApplicationsFile = (filePath) => {
   const applications = generateFakeApplications()
   // console.log(applications)
-  console.log(`Generated ${applications.length} fake records`)
+  console.log(`Generated ${applications.length} records`)
+
+  // Logging
+  let applicationCounts = {}
+  statuses.forEach(status => {
+    applicationCounts[status] = applications.filter(application => application.status == status).length
+  })
+  console.log({applicationCounts})
+
   const filedata = JSON.stringify(applications, null, 2)
   fs.writeFile(
     filePath,
