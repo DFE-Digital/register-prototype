@@ -82,6 +82,7 @@ const generateFakeApplication = (params = {}) => {
   if (application.status == "Deferred") {
     application.previousStatus = "TRN received" // set a state to go back to
   }
+  if (params.applyData) application.applyData = params.applyData
 
   // Needed in particular order
 
@@ -130,10 +131,22 @@ const generateFakeApplications = () => {
 
   // Make some apply drafts
   for (var i = 0; i < 20; i++) {
+    let updatedDate = faker.date.between(
+            moment(),
+            moment().subtract(16, 'days')
+        )
     let seed = {
         provider: "Coventry University",
         source: "Apply",
         status: "Draft",
+        updatedDate,
+        applyData: {
+          recruitedDate: updatedDate,
+          applicationDate: faker.date.between(
+            moment().subtract(30, 'days'),
+            moment().subtract(60, 'days')
+          )
+        },
         academicYear: currentYear,
         placement: null,
         programmeDetails: {
