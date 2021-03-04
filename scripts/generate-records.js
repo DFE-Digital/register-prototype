@@ -129,34 +129,6 @@ const generateFakeApplications = () => {
     applications.push(generateFakeApplication(seed))
   })
 
-  // Make some apply drafts
-  for (var i = 0; i < 20; i++) {
-    let updatedDate = faker.date.between(
-            moment(),
-            moment().subtract(16, 'days')
-        )
-    let seed = {
-        provider: "Coventry University",
-        source: "Apply",
-        status: "Draft",
-        updatedDate,
-        applyData: {
-          recruitedDate: updatedDate,
-          applicationDate: faker.date.between(
-            moment().subtract(30, 'days'),
-            moment().subtract(60, 'days')
-          )
-        },
-        academicYear: currentYear,
-        placement: null,
-        programmeDetails: {
-          isPublishCourse: true
-        },
-        trainingDetails: null
-      }
-    applications.push(generateFakeApplication(seed))
-  }
-
   // Generate trainees for each provider
   providers.forEach(provider => {
 
@@ -201,8 +173,9 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
   if (year == currentYear){
     targetCounts = {
       draft: 0.05,
+      applyDraft: 0.5,
       pendingTrn: 0.05,
-      trnReceived: 0.76,
+      trnReceived: 0.71,
       qtsRecommended: 0.05,
       qtsAwarded: 0.05,
       deferred: 0.02,
@@ -243,6 +216,43 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
     updatedDate: faker.date.between(
       moment(),
       moment().subtract(16, 'days'))
+  }
+
+  let applyStubUpdatedDate = faker.date.between(
+    moment(),
+    moment().subtract(16, 'days')
+  )
+
+  stubApplication.applyDraft = {
+    source: "Apply",
+    status: "Draft",
+    updatedDate: applyStubUpdatedDate,
+    applyData: {
+      recruitedDate: applyStubUpdatedDate,
+      applicationDate: faker.date.between(
+        moment().subtract(30, 'days'),
+        moment().subtract(60, 'days')
+      )
+    },
+    personalDetails: {
+      status: 'Completed'
+    },
+    contactDetails: {
+      status: 'Completed'
+    },
+    diversity: {
+      status: 'Completed'
+    },
+    degree: {
+      status: 'Completed'
+    },
+    academicYear: currentYear,
+    programmeDetails: {
+      isPublishCourse: true,
+      status: 'Completed'
+    },
+    placement: null,
+    trainingDetails: null
   }
 
   stubApplication.pendingTrn = {
