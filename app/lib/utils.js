@@ -443,6 +443,7 @@ exports.recommendForQTS = (record, params) => {
 exports.filterRecords = (records, data, filters = {}) => {
 
   let filteredRecords = records
+  let applyEnabled = data.settings.enableApplyIntegration
 
   // Only allow records for the signed-in providers
   filteredRecords = exports.filterBySignedIn(filteredRecords, data)
@@ -452,6 +453,11 @@ exports.filterRecords = (records, data, filters = {}) => {
 
   // Only show records for currently enabled routes or draft records
   filteredRecords = filteredRecords.filter(record => enabledTrainingRoutes.includes(record.route) || (record?.status === 'Draft'))
+
+  if (!applyEnabled){
+    filteredRecords = filteredRecords.filter(record => record?.source != "Apply")
+  }
+
 
   // Cycle not implimented yet
   // if (filter.cycle){

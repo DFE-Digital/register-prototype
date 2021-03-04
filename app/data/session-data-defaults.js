@@ -59,6 +59,9 @@ settings.userActiveProvider = "Coventry University"
 // Enable timeline on records
 settings.includeTimeline = 'true'
 
+// Enable apply integration
+settings.enableApplyIntegration = false
+
 // Enable timeline on records
 settings.includeGuidance = false
 
