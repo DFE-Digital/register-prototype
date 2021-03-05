@@ -12,7 +12,9 @@ const trainingRouteData = require('./../training-route-data')
 const ittSubjects = require('./../itt-subjects')
 
 let enabledRoutes = {}
-trainingRouteData.enabledTrainingRoutes.forEach(route => enabledRoutes[route] = trainingRouteData.trainingRoutes[route])
+trainingRouteData.enabledTrainingRoutes.forEach(route => {
+  enabledRoutes[route] = trainingRouteData.trainingRoutes[route]
+})
 
 // One letter followed by three numbers
 // Older course codes are a different format, but this is what
@@ -30,6 +32,7 @@ const generateCourseCode = () => {
 }
 
 // Common observed in Publish
+// TODO: update this to export EYTS too
 let qualificationOptions = {
   'one': {
     qualifications: ['QTS'],
