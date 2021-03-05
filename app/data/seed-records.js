@@ -8,7 +8,7 @@ seedRecords.push({
   },
   "route": "Provider-led (postgrad)",
   trainingDetails: null,
-  programmeDetails: null,
+  courseDetails: null,
   "personalDetails": {
     "nationality": [
       "Irish",
@@ -95,7 +95,7 @@ seedRecords.push({
   trainingDetails: {
     status: 'Completed'
   },
-  programmeDetails: {
+  courseDetails: {
     status: 'Completed',
     isPublishCourse: false
   },
@@ -121,7 +121,7 @@ seedRecords.push({
       "Completed"
     ]
   },
-  programmeDetails: {
+  courseDetails: {
     "isPublishCourse" : false,
     status: 'Completed'
   },
@@ -153,7 +153,7 @@ seedRecords.push({
     "disabledAnswer": "Not provided"
   },
   route: 'Assessment only',
-  programmeDetails: {
+  courseDetails: {
     isPublishCourse: false
   }
 })
@@ -167,7 +167,7 @@ seedRecords.push({
   updatedDate: "2020-08-04T04:26:19.269Z",
   trn: 8405624,
   route: 'Provider-led (postgrad)',
-  programmeDetails: {
+  courseDetails: {
     isPublishCourse: false
   },
   personalDetails: {
@@ -187,7 +187,7 @@ seedRecords.push({
   updatedDate: "2020-07-04T04:26:19.269Z",
   trn: 8594837,
   route: 'Provider-led (postgrad)',
-  programmeDetails: {
+  courseDetails: {
     isPublishCourse: 'false'
   },
   personalDetails: {
@@ -203,7 +203,7 @@ seedRecords.push({
     traineeId: "2020/21-092"
   },
   route: 'Provider-led (postgrad)',
-  programmeDetails: {
+  courseDetails: {
     isPublishCourse: false
   },
   submittedDate: "2020-05-28T12:37:21.384Z",

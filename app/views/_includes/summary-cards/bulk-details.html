@@ -6,14 +6,14 @@
 
     {% for trainee in selectedTrainees %}
       {{trainee.personalDetails.fullName}}<br>
-      <span class="govuk-hint">{{trainee.programmeDetails.subject}}, {{trainee.route | lower}}</span>
+      <span class="govuk-hint">{{trainee.courseDetails.subject}}, {{trainee.route | lower}}</span>
     {% endfor %}
 
   {% else %}
     <ul class="govuk-list govuk-list--bullet">
       {% for trainee in selectedTrainees %}
         <li>{{trainee.personalDetails.fullName}}<br>
-          <span class="govuk-hint">{{trainee.programmeDetails.subject}}, {{trainee.route | lower}}</span>
+          <span class="govuk-hint">{{trainee.courseDetails.subject}}, {{trainee.route | lower}}</span>
         </li>
       {% endfor %}
     </ul>

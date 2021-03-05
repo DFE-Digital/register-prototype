@@ -15,19 +15,19 @@ const providers = providerData.selectedProviders
 
 const ittSubjects = require('../app/data/itt-subjects')
 
-const generateCourseDetails = require('../app/data/generators/course-details')
+const generateCourseDetails = require('../app/data/generators/course-generator')
 
 // Volumes loosely based on number of courses per provider as seen on Publish
 // Most have 1-3, but then about 1/3 have up to 80
 const generateCourseCount = () => {
   let count = weighted.select({
-    "1": 0.2,
-    "2": 0.2,
-    "3": 0.05,
-    "4": 0.05,
-    "5": 0.05,
-    "7": 0.05,
-    "15": 0.05,
+    // "1": 0.2,
+    // "2": 0.2,
+    // "3": 0.05,
+    // "4": 0.05,
+    // "5": 0.05,
+    // "7": 0.05,
+    // "15": 0.05,
     "20": 0.05,
     "25": 0.05,
     "30": 0.05,

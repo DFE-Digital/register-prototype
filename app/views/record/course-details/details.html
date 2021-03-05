@@ -1,12 +1,10 @@
 {% extends "_templates/_record-form.html" %}
 
-
-{% set pageHeading = "What route is the course?" %}  
-
+{% set pageHeading = "Course details" %}
 
 {# {% set formAction = "./assessment-details/confirm" %} #}
 
 {% block formContent %}
-  {% include "_includes/forms/programme-details/pick-route.html" %}
+  {% include "_includes/forms/course-details.html" %}
 {% endblock %}
 

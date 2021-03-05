@@ -119,14 +119,14 @@
     }
   } if record | requiresSection("recordSetup"),
   {
-    text: "Programme details",
-    href: "programme-details" | reviewIfInProgress(record.programmeDetails),
-    id: "programme-details",
+    text: "Course details",
+    href: "course-details" | reviewIfInProgress(record.courseDetails),
+    id: "course-details",
     tag: {
-      classes: record.programmeDetails | getStatusText | getStatusClass,
-      text: record.programmeDetails | getStatusText
+      classes: record.courseDetails | getStatusText | getStatusClass,
+      text: record.courseDetails | getStatusText
     }
-  } if record | requiresSection("programmeDetails"),
+  } if record | requiresSection("courseDetails"),
   {
     text: "Trainee start date and ID",
     href: "training-details" | reviewIfInProgress(record.trainingDetails),

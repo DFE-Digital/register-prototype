@@ -11,11 +11,48 @@
     text: 'Select the closest matching subject'
   },
   id: 'subject',
-  name: "record[programmeDetails][subject]",
+  autoSelect: false,
+  name: "record[courseDetails][subject]",
   items: data.ittSubjects,
-  value: record.programmeDetails.subject
+  value: record.courseDetails.subject
   }
 ) }}
+
+{# <a href="" class="govuk-body govuk-link">Add another subject</a> #}
+
+{% set additionalSubjectHtml %}
+  {{ appAutocomplete({
+    label: {
+      text: "Second subject (optional)",
+      classes: "govuk-label--s"
+    },
+    classes: "govuk-!-margin-bottom-0",
+    id: 'subject2',
+    autoSelect: false,
+    name: "record[courseDetails][secondSubject]",
+    items: data.ittSubjects,
+    value: record.courseDetails.secondSubject
+    }
+  ) }}
+  
+{% endset %}
+
+{{ govukDetails({
+  summaryText: "Add a second subject (optional)",
+  html: additionalSubjectHtml,
+  open: true
+}) }}
+
+<div class="govuk-form-group">
+
+
+  {# {{ govukButton({
+    text: "Add a second subject",
+    classes: "govuk-button--secondary govuk-!-margin-bottom-1",
+    href: "#"
+  }) }} #}
+</div>
+
 
 {# These account for 91% of choices #}
 {% set commonAgeRanges = [
@@ -36,7 +73,7 @@
 {% set uncommonAgeRanges = data.assessmentOnlyAgeRanges | removeArrayItems(commonAgeRanges) %}
 
 {# Prefil existing answer #}
-{% set ageRangeExistingValue = record.programmeDetails.ageRange %}
+{% set ageRangeExistingValue = record.courseDetails.ageRange %}
 {% if ageRangeExistingValue in commonAgeRanges %}
   {% set ageRangeExistingValue = undefined %}
 {% endif %}
@@ -48,7 +85,7 @@
       classes: "govuk-label--s"
     },
     id: 'age-range',
-    name: "record[programmeDetails][ageRangeOther]",
+    name: "record[courseDetails][ageRangeOther]",
     items: uncommonAgeRanges,
     value: ageRangeExistingValue
     }
@@ -79,16 +116,16 @@
     text: ""
   },
   items: ageRangeRadioItems
-} | decorateAttributes(record, "record.programmeDetails.ageRange")) }}
+} | decorateAttributes(record, "record.courseDetails.ageRange")) }}
 
-{% set programmeStartDateArray = record.programmeDetails.startDate | toDateArray %}
+{% set programmeStartDateArray = record.courseDetails.startDate | toDateArray %}
 
 {{ govukDateInput({
   id: "programme-start-date",
-  namePrefix: "record[programmeDetails][startDate]",
+  namePrefix: "record[courseDetails][startDate]",
   fieldset: {
     legend: {
-      text: "Programme start date",
+      text: "Course start date",
       classes: "govuk-fieldset__legend--s"
     }
   },
@@ -114,13 +151,13 @@
     ]
 }) }}
 
-{% set programmeEndDateArray = record.programmeDetails.endDate | toDateArray %}
+{% set programmeEndDateArray = record.courseDetails.endDate | toDateArray %}
 {{ govukDateInput({
   id: "programme-end-date",
-  namePrefix: "record[programmeDetails][endDate]",
+  namePrefix: "record[courseDetails][endDate]",
   fieldset: {
     legend: {
-      text: "Programme end date",
+      text: "Course end date",
       classes: "govuk-fieldset__legend--s"
     }
   },

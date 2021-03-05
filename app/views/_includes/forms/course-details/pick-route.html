@@ -1,11 +1,11 @@
 {# <h1 class="govuk-heading-l">{{pageHeading}}</h1> #}
 
 
-{% if record.programmeDetails.isPublishCourse | falsify %}
-  {% set selectedCourse = record.programmeDetails.id %}
-{% elseif record.programmeDetails %}
+{% if record.courseDetails.isPublishCourse | falsify %}
+  {% set selectedCourse = record.courseDetails.id %}
+{% elseif record.courseDetails %}
   {# Todo: stop storing route in two places #}
-  {% set selectedCourse = record.programmeDetails.route or record.route %}
+  {% set selectedCourse = record.courseDetails.route or record.route %}
 {% else %}
   {% set selectedCourse = record.route %}
 {% endif %}

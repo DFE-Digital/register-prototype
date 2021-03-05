@@ -1,9 +1,9 @@
-{% set assessmentEndDateArray = record.programmeDetails.endDate | toDateArray %}
+{% set assessmentEndDateArray = record.courseDetails.endDate | toDateArray %}
 
 {# Collected now because they won't know the date before this #}
 {{ govukDateInput({
   id: "assessment-end-date",
-  namePrefix: "record[programmeDetails][endDate]",
+  namePrefix: "record[courseDetails][endDate]",
   fieldset: {
     legend: {
       text: "Assessment Only (AO) end date",

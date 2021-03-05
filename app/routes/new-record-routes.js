@@ -65,7 +65,7 @@ module.exports = router => {
     let record = data.record
     let route = record?.route
     let referrer = utils.getReferrer(req.query.referrer)
-    let existingProgrammeDetails = record?.programmeDetails
+    let existingCourseDetails = record?.courseDetails
 
     // No data, return to page
     if (!route){
@@ -79,9 +79,9 @@ module.exports = router => {
 
       // It’s possible for a user to pick a Publish course, then go back to change the
       // route to one that doesn’t have publish courses. If they do this, we delete the
-      // programme details section
-      if (existingProgrammeDetails?.isPublishCourse && route != existingProgrammeDetails?.route){
-        delete record.programmeDetails
+      // course details section
+      if (existingCourseDetails?.isPublishCourse && route != existingCourseDetails?.route){
+        delete record.courseDetails
       }
       
       // Coming from the check answers page

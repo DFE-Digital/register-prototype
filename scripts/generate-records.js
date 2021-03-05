@@ -49,7 +49,7 @@ const getRandomEnabledRoute = () => faker.helpers.randomize(enabledTrainingRoute
 const generateTrainingDetails = require('../app/data/generators/training-details')
 const generateDates = require('../app/data/generators/dates')
 const generateTrn = require('../app/data/generators/trn')
-const generateProgrammeDetails = require('../app/data/generators/programme-details')
+const generateCourseDetails = require('../app/data/generators/course-details')
 const generatePersonalDetails = require('../app/data/generators/personal-details')
 const generateContactDetails = require('../app/data/generators/contact-details')
 const generateDiversity = require('../app/data/generators/diversity')
@@ -82,7 +82,7 @@ const generateFakeApplication = (params = {}) => {
   application.events           = generateEvents(application.status)
   // Training
   application.trn              = (params.trn === null) ? undefined : (params.trn || generateTrn(application.status) )
-  application.programmeDetails = (params.programmeDetails === null) ? undefined : { ...generateProgrammeDetails(params, application), ...params.programmeDetails }
+  application.courseDetails = (params.courseDetails === null) ? undefined : { ...generateCourseDetails(params, application), ...params.courseDetails }
   application.trainingDetails  = (params.trainingDetails === null) ? undefined : { ...generateTrainingDetails(application), ...params.trainingDetails }
   // Contact details
   application.isInternationalTrainee = !(application.personalDetails.nationality.includes('British') || application.personalDetails.nationality.includes('Irish'))
