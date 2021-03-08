@@ -94,7 +94,7 @@ const generateFakeApplication = (params = {}) => {
 
   application.courseDetails = (params.courseDetails === null) ? undefined : { ...generateCourseDetails(params, application), ...params.courseDetails }
   // There's a slight edge case that programme details might return with a different route - if so save it back up
-  if (application.courseDetails.route && application.courseDetails.route != application.route){
+  if (application?.courseDetails?.route && application.courseDetails.route != application.route){
     console.log("Overwriting route")
     application.route = application.courseDetails.route
   }
@@ -147,13 +147,6 @@ const generateFakeApplications = () => {
 
   })
 
-  // // Logging
-  // let applicationCounts = {}
-  // statuses.forEach(status => {
-  //   applicationCounts[status] = applications.filter(application => application.status == status).length
-  // })
-  // console.log({applicationCounts})
-
   applications = applications.sort(sortBySubmittedDate)
 
   return applications
@@ -175,7 +168,7 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
   if (year == currentYear){
     targetCounts = {
       draft: 0.05,
-      applyDraft: 0.5,
+      applyDraft: 0.05,
       pendingTrn: 0.05,
       trnReceived: 0.71,
       qtsRecommended: 0.05,
