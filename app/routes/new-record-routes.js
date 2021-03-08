@@ -133,7 +133,7 @@ module.exports = router => {
       newRecord.status = "Draft" // just in case
       utils.deleteTempData(data)
       utils.updateRecord(data, newRecord)
-      req.flash('success', 'Record saved as draft')
+      // req.flash('success', 'Record saved as draft')
       res.redirect('/records')
     }
   })
