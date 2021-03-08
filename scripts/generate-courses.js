@@ -15,7 +15,7 @@ const providers = providerData.selectedProviders
 
 const ittSubjects = require('../app/data/itt-subjects')
 
-const generateCourseDetails = require('../app/data/generators/course-details')
+const generateCourseDetails = require('../app/data/generators/course-generator')
 
 // Volumes loosely based on number of courses per provider as seen on Publish
 // Most have 1-3, but then about 1/3 have up to 80

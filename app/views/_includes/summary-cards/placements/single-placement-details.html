@@ -3,7 +3,7 @@
 
 {% set placementLocationRow = {
   key: {
-    text: "Location"
+    text: "Location URN"
   },
   value: {
     text: placement.location or 'Not provided'
@@ -13,7 +13,7 @@
       {
         href: recordPath + "/placements/" + placement.id + "/details" | addReferrer(referrer),
         text: "Change",
-        visuallyHiddenText: "placement location"
+        visuallyHiddenText: "placement location URN"
       }
     ]
   } if canAmend

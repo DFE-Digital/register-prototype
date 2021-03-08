@@ -52,7 +52,7 @@ let defaultRouteData = {
   duration: 1,
   sections: [
     'trainingDetails',
-    'programmeDetails',
+    'courseDetails',
     'personalDetails',
     'contactDetails',
     'placement',
@@ -67,7 +67,7 @@ let baseRouteData = {
     defaultEnabled: true,
     sections: [
       'trainingDetails',
-      'programmeDetails',
+      'courseDetails',
       'personalDetails',
       'contactDetails',
       'diversity',

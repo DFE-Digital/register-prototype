@@ -11,9 +11,10 @@
     text: 'Select the closest matching subject'
   },
   id: 'subject',
-  name: "record[programmeDetails][subject]",
+  autoSelect: false,
+  name: "record[courseDetails][subject]",
   items: data.ittSubjects,
-  value: record.programmeDetails.subject
+  value: record.courseDetails.subject
   }
 ) }}
 
@@ -36,7 +37,7 @@
 {% set uncommonAgeRanges = data.assessmentOnlyAgeRanges | removeArrayItems(commonAgeRanges) %}
 
 {# Prefil existing answer #}
-{% set ageRangeExistingValue = record.programmeDetails.ageRange %}
+{% set ageRangeExistingValue = record.courseDetails.ageRange %}
 {% if ageRangeExistingValue in commonAgeRanges %}
   {% set ageRangeExistingValue = undefined %}
 {% endif %}
@@ -48,7 +49,7 @@
       classes: "govuk-label--s"
     },
     id: 'age-range',
-    name: "record[programmeDetails][ageRangeOther]",
+    name: "record[courseDetails][ageRangeOther]",
     items: uncommonAgeRanges,
     value: ageRangeExistingValue
     }
@@ -79,16 +80,16 @@
     text: ""
   },
   items: ageRangeRadioItems
-} | decorateAttributes(record, "record.programmeDetails.ageRange")) }}
+} | decorateAttributes(record, "record.courseDetails.ageRange")) }}
 
-{% set programmeStartDateArray = record.programmeDetails.startDate | toDateArray %}
+{% set programmeStartDateArray = record.courseDetails.startDate | toDateArray %}
 
 {{ govukDateInput({
   id: "programme-start-date",
-  namePrefix: "record[programmeDetails][startDate]",
+  namePrefix: "record[courseDetails][startDate]",
   fieldset: {
     legend: {
-      text: "Programme start date",
+      text: "Course start date",
       classes: "govuk-fieldset__legend--s"
     }
   },
@@ -114,13 +115,13 @@
     ]
 }) }}
 
-{% set programmeEndDateArray = record.programmeDetails.endDate | toDateArray %}
+{% set programmeEndDateArray = record.courseDetails.endDate | toDateArray %}
 {{ govukDateInput({
   id: "programme-end-date",
-  namePrefix: "record[programmeDetails][endDate]",
+  namePrefix: "record[courseDetails][endDate]",
   fieldset: {
     legend: {
-      text: "Programme end date",
+      text: "Course end date",
       classes: "govuk-fieldset__legend--s"
     }
   },

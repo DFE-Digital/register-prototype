@@ -1,6 +1,6 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-<p class="govuk-body">{{record.programmeDetails.subject}} has allocated places for the {{record.route | lower}} route.</p>
+<p class="govuk-body">{{record.courseDetails.subject}} has allocated places for the {{record.route | lower}} route.</p>
 
 <p class="govuk-body">You should not recruit beyond your allocated places for this course.</p>
 
@@ -21,7 +21,7 @@
       text: "No, they are not included within our allocation"
     }
   ]
-} | decorateAttributes(record, "record.programmeDetails.allocatedPlace")) }}
+} | decorateAttributes(record, "record.courseDetails.allocatedPlace")) }}
 
 {{ govukButton({
   text: "Continue"

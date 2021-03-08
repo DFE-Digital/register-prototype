@@ -1,9 +1,11 @@
-{% extends "_templates/_record-form.html" %}
+{% extends "_templates/_new-record.html" %}
 
 {% set pageHeading = "Is this the course you want to add?" %}
+{# {% set backLink = './../overview' %}
+{% set backText = "Back to draft record" %} #}
 {% set gridColumn = 'govuk-grid-column-full' %}
 
-{# {% set formAction = "./update" %} #}
+{# {% set formAction = "./../overview" | orReferrer(referrer) %} #}
 
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
@@ -19,13 +21,11 @@
     summaryText: "What if the details are incorrect?",
     html: detailsHtml
   }) }}
-
-  {% set programmeDetails = record.programmeDetails %}
+  {% set courseDetails = record.courseDetails %}
 
   {# Don't show allocation row as that question comes later #}
   {% set hideAllocationRow = true %}
-  {% include "_includes/summary-cards/programme-details/publish-course.html" %}
-
+  {% include "_includes/summary-cards/course-details/publish-course.html" %}
 
   {{ govukButton({
     text: "Confirm course"

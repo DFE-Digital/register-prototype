@@ -1,6 +1,6 @@
 {% extends "_templates/_new-record.html" %}
 
-{% set pageHeading = "Confirm programme details" %}
+{% set pageHeading = "Confirm course details" %}
 {% set backLink = './../overview' %}
 {% set backText = "Back to draft record" %}
 {% set gridColumn = 'govuk-grid-column-full' %}
@@ -8,16 +8,16 @@
 
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
-  {% include "_includes/summary-cards/programme-details.html" %}
+  {% include "_includes/summary-cards/course-details.html" %}
 
   {{ govukCheckboxes({
   idPrefix: "waste",
-  name: "record[programmeDetails][status]",
+  name: "record[courseDetails][status]",
   items: [
     {
       value: "Completed",
       text: "I have completed this section",
-      checked: checked(record.programmeDetails.status, "Completed")
+      checked: checked(record.courseDetails.status, "Completed")
     }
   ]
   }) }}

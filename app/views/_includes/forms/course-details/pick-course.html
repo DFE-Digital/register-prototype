@@ -5,9 +5,9 @@
 This is partly because we want this to work with seed-data too - and this page
 has two possible UIs depending on how many courses a provider has. Thus we
 defer to an id if one exists. #}
-{% if record.programmeDetails.isPublishCourse | falsify %}
-  {% set selectedCourse = record.programmeDetails.id %}
-{% elseif record.programmeDetails %}
+{% if record.courseDetails.isPublishCourse | falsify %}
+  {% set selectedCourse = record.courseDetails.id %}
+{% elseif record.courseDetails %}
   {% set selectedCourse = 'Other' %}
 {% endif %}
 
@@ -56,8 +56,8 @@ defer to an id if one exists. #}
   {% set courseNamesSelect = providerCourses | getCourseNamesForSelect %}
   {% set courseNamesAutocomplete = providerCourses | getCourseNamesForAutocomplete %}
 
-  {% if record.programmeDetails.isPublishCourse | falsify %}
-    {% set selectedCourseName = record.programmeDetails | getCourseName %}
+  {% if record.courseDetails.isPublishCourse | falsify %}
+    {% set selectedCourseName = record.courseDetails | getCourseName %}
   {% endif %}
 
   {% set courseAutocompleteHtml %}
@@ -80,7 +80,7 @@ defer to an id if one exists. #}
     ) }}
   {% endset %}
 
-  {% set isPublishCourse = true if (selectedCourse == 'publish-course') or record.programmeDetails.isPublishCourse | falsify %}
+  {% set isPublishCourse = true if (selectedCourse == 'publish-course') or record.courseDetails.isPublishCourse | falsify %}
 
   {% set courseItems = [] %}
   

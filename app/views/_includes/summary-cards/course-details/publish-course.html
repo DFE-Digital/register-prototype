@@ -1,28 +1,28 @@
 
 {% set expectedDuration = 'Not provided' %}
-{% if programmeDetails.duration | falsify %}
-  {% set expectedDuration = programmeDetails.duration + " years" %}
+{% if courseDetails.duration | falsify %}
+  {% set expectedDuration = courseDetails.duration + " years" %}
 {% endif %}
 
 {% set courseName %}
-  {{programmeDetails | getCourseName}}</br>
-  {{programmeDetails.summary}}
+  {{courseDetails | getCourseName}}</br>
+  {{courseDetails.summary}}
 {% endset %}
 
 {# {% set canAmend = false %} #}
 
-{% set programmeDetailsRows = [
+{% set courseDetailsRows = [
   {
     key: {
       text: "Route"
     },
     value: {
-      text: programmeDetails.route | safe or 'Not provided'
+      text: courseDetails.route | safe or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details" | addReferrer(referrer),
+          href: recordPath + "/course-details" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "route"
         }
@@ -39,9 +39,8 @@
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details" | addReferrer(referrer),
-          text: "Change course",
-          visuallyHiddenText: "course"
+          href: recordPath + "/course-details" | addReferrer(referrer),
+          text: "Change course"
         }
       ]
     } if canAmend
@@ -51,12 +50,12 @@
       text: "Subject"
     },
     value: {
-      text: programmeDetails.subject or 'Not provided'
+      text: courseDetails.subject or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details" | addReferrer(referrer),
+          href: recordPath + "/course-details" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "subject"
         }
@@ -68,12 +67,12 @@
       text: "Level"
     },
     value: {
-      text: programmeDetails.level | sentenceCase or 'Not provided'
+      text: courseDetails.level | sentenceCase or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details" | addReferrer(referrer),
+          href: recordPath + "/course-details" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "level"
         }
@@ -85,12 +84,12 @@
       text: "Age range"
     },
     value: {
-      text: programmeDetails.ageRange or 'Not provided'
+      text: courseDetails.ageRange or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details" | addReferrer(referrer),
+          href: recordPath + "/course-details" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "age range"
         }
@@ -102,12 +101,12 @@
       text: "Start date"
     },
     value: {
-      text: programmeDetails.startDate | govukDate("MMMM YYYY") or 'Not provided'
+      text: courseDetails.startDate | govukDate("MMMM YYYY") or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details" | addReferrer(referrer),
+          href: recordPath + "/course-details" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "programme start date"
         }
@@ -119,12 +118,12 @@
       text: "End date"
     },
     value: {
-      text: programmeDetails.endDate | govukDate("MMMM YYYY") or 'Not provided'
+      text: courseDetails.endDate | govukDate("MMMM YYYY") or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details" | addReferrer(referrer),
+          href: recordPath + "/course-details" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "programme end date"
         }
@@ -136,12 +135,12 @@
       text: "Duration"
     },
     value: {
-      text: programmeDetails.duration + (' year' | pluralise(programmeDetails.duration)) or 'Not provided'
+      text: courseDetails.duration + (' year' | pluralise(courseDetails.duration)) or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details" | addReferrer(referrer),
+          href: recordPath + "/course-details" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "duration"
         }
@@ -153,12 +152,12 @@
       text: "Trainee using an allocated place"
     },
     value: {
-      text: programmeDetails.allocatedPlace or 'Not provided'
+      text: courseDetails.allocatedPlace or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/programme-details/allocated-place" | addReferrer(referrer),
+          href: recordPath + "/course-details/allocated-place" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "allocated place"
         }
@@ -169,9 +168,9 @@
 
 
 
-{% set programmeDetailsHtml %}
+{% set courseDetailsHtml %}
   {{ govukSummaryList({
-    rows: programmeDetailsRows
+    rows: courseDetailsRows
   }) }}
 {% endset %}
 
@@ -179,20 +178,20 @@
 
 
 
-{% set complete = true if (programmeDetails | sectionIsCompleted ) %}
-{% set status  = programmeDetails | getStatusText %}
+{% set complete = true if (courseDetails | sectionIsCompleted ) %}
+{% set status  = courseDetails | getStatusText %}
 
 {% if showIncomplete and not complete %}
 
   {% set incompleteType = "warning" if errorList %}
-  {% set incompleteId = "programme-details" %}
+  {% set incompleteId = "course-details" %}
   {% if status == "In progress" %}
-    {% set incompleteText = "Programme details not marked as complete" %}
-    {% set incompleteLink = recordPath + "/programme-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteText = "Course details not marked as complete" %}
+    {% set incompleteLink = recordPath + "/course-details/confirm" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
-    {% set incompleteText = "Programme details not started" %}
-    {% set incompleteLink = recordPath + "/programme-details" | addReferrer(referrer) %}
+    {% set incompleteText = "Course details not started" %}
+    {% set incompleteLink = recordPath + "/course-details" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 
@@ -201,8 +200,8 @@
 {% else %}
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
-    titleText: "Progamme details",
-    html: programmeDetailsHtml
+    titleText: "Course details",
+    html: courseDetailsHtml
   }) }}
   
 {% endif %}
