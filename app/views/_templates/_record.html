@@ -58,6 +58,12 @@
           text: record.status,
           classes: record.status | getStatusClass
       })}}
+      {% if data.settings.enableApplyIntegration %}
+        {{govukTag({
+          text: record.source,
+          classes: record.source | getStatusClass
+        })}}
+      {% endif %}
     </h1>
     {% if record.trn %}
       <span class="govuk-caption-l">TRN: {{record.trn}}

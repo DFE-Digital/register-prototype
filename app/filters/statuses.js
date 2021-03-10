@@ -48,6 +48,10 @@ filters.getStatusClass = (status) => {
     // Record statuses
     case 'Draft':
       return 'govuk-tag--grey'
+    case 'Apply enrolled': // same as draft
+      return 'govuk-tag--grey'
+
+
       // return 'govuk-tag--yellow'
     case 'Pending TRN':
       return 'govuk-tag--turquoise'
@@ -64,6 +68,11 @@ filters.getStatusClass = (status) => {
       // return 'govuk-tag--orange'
     case 'Withdrawn':
       return 'govuk-tag--red'
+
+    case 'Apply':
+      return 'govuk-tag--pink'
+    case 'Manual':
+      return 'govuk-tag--grey'
 
     default:
       return 'govuk-tag--blue'

@@ -28,7 +28,7 @@
           {% if record.status == "Draft" %}
             Draft record
           {% else %}
-            Name not known {# Shouldn't be possible - non drafts should always have a name #}
+          Name not known {# Shouldn't be possible - non drafts should always have a name #}
           {% endif %}
         {% endif %}
       </a>
@@ -55,6 +55,12 @@
       text: record.status,
       classes: record.status | getStatusClass
     })}}
+    {% if data.settings.enableApplyIntegration %}
+      {{govukTag({
+        text: record.source,
+        classes: record.source | getStatusClass
+      })}}
+    {% endif %}
     <p class="govuk-caption-m govuk-!-font-size-16 govuk-!-margin-top-2 govuk-!-margin-bottom-0 app-application-card__submitted">
       {% if query.sortOrder == "dateAdded" %}
         Added: <span>{{record.submittedDate | govukDate}}

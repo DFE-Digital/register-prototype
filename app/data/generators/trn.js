@@ -1,10 +1,16 @@
 const faker = require('faker')
 
+const statusesWithoutTRNs = [
+  "Draft",
+  "Apply enrolled",
+  "Pending TRN",
+  ]
+
 module.exports = status => {
 
   let trn
 
-  if (!status.includes('Draft') && !status.includes('Pending TRN')){
+  if (!statusesWithoutTRNs.includes(status)){
     trn = faker.random.number({
       'min': 1000000,
       'max': 9999999

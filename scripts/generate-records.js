@@ -65,6 +65,7 @@ const generateGce = require('../app/data/generators/gce')
 const generateGcse = require('../app/data/generators/gcse')
 const generateEvents = require('../app/data/generators/events')
 const generatePlacement = require('../app/data/generators/placement')
+const generateSource = require('../app/data/generators/source')
 
 // Populate application data object with fake data
 const generateFakeApplication = (params = {}) => {
@@ -76,8 +77,7 @@ const generateFakeApplication = (params = {}) => {
   application.id              = params.id || faker.random.uuid()
   application.personalDetails = (params.personalDetails === null) ? undefined : { ...generatePersonalDetails(), ...params.personalDetails }
   application.provider        = params.provider || faker.helpers.randomize(providers)
-  application.source          = (params.source) ? params.source : "Manual"
-  application.route           = (params.route === null) ? undefined : (params.route || getRandomRoute(application))
+  application.route           = (params.route === null) ? undefined : (params.route || getRandomRoute(params))
   application.status          = params.status || faker.helpers.randomize(statuses)
   if (application.status == "Deferred") {
     application.previousStatus = "TRN received" // set a state to go back to
@@ -88,16 +88,17 @@ const generateFakeApplication = (params = {}) => {
 
   // Dates
   application                  = { ...application, ...generateDates(params, application) }
-  application.events           = generateEvents(application.status)
   // Training
-  application.trn              = (params.trn === null) ? undefined : (params.trn || generateTrn(application.status) )
+  application.trn              = (params.trn === null) ? undefined : (params.trn || generateTrn(application))
 
   application.courseDetails = (params.courseDetails === null) ? undefined : { ...generateCourseDetails(params, application), ...params.courseDetails }
   // There's a slight edge case that programme details might return with a different route - if so save it back up
   if (application?.courseDetails?.route && application.courseDetails.route != application.route){
-    console.log("Overwriting route")
+    console.log("Overwriting route") // hacky, and hopefully doesn’t happen often
     application.route = application.courseDetails.route
   }
+  application.source          = (params.source) ? params.source : generateSource(application)
+  application.events           = generateEvents(application)
 
   application.trainingDetails  = (params.trainingDetails === null) ? undefined : { ...generateTrainingDetails(application), ...params.trainingDetails }
   // Contact details
@@ -142,6 +143,7 @@ const generateFakeApplications = () => {
     yearsToGenerate.forEach((year) => {
       // Years can be ±10% in size
       let traineeCount = getRandomArbitrary((providerSize * 0.9), (providerSize * 1.1))
+      if (provider == "Coventry University") traineeCount = 100
       applications = applications.concat(generateFakeApplicationsForProvider(provider, year, traineeCount))
     })
 
@@ -168,7 +170,7 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
   if (year == currentYear){
     targetCounts = {
       draft: 0.05,
-      applyDraft: 0.05,
+      applyEnrolled: 0.05,
       pendingTrn: 0.05,
       trnReceived: 0.71,
       qtsRecommended: 0.05,
@@ -218,9 +220,9 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
     moment().subtract(16, 'days')
   )
 
-  stubApplication.applyDraft = {
+  stubApplication.applyEnrolled = {
     source: "Apply",
-    status: "Draft",
+    status: "Apply enrolled",
     updatedDate: applyStubUpdatedDate,
     applyData: {
       recruitedDate: applyStubUpdatedDate,
