@@ -49,7 +49,7 @@ settings.providerModel = "blended-model"
 // The providers the signed-in user belongs to
 settings.userProviders = [
   "Coventry University",
-  "University of Buckingham"
+  // "University of Buckingham"
 ]
 
 // The ‘active’ provider for the current user if using hat model
