@@ -66,6 +66,7 @@ const generateGcse = require('../app/data/generators/gcse')
 const generateEvents = require('../app/data/generators/events')
 const generatePlacement = require('../app/data/generators/placement')
 const generateSource = require('../app/data/generators/source')
+const generateApplyData = require('../app/data/generators/apply-data')
 
 // Populate application data object with fake data
 const generateFakeApplication = (params = {}) => {
@@ -82,7 +83,6 @@ const generateFakeApplication = (params = {}) => {
   if (application.status == "Deferred") {
     application.previousStatus = "TRN received" // set a state to go back to
   }
-  if (params.applyData) application.applyData = params.applyData
 
   // Needed in particular order
 
@@ -98,6 +98,10 @@ const generateFakeApplication = (params = {}) => {
     application.route = application.courseDetails.route
   }
   application.source          = (params.source) ? params.source : generateSource(application)
+  if (application.source == "Apply"){
+    application.applyData = { ...generateApplyData(application), ...params.applyData}
+    // if (params.applyData) application.applyData = params.applyData
+  }
   application.events           = generateEvents(application)
 
   application.trainingDetails  = (params.trainingDetails === null) ? undefined : { ...generateTrainingDetails(application), ...params.trainingDetails }
