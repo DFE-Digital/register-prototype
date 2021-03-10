@@ -118,8 +118,6 @@ Object.keys(allRoutes).forEach(routeName => {
   trainingRoutes[routeName] = routeData
 })
 
-console.log({trainingRoutes})
-
 let enabledTrainingRoutes = Object.values(trainingRoutes).filter(route => route.defaultEnabled == true).map(route => route.name)
 
 let allocatedSubjects = [

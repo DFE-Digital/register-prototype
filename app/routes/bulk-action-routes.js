@@ -100,7 +100,7 @@ module.exports = router => {
 
     let allRecords = utils.sortRecordsByLastName(data.records)
     let filteredRecords
-    let incompleteDraftCount = 0 // Only for QTS flow
+    let incompleteCount = 0 // Only for QTS flow
 
     // Work out which checkboxes should be checked
     // We may want to pre-select checkboxes when landing on this page
@@ -147,7 +147,7 @@ module.exports = router => {
             .filter(record => {
               if (utils.recordIsComplete(record)) return true
               else {
-                incompleteDraftCount++
+                incompleteCount++
                 return false
               }
             })
@@ -155,7 +155,15 @@ module.exports = router => {
 
         // Filter for only records ready to be recommended for QTS
         else if (bulk.action == 'Recommend a group of trainees for QTS'){
-          filteredRecords = filteredRecords.filter(record => record.status == 'TRN received')
+          filteredRecords = filteredRecords
+            .filter(record => record.status == 'TRN received')
+            .filter(record => {
+              if (utils.hasOutstandingActions(record, data)){
+                incompleteCount++
+                return false
+              }
+              else return true
+            })
         }
 
         // If no pre-selected trainees, default to selecting them all
@@ -166,7 +174,7 @@ module.exports = router => {
       res.render(`bulk-action/select-trainees`, {
         filteredRecords,
         selectedTrainees,
-        incompleteDraftCount
+        incompleteCount
       })
 
     }
