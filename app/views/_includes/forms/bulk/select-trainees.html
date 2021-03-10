@@ -27,18 +27,18 @@
 
   {% set draftLinkHtml %}
     <p class="govuk-body govuk-!-margin-bottom-0">
-      <a href="/records" class="govuk-link">Complete the {{'draft' | pluralise(incompleteCount)}} to add the {{'trainee' | pluralise(inompleteDraftCount)}} to your list</a>
+      <a href="/records?filterStatus=Draft" class="govuk-link">View draft all draft records</a>
     </p> 
   {% endset %}
 
   {% set incompleteDraftTextHtml %}
     {% if incompleteCount != 1 %}
       <p class="govuk-body">
-        There are {{incompleteCount}} {{'more ' if filteredRecords | length }}draft records that fit your search criteria. {{ draftLinkHtml | safe }}
+        There are {{incompleteCount}} {{'more ' if filteredRecords | length }}draft records that match your filters but are not complete and cannot be submitted. {{ draftLinkHtml | safe }}
       </p>
     {% else %}
       <p class="govuk-body">
-        There is {{incompleteCount}} {{'more ' if filteredRecords | length }}draft record that fits your search criteria. {{ draftLinkHtml | safe }}
+        There is {{incompleteCount}} {{'more ' if filteredRecords | length }}draft record that matches your filters but is not complete and cannot be submitted. {{ draftLinkHtml | safe }}
       </p>
     {% endif %}
   {% endset %}
@@ -50,6 +50,7 @@
 
 {% set outstandingActionsIncompleteMessage %}
 
+  {# Todo: this should link to a filtered view of TRN received and outstanding actions required #}
   {% set linkHtml %}
     <p class="govuk-body govuk-!-margin-bottom-0">
       <a href="/records" class="govuk-link">Complete the outstanding actions to recommend them for QTS</a>
