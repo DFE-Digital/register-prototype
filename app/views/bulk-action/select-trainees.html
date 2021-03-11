@@ -20,7 +20,7 @@
  {% set hideReturnLink = true if filteredRecords | length == 0 %}
 
 {% block formContent %}
-<span class="govuk-caption-l">{{data.bulk.action}}</span>
+  <span class="govuk-caption-l">{{data.bulk.action}}</span>
   {% include "_includes/forms/bulk/select-trainees.html" %}
 
 {% endblock %}

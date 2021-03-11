@@ -138,6 +138,72 @@ seedRecords.push({
 })
 
 seedRecords.push({
+  status: 'Draft',
+  personalDetails: {
+    givenName: "Rachel",
+    familyName: "Laverty",
+    sex: 'Female',
+    status: 'Completed'
+  },
+  route: 'Provider-led (postgrad)',
+  trainingDetails: {
+    "traineeStarted": "true",
+    "traineeId": "2020/21-085",
+    status: [
+      "Completed"
+    ]
+  },
+  courseDetails: {
+    status: 'Completed'
+  },
+  contactDetails: {
+    status: 'Completed'
+  },
+  diversity: {
+    status: 'Completed'
+  },
+  degree: {
+    status: 'Completed'
+  },
+  placement: {
+    status: 'Completed'
+  }
+})
+
+seedRecords.push({
+  status: 'Draft',
+  personalDetails: {
+    givenName: "George",
+    familyName: "Briggs",
+    sex: 'Male',
+    status: 'Completed'
+  },
+  route: 'Provider-led (postgrad)',
+  trainingDetails: {
+    "traineeStarted": "true",
+    "traineeId": "2020/21-102",
+    status: [
+      "Completed"
+    ]
+  },
+  courseDetails: {
+    status: 'Completed'
+  },
+  contactDetails: {
+    status: 'Completed'
+  },
+  diversity: {
+    status: 'Completed'
+  },
+  degree: {
+    status: 'Completed'
+  },
+  placement: {
+    status: 'Completed'
+  }
+})
+
+seedRecords.push({
   status: 'Pending TRN',
   submittedDate: new Date(),
   personalDetails: {
