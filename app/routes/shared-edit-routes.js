@@ -344,6 +344,19 @@ module.exports = router => {
     delete data.degreeTemp
     let referrer = utils.getReferrer(req.query.referrer)
 
+    newDegree.id = faker.random.uuid()
+
+    let existingDegrees = _.get(data, "record.degree.items") || []
+    let degreeIndex = req.params.index
+    let recordPath = utils.getRecordPath(req)
+
+    console.log(newDegree)
+
+    // This is so we can look up isInternational
+    if (existingDegrees[degreeIndex]) {
+      newDegree = Object.assign({}, existingDegrees[degreeIndex], newDegree)
+    }
+
     // Save the correct type
     if (newDegree.isInternational == "true" && newDegree.typeInt){
       newDegree.type = newDegree.typeInt
@@ -369,12 +382,6 @@ module.exports = router => {
         delete newDegree.otherGrade
       }
     }
-
-    newDegree.id = faker.random.uuid()
-
-    let existingDegrees = _.get(data, "record.degree.items") || []
-    let degreeIndex = req.params.index
-    let recordPath = utils.getRecordPath(req)
 
     if (existingDegrees[degreeIndex]) {
       // Might be a partial update, so merge the new with the old

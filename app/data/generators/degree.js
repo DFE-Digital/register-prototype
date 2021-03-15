@@ -13,14 +13,14 @@ module.exports = (isInternationalTrainee) => {
     if (isInternationalTrainee) {
       return {
         // type: 'Diplôme',
-        type: 'Bachelor degree', // NARIC equivalent
+        type: 'Bachelor degree', // ENIC equivalent
         subject,
         isInternational: "true",
         org: 'University of Paris',
         country: 'France',
         // grade: 'Pass',
         predicted,
-        naric: { // Naric key not used? probably copied from Manage
+        enic: { // ENIC key not used? probably copied from Manage
           reference: '4000228363',
           comparable: 'Bachelor degree'
         },

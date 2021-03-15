@@ -35,7 +35,7 @@ module.exports = (faker, isInternationalTrainee) => {
           'I will be taking an equivalency test on 18th August 2020': 0.2,
           false: 0.8
         }),
-        naric: {
+        enic: {
           reference: '4000228363',
           comparable: 'A level grades A*-C/9-4'
         },

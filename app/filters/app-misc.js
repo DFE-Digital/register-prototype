@@ -109,7 +109,7 @@ filters.getDegreeName = (degree) => {
   let typeText
 
   if (utils.falsify(degree.isInternational)){
-    if (degree.type == 'NARIC not provided'){
+    if (degree.type == 'UK ENIC not provided'){
       typeText = "Non-UK degree"
     }
     else typeText = `Non-UK ${degree.type}`
