@@ -29,7 +29,7 @@
     "express": "^4.17.1",
     "express-session": "^1.13.0",
     "express-writer": "0.0.4",
-    "faker": "^5.1.0",
+    "faker": "^5.4.0",
     "fancy-log": "^1.3.3",
     "govuk-elements-sass": "^3.1.3",
     "govuk-frontend": "^3.10.0",

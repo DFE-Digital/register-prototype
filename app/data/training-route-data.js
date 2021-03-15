@@ -79,10 +79,17 @@ let baseRouteData = {
     hasAllocatedPlaces: true,
   },
   "School direct (salaried)": {
-    defaultEnabled: true
+    defaultEnabled: true,
+    fields: [
+      "leadSchool",
+      "employingSchool"
+    ]
   },
   "School direct (tuition fee)": {
-    defaultEnabled: true
+    defaultEnabled: true,
+    fields: [
+      "leadSchool",
+    ]
   },
   "Teach first (postgrad)": {},
   "Apprenticeship (postgrad)": {},

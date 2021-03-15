@@ -1,0 +1,3094 @@
+[
+  {
+    "schoolName": "All Saints Catholic Infant School",
+    "urn": 9156577,
+    "uuid": "783f7356-162c-46a2-b319-3bb104de7e51"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Primary School",
+    "urn": 8671893,
+    "uuid": "1ef0a1fe-eab5-4c92-950b-403323fbec66",
+    "addressLine1": "495 Junior Shores",
+    "city": "Okehampton",
+    "postcode": "UR4 7BJ"
+  },
+  {
+    "schoolName": "Easthorth College",
+    "urn": 4155271,
+    "uuid": "5f1424ff-bad7-4a33-971c-f0db612b73ad",
+    "addressLine1": "777 Archibald Lodge",
+    "city": "Liverpool",
+    "postcode": "PO13 4JS"
+  },
+  {
+    "schoolName": "St Paul’s Catholic Middle School",
+    "urn": 2374749,
+    "uuid": "9ad9759e-2976-4efa-8fe1-bcfda5ba6250",
+    "addressLine1": "8570 Josefina Extension",
+    "city": "Corsham",
+    "postcode": "VT01 5MA"
+  },
+  {
+    "schoolName": "St Peter and St Paul Church of England School",
+    "urn": 749727,
+    "uuid": "f783233f-c11b-4fc5-ba16-484835412050",
+    "addressLine1": "425 Oral Roads",
+    "city": "Newcastle",
+    "postcode": "AS5 2WQ"
+  },
+  {
+    "schoolName": "Abbey Woods College",
+    "urn": 8262212,
+    "uuid": "b6daef4b-2b3d-450e-addb-55e1418d92dd",
+    "addressLine1": "5076 Bernier Landing",
+    "city": "Axminster",
+    "postcode": "RE1 6OM"
+  },
+  {
+    "schoolName": "Staug-on Primary School",
+    "urn": 9645348,
+    "uuid": "cef3e2ba-242b-437b-b30c-9c1de00051a2",
+    "addressLine1": "23201 Saige Ramp",
+    "city": "Wallington",
+    "postcode": "IX7 9GB"
+  },
+  {
+    "schoolName": "Langley Tuition Centre",
+    "urn": 1651040,
+    "uuid": "a9b5cb52-733e-44bc-b011-2bd5d9eda4a4",
+    "addressLine1": "4849 Amanda Lights",
+    "city": "Huddersfield",
+    "postcode": "TL8 0IA"
+  },
+  {
+    "schoolName": "Langley Junior School",
+    "urn": 9406169,
+    "uuid": "ab7d38c5-2b04-47a4-9d69-b074417f912b",
+    "addressLine1": "39788 Grady Canyon",
+    "city": "Blackburn",
+    "postcode": "KJ5 9BD"
+  },
+  {
+    "schoolName": "Manor Primary School",
+    "urn": 3896476,
+    "uuid": "baf820dc-b17b-4f8e-9ec1-31531c833254",
+    "addressLine1": "06323 McClure Plains",
+    "city": "Leeds",
+    "postcode": "GO7 8CX"
+  },
+  {
+    "schoolName": "Church Hill Primary School",
+    "urn": 3737673,
+    "uuid": "250fb17d-f29e-4cd9-80e9-e6eb09f07312",
+    "addressLine1": "5366 Randall Groves",
+    "city": "Walsall",
+    "postcode": "SJ8 6GB"
+  },
+  {
+    "schoolName": "Abbey Academy",
+    "urn": 8567105,
+    "uuid": "859f83c2-6574-4647-9f79-05fe96fece81",
+    "addressLine1": "4510 Mabel Pass",
+    "city": "Pickering",
+    "postcode": "NU0 3ZB"
+  },
+  {
+    "schoolName": "Church Hill Academy",
+    "urn": 2944045,
+    "uuid": "254ed3f8-be5f-4f30-96b0-c086f66c1641",
+    "addressLine1": "931 Zieme Parkway",
+    "city": "Sheffield",
+    "postcode": "DU1 3XN"
+  },
+  {
+    "schoolName": "Easton University",
+    "urn": 2096966,
+    "uuid": "6b4a1ec8-b2b3-4efe-a24b-b03747262abd",
+    "addressLine1": "844 Tristian Inlet",
+    "city": "Uttoxeter",
+    "postcode": "HS2 7GW"
+  },
+  {
+    "schoolName": "St Peter and St Paul Catholic Infant School",
+    "urn": 5097314,
+    "uuid": "3cc97454-01d9-4cb7-b66e-2b07a5e6ae1a",
+    "addressLine1": "69358 Kreiger Meadow",
+    "city": "London",
+    "postcode": "SE7 4WH"
+  },
+  {
+    "schoolName": "St Peter’s Primary School",
+    "urn": 1921777,
+    "uuid": "527842ec-c3ec-47a6-99b0-5f020ab4f8f5",
+    "addressLine1": "58542 Nash Brook",
+    "city": "Doncaster",
+    "postcode": "ZH02 8SE"
+  },
+  {
+    "schoolName": "All Saints Church of England Middle School",
+    "urn": 5275607,
+    "uuid": "efb54edd-3061-4bbb-8da0-f9eab5c7667c"
+  },
+  {
+    "schoolName": "East Hollyn Secondary School",
+    "urn": 2960990,
+    "uuid": "bbcc89f8-62fc-4d00-9479-31e0f71b4731"
+  },
+  {
+    "schoolName": "St Vincent’s Church of England Middle School",
+    "urn": 7695408,
+    "uuid": "7651b3a2-661e-49e4-a626-7fcf010cecbb",
+    "addressLine1": "9519 Beahan Lakes",
+    "city": "Woodford Green",
+    "postcode": "AC4 8ET"
+  },
+  {
+    "schoolName": "St Vincent’s Church of England Primary School",
+    "urn": 1024339,
+    "uuid": "56bb8e06-8a15-479d-b5fb-4606201ec3ef",
+    "addressLine1": "94252 Juanita Creek",
+    "city": "London",
+    "postcode": "N11 8UB"
+  },
+  {
+    "schoolName": "North Secondary School",
+    "urn": 335943,
+    "uuid": "f06b4fac-1d85-410d-84a1-c69528f97d70",
+    "addressLine1": "37038 Briana Groves",
+    "city": "Holmrook",
+    "postcode": "VW31 6PC"
+  },
+  {
+    "schoolName": "All Saints CofE Infant School",
+    "urn": 7354005,
+    "uuid": "ede86a68-a937-492c-9434-530bccfebacf",
+    "addressLine1": "82159 Daniel Wells",
+    "city": "Crowborough",
+    "postcode": "UU6 1ZE"
+  },
+  {
+    "schoolName": "Eart End Sixth Form College",
+    "urn": 9217018,
+    "uuid": "e8184bc9-8a05-4e39-95af-cd5bed697ef4",
+    "addressLine1": "500 Gleichner Junctions",
+    "city": "Whitby",
+    "postcode": "RQ08 4RF"
+  },
+  {
+    "schoolName": "Church Hill High School",
+    "urn": 8477964,
+    "uuid": "233c1273-7be6-48f1-924d-8905e8632696",
+    "addressLine1": "7897 Littel Isle",
+    "city": "Croydon",
+    "postcode": "TE77 8ZW"
+  },
+  {
+    "schoolName": "Upper Broakent High School",
+    "urn": 2114470,
+    "uuid": "c41b794f-3ba9-4098-9cd0-b3ec8a848696",
+    "addressLine1": "181 Lydia Crest",
+    "city": "Loughborough",
+    "postcode": "RS08 6HN"
+  },
+  {
+    "schoolName": "St Clement’s CofE School",
+    "urn": 4968879,
+    "uuid": "1c9f815d-139a-496a-91a3-4a2438ecb5f5"
+  },
+  {
+    "schoolName": "Strath Bernige Primary Academy",
+    "urn": 344892,
+    "uuid": "0d24f14e-93c6-49e7-8aeb-ff65ed1f22d9"
+  },
+  {
+    "schoolName": "Thorpe Park Primary School",
+    "urn": 4292720,
+    "uuid": "61167f7a-2c56-455a-9e6f-fd6fb9c07271",
+    "addressLine1": "5154 Felton Via",
+    "city": "Sawbridgeworth",
+    "postcode": "UU0 1NE"
+  },
+  {
+    "schoolName": "Cherry Secondary School",
+    "urn": 9061381,
+    "uuid": "fa38afbb-33cc-4bd4-b993-b68029c0ca4b",
+    "addressLine1": "63775 Schmeler Mews",
+    "city": "Romford",
+    "postcode": "QZ75 9QH"
+  },
+  {
+    "schoolName": "Threet University",
+    "urn": 7344730,
+    "uuid": "4aa0dcfb-41f1-4a75-b584-3ad8e752f142",
+    "addressLine1": "378 Nikita Summit",
+    "city": "Southall",
+    "postcode": "IE17 6ZI"
+  },
+  {
+    "schoolName": "St Peter’s School",
+    "urn": 648771,
+    "uuid": "09cf5fc8-a739-45aa-95ce-438a95efbf70",
+    "addressLine1": "226 Lindgren Harbor",
+    "city": "Bridgend",
+    "postcode": "BF7 5PS"
+  },
+  {
+    "schoolName": "North East Sixth Form College",
+    "urn": 2285630,
+    "uuid": "ff9a3cf6-e73a-49d3-ad0c-661f5ec49b24",
+    "addressLine1": "8562 Forest Avenue",
+    "city": "Launceston",
+    "postcode": "KV7 5VY"
+  },
+  {
+    "schoolName": "Stratford Secondary School",
+    "urn": 7466727,
+    "uuid": "002c7cb3-16bd-4e9c-ba9c-8a16e55aa58a",
+    "addressLine1": "2850 Bednar Lights",
+    "city": "Wigton",
+    "postcode": "UN9 6QT"
+  },
+  {
+    "schoolName": "Manor Junior School",
+    "urn": 6165827,
+    "uuid": "c731d90e-0f64-4a1c-8d1f-b09cff9bdda5",
+    "addressLine1": "732 Avis Pass",
+    "city": "Birmingham",
+    "postcode": "DV8 3IF"
+  },
+  {
+    "schoolName": "St Andrew’s Catholic Infant School",
+    "urn": 4196345,
+    "uuid": "4705859c-ef4e-419b-8094-16b412110fb1",
+    "addressLine1": "169 Kole Underpass",
+    "city": "Sheffield",
+    "postcode": "PL66 0WB"
+  },
+  {
+    "schoolName": "St Peter’s Church of England Primary School",
+    "urn": 2178495,
+    "uuid": "e3662b38-0158-4a9c-a67e-5158e9682626",
+    "addressLine1": "68765 Tabitha Knolls",
+    "city": "Peterlee",
+    "postcode": "UE88 6GD"
+  },
+  {
+    "schoolName": "Abbey Woods College",
+    "urn": 420606,
+    "uuid": "1c4eee86-d197-47ce-9490-d488e2362fc7",
+    "addressLine1": "823 Jerde Corner",
+    "city": "Skipton",
+    "postcode": "CZ81 4SE"
+  },
+  {
+    "schoolName": "Abbey Woods Primary School",
+    "urn": 4884198,
+    "uuid": "317f827d-20da-455f-afcc-22aea6d48329",
+    "addressLine1": "56190 Laila Ramp",
+    "city": "Oldham",
+    "postcode": "FY5 0SZ"
+  },
+  {
+    "schoolName": "Walwood Primary School",
+    "urn": 3622748,
+    "uuid": "999c8c7e-3ba0-4ad4-8a85-72c3015449cb",
+    "addressLine1": "287 Lia Glens",
+    "city": "Leeds",
+    "postcode": "DR5 1XU"
+  },
+  {
+    "schoolName": "Southwickmey Primary School",
+    "urn": 7417359,
+    "uuid": "e23b2b92-5378-466a-8cb7-5349cbcaf110",
+    "addressLine1": "4466 Marcelino Ramp",
+    "city": "Wigan",
+    "postcode": "NB97 4UR"
+  },
+  {
+    "schoolName": "All Saints Church of England Middle School",
+    "urn": 5610870,
+    "uuid": "49d95711-f4bd-4377-ad74-8ed31de7a9fb",
+    "addressLine1": "857 Darrin Avenue",
+    "city": "Oswestry",
+    "postcode": "YV59 1UJ"
+  },
+  {
+    "schoolName": "Langley School",
+    "urn": 5762982,
+    "uuid": "830b7c92-6b4b-466c-91c9-c48268c06df2",
+    "addressLine1": "62354 Hahn Spring",
+    "city": "Chesterfield",
+    "postcode": "NR8 8BX"
+  },
+  {
+    "schoolName": "Stowbridle Primary School",
+    "urn": 1184161,
+    "uuid": "d95c20f1-690f-4002-9e43-445296881822",
+    "addressLine1": "197 Flossie Path",
+    "city": "London",
+    "postcode": "N17 0LJ"
+  },
+  {
+    "schoolName": "North School",
+    "urn": 8785451,
+    "uuid": "6d1b270f-9e6d-41e3-be73-0d82d2dcb8ab",
+    "addressLine1": "517 Kirstin Locks",
+    "city": "Newcastle",
+    "postcode": "LS34 4FD"
+  },
+  {
+    "schoolName": "Cherry Primary School",
+    "urn": 2299001,
+    "uuid": "deb1ce5e-9769-4e97-b216-4018460ed0c3",
+    "addressLine1": "5290 Rolfson Pines",
+    "city": "Liverpool",
+    "postcode": "QN89 2RC"
+  },
+  {
+    "schoolName": "Waugh Arvend Academy",
+    "urn": 1870273,
+    "uuid": "aaecc6f3-bedf-442e-a09b-e4ad4acc1630",
+    "addressLine1": "716 Quinten Dale",
+    "city": "Solihull",
+    "postcode": "II8 4HY"
+  },
+  {
+    "schoolName": "New School",
+    "urn": 694035,
+    "uuid": "03c865c3-0d74-4717-80b6-9bbae2a5c6d2",
+    "addressLine1": "8070 Amelia Lodge",
+    "city": "Preston",
+    "postcode": "NR7 6RH"
+  },
+  {
+    "schoolName": "St Andrew’s Catholic Primary School",
+    "urn": 8821245,
+    "uuid": "c339a75e-29e5-48b8-a44f-f1fe0c110c90",
+    "addressLine1": "311 Tracy Green",
+    "city": "Oxford",
+    "postcode": "TG8 1MS"
+  },
+  {
+    "schoolName": "North East High School",
+    "urn": 4921744,
+    "uuid": "bd4a7836-2c6e-4c44-aa58-1cf2f0a78efa"
+  },
+  {
+    "schoolName": "St Andrew’s Catholic Primary School",
+    "urn": 2209504,
+    "uuid": "b4f3334a-fd54-4e03-91e4-fd4fbcdd2b97",
+    "addressLine1": "19431 Ankunding Port",
+    "city": "Orpington",
+    "postcode": "GG0 8JA"
+  },
+  {
+    "schoolName": "Abbey Woods Infant School",
+    "urn": 6817345,
+    "uuid": "db137f48-da54-4fb7-90e9-371d20ce42f4",
+    "addressLine1": "99795 Welch Coves",
+    "city": "Wolverhampton",
+    "postcode": "YD1 9HK"
+  },
+  {
+    "schoolName": "Raaverthorpe High School",
+    "urn": 6438858,
+    "uuid": "fca490c3-dc9a-47e7-9fdd-6d50a1b42e1e",
+    "addressLine1": "58796 Dino Park",
+    "city": "Jersey",
+    "postcode": "CA21 3IE"
+  },
+  {
+    "schoolName": "All Saints Church of England Primary School",
+    "urn": 3963400,
+    "uuid": "4eae6e83-c645-4568-ba13-49499df89fb6",
+    "addressLine1": "6134 Katelin Passage",
+    "city": "Swindon",
+    "postcode": "DV71 8GR"
+  },
+  {
+    "schoolName": "Cherry Sixth Form College",
+    "urn": 7288849,
+    "uuid": "c4d47fd5-9685-4d70-8c35-e191b2f1e866",
+    "addressLine1": "9918 Angelina Creek",
+    "city": "Gillingham",
+    "postcode": "HA93 2SR"
+  },
+  {
+    "schoolName": "St Andrew’s Church of England Middle School",
+    "urn": 3356398,
+    "uuid": "6fea004b-e50a-41d0-bf9e-39ecdb7161c9",
+    "addressLine1": "8867 Botsford Inlet",
+    "city": "Dorking",
+    "postcode": "TV3 3GV"
+  },
+  {
+    "schoolName": "Langley High School",
+    "urn": 8853701,
+    "uuid": "57628b2a-848a-4802-a3aa-013b67ed793f",
+    "addressLine1": "2808 Joanny Flat",
+    "city": "Chatham",
+    "postcode": "MF3 3AC"
+  },
+  {
+    "schoolName": "North East Academy",
+    "urn": 9017365,
+    "uuid": "69a38253-f7cd-4610-907a-c37d0a0482a2",
+    "addressLine1": "4283 Dare Point",
+    "city": "Southport",
+    "postcode": "SB9 0FN"
+  },
+  {
+    "schoolName": "Waddington Secondary School",
+    "urn": 1767183,
+    "uuid": "87950f9f-e5c2-4663-bad4-aa016b8a014c",
+    "addressLine1": "1838 Nicolas Hill",
+    "city": "Basingstoke",
+    "postcode": "RF23 0WI"
+  },
+  {
+    "schoolName": "St Thomas’s CofE Middle School",
+    "urn": 1827190,
+    "uuid": "5304f25d-4617-42d6-8d8c-85d466cbcf21",
+    "addressLine1": "31790 O'Conner Ramp",
+    "city": "Alnwick",
+    "postcode": "ZQ12 9DN"
+  },
+  {
+    "schoolName": "St Paul’s Infant School",
+    "urn": 4468213,
+    "uuid": "51b63dae-7765-4c3c-b5b4-88f9b2efbbc4",
+    "addressLine1": "135 Ronaldo Tunnel",
+    "city": "Peterborough",
+    "postcode": "SP1 3SN"
+  },
+  {
+    "schoolName": "North Secondary School",
+    "urn": 2107145,
+    "uuid": "13115a89-d924-4460-a5f8-daa083ee8e04",
+    "addressLine1": "98427 Leonora Forks",
+    "city": "Rochdale",
+    "postcode": "XL1 0SO"
+  },
+  {
+    "schoolName": "St Thomas’s CofE Primary School",
+    "urn": 2890474,
+    "uuid": "539a4eca-92f2-48f6-a878-94c71658d805",
+    "addressLine1": "635 Hermiston Loaf",
+    "city": "Tewkesbury",
+    "postcode": "KG0 1HT"
+  },
+  {
+    "schoolName": "St Peter and St Paul CofE Primary School",
+    "urn": 574951,
+    "uuid": "a7301487-34f9-457f-b48b-dcfe351c8605",
+    "addressLine1": "8845 Laura Islands",
+    "city": "Macclesfield",
+    "postcode": "GO76 4OF"
+  },
+  {
+    "schoolName": "North East Academy",
+    "urn": 8764412,
+    "uuid": "bc1fef47-db73-4e9e-abc7-eecd2c02c901",
+    "addressLine1": "858 Dibbert Springs",
+    "city": "London",
+    "postcode": "SE20 0TB"
+  },
+  {
+    "schoolName": "St Thomas’s Catholic Infant School",
+    "urn": 8016375,
+    "uuid": "d6b64060-457e-451f-9192-f23534b3f9c2",
+    "addressLine1": "4932 Rippin Haven",
+    "city": "Greenford",
+    "postcode": "GQ5 1ML"
+  },
+  {
+    "schoolName": "New Secondary School",
+    "urn": 341437,
+    "uuid": "05acadb8-8b8b-4fb5-9c1c-8635b58aedb9",
+    "addressLine1": "235 Vesta Passage",
+    "city": "Crook",
+    "postcode": "QT89 7AN"
+  },
+  {
+    "schoolName": "Hatton Ash Secondary School",
+    "urn": 8285582,
+    "uuid": "12cb31c8-82ff-44fb-9c8b-73a6c9f7fdf8",
+    "addressLine1": "867 Schmeler Harbor",
+    "city": "Peterlee",
+    "postcode": "QU7 8XX"
+  },
+  {
+    "schoolName": "Stratford High School",
+    "urn": 1401110,
+    "uuid": "5859c246-3a9a-4764-96df-60fd664bccad",
+    "addressLine1": "1853 Sporer Causeway",
+    "city": "Bath",
+    "postcode": "MP2 8TU"
+  },
+  {
+    "schoolName": "Coreford Primary School",
+    "urn": 512412,
+    "uuid": "dc4bd47c-9cc9-45d1-a37a-518a7fcef240",
+    "addressLine1": "898 Selena Plains",
+    "city": "York",
+    "postcode": "YL1 9VY"
+  },
+  {
+    "schoolName": "Mayhampton Carlton College",
+    "urn": 1447561,
+    "uuid": "f5bf4c2a-929a-4272-96c7-0b0e1226ff2f",
+    "addressLine1": "465 Howe Passage",
+    "city": "Swindon",
+    "postcode": "FM77 7XW"
+  },
+  {
+    "schoolName": "East End Primary Academy",
+    "urn": 4667029,
+    "uuid": "1a734c00-9b33-460c-9a97-56662f0a30c0",
+    "addressLine1": "13639 Heloise Lakes",
+    "city": "Dubai",
+    "postcode": "DJ72 5LB"
+  },
+  {
+    "schoolName": "Waundaden Secondary School",
+    "urn": 9602140,
+    "uuid": "a7bdfd4c-e7bb-424d-83cf-60819b5b3be9",
+    "addressLine1": "6388 Mohamed Circle",
+    "city": "Sheffield",
+    "postcode": "RA77 3OA"
+  },
+  {
+    "schoolName": "Stratford Tuition Centre",
+    "urn": 7939934,
+    "uuid": "a6585e93-6c18-415a-8c5d-10c1f3f9068f",
+    "addressLine1": "876 Devante Freeway",
+    "city": "Shrewsbury",
+    "postcode": "UH4 7QJ"
+  },
+  {
+    "schoolName": "New College",
+    "urn": 7674485,
+    "uuid": "8ee23da8-3489-4bd2-8e43-55ea0186c3a9",
+    "addressLine1": "936 Thad Shore",
+    "city": "Bradford",
+    "postcode": "YY90 1FI"
+  },
+  {
+    "schoolName": "Manor Secondary School",
+    "urn": 7141329,
+    "uuid": "f2c016ec-3c56-46ba-9a4d-c6590cd2572d",
+    "addressLine1": "0432 Blick Roads",
+    "city": "London",
+    "postcode": "E7 4TE"
+  },
+  {
+    "schoolName": "St Paul’s Church of England Infant School",
+    "urn": 9548510,
+    "uuid": "5c74ed19-a9e0-45ad-95ec-c0fcc94c696e",
+    "addressLine1": "765 Jude Stravenue",
+    "city": "Alston",
+    "postcode": "OR96 3LW"
+  },
+  {
+    "schoolName": "Cherry College",
+    "urn": 5976206,
+    "uuid": "8050228e-0fa0-44d8-aafa-4cc5f5d34898",
+    "addressLine1": "0819 Cathryn Curve",
+    "city": "Walsall",
+    "postcode": "KF55 2GA"
+  },
+  {
+    "schoolName": "Tuaclisfood School",
+    "urn": 6624600,
+    "uuid": "5b760929-473b-4a77-9aef-9fc03bf631cb",
+    "addressLine1": "79163 Dee View",
+    "city": "Brandon",
+    "postcode": "QF20 3ZE"
+  },
+  {
+    "schoolName": "Abbey Woods Sixth Form College",
+    "urn": 4008560,
+    "uuid": "af538d19-0ad3-4f8a-8228-267e425244b8",
+    "addressLine1": "6677 Abbott Circles",
+    "city": "London",
+    "postcode": "SE20 5HX"
+  },
+  {
+    "schoolName": "Stratford College",
+    "urn": 5895560,
+    "uuid": "3fbabf7e-a5c0-494d-b016-f1e62a3f3cdf"
+  },
+  {
+    "schoolName": "St Andrew’s CofE Infant School",
+    "urn": 6398114,
+    "uuid": "f24ca57b-1585-49a7-bf57-23e8783167a6"
+  },
+  {
+    "schoolName": "Polleck Abbh Green Primary School",
+    "urn": 106585,
+    "uuid": "3e3e046e-6458-486d-bb5a-d51f3b01c32c",
+    "addressLine1": "3620 Modesto Falls",
+    "city": "Andover",
+    "postcode": "BE26 2FO"
+  },
+  {
+    "schoolName": "St Andrew’s CofE Infant School",
+    "urn": 1217083,
+    "uuid": "96847b7b-a20c-421d-ab44-daac94112389",
+    "addressLine1": "068 Ryan Alley",
+    "city": "York",
+    "postcode": "KD68 2UV"
+  },
+  {
+    "schoolName": "Stoneston Sidgen Park School",
+    "urn": 7762799,
+    "uuid": "1ff7bc5d-9e65-4622-aa89-54c37b3c934a",
+    "addressLine1": "05325 Streich Lights",
+    "city": "Northampton",
+    "postcode": "BO1 6JD"
+  },
+  {
+    "schoolName": "St Andrew’s Primary School",
+    "urn": 3912008,
+    "uuid": "b7641c1c-22b5-4c7e-a851-021993bc4e42",
+    "addressLine1": "40114 Schowalter Camp",
+    "city": "Sheffield",
+    "postcode": "AB1 0LP"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Middle School",
+    "urn": 2845638,
+    "uuid": "8d5e544c-c65e-4be4-963f-20ec213b6a4a",
+    "addressLine1": "336 Farrell Track",
+    "city": "Malvern",
+    "postcode": "FU20 3AT"
+  },
+  {
+    "schoolName": "North Primary School",
+    "urn": 3988933,
+    "uuid": "cd7dd51d-2d83-4a0d-be3e-d700ab32d6bf"
+  },
+  {
+    "schoolName": "St Paul’s Catholic Infant School",
+    "urn": 4992161,
+    "uuid": "dd41a67e-b338-42ac-880c-2fba9db0aced",
+    "addressLine1": "618 Robel Way",
+    "city": "Hornchurch",
+    "postcode": "UY8 1ML"
+  },
+  {
+    "schoolName": "North Secondary School",
+    "urn": 7244094,
+    "uuid": "cc3952b7-dd88-42a9-a611-a65d9b2a10f8",
+    "addressLine1": "015 Lynch Drives",
+    "city": "Great Yarmouth",
+    "postcode": "KN46 5VZ"
+  },
+  {
+    "schoolName": "Christchurch Primary School",
+    "urn": 6122703,
+    "uuid": "497539ae-489b-4382-a09c-db01167a1c03",
+    "addressLine1": "8735 Eula Pike",
+    "city": "Lincoln",
+    "postcode": "EC19 8HK"
+  },
+  {
+    "schoolName": "North East College",
+    "urn": 4937156,
+    "uuid": "a3dfc5a8-4f4c-46ca-8aa5-1c48df34a1e1",
+    "addressLine1": "8841 Domenico Pike",
+    "city": "Wakefield",
+    "postcode": "YV4 7RO"
+  },
+  {
+    "schoolName": "Church Hill Secondary School",
+    "urn": 2467223,
+    "uuid": "a69c26d8-aed9-45b7-bded-03f7dc3ebef5",
+    "addressLine1": "7611 Runolfsson Forges",
+    "city": "Bootle",
+    "postcode": "SG60 2NP"
+  },
+  {
+    "schoolName": "Cherry Infant School",
+    "urn": 999039,
+    "uuid": "0f0bb87c-26d3-4588-acca-7e0671b4059e"
+  },
+  {
+    "schoolName": "St Thomas’s CofE Primary School",
+    "urn": 6098527,
+    "uuid": "b3954a2c-b31e-4d63-9a44-8e09d8237df5",
+    "addressLine1": "16527 Sandrine Street",
+    "city": "Bristol",
+    "postcode": "RY86 0AC"
+  },
+  {
+    "schoolName": "New Primary School",
+    "urn": 9620949,
+    "uuid": "a7303234-a098-440e-87d1-900d09de573c",
+    "addressLine1": "938 Rowe Overpass",
+    "city": "Leeds",
+    "postcode": "UI15 1TN"
+  },
+  {
+    "schoolName": "Abbey School",
+    "urn": 5365429,
+    "uuid": "24c68f54-deee-43bc-ba29-734ea43cbc54",
+    "addressLine1": "9098 Pollich Circles",
+    "city": "London",
+    "postcode": "N14 2PH"
+  },
+  {
+    "schoolName": "Manor Junior School",
+    "urn": 4862785,
+    "uuid": "00aee451-7bc7-4d55-9e02-e6ea114539f1",
+    "addressLine1": "7766 Hans Isle",
+    "city": "Upper Heyford",
+    "postcode": "EN9 9OL"
+  },
+  {
+    "schoolName": "New Academy",
+    "urn": 4270278,
+    "uuid": "5b4ec645-3355-45b5-9b50-a9558ac26e38",
+    "addressLine1": "74702 Kale Freeway",
+    "city": "Enfield",
+    "postcode": "JB23 9NU"
+  },
+  {
+    "schoolName": "Stomerstown Primary School",
+    "urn": 1505896,
+    "uuid": "fad9404b-f18c-4df3-9d61-98bc8c162318",
+    "addressLine1": "74597 Oberbrunner Trace",
+    "city": "Bolton",
+    "postcode": "LU56 3XG"
+  },
+  {
+    "schoolName": "Stratford College",
+    "urn": 8527494,
+    "uuid": "d469d6da-2c15-41c3-bb77-860ee177c6ef",
+    "addressLine1": "999 Demarco Views",
+    "city": "Leicester",
+    "postcode": "VP2 0TP"
+  },
+  {
+    "schoolName": "Ossington Academy",
+    "urn": 9943546,
+    "uuid": "33566e71-01bc-4c23-81ad-d75183cfeaf6",
+    "addressLine1": "979 Stoltenberg Courts",
+    "city": "Grimsby",
+    "postcode": "KV43 2FF"
+  },
+  {
+    "schoolName": "Tie'r Beigh Academy",
+    "urn": 4558669,
+    "uuid": "f3219477-f004-4e9f-8c00-aa750ffcec34",
+    "addressLine1": "669 Dorian Springs",
+    "city": "Weston-Super-Mare",
+    "postcode": "KG7 7OK"
+  },
+  {
+    "schoolName": "Easarton Secondary School",
+    "urn": 6564954,
+    "uuid": "771e5218-c008-4437-ba1b-be582efe37d7",
+    "addressLine1": "39422 Erling Route",
+    "city": "Milnthorpe",
+    "postcode": "FY57 4MZ"
+  },
+  {
+    "schoolName": "St Andrew’s CofE Primary School",
+    "urn": 1968832,
+    "uuid": "f6ca2f86-846a-4827-ab9e-f3320635abe8"
+  },
+  {
+    "schoolName": "Christchurch Academy",
+    "urn": 161142,
+    "uuid": "55c5c09f-4824-4cc3-ba6c-e6641e8f84cf",
+    "addressLine1": "28461 Hyatt Square",
+    "city": "Dalton-in-Furness",
+    "postcode": "OS89 9VV"
+  },
+  {
+    "schoolName": "St Thomas’s CofE School",
+    "urn": 7299921,
+    "uuid": "fd218cd6-3005-4499-bd71-a2da38d86ed6",
+    "addressLine1": "0368 Schowalter Courts",
+    "city": "Alfreton",
+    "postcode": "IR31 1QR"
+  },
+  {
+    "schoolName": "Mavenbred Secondary School",
+    "urn": 6710210,
+    "uuid": "53368239-3047-4c05-ba6c-34e0ee2daf5f",
+    "addressLine1": "56734 Alize Avenue",
+    "city": "Northolt",
+    "postcode": "AO7 5PI"
+  },
+  {
+    "schoolName": "Church Hill Junior School",
+    "urn": 5495032,
+    "uuid": "cf5594e5-212d-477b-ba96-ae06caf9e9c3",
+    "addressLine1": "71743 Robel Station",
+    "city": "Guildford",
+    "postcode": "BX55 4DY"
+  },
+  {
+    "schoolName": "Cherry Sixth Form College",
+    "urn": 5332242,
+    "uuid": "2e82651a-6a52-4731-ad05-74424b687f35",
+    "addressLine1": "242 Mueller Motorway",
+    "city": "Bradford",
+    "postcode": "BG9 8FR"
+  },
+  {
+    "schoolName": "Stratford Academy",
+    "urn": 472079,
+    "uuid": "528207fc-cb54-4438-ae89-b5d665903c93",
+    "addressLine1": "2952 Ryleigh Loop",
+    "city": "Hemel Hempstead",
+    "postcode": "AA5 3FE"
+  },
+  {
+    "schoolName": "St Vincent’s Church of England Infant School",
+    "urn": 195233,
+    "uuid": "7e8c92bf-5165-4982-b286-0e7882fbee12",
+    "addressLine1": "365 Jesse Terrace",
+    "city": "Durham",
+    "postcode": "XY23 4ML"
+  },
+  {
+    "schoolName": "North Primary School",
+    "urn": 7775665,
+    "uuid": "8d075aea-aad5-40aa-835e-036a412255e3",
+    "addressLine1": "58380 Beau Knolls",
+    "city": "Middlesbrough",
+    "postcode": "YA8 4JQ"
+  },
+  {
+    "schoolName": "New High School",
+    "urn": 5783534,
+    "uuid": "6c791e38-5934-425f-a0c5-5dcd0c591c0f",
+    "addressLine1": "19866 Graham Shoals",
+    "city": "Devizes",
+    "postcode": "AM8 2SX"
+  },
+  {
+    "schoolName": "Manor Secondary School",
+    "urn": 1038052,
+    "uuid": "121e287e-0ab2-4b3e-b85e-d85cc70d41ab",
+    "addressLine1": "4495 Fritz Islands",
+    "city": "Bristol",
+    "postcode": "TN22 8PO"
+  },
+  {
+    "schoolName": "Wairpool University",
+    "urn": 8906036,
+    "uuid": "86de35e3-83d9-4ade-a71d-9c5e4a029430",
+    "addressLine1": "462 Bertram Rapids",
+    "city": "Reigate",
+    "postcode": "SA8 6UT"
+  },
+  {
+    "schoolName": "Langley Secondary School",
+    "urn": 771000,
+    "uuid": "a1ab5167-e995-414f-8600-6eb127ce6cc2",
+    "addressLine1": "811 Lora Crest",
+    "city": "Macclesfield",
+    "postcode": "BL60 4EA"
+  },
+  {
+    "schoolName": "St Clement’s Catholic Primary School",
+    "urn": 8225786,
+    "uuid": "2c7c0d86-255f-42d1-88ff-df7e664d9394"
+  },
+  {
+    "schoolName": "Church Hill High School",
+    "urn": 2834106,
+    "uuid": "cec603b0-590a-4448-aa47-8b3380449642",
+    "addressLine1": "02600 Walton Curve",
+    "city": "Tunbridge Wells",
+    "postcode": "HM5 0PY"
+  },
+  {
+    "schoolName": "North East Primary School",
+    "urn": 3649822,
+    "uuid": "46558a9b-0fdd-485e-898e-5a67bb94434b",
+    "addressLine1": "65342 Bartholome Rapid",
+    "city": "Burton-on-Trent",
+    "postcode": "TJ46 3QO"
+  },
+  {
+    "schoolName": "Easpwood Primary School",
+    "urn": 4757679,
+    "uuid": "abd3654d-4fbb-4579-a6c5-55c8182c63f0",
+    "addressLine1": "6935 Everett Lock",
+    "city": "Poole",
+    "postcode": "ZX4 5CT"
+  },
+  {
+    "schoolName": "St Peter and St Paul Infant School",
+    "urn": 8920779,
+    "uuid": "5c5b14df-0b1b-4cb7-81fe-54877a270052",
+    "addressLine1": "632 Soledad Trail",
+    "city": "Bristol",
+    "postcode": "HZ2 4OC"
+  },
+  {
+    "schoolName": "Abbey Woods High School",
+    "urn": 531736,
+    "uuid": "738bffc8-11d1-416f-8425-77fd5126a60b",
+    "addressLine1": "404 Ernestina Crescent",
+    "city": "Cullompton",
+    "postcode": "VY7 6IE"
+  },
+  {
+    "schoolName": "Abbey Secondary School",
+    "urn": 5142035,
+    "uuid": "23410c07-e2fe-4bd5-8c64-cbc6ff48c966",
+    "addressLine1": "07127 Wunsch Club",
+    "city": "Saltash",
+    "postcode": "FI73 1HW"
+  },
+  {
+    "schoolName": "St Peter’s Catholic Primary School",
+    "urn": 1232130,
+    "uuid": "01308ea7-9fbf-443f-8569-140f4caef32b",
+    "addressLine1": "91697 Tyrell Ridge",
+    "city": "Rochester",
+    "postcode": "NN71 0NS"
+  },
+  {
+    "schoolName": "North Sixth Form College",
+    "urn": 7486960,
+    "uuid": "e77719f7-2b9b-4bfa-9b92-10217a0babd3",
+    "addressLine1": "34965 Boris Fork",
+    "city": "Swindon",
+    "postcode": "EQ7 8RT"
+  },
+  {
+    "schoolName": "Cownton Regesen School",
+    "urn": 3694529,
+    "uuid": "bd25be3b-99b3-44b1-ac18-36eb83a81370",
+    "addressLine1": "3993 Jamal Hill",
+    "city": "Dudley",
+    "postcode": "CK92 8ZZ"
+  },
+  {
+    "schoolName": "New School",
+    "urn": 9027294,
+    "uuid": "4bd40bbf-e766-41c6-94ee-0f3175559737",
+    "addressLine1": "45814 Dickinson Manor",
+    "city": "Chislehurst",
+    "postcode": "OM3 3FY"
+  },
+  {
+    "schoolName": "St Clement’s Church of England School",
+    "urn": 2247023,
+    "uuid": "729e2c54-b672-48c1-b3a2-ed4d152bd4f5",
+    "addressLine1": "319 Vandervort Spurs",
+    "city": "Rochester",
+    "postcode": "GJ7 2TD"
+  },
+  {
+    "schoolName": "Manor Secondary School",
+    "urn": 331153,
+    "uuid": "afb43113-f820-414b-9b3f-f933b51205ae",
+    "addressLine1": "888 Freddy Rapids",
+    "city": "Kendal",
+    "postcode": "HK25 1JK"
+  },
+  {
+    "schoolName": "Stonham Clite Secondary School",
+    "urn": 8830414,
+    "uuid": "bb39b58e-0218-48e3-917b-09f344d1dc71",
+    "addressLine1": "48111 Heidenreich Mountains",
+    "city": "Orpington",
+    "postcode": "IL9 5TZ"
+  },
+  {
+    "schoolName": "St Peter’s CofE School",
+    "urn": 3026393,
+    "uuid": "110e03c1-36b7-4911-bfc1-51776cec4b3d",
+    "addressLine1": "8842 Dillon Burgs",
+    "city": "Bristol",
+    "postcode": "GV3 7GL"
+  },
+  {
+    "schoolName": "Cherry School",
+    "urn": 4759184,
+    "uuid": "e335d6bf-fa46-4358-aff7-c4ae90a8be1e",
+    "addressLine1": "1489 Gaylord Lane",
+    "city": "Sheffield",
+    "postcode": "PC74 8KJ"
+  },
+  {
+    "schoolName": "St Thomas’s Middle School",
+    "urn": 1195204,
+    "uuid": "bb7f7b66-8dd5-4ac2-9dc7-487ca15b0caf",
+    "addressLine1": "290 Ledner Squares",
+    "city": "Bolton",
+    "postcode": "UH39 6BD"
+  },
+  {
+    "schoolName": "North University",
+    "urn": 7171281,
+    "uuid": "9bb77885-fb81-4e9b-91cc-05cab3e1d4ac",
+    "addressLine1": "981 Lowe Inlet",
+    "city": "Coalville",
+    "postcode": "AP9 7WB"
+  },
+  {
+    "schoolName": "North East Infant School",
+    "urn": 2400297,
+    "uuid": "7b5943ac-77b9-41b6-a9cc-4be1ed8b5690",
+    "addressLine1": "182 Donnelly Cliff",
+    "city": "Norwich",
+    "postcode": "LQ44 3FM"
+  },
+  {
+    "schoolName": "St Paul’s Primary School",
+    "urn": 5363905,
+    "uuid": "e5cee9bd-610e-44a2-a3dc-13c900d7ae26",
+    "addressLine1": "51993 Kirlin View",
+    "city": "Sheffield",
+    "postcode": "LR98 8JE"
+  },
+  {
+    "schoolName": "Utter Street High School",
+    "urn": 2245585,
+    "uuid": "78e9a47f-4c05-4dcd-aec3-bff110d3ab93",
+    "addressLine1": "13618 Yvonne Well",
+    "city": "Warwick",
+    "postcode": "CS2 9BY"
+  },
+  {
+    "schoolName": "St Clement’s CofE Infant School",
+    "urn": 440272,
+    "uuid": "081e808d-9f96-45ce-bae4-4219aaf44495",
+    "addressLine1": "25746 Quitzon Light",
+    "city": "Stratford-upon-Avon",
+    "postcode": "XJ9 2QB"
+  },
+  {
+    "schoolName": "Church Hill Primary School",
+    "urn": 4595172,
+    "uuid": "f37cd140-e1e3-4d8e-82d0-c5707a41ada4"
+  },
+  {
+    "schoolName": "Abbey Academy",
+    "urn": 7839559,
+    "uuid": "d7807d03-6294-4655-9d96-ea4d1e54987b",
+    "addressLine1": "3475 Cornelius Dale",
+    "city": "Kettering",
+    "postcode": "CB53 3JU"
+  },
+  {
+    "schoolName": "Cherry School",
+    "urn": 4597855,
+    "uuid": "dd3bc378-9455-4193-932a-a2091b2de882",
+    "addressLine1": "201 Hilpert Ville",
+    "city": "Woodbridge",
+    "postcode": "GN7 9CS"
+  },
+  {
+    "schoolName": "St Paul’s Infant School",
+    "urn": 2751325,
+    "uuid": "4a9410ef-aa2f-4d24-beb3-e658110b813a",
+    "addressLine1": "72527 Cheyenne Pass",
+    "city": "Feltham",
+    "postcode": "MF1 7VE"
+  },
+  {
+    "schoolName": "Pengley Primary School",
+    "urn": 4713327,
+    "uuid": "8c709981-72d9-4dfc-a283-d96641ca9bd5",
+    "addressLine1": "2430 Jerel Plain",
+    "city": "Wolverhampton",
+    "postcode": "YT87 1FA"
+  },
+  {
+    "schoolName": "St Peter’s CofE Infant School",
+    "urn": 6264158,
+    "uuid": "2c041fb3-5806-48f4-a6b6-738f7b041a4f",
+    "addressLine1": "186 Destin Crossing",
+    "city": "Hailsham",
+    "postcode": "MI42 5NQ"
+  },
+  {
+    "schoolName": "St Andrew’s CofE Infant School",
+    "urn": 2421487,
+    "uuid": "613c88c8-fa99-4936-b0ae-4c929ba2e954"
+  },
+  {
+    "schoolName": "St Andrew’s Church of England Infant School",
+    "urn": 7696212,
+    "uuid": "b64bf607-d499-42ef-80d9-fd61c3760bc5",
+    "addressLine1": "2439 Brown Course",
+    "city": "Exeter",
+    "postcode": "BL6 1ZM"
+  },
+  {
+    "schoolName": "Church Hill Primary Academy",
+    "urn": 6773223,
+    "uuid": "c6ab45af-ee43-494b-8730-a9be4073ffc3",
+    "addressLine1": "9482 Maryse Crossing",
+    "city": "St Agnes",
+    "postcode": "IG8 3WY"
+  },
+  {
+    "schoolName": "North East College",
+    "urn": 6573032,
+    "uuid": "103e134b-3796-4a31-a00b-86b73a86cfd6",
+    "addressLine1": "8017 Brennan Park",
+    "city": "London",
+    "postcode": "NW3 6DY"
+  },
+  {
+    "schoolName": "Aass Morley College",
+    "urn": 7885851,
+    "uuid": "29cedb9d-2ee1-4671-90e9-37dd37b0b213",
+    "addressLine1": "5572 Leif Overpass",
+    "city": "Nuneaton",
+    "postcode": "GY33 0WJ"
+  },
+  {
+    "schoolName": "North East College",
+    "urn": 3514747,
+    "uuid": "63d5eec1-85d1-43d5-91b4-658e911cfd5a",
+    "addressLine1": "492 Gunnar Plains",
+    "city": "London",
+    "postcode": "W20 8VI"
+  },
+  {
+    "schoolName": "North Tuition Centre",
+    "urn": 3180611,
+    "uuid": "02cd3dec-d400-40b2-af0d-afbf630a3819",
+    "addressLine1": "62086 Hagenes Passage",
+    "city": "Peterborough",
+    "postcode": "AO2 3LB"
+  },
+  {
+    "schoolName": "Pelmershadar College",
+    "urn": 7693537,
+    "uuid": "738350ea-b9d3-4727-b172-6e37aef4aaa4",
+    "addressLine1": "5631 Franecki Forge",
+    "city": "Chertsey",
+    "postcode": "KD9 9RX"
+  },
+  {
+    "schoolName": "North Tuition Centre",
+    "urn": 7722133,
+    "uuid": "1a4129e5-1296-462f-86f0-b39a420d95b6",
+    "addressLine1": "97008 Fahey Oval",
+    "city": "Coventry",
+    "postcode": "GE7 9TZ"
+  },
+  {
+    "schoolName": "St Paul’s Church of England Primary School",
+    "urn": 8598225,
+    "uuid": "35c83013-22b0-4e3c-9596-82939ce8a4f2",
+    "addressLine1": "9247 Judson Manors",
+    "city": "Coventry",
+    "postcode": "IL3 5HY"
+  },
+  {
+    "schoolName": "St Peter’s CofE Middle School",
+    "urn": 9931229,
+    "uuid": "b0fd68b6-3a44-4e8c-bfc4-d63f28ecd0a4",
+    "addressLine1": "74170 Koss Flat",
+    "city": "Newport",
+    "postcode": "HY21 9YN"
+  },
+  {
+    "schoolName": "St Vincent’s CofE Middle School",
+    "urn": 6132594,
+    "uuid": "2ec389ec-c0be-4c37-b684-d42aac6ee72e",
+    "addressLine1": "19984 Marvin Trail",
+    "city": "Dudley",
+    "postcode": "QY1 9KY"
+  },
+  {
+    "schoolName": "East martits Primary School",
+    "urn": 7617194,
+    "uuid": "cb5df391-30b7-45d2-a20b-33926a87c270",
+    "addressLine1": "2313 Yoshiko Hills",
+    "city": "Broadstairs",
+    "postcode": "JS8 0DK"
+  },
+  {
+    "schoolName": "Sapell Ley Hamdale Secondary School",
+    "urn": 5674962,
+    "uuid": "99c8d224-f7eb-41aa-9e35-c058fc8b0c27",
+    "addressLine1": "7639 Fredrick Loop",
+    "city": "Ilford",
+    "postcode": "ZE6 6NG"
+  },
+  {
+    "schoolName": "All Saints Middle School",
+    "urn": 7239254,
+    "uuid": "a41084ac-bbd1-4a73-ae53-bb68b9c7d7e6",
+    "addressLine1": "627 Nicolas Hills",
+    "city": "Chelmsford",
+    "postcode": "BL6 3QR"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Infant School",
+    "urn": 857896,
+    "uuid": "fede90d0-cb6d-435e-8d47-b44580830888",
+    "addressLine1": "4913 Marquardt Turnpike",
+    "city": "Lancaster",
+    "postcode": "ED3 5BH"
+  },
+  {
+    "schoolName": "North College",
+    "urn": 3338596,
+    "uuid": "ff59a3de-0875-4077-8da4-cdef11705cd1",
+    "addressLine1": "1818 Ivah Burg",
+    "city": "London",
+    "postcode": "NW7 7PS"
+  },
+  {
+    "schoolName": "St Peter and St Paul Catholic Middle School",
+    "urn": 4791162,
+    "uuid": "8a1e0f57-791b-4b4f-b6ad-875a13393582",
+    "addressLine1": "4902 Adrien Crossroad",
+    "city": "Warminster",
+    "postcode": "WM2 2QK"
+  },
+  {
+    "schoolName": "North East High School",
+    "urn": 7953507,
+    "uuid": "4ca419cb-82fa-49b9-968f-1ab0a34f206a"
+  },
+  {
+    "schoolName": "Sattle Barton High School",
+    "urn": 7800967,
+    "uuid": "2ae125bc-963e-482d-bef6-e8197cce7332",
+    "addressLine1": "29595 Gregory Park",
+    "city": "Dover",
+    "postcode": "BN2 7GP"
+  },
+  {
+    "schoolName": "North East College",
+    "urn": 4153869,
+    "uuid": "098fe3c5-d8b5-4bbf-b14d-3488dc08f6f1",
+    "addressLine1": "8918 Gottlieb Roads",
+    "city": "Southampton",
+    "postcode": "SF52 1RP"
+  },
+  {
+    "schoolName": "St Peter’s CofE Primary School",
+    "urn": 5052184,
+    "uuid": "67750c55-6872-4179-b2c8-b7a2dcf69792",
+    "addressLine1": "42494 White Branch",
+    "city": "Blackburn",
+    "postcode": "TV0 8QH"
+  },
+  {
+    "schoolName": "Hatton Ash Infant School",
+    "urn": 4406500,
+    "uuid": "5bc1c5f4-42d3-40ab-9367-01c31a310d82",
+    "addressLine1": "56526 Cassie Spurs",
+    "city": "Whitehaven",
+    "postcode": "EP54 6JF"
+  },
+  {
+    "schoolName": "Langley College",
+    "urn": 507789,
+    "uuid": "70d23cbe-ff62-49ea-a005-59ee9f5fcead",
+    "addressLine1": "607 Mertz Village",
+    "city": "Tenbury Wells",
+    "postcode": "HN0 8WN"
+  },
+  {
+    "schoolName": "Waligill (Himlethorp Secondary School",
+    "urn": 1788916,
+    "uuid": "4fe28fd7-2fe4-4935-bd96-7cd3e7c62e9a",
+    "addressLine1": "058 Larson Prairie",
+    "city": "Esher",
+    "postcode": "JE45 7TV"
+  },
+  {
+    "schoolName": "Wald of Ivench Secondary School",
+    "urn": 9706745,
+    "uuid": "2661e8c3-c9ee-4368-935c-f86bb0315461",
+    "addressLine1": "828 Tremblay Rest",
+    "city": "Preston",
+    "postcode": "GJ4 5XD"
+  },
+  {
+    "schoolName": "Christchurch Primary School",
+    "urn": 6608605,
+    "uuid": "55d21cfa-105d-4c9c-972e-0ebec79d1e00",
+    "addressLine1": "7006 Agustin Plaza",
+    "city": "Hull",
+    "postcode": "ZU54 9ND"
+  },
+  {
+    "schoolName": "Caresmead Jhringes Primary School",
+    "urn": 2094343,
+    "uuid": "2e134518-8cea-4a9b-a62b-e31fbb790e74",
+    "addressLine1": "902 Willy Fords",
+    "city": "Nottingham",
+    "postcode": "KB7 3JI"
+  },
+  {
+    "schoolName": "North Tuition Centre",
+    "urn": 856085,
+    "uuid": "6e5778cb-3307-4eeb-888d-52b77ecdb76c",
+    "addressLine1": "712 Gennaro Isle",
+    "city": "Newbury",
+    "postcode": "IV5 6MU"
+  },
+  {
+    "schoolName": "Southmoorpe Academy",
+    "urn": 8883253,
+    "uuid": "56b38d89-22d1-4938-bfe0-139f840b589e",
+    "addressLine1": "50258 Yasmine Meadow",
+    "city": "Liverpool",
+    "postcode": "AY7 4EQ"
+  },
+  {
+    "schoolName": "St Peter and St Paul Church of England School",
+    "urn": 8107324,
+    "uuid": "9bbe0fd0-4328-4510-b588-fd0d94a5c70d",
+    "addressLine1": "56810 Bechtelar Key",
+    "city": "Rotherham",
+    "postcode": "FN16 8JX"
+  },
+  {
+    "schoolName": "New School",
+    "urn": 3549901,
+    "uuid": "b25775cf-ab54-47dc-ba6d-5b7f9d024a14"
+  },
+  {
+    "schoolName": "Pempington Primary School",
+    "urn": 7911422,
+    "uuid": "bd4c253c-741a-4ef2-a17b-ea14b5bb0d7e",
+    "addressLine1": "740 Cummings Rest",
+    "city": "Rochford",
+    "postcode": "OK92 4SF"
+  },
+  {
+    "schoolName": "Langley Primary School",
+    "urn": 4587132,
+    "uuid": "2b78b893-4893-4088-b9fe-261e065822e1"
+  },
+  {
+    "schoolName": "Manor School",
+    "urn": 9250639,
+    "uuid": "3f513bc1-7c75-4d11-baaf-c61e46862f3c",
+    "addressLine1": "7452 Arnold Harbor",
+    "city": "Salford",
+    "postcode": "BP6 9XC"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Middle School",
+    "urn": 6863187,
+    "uuid": "8497e2a7-1a51-4eb7-b4c5-19bca4805c87",
+    "addressLine1": "2950 May Burgs",
+    "city": "Leicester",
+    "postcode": "SO5 7SX"
+  },
+  {
+    "schoolName": "Stratford Sixth Form College",
+    "urn": 6651706,
+    "uuid": "227e6535-7fb1-435f-882a-4ced6bca50a3",
+    "addressLine1": "81329 Wiegand Underpass",
+    "city": "Manchester",
+    "postcode": "RL55 1MS"
+  },
+  {
+    "schoolName": "New Secondary School",
+    "urn": 8932290,
+    "uuid": "60a386dc-d99e-41e0-b72e-ee19c8322c40",
+    "addressLine1": "09143 Kulas Underpass",
+    "city": "Witney",
+    "postcode": "WY8 2ZA"
+  },
+  {
+    "schoolName": "All Saints Catholic Primary School",
+    "urn": 9223805,
+    "uuid": "abe5ed93-56c3-4884-9a63-2e9041191efc"
+  },
+  {
+    "schoolName": "Easthorth Primary School",
+    "urn": 2625641,
+    "uuid": "ccce6a66-cad5-4b94-96c0-02312083968b",
+    "addressLine1": "260 Cummerata Trail",
+    "city": "Doncaster",
+    "postcode": "UF24 2FP"
+  },
+  {
+    "schoolName": "St Thomas’s Infant School",
+    "urn": 9279073,
+    "uuid": "f1f13e10-04ff-45a5-8525-154125e50067",
+    "addressLine1": "359 Berge Field",
+    "city": "Grimsby",
+    "postcode": "QY1 6EI"
+  },
+  {
+    "schoolName": "Abbey Infant School",
+    "urn": 6433634,
+    "uuid": "655c1a1c-5095-4577-87be-142e550dc5bb",
+    "addressLine1": "7658 Lemke Streets",
+    "city": "Denbigh",
+    "postcode": "FR46 7IJ"
+  },
+  {
+    "schoolName": "New Secondary School",
+    "urn": 9008249,
+    "uuid": "0f4197cd-333f-4f3f-8e4c-8388d9c23e3a",
+    "addressLine1": "114 Halvorson Loaf",
+    "city": "Dereham",
+    "postcode": "IG5 0JB"
+  },
+  {
+    "schoolName": "Church Hill College",
+    "urn": 5397477,
+    "uuid": "047af1e2-4a71-4567-8810-00785f251315",
+    "addressLine1": "9329 Fritz Mountain",
+    "city": "Dudley",
+    "postcode": "IL9 7PH"
+  },
+  {
+    "schoolName": "Abbey Woods College",
+    "urn": 3611617,
+    "uuid": "ba47bd04-7237-4398-9b4f-74010e3d5fd6",
+    "addressLine1": "448 Lehner Hill",
+    "city": "Hayes",
+    "postcode": "XS7 6HD"
+  },
+  {
+    "schoolName": "St Peter’s Catholic Infant School",
+    "urn": 3819023,
+    "uuid": "758945cb-8074-4d65-883d-8b240be8b81d",
+    "addressLine1": "9412 Cole Causeway",
+    "city": "Loughton",
+    "postcode": "LH6 5IM"
+  },
+  {
+    "schoolName": "Abbey Tuition Centre",
+    "urn": 5410282,
+    "uuid": "8a2faa62-611b-4f86-a056-79d58789fd47",
+    "addressLine1": "2977 Anissa Wells",
+    "city": "Chichester",
+    "postcode": "VS3 2GR"
+  },
+  {
+    "schoolName": "Abbey Woods School",
+    "urn": 5970620,
+    "uuid": "6dcddfcd-8d54-4cce-870e-5c96dd0547b0",
+    "addressLine1": "13270 Simeon Trail",
+    "city": "Stoke-on-Trent",
+    "postcode": "ES24 6UU"
+  },
+  {
+    "schoolName": "Abbey Woods University",
+    "urn": 4218932,
+    "uuid": "51458b6a-550c-4f6c-a56a-446276cbf1cc",
+    "addressLine1": "3578 Hilpert Vista",
+    "city": "Malvern",
+    "postcode": "DA0 7HK"
+  },
+  {
+    "schoolName": "Abbey College",
+    "urn": 9576057,
+    "uuid": "f4438091-75b2-43dd-89fe-dd18df7e7c45",
+    "addressLine1": "74577 Lessie Crossing",
+    "city": "Birmingham",
+    "postcode": "UM46 9NI"
+  },
+  {
+    "schoolName": "North Primary School",
+    "urn": 1240709,
+    "uuid": "fc93b391-9e70-4023-a206-bbd7d51578cf",
+    "addressLine1": "8113 Suzanne Locks",
+    "city": "Romania",
+    "postcode": "AX3 7OU"
+  },
+  {
+    "schoolName": "St Vincent’s Catholic Primary School",
+    "urn": 4390174,
+    "uuid": "1e2a767c-8fa7-4bba-a4d0-ba125fcc4622",
+    "addressLine1": "207 Bertrand Lights",
+    "city": "Scarborough",
+    "postcode": "WV8 2BE"
+  },
+  {
+    "schoolName": "Abbey Secondary School",
+    "urn": 4378531,
+    "uuid": "ccb8b0fe-867d-4a60-8e6b-aea1af72baae",
+    "addressLine1": "540 Klein Lane",
+    "city": "Bristol",
+    "postcode": "KQ7 8ZO"
+  },
+  {
+    "schoolName": "Stratford Primary Academy",
+    "urn": 7348186,
+    "uuid": "03edf837-d326-4bf7-b0f8-2d324bdf1f0b",
+    "addressLine1": "4088 Dicki Common",
+    "city": "Wincanton",
+    "postcode": "OY63 6GD"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Primary School",
+    "urn": 1239596,
+    "uuid": "fb8872ba-6752-4547-9aa3-ef50f9743a2f",
+    "addressLine1": "8449 Moen Ports",
+    "city": "Chelmsford",
+    "postcode": "XF1 5SG"
+  },
+  {
+    "schoolName": "Shurrett Primary School",
+    "urn": 8478720,
+    "uuid": "d7402cd1-fa7f-43d4-872a-7277d88cf8ad",
+    "addressLine1": "544 Adaline Roads",
+    "city": "Ilkeston",
+    "postcode": "CR08 3WY"
+  },
+  {
+    "schoolName": "Corrhiald High School",
+    "urn": 9051845,
+    "uuid": "fbab9307-1a39-4cc8-b11f-aa5aeb735bda",
+    "addressLine1": "3212 Queen Ridges",
+    "city": "Fulbourn",
+    "postcode": "CF4 3ZX"
+  },
+  {
+    "schoolName": "Abbey Tuition Centre",
+    "urn": 3005634,
+    "uuid": "badef2f9-d30f-4f3d-921f-18cf6824bfe8",
+    "addressLine1": "0729 Wisoky Vista",
+    "city": "Berkhamsted",
+    "postcode": "UI1 8FX"
+  },
+  {
+    "schoolName": "Abbey Woods College",
+    "urn": 6385544,
+    "uuid": "bc46f2b1-c2ac-4dc6-9e62-1e77dd54ce46",
+    "addressLine1": "85963 Amari Union",
+    "city": "Lancaster",
+    "postcode": "PP48 8FN"
+  },
+  {
+    "schoolName": "Christchurch School",
+    "urn": 7565577,
+    "uuid": "86cbb12a-b748-4e34-a67b-8aad50b02ed8",
+    "addressLine1": "72869 Cassin Trail",
+    "city": "Belper",
+    "postcode": "SF4 4ZS"
+  },
+  {
+    "schoolName": "St Thomas’s CofE Infant School",
+    "urn": 4639431,
+    "uuid": "09722279-34ad-4470-a769-40ab97f3eb31",
+    "addressLine1": "00581 Cassin Vista",
+    "city": "Wallington",
+    "postcode": "PE6 7YG"
+  },
+  {
+    "schoolName": "Langley Primary School",
+    "urn": 1367454,
+    "uuid": "123be4bf-2550-4976-9b62-21d7c2be1c7f",
+    "addressLine1": "97271 Jerde Corners",
+    "city": "Widnes",
+    "postcode": "KS92 0FG"
+  },
+  {
+    "schoolName": "All Saints Catholic Middle School",
+    "urn": 9595154,
+    "uuid": "0e814f86-6103-44bf-afb8-de9ccac2c68d",
+    "addressLine1": "6100 Burnice Cliffs",
+    "city": "London",
+    "postcode": "NW9 7IJ"
+  },
+  {
+    "schoolName": "Church Hill Sixth Form College",
+    "urn": 8949063,
+    "uuid": "f28596c6-9b6c-4de4-bc89-245a197e4a66"
+  },
+  {
+    "schoolName": "Stratford College",
+    "urn": 6684207,
+    "uuid": "11cdb608-9057-4e5f-8c41-c62a35e1cc93",
+    "addressLine1": "738 Farrell Ford",
+    "city": "Sully",
+    "postcode": "CE44 5BR"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England School",
+    "urn": 4214523,
+    "uuid": "5df4a954-2f12-4f60-85a9-67566419511d",
+    "addressLine1": "039 Jett Views",
+    "city": "Royston",
+    "postcode": "AZ17 6CV"
+  },
+  {
+    "schoolName": "Manor Primary School",
+    "urn": 4268854,
+    "uuid": "40603aba-7dec-449d-95e1-170a9c4f50f1"
+  },
+  {
+    "schoolName": "North Sixth Form College",
+    "urn": 3668398,
+    "uuid": "64b8b978-9531-4317-b517-cb5f4246cdca",
+    "addressLine1": "30198 Tyrese Street",
+    "city": "Newton Abbot",
+    "postcode": "UP70 1DN"
+  },
+  {
+    "schoolName": "Waldoy Green Primary School",
+    "urn": 8467314,
+    "uuid": "12f3568d-dfac-47ed-a634-8e2d650b93cb"
+  },
+  {
+    "schoolName": "St Andrew’s Church of England Middle School",
+    "urn": 1084961,
+    "uuid": "65eae1ae-6450-426c-9261-18945a4babf3",
+    "addressLine1": "2110 Helen Crescent",
+    "city": "Liversedge",
+    "postcode": "VL99 4TI"
+  },
+  {
+    "schoolName": "St Thomas’s CofE Primary School",
+    "urn": 4748649,
+    "uuid": "e424f3ad-280a-4511-9029-836e477676de",
+    "addressLine1": "26484 Carlee Harbor",
+    "city": "Kettering",
+    "postcode": "ZB13 9VG"
+  },
+  {
+    "schoolName": "St Peter and St Paul Infant School",
+    "urn": 819910,
+    "uuid": "152e1d0e-530a-4039-bc55-40e152a8890d",
+    "addressLine1": "52304 Jazlyn Keys",
+    "city": "Hertford",
+    "postcode": "EG8 2FD"
+  },
+  {
+    "schoolName": "Marston Waton Secondary School",
+    "urn": 2422620,
+    "uuid": "25528df8-c1c4-46a0-ad4f-2843d24e2334",
+    "addressLine1": "197 Jayden Plaza",
+    "city": "Plymouth",
+    "postcode": "IK95 5WC"
+  },
+  {
+    "schoolName": "North East Secondary School",
+    "urn": 3176754,
+    "uuid": "79285f2d-3da9-4f14-9565-25130139d9ab",
+    "addressLine1": "8478 Abraham Mission",
+    "city": "Sir Ddinbych",
+    "postcode": "OW97 2FG"
+  },
+  {
+    "schoolName": "Langley School",
+    "urn": 2404240,
+    "uuid": "602d3b1d-eb3a-4386-9369-3dd90d5d7dbb"
+  },
+  {
+    "schoolName": "All Saints CofE Middle School",
+    "urn": 4381695,
+    "uuid": "dcbbe0b8-0dcc-4296-99b3-0c3166752d0b",
+    "addressLine1": "6464 Annette Inlet",
+    "city": "Nr Grimsby",
+    "postcode": "XN5 2OE"
+  },
+  {
+    "schoolName": "New College",
+    "urn": 2932379,
+    "uuid": "4b0b3742-7f94-4fd7-8b8b-d0dbc8bdd634",
+    "addressLine1": "652 Eliezer Garden",
+    "city": "Hereford",
+    "postcode": "KG76 5XB"
+  },
+  {
+    "schoolName": "New College",
+    "urn": 7781423,
+    "uuid": "a858a903-762c-43c7-b39a-7e0bc4a32e13",
+    "addressLine1": "906 Roob Lodge",
+    "city": "London",
+    "postcode": "W7 3VO"
+  },
+  {
+    "schoolName": "Mayhampton Carlton High School",
+    "urn": 7128958,
+    "uuid": "1f2b328b-3fd4-47a5-8029-a1f4fc57c3f4",
+    "addressLine1": "3965 Kuhlman Overpass",
+    "city": "Chester",
+    "postcode": "BO75 4WA"
+  },
+  {
+    "schoolName": "Cherry Infant School",
+    "urn": 9557934,
+    "uuid": "bcb7939a-0967-4a5b-abe9-7212715159e1",
+    "addressLine1": "00138 Lowe Villages",
+    "city": "London",
+    "postcode": "SW20 3OJ"
+  },
+  {
+    "schoolName": "Abbey Woods University",
+    "urn": 6467808,
+    "uuid": "bb6959ed-fb04-4b93-90e6-06724e446837",
+    "addressLine1": "18576 Carmela Point",
+    "city": "Redditch",
+    "postcode": "ZQ05 2VM"
+  },
+  {
+    "schoolName": "Pouth Hill Primary School",
+    "urn": 2995731,
+    "uuid": "ce682e03-cb26-430e-a66e-cfa2dd745578",
+    "addressLine1": "47332 Efrain Forges",
+    "city": "Kingston upon Thames",
+    "postcode": "AB43 7JR"
+  },
+  {
+    "schoolName": "St Paul’s School",
+    "urn": 8810195,
+    "uuid": "7ae98a22-6389-4d1e-9f94-be969d1a70d1",
+    "addressLine1": "95616 Ophelia Forks",
+    "city": "Camborne",
+    "postcode": "AX32 7ZD"
+  },
+  {
+    "schoolName": "New High School",
+    "urn": 9253822,
+    "uuid": "70777755-b4d8-48a5-b931-0231fc047a0a",
+    "addressLine1": "0543 Augustus Rapid",
+    "city": "Southampton",
+    "postcode": "EO8 7XX"
+  },
+  {
+    "schoolName": "St Vincent’s Catholic School",
+    "urn": 2942571,
+    "uuid": "3f41772d-6b86-4cec-96c9-aa8d75703003",
+    "addressLine1": "18403 Romaguera Ranch",
+    "city": "Bracknell",
+    "postcode": "VN36 4FB"
+  },
+  {
+    "schoolName": "Celton Croak School",
+    "urn": 990392,
+    "uuid": "f100b3de-81ef-4792-97f6-36a86a30ab17",
+    "addressLine1": "555 Cleveland Square",
+    "city": "Grays",
+    "postcode": "JU7 2VM"
+  },
+  {
+    "schoolName": "Stratford Secondary School",
+    "urn": 4134585,
+    "uuid": "16dbe476-e927-49f1-9abb-c2a7a69d2cb9",
+    "addressLine1": "18156 Ethelyn Creek",
+    "city": "Middlesbrough",
+    "postcode": "QO14 9SP"
+  },
+  {
+    "schoolName": "All Saints Church of England School",
+    "urn": 4245790,
+    "uuid": "51e65eb6-f878-4b80-8e64-23890ff33224",
+    "addressLine1": "85676 Cassin Unions",
+    "city": "Truro",
+    "postcode": "TS79 2ZK"
+  },
+  {
+    "schoolName": "Strottersuir College",
+    "urn": 8282013,
+    "uuid": "4aa27de4-d341-40d0-8f87-9cf4cc0a8187",
+    "addressLine1": "99758 Waters Mill",
+    "city": "Boston",
+    "postcode": "MR5 7GA"
+  },
+  {
+    "schoolName": "North East University",
+    "urn": 493091,
+    "uuid": "ec483486-29bc-4345-a5bd-9c4e71a52ce4",
+    "addressLine1": "85450 Dibbert Stravenue",
+    "city": "Wigston",
+    "postcode": "GR55 7HC"
+  },
+  {
+    "schoolName": "Stool Heath Secondary School",
+    "urn": 7895344,
+    "uuid": "674aea60-3ff0-4eae-965c-ca4822948348",
+    "addressLine1": "96970 Jayde Run",
+    "city": "Aylesbury",
+    "postcode": "ZI26 1KE"
+  },
+  {
+    "schoolName": "Pings of Baver University",
+    "urn": 5161933,
+    "uuid": "663f6d7d-6a0a-4f8d-ae9c-11f85808a1f8",
+    "addressLine1": "82060 Herzog Manor",
+    "city": "Ashton-under-Lyne",
+    "postcode": "LS70 0DA"
+  },
+  {
+    "schoolName": "North Academy",
+    "urn": 3791773,
+    "uuid": "bcc4a74b-25db-478d-9647-83d52315c4e2",
+    "addressLine1": "4251 Alexanne Burgs",
+    "city": "Ashington",
+    "postcode": "EC9 1GF"
+  },
+  {
+    "schoolName": "Langley Junior School",
+    "urn": 1244316,
+    "uuid": "44a869b6-a45e-4948-92ff-d8705db17e44",
+    "addressLine1": "05144 Larkin Locks",
+    "city": "Billericay",
+    "postcode": "XC91 3OD"
+  },
+  {
+    "schoolName": "North Chellington Secondary School",
+    "urn": 5604721,
+    "uuid": "68e6bb22-509a-4fd5-9fab-82e1f0593154",
+    "addressLine1": "8450 Zboncak Trace",
+    "city": "Crewe",
+    "postcode": "AD6 2OW"
+  },
+  {
+    "schoolName": "New Sixth Form College",
+    "urn": 5166775,
+    "uuid": "4223e890-ae52-4976-ac7d-d4de7d440bad"
+  },
+  {
+    "schoolName": "Langley Sixth Form College",
+    "urn": 5605906,
+    "uuid": "322989b8-f698-4404-93b1-b22589dd792e",
+    "addressLine1": "74600 Reynolds Orchard",
+    "city": "Winsford",
+    "postcode": "UT04 5QF"
+  },
+  {
+    "schoolName": "Christchurch Secondary School",
+    "urn": 5833406,
+    "uuid": "b3a04ef3-b2be-4d61-b15c-c162458edb53",
+    "addressLine1": "0235 Crist Estate",
+    "city": "Loughton",
+    "postcode": "NG1 4RK"
+  },
+  {
+    "schoolName": "Christchurch Tuition Centre",
+    "urn": 7916391,
+    "uuid": "96889664-556c-4d89-a0e9-6e540492c8f2",
+    "addressLine1": "9458 Graham Row",
+    "city": "Bicester",
+    "postcode": "RO1 0SR"
+  },
+  {
+    "schoolName": "Groeson Academy",
+    "urn": 2909063,
+    "uuid": "8f08890d-7cd5-4642-8324-5b17ed032ac3",
+    "addressLine1": "36037 Perry Mills",
+    "city": "Wilmslow",
+    "postcode": "VD54 6OC"
+  },
+  {
+    "schoolName": "Langley School",
+    "urn": 8123747,
+    "uuid": "545c0bbe-8c75-4638-bcde-d322335a1f03",
+    "addressLine1": "37559 Wilhelmine Cliffs",
+    "city": "China",
+    "postcode": "LT14 5AA"
+  },
+  {
+    "schoolName": "Stratford Primary School",
+    "urn": 8633455,
+    "uuid": "35bcd032-2a2d-4098-a803-79322f25120b"
+  },
+  {
+    "schoolName": "Manor Primary School",
+    "urn": 5927725,
+    "uuid": "a60eeb22-2214-475c-9f22-213b0e5f2525",
+    "addressLine1": "31870 Assunta Well",
+    "city": "Pewsey",
+    "postcode": "ED4 9BW"
+  },
+  {
+    "schoolName": "Langley Sixth Form College",
+    "urn": 3170646,
+    "uuid": "af586703-bd64-4a87-8faf-b71ec02f282a",
+    "addressLine1": "497 Emmanuel Coves",
+    "city": "Spilsby",
+    "postcode": "ML61 8RD"
+  },
+  {
+    "schoolName": "North College",
+    "urn": 791359,
+    "uuid": "11e7a308-13ee-4ee4-82ec-966c2bc11d94",
+    "addressLine1": "1093 Considine Parks",
+    "city": "Warrington",
+    "postcode": "MZ2 8LA"
+  },
+  {
+    "schoolName": "Abbey Tuition Centre",
+    "urn": 2544794,
+    "uuid": "a54798e6-5b60-4121-a930-d58e3872cb7f",
+    "addressLine1": "2683 Champlin Oval",
+    "city": "Kettering",
+    "postcode": "RH26 1HL"
+  },
+  {
+    "schoolName": "St Thomas’s CofE Middle School",
+    "urn": 1498485,
+    "uuid": "43990678-1df4-4cb9-a5ef-9dba6d12c7f6",
+    "addressLine1": "34114 Crooks Canyon",
+    "city": "Hatfield",
+    "postcode": "CH8 9BN"
+  },
+  {
+    "schoolName": "St Andrew’s Church of England Primary School",
+    "urn": 4737164,
+    "uuid": "f313df4c-d9bd-4839-9f22-37ed973e1947",
+    "addressLine1": "348 Clyde Stravenue",
+    "city": "Newcastle-upon-Tyne",
+    "postcode": "SV5 6BX"
+  },
+  {
+    "schoolName": "Banglas Secondary School",
+    "urn": 687101,
+    "uuid": "b6abff97-be2d-48b7-9d56-865ec7474ad7",
+    "addressLine1": "39782 Jake Trafficway",
+    "city": "Aberdare",
+    "postcode": "KB9 8LF"
+  },
+  {
+    "schoolName": "Waraton University",
+    "urn": 9954997,
+    "uuid": "27ca2d8f-afa8-4347-b79e-d3e7693f0404",
+    "addressLine1": "1856 Crona Plaza",
+    "city": "Boston",
+    "postcode": "VL8 7KX"
+  },
+  {
+    "schoolName": "St Clement’s CofE Primary School",
+    "urn": 493459,
+    "uuid": "41a5e27a-d566-4370-b52a-a201efe0c753"
+  },
+  {
+    "schoolName": "Langley Tuition Centre",
+    "urn": 1079197,
+    "uuid": "445bb8d5-aa6a-426b-b02a-2f3c5a1b2f1b",
+    "addressLine1": "623 Kira Fords",
+    "city": "Caterham",
+    "postcode": "BL4 5BE"
+  },
+  {
+    "schoolName": "Parton End Primary School",
+    "urn": 2829617,
+    "uuid": "88d5c64e-02e1-4b53-9d46-24cc830ca931",
+    "addressLine1": "256 Jennifer Plaza",
+    "city": "Batley",
+    "postcode": "WD29 8WN"
+  },
+  {
+    "schoolName": "St Paul’s CofE School",
+    "urn": 6906050,
+    "uuid": "c1cc1ee0-d0a5-4514-955b-2ed5554f53ea",
+    "addressLine1": "0015 Felicia Union",
+    "city": "Brigg",
+    "postcode": "EZ57 9TB"
+  },
+  {
+    "schoolName": "Eastfield College",
+    "urn": 8899500,
+    "uuid": "ac16dfdb-9798-4bab-8447-fd5c9f4759a6",
+    "addressLine1": "5468 Upton Hills",
+    "city": "London",
+    "postcode": "NE12 9UV"
+  },
+  {
+    "schoolName": "Shurrett Sixth Form College",
+    "urn": 6376755,
+    "uuid": "8d2757e0-bb56-47dc-aa8a-a4d9f598dfe7",
+    "addressLine1": "445 Teagan Camp",
+    "city": "Coventry",
+    "postcode": "JZ80 3HJ"
+  },
+  {
+    "schoolName": "Stratford Secondary School",
+    "urn": 7210879,
+    "uuid": "9f41ea8b-d8d8-4d59-a24a-1bbf62acd7c0",
+    "addressLine1": "9081 Kshlerin Stream",
+    "city": "Plymouth",
+    "postcode": "RX66 6DR"
+  },
+  {
+    "schoolName": "St Vincent’s Church of England Middle School",
+    "urn": 9081182,
+    "uuid": "f35b48c8-7eec-47f1-9436-3650e78a12af",
+    "addressLine1": "6718 Delphine Prairie",
+    "city": "Ware",
+    "postcode": "PT1 3UT"
+  },
+  {
+    "schoolName": "St Vincent’s Church of England School",
+    "urn": 8318241,
+    "uuid": "d7632e74-1105-4a9f-a77b-eb5b491eecd7",
+    "addressLine1": "646 Stanton Pike",
+    "city": "Leeds",
+    "postcode": "PL52 4VV"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Middle School",
+    "urn": 583670,
+    "uuid": "bcf6f119-ce72-4777-956a-3e5d91a89144",
+    "addressLine1": "11771 Grant Street",
+    "city": "Neath",
+    "postcode": "RD0 8TU"
+  },
+  {
+    "schoolName": "Stratford Secondary School",
+    "urn": 7928321,
+    "uuid": "33c65fb9-5e58-4ed4-bbb6-d60c1e351628",
+    "addressLine1": "74902 Romaguera Village",
+    "city": "London",
+    "postcode": "E17 5KA"
+  },
+  {
+    "schoolName": "Church Hill College",
+    "urn": 9525877,
+    "uuid": "81ca9b72-285d-4479-bd68-cba7db9886aa",
+    "addressLine1": "77579 Swaniawski Union",
+    "city": "Wimborne",
+    "postcode": "NA4 0CO"
+  },
+  {
+    "schoolName": "Church Hill Sixth Form College",
+    "urn": 4859485,
+    "uuid": "4b13e788-64f1-4492-8ffd-4a6ce41152a5",
+    "addressLine1": "5861 Unique Stravenue",
+    "city": "Diss",
+    "postcode": "LA28 3DF"
+  },
+  {
+    "schoolName": "Stratford Secondary School",
+    "urn": 4571833,
+    "uuid": "091eda23-250d-41d3-90ac-e49e7608a5eb",
+    "addressLine1": "735 Lindgren Pine",
+    "city": "Chester",
+    "postcode": "SD03 3GU"
+  },
+  {
+    "schoolName": "Church Hill Academy",
+    "urn": 8353521,
+    "uuid": "07bcddfd-4765-4a43-80cb-b8f0c40fe557",
+    "addressLine1": "40513 Emmitt Street",
+    "city": "Southend-on-Sea",
+    "postcode": "MI08 0XM"
+  },
+  {
+    "schoolName": "St Paul’s CofE Middle School",
+    "urn": 5137157,
+    "uuid": "62db1af5-9e3a-4759-9955-f3c8ed3cbe98",
+    "addressLine1": "37408 Hahn Meadow",
+    "city": "Truro",
+    "postcode": "OC9 5JH"
+  },
+  {
+    "schoolName": "St Paul’s Church of England Infant School",
+    "urn": 8451467,
+    "uuid": "e63be7ec-4271-4f75-8874-25808319cff7",
+    "addressLine1": "08878 Madelyn Vista",
+    "city": "Blackwood",
+    "postcode": "HR02 6YU"
+  },
+  {
+    "schoolName": "Church Hill Academy",
+    "urn": 6632611,
+    "uuid": "e7371fe8-8058-4078-804c-b4ebcba6c9e7",
+    "addressLine1": "71251 Odell Parkways",
+    "city": "Jersey",
+    "postcode": "KP41 3QK"
+  },
+  {
+    "schoolName": "North College",
+    "urn": 5730408,
+    "uuid": "03db51d8-c889-479c-bd5d-f3b939e56c41",
+    "addressLine1": "454 Fadel Springs",
+    "city": "Bradford",
+    "postcode": "BA51 4XB"
+  },
+  {
+    "schoolName": "Christchurch School",
+    "urn": 9742192,
+    "uuid": "bdc77db7-f99d-4665-ace7-a5f401f52b97",
+    "addressLine1": "01744 Jacobs River",
+    "city": "West Malling",
+    "postcode": "VC5 6GV"
+  },
+  {
+    "schoolName": "Manor Secondary School",
+    "urn": 9661274,
+    "uuid": "d45dcdb8-2664-4520-8ca8-ff9b89f63066"
+  },
+  {
+    "schoolName": "New College",
+    "urn": 8136639,
+    "uuid": "d0de909e-c88d-46cb-b823-1b698b62a520",
+    "addressLine1": "106 Alden Road",
+    "city": "Hope Valley",
+    "postcode": "NN52 4RF"
+  },
+  {
+    "schoolName": "St Peter and St Paul Church of England Middle School",
+    "urn": 7907748,
+    "uuid": "59080359-516b-45b4-bd5e-ab1bec07c987",
+    "addressLine1": "40584 Kory Squares",
+    "city": "Stevenage",
+    "postcode": "ZW56 2NE"
+  },
+  {
+    "schoolName": "New College",
+    "urn": 7673729,
+    "uuid": "19675528-1bff-42b5-9011-02ee425801ca",
+    "addressLine1": "958 Dickens Passage",
+    "city": "York",
+    "postcode": "HP8 6SU"
+  },
+  {
+    "schoolName": "Manor University",
+    "urn": 4570979,
+    "uuid": "286b3ae6-8173-40f3-ae22-9c1daecd3578",
+    "addressLine1": "9721 Herman Parks",
+    "city": "Halesowen",
+    "postcode": "CL8 4MW"
+  },
+  {
+    "schoolName": "Phricks End Primary School",
+    "urn": 3809575,
+    "uuid": "2b658e48-7a58-48b4-8bc1-1e5efe9008b7"
+  },
+  {
+    "schoolName": "East Noog Primary School",
+    "urn": 3871367,
+    "uuid": "19d8e14c-2d7d-4e35-8318-cfe2dfe05d98",
+    "addressLine1": "878 Travon Radial",
+    "city": "Leicester",
+    "postcode": "RZ77 6FK"
+  },
+  {
+    "schoolName": "St Peter’s Church of England Primary School",
+    "urn": 9910241,
+    "uuid": "c8b7d540-d848-45fa-9f4e-a11b6916675c",
+    "addressLine1": "052 Boyer Mountain",
+    "city": "Birmingham",
+    "postcode": "DR4 6RD"
+  },
+  {
+    "schoolName": "Manor College",
+    "urn": 2755499,
+    "uuid": "b6a6c9ef-918d-41e9-9919-277c60e16905",
+    "addressLine1": "35746 Marvin Bypass",
+    "city": "Dagenham",
+    "postcode": "WG65 2CT"
+  },
+  {
+    "schoolName": "Abbey Woods High School",
+    "urn": 227358,
+    "uuid": "4e6e3748-4fce-4bbd-aa91-9f5ded592d40",
+    "addressLine1": "9011 Alvis Glens",
+    "city": "Bournemouth",
+    "postcode": "BZ71 0RA"
+  },
+  {
+    "schoolName": "Staptingston Primary School",
+    "urn": 1851183,
+    "uuid": "f733b3f6-fa5a-432e-a797-dcf52067b871",
+    "addressLine1": "4464 McKenzie Lakes",
+    "city": "Loughton",
+    "postcode": "PW50 9IU"
+  },
+  {
+    "schoolName": "Monne Hill University",
+    "urn": 2414129,
+    "uuid": "d055cbd7-ef85-4769-9354-55b2a9243134",
+    "addressLine1": "211 Delaney Flats",
+    "city": "Halstead",
+    "postcode": "CJ1 9KF"
+  },
+  {
+    "schoolName": "St Clement’s Church of England Primary School",
+    "urn": 3483102,
+    "uuid": "f081ec32-2ed9-42f8-b7e5-14d27e4504cd",
+    "addressLine1": "426 Edd Path",
+    "city": "Walsall",
+    "postcode": "BN9 5BQ"
+  },
+  {
+    "schoolName": "All Saints School",
+    "urn": 6761017,
+    "uuid": "2ef8f97a-2cde-4905-9909-7d80304e99dd",
+    "addressLine1": "215 Von Estate",
+    "city": "Beaminster",
+    "postcode": "CM59 8MQ"
+  },
+  {
+    "schoolName": "Rakley College",
+    "urn": 7316210,
+    "uuid": "515dc1bb-8f0f-4b51-8730-3c7e1772f855",
+    "addressLine1": "41181 Simone Squares",
+    "city": "Amersham",
+    "postcode": "TC06 9NU"
+  },
+  {
+    "schoolName": "Shollidge Green Primary Academy",
+    "urn": 2369447,
+    "uuid": "3d6ff75a-edbe-4ef1-aad2-24865a15fb25",
+    "addressLine1": "9882 Max Glen",
+    "city": "London",
+    "postcode": "W11 6SR"
+  },
+  {
+    "schoolName": "Langley Infant School",
+    "urn": 2589654,
+    "uuid": "f8cc8ea6-7e2d-4b88-9cb2-0155ee0ffe42",
+    "addressLine1": "04036 Marks Parkway",
+    "city": "Hartlepool",
+    "postcode": "RR2 7YB"
+  },
+  {
+    "schoolName": "St Clement’s Church of England Primary School",
+    "urn": 2660050,
+    "uuid": "3e172554-2627-4b37-8812-b25309e9d337",
+    "addressLine1": "02644 Schmeler Neck",
+    "city": "Mansfield",
+    "postcode": "SV91 3OW"
+  },
+  {
+    "schoolName": "New Primary School",
+    "urn": 8274488,
+    "uuid": "e1d94e55-389a-4f69-a938-ecf0df5da0cc",
+    "addressLine1": "156 Anahi Gateway",
+    "city": "Carmarthenshire",
+    "postcode": "DH6 0HI"
+  },
+  {
+    "schoolName": "SÃurst Netton Primary School",
+    "urn": 2994400,
+    "uuid": "771d64ca-438e-4f53-b0cf-d9dee5bf4dc0",
+    "addressLine1": "650 Koepp Street",
+    "city": "Bristol",
+    "postcode": "QX25 1DH"
+  },
+  {
+    "schoolName": "St Thomas’s CofE Primary School",
+    "urn": 158141,
+    "uuid": "bb5910b6-04c3-4145-a380-d279dbe6ada2",
+    "addressLine1": "6130 Oberbrunner Creek",
+    "city": "Oldham",
+    "postcode": "QQ4 3EA"
+  },
+  {
+    "schoolName": "North Academy",
+    "urn": 9999437,
+    "uuid": "98440c83-7558-4502-a553-a9ffaa36de3b",
+    "addressLine1": "3455 Daniel Inlet",
+    "city": "Coalville",
+    "postcode": "EJ6 2SD"
+  },
+  {
+    "schoolName": "St Peter and St Paul CofE Middle School",
+    "urn": 4721322,
+    "uuid": "31cdc598-6b5f-4cf0-91b1-0ea19ae1b823",
+    "addressLine1": "092 Rickie Lake",
+    "city": "Nottingham",
+    "postcode": "WM9 8MW"
+  },
+  {
+    "schoolName": "North East Academy",
+    "urn": 7534104,
+    "uuid": "06962d00-b43c-4325-a78d-b9b23d109d3b",
+    "addressLine1": "32338 Greenholt Rue",
+    "city": "Crewe",
+    "postcode": "KA1 9PS"
+  },
+  {
+    "schoolName": "East Thury School",
+    "urn": 3233031,
+    "uuid": "0d32000d-1726-4178-bd74-4761d9f57880",
+    "addressLine1": "13797 Oberbrunner Mountains",
+    "city": "Dagenham",
+    "postcode": "HH41 6JS"
+  },
+  {
+    "schoolName": "Waysminne Sixth Form College",
+    "urn": 5852268,
+    "uuid": "7e914328-16b2-4290-9a03-64ac0b24d203",
+    "addressLine1": "15353 Gislason River",
+    "city": "Watford",
+    "postcode": "JY57 3CA"
+  },
+  {
+    "schoolName": "Snagley Secondary School",
+    "urn": 2330234,
+    "uuid": "cd953664-befa-404c-b3ba-6db840d6194d",
+    "addressLine1": "903 Nolan Roads",
+    "city": "Rhondda, Cynon, Taff",
+    "postcode": "HG9 9ZM"
+  },
+  {
+    "schoolName": "St Vincent’s Church of England Primary School",
+    "urn": 3342751,
+    "uuid": "5106b97f-d482-4243-ade5-af33d4025249",
+    "addressLine1": "17099 Mohr Locks",
+    "city": "Stevenage",
+    "postcode": "SR46 5PU"
+  },
+  {
+    "schoolName": "St Clement’s Church of England Primary School",
+    "urn": 7667414,
+    "uuid": "077008e8-abe7-4a9c-b47b-ecc333d36432",
+    "addressLine1": "011 Toy Key",
+    "city": "Milton Keynes",
+    "postcode": "KL99 5BO"
+  },
+  {
+    "schoolName": "Abbey Woods College",
+    "urn": 5747010,
+    "uuid": "a616467a-8bce-48e0-9d3a-1de0b470bf25",
+    "addressLine1": "55321 Dorcas Field",
+    "city": "South Ockendon",
+    "postcode": "FO7 7WR"
+  },
+  {
+    "schoolName": "All Saints Catholic Primary School",
+    "urn": 4658714,
+    "uuid": "6b514bbf-0729-4fdb-bd6d-afc289e8d7aa",
+    "addressLine1": "75048 Talon Stravenue",
+    "city": "York",
+    "postcode": "FP6 4EX"
+  },
+  {
+    "schoolName": "Wampsige Primary School",
+    "urn": 932639,
+    "uuid": "d505f6f3-1555-4897-b909-6e96c18c00d1",
+    "addressLine1": "06189 Eda Ways",
+    "city": "Bradford",
+    "postcode": "OK4 7NL"
+  },
+  {
+    "schoolName": "Southfoor School",
+    "urn": 1672932,
+    "uuid": "b2216f6c-17f2-4add-bc00-514a0ceda517",
+    "addressLine1": "114 Gottlieb Mills",
+    "city": "Bexleyheath",
+    "postcode": "OG87 7DS"
+  },
+  {
+    "schoolName": "North East Junior School",
+    "urn": 1600281,
+    "uuid": "64ede901-1c3b-488d-b4da-fd19d2d9a63b",
+    "addressLine1": "458 Orville Stream",
+    "city": "Pembrokeshire",
+    "postcode": "JD18 1PQ"
+  },
+  {
+    "schoolName": "St Vincent’s School",
+    "urn": 5728819,
+    "uuid": "9e58f00a-5ab3-4c1a-a7a1-11b5e842a9c9",
+    "addressLine1": "78998 Daniela Walk",
+    "city": "Cramlington",
+    "postcode": "CR2 3FZ"
+  },
+  {
+    "schoolName": "North East Primary School",
+    "urn": 2548041,
+    "uuid": "5d1c8b09-15b6-45c6-9e50-7889e294096d",
+    "addressLine1": "2388 Rhett Grove",
+    "city": "Ashford",
+    "postcode": "HZ07 1NT"
+  },
+  {
+    "schoolName": "All Saints Church of England School",
+    "urn": 311110,
+    "uuid": "4aac569d-979c-4879-b8ff-28c47a56087e",
+    "addressLine1": "110 Braun Passage",
+    "city": "RCT",
+    "postcode": "HA82 1HY"
+  },
+  {
+    "schoolName": "New Infant School",
+    "urn": 3405175,
+    "uuid": "2b081d9a-6433-4e6e-b893-5b2dee5ec25c",
+    "addressLine1": "5341 Walter Roads",
+    "city": "Loughborough",
+    "postcode": "QL33 7EI"
+  },
+  {
+    "schoolName": "Abbey School",
+    "urn": 9135395,
+    "uuid": "cff11b36-6305-4b2a-8715-3e78b1e511b8",
+    "addressLine1": "857 Bins Tunnel",
+    "city": "Bodmin",
+    "postcode": "RL4 4DI"
+  },
+  {
+    "schoolName": "Cherry Primary Academy",
+    "urn": 9945195,
+    "uuid": "58101fc5-5c78-49b8-b795-eaef72bc9cb9",
+    "addressLine1": "4204 Kulas Unions",
+    "city": "York",
+    "postcode": "JV49 2HR"
+  },
+  {
+    "schoolName": "St Clement’s CofE Middle School",
+    "urn": 100324,
+    "uuid": "8bcb5b42-7426-42f0-83cd-a71a8afe1662",
+    "addressLine1": "4275 Tillman Island",
+    "city": "Stockport",
+    "postcode": "DN94 0HJ"
+  },
+  {
+    "schoolName": "Stauplesfield Secondary School",
+    "urn": 5929704,
+    "uuid": "c3abf132-bb43-49b3-8055-9abf3bcc80fe",
+    "addressLine1": "56972 Runolfsdottir Stravenue",
+    "city": "Preston",
+    "postcode": "OP8 9PB"
+  },
+  {
+    "schoolName": "Corry Abbarr High School",
+    "urn": 3371697,
+    "uuid": "091f423d-b763-4e0a-9778-b0bb60a449a4",
+    "addressLine1": "26502 Harber Spurs",
+    "city": "Coalville",
+    "postcode": "PK89 3OZ"
+  },
+  {
+    "schoolName": "Girbither School",
+    "urn": 5476038,
+    "uuid": "796070e5-e1e9-4107-a05e-760e92bcf157",
+    "addressLine1": "9903 Mante Overpass",
+    "city": "Abingdon",
+    "postcode": "IL4 4PA"
+  },
+  {
+    "schoolName": "Cherry Secondary School",
+    "urn": 4258560,
+    "uuid": "c50b3f71-a661-4529-9818-2f1af4d698bf",
+    "addressLine1": "8202 Shea Tunnel",
+    "city": "Plymouth",
+    "postcode": "HR69 7YQ"
+  },
+  {
+    "schoolName": "Sturton Moor College",
+    "urn": 7957263,
+    "uuid": "6ed7f82b-1292-4633-9da8-28116bd26e11",
+    "addressLine1": "81226 Heidenreich Harbor",
+    "city": "Reading",
+    "postcode": "LZ41 1CT"
+  },
+  {
+    "schoolName": "Abbey Academy",
+    "urn": 1789751,
+    "uuid": "0c7b3b1d-5bf0-48bf-b53e-74b1a53ed515",
+    "addressLine1": "294 Morissette Courts",
+    "city": "Southampton",
+    "postcode": "LX11 2SZ"
+  },
+  {
+    "schoolName": "Abbey College",
+    "urn": 9804628,
+    "uuid": "df945ee8-fd34-40c0-b6af-f15ad7ebfed2",
+    "addressLine1": "69537 Moore Ridge",
+    "city": "Crawley",
+    "postcode": "PD96 1DP"
+  },
+  {
+    "schoolName": "St Peter’s Church of England Infant School",
+    "urn": 272582,
+    "uuid": "a700eeb7-7be2-467a-8aff-4b4cd89ba594",
+    "addressLine1": "5185 Chasity Dale",
+    "city": "Chadwell Heath",
+    "postcode": "LN83 9IU"
+  },
+  {
+    "schoolName": "Stratford College",
+    "urn": 3771166,
+    "uuid": "02fb0b33-7c7a-4376-a9f5-25ec117d46b9",
+    "addressLine1": "34055 Kitty Stravenue",
+    "city": "Salisbury",
+    "postcode": "IJ4 1CA"
+  },
+  {
+    "schoolName": "St Peter and St Paul Catholic School",
+    "urn": 9721475,
+    "uuid": "ec067d10-ad34-487e-b69e-c8da1777f834",
+    "addressLine1": "9055 Mariana Garden",
+    "city": "Wigton",
+    "postcode": "XZ5 4GL"
+  },
+  {
+    "schoolName": "Stratford College",
+    "urn": 1835303,
+    "uuid": "b2910adb-1979-4e6f-bcf9-aa70e8e308bf",
+    "addressLine1": "48252 Myron Manor",
+    "city": "Maldon",
+    "postcode": "ML54 8KW"
+  },
+  {
+    "schoolName": "Abbey Woods Academy",
+    "urn": 8363861,
+    "uuid": "1ca06063-20f5-42b3-b384-b9cac9b8c48f",
+    "addressLine1": "53486 Otilia Mission",
+    "city": "London",
+    "postcode": "SE3 8EE"
+  },
+  {
+    "schoolName": "North School",
+    "urn": 641632,
+    "uuid": "6ce6d7aa-7a30-44de-9237-4f4ab7f23187",
+    "addressLine1": "36487 Huels Mountain",
+    "city": "Ilford",
+    "postcode": "CK55 8JU"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Infant School",
+    "urn": 4689599,
+    "uuid": "9bad88f0-2ca1-4fc8-a9a6-ae62dab0d887",
+    "addressLine1": "9611 Gloria Center",
+    "city": "Ipswich",
+    "postcode": "ZX53 2SP"
+  },
+  {
+    "schoolName": "Abbey Primary School",
+    "urn": 813940,
+    "uuid": "cd869223-dbce-4421-8e10-b36fa038730a",
+    "addressLine1": "07367 Gideon Inlet",
+    "city": "Banbury",
+    "postcode": "TK60 4HA"
+  },
+  {
+    "schoolName": "St Peter and St Paul Church of England Infant School",
+    "urn": 7669536,
+    "uuid": "7dc2c000-ac3a-40cf-9398-288e5f828947",
+    "addressLine1": "7780 Adams Fall",
+    "city": "Newark",
+    "postcode": "SP9 5PS"
+  },
+  {
+    "schoolName": "Langley Academy",
+    "urn": 2711799,
+    "uuid": "8107a02c-88af-4d2b-8bf1-7ae1c876f471",
+    "addressLine1": "0546 Chaya Turnpike",
+    "city": "Alfreton",
+    "postcode": "IE2 8QW"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Infant School",
+    "urn": 2298170,
+    "uuid": "14ce65a3-7d3f-45fa-9278-ea6a0242de9e",
+    "addressLine1": "5906 Donna Coves",
+    "city": "Pontefract",
+    "postcode": "SQ7 2QI"
+  },
+  {
+    "schoolName": "St Peter’s Church of England School",
+    "urn": 373682,
+    "uuid": "ee367345-52bd-4733-af9c-cb2d90ac25b9"
+  },
+  {
+    "schoolName": "North Sixth Form College",
+    "urn": 3413319,
+    "uuid": "19335fe5-94a4-4f62-a897-f6f003f6a480",
+    "addressLine1": "446 Swift Locks",
+    "city": "Grimsby",
+    "postcode": "BH20 9EP"
+  },
+  {
+    "schoolName": "Ham of Arthystone Primary Academy",
+    "urn": 2854983,
+    "uuid": "c866fe44-c028-45da-9d09-56f0d41fa3da"
+  },
+  {
+    "schoolName": "Shore Upchen-y-gasan-Sea Primary School",
+    "urn": 7456189,
+    "uuid": "e7782329-c76e-467a-b993-2dbd11efe5fc",
+    "addressLine1": "330 Chad Lodge",
+    "city": "Gravesend",
+    "postcode": "FM21 8UG"
+  },
+  {
+    "schoolName": "Abbey Woods Secondary School",
+    "urn": 1892942,
+    "uuid": "758c7bff-58ff-4234-8bc4-26222b3cc095",
+    "addressLine1": "5084 Buckridge Forks",
+    "city": "Sheffield",
+    "postcode": "KM1 1CM"
+  },
+  {
+    "schoolName": "St Vincent’s Catholic Infant School",
+    "urn": 1297444,
+    "uuid": "ffec0b7c-1303-4ebf-844e-de0701126137",
+    "addressLine1": "660 Koby Plaza",
+    "city": "London",
+    "postcode": "NW8 1SA"
+  },
+  {
+    "schoolName": "North School",
+    "urn": 3113192,
+    "uuid": "cd42cca2-f0f6-42d4-9423-be5c8747114b",
+    "addressLine1": "938 Dayna River",
+    "city": "Colchester",
+    "postcode": "MS09 9FH"
+  },
+  {
+    "schoolName": "Torpe Infant School",
+    "urn": 2896498,
+    "uuid": "642ab06f-9e77-4e0a-87ad-771ea5e88c8f",
+    "addressLine1": "1973 Lockman Heights",
+    "city": "London",
+    "postcode": "N8 2UU"
+  },
+  {
+    "schoolName": "St Peter’s Church of England School",
+    "urn": 2310047,
+    "uuid": "c7996d79-4464-4c0e-91d6-08f4e0f05209",
+    "addressLine1": "90652 Harvey Corners",
+    "city": "London",
+    "postcode": "NW13 7CP"
+  },
+  {
+    "schoolName": "All Saints CofE Primary School",
+    "urn": 9326710,
+    "uuid": "04351598-08c6-4635-b8bc-10a7024c5def",
+    "addressLine1": "85784 Ollie Turnpike",
+    "city": "Swindon",
+    "postcode": "GP6 1VU"
+  },
+  {
+    "schoolName": "New Academy",
+    "urn": 8654271,
+    "uuid": "61528eee-0982-4d4a-9550-51ba6ade607f",
+    "addressLine1": "4443 Braun Wells",
+    "city": "Derby",
+    "postcode": "ZW1 5WU"
+  },
+  {
+    "schoolName": "North Primary School",
+    "urn": 9079304,
+    "uuid": "ffad5dfd-d8d5-4684-89c3-d054ea35bf1d",
+    "addressLine1": "348 Ewell Locks",
+    "city": "Birmingham",
+    "postcode": "FO6 7YI"
+  },
+  {
+    "schoolName": "St Paul’s Catholic School",
+    "urn": 9561854,
+    "uuid": "f0e78949-6186-4c45-922e-ab4421174f55",
+    "addressLine1": "54092 Wehner Overpass",
+    "city": "Colchester",
+    "postcode": "WI07 5UM"
+  },
+  {
+    "schoolName": "St Peter’s CofE Middle School",
+    "urn": 3066060,
+    "uuid": "ac199c2e-d3aa-4952-b8a6-ac329f98903f",
+    "addressLine1": "37987 Hahn Canyon",
+    "city": "Romford",
+    "postcode": "ER2 5AV"
+  },
+  {
+    "schoolName": "New School",
+    "urn": 8360915,
+    "uuid": "5570e1fa-0b56-454a-a913-019a45291681",
+    "addressLine1": "9677 Graham Unions",
+    "city": "Tamworth",
+    "postcode": "NJ8 4OI"
+  },
+  {
+    "schoolName": "Church Hill High School",
+    "urn": 6466731,
+    "uuid": "cc2e3a34-1e9c-4d7f-a390-fc8714b59106",
+    "addressLine1": "331 Ritchie Mount",
+    "city": "Winslow",
+    "postcode": "NY2 8DV"
+  },
+  {
+    "schoolName": "St Peter and St Paul CofE Primary School",
+    "urn": 189470,
+    "uuid": "723557a1-c6e9-489a-9776-801c0b0867e3",
+    "addressLine1": "7392 Grace Villages",
+    "city": "Cambridge",
+    "postcode": "NW5 4MJ"
+  },
+  {
+    "schoolName": "Cherry Sixth Form College",
+    "urn": 4347717,
+    "uuid": "12b0aac8-959c-470a-a220-919e50c428af",
+    "addressLine1": "6258 Eleanore Creek",
+    "city": "London",
+    "postcode": "NE14 5WV"
+  },
+  {
+    "schoolName": "East Well Secondary School",
+    "urn": 7430304,
+    "uuid": "ad5b7097-7833-463d-8859-ccd9c4ea41c8",
+    "addressLine1": "6332 Keebler Greens",
+    "city": "Hull",
+    "postcode": "DT4 1MD"
+  },
+  {
+    "schoolName": "Cherry College",
+    "urn": 4795361,
+    "uuid": "c154541f-da0c-4f69-b84c-b49de4fea37d"
+  },
+  {
+    "schoolName": "Sutworth University",
+    "urn": 4074848,
+    "uuid": "54efc24b-a076-467b-8b5f-4ad6309f806a",
+    "addressLine1": "704 Keeley Lake",
+    "city": "Rugeley",
+    "postcode": "DO3 5IS"
+  },
+  {
+    "schoolName": "North East Sixth Form College",
+    "urn": 3642984,
+    "uuid": "77dc9ef9-d78b-43d3-8a7a-22515820247d",
+    "addressLine1": "923 Don Shore",
+    "city": "Letchworth Garden City",
+    "postcode": "UX43 9WC"
+  },
+  {
+    "schoolName": "Abbey High School",
+    "urn": 2068861,
+    "uuid": "95240665-10ff-40b2-b379-c8a9fa0de5c7",
+    "addressLine1": "7351 Isai Divide",
+    "city": "Harrow",
+    "postcode": "MH5 9LA"
+  },
+  {
+    "schoolName": "Cherry Primary School",
+    "urn": 1842314,
+    "uuid": "a0bd3fb9-8299-475b-9f6a-d67ea2389936",
+    "addressLine1": "195 Christelle Dam",
+    "city": "Hertford",
+    "postcode": "UE6 1MJ"
+  },
+  {
+    "schoolName": "St Paul’s Catholic Middle School",
+    "urn": 902061,
+    "uuid": "3da64b38-bb7d-414b-872b-fa6c7944af4a",
+    "addressLine1": "318 Lew Inlet",
+    "city": "Gran Canaria 35017",
+    "postcode": "BH3 7EQ"
+  },
+  {
+    "schoolName": "North East College",
+    "urn": 3842446,
+    "uuid": "2dfd0d9a-bdc8-4fd1-b3da-d5b3d9a5d560",
+    "addressLine1": "2548 Ziemann Mission",
+    "city": "York",
+    "postcode": "YX13 5QA"
+  },
+  {
+    "schoolName": "Waughton College",
+    "urn": 1366178,
+    "uuid": "35cfd062-9589-4184-9d37-d10a1281c860",
+    "addressLine1": "594 Hilpert Valleys",
+    "city": "Kenilworth",
+    "postcode": "ZB06 8DB"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Infant School",
+    "urn": 3660306,
+    "uuid": "12b4144a-8158-4e54-a32a-1af066cf7230",
+    "addressLine1": "64264 Petra Flat",
+    "city": "Bath",
+    "postcode": "AY5 9LM"
+  },
+  {
+    "schoolName": "Manor Primary School",
+    "urn": 9540467,
+    "uuid": "35ad24d4-911c-456d-a1ff-663432b638af",
+    "addressLine1": "8056 Kaya Dam",
+    "city": "Harrogate",
+    "postcode": "HU33 8BY"
+  },
+  {
+    "schoolName": "Langley High School",
+    "urn": 2483607,
+    "uuid": "4049a80e-7e90-436c-99f2-cf59edbd5486",
+    "addressLine1": "00274 Noelia Terrace",
+    "city": "Hindhead",
+    "postcode": "WP3 6WA"
+  },
+  {
+    "schoolName": "St Thomas’s Catholic Middle School",
+    "urn": 3471326,
+    "uuid": "600a4d27-8e74-4ebc-aacc-e912350b7321",
+    "addressLine1": "198 Augustine Cape",
+    "city": "Walsall",
+    "postcode": "MP8 1AL"
+  },
+  {
+    "schoolName": "St Peter and St Paul Catholic School",
+    "urn": 2115138,
+    "uuid": "9c505657-c83a-4dae-a327-af3155fc1fd8"
+  },
+  {
+    "schoolName": "New High School",
+    "urn": 3486926,
+    "uuid": "2a7d1a78-ad77-4edf-9645-481adc962fd7",
+    "addressLine1": "767 Murray Run",
+    "city": "London",
+    "postcode": "SW2 6EP"
+  },
+  {
+    "schoolName": "West Stoke Primary Academy",
+    "urn": 2184240,
+    "uuid": "14ac9a20-5d74-4b85-95c6-c5c714ed1824",
+    "addressLine1": "01900 Margie Meadows",
+    "city": "Doncaster",
+    "postcode": "YB74 9CM"
+  },
+  {
+    "schoolName": "St Thomas’s Church of England Middle School",
+    "urn": 8624543,
+    "uuid": "4db00fae-2ccb-4392-98ca-835c34b323a6",
+    "addressLine1": "995 Dickinson Forges",
+    "city": "Folkestone",
+    "postcode": "JV1 1PH"
+  },
+  {
+    "schoolName": "Langley School",
+    "urn": 5025966,
+    "uuid": "0f5f22ec-b82e-426b-bf9d-89b3666968d6",
+    "addressLine1": "68052 Beverly Dale",
+    "city": "Birmingham",
+    "postcode": "NS54 6BE"
+  },
+  {
+    "schoolName": "St Andrew’s Catholic Infant School",
+    "urn": 4824698,
+    "uuid": "13288f3c-9f3a-4a6a-a0ab-cf701a56bb88",
+    "addressLine1": "92657 Mante Forks",
+    "city": "Henley-in-Arden",
+    "postcode": "IY92 5HL"
+  },
+  {
+    "schoolName": "North Primary School",
+    "urn": 6604835,
+    "uuid": "44e047a8-23f3-494c-8aa9-08087deed418",
+    "addressLine1": "148 Gibson Spur",
+    "city": "Henley-in-Arden",
+    "postcode": "IW1 6VJ"
+  },
+  {
+    "schoolName": "Church Hill Primary School",
+    "urn": 5824090,
+    "uuid": "2bc9b09d-7491-49c0-96e3-55a4e83d1d95",
+    "addressLine1": "3042 Hank Lights",
+    "city": "Wolverhampton",
+    "postcode": "GR8 0RN"
+  },
+  {
+    "schoolName": "Normant Carnes College",
+    "urn": 7858992,
+    "uuid": "d81faf23-9f00-40e5-812f-eeb155f4c968"
+  },
+  {
+    "schoolName": "Manor Primary School",
+    "urn": 5247787,
+    "uuid": "98e112c3-bf0f-47cf-b7a4-88145a6b54bb",
+    "addressLine1": "836 Gerhold Lodge",
+    "city": "Aberdare",
+    "postcode": "BJ1 8GR"
+  },
+  {
+    "schoolName": "Church Hill University",
+    "urn": 482216,
+    "uuid": "0880ae43-c732-4928-9cb7-7a129f49fabd",
+    "addressLine1": "3516 Dustin Loaf",
+    "city": "Broseley",
+    "postcode": "ST1 5FH"
+  },
+  {
+    "schoolName": "Abbey Woods University",
+    "urn": 4629569,
+    "uuid": "64a7172e-c338-4438-809c-5a230100aa03",
+    "addressLine1": "2363 Bettie Cape",
+    "city": "Nelson",
+    "postcode": "GE5 0SJ"
+  },
+  {
+    "schoolName": "St Andrew’s Primary School",
+    "urn": 4507624,
+    "uuid": "f5fbfdd0-422a-4030-b389-270d82018187",
+    "addressLine1": "82494 Romaguera Grove",
+    "city": "Nottingham",
+    "postcode": "VJ8 0FC"
+  },
+  {
+    "schoolName": "Mayport Secondary School",
+    "urn": 5703867,
+    "uuid": "1645dd93-1d42-4f40-a0c8-f6c0e264578f",
+    "addressLine1": "539 Abernathy Flat",
+    "city": "Nottingham",
+    "postcode": "NL93 7UH"
+  },
+  {
+    "schoolName": "New High School",
+    "urn": 5188058,
+    "uuid": "a64fe805-69db-4d4d-b8eb-084d1159e3f0",
+    "addressLine1": "0245 Tina Roads",
+    "city": "Oldham",
+    "postcode": "DW0 9ZB"
+  },
+  {
+    "schoolName": "Abbey College",
+    "urn": 9593751,
+    "uuid": "05d6f0a6-cbfb-49db-bdc2-8fa60bcde443",
+    "addressLine1": "52422 Rippin Turnpike",
+    "city": "Nr Worksop",
+    "postcode": "ED19 2TG"
+  },
+  {
+    "schoolName": "St Vincent’s Church of England Middle School",
+    "urn": 7245645,
+    "uuid": "8f6d62fb-490d-4428-86b3-f3190a5a1912",
+    "addressLine1": "331 Hank Park",
+    "city": "East Cowes",
+    "postcode": "DT62 6GQ"
+  },
+  {
+    "schoolName": "St Vincent’s CofE Primary School",
+    "urn": 8617118,
+    "uuid": "e367ccaf-a16d-4e81-8293-361a60aa2d1b",
+    "addressLine1": "56639 Flossie Fords",
+    "city": "Southwold",
+    "postcode": "GO1 3CH"
+  },
+  {
+    "schoolName": "East Edston College",
+    "urn": 400616,
+    "uuid": "06c0dc6a-1f4e-4a3f-a81b-68ee6bfb94a5"
+  },
+  {
+    "schoolName": "Christchurch College",
+    "urn": 5651580,
+    "uuid": "e19723eb-d73b-42e9-955b-dc11b47103bd",
+    "addressLine1": "0058 Pascale Grove",
+    "city": "Dagenham",
+    "postcode": "JN9 4IT"
+  },
+  {
+    "schoolName": "Church Hill Academy",
+    "urn": 2460272,
+    "uuid": "d00093b9-1894-4e51-9465-7d81628855a6"
+  },
+  {
+    "schoolName": "Church Hill Secondary School",
+    "urn": 4778508,
+    "uuid": "3df3edab-b867-4fcb-86b3-683538e1b9e6",
+    "addressLine1": "2798 Mosciski Course",
+    "city": "Enfield",
+    "postcode": "XB4 6JX"
+  },
+  {
+    "schoolName": "St Peter’s Primary School",
+    "urn": 5775499,
+    "uuid": "f57e05c9-2cd9-44fb-bbe1-aa52707de784",
+    "addressLine1": "149 Langosh Place",
+    "city": "Oldham",
+    "postcode": "SP5 3KS"
+  },
+  {
+    "schoolName": "Christchurch School",
+    "urn": 2446835,
+    "uuid": "f42d7dd0-5722-4984-a1b0-7b5de8bdb106",
+    "addressLine1": "69544 Garth Run",
+    "city": "West Malling",
+    "postcode": "PW3 9UQ"
+  },
+  {
+    "schoolName": "Stratford School",
+    "urn": 8682116,
+    "uuid": "2aa17b40-c335-46ad-ac13-ac7f760f3767",
+    "addressLine1": "629 O'Conner Summit",
+    "city": "Birmingham",
+    "postcode": "WI96 0XB"
+  },
+  {
+    "schoolName": "Abbey High School",
+    "urn": 908738,
+    "uuid": "12d5e1a8-0f9f-406d-a9fc-6069239d7e7a"
+  },
+  {
+    "schoolName": "Shilston School",
+    "urn": 6329720,
+    "uuid": "74048ddc-2979-4f73-9d63-02dc7a97c6ec",
+    "addressLine1": "950 Jessika Shores",
+    "city": "Tavistock",
+    "postcode": "SN54 6TU"
+  },
+  {
+    "schoolName": "Christchurch Primary School",
+    "urn": 7572871,
+    "uuid": "8da2654e-9c7e-459e-a160-15eba8051676",
+    "addressLine1": "938 Aliza Dale",
+    "city": "London",
+    "postcode": "NW15 0WZ"
+  },
+  {
+    "schoolName": "North East Secondary School",
+    "urn": 6304210,
+    "uuid": "1a8d153e-b53a-4a92-a19d-9585dd869d28",
+    "addressLine1": "173 Keshawn Stream",
+    "city": "Barnet",
+    "postcode": "ST0 1XV"
+  },
+  {
+    "schoolName": "Corrarne Staterton High School",
+    "urn": 4132289,
+    "uuid": "dbf1caa5-5c85-4e0f-bdee-ef282d473900",
+    "addressLine1": "078 Mckenna Brooks",
+    "city": "Chatham",
+    "postcode": "NS56 9AN"
+  },
+  {
+    "schoolName": "Christchurch Academy",
+    "urn": 4308803,
+    "uuid": "6b621569-322c-47ff-9267-91c8aa62db9a",
+    "addressLine1": "3857 Cade Cliff",
+    "city": "Lingfield",
+    "postcode": "UK84 4MT"
+  },
+  {
+    "schoolName": "Abbey Sixth Form College",
+    "urn": 9084888,
+    "uuid": "9d30c575-b3f1-45c4-9bc4-7b41481388ed",
+    "addressLine1": "591 Javonte Spring",
+    "city": "Bristol",
+    "postcode": "FT46 7JU"
+  },
+  {
+    "schoolName": "Christchurch Primary School",
+    "urn": 7291274,
+    "uuid": "06b0d99a-3105-40dd-880d-155864edc92c",
+    "addressLine1": "330 Fahey Mount",
+    "city": "London",
+    "postcode": "E4 4TH"
+  },
+  {
+    "schoolName": "St Vincent’s CofE School",
+    "urn": 6465500,
+    "uuid": "33c17603-cce2-4594-a1fc-0861b38495b0"
+  },
+  {
+    "schoolName": "Sromsby School",
+    "urn": 8622573,
+    "uuid": "034c20f3-2c8c-4c31-978a-b204f02c1cf0",
+    "addressLine1": "800 Ryan Unions",
+    "city": "Romford",
+    "postcode": "AI45 7QT"
+  },
+  {
+    "schoolName": "Christchurch Junior School",
+    "urn": 9203950,
+    "uuid": "e513aeb9-d8a5-40ce-a99f-928cb50f2879",
+    "addressLine1": "582 Derrick Estates",
+    "city": "Bedworth",
+    "postcode": "CD2 7TJ"
+  }
+]
