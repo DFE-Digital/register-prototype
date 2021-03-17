@@ -52,6 +52,7 @@ let primarySchools = [
 let faithSchoolPlaces = [
   "All Saints",
   "St Andrew’s",
+  "St John's",
   "St Paul’s",
   "St Peter’s",
   "St Peter and St Paul",

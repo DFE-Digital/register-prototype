@@ -20,9 +20,28 @@ module.exports = router => {
     let referrer = utils.getReferrer(req.query.referrer)
     if (traineeStarted == "false"){
       delete record?.trainingDetails?.commencementDate
-    }   
-    res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+    }
+    if (utils.requiresField(record, 'leadSchool')){
+      res.redirect(`${recordPath}/training-details/lead-school${referrer}`)
+    }
+    else {
+      res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+    }
 
+
+  })
+
+  router.post(['/:recordtype/:uuid/training-details/lead-school','/:recordtype/training-details/lead-school'], function (req, res) {
+    let data = req.session.data
+    let record = data.record
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+    if (utils.requiresField(record, 'employingSchool')){
+      res.redirect(`${recordPath}/training-details/employing-school${referrer}`)
+    }
+    else {
+      res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+    }
   })
 
   // =============================================================================
