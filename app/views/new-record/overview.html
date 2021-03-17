@@ -128,7 +128,7 @@
     }
   } if record | requiresSection("courseDetails"),
   {
-    text: "Trainee start date and ID",
+    text: "Trainee’s training details" if record | requiresField("leadSchool") else "Trainee start date and ID",
     href: "training-details" | reviewIfInProgress(record.trainingDetails),
     id: "training-details",
     tag: {

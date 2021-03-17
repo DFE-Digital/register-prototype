@@ -8,8 +8,7 @@
 
 {% set traineeStarted = record.trainingDetails.traineeStarted | falsify %}
 
-{% set trainingDetailsRows = [
-  {
+{% set traineeStartDateRow = {
     key: {
       text: "Date trainee started"
     },
@@ -25,25 +24,71 @@
         }
       ]
     } if canAmend
+  } %}
+
+{% set traineeIdRow = {
+  key: {
+    text: "Trainee ID"
   },
-  {
-    key: {
-      text: "Trainee ID"
-    },
-    value: {
-      text: record.trainingDetails.traineeId or "Not provided"
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/training-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "trainee ID"
-        }
-      ]
-    } if canAmend
-  }
+  value: {
+    text: record.trainingDetails.traineeId or "Not provided"
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/training-details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "trainee ID"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set leadSchoolRow = {
+  key: {
+    text: "Lead school"
+  },
+  value: {
+    text: record.trainingDetails.leadSchool.schoolName or "Not provided"
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/training-details/lead-school" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "lead school"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set employingSchoolRow = {
+  key: {
+    text: "Employing school"
+  },
+  value: {
+    text: record.trainingDetails.employingSchool.schoolName or "Not provided"
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/training-details/employing-school" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "lead school"
+      }
+    ]
+  } if canAmend
+} %}
+
+
+{% set trainingDetailsRows = [
+  traineeStartDateRow,
+  traineeIdRow,
+  leadSchoolRow if record | requiresField("leadSchool"),
+  employingSchoolRow if record | requiresField("employingSchool")
   ] %}
+
+
 
 
 {% set trainingDetailsHtml %}
@@ -82,7 +127,7 @@
 
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
-    titleText: "Trainee start date and ID",
+    titleText: "Trainee’s training details" if record | requiresField("leadSchool") else "Trainee start date and ID",
     html: trainingDetailsHtml
   }) }}
 

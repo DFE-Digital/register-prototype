@@ -1,0 +1,12 @@
+{{ govukInput({
+  label: {
+    text: pageHeading,
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  classes: "govuk-!-width-two-thirds"
+} | decorateAttributes(record, "record.trainingDetails.leadSchool.schoolName"))}}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
