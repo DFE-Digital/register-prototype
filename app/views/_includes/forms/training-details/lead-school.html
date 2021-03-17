@@ -1,11 +1,13 @@
-{{ govukInput({
+{# {{ govukInput({
   label: {
     text: pageHeading,
     classes: "govuk-label--l",
     isPageHeading: true
   },
   classes: "govuk-!-width-two-thirds"
-} | decorateAttributes(record, "record.trainingDetails.leadSchool.schoolName"))}}
+} | decorateAttributes(record, "record.trainingDetails.leadSchool.schoolName"))}} #}
+{% include "_includes/forms/school-picker.html" %}
+
 
 {{ govukButton({
   text: "Continue"

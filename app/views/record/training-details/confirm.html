@@ -1,0 +1,23 @@
+{% extends "_templates/_record-form.html" %}
+
+{% if data.record | requiresField("leadSchool") %}
+  {% set pageHeading = "Confirm trainee’s training details" %}
+{% else %}
+  {% set pageHeading = "Confirm trainee start date and ID" %}
+{% endif %}
+
+{% set gridColumn = 'govuk-grid-column-full' %}
+{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backText = "Back to record" %}
+
+{% set formAction = "./update" | addReferrer(referrer) %}
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  {% include "_includes/summary-cards/training-details/training-details.html" %}
+
+  {{ govukButton({
+    text: "Update record"
+  }) }}
+
+{% endblock %}
