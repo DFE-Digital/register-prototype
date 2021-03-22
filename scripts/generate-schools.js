@@ -8,7 +8,7 @@ const fakePlaces = placesData.fakePlaces
 
 // const rawCities = require('../rawCities.js')
 
-let countToGenerate = 400
+let countToGenerate = 3000
 
 let schoolSuffixes = {
   "School": 0.1,

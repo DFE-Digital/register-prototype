@@ -1,0 +1,26 @@
+{% from "_components/autocomplete/macro.njk" import appAutocomplete %}
+
+{# Adds in a hint with urn, city, and postcode #}
+{% set schoolsDefault = data.schools | getSchoolNamesForAutocomplete %}
+
+{% set schools = params.items or schoolsDefault %}
+{% set name = params.name %}
+{% set value = params.value %}
+
+{{ appAutocomplete({
+  label: {
+    text: "Search for a school" 
+  },
+  hint: {
+    text: 'Search by URN, School name or postcode'
+  },
+  id: 'school-picker',
+  autoSelect: true,
+  showAllValues: false,
+  minLength: 2,
+  name: name,
+  items: schools,
+  classes: "app-!-autocomplete--max-width-two-thirds",
+  value: value
+  }
+) }}

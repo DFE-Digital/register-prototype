@@ -1,0 +1,11 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+
+{{ appSchoolAutocomplete({
+  name: "record[trainingDetails][employingSchool][uuid]",
+  value: record.trainingDetails.employingSchool.schoolName
+}) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

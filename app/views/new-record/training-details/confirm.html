@@ -1,7 +1,7 @@
 {% extends "_templates/_new-record.html" %}
 
-{% if data.record | requiresField("leadSchool") %}
-  {% set pageHeading = "Confirm trainee’s training details" %}
+{% if data.record | requiresField(['leadSchool', 'employingSchool']) %}
+  {% set pageHeading = "Confirm training details" %}
 {% else %}
   {% set pageHeading = "Confirm trainee start date and ID" %}
 {% endif %}
@@ -14,8 +14,6 @@
 {% block formContent %}
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
   {% include "_includes/summary-cards/training-details/training-details.html" %}
-
-  {{record.trainingDetails | log}}
 
   {{ govukCheckboxes({
   idPrefix: "waste",

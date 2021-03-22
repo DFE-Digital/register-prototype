@@ -44,12 +44,20 @@
   } if canAmend
 } %}
 
+{% if record.trainingDetails.leadSchool %}
+  {% set leadSchoolHtml %}
+    <p class="govuk-body">{{record.trainingDetails.leadSchool.schoolName}}</p>
+    <span class="govuk-hint">{{record.trainingDetails.leadSchool | getSchoolHint}}</span>
+  {% endset %}
+{% endif %}
+
+
 {% set leadSchoolRow = {
   key: {
     text: "Lead school"
   },
   value: {
-    text: record.trainingDetails.leadSchool.schoolName or "Not provided"
+    text: leadSchoolHtml | safe or "Not provided"
   },
   actions: {
     items: [
@@ -62,12 +70,20 @@
   } if canAmend
 } %}
 
+{% if record.trainingDetails.employingSchool %}
+  {% set employingSchoolHtml %}
+    <p class="govuk-body">{{record.trainingDetails.employingSchool.schoolName}}</p>
+    <span class="govuk-hint">{{record.trainingDetails.employingSchool | getSchoolHint}}</span>
+  {% endset %}
+{% endif %}
+
+
 {% set employingSchoolRow = {
   key: {
     text: "Employing school"
   },
   value: {
-    text: record.trainingDetails.employingSchool.schoolName or "Not provided"
+    text: employingSchoolHtml | safe or "Not provided"
   },
   actions: {
     items: [
@@ -87,8 +103,6 @@
   leadSchoolRow if record | requiresField("leadSchool"),
   employingSchoolRow if record | requiresField("employingSchool")
   ] %}
-
-
 
 
 {% set trainingDetailsHtml %}
@@ -127,7 +141,7 @@
 
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
-    titleText: "Trainee’s training details" if record | requiresField("leadSchool") else "Trainee start date and ID",
+    titleText: record | getSectionName("trainingDetails"),
     html: trainingDetailsHtml
   }) }}
 

@@ -45,7 +45,7 @@
   {% include "_includes/app-flash-message.html" %}
 
   {% block beforePageTitle %}{% endblock %}
-  <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post" novalidate>
+  <form{% if formAction %} action="{{ formAction }}"{% endif %} method="post" novalidate spellcheck="false">
     <div class="govuk-grid-row">
       <div class="{{ gridColumn or 'govuk-grid-column-two-thirds-from-desktop'}}">
         {% block formContent %}

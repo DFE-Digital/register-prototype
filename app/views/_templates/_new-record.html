@@ -57,7 +57,7 @@
   {%- endif -%} 
   {%- endset %}
   
-  <form {{formActionHtml}} method="post" novalidate>
+  <form {{formActionHtml}} method="post" novalidate spellcheck="false">
     <div class="govuk-grid-row">
       <div class="{{ gridColumn or 'govuk-grid-column-two-thirds-from-desktop'}}">
         {% block formContent %}
