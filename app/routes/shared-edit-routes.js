@@ -8,27 +8,31 @@ const _ = require('lodash')
 module.exports = router => {
 
   // =============================================================================
-  // Training details
+  // Training details - details specific to this trainee
   // =============================================================================
 
   // Clear commencement date if trainee hasn’t started
   router.post(['/:recordtype/:uuid/training-details','/:recordtype/training-details'], function (req, res) {
     let data = req.session.data
     let record = data.record
-    let traineeStarted = _.get(record, 'trainingDetails.traineeStarted')
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
-    if (traineeStarted == "false"){
+
+    let traineeStarted = record?.trainingDetails?.traineeStarted
+
+    if (traineeStarted == "false"){ // If the answer was explicitly false.
       delete record?.trainingDetails?.commencementDate
     }
+    // Conditional pages
     if (utils.requiresField(record, 'leadSchool')){
       res.redirect(`${recordPath}/training-details/lead-school${referrer}`)
+    }
+    else if (utils.requiresField(record, 'employingSchool')){
+      res.redirect(`${recordPath}/training-details/employing-school${referrer}`)
     }
     else {
       res.redirect(`${recordPath}/training-details/confirm${referrer}`)
     }
-
-
   })
 
   router.post(['/:recordtype/:uuid/training-details/lead-school','/:recordtype/training-details/lead-school'], function (req, res) {
@@ -36,10 +40,55 @@ module.exports = router => {
     let record = data.record
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
-    if (utils.requiresField(record, 'employingSchool')){
+
+    let schoolUuid = record?.trainingDetails?.leadSchool?.uuid
+    let leadSchoolIsEmployingSchool = (record?.trainingDetails?.leadSchoolIsEmployingSchool == "true") ? true : false
+    delete record.trainingDetails.leadSchoolIsEmployingSchool // Checkbox no longer needed
+
+    // No answer given / answer not understood
+    if (!schoolUuid){
+      res.redirect(`${recordPath}/training-details/lead-school${referrer}`)
+    }
+    else {
+
+      let selectedSchool = data.schools.find(school => school.uuid == schoolUuid)
+      record.trainingDetails.leadSchool = selectedSchool
+
+      // Some routes have a conditional next question
+      if (utils.requiresField(record, 'employingSchool')){
+
+        // If an employing school isn’t already set, users can tell us the employing school
+        // is the same as the employing school
+        if (leadSchoolIsEmployingSchool && !record?.trainingDetails?.employingSchool) {
+          record.trainingDetails.employingSchool = selectedSchool
+          // Skip to next page
+          res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+        }
+        else {
+          res.redirect(`${recordPath}/training-details/employing-school${referrer}`)
+        }
+        
+      }
+      else {
+        res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+      }
+    }
+
+  })
+
+  router.post(['/:recordtype/:uuid/training-details/employing-school','/:recordtype/training-details/employing-school'], function (req, res) {
+    let data = req.session.data
+    let record = data.record
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+
+    let schoolUuid = record?.trainingDetails?.employingSchool?.uuid
+    if (!schoolUuid){
       res.redirect(`${recordPath}/training-details/employing-school${referrer}`)
     }
     else {
+      let selectedSchool = data.schools.find(school => school.uuid == schoolUuid)
+      record.trainingDetails.employingSchool = selectedSchool
       res.redirect(`${recordPath}/training-details/confirm${referrer}`)
     }
   })

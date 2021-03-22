@@ -27,6 +27,7 @@ let nonPublishRoutes = trainingRouteData.nonPublishRoutes
 let allTrainingRoutes       = Object.values(trainingRoutes).map(route => route.name)
 
 let courses                 = require('./courses.json')
+let schools                 = require('./schools.json')
 
 let providerData            = require('./providers.js')
 let providers               = providerData.selectedProviders
@@ -125,6 +126,7 @@ module.exports = {
   providers,
   allProviders,
   records,
+  schools,
   settings,
   statuses,
   subjects,

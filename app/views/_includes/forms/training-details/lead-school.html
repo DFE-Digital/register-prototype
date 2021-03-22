@@ -1,13 +1,22 @@
-{# {{ govukInput({
-  label: {
-    text: pageHeading,
-    classes: "govuk-label--l",
-    isPageHeading: true
-  },
-  classes: "govuk-!-width-two-thirds"
-} | decorateAttributes(record, "record.trainingDetails.leadSchool.schoolName"))}} #}
-{% include "_includes/forms/school-picker.html" %}
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
+{{ appSchoolAutocomplete({
+  name: "record[trainingDetails][leadSchool][uuid]",
+  value: record.trainingDetails.leadSchool.schoolName
+}) }}
+
+{# Show a checkbox only if employing school isn’t already set and we’re on a route that has employing school #}
+{% if record | requiresField("employingSchool") and not record.trainingDetails.employingSchool %}
+  {# No fieldset as this is a single checkbox item #}
+  {{ govukCheckboxes({
+    items: [
+      {
+        value: "true",
+        text: "This school is also the employing school"
+      }
+    ]
+  } | decorateAttributes(record, "record.trainingDetails.leadSchoolIsEmployingSchool")) }}
+{% endif %}
 
 {{ govukButton({
   text: "Continue"

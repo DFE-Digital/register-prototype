@@ -76,27 +76,41 @@ exports.hasAllocatedPlaces = (record) => {
   return (routeHasAllocatedPlaces && subjectIsAllocated)
 }
 
-// Check if the course route requires this field
-exports.requiresField = (record, fieldName) => {
-  let route = _.get(record, "route")
+// Check if the course route requires this field or any of these fields
+exports.requiresField = (record, fieldNames) => {
+  fieldNames = [].concat(fieldNames) // Force to array
+  let route = record.route
   if (!route) {
     console.log("Missing route in requiresField")
     return false
   }
-  let requiredFields = _.get(trainingRoutes, `${route}.fields`)
-  return (requiredFields) ? requiredFields.includes(fieldName) : false
+  let requiredFields = trainingRoutes[route]?.fields
+  return (requiredFields) ? requiredFields.some(field => fieldNames.includes(field)) : false
 }
 
-// Check if the course route requires this section
-exports.requiresSection = (record, sectionName) => {
-  let route = _.get(record, "route")
-  if (!route) {
-    console.log("No route provided, using default sections")
-    let requiredSections = trainingRouteData.defaultSections
-    return requiredSections.includes(sectionName)
+// Check if the course route requires this section or any of these sections
+exports.requiresSection = (record, sectionNames) => {
+  sectionNames = [].concat(sectionNames) // Force to array
+  let route = record.route
+  let requiredSections
+  if (route) {
+    requiredSections = trainingRoutes[route]?.sections
   }
-  let requiredSections = _.get(trainingRoutes, `${route}.sections`)
-  return requiredSections.includes(sectionName)
+  else {
+    console.log("No route provided, using default sections")
+    // This is a fallback so drafts still work _mostly_ during development
+    requiredSections = trainingRouteData.defaultSections
+  }
+  return requiredSections.some(section => sectionNames.includes(section))
+}
+
+exports.getSectionName = (record, section) => {
+  if (section == 'trainingDetails'){
+    if (exports.requiresField(record, ['leadSchool', 'employingSchool'])){
+      return "Trainee’s training details"
+    }
+    else return "Trainee start date and ID"
+  }
 }
 
 // Check if qualifications array contains an item

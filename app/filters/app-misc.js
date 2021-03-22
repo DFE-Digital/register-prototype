@@ -63,6 +63,22 @@ filters.orReferrer = (url, referrer) => {
   }
 }
 
+// Metadata about a school as a string
+// URN 1234567, City, Postcode
+filters.getSchoolHint = (school) => {
+  let hint = `URN ${school.urn}`
+  if (school.city) hint += `, ${school.city}` // Not all schools have cities
+  if (school.postcode) hint += `, ${school.postcode}` // Not all schools have postcodes
+  return hint
+}
+
+// Map school names so we get the hint in grey on a second line
+filters.getSchoolNamesForAutocomplete = (schools) => {
+  return schools.map(school => {
+    return [`${school.schoolName} | ${filters.getSchoolHint(school)}`, school.uuid]
+  })
+}
+
 // eg Biology (J482)
 filters.getCourseName = (course) => {
   return `${course.subject} (${course.code})`
