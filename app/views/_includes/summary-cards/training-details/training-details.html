@@ -1,10 +1,20 @@
 {% set commencementDateLabel -%}
-  {%- if (record.trainingDetails.traineeStarted | falsify) or data.settings.requireTraineeStartDate -%}
-    {{- record.trainingDetails.commencementDate | govukDate -}}
-  {%- else -%}
-    Trainee yet to start course
-  {%- endif -%}
+
+  {% if record.status == "Draft" %}
+    {% if record.trainingDetails.commencementDate %}
+      {{- record.trainingDetails.commencementDate | govukDate -}}
+    {% elseif not data.settings.requireTraineeStartDate and not (record.trainingDetails.traineeStarted | falsify) %}
+      Trainee yet to start course
+    {% else %}
+      Not provided
+    {% endif %}
+
+  {% else %}
+    {{- (record.trainingDetails.commencementDate | govukDate ) or "Not provided" -}}
+  {% endif %}
 {%- endset %}
+
+{{ data.settings | log}}
 
 {% set traineeStarted = record.trainingDetails.traineeStarted | falsify %}
 
