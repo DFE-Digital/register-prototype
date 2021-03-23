@@ -50,13 +50,13 @@
       text: "Not taken"
     }
   ]
-} | decorateAttributes(record, "record.qtsDetails.standardsAssessedOutcome"))}}
+} | decorateAttributes(record, "record.qualificationDetails.standardsAssessedOutcome"))}}
 
-{% set dateAssessmentPassedArray = record.qtsDetails.dateAssessmentPassed | toDateArray %}
+{% set dateAssessmentPassedArray = record.qualificationDetails.dateAssessmentPassed | toDateArray %}
 
 {{ govukDateInput({
   id: "date-standards-assessment-passed",
-  namePrefix: "record[qtsDetails][dateAssessmentPassed]",
+  namePrefix: "record[qualificationDetails][dateAssessmentPassed]",
   fieldset: {
     legend: {
       text: "Date of standards assessment",

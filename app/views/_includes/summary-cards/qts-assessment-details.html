@@ -1,15 +1,15 @@
-{% set qtsDetailsRows = [
+{% set qualificationDetailsRows = [
   {
     key: {
       text: "Date standards met"
     },
     value: {
-      text: record.qtsDetails.qtsOutcomeRecordedDate | govukDate or 'Not provided'
+      text: record.qualificationDetails.outcomeDate | govukDate or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/qts/outcome-date" | addReferrer(referrer),
+          href: recordPath + "/qualification/outcome-date" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "date standards met"
         }
@@ -21,12 +21,12 @@
       text: "Date of assessment"
     },
     value: {
-      text: record.qtsDetails.dateAssessmentPassed | govukDate or 'Not provided'
+      text: record.qualificationDetails.dateAssessmentPassed | govukDate or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/qts/outcome" | addReferrer(referrer),
+          href: recordPath + "/qualification/outcome" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "date of assessment"
         }
@@ -35,9 +35,9 @@
   } if false
   ] %}
 
-{% set qtsDetailsHtml %}
+{% set qualificationDetailsHtml %}
   {{ govukSummaryList({
-    rows: qtsDetailsRows
+    rows: qualificationDetailsRows
   }) }}
   
 {% endset %}
@@ -63,8 +63,8 @@
 
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
-    titleText: "QTS details",
-    html: qtsDetailsHtml
+    titleText: (record | getQualificationText) + " details",
+    html: qualificationDetailsHtml
   }) }}
   
 {% endif %}

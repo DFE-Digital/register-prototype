@@ -1,0 +1,59 @@
+{% set undergraduateQualificationRow = {
+  key: {
+    text: "Highest qualification"
+  },
+  value: {
+    text: record.undergraduateQualification.highestQualification
+  },
+  actions: {
+      items: [
+        {
+          href: recordPath + "/undergraduate-qualification" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "qualification"
+        }
+      ]
+    } if canAmend
+} %}
+
+{% set undergraduateQualificationRows = [
+  undergraduateQualificationRow
+] %}
+
+{% set undergraduateQualificationDetailsHtml %}
+  {{ govukSummaryList({
+      rows: undergraduateQualificationRows
+  }) }}
+{% endset %}
+
+{% set complete = true if (record.undergraduateQualification | sectionIsCompleted ) %}
+{% set status  = record.undergraduateQualification | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("undergraduateQualification") %}
+
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
+
+  {% set incompleteType = "warning" if errorList %}
+  {% set incompleteId = "undergraduateQualification" %}
+  {% if status == "In progress" %}
+    {% set incompleteText = "Undergraduate qualification not marked as complete" %}
+    {% set incompleteLink = recordPath + "/undergraduate-qualification/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Continue section" %}
+  {% else %}
+    {% set incompleteText = "Undergraduate qualification not started" %}
+    {% set incompleteLink = recordPath + "/undergraduate-qualification" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
+  {% endif %}
+
+  {% include "_includes/incomplete.njk" %}
+
+{% else %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Undergraduate qualification details",
+    html: undergraduateQualificationDetailsHtml
+  }) }}
+  
+{% endif %}

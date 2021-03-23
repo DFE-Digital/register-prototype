@@ -36,7 +36,7 @@
         classes: "govuk-button--secondary"
       },
       {
-        text: "Recommend a group of trainees for QTS",
+        text: "Recommend a group of trainees for " + (data.record | getQualificationText),
         href: "/bulk-action/new/recommend-for-qts",
         classes: "govuk-button--secondary"
       }
@@ -73,7 +73,7 @@
             </li>
             <li>
               <a href="#">
-                Recommend a group of trainees for QTS
+                Recommend a group of trainees for EYTS or QTS
               </a>
             </li>
           </ul>
@@ -153,8 +153,8 @@
                   </div>
                   {% if data.settings.showBulkLinks %}
                     <div class="govuk-grid-column-one-half">
-                      <input type="hidden" name="[bulk][action]" value="Recommend a group of trainees for QTS">
-                      <button role="link" class="govuk-body app-button-as-link govuk-link align-right">Recommend trainees for QTS</button>
+                      <input type="hidden" name="[bulk][action]" value="Recommend a group of trainees for EYTS or QTS">
+                      <button role="link" class="govuk-body app-button-as-link govuk-link align-right">Recommend trainees for EYTS or QTS</button>
                       {# {{ govukButton({
                         "text": "Recommend trainees for QTS",
                         classes: "govuk-button--secondary align-right"

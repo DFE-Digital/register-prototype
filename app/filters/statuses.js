@@ -50,30 +50,26 @@ filters.getStatusClass = (status) => {
       return 'govuk-tag--grey'
     case 'Apply enrolled': // same as draft
       return 'govuk-tag--grey'
-
-
-      // return 'govuk-tag--yellow'
     case 'Pending TRN':
       return 'govuk-tag--turquoise'
     case 'TRN received':
       return 'govuk-tag--blue'
+    case 'EYTS recommended':
+      return 'govuk-tag--purple'
+    case 'EYTS awarded':
+      return
     case 'QTS recommended':
-      // return 'govuk-tag--green'
       return 'govuk-tag--purple'
     case 'QTS awarded':
       return
-      // return 'govuk-tag--purple'
     case 'Deferred':
       return 'govuk-tag--yellow'
-      // return 'govuk-tag--orange'
     case 'Withdrawn':
       return 'govuk-tag--red'
-
     case 'Apply':
       return 'govuk-tag--pink'
     case 'Manual':
       return 'govuk-tag--grey'
-
     default:
       return 'govuk-tag--blue'
   }

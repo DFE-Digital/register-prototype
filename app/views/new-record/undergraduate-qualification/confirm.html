@@ -1,0 +1,30 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Confirm undergraduate qualification" %}
+{% set backLink = './../overview' %}
+{% set backText = "Back to draft record" %}
+{% set gridColumn = 'govuk-grid-column-full' %}
+{% set formAction = "./../overview"  | orReferrer(referrer) %}
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  {% include "_includes/summary-cards/undergraduate-qualification.html" %}
+
+  {{ govukCheckboxes({
+  idPrefix: "waste",
+  name: "record[undergraduateQualification][status]",
+  items: [
+    {
+      value: "Completed",
+      text: "I have completed this section",
+      checked: checked(record.undergraduateQualification.status, "Completed")
+    }
+  ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+{% endblock %}
+

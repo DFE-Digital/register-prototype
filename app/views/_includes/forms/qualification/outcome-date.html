@@ -1,12 +1,13 @@
-{% set customQtsOutcomeRecordedDateArray = record.qtsDetails.qtsOutcomeRecordedDate | toDateArray %}
-{% if record.qtsDetails.qtsOutcomeRecordedDate | isInLast(2, "days") and record.qtsDetails.qtsOutcomeRecordedDateRadio != "On another day" %}
-  {% set customQtsOutcomeRecordedDateArray = undefined %}
+{% set customOutcomeDateArray = record.qualificationDetails.outcomeDate | toDateArray %}
+
+{% if record.qualificationDetails.outcomeDate | isInLast(2, "days") and record.qualificationDetails.outcomeDateRadio != "On another day" %}
+  {% set customOutcomeDateArray = undefined %}
 {% endif %}
 
-{% set customQtsOutcomeRecordedDateArray %}
+{% set customOutcomeDateArray %}
   {{ govukDateInput({
-    id: "custom-qtsOutcomeRecorded-date",
-    namePrefix: "record[qtsDetails][qtsOutcomeRecordedDate]",
+    id: "custom-qualificationOutcomeRecorded-date",
+    namePrefix: "record[qualificationDetails][outcomeDate]",
     fieldset: {
       legend: {
         text: "On what date?",
@@ -20,17 +21,17 @@
         {
           name: "day",
           classes: "govuk-input--width-2",
-          value: customQtsOutcomeRecordedDateArray["0"]
+          value: customOutcomeDateArray["0"]
         },
         {
           name: "month",
           classes: "govuk-input--width-2",
-          value: customQtsOutcomeRecordedDateArray["1"]
+          value: customOutcomeDateArray["1"]
         },
         {
           name: "year",
           classes: "govuk-input--width-4",
-          value: customQtsOutcomeRecordedDateArray["2"]
+          value: customOutcomeDateArray["2"]
         }
       ]
   }) }}
@@ -54,11 +55,11 @@
     {
       text: "On another day",
       conditional: {
-        html: customQtsOutcomeRecordedDateArray
+        html: customOutcomeDateArray
       }
     }
   ]
-} | decorateAttributes(record, "record.qtsDetails.qtsOutcomeRecordedDateRadio")) }}
+} | decorateAttributes(record, "record.qualificationDetails.outcomeDateRadio")) }}
 
 {{ govukButton({
   text: "Continue"

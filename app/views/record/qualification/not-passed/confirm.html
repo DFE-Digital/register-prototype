@@ -27,7 +27,7 @@
   ]
   }) }} #}
 
-  {% if record.qtsDetails.withdrawalStatus == "Withdrawing from programme" %}
+  {% if record.qualificationDetails.withdrawalStatus == "Withdrawing from programme" %}
     {{ govukButton({
       text: "Record training outcome and withdraw trainee",
       classes: "govuk-button--warning"

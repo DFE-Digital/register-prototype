@@ -1,0 +1,111 @@
+{% set expectedDuration = 'Not provided' %}
+{% if record.courseDetails.duration | falsify %}
+  {% set expectedDuration = record.courseDetails.duration + " years" %}
+{% endif %}
+
+{% set courseDetailsRows = [
+  {
+    key: {
+      text: "Route"
+    },
+    value: {
+      text: record.route or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/select-route" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "route"
+        }
+      ]
+    } if canAmend and false
+  } if record.status !="Draft",
+  {
+    key: {
+      text: "Course start date"
+    },
+    value: {
+      text: record.courseDetails.startDate | govukDate or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/course-details/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "programme start date"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
+      text: "Course end date"
+    },
+    value: {
+      text: record.courseDetails.endDate | govukDate or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/course-details/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "programme end date"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
+      text: "Trainee using an allocated place"
+    },
+    value: {
+      text: record.courseDetails.allocatedPlace or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/course-details/allocated-place" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "allocated place"
+        }
+      ]
+    } if canAmend
+  } if record | hasAllocatedPlaces
+  ] 
+%}
+
+{% set courseDetailsHtml %}
+  {{ govukSummaryList({
+    rows: courseDetailsRows
+  }) }}
+{% endset %}
+
+{% set complete = true if (record.courseDetails | sectionIsCompleted ) %}
+{% set status  = record.courseDetails | getStatusText %}
+
+{% if showIncomplete and not complete %}
+
+  {% set incompleteType = "warning" if errorList %}
+  {% set incompleteId = "course-details" %}
+  {% if status == "In progress" %}
+    {% set incompleteText = "Course details not marked as complete" %}
+    {% set incompleteLink = recordPath + "/course-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Continue section" %}
+  {% else %}
+    {% set incompleteText = "Course details not started" %}
+    {% set incompleteLink = recordPath + "/course-details" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
+  {% endif %}
+
+  {% include "_includes/incomplete.njk" %}
+
+{% else %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Course details",
+    html: courseDetailsHtml
+  }) }}
+  
+{% endif %}

@@ -6,26 +6,26 @@
   {% endif %}
 {% endset %}
 
-{% set qtsDetailsRowOutcomeText%}
-  {% if record.qtsDetails.standardsAssessedOutcome == "No" %}
+{% set qualificationDetailsRowOutcomeText%}
+  {% if record.qualificationDetails.standardsAssessedOutcome == "No" %}
     Standards not met
   {% else %} 
     Not provided
   {% endif %}
 {% endset %}
 
-{% set qtsDetailsRows = [
+{% set qualificationDetailsRows = [
   {
     key: {
       text: "Outcome"
     },
     value: {
-      text: qtsDetailsRowOutcomeText
+      text: qualificationDetailsRowOutcomeText
     },
     actions: {
       items: [
         {
-          href: recordPath + "/qts/outcome" | addReferrer(referrer),
+          href: recordPath + "/qualification/outcome" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "assessment outcome"
         }
@@ -37,12 +37,12 @@
       text: "Date standards not met"
     },
     value: {
-      text: record.qtsDetails.qtsOutcomeRecordedDate | govukDate or 'Not provided'
+      text: record.qualificationDetails.outcomeDate | govukDate or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/qts/outcome-date" | addReferrer(referrer),
+          href: recordPath + "/qualification/outcome-date" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "date standards not met"
         }
@@ -59,7 +59,7 @@
     actions: {
       items: [
         {
-          href: recordPath + "/qts/not-passed/reason" | addReferrer(referrer),
+          href: recordPath + "/qualification/not-passed/reason" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "reason for not passing"
         }
@@ -71,12 +71,12 @@
       text: "Date of assessment"
     },
     value: {
-      text: record.qtsDetails.dateAssessmentPassed | govukDate or 'Not provided'
+      text: record.qualificationDetails.dateAssessmentPassed | govukDate or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/qts/outcome" | addReferrer(referrer),
+          href: recordPath + "/qualification/outcome" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "date of assessment"
         }
@@ -88,12 +88,12 @@
       text: "Future status"
     },
     value: {
-      text: record.qtsDetails.withdrawalStatus or 'Not provided'
+      text: record.qualificationDetails.withdrawalStatus or 'Not provided'
     },
     actions: {
       items: [
         {
-          href: recordPath + "/qts/not-passed/withdrawal" | addReferrer(referrer),
+          href: recordPath + "/qualification/not-passed/withdrawal" | addReferrer(referrer),
           text: "Change",
           visuallyHiddenText: "future course status"
         }
@@ -103,9 +103,9 @@
 
   ] %}
 
-{% set qtsDetailsHtml %}
+{% set qualificationDetailsHtml %}
   {{ govukSummaryList({
-    rows: qtsDetailsRows
+    rows: qualificationDetailsRows
   }) }}
   
 {% endset %}
@@ -132,7 +132,7 @@
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
     titleText: "Outcome details",
-    html: qtsDetailsHtml
+    html: qualificationDetailsHtml
   }) }}
   
 {% endif %}

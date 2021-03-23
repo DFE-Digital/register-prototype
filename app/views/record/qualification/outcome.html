@@ -1,13 +1,13 @@
 {% extends "_templates/_record-form.html" %}
 
 {% set pageHeadingTraineeName = data.record.personalDetails.shortName %}
-{% set pageHeading = "Why are they not being recommended for QTS?" %}
-{% set formAction = "./withdrawal" %}
+{% set pageHeading = "Have they met the standards for QTS?" %}
+{% set formAction = "./outcome-date" %}
   
 {% block formContent %}
 
   <span class="govuk-caption-l">{{pageHeadingTraineeName}}</span>
 
-  {% include "_includes/forms/qts/not-passed-reason.html" %}
+  {% include "_includes/forms/qualification/outcome.html" %}
 
 {% endblock %}

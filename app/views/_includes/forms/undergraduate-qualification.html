@@ -1,0 +1,20 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+{{ appAutocomplete({
+  label: {
+    text: "Qualification",
+    classes: "govuk-label--s"
+  },
+  hint: {
+    text: 'Select the closest match'
+  },
+  id: 'qualification',
+  name: "record[undergraduateQualification][highestQualification]",
+  items: data.ugEntryQualifications,
+  value: record.undergraduateQualification.highestQualification
+  }
+) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

@@ -69,33 +69,33 @@
   }) %}
 {% endif %}
 
-{% if record.status == "QTS recommended" %}
+{% if record.status == "QTS recommended" or record.status == "EYTS recommended" %}
 
-  {% set qtsContent %}
+  {% set awardContent %}
     {{govukTag({
-      text: "QTS recommended",
+      text: (record | getQualificationText) + " recommended",
       classes: record.status | getStatusClass + " govuk-!-margin-bottom-2"
     })}} <br>
-    {% if record.qtsDetails.qtsOutcomeRecordedDate %}
-      Recommended: {{recommendedDate}}
+    {% if record.qualificationDetails.outcomeDate %}
+      Recommended: {{record.qualificationDetails.outcomeDate | govukDate}}
     {% endif %}
   {% endset %}
 
   {% set studentRecordRows = studentRecordRows | push({
     key: {
-      text: "QTS"
+      text: (record | getQualificationText)
     },
     value: {
-      html: qtsContent
+      html: awardContent
     }
   }) %}
 {% endif %}
 
-{% if record.status == "QTS awarded" %}
+{% if (record.status == "QTS awarded") or (record.status == "EYTS awarded") %}
 
-  {% set qtsContent %}
+  {% set awardContent %}
     {{govukTag({
-      text: "QTS awarded",
+      text: (record | getQualificationText) + " awarded",
       classes: record.status | getStatusClass + " govuk-!-margin-bottom-2"
     })}} <br>
     Awarded: 2 September 2020
@@ -103,10 +103,10 @@
 
   {% set studentRecordRows = studentRecordRows | push({
     key: {
-      text: "QTS"
+      text: (record | getQualificationText)
     },
     value: {
-      html: qtsContent
+      html: awardContent
     }
   }) %}
 {% endif %}

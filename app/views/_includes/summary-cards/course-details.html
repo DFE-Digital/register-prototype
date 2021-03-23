@@ -3,7 +3,10 @@
 {% set courseDetails = record.courseDetails %}
 
 {% if sectionIsRequired %}
-  {% if record.courseDetails.isPublishCourse %}
+  
+  {% if record.route | includes("Early years") %}
+    {% include "_includes/summary-cards/course-details/early-years-course.html" %}
+  {% elseif record.courseDetails.isPublishCourse %}
     {% include "_includes/summary-cards/course-details/publish-course.html" %}
   {% else %}
     {% include "_includes/summary-cards/course-details/non-publish-course.html" %}

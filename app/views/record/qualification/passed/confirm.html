@@ -1,6 +1,6 @@
 {% extends "_templates/_record-form.html" %}
 {% set pageHeadingTraineeName = data.record.personalDetails.shortName %}
-{% set pageHeading = "Check QTS details" %}
+{% set pageHeading = "Check " + (data.record | getQualificationText) + " details" %}
 
 {% set backLink = referrer or ("/record/" + data.record.id) %}
 {% set backText = "Back to record" %}
@@ -15,20 +15,8 @@
   </h1>
   {% include "_includes/summary-cards/qts-assessment-details.html" %}
 
-  {# {{ govukCheckboxes({
-  idPrefix: "waste",
-  name: "record[contactDetails][status]",
-  items: [
-    {
-      value: "Completed",
-      text: "I have completed this section",
-      checked: checked(record.contactDetails.status, "Completed")
-    }
-  ]
-  }) }} #}
-
   {{ govukButton({
-    text: "Recommend trainee for QTS"
+    text: "Recommend trainee for " + (record | getQualificationText)
   }) }}
 
 {% endblock %}

@@ -1,0 +1,76 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+{% set programmeStartDateArray = record.courseDetails.startDate | toDateArray %}
+
+{{ govukDateInput({
+  id: "programme-start-date",
+  namePrefix: "record[courseDetails][startDate]",
+  fieldset: {
+    legend: {
+      text: "Course start date",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, " + "" | today | toDateArray | spaceSeparate
+  },
+  items: [
+      {
+        name: "day",
+        classes: "govuk-input--width-2",
+        value: programmeStartDateArray["0"]
+      },
+      {
+        name: "month",
+        classes: "govuk-input--width-2",
+        value: programmeStartDateArray["1"]
+      },
+      {
+        name: "year",
+        classes: "govuk-input--width-4",
+        value: programmeStartDateArray["2"]
+      }
+    ]
+}) }}
+
+{% set programmeEndDateArray = record.courseDetails.endDate | toDateArray %}
+{{ govukDateInput({
+  id: "programme-end-date",
+  namePrefix: "record[courseDetails][endDate]",
+  fieldset: {
+    legend: {
+      text: "Course end date",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "For example, " + "" | today | moment('add', 1, 'years') | toDateArray | spaceSeparate
+  },
+  items: [
+      {
+        name: "day",
+        classes: "govuk-input--width-2",
+        value: programmeEndDateArray["0"]
+      },
+      {
+        name: "month",
+        classes: "govuk-input--width-2",
+        value: programmeEndDateArray["1"]
+      },
+      {
+        name: "year",
+        classes: "govuk-input--width-4",
+        value: programmeEndDateArray["2"]
+      }
+    ]
+}) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+
+
+

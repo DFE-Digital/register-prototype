@@ -5,7 +5,7 @@ const moment            = require('moment')
 // submitted date, and historic records likely to be updated near to the
 // end of the accademic year.
 
-module.exports = ({updatedDate, submittedDate, deferredDate, withdrawalDate, qtsAwardedDate}, application) => {
+module.exports = ({updatedDate, submittedDate, deferredDate, withdrawalDate, qualificationAwardedDate}, application) => {
 
   // console.log(params)
   // console.log(typeof updatedDate)
@@ -104,9 +104,9 @@ module.exports = ({updatedDate, submittedDate, deferredDate, withdrawalDate, qts
     withdrawalDate = withdrawalDate || updatedDate
   }
 
-  if (application.status === 'QTS Awarded') {    
+  if (application.status.includes('awarded')) {    
     // Make sure withdrawal date is the same as the last updated date
-    qtsAwardedDate = qtsAwardedDate || updatedDate
+    qualificationAwardedDate = qualificationAwardedDate || updatedDate
   }
 
   // console.log({
@@ -124,6 +124,6 @@ module.exports = ({updatedDate, submittedDate, deferredDate, withdrawalDate, qts
     submittedDate,
     deferredDate,
     withdrawalDate,
-    qtsAwardedDate
+    qualificationAwardedDate
   }
 }

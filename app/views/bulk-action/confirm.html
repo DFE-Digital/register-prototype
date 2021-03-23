@@ -24,16 +24,16 @@
     {% if traineeCount == 1 %}
       {% if data.bulk.action == 'Submit a group of records and request TRNs' %}
         Submit record and request TRN
-      {% elseif data.bulk.action == 'Recommend a group of trainees for QTS' %}
-        Recommend trainee for QTS
+      {% elseif data.bulk.action == 'Recommend a group of trainees for EYTS or QTS' %}
+        Recommend trainee for EYTS or QTS
       {% endif %}
 
     {# Plural #}
     {% else %}
       {% if data.bulk.action == 'Submit a group of records and request TRNs' %}
         Submit {{traineeCount}} records and request TRNs
-      {% elseif data.bulk.action == 'Recommend a group of trainees for QTS' %}
-        Recommend {{traineeCount}} trainees for QTS
+      {% elseif data.bulk.action == 'Recommend a group of trainees for EYTS or QTS' %}
+        Recommend {{traineeCount}} trainees for EYTS or QTS
       {% endif %}
     {% endif %}
 

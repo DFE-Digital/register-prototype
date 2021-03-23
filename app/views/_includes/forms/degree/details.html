@@ -165,12 +165,12 @@
     ]
   } | decorateAttributes(degreeTemp, "degreeTemp.grade")) }} #}
 
-  {# {% set naricItems = [] %}
-  {% for naricItem in data.ukComparableDegrees %}
-    {% set naricItems = naricItems | push({text: naricItem}) %}
+  {# {% set enicItems = [] %}
+  {% for enicItem in data.ukComparableDegrees %}
+    {% set enicItems = enicItems | push({text: enicItem}) %}
   {% endfor %}
 
-  {% set naricComparableDegrees %}
+  {% set enicComparableDegrees %}
     {{ govukRadios({
       fieldset: {
         legend: {
@@ -181,28 +181,31 @@
       hint: {
         text: ""
       },
-      items: naricItems
+      items: enicItems
     } | decorateAttributes(degreeTemp, "degreeTemp.comparableType")) }}
   {% endset %} #}
 
-  {% set naricItems = [] %}
-  {% for naricItem in data.ukComparableDegrees %}
-    {% set naricItems = naricItems | push({
-      text: naricItem,
-      checked: checked(degreeTemp.type, naricItem)
+  {% set enicItems = [] %}
+  {% for enicItem in data.ukComparableDegrees %}
+    {% set enicItems = enicItems | push({
+      text: enicItem,
+      checked: checked(degreeTemp.type, enicItem)
     }) %}
   {% endfor %}
-  {% set naricItems = naricItems | push({divider: 'or'}) %}
-  {% set naricItems = naricItems | push({text: 'NARIC not provided'}) %}
+  {% set enicItems = enicItems | push({divider: 'or'}) %}
+  {% set enicItems = enicItems | push({text: 'UK ENIC not provided'}) %}
 
   {{ govukRadios({
     fieldset: {
       legend: {
-        text: "Select the NARIC comparable UK degree",
+        text: "Select the UK ENIC comparable degree",
         classes: "govuk-fieldset__legend--s"
       }
     },
-    items: naricItems
+    hint: {
+      text: "Formerly UK NARIC"
+    },
+    items: enicItems
   } | decorateAttributes(degreeTemp, "degreeTemp.typeInt")) }}
 
 {% else %}

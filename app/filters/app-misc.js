@@ -125,7 +125,7 @@ filters.getDegreeName = (degree) => {
   let typeText
 
   if (utils.falsify(degree.isInternational)){
-    if (degree.type == 'NARIC not provided'){
+    if (degree.type == 'UK ENIC not provided'){
       typeText = "Non-UK degree"
     }
     else typeText = `Non-UK ${degree.type}`
@@ -144,6 +144,14 @@ filters.getDegreeHint = (degree) =>{
   else {
     return `${degree.org} (${degree.endDate})`
   } 
+}
+
+filters.includes = (route, string) =>{
+  if (route && route.includes(string)) {
+    return true
+  } else {
+    return false
+  }
 }
 
 exports.filters = filters

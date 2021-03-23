@@ -155,7 +155,7 @@
 
 {# Generate title text for card #}
 {% if isInternational %}
-  {% if degree.type != 'NARIC not provided' %}
+  {% if degree.type != 'UK ENIC not provided' %}
     {% set typeText = "Non-UK " + degree.type + ": " %}
   {% else %}
       {% set typeText = "Non-UK degree: " %}

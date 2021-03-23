@@ -27,7 +27,7 @@
 
   {% set draftLinkHtml %}
     <p class="govuk-body govuk-!-margin-bottom-0">
-      <a href="/records?filterStatus=Draft" class="govuk-link">View draft all draft records</a>
+      <a href="/records?filterStatus=Draft" class="govuk-link">View draft records</a>
     </p> 
   {% endset %}
 
@@ -79,12 +79,12 @@
 {% if filteredRecords | length > 0 %}
 
   {# H1 separate from legend as we have inset text to put in between #}
-  {% if data.bulk.action == 'Recommend a group of trainees for QTS' %}
+  {% if data.bulk.action == 'Recommend a group of trainees for EYTS or QTS' %}
 
     <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
     {{ govukInsetText({
-      text: "Select trainees that met the QTS standards on the same day. You can submit as many groups as you need."
+      text: "Select trainees that met the EYTS or QTS standards on the same day. You can submit as many groups as you need."
     }) }}
 
     {{ govukCheckboxes({

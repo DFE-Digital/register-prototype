@@ -25,8 +25,7 @@ module.exports = (params) => {
 
   let status
 
-  // override for these statuses
-  if (params?.status == 'QTS recommended' || params?.status == 'QTS awarded') {
+  if (params?.status.includes('recommended') || params?.status.includes('awarded')) {
     count = 2
     status = 'Complete'
   }

@@ -81,16 +81,18 @@ module.exports = (params) => {
   let level, qualifications, qualificationsSummary, studyMode
 
   if (route.includes('Early years')){
-    level = 'Primary'
+    level = 'Early years'
   }
   else level = faker.helpers.randomize(['Primary', 'Secondary'])
 
-  const ageRange = faker.helpers.randomize(trainingRouteData.levels[level].ageRanges)
+  let ageRanges = trainingRouteData.levels[level].ageRanges
+
+  let ageRange = (Array.isArray(ageRanges)) ? faker.helpers.randomize(ageRanges) : null
 
   let subject
 
   if (route.includes('Early years')){
-    subject = 'Primary'
+    subject = 'Early years'
   }
   else if (level == 'Primary'){
     subject = faker.helpers.randomize(ittSubjects.primarySubjects)
@@ -174,7 +176,7 @@ module.exports = (params) => {
 
   if (isPublishCourse) {
     return {
-      ageRange,
+      ...(ageRange ? { ageRange } : {}), // conditionally return age range
       allocatedPlace,
       code,
       duration,
@@ -193,7 +195,7 @@ module.exports = (params) => {
 
   else {
     return {
-      ageRange,
+      ...(ageRange ? { ageRange } : {}), // conditionally return age range
       allocatedPlace,
       duration,
       endDate,

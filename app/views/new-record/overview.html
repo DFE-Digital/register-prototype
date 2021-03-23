@@ -99,7 +99,16 @@
       classes: record.degree | getStatusText | getStatusClass,
       text: record.degree | getStatusText
     }
-  } if record | requiresSection("degree")
+  } if record | requiresSection("degree"),
+  {
+    text: "Undergraduate qualification",
+    href: "undergraduate-qualification/confirm" if (record.undergraduateQualification) else "undergraduate-qualification",
+    id: "entry-qualification",
+    tag: {
+      classes: record.undergraduateQualification | getStatusText | getStatusClass,
+      text: record.undergraduateQualification | getStatusText
+    }
+  } if record | requiresSection("undergraduateQualification")
   ]
 }) if not closed }}
 

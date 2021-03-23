@@ -83,6 +83,8 @@ module.exports = router => {
       if (existingCourseDetails?.isPublishCourse && route != existingCourseDetails?.route){
         delete record.courseDetails
       }
+
+      // TODO Make course details not complete if route is changed from Early years to a non Early years
       
       // Coming from the check answers page
       if (referrer){

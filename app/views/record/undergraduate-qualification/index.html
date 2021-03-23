@@ -1,0 +1,9 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "What is the trainee’s highest undergraduate qualification?" %}
+
+{% set formAction = "./undergraduate-qualification/confirm" | addReferrer(referrer) %}
+
+{% block formContent %}
+  {% include "_includes/forms/undergraduate-qualification.html" %}
+{% endblock %}

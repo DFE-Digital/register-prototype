@@ -12,6 +12,9 @@ let subjects                = degreeData.subjects
 let ukComparableDegrees     = degreeData.ukComparableDegrees
 let degreeOrganisations     = degreeData.orgs
 
+// Undergraduate qualification
+let ugEntryQualifications   = require('./undergraduate-qualifications')
+
 // Assessment only
 let assessmentOnlyAgeRanges = require('./assessmentOnlyAgeRanges')
 let ittSubjects = require('./itt-subjects').allSubjects
@@ -78,7 +81,7 @@ settings.requireTraineeStartDate = 'true'
 // Default number of Publish courses that the provider offers
 settings.courseLimit = 20
 
-// the minimum number of placements before QTS can be awarded
+// the minimum number of placements before EYTS/QTS can be awarded
 settings.minPlacementsRequired = 2
 
 // Supliment records with getter for name
@@ -134,5 +137,6 @@ module.exports = {
   publishRoutes,
   nonPublishRoutes,
   ukComparableDegrees,
-  withdrawalReasons
+  withdrawalReasons,
+  ugEntryQualifications
 }
