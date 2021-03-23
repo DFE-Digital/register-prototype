@@ -52,7 +52,14 @@ module.exports = router => {
     else {
 
       let selectedSchool = data.schools.find(school => school.uuid == schoolUuid)
-      record.trainingDetails.leadSchool = selectedSchool
+      // Seed records might have schools that aren't in our schools list
+      // This may happen if a user tries to edit an existing seed record
+      if (!selectedSchool) {
+        console.log(`School not found - you probably need to update the seed records`)
+      }
+      else {
+        record.trainingDetails.leadSchool = selectedSchool
+      }
 
       // Some routes have a conditional next question
       if (utils.requiresField(record, 'employingSchool')){
@@ -88,7 +95,16 @@ module.exports = router => {
     }
     else {
       let selectedSchool = data.schools.find(school => school.uuid == schoolUuid)
-      record.trainingDetails.employingSchool = selectedSchool
+
+      // Seed records might have schools that aren't in our schools list
+      // This may happen if a user tries to edit an existing seed record
+      if (!selectedSchool) {
+        console.log(`School not found - you probably need to update the seed records`)
+      }
+      else {
+        record.trainingDetails.employingSchool = selectedSchool
+      }
+
       res.redirect(`${recordPath}/training-details/confirm${referrer}`)
     }
   })

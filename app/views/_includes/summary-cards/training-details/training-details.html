@@ -1,3 +1,22 @@
+
+{% set traineeIdRow = {
+  key: {
+    text: "Trainee ID"
+  },
+  value: {
+    text: record.trainingDetails.traineeId or "Not provided"
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/training-details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "trainee ID"
+      }
+    ]
+  } if canAmend
+} %}
+
 {% set commencementDateLabel -%}
 
   {% if record.status == "Draft" %}
@@ -36,23 +55,6 @@
     } if canAmend
   } %}
 
-{% set traineeIdRow = {
-  key: {
-    text: "Trainee ID"
-  },
-  value: {
-    text: record.trainingDetails.traineeId or "Not provided"
-  },
-  actions: {
-    items: [
-      {
-        href: recordPath + "/training-details" | addReferrer(referrer),
-        text: "Change",
-        visuallyHiddenText: "trainee ID"
-      }
-    ]
-  } if canAmend
-} %}
 
 {% if record.trainingDetails.leadSchool %}
   {% set leadSchoolHtml %}
@@ -108,8 +110,8 @@
 
 
 {% set trainingDetailsRows = [
-  traineeStartDateRow,
-  traineeIdRow,
+  traineeIdRow if record.status == "Draft",
+  traineeStartDateRow if record.status == "Draft",
   leadSchoolRow if record | requiresField("leadSchool"),
   employingSchoolRow if record | requiresField("employingSchool")
   ] %}

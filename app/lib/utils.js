@@ -104,12 +104,18 @@ exports.requiresSection = (record, sectionNames) => {
   return requiredSections.some(section => sectionNames.includes(section))
 }
 
+// This whole filter is poor and should probably be removed later.
 exports.getSectionName = (record, section) => {
   if (section == 'trainingDetails'){
-    if (exports.requiresField(record, ['leadSchool', 'employingSchool'])){
-      return "Trainee’s training details"
+    if (record.status && record.status != "Draft"){
+      return "Schools"
     }
-    else return "Trainee start date and ID"
+    else {
+      if (exports.requiresField(record, ['leadSchool', 'employingSchool'])){
+        return "Trainee’s training details"
+      }
+      else return "Trainee start date and ID"
+    }
   }
 }
 
