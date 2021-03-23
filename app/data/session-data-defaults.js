@@ -78,7 +78,7 @@ settings.showBulkLinks = false
 settings.requireTraineeStartDate = 'true'
 
 // Default number of Publish courses that the provider offers
-settings.courseLimit = 20
+settings.courseLimit = 12
 
 // the minimum number of placements before EYTS/QTS can be awarded
 settings.minPlacementsRequired = 2

@@ -119,7 +119,7 @@ defer to an id if one exists. #}
   <h1 class="govuk-heading-l">No courses found</h1>
   <p class="govuk-body">You shouldn’t be seeing this page</p>
 
-{% elseif providerCourses | length < 10 %}
+{% elseif providerCourses | length < 25 %}
   
   {{ providerHasFewPublishCourses | safe }}
 
