@@ -102,7 +102,7 @@
       {
         href: recordPath + "/training-details/employing-school" | addReferrer(referrer),
         text: "Change",
-        visuallyHiddenText: "lead school"
+        visuallyHiddenText: "employing school"
       }
     ]
   } if canAmend
@@ -114,7 +114,7 @@
   traineeStartDateRow if record.status == "Draft",
   leadSchoolRow if record | requiresField("leadSchool"),
   employingSchoolRow if record | requiresField("employingSchool")
-  ] %}
+] %}
 
 
 {% set trainingDetailsHtml %}

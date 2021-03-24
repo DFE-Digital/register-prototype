@@ -6,8 +6,6 @@ faker.locale  = 'en_GB'
 const placesData = require('../app/data/places.js')
 const fakePlaces = placesData.fakePlaces
 
-// const rawCities = require('../rawCities.js')
-
 let countToGenerate = 3000
 
 let schoolSuffixes = {
