@@ -193,7 +193,7 @@ module.exports = router => {
       }
       // Assume everything else is a course id
       let courseIndex = (selectedCourse) ? providerCourses.findIndex(course => course.id == selectedCourse) : false
-      if (!courseIndex || courseIndex < 0){
+      if (courseIndex < 0){
         // Nothing found for current provider (something has gone wrong)
         console.log(`Provider course ${selectedCourse} not recognised`)
         res.redirect(`${recordPath}/course-details/pick-course${referrer}`)
