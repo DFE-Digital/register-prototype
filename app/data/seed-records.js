@@ -282,4 +282,40 @@ seedRecords.push({
   },
 })
 
+seedRecords.push({
+  status: "TRN received",
+  trainingDetails: {
+    traineeId: "2020/21-092"
+  },
+  route: 'Early years (graduate entry)',
+  courseDetails: {
+    isPublishCourse: false
+  },
+  submittedDate: "2020-05-28T12:37:21.384Z",
+  updatedDate: "2020-07-15T04:26:19.269Z",
+  trn: 7785421,
+  personalDetails: {
+    givenName: "Delia",
+    familyName: "Klein",
+    sex: "Female"
+  },
+  "placement": {
+    status: 'Complete',
+    "items": [
+      {
+        "location": "Sacred Heart Newcastle SCITT",
+        "startMonth": "1",
+        "duration": "2",
+        "id": "cd8d959f-a246-4402-b2c8-e1bbb9e1fc48"
+      },
+      {
+        "location": "University of Wales Trinity Saint David (UWTSD Swansea)",
+        "startMonth": "5",
+        "duration": "12",
+        "id": "29477b76-3f2e-4571-bb5f-7e62a2fb994a"
+      }
+    ],
+  }
+})
+
 module.exports = seedRecords

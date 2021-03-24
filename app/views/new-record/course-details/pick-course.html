@@ -1,6 +1,6 @@
 {% extends "_templates/_new-record.html" %}
 
-{% if data.courses | getProviderCourses(data.record.provider, data.record.route) | length < 10 %}
+{% if data.courses | getProviderCourses(data.record.provider, data.record.route) | length < 25 %}
   {% set pageHeading = "What course are they doing?" %}
 {% else %}
   {% set pageHeading = "Are the course details stored on Publish?" %}
