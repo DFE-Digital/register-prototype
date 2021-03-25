@@ -87,6 +87,7 @@ let baseRouteData = {
   },
   "School direct (tuition fee)": {
     defaultEnabled: true,
+    hasAllocatedPlaces: true,
     fields: [
       "leadSchool",
     ]
