@@ -180,6 +180,18 @@ exports.routeHasPublishCourses = function(record){
 // Records
 // -------------------------------------------------------------------
 
+exports.isAwarded = record =>{
+  return record.status == "QTS awarded" || record.status == "EYTS awarded"
+}
+
+exports.isDeferred = record =>{
+  return record.status == "Deferred"
+}
+
+exports.isWithdrawn = record =>{
+  return record.status == "Withdrawn"
+}
+
 // Check if all sections are complete
 exports.recordIsComplete = record => {
   if (!record || !_.get(record, "route")) return false

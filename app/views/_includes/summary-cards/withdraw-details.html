@@ -1,3 +1,12 @@
+{% set withdrawalDate %}
+  {% if record | isDeferred %}
+    {{ record.withdrawalDate | govukDate }} (date of deferral)
+  {% else %}
+    {{ record.withdrawalDate | govukDate or "Not provided" }}
+  {% endif %}
+{% endset %}
+
+
 {% set withdrawalReason %}
   {% if record.withdrawalReason == "For another reason" %}
     {{record.withdrawalReasonOther}}
@@ -6,13 +15,15 @@
   {% endif %}
 {% endset %}
 
+
+
 {% set withdrawDetailsRows = [
   {
     key: {
       text: "Date of withdrawal"
     },
     value: {
-      text: record.withdrawalDate | govukDate or 'Not provided'
+      text: withdrawalDate
     },
     actions: {
       items: [
@@ -22,7 +33,7 @@
           visuallyHiddenText: "withdrawal date"
         }
       ]
-    } if canAmend
+    } if canAmend and record.status != "Deferred"
   },
   {
     key: {
