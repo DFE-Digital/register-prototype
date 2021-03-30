@@ -39,11 +39,18 @@
 {{ govukRadios({
   fieldset: {
     legend: {
-      text: "When did the trainee withdraw?",
+      text: "What date did the trainee withdraw?",
       classes: "govuk-fieldset__legend--s govuk-!-margin-bottom-4"
     }
   },
   items: [
+    {
+      text: "When they deferred",
+      value: "Deferred date",
+      hint: {
+        text: 'Deferred on ' + record.deferredDate | govukDate
+      }
+    } if (record.status == "Deferred"),
     {
       text: "Today"
     },
