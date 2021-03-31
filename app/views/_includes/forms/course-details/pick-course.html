@@ -36,6 +36,10 @@ defer to an id if one exists. #}
     checked: checked(selectedCourse, "Other")
   }) %}
 
+  {% set hintText %}
+    Your {{record.route | lower}} courses in the Publish service
+  {% endset %}
+
   {{ govukRadios({
     fieldset: {
       legend: {
@@ -43,6 +47,9 @@ defer to an id if one exists. #}
         isPageHeading: true,
         classes: "govuk-fieldset__legend--l"
       }
+    },
+    hint: {
+      text: hintText
     },
     items: courseItems
   } | decorateAttributes(record, "record.selectedCourseTemp")) }}
