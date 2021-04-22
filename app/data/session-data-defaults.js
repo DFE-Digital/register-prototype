@@ -64,13 +64,13 @@ settings.userActiveProvider = "Coventry University"
 settings.includeTimeline = 'true'
 
 // Enable apply integration
-settings.enableApplyIntegration = 'true'
+settings.enableApplyIntegration = false
 
 // Enable apply integration
 settings.groupApplySections = 'true'
 
 // Enable apply integration
-settings.highlightInvalidAnswers = 'false'
+settings.highlightInvalidAnswers = 'true'
 
 // Enable timeline on records
 settings.includeGuidance = false
