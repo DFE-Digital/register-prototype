@@ -1,0 +1,167 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+{# Set up data #}
+{% set degreeCount = record.degree.items | length %}
+{% if degreeCount < 1 %}
+{# {% if degreeCount < 1 and action == "add" %} #}
+  {# {% set ukHintText = "For example, BA, BSc or other (please specify)" %} #}
+  {% set ukHintText = "For example, BA or BSc" %}
+{% else %}
+  {% set ukHintText = "For example, BA, BSc, Masters or PhD" %}
+{% endif %}
+
+
+{# Degree institution #}
+{% set institutionInputHtml %}
+  {{ appAutocomplete({
+    label: {
+      text: "Institution",
+      classes: "govuk-label--s"
+    },
+    id: 'degree-organisations',
+    name: "degreeTemp[org]",
+    items: data.degreeOrganisations,
+    classes: "app-!-autocomplete--max-width-two-thirds",
+    value: degreeTemp.org,
+    minLength: 2,
+    autoSelect: true,
+    showAllValues: false
+  } | captureInvalid
+) }}
+{% endset %}
+
+{{ appInvalidAnswer({html: institutionInputHtml})}}
+
+{# Degree subject #}
+{% set degreeSubjectHtml %}
+  {{ appAutocomplete({
+    label: {
+      text: "Degree subject",
+      classes: "govuk-label--s"
+    },
+    hint: {
+      text: 'Search for the closest matching subject'
+    },
+    id: 'subject',
+    autoSelect: true,
+    showAllValues: false,
+    minLength: 2,
+    name: "degreeTemp[subject]",
+    items: data.subjects,
+    classes: "app-!-autocomplete--max-width-two-thirds",
+    value: degreeTemp.subject
+    } | captureInvalid
+  ) }}
+{% endset %}
+
+{{ appInvalidAnswer({html: degreeSubjectHtml})}}
+
+{# Degree types #}
+{% set degreeTypesAutocomplete = data.degreeTypes | getDegreeTypesForAutocomplete | sort(attribute='value') %}
+
+{% set degreeTypeHtml %}
+  {{ appAutocomplete({
+    label: {
+      text: "Type of degree",
+      classes: "govuk-label--s"
+    },
+    hint: {
+      text: ukHintText
+    },
+    id: 'degreeTypeUK',
+    name: "degreeTemp[typeUK]",
+    items: data.degreeTypesSimple,
+    itemsAutocomplete: degreeTypesAutocomplete,
+    displayStyle: "bold",
+    minLength: 2,
+    autoSelect: true,
+    showAllValues: false,
+    classes: "app-!-autocomplete--max-width-two-thirds",
+    value: (degreeTemp.type or degreeTemp.typeUK) if not isInternational
+    } | captureInvalid
+  ) }}
+{% endset %}
+
+{{ appInvalidAnswer({ html: degreeTypeHtml })}}
+
+
+{# Degree grade #}
+{% set storedGrade = degreeTemp.grade %}
+
+{# Do some acrobatics to work out if the 'other' radio should be selected #}
+{% set storedGradeOther = false %}
+
+{% if storedGrade and not storedGrade in [
+  "First-class honours",
+  "Upper second-class honours (2:1)",
+  "Lower second-class honours (2:2)",
+  "Third-class honours",
+  "Pass",
+  "The trainee is still studying for their degree"] %}
+  {% set storedGradeOther = true %}
+{% endif %}
+
+{% set degreeGradeOtherHtml %}
+  {{ govukInput({
+    label: {
+      text: "Enter the degree grade"
+    },
+    id: "degree-start-date",
+    classes: "app-!-max-width-one-half",
+    name: "degreeTemp[otherGrade]",
+    value: degreeTemp.grade if storedGradeOther
+  }| decorateAttributes(degreeTemp, "degreeTemp.grade"))}}
+{% endset %}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Degree grade",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  name: "degreeTemp[baseGrade]",
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      text: "First-class honours"
+    },
+    {
+      text: "Upper second-class honours (2:1)"
+    },
+    {
+      text: "Lower second-class honours (2:2)"
+    },
+    {
+      text: "Third-class honours"
+    },
+    {
+      text: "Pass"
+    },
+    {
+      text: "Other",
+      checked: storedGradeOther,
+      conditional: {
+        html: degreeGradeOtherHtml
+      }
+    }
+  ]
+} | decorateAttributes(degreeTemp, "degreeTemp.grade")) }}
+
+{# Graduation year #}
+{{ govukInput({
+  label: {
+    text: "Graduation year",
+    classes: "govuk-label--s"
+  },
+  id: "degree-start-date",
+  name: "degreeTemp[endDate]",
+  value: degreeTemp.endDate,
+  classes: "app-!-max-width-one-quarter"
+}) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

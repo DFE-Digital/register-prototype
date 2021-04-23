@@ -129,19 +129,19 @@
 
 {% if isInternational %}
   {% set degreeDetailsRows = [
-    subjectRow,
     countryRow,
-    graduationRow,
+    subjectRow,
     degreeTypeRow,
+    graduationRow,
     bursaryRow
   ] %}
 {% else %}
   {% set degreeDetailsRows = [
+    institutionRow,
     subjectRow,
     degreeTypeRow,
-    institutionRow,
-    graduationRow,
     gradeRow,
+    graduationRow,
     bursaryRow
   ] %}  
 {% endif %}

@@ -5,6 +5,16 @@
 {% set formAction = "./confirm" | addReferrer(referrer) %}
 
 {% block formContent %}
-  {% include "_includes/forms/degree/details.html" %}
+  {# Get degree (if it exists) from existing data #}
+  {% set degree = record.degree.items[itemIndex] %}
+  {# Merge with temp store (temp store has) #}
+  {% set degreeTemp = degree | mergeObjects(data.degreeTemp) %}
+  {% set isInternational = degreeTemp.isInternational | falsify %}
+
+  {% if isInternational %}
+    {% include "_includes/forms/degree/details-international.html" %}
+  {% else %}
+    {% include "_includes/forms/degree/details-uk.html" %}
+  {% endif %}
 {% endblock %}
 
