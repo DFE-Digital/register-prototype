@@ -7,7 +7,7 @@
 {% endif %}
 
 {% set gridColumn = 'govuk-grid-column-full' %}
-{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backLink = ("/record/" + data.record.id) | orReferrer(referrer) %}
 {% set backText = "Back to record" %}
 
 {% set formAction = "./update" | addReferrer(referrer) %}

@@ -752,15 +752,15 @@ exports.searchSchools = (schools = [], query = "") => {
 
 // Adds referrer as query string if it exists
 exports.addReferrer = (url, referrer) => {
-  if (!referrer || referrer == 'undefined') return url
+  console.log(referrer, typeof referrer)
+  if (!referrer || referrer == undefined) return url
   else {
     return `${url}?referrer=${referrer}`
   }
 }
 
 exports.orReferrer = (url, referrer) => {
-  console.log('Or referrer', referrer)
-  if (!referrer || referrer == 'undefined') return url
+  if (!referrer || referrer == undefined) return url
   else {
     return exports.getReferrerDestination(referrer)
   }

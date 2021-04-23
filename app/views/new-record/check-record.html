@@ -4,7 +4,7 @@
 {% set formAction = "./save" | addReferrer(referrer) %}
 {% set hideReturnLink = true %}
 {% set showIncomplete = true %}
-{% set backLink = referrer or './overview' %}
+{% set backLink = './overview' | orReferer(referrer) %}
 {% set backText = 'Back to draft record' %}
 {% set gridColumn = 'govuk-grid-column-full' %}
 

@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Confirm diversity information" %}
 
-{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backLink = ("/record/" + data.record.id) | orReferrer(referrer) %}
 {% set backText = "Back to record" %}
 
 {% set gridColumn = 'govuk-grid-column-full' %}
