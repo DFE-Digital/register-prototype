@@ -119,7 +119,7 @@ const generateFakeApplication = (params = {}) => {
 
   // Postgraduate qualification
   if (requiredSections.includes('degree')) {
-    application.degree           = (params.degree === null) ? undefined : { ...generateDegree(application.isInternationalTrainee), ...params.degree } 
+    application.degree           = (params.degree === null) ? undefined : { ...generateDegree(application), ...params.degree } 
   }
 
   // Undergraduate Qualification
@@ -193,7 +193,7 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
   // Current year should be mostly trn recieved
   if (year == currentYear){
     targetCounts = {
-      draft: 0.05,
+      draft: 0.01,
       applyEnrolled: 0.05,
       pendingTrn: 0.05,
       trnReceived: 0.71,
@@ -246,31 +246,32 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
 
   stubApplication.applyEnrolled = {
     source: "Apply",
-    status: "Apply enrolled",
+    status: "Apply draft",
     updatedDate: applyStubUpdatedDate,
     applyData: {
       recruitedDate: applyStubUpdatedDate,
       applicationDate: faker.date.between(
         moment().subtract(30, 'days'),
         moment().subtract(60, 'days')
-      )
+      ),
+      status: 'Review'
     },
     personalDetails: {
-      status: 'Completed'
+      status: 'Review'
     },
     contactDetails: {
-      status: 'Completed'
+      status: 'Review'
     },
     diversity: {
-      status: 'Completed'
+      status: 'Review'
     },
     degree: {
-      status: 'Completed'
+      status: 'Review'
     },
     academicYear: currentYear,
-    programmeDetails: {
+    courseDetails: {
       isPublishCourse: true,
-      status: 'Completed'
+      status: 'Review'
     },
     placement: null,
     trainingDetails: null

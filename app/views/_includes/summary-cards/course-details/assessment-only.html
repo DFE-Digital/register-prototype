@@ -112,7 +112,11 @@
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "course-details" %}
-  {% if status == "In progress" %}
+  {% if status == "Review" %}
+    {% set incompleteText = "Course details not reviewed" %}
+    {% set incompleteLink = recordPath + "/course-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Review section" %}
+  {% elseif status == "In progress" %}
     {% set incompleteText = "Course details not marked as complete" %}
     {% set incompleteLink = recordPath + "/course-details/confirm" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Continue section" %}

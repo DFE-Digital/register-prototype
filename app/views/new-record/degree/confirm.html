@@ -13,19 +13,29 @@
   
   {% include "_includes/summary-cards/degree/details.html" %}
 
-  {# Don't show checkbox if there are no degrees #}
-  {% if degreeCount > 0 %}
-    {{ govukCheckboxes({
-      idPrefix: "degree-section-complete",
-      name: "record[degree][status]",
-      items: [
-        {
-          value: "Completed",
-          text: "I have completed this section",
-          checked: checked(record.degree.status, "Completed")
-        }
-      ]
-      }) }}
+  {% set checkboxText %}
+    {% if record | sourceIsManual %}
+      I have completed this section
+    {% else %}
+      I have reviewed this section
+    {% endif %}
+  {% endset %}
+
+  {% if not data.settings.groupApplySections %}
+    {# Don't show checkbox if there are no degrees #}
+    {% if degreeCount > 0 %}
+      {{ govukCheckboxes({
+        idPrefix: "degree-section-complete",
+        name: "record[degree][status]",
+        items: [
+          {
+            value: "Completed",
+            text: checkboxText,
+            checked: checked(record.degree.status, "Completed")
+          }
+        ]
+        }) }}
+    {% endif %}
   {% endif %}
 
   {{ govukButton({

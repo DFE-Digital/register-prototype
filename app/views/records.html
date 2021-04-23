@@ -45,19 +45,19 @@
 {% endset %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-xl">Trainee records ({{filteredRecords | length}}<span class="govuk-visually-hidden"> {{ "record" | pluralise(filteredRecords | length)}}</span>)</h1>
-    <div class="records-header">
-      {{ govukButton({
-        text: "Add a trainee",
-        href: "./new-record/new",
-        isStartButton: true
-      }) }}
-
-    </div>
     
+    {{ govukButton({
+      text: "Add a trainee",
+      href: "./new-record/new",
+      isStartButton: true
+    }) }}
+
   </div>
+
   {% if data.settings.showBulkLinks %}
     <div class="govuk-grid-column-one-third">
       <aside class="app-related-items" role="complementary">
@@ -98,26 +98,34 @@
             {% include "_includes/filter-panel.njk" %}
           </div>
         </form>
-        <p class="govuk-body"><a href="#" class="govuk-link">Export these records</a></p>
       </div>
 
       <div class="moj-filter-layout__content" id="records-list">
 
-        <div class="moj-action-bar">
-          <div class="moj-action-bar__filter">   
+        <div class="app-records-actions">
+          <div class="app-records-actions__col">
+            {# Only show export if there are records #}    
+            {% if filteredRecords | length > 0 %}
+              <p class="govuk-body govuk-!-margin-bottom-3"><a href="#" class="govuk-link">Export these records</a></p>
+            {% endif %}
+            {# Only sort if there's at least two items #}
+            {% if filteredRecords | length > 1 %}
+              {% include "_includes/record-sort-order.njk" %}
+            {% endif %}
           </div>
+          <div class="app-records-actions__col">
+            <div class="moj-action-bar">
+              <div class="moj-action-bar__filter"> 
+              </div>
+            </div>
+          </div> 
         </div>
-
-        {# Only sort if there's at least two items #}
-        {% if filteredRecords.length > 1 %}
-          {% include "_includes/record-sort-order.njk" %}
-        {% endif %}
 
         {% if filteredRecords.length %}
 
           <div class="app-application-cards">
 
-            {% set draftRecords = filteredRecords | where("status", "Draft") %}
+            {% set draftRecords = filteredRecords | where("status", ["Draft", "Apply draft"]) %}
 
             {% if (draftRecords | length) %}
               <form action="/bulk-action/new/direct" method="post" novalidate>
@@ -144,7 +152,7 @@
 
             {% endif %}
 
-            {% set nonDraftRecords = filteredRecords | removeWhere("status", "Draft") %}
+            {% set nonDraftRecords = filteredRecords | removeWhere("status", ["Draft", "Apply draft"]) %}
             {% if (nonDraftRecords | length) %} 
               <form action="/bulk-action/new/direct" method="post" novalidate>
                 <div class="govuk-grid-row">
@@ -232,7 +240,7 @@
       container: $('.moj-action-bar__filter'),
       showText: 'Show filter',
       hideText: 'Hide filter',
-      classes: 'govuk-button--secondary govuk-!-margin-bottom-0'
+      classes: 'govuk-button--secondary'
     },
     closeButton: {
       container: $('.moj-filter__header-action'),

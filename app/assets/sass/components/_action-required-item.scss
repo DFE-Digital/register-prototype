@@ -1,0 +1,44 @@
+// Items in the requires attention section
+
+.app-action-required-item {
+  display: flex;
+  position: relative;
+}
+
+.app-action-required-item + .app-action-required-item {
+  margin-top: govuk-spacing(3);
+}
+
+.app-action-required-item:last-child {
+  margin-bottom: govuk-spacing(3);
+}
+
+.app-action-required-item__content {
+  flex: 1;
+}
+
+.app-action-required-item__text {
+  @include govuk-font($size: 24);
+  display: inline-block;
+  margin-bottom: govuk-spacing(1);
+  font-weight: bold;
+}
+
+.app-action-required-item__hint-text {
+  margin-bottom: 0;
+}
+
+.app-action-required-item__count {
+  @include govuk-font($size: 24);
+  display: flex;
+  width: 40px;
+  height: 40px;
+  margin-right: govuk-spacing(2);
+  align-items: center; 
+  justify-content: center;
+  border-radius: 50%;
+  background-color: govuk-colour('blue');
+  color: govuk-colour('white');
+  font-weight: bold;
+  text-align: center;
+}

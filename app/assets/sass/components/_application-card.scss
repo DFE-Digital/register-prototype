@@ -1,124 +1,128 @@
 .app-application-card {
+  margin-bottom: govuk-spacing(3);
+  padding-bottom: govuk-spacing(3);
   border-bottom: 1px solid govuk-colour('mid-grey');
-  margin-bottom: 15px;
-  padding-bottom: 15px;
   
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: 401px) {
     display: flex;
-    align-items: stretch;
+    // Ensure columns evenly distributed, with no gap at the start or end
+    justify-content: space-between;
   }
 }
 
 .app-application-card:first-of-type {
   border-top: 1px solid govuk-colour('mid-grey');
-  padding-top: 15px;
+  padding-top: govuk-spacing(3);
 }
 
-// Trainee column
-.app-application-card_col:nth-last-child(4) {
-  @include govuk-media-query($from: tablet) {
-    width: 5%;
-    padding-right: 10px;
-  }
-}
-
-// Trainee column
+// Checkbox column
+// This column isnt always shown - is dependeant on a feature flag 
 .app-application-card_col:nth-last-child(3) {
   @include govuk-media-query($from: tablet) {
-    width: 40%;
-    padding-right: 15px;
+    width: 5%;
+    padding-right: govuk-spacing(2);
   }
 }
 
-// Course details column
+// Trainee + Course details columns
 .app-application-card_col:nth-last-child(2) {
-  @include govuk-media-query($until: tablet) {
-    margin-top: govuk-spacing(2);
+ 
+  .govuk-tag {
     margin-bottom: govuk-spacing(2);
   }
-  @include govuk-media-query($from: tablet) {
-    width: 25%;
+
+  div:nth-child(1) {
+    margin-bottom: govuk-spacing(2);
   }
+
+  @include govuk-media-query($from: 401px) {
+    width: 60%;
+  }
+
+  @include govuk-media-query($until: 500px) {
+    div:nth-child(1),
+    div:nth-child(2) {
+      width: 100%;
+      padding-right: govuk-spacing(3);
+    }
+  }
+
+  @include govuk-media-query($from: 501px) {
+    width: 65%;
+    padding-right: govuk-spacing(3);
+  }
+
+  @include govuk-media-query($from: 501px, $until: desktop) {
+    display: flex;
+    // Ensure columns evenly distributed, with no gap at the start or end
+    justify-content: space-between;
+
+    div:nth-child(1) {
+      width: 60%;
+      padding-right: govuk-spacing(3);
+      margin-bottom: 0;
+    }
+    
+    div:nth-child(2) {
+      width: 40%;
+    }
+  }
+  
+  @include govuk-media-query($from: $govuk-page-width) {
+    display: flex;
+    // Ensure columns evenly distributed, with no gap at the start or end
+    justify-content: space-between;
+
+    div:nth-child(1) {
+      width: 60%;
+      padding-right: govuk-spacing(3);
+      margin-bottom: 0;
+    }
+    
+    div:nth-child(2) {
+      width: 40%;
+    }
+  }
+
 }
 
 // Status column
 .app-application-card_col:nth-last-child(1) {
-  @include govuk-media-query($from: tablet) {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    justify-content: space-between;
-    height: 100%;
+  margin-top: govuk-spacing(2);
+  
+  @include govuk-media-query($from: 401px) {
+    width: 40%;
+    margin-top: 0;
     text-align: right;
+  }
+  
+  @include govuk-media-query($from: 501px) {
+    width: 35%;
   }
 }
 
-.app-application-card_col .govuk-tag {
+// Helpers
+
+.app-application-card__trainee-name {
+  hyphens: auto;
+}
+
+.app-application-card .govuk-tag {
+  // Stops elements in flex containers to try and fill available space
   align-self: flex-end;
 }
 
-.app-application-card__id {
+.app-application-card__provider {
   overflow-wrap: break-word;
 }
 
 .app-application-card__submitted {
-  overflow-wrap: break-word;
 
-  span {
-    display: block;
+  @include govuk-media-query($from: 401px) {
+    span {
+      display: block;
+    }
   }
 }
 
-.app-application-card__primary {
-  @include govuk-media-query($from: tablet) {
-    width: 60%;
-  }
 
-  p {
-    margin-bottom: 0;
-  }
-}
-
-.app-application-card__secondary {
-  @include govuk-media-query($from: tablet) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 40%;
-    text-align: right;
-  }
-}
-
-.app-application-card__status {
-  margin-bottom: govuk-spacing(2);
-  margin-top: govuk-spacing(3);
-  @include govuk-media-query($from: tablet) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-.app-application-card__note {
-  margin-bottom: govuk-spacing(0);
-  @include govuk-font(16);
-}
-
-.app-application-card__note {
-  padding-left: 15px;
-  display: inline-block;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  color: govuk-colour('black');
-  position: relative;
-}
-
-.app-application-card__note:before {
-  border-radius: 25px;
-  height: 10px;
-  width: 10px;
-  background: govuk-colour('black');
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 6px;
-}

@@ -10,17 +10,27 @@
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
   {% include "_includes/summary-cards/diversity.html" %}
 
-  {{ govukCheckboxes({
-  idPrefix: "waste",
-  name: "record[diversity][status]",
-  items: [
-    {
-      value: "Completed",
-      text: "I have completed this section",
-      checked: checked(record.diversity.status, "Completed")
-    }
-  ]
-  }) }}
+  {% set checkboxText %}
+    {% if record | sourceIsManual %}
+      I have completed this section
+    {% else %}
+      I have reviewed this section
+    {% endif %}
+  {% endset %}
+
+  {% if not data.settings.groupApplySections %}
+    {{ govukCheckboxes({
+    idPrefix: "waste",
+    name: "record[diversity][status]",
+    items: [
+      {
+        value: "Completed",
+        text: checkboxText,
+        checked: checked(record.diversity.status, "Completed")
+      }
+    ]
+    }) }}
+  {% endif %}
 
   {{ govukButton({
     text: "Continue"

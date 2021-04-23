@@ -48,20 +48,7 @@ filters.getFullName = ({
   return names.filter(Boolean).join(' ')
 }
 
-// Adds referrer as query string if it exists
-filters.addReferrer = (url, referrer) => {
-  if (!referrer || referrer == 'undefined') return url
-  else {
-    return `${url}?referrer=${referrer}`
-  }
-}
 
-filters.orReferrer = (url, referrer) => {
-  if (!referrer || referrer == 'undefined') return url
-  else {
-    return referrer
-  }
-}
 
 // Metadata about a school as a string
 // URN 1234567, City, Postcode

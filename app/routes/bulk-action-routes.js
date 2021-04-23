@@ -143,7 +143,7 @@ module.exports = router => {
         // Filter for only draft records that are complete
         if (bulk.action == 'Submit a group of records and request TRNs'){
           filteredRecords = filteredRecords
-            .filter(record => record.status == 'Draft')
+            .filter(record => utils.isDraft(record))
             .filter(record => {
               if (utils.recordIsComplete(record)) return true
               else {

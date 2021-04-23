@@ -97,6 +97,24 @@ filters.setAttribute = (dictionary, key, value) => {
   return newDictionary;
 }
 
+// Aet attribute on object (or array of objects)
+filters.addAttribute = (dictionary, key, value) => {
+  if (Array.isArray(dictionary)){
+    newArr = []
+    dictionary.forEach(item => {
+      var newItem = Object.assign({}, item)
+      newItem[key] = value
+      newArr.push(newItem)
+    })
+    return newArr
+  }
+  else {
+    var newDictionary = Object.assign({}, dictionary);
+    newDictionary[key] = value;
+    return newDictionary;
+  }
+}
+
 // Clear a single attribute
 filters.clearAttribute = (dictionary, key) => {
   var newDictionary = Object.assign({}, dictionary);

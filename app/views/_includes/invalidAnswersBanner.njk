@@ -1,0 +1,25 @@
+{% set invalidAnswerCount = record | countInvalidAnswers %}
+
+{% set bannerHtml %}
+  <h2 class="govuk-heading-m">Action required</h2>
+
+  <p class="govuk-body">This {{ invalidAnswerType or "section" }} contains {{invalidAnswerCount}} {{ 'answer' | pluralise(invalidAnswerCount)}} that you need to review and amend manually.</p> 
+  
+  {% if data.record.invalidAnswers %}
+    <ul class="govuk-list app-invalid-answer__list">
+      {% for invalidAnswer in data.record.invalidAnswers %}
+        <li>
+          <a href="#{{invalidAnswer.id}}">{{invalidAnswer.name}} is not recognised</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endset %}
+
+{{ appBanner({
+  classes: "app-banner--invalid-answer",
+  html: bannerHtml,
+  type: incompleteType or "information",
+  icon: false
+}) }}

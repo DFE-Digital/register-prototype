@@ -1,0 +1,107 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Trainee’s application" %}
+
+{% set formAction = "./overview" | orReferrer(referrer) %}
+
+{% set hideReturnLink = true %}
+{% set showIncomplete = false %}
+{% set backLink = './overview' %}
+{% set backText = 'Back to draft record' %}
+{% set gridColumn = 'govuk-grid-column-full' %}
+
+{% block formContent %}
+
+{# Add an extra referrer as this is a compound referral path #}
+{% set referrer = referrer | pushReferrer(recordPath + "/apply-trainee-application") %}
+
+{% set hasInvalidAnswers = record | hasInvalidAnswers and data.settings.highlightInvalidAnswers | falsify %}
+
+{# Summary cards need to be set *first* because in rendering the card we count
+the number of invalid answers, and then use this in a banner at the top
+of the page. #}
+{% set allSummaryCards %}
+  <h2 class="govuk-heading-m">Personal details</h2>
+
+  {% include "_includes/summary-cards/personal-details.html" %}
+
+  {% include "_includes/summary-cards/contact-details.html" %}
+
+  {% include "_includes/summary-cards/diversity.html" %}
+
+  <h2 class="govuk-heading-m">Education</h2>
+
+  {% include "_includes/summary-cards/gcse-details.html" %}
+
+  {% include "_includes/summary-cards/degree/details.html" %}
+
+  {% include "_includes/summary-cards/undergraduate-qualification.html" %}
+{% endset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    {% if errorList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: "You must complete all sections before submitting for TRN"
+          }
+        ]
+      }) }}
+    {% endif %}
+
+    {% set draftRecordName %}
+      {% if record.personalDetails.shortName %}
+       for {{record.personalDetails.shortName}}
+      {% endif %}
+    {% endset %}
+
+    <span class="govuk-caption-l">{{'Draft record' + draftRecordName}}</span>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-8">{{pageHeading}}</h1>
+
+    {# This must come after the summary cards are rendered so that it can show
+    which fields have invalid answers and link to them #}
+    {% if hasInvalidAnswers %}
+      {% set invalidAnswerType = "application" %}
+      {% include "_includes/invalidAnswersBanner.njk" %}
+    {% endif %}
+
+    {# Text shown if user belongs to multiple providers #}
+    {# {% include "_includes/providerAndRouteInsetText.njk" %} #}
+
+  </div>
+</div>
+
+{{ allSummaryCards | safe }}
+
+{% if hasInvalidAnswers %}
+
+  {{ govukInsetText({
+    text: "You need to ammend this record before you can mark it as reviewed."
+  }) }}
+
+{% else %}
+
+  {{ govukCheckboxes({
+    idPrefix: "apply-trainee-application-checkbox",
+    name: "record[applyData][status]",
+    items: [
+      {
+        value: "Completed",
+        text: "I have reviewed their application",
+        checked: checked(record.applyData.status, "Completed")
+      }
+    ]
+  }) }}
+
+{% endif %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<p class="govuk-body"><a href="./save-as-draft" class="govuk-link">Return to this draft record later</a></p>
+
+{% endblock %}

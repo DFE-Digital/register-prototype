@@ -2,6 +2,7 @@ let countries               = require('./countries')
 let ethnicities             = require('./ethnicities')
 let nationalities           = require('./nationalities')
 let statuses                = require('./status')
+let strings                 = require('./strings')
 
 // Degree stuff
 let awards                  = require('./awards') // Types of degree
@@ -70,6 +71,12 @@ settings.includeTimeline = 'true'
 // Enable apply integration
 settings.enableApplyIntegration = false
 
+// Enable apply integration
+settings.groupApplySections = 'true'
+
+// Enable apply integration
+settings.highlightInvalidAnswers = 'true'
+
 // Enable timeline on records
 settings.includeGuidance = false
 
@@ -137,6 +144,7 @@ module.exports = {
   // schoolsTop5,
   settings,
   statuses,
+  strings,
   subjects,
   trainingRoutes,
   publishRoutes,

@@ -36,28 +36,51 @@
   }) }}
 {% endset %}
 
-{{ govukRadios({
-  fieldset: {
-    legend: {
-      text: "When did the trainee withdraw?",
-      classes: "govuk-fieldset__legend--s govuk-!-margin-bottom-4"
-    }
-  },
-  items: [
-    {
-      text: "Today"
-    },
-    {
-      text: "Yesterday"
-    },
-    {
-      text: "On another day",
-      conditional: {
-        html: customWithdrawalDate
+{# Trainees who withdraw whilst deferred must use deferral date as withdrawal date #}
+{% if record | isDeferred %}
+  {% set deferredTextHtml %}
+    <p class="govuk-body">
+      We’ll use the trainee’s deferral date of <span class="govuk-!-font-weight-bold">{{record.deferredDate | govukDate }}</span> as their withdrawal date.
+    </p>
+    <p class="govuk-body">
+      To use a different date, <a href="./reinstate">reinstate this trainee</a>, then withdraw them.
+    </p>
+  {% endset %}
+
+  <h2 class="govuk-heading-s">Withdrawal date</h2>
+
+  {{ govukInsetText({
+    html: deferredTextHtml
+  }) }}
+
+{% else %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "What date did the trainee formally withdraw?",
+        classes: "govuk-fieldset__legend--s govuk-!-margin-bottom-4"
       }
-    }
-  ]
-} | decorateAttributes(record, "record.withdrawalDateRadio")) }}
+    },
+    items: [
+      {
+        text: "Today"
+      },
+      {
+        text: "Yesterday"
+      },
+      {
+        text: "On another day",
+        conditional: {
+          html: customWithdrawalDate
+        }
+      }
+    ]
+  } | decorateAttributes(record, "record.withdrawalDateRadio")) }}
+
+{% endif %}
+
+
 
 {% set customWithdrawalReason %}
   {{ govukInput({

@@ -39,7 +39,7 @@
 
 
 
-{% set canAmend = record.status | getAmendsAllowed %}
+{% set canAmend = record.status | canBeAmmended %}
 {# {% set showIncomplete = true %} #}
 
 

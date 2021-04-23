@@ -19,7 +19,6 @@
   }
 }
 
-
 .js-enabled .moj-filter-layout__filter {
   @include govuk-media-query($until: tablet) {
     // only display a scrollbar if it there is overflow to scroll
@@ -56,6 +55,12 @@
 
   @include govuk-media-query($from: desktop) {
     display: none;
+  }
+}
+
+.moj-action-bar__filter {
+  @include govuk-media-query($until: 500px) {
+    width: 100%;
   }
 }
 

@@ -10,7 +10,7 @@
 {% set formAction = "./update" | addReferrer(referrer) %}
 
 {% set minPlacementsRequired = data.settings.minPlacementsRequired %}
-{% set canAmend = record.status | getAmendsAllowed %}
+{% set canAmend = record.status | canBeAmmended %}
 
 {% block formContent %}
 

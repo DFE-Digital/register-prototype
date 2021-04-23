@@ -26,6 +26,13 @@
   }
 }
 
+.app-banner--invalid-answer {
+  border-width: 0 0 0 $govuk-border-width;
+  padding: govuk-spacing(2);
+  padding-left: govuk-spacing(3);
+  @include govuk-responsive-margin(4, "bottom");
+}
+
 .app-banner--info {
   border-color: govuk-colour("blue");
 }

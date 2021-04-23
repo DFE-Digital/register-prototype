@@ -7,30 +7,7 @@ const utils = require('./../lib/utils')
 
 
 module.exports = router => {
-  // Set up data when viewing a record
-  router.get('/record/:uuid', function (req, res) {
-    const data = req.session.data
 
-    utils.deleteTempData(data)
-    const records = req.session.data.records
-    const record = records.find(record => record.id == req.params.uuid)
-    if (!record){
-      res.redirect('/records')
-    }
-    // Save record to session to be used by views
-    req.session.data.record = record
-
-    // Redirect to task list journey if still a draft
-    if (record.status == 'Draft'){
-      // req.flash('success', 'Restoring saved draft')
-      res.redirect('/new-record/overview')
-    }
-    // Only submitted records
-    else {
-      res.locals.record = record
-      res.render('record')
-    }
-  })
 
   // Manually advance an application from pending to trn received
   router.get('/record/:uuid/trn', (req, res) => {
@@ -286,13 +263,20 @@ module.exports = router => {
       res.redirect('/record/:uuid')
     }
     else {
-      let radioChoice = newRecord.withdrawalDateRadio
-      if (radioChoice == "Today") {
-        newRecord.withdrawalDate = filters.toDateArray(filters.today())
-      } 
-      if (radioChoice == "Yesterday") {
-        newRecord.withdrawalDate = filters.toDateArray(moment().subtract(1, "days"))
-      } 
+
+      if (utils.isDeferred(newRecord)){
+        newRecord.withdrawalDate = newRecord.deferredDate
+      }
+      else {
+        let radioChoice = newRecord.withdrawalDateRadio
+        if (radioChoice == "Today") {
+          newRecord.withdrawalDate = filters.toDateArray(filters.today())
+        } 
+        if (radioChoice == "Yesterday") {
+          newRecord.withdrawalDate = filters.toDateArray(moment().subtract(1, "days"))
+        }
+      }
+
       res.redirect('/record/' + req.params.uuid + '/withdraw/confirm')
     }
   })
@@ -312,7 +296,7 @@ module.exports = router => {
       req.flash('success', 'Trainee record updated')
 
       if (referrer){
-        res.redirect(req.query.referrer)
+        res.redirect(utils.getReferrerDestination(req.query.referrer))
       }
       else {
         // More likely we've come from this tab where most things are on

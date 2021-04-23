@@ -9,15 +9,13 @@
 {% block tabContent %}
 {% set referrer = recordPath %}
 
-{% set canAmend = record.status | getAmendsAllowed %}
+{% set canAmend = record.status | canBeAmmended %}
 
 {% set hasCommencementDate = record.trainingDetails.traineeStarted | falsify %}
 
 {% set recordPath = "/record/" + record.id %}
 
 <div class="govuk-grid-row">
-
-  {{record | log}}
 
   <div class="govuk-grid-column-full">
 

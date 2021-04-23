@@ -8,7 +8,6 @@
 {% set internationalAddress = record.contactDetails.internationalAddress | nl2br %}
 
 {% if record.contactDetails.addressType == "domestic" %}
-{{ukAddress | log}}
   {% set address = ukAddress %}
 {% else %}
   {% set address = internationalAddress %}
@@ -75,7 +74,7 @@
 
 {% set contactDetailsHtml %}
   {{ govukSummaryList({
-    rows: contactDetailsRows
+    rows: contactDetailsRows | highlightInvalidRows
   }) }}
 {% endset %}
 
@@ -89,7 +88,11 @@
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "contact-details" %}
-  {% if status == "In progress" %}
+  {% if status == "Review" %}
+    {% set incompleteText = "Contact details not reviewed" %}
+    {% set incompleteLink = recordPath + "/contact-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Review section" %}
+  {% elseif status == "In progress" %}
     {% set incompleteText = "Contact details not marked as complete" %}
     {% set incompleteLink = recordPath + "/contact-details/confirm" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Continue section" %}

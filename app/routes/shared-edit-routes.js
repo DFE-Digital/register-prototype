@@ -8,6 +8,37 @@ const schools = require('./../data/gis-schools.js') // Loaded manually because t
 
 module.exports = router => {
 
+  // Load up data for a record
+  // This implimentation makes a copy of the record and stores it in a temporary location
+  // any edits happen on this temporary data - depending on the journey, some routes may then
+  // copy this temp record back to the main records list. This means we can support things like
+  // cancelling changes - as we just need to load the original record again.
+  // One downside is it means the prototype doesn’t support multiple records being opened
+  // at once.
+  router.get('/record/:uuid', function (req, res) {
+    const data = req.session.data
+
+    utils.deleteTempData(data)
+    const records = req.session.data.records
+    const record = records.find(record => record.id == req.params.uuid)
+    if (!record){
+      res.redirect('/records')
+    }
+    // Save record to session to be used by views
+    req.session.data.record = record
+
+    // Redirect to task draft journey if still a draft
+    if (utils.isDraft(record)){
+      res.redirect('/new-record/overview')
+    }
+    // Only submitted records
+    else {
+      res.locals.record = record
+      res.render('record')
+    }
+  })
+
+
   // =============================================================================
   // Training details - details specific to this trainee
   // =============================================================================
@@ -250,12 +281,17 @@ module.exports = router => {
       res.redirect("/records")
     }
     else {
+      // If it’s an Apply draft we let users pick from all providers
+      if (utils.sourceIsApply(record)) route = false
+
+      // Look up courses offered by this provider
       let providerCourses = utils.getProviderCourses(data.courses, record.provider, route, data)
 
       // Some courses for selected route
       if (providerCourses.length) {
         res.redirect(`${recordPath}/course-details/pick-course${referrer}`)
       }
+
       // If no courses, go straight to course details
       else {
         res.redirect(`${recordPath}/course-details/details${referrer}`)
@@ -272,6 +308,7 @@ module.exports = router => {
     let referrer = utils.getReferrer(req.query.referrer)
     let enabledRoutes = data.settings.enabledTrainingRoutes
     let route = record?.route
+    if (utils.sourceIsApply(record)) route = false
     let providerCourses = utils.getProviderCourses(data.courses, record.provider, route, data)
     let selectedCourse = _.get(data, 'record.selectedCourseTemp')
 
@@ -340,6 +377,13 @@ module.exports = router => {
     delete record.selectedCourseTemp
     delete record.selectedCourseAutocompleteTemp
 
+    // For apply records we let them pick a Publish course which 
+    // might have a different route
+    if (record.route != record.courseDetails.route){
+      console.log(`The selected Publish course’s route does not match the draft’s route. Draft route changed to ${record.courseDetails.route}`)
+      record.route = record.courseDetails.route
+    }
+
     let isAllocated = utils.hasAllocatedPlaces(record)
 
     if (isAllocated) {
@@ -354,7 +398,7 @@ module.exports = router => {
         req.flash('success', 'Trainee record updated')
         // Referrer or non-referrer probably goes to the same place
         if (referrer){
-          res.redirect(req.query.referrer)
+          res.redirect(utils.getReferrerDestination(req.query.referrer))
         }
         else {
           res.redirect(`${recordPath}`)
@@ -365,7 +409,7 @@ module.exports = router => {
         record.courseDetails.status = "Completed"
         if (referrer){
           // Return to check-record page
-          res.redirect(req.query.referrer)
+          res.redirect(utils.getReferrerDestination(req.query.referrer))
         }
         else {
           res.redirect(`${recordPath}/overview`)
@@ -526,7 +570,7 @@ module.exports = router => {
         // records without a dregree anyway.
         utils.updateRecord(data, data.record)
       }
-      res.redirect(req.query.referrer)
+      res.redirect(utils.getReferrerDestination(req.query.referrer))
     }
     else {
       res.redirect(`${recordPath}/degree/confirm${referrer}`)
@@ -640,7 +684,7 @@ module.exports = router => {
     
         // send them back to the record
         if (referrer){
-          res.redirect(req.query.referrer)
+          res.redirect(utils.getReferrerDestination(req.query.referrer))
         }
         else {
           res.redirect(`${recordPath}`)
@@ -656,7 +700,7 @@ module.exports = router => {
         
         // send them to the confirmation
         if (referrer){
-          res.redirect(req.query.referrer)
+          res.redirect(utils.getReferrerDestination(req.query.referrer))
         }
         else {
           res.redirect(`${recordPath}/overview`)
@@ -717,7 +761,7 @@ module.exports = router => {
       res.redirect(`${recordPath}/placements/can-add-placement${referrer}`)
     } 
     else if (referrer){
-      res.redirect(req.query.referrer)
+      res.redirect(utils.getReferrerDestination(req.query.referrer))
     }
     else {
       res.redirect(`${recordPath}/placements/confirm${referrer}`)

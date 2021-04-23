@@ -1,5 +1,14 @@
 {# Look up courses offered by the current provider for the selected route #}
-{% set providerCourses = data.courses | getProviderCourses(record.provider, record.route) %}
+
+{# For Apply drafts only, we let users pick from all routes #}
+{# Todo: this data should probably be provided to the view #}
+{% if record | sourceIsApply %}
+  {% set route = false %}
+{% else %}
+  {% set route = record.route %}
+{% endif %}
+
+{% set providerCourses = data.courses | getProviderCourses(record.provider, route) %}
 
 {# Do a little dance working out if something should be pre-selected.
 This is partly because we want this to work with seed-data too - and this page
@@ -36,6 +45,15 @@ defer to an id if one exists. #}
     checked: checked(selectedCourse, "Other")
   }) %}
 
+  {% set hintText %}
+    {% if route %}
+      Your {{record.route | lower | replace("(", "") | replace(")", "")}} courses in the Publish service
+      {% else %}
+      Your courses in the Publish service
+    {% endif %}
+    
+  {% endset %}
+
   {{ govukRadios({
     fieldset: {
       legend: {
@@ -43,6 +61,9 @@ defer to an id if one exists. #}
         isPageHeading: true,
         classes: "govuk-fieldset__legend--l"
       }
+    },
+    hint: {
+      text: hintText
     },
     items: courseItems
   } | decorateAttributes(record, "record.selectedCourseTemp")) }}

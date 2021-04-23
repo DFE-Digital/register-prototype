@@ -10,13 +10,21 @@
   <h1 class="govuk-heading-l">{{pageHeading}}</h1>
   {% include "_includes/summary-cards/course-details.html" %}
 
+  {% set checkboxText %}
+    {% if record | sourceIsManual %}
+      I have completed this section
+    {% else %}
+      I have reviewed this section
+    {% endif %}
+  {% endset %}
+
   {{ govukCheckboxes({
   idPrefix: "waste",
   name: "record[courseDetails][status]",
   items: [
     {
       value: "Completed",
-      text: "I have completed this section",
+      text: checkboxText,
       checked: checked(record.courseDetails.status, "Completed")
     }
   ]

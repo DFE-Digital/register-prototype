@@ -36,7 +36,7 @@
   {% set record = {} %}
 {% endif %}
 
-{% set canAmend = record.status | getAmendsAllowed %}
+{% set canAmend = record.status | canBeAmmended %}
 
 {# Used by summary cards #}
 {% set recordPath = "/record/" + record.id %}

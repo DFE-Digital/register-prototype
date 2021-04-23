@@ -108,7 +108,7 @@ exports.requiresSection = (record, sectionNames) => {
 // This whole filter is poor and should probably be removed later.
 exports.getSectionName = (record, section) => {
   if (section == 'trainingDetails'){
-    if (record.status && record.status != "Draft"){
+    if (record.status && !exports.isDraft(record)){
       return "Schools"
     }
     else {
@@ -181,17 +181,79 @@ exports.routeHasPublishCourses = function(record){
 // Records
 // -------------------------------------------------------------------
 
+// Statuses
+exports.isDraft = record => {
+  return record.status == "Draft" || record.status == "Apply draft"
+}
+
+exports.isNotDraft = record => {
+  return record.status != "Draft" && record.status != "Apply draft"
+}
+
+exports.isPendingTrn = record => {
+  return record.status == "Pending TRN"
+}
+
+exports.isTrnReceived = record => {
+  return record.status == "TRN received"
+}
+
+exports.isRecommended = record => {
+  return record.status.includes("recommended") //EYTS recommended and QTS recommended
+}
+
+exports.isAwarded = record => {
+  return record.status.includs("awarded") // EYTS awarded and QTS awarded
+}
+
+exports.isDeferred = record => {
+  return record.status == "Deferred"
+}
+
+exports.isWithdrawn = record => {
+  return record.status == "Withdrawn"
+}
+
+// Source types
+exports.sourceIsApply = record => {
+  return record.source == "Apply"
+}
+
+exports.sourceIsManual = record => {
+  return record.source == "Manual"
+}
+
 // Check if all sections are complete
 exports.recordIsComplete = record => {
   if (!record || !_.get(record, "route")) return false
 
   let requiredSections = _.get(trainingRoutes, `${record.route}.sections`)
+  let applyReviewSections = trainingRouteData.applyReviewSections
+
   if (!requiredSections) return false // something went wrong
 
-  let recordIsComplete = true
-  requiredSections.forEach(section => {
-    if (_.get(record, `${section}.status`) != "Completed"){
-      recordIsComplete = false
+  // All required sections must be marked completed
+  let recordIsComplete = requiredSections.every(section => {
+
+    let sectionStatus = record[section]?.status == "Completed"
+    
+    // Default
+    if (exports.sourceIsManual(record)){
+      return sectionStatus
+    }
+
+    // Special handling for Apply drafts which *may* work differently
+    else if (exports.sourceIsApply(record)){
+
+      // Some sections are collected together with one checkbox for all
+      // If so, defer to that checkbox
+      if (applyReviewSections.includes(section)){
+        return (record.applyData.status == "Completed") || sectionStatus
+      }
+      else return sectionStatus
+    }
+    else {
+      console.log("Error, record type not recognised")
     }
   })
 
@@ -230,6 +292,21 @@ exports.hasOutstandingActions = function(record, data = false) {
     hasOutstandingActions = true
   }
   return hasOutstandingActions
+}
+
+// Invalid answers have `**invalid**` prepended to them
+// Count how many times this string exists in the record
+// As users edit these answers, this string should get removed
+// so the count should go down
+exports.countInvalidAnswers = record => {
+  let jsonRecord = JSON.stringify(record)
+  let invalidCount = (jsonRecord.match(/\*\*invalid\*\*/g) || []).length
+  return invalidCount
+}
+
+// Whether any data in the record is considered invalid
+exports.hasInvalidAnswers = record => {
+  return exports.countInvalidAnswers(record) > 0
 }
 
 // Look up a record using it’s UUID
@@ -414,7 +491,7 @@ exports.registerForTRN = (record) => {
   if (!record) return false
 
   // Only draft records can be submitted for TRN
-  if (record.status != 'Draft'){
+  if (!exports.isDraft(record)){
     console.log(`Submit a group of records and request TRNs failed: ${record.id} (${record?.personalDetails?.shortName}) has the wrong status (${record.status})`)
     return false
   }
@@ -473,10 +550,10 @@ exports.filterRecords = (records, data, filters = {}) => {
   let enabledTrainingRoutes = data.settings.enabledTrainingRoutes
 
   // Only show records for currently enabled routes or draft records
-  filteredRecords = filteredRecords.filter(record => enabledTrainingRoutes.includes(record.route) || (record?.status === 'Draft'))
+  filteredRecords = filteredRecords.filter(record => enabledTrainingRoutes.includes(record.route) || (exports.isDraft(record)))
 
   if (!applyEnabled){
-    filteredRecords = filteredRecords.filter(record => record?.source != "Apply")
+    filteredRecords = filteredRecords.filter(record => exports.sourceIsManual(record))
   }
 
 
@@ -502,6 +579,137 @@ exports.filterRecords = (records, data, filters = {}) => {
 
   return filteredRecords
 }
+
+/*
+Highlight invalid summary list rows
+
+This is filter patches in the ability to highlight rows on a summary list which
+contain invalid answers. 
+
+We indicate invalid answers by prefacing them with the string **invalid**
+
+This filter loops through each row, looking for this string in value.html or value.text.
+If found, it adds some classes and messaging, and moves the action link within the value.
+
+It also pushes the name of the row with the error to a temporary array stored
+in the Nunjucks context. This is a hacky way that we can get a list of each of the 
+errors visible in a set of summary lists without knowing about the data structure of a
+record. The very act of running this filter on each summary list builds up this array.
+We can then use that array to display a summary at the top of the page. This is combined
+with a catch all route (*) that wipes the array with each request - so it should only
+have items found since the last request.
+
+This is very hacky - but works. It avoids us needing to know much about the data
+or program errors per field. We just reivew the summary list to decide if something
+is wrong.
+*/
+
+// Must be classic function as arrow functions don't provide the Nunjucks context
+exports.highlightInvalidRows = function(rows) {
+  let ctx = Object.assign({}, this.ctx)
+
+  // We need to add to any existing answers from previous times
+  // this filter has run on this page
+  let invalidAnswers = ctx.data?.record?.invalidAnswers || []
+  let featureEnabled = ctx.data?.settings?.highlightInvalidAnswers == "true"
+
+  if (rows) {
+    rows.map(row => {
+
+      // Values are stored two possible places
+      let value = row?.value?.html || row?.value?.text
+
+      // We preface invalid answers with **invalid** but technically it sohuld work anywhere
+      // Probably might not work for dates / values that get transformed before display
+      if (value && value.includes('**invalid**') ){
+
+        // Strip **invalid** so it doesn’t display
+        let userValue = value.replace("**invalid**", "")
+
+        if (featureEnabled){
+
+          // Keys are stored two possible places
+          let key = row?.key?.html || row?.key?.text
+
+          // Generate an id so we can anchor to this row
+          let id = `summary-list--row-invalid-${invalidAnswers.length + 1}`
+
+          // GOVUK summary lists don’t support setting an id on rows
+          // so we wrap the key in a div with our own id
+          row.key.html = `<div id="${id}">${key}</div>`
+
+          // Store the row name so it can be used in a summary at 
+          // the top of the page
+          invalidAnswers.push({name: key, id})
+          
+          // Error message that gets shown
+          let messageContent = `${key} is not recognised`
+          let messageHtml = `<p class="govuk-body app-summary-list__message--invalid govuk-!-margin-bottom-2">${messageContent}</p>`
+
+          // Grab the existing action link and craft a new link
+          let linkHtml = '' // default to no link
+          let actionItems = row?.actions?.items
+
+          // If there’s more than one link (unlikely), do nothing
+          if (actionItems && actionItems.length == 1){
+            let href = row?.actions?.items[0].href
+            linkHtml = `<br><a class="govuk-link govuk-link--no-visited-state" href="${href}">
+            Review the trainee’s answer<span class="govuk-visually-hidden"> for ${key.toLowerCase()}</span>
+            </a>`
+            delete row.actions.items
+          }
+        
+          // Add a class to the row so we can target it
+          row.classes = `${row.classes} app-summary-list__row--invalid`
+
+          // Wrap in a div for styling
+          let userValueHtml = `<div class="app-summary-list__user-value">${userValue}</div>`
+
+          // Entire thing is wrapped in a div so we can style a left border within the padding of the
+          // summary list value box
+          row.value.html = `<div class="app-summary-list__value-inset">${messageHtml}${userValueHtml}${linkHtml}</div>`
+
+          // Key will get saved to key.html, so we don’t need  key.text any more
+          delete row.key?.text
+
+        }
+
+        else row.value.html = userValue
+
+        // Source value might have been stored in text - delete just in case
+        delete row.value?.text
+
+
+
+      }
+      return row
+    })
+  }
+
+  // Unique our invalid answers just in case
+  invalidAnswers = [...new Set(invalidAnswers)] 
+
+  // Save array back to context
+  // using lodash on the rare chance record doesn’t acutally exist yet
+  if (invalidAnswers.length){
+    _.set(this.ctx, 'data.record.invalidAnswers', invalidAnswers)
+  }
+  return rows
+}
+
+exports.captureInvalid = function(data){
+  let ctx = Object.assign({}, this.ctx)
+
+  delete this.ctx.data?.temp?.invalidString // just in case
+
+  if (data.value && data.value.includes("**invalid**")){
+    // data.value = data.value.replace("**invalid**", "")
+    _.set(this.ctx, 'data.temp.invalidString', data.value)
+    data.value = data.value.replace("**invalid**", "")
+  }
+  return data
+}
+
 
 // -------------------------------------------------------------------
 // Schools
@@ -542,6 +750,29 @@ exports.searchSchools = (schools = [], query = "") => {
 // Routing
 // -------------------------------------------------------------------
 
+// Adds referrer as query string if it exists
+exports.addReferrer = (url, referrer) => {
+  if (!referrer || referrer == 'undefined') return url
+  else {
+    return `${url}?referrer=${referrer}`
+  }
+}
+
+exports.orReferrer = (url, referrer) => {
+  console.log('Or referrer', referrer)
+  if (!referrer || referrer == 'undefined') return url
+  else {
+    return exports.getReferrerDestination(referrer)
+  }
+}
+
+exports.pushReferrer = (existingReferrer, newReferrer) => {
+  if (!existingReferrer) return newReferrer
+  else {
+    return [].concat(existingReferrer).concat(newReferrer)
+  }
+}
+
 // Append referrer to string if it exists
 exports.getReferrer = referrer => {
   if (referrer && referrer != 'undefined'){
@@ -554,6 +785,22 @@ exports.getReferrer = referrer => {
 // Used so we can add query params whilst also providing a referrer
 exports.addQueryParam = (existing, param) => {
   return (existing) ? `${existing}&${param}` : `?${param}`
+}
+
+// Referrer could be an array of urls. If so, return the last one
+// and put the remaining as the next referrer.
+// This lets us support multiple return destinations
+exports.getReferrerDestination = referrer => {
+  if (typeof referrer == 'string'){
+    referrer = referrer.split(",")
+  }
+  if (!referrer) return ''
+  else if (Array.isArray(referrer)){
+    let last = referrer.pop()
+    if (referrer.length) return `${last}?referrer=${referrer}`
+    else return last
+  }
+  else return referrer
 }
 
 // Return first part of url to use in redirects

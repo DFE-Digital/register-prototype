@@ -16,9 +16,11 @@ const searchIndex = require('./lib/search-index.json')
 // =============================================================================
 router.all('*', function(req, res, next){
   const data = req.session.data
-  // referrer not really needed as this in query
-  // but too late now as it's used everywhere
-  res.locals.referrer = req.query.referrer
+  if (req.query?.referrer) {
+    // Referrer might be an array of urls. Split it up now so we’ve got more
+    // structured data to work with in our views
+    res.locals.referrer = req.query.referrer.split(',')
+  }
   res.locals.query = req.query
   res.locals.flash = req.flash('success') // pass through 'success' messages only
   res.locals.currentPageUrl = url.parse(req.url).pathname
@@ -41,6 +43,11 @@ router.all('*', function(req, res, next){
     res.locals.data.settings.userActiveProvider = data.settings.userActiveProvider
   }
   res.locals.data.providerRecords = data.providerRecords
+
+  // Delete cashes of invalid answers that should be flushed on each request
+  delete data?.record?.invalidAnswers
+  delete data?.temp
+
   next()
 })
 

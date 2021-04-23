@@ -15,50 +15,62 @@
   {% set ukHintText = "For example, BA, BSc, Masters or PhD" %}
 {% endif %}
 
-{{ appAutocomplete({
-  label: {
-    text: "Degree subject",
-    classes: "govuk-label--s"
-  },
-  hint: {
-    text: 'Search for the closest matching subject'
-  },
-  id: 'subject',
-  autoSelect: true,
-  showAllValues: false,
-  minLength: 2,
-  name: "degreeTemp[subject]",
-  items: data.subjects,
-  classes: "app-!-autocomplete--max-width-two-thirds",
-  value: degreeTemp.subject
-  }
-) }}
+{% set degreeSubjectHtml %}
+  {{ appAutocomplete({
+    label: {
+      text: "Degree subject",
+      classes: "govuk-label--s"
+    },
+    hint: {
+      text: 'Search for the closest matching subject'
+    },
+    id: 'subject',
+    autoSelect: true,
+    showAllValues: false,
+    minLength: 2,
+    name: "degreeTemp[subject]",
+    items: data.subjects,
+    classes: "app-!-autocomplete--max-width-two-thirds",
+    value: degreeTemp.subject
+    } | captureInvalid
+  ) }}
+{% endset %}
+
+{{ appInvalidAnswer({html: degreeSubjectHtml})}}
 
 {#If the drop down arrow in the field above is displayed, add the following hint text to let users know they do not have to scroll: You can start typing to narrow down your search.#}
 
 {% set degreeTypesAutocomplete = data.degreeTypes | getDegreeTypesForAutocomplete | sort(attribute='value') %}
 
+
+
 {% if not isInternational %}
-  {{ appAutocomplete({
-    label: {
-      text: "Type of degree",
-      classes: "govuk-label--s"
-    },
-    hint: {
-      text: ukHintText
-    },
-    id: 'degreeTypeUK',
-    name: "degreeTemp[typeUK]",
-    items: data.degreeTypesSimple,
-    itemsAutocomplete: degreeTypesAutocomplete,
-    displayStyle: "bold",
-    minLength: 2,
-    autoSelect: true,
-    showAllValues: false,
-    classes: "app-!-autocomplete--max-width-two-thirds",
-    value: (degreeTemp.type or degreeTemp.typeUK) if not isInternational
-    }
-  ) }}
+
+  {% set degreeTypeHtml %}
+    {{ appAutocomplete({
+      label: {
+        text: "Type of degree",
+        classes: "govuk-label--s"
+      },
+      hint: {
+        text: ukHintText
+      },
+      id: 'degreeTypeUK',
+      name: "degreeTemp[typeUK]",
+      items: data.degreeTypesSimple,
+      itemsAutocomplete: degreeTypesAutocomplete,
+      displayStyle: "bold",
+      minLength: 2,
+      autoSelect: true,
+      showAllValues: false,
+      classes: "app-!-autocomplete--max-width-two-thirds",
+      value: (degreeTemp.type or degreeTemp.typeUK) if not isInternational
+      } | captureInvalid
+    ) }}
+  {% endset %}
+
+  {{ appInvalidAnswer({ html: degreeTypeHtml })}}
+
 {% endif %}
 
 
@@ -84,21 +96,26 @@
 
 {% else %}
 
-  {{ appAutocomplete({
-    label: {
-      text: "Institution",
-      classes: "govuk-label--s"
-    },
-    id: 'degree-organisations',
-    name: "degreeTemp[org]",
-    items: data.degreeOrganisations,
-    classes: "app-!-autocomplete--max-width-two-thirds",
-    value: degreeTemp.org,
-    minLength: 2,
-    autoSelect: true,
-    showAllValues: false
-  }
-) }}
+  {% set institutionInputHtml %}
+    {{ appAutocomplete({
+      label: {
+        text: "Institution",
+        classes: "govuk-label--s"
+      },
+      id: 'degree-organisations',
+      name: "degreeTemp[org]",
+      items: data.degreeOrganisations,
+      classes: "app-!-autocomplete--max-width-two-thirds",
+      value: degreeTemp.org,
+      minLength: 2,
+      autoSelect: true,
+      showAllValues: false
+    } | captureInvalid
+  ) }}
+  {% endset %}
+
+  {{ appInvalidAnswer({html: institutionInputHtml})}}
+  
 {% endif %}
 
 {{ govukInput({

@@ -3,10 +3,11 @@
 {% endif %}
 
 <div class="app-application-card {{justNowClass}}">
+  
   {% if data.settings.showBulkLinks %}
     <div class="app-application-card_col">
       <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-        {% if record.status == 'TRN received' or (record.status == 'Draft' and record | recordIsComplete) %}
+        {% if record.status == 'TRN received' or (record | isDraft and record | recordIsComplete) %}
           <input type="checkbox" name="[bulk][filteredTrainees]" class="govuk-checkboxes__input" id="checkbox-{{record.id}}" value="{{record.id}}">
           <label class="govuk-label govuk-checkboxes__label" for="checkbox-{{record.id}}">
             <span class="govuk-visually-hidden">Select {{record.personalDetails.shortName}}</span>
@@ -15,52 +16,54 @@
       </div>
     </div>
   {% endif %}
+
   <div class="app-application-card_col">
-    <h3 class="govuk-heading-m govuk-!-margin-bottom-1">
-      <a href="/record/{{ record.id }}" class="govuk-link govuk-link--no-visited-state">
-        {% if record | hasName %}
-          {% if query.sortOrder == "lastName" %}
-            {{ record.personalDetails | getShortNameReversed }}
+
+    <div>
+      <h3 class="app-application-card__trainee-name govuk-heading-m govuk-!-margin-bottom-1">
+        <a href="/record/{{ record.id }}" class="govuk-link govuk-link--no-visited-state">
+          {% if record | hasName %}
+            {% if query.sortOrder == "lastName" %}
+              {{ record.personalDetails | getShortNameReversed }}
+            {% else %}
+              {{ record.personalDetails | getShortName }}
+            {% endif %} 
           {% else %}
-            {{ record.personalDetails | getShortName }}
-          {% endif %} 
-        {% else %}
-          {% if record.status == "Draft" %}
-            Draft record
-          {% else %}
-            Name not known {# Shouldn't be possible - non drafts should always have a name #}
+            {% if record.status | isDraft %}
+              Draft record
+            {% else %}
+              Name not known {# Shouldn't be possible - non drafts should always have a name #}
+            {% endif %}
           {% endif %}
-        {% endif %}
-      </a>
-    </h3>
-    
-    {% if record.trainingDetails.traineeId %}
-      <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">Trainee ID: {{record.trainingDetails.traineeId}}</p>
-    {% endif %}
-    {% if record.trn %}
-      <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0">TRN: {{record.trn}}</p>
-    {% endif %}
-    {% if data.signedInProviders | length > 1 %}
-      <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__id govuk-!-margin-bottom-0 govuk-!-margin-top-2">
-        {{ record.provider }}
-      </p>
-    {% endif %}
+        </a>
+      </h3>
+
+      {% if record.trainingDetails.traineeId %}
+        <p class="govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-1">Trainee ID: {{record.trainingDetails.traineeId}}</p>
+      {% endif %}
+      {% if record.trn %}
+        <p class="govuk-caption-m govuk-!-font-size-16 govuk-!-margin-bottom-0">TRN: {{record.trn}}</p>
+      {% endif %}
+      {% if data.signedInProviders | length > 1 %}
+        <p class="govuk-caption-m govuk-!-font-size-16 app-application-card__provider govuk-!-margin-bottom-0 govuk-!-margin-top-2">
+          <span class="govuk-visually-hidden">Provider: </span>{{record.provider}}</p>
+      {% endif %}
+    </div>
+
+    <div>
+      <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-1">
+        <span class="govuk-visually-hidden">Course: </span>{{record.courseDetails.subject}}</p>
+      <p class="govuk-body govuk-!-font-size-16 govuk-hint govuk-!-margin-bottom-0">
+        <span class="govuk-visually-hidden">Route: </span>{{record.route}}</p>
+    </div>
+
   </div>
-  <div class="app-application-card_col">
-    <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-0">{{record.courseDetails.subject}}</p>
-    <p class="govuk-body govuk-!-font-size-16 govuk-hint govuk-!-margin-bottom-0">{{record.route}}</p>
-  </div>
+
   <div class="app-application-card_col">
     {{govukTag({
       text: record.status,
       classes: record.status | getStatusClass
     })}}
-    {% if data.settings.enableApplyIntegration %}
-      {{govukTag({
-        text: record.source,
-        classes: record.source | getStatusClass
-      })}}
-    {% endif %}
     <p class="govuk-caption-m govuk-!-font-size-16 govuk-!-margin-top-2 govuk-!-margin-bottom-0 app-application-card__submitted">
       {% if query.sortOrder == "dateAdded" %}
         Added: <span>{{record.submittedDate | govukDate}}
@@ -69,4 +72,5 @@
       {% endif %}
       </span></p>
   </div>
+
 </div>

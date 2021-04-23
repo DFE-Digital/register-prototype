@@ -119,7 +119,7 @@
 
 {% set diversityHtml %}
   {{ govukSummaryList({
-    rows: diversityRows
+    rows: diversityRows | highlightInvalidRows
   }) }}
 {% endset %}
 
@@ -137,7 +137,11 @@
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "diversity-details" %}
-  {% if status == "In progress" %}
+  {% if status == "Review" %}
+    {% set incompleteText = "Diversity information not reviewed" %}
+    {% set incompleteLink = recordPath + "/diversity/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Review section" %}
+  {% elseif status == "In progress" %}
     {% set incompleteText = "Diversity information not marked as complete" %}
     {% set incompleteLink = recordPath + "/diversity/confirm" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Continue section" %}

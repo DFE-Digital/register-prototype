@@ -2,15 +2,23 @@ const faker   = require('faker')
 const weighted = require('weighted')
 const degreeData = require('../degree')
 
-module.exports = (isInternationalTrainee) => {
+module.exports = (params) => {
   const item = (faker) => {
-    const subject = faker.helpers.randomize(degreeData().subjects)
+    let subject = faker.helpers.randomize(degreeData().subjects)
     const predicted = faker.random.boolean()
     const endDate = faker.helpers.randomize(['2020','2019','2018','2017','2016','2015'])
     const startDate = (parseInt(endDate) - 4).toString()
     const id = faker.random.uuid()
 
-    if (isInternationalTrainee) {
+    const isApplyDraft = (params.source == 'Apply' && params.status == "Apply draft")
+
+    // Make 1/3rd of subjects be invalid responses for Apply applications
+    if (isApplyDraft){
+      let invalidSubject = `**invalid**${faker.helpers.randomize(degreeData().invalidSubjects)}`
+      subject = faker.helpers.randomize([subject, subject, invalidSubject])
+    }
+
+    if (params.isInternationalTrainee) {
       return {
         // type: 'Diplôme',
         type: 'Bachelor degree', // ENIC equivalent
@@ -29,7 +37,18 @@ module.exports = (isInternationalTrainee) => {
         id
       }
     } else {
-      const type = faker.helpers.randomize(degreeData().types.all)
+      let type = faker.helpers.randomize(degreeData().types.all).text
+      let org = faker.helpers.randomize(degreeData().orgs)
+
+      // Make 1/3rd of types and orgs be invalid responses
+      if (isApplyDraft){
+        let randomInvalidType = `**invalid**${faker.helpers.randomize(degreeData().invalidTypes)}`
+        type = faker.helpers.randomize([type, type, randomInvalidType])
+
+        let randomInvalidOrg = `**invalid**${faker.helpers.randomize(degreeData().invalidInstitutions)}`
+        org = faker.helpers.randomize([org, org, randomInvalidOrg])
+      }
+
       const level = type.level
       const grade = faker.helpers.randomize([
         'First-class honours',
@@ -44,10 +63,10 @@ module.exports = (isInternationalTrainee) => {
       ])
 
       return {
-        type: type.text,
+        type,
         subject,
         isInternational: "false",
-        org: faker.helpers.randomize(degreeData().orgs),
+        org,
         country: 'United Kingdom',
         grade,
         predicted,

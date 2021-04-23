@@ -14,7 +14,8 @@
         visuallyHiddenText: "name"
       }]
     } if canAmend
-  }, {
+  },
+  {
     key: {
       text: "Date of birth"
     },
@@ -62,12 +63,12 @@
         }
       ]
     } if canAmend
-  }
+  } 
 ] %}
 
 {% set personalDetailsHtml %}
   {{ govukSummaryList({
-    rows: personalDetailsRows
+    rows: personalDetailsRows | highlightInvalidRows
   }) }}
 {% endset %}
 
@@ -82,7 +83,11 @@
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "personal-details" %}
-  {% if status == "In progress" %}
+  {% if status == "Review" %}
+    {% set incompleteText = "Personal details not reviewed" %}
+    {% set incompleteLink = recordPath + "/personal-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Review section" %}
+  {% elseif status == "In progress" %}
     {% set incompleteText = "Personal details not marked as complete" %}
     {% set incompleteLink = recordPath + "/personal-details/confirm" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Continue section" %}

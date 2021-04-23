@@ -11,7 +11,11 @@
 
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "degree-details" %}
-  {% if status == "In progress" %}
+  {% if status == "Review" %}
+    {% set incompleteText = "Degree details not reviewed" %}
+    {% set incompleteLink = recordPath + "/degree/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Review section" %}
+  {% elseif status == "In progress" %}
     {% set incompleteText = "Degree details not marked as complete" %}
     {% set incompleteLink = recordPath + "/degree/confirm" | addReferrer(referrer) %}
     {% set incompleteLinkText = "Complete section" %}

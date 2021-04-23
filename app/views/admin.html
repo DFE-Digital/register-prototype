@@ -43,6 +43,24 @@
         items: [
           {
             value: 'true',
+            text: "Group apply sections together"
+          }
+        ]
+      } | decorateAttributes(data, "data.settings.groupApplySections")) }}
+
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: 'true',
+            text: "Highlight invalid answers"
+          }
+        ]
+      } | decorateAttributes(data, "data.settings.highlightInvalidAnswers")) }}
+
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: 'true',
             text: "Show links to guidance"
           }
         ]
@@ -83,6 +101,15 @@
           }
         ]
       } | decorateAttributes(data, "data.settings.requireTraineeStartDate")) }}
+      
+      {{ govukCheckboxes({
+        items: [
+          {
+            value: 'true',
+            text: "Show requires attention section"
+          }
+        ]
+      } | decorateAttributes(data, "data.settings.showRequiresAttentionSection")) }}
 
       {{ govukInput({
         label: {

@@ -29,6 +29,15 @@ let nonPublishRoutes = [
   'Opt-in (undergrad)'
 ]
 
+// These sections should have a default status of 'review'
+// rather than 'not started'
+let applyReviewSections = [
+  'personalDetails',
+  'contactDetails',
+  'diversity',
+  'degree',
+]
+
 // Create array of unique values
 let allRoutesArray = [...new Set([...publishRoutes, ...nonPublishRoutes])].sort()
 let allRoutes = {}
@@ -233,5 +242,6 @@ module.exports = {
   defaultSections: defaultRouteData.sections,
   applyRoutes,
   publishRoutes,
-  nonPublishRoutes
+  nonPublishRoutes,
+  applyReviewSections
 }

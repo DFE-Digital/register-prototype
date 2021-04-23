@@ -111,7 +111,7 @@
   }) %}
 {% endif %}
 
-{% if (record.status == "Deferred") %}
+{% if (record | isDeferred) %}
   {% set deferredContent %}
       {{govukTag({
         text: "Deferred",

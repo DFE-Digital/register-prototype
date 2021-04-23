@@ -19,7 +19,7 @@
 
 {% set commencementDateLabel -%}
 
-  {% if record.status == "Draft" %}
+  {% if record | isDraft %}
     {% if record.trainingDetails.commencementDate %}
       {{- record.trainingDetails.commencementDate | govukDate -}}
     {% elseif not data.settings.requireTraineeStartDate and not (record.trainingDetails.traineeStarted | falsify) %}
@@ -110,8 +110,8 @@
 
 
 {% set trainingDetailsRows = [
-  traineeIdRow if record.status == "Draft",
-  traineeStartDateRow if record.status == "Draft",
+  traineeIdRow if record | isDraft,
+  traineeStartDateRow if record | isDraft,
   leadSchoolRow if record | requiresField("leadSchool"),
   employingSchoolRow if record | requiresField("employingSchool")
 ] %}

@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
+
 {% set navActive = "home" %}
+{% set applyDraftCount = 8 %}
+{% set recordsToBeReviewedCount = 11 %}
+{% set combinedAlertCount = applyDraftCount + recordsToBeReviewedCount %}
 
 {% block content %}
 
@@ -14,7 +18,7 @@
         }) }}
       </div>
     </div>
-
+    
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
     <div class="govuk-grid-row">
@@ -41,6 +45,34 @@
     </div>
 
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    {% if data.settings.showRequiresAttentionSection and combinedAlertCount > 0 %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds-from-desktop">
+          <h2 class="govuk-heading-m">Requires your attention</h2>
+          {% if applyDraftCount > 0 %}
+            <div class="app-action-required-item">
+              <span class="app-action-required-item__count">{{applyDraftCount}}</span>
+              <div class="app-action-required-item__content">
+                <a href="/records?filterStatus=Draft" class="govuk-link app-action-required-item__text">Apply drafts ready for review</a>
+                <span class="app-action-required-item__hint-text govuk-hint govuk-!-font-size-16">These are candidates who have recenlty applied to a course</span>
+              </div>
+            </div>
+          {% endif %}
+          {% if recordsToBeReviewedCount > 0 %}
+            <div class="app-action-required-item">
+              <span class="app-action-required-item__count">{{recordsToBeReviewedCount}}</span>
+              <div class="app-action-required-item__content">
+                <a href="#" class="govuk-link app-action-required-item__text">records for review before cycle ends</a>
+                <span class="app-action-required-item__hint-text govuk-hint govuk-!-font-size-16">The cycle ends on August 27 2021</span>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    {% endif %}
 
     <h2 class="govuk-heading-m">Your 2020/21 trainees</h2>
 

@@ -149,7 +149,7 @@
 
 {% set degreeDetailsHtml %}
   {{ govukSummaryList({
-    rows: degreeDetailsRows
+    rows: degreeDetailsRows | highlightInvalidRows
   }) }}
 {% endset %}
 
@@ -168,7 +168,7 @@
 
 {{ appSummaryCard({
   classes: "govuk-!-margin-bottom-6",
-  titleText: titleText,
+  titleText: titleText | replace("**invalid**", ""),
   actions: {
     items: [{
       href: recordPath + "/degree/" + loop.index0 + "/delete" | addReferrer(referrer),

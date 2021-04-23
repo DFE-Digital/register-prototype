@@ -4,7 +4,7 @@
 
 // Leave this filters line
 var filters = {}
-
+const _ = require('lodash')
 
 /*
   ====================================================================
@@ -23,10 +23,10 @@ var filters = {}
 
 */
 
-filters.getStatusText = (data) => {
-  if (!data) return "Not started"
-  if (data.status) return data.status
-  else return "In progress"
+filters.getStatusText = function(data, defaultNotStarted=false, defaultInProgress=false) {
+  if (!data) return defaultNotStarted || "Not started"
+  if (data?.status) return data.status
+  else return defaultInProgress || "In progress"
 }
 
 filters.getStatusClass = (status) => {
@@ -40,6 +40,8 @@ filters.getStatusClass = (status) => {
     // Application phases
     case 'Not started':
       return 'govuk-tag--grey'
+    case 'Review':
+      return 'govuk-tag--pink'
     case 'In progress':
       return 'govuk-tag--grey'
     case 'Completed':
@@ -48,7 +50,7 @@ filters.getStatusClass = (status) => {
     // Record statuses
     case 'Draft':
       return 'govuk-tag--grey'
-    case 'Apply enrolled': // same as draft
+    case 'Apply draft': // same as draft
       return 'govuk-tag--grey'
     case 'Pending TRN':
       return 'govuk-tag--turquoise'
@@ -80,7 +82,10 @@ filters.sectionIsInProgress = data =>{
 }
 
 filters.sectionIsCompleted = data =>{
-  return (data && data.status == "Completed")
+  let status = data?.status
+  // if (status == "Completed" || status == "Review") return true
+  if (status == "Completed") return true
+  else return false
 }
 
 filters.reviewIfInProgress = (url, data, path) => {
@@ -93,9 +98,11 @@ filters.reviewIfInProgress = (url, data, path) => {
   }
 }
 
-filters.getAmendsAllowed = status => {
+
+filters.canBeAmmended = status => {
   let statusesThatCanAmend = [
     'Draft',
+    'Apply draft',
     'Pending TRN',
     'TRN received',
     'Deferred'
