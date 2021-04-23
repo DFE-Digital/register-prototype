@@ -30,7 +30,9 @@ router.all('*', function(req, res, next){
   data.isHatModel = (data.settings.providerModel == 'hat-model') ? true : false
   data.isBlendedModel = (data.settings.providerModel == 'blended-model') ? true : false
   data.signedInProviders = (data.isBlendedModel) ? data.settings.userProviders : [data.settings.userActiveProvider]
-  data.providerRecords = utils.filterByProvider(data.records, data.signedInProviders)
+
+  // Filter records by provider, enabled routes, apply enabled
+  data.filteredRecords = utils.filterRecords(data.records, data)
 
   res.locals.data.isHatModel = data.isHatModel
   res.locals.data.isBlendedModel = data.isBlendedModel
@@ -42,7 +44,8 @@ router.all('*', function(req, res, next){
     data.settings.userActiveProvider = data.signedInProviders[0]
     res.locals.data.settings.userActiveProvider = data.settings.userActiveProvider
   }
-  res.locals.data.providerRecords = data.providerRecords
+  // Also save to locals so that the data is available immediately
+  res.locals.data.filteredRecords = data.filteredRecords
 
   // Delete cashes of invalid answers that should be flushed on each request
   delete data?.record?.invalidAnswers

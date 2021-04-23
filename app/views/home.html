@@ -76,11 +76,17 @@
 
     <h2 class="govuk-heading-m">Your 2020/21 trainees</h2>
 
-    {% set records = data.providerRecords | filterByYear(data.currentYear)| filterDisabledTrainingRoutes %}
+    {% set records = data.filteredRecords | filterByYear(data.currentYear)  %}
 
     {% macro statusCard(records, status) %}
       <a href="/records?filterStatus={{status}}" class="status-card status-card--{{status | lower | kebabCase }}">
-        {% set recordCount = records | where("status", status) | length %}
+        {# Special handling for drafts which have two string names #}
+        {% if status == "Draft" %}
+          {% set searchStatus = ["Draft", "Apply draft"] %}
+        {% else %}
+          {% set searchStatus = status %}
+        {% endif %}
+        {% set recordCount = records | where("status", searchStatus) | length %}
         <span class="status-card__count">{{recordCount}}</span>
         <span class="status-card__status">{{status}}</span><span class="govuk-visually-hidden"> records. View these records.</span>
       </a>

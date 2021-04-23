@@ -23,7 +23,13 @@
 
 <p class="govuk-body">The Department for Education (DfE) will issue a teacher reference number (TRN) within 3 working days. </p>
 
-<p class="govuk-body govuk-!-margin-bottom-7">DfE will contact trainees to give them their TRN.</p>
+<p class="govuk-body">DfE will contact trainees to give them their TRN.</p>
+
+{% if data.submittedRecordId %}
+  <p class="govuk-body govuk-!-margin-bottom-7">
+    <a class="govuk-link" href="/record/{{data.submittedRecordId}}">View {{record.personalDetails.shortName}}’s record</a>
+  </p>
+{% endif %}
 
 {{ govukButton({
   text: "Add another record",

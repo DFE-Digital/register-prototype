@@ -570,7 +570,16 @@ exports.filterRecords = (records, data, filters = {}) => {
   }
 
   if (filters.status){
-    filteredRecords = filteredRecords.filter(record => filters.status.includes(record.status))
+    filteredRecords = filteredRecords.filter(record => {
+
+      // Special handling of Apply drafts so they get caught by the 'draft' filter
+      // Avoiding using the 'isDraft' filter here so that 'Apply draft' can also be 
+      // manually searched for
+      if (record.status == "Apply draft" && filters.status.includes("Draft")){
+        return true
+      }
+      else return filters.status.includes(record.status)
+    })
   }
 
   if (filters.subject && filters.subject != "All subjects"){
@@ -752,7 +761,6 @@ exports.searchSchools = (schools = [], query = "") => {
 
 // Adds referrer as query string if it exists
 exports.addReferrer = (url, referrer) => {
-  console.log(referrer, typeof referrer)
   if (!referrer || referrer == undefined) return url
   else {
     return `${url}?referrer=${referrer}`
