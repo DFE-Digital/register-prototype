@@ -4,7 +4,6 @@ const moment = require('moment')
 const weighted = require('weighted')
 const faker   = require('faker')
 const schools = require('../gis-schools.js')
-const trainingRouteData = require('../training-route-data')
 
 faker.locale  = 'en_GB'
 
@@ -18,8 +17,6 @@ const statusesWhereTraineesMustHaveStarted = [
 
 
 module.exports = (params) => {
-
-  let routeData = trainingRouteData.trainingRoutes[params.route]
 
   // Todo: make traineeId closer to what Providers user (20/21-1234, etc)
   const traineeId = faker.random.alphaNumeric(8).toUpperCase()
@@ -44,25 +41,9 @@ module.exports = (params) => {
 
   commencementDate = (traineeStarted == "true") ? commencementDate : undefined
 
-  let leadSchool = (routeData.fields && routeData.fields.includes("leadSchool")) ? faker.helpers.randomize(schools) : null
-
-  let employingSchool = null
-
-  if (routeData.fields && routeData.fields.includes("employingSchool")) {
-    let tempEmploying = faker.helpers.randomize(schools.filter(school => {
-      if (!school.postcode || !leadSchool?.postcode) return false
-      else return school.postcode.startsWith(leadSchool.postcode.charAt(0))
-    }))
-    employingSchool = (!tempEmploying) ? faker.helpers.randomize(schools) : tempEmploying
-  }
-
-
-
   return {
     traineeId,
     traineeStarted,
-    commencementDate,
-    ...(leadSchool ? {leadSchool} : {}),
-    ...(employingSchool ? {employingSchool} : {}),
+    commencementDate
   }
 }

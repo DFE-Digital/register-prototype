@@ -65,9 +65,9 @@
     <h2 class="govuk-heading-s">Course details</h2>
     {% include "_includes/summary-cards/course-details.html" %}
 
-    {% if record | requiresField(['leadSchool', 'employingSchool']) %}
-      <h2 class="govuk-heading-s">School details</h2>
-      {% include "_includes/summary-cards/training-details/training-details.html" %}
+    {% if record | requiresSection("schools") %}
+      <h2 class="govuk-heading-s">Schools</h2>
+      {% include "_includes/summary-cards/schools.html" %}
     {% endif %}
 
     {% if record | requiresSection("placement") %}

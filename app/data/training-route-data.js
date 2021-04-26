@@ -89,6 +89,15 @@ let baseRouteData = {
   },
   "School direct (salaried)": {
     defaultEnabled: true,
+    sections: [
+      'trainingDetails',
+      'courseDetails',
+      'personalDetails',
+      'contactDetails',
+      'diversity',
+      'degree',
+      'schools'
+    ],
     fields: [
       "leadSchool",
       "employingSchool"
@@ -97,6 +106,15 @@ let baseRouteData = {
   "School direct (tuition fee)": {
     defaultEnabled: true,
     hasAllocatedPlaces: true,
+    sections: [
+      'trainingDetails',
+      'courseDetails',
+      'personalDetails',
+      'contactDetails',
+      'diversity',
+      'degree',
+      'schools'
+    ],
     fields: [
       "leadSchool",
     ]

@@ -55,20 +55,34 @@ module.exports = router => {
     if (traineeStarted == "false"){ // If the answer was explicitly false.
       delete record?.trainingDetails?.commencementDate
     }
-    // Conditional pages
+    res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+  })
+
+  // =============================================================================
+  // Schools
+  // =============================================================================
+
+  // Forward on to the appropriate schools page depending on what the route needs
+  router.get(['/:recordtype/:uuid/schools','/:recordtype/schools'], function (req, res) {
+    let data = req.session.data
+    let record = data.record
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+
     if (utils.requiresField(record, 'leadSchool')){
-      res.redirect(`${recordPath}/training-details/lead-school${referrer}`)
+      res.redirect(`${recordPath}/schools/lead-school${referrer}`)
     }
     else if (utils.requiresField(record, 'employingSchool')){
-      res.redirect(`${recordPath}/training-details/employing-school${referrer}`)
+      res.redirect(`${recordPath}/schools/employing-school${referrer}`)
     }
     else {
-      res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+      // This path shouldn't be possible
+      res.redirect(`${recordPath}/schools/confirm${referrer}`)
     }
   })
 
   // Toggle between an autocomplete page and a search results page on the basis of there being a search query
-  router.get(['/:recordtype/:uuid/training-details/lead-school','/:recordtype/training-details/lead-school'], function (req, res) {
+  router.get(['/:recordtype/:uuid/schools/lead-school','/:recordtype/schools/lead-school'], function (req, res) {
     let data = req.session.data
     let record = data.record
     let recordPath = utils.getRecordPath(req)
@@ -81,21 +95,23 @@ module.exports = router => {
       results = utils.searchSchools(schools, schoolSearchTerm)
       resultsCount = results.length
       results = results.slice(0, 15) // truncate results
-      res.render(`${req.params.recordtype}/training-details/lead-school-results`, { searchResults: results, resultsCount })
+      res.render(`${req.params.recordtype}/schools/lead-school-results`, { searchResults: results, resultsCount })
     }
     else {
-      res.render(`${req.params.recordtype}/training-details/lead-school`)
+      res.render(`${req.params.recordtype}/schools/lead-school`)
     }
 
   })
 
   // This route deals with users searching for schools by string or having selected a
   // school from a set of results.
-  router.post(['/:recordtype/:uuid/training-details/lead-school','/:recordtype/training-details/lead-school'], function (req, res) {
+  router.post(['/:recordtype/:uuid/schools/lead-school','/:recordtype/schools/lead-school'], function (req, res) {
     let data = req.session.data
     let record = data.record
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
+
+    console.log('hello world')
 
     // Input added with js by the autocomplete
     let autocompleteRawValue = req.body?._autocomplete_raw_value_school_picker
@@ -126,17 +142,17 @@ module.exports = router => {
     // Uuid could come via two form inputs
     let schoolUuid = autocompleteUuid || schoolResultUuid || false
 
-    let leadSchoolIsEmployingSchool = (record?.trainingDetails?.leadSchoolIsEmployingSchool == "true") ? true : false
-    delete record?.trainingDetails.leadSchoolIsEmployingSchool // Checkbox no longer needed
+    let leadSchoolIsEmployingSchool = (record?.schools?.leadSchoolIsEmployingSchool == "true") ? true : false
+    delete record?.schools?.leadSchoolIsEmployingSchool // Checkbox no longer needed
 
     // Search again
     if (schoolSearchTerm && !schoolUuid){
       let queryParams = utils.addQueryParam(referrer, `_schoolSearch=${schoolSearchTerm}`)
-      res.redirect(`${recordPath}/training-details/lead-school${queryParams}`)
+      res.redirect(`${recordPath}/schools/lead-school${queryParams}`)
     }
     // No answer given and no search term
     else if (!schoolUuid){
-      res.redirect(`${recordPath}/training-details/lead-school${referrer}`)
+      res.redirect(`${recordPath}/schools/lead-school${referrer}`)
     }
     else {
       let selectedSchool = schools.find(school => school.uuid == schoolUuid)
@@ -148,34 +164,35 @@ module.exports = router => {
       }
       else {
         // Using _.set as lead school might not exist yet
-        _.set(record, 'trainingDetails.leadSchool', selectedSchool)
+        _.set(record, 'schools.leadSchool', selectedSchool)
       }
 
       // Some routes have a conditional next question
       // We bypass this if we've already got an answer for employing school
-      if (utils.requiresField(record, 'employingSchool') && !record?.trainingDetails?.employingSchool){
+      if (utils.requiresField(record, 'employingSchool') && !record?.schools?.employingSchool){
 
         // If an employing school isn’t already set, users can tell us the employing school
         // is the same as the employing school
-        if (leadSchoolIsEmployingSchool && !record?.trainingDetails?.employingSchool) {
-          record.trainingDetails.employingSchool = selectedSchool
+        if (leadSchoolIsEmployingSchool && !record?.schools?.employingSchool) {
+          // record.schools.employingSchool = selectedSchool
+          _.set(record, 'schools.employingSchool', selectedSchool)
           // Skip to next page
-          res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+          res.redirect(`${recordPath}/schools/confirm${referrer}`)
         }
         else {
-          res.redirect(`${recordPath}/training-details/employing-school${referrer}`)
+          res.redirect(`${recordPath}/schools/employing-school${referrer}`)
         }
         
       }
       else {
-        res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+        res.redirect(`${recordPath}/schools/confirm${referrer}`)
       }
     }
 
   })
 
   // Toggle between an autocomplete page and a search results page on the basis of there being a search query
-  router.get(['/:recordtype/:uuid/training-details/employing-school','/:recordtype/training-details/employing-school'], function (req, res) {
+  router.get(['/:recordtype/:uuid/schools/employing-school','/:recordtype/schools/employing-school'], function (req, res) {
     let data = req.session.data
     let record = data.record
     let recordPath = utils.getRecordPath(req)
@@ -188,17 +205,17 @@ module.exports = router => {
       results = utils.searchSchools(schools, schoolSearchTerm)
       resultsCount = results.length
       results = results.slice(0, 15) // truncate results
-      res.render(`${req.params.recordtype}/training-details/employing-school-results`, { searchResults: results, resultsCount })
+      res.render(`${req.params.recordtype}/schools/employing-school-results`, { searchResults: results, resultsCount })
     }
     else {
-      res.render(`${req.params.recordtype}/training-details/employing-school`)
+      res.render(`${req.params.recordtype}/schools/employing-school`)
     }
 
   })
 
   // This route deals with users searching for schools by string or having selected a
   // school from a set of results.
-  router.post(['/:recordtype/:uuid/training-details/employing-school','/:recordtype/training-details/employing-school'], function (req, res) {
+  router.post(['/:recordtype/:uuid/schools/employing-school','/:recordtype/schools/employing-school'], function (req, res) {
     let data = req.session.data
     let record = data.record
     let recordPath = utils.getRecordPath(req)
@@ -236,11 +253,11 @@ module.exports = router => {
     // Search again
     if (schoolSearchTerm && !schoolUuid){
       let queryParams = utils.addQueryParam(referrer, `_schoolSearch=${schoolSearchTerm}`)
-      res.redirect(`${recordPath}/training-details/employing-school${queryParams}`)
+      res.redirect(`${recordPath}/schools/employing-school${queryParams}`)
     }
     // No answer given and no search term
     else if (!schoolUuid){
-      res.redirect(`${recordPath}/training-details/employing-school${referrer}`)
+      res.redirect(`${recordPath}/schools/employing-school${referrer}`)
     }
     else {
       let selectedSchool = schools.find(school => school.uuid == schoolUuid)
@@ -252,10 +269,10 @@ module.exports = router => {
       }
       else {
         // Using _.set as lead school might not exist yet
-        _.set(record, 'trainingDetails.employingSchool', selectedSchool)
+        _.set(record, 'schools.employingSchool', selectedSchool)
       }
 
-      res.redirect(`${recordPath}/training-details/confirm${referrer}`)
+      res.redirect(`${recordPath}/schools/confirm${referrer}`)
     }
 
   })

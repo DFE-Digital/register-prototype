@@ -33,7 +33,7 @@
   {% endif %}
 {%- endset %}
 
-{{ data.settings | log}}
+
 
 {% set traineeStarted = record.trainingDetails.traineeStarted | falsify %}
 
@@ -55,65 +55,9 @@
     } if canAmend
   } %}
 
-
-{% if record.trainingDetails.leadSchool %}
-  {% set leadSchoolHtml %}
-    <p class="govuk-body">{{record.trainingDetails.leadSchool.schoolName}}</p>
-    <span class="govuk-hint">{{record.trainingDetails.leadSchool | getSchoolHint}}</span>
-  {% endset %}
-{% endif %}
-
-
-{% set leadSchoolRow = {
-  key: {
-    text: "Lead school"
-  },
-  value: {
-    text: leadSchoolHtml | safe or "Not provided"
-  },
-  actions: {
-    items: [
-      {
-        href: recordPath + "/training-details/lead-school" | addReferrer(referrer),
-        text: "Change",
-        visuallyHiddenText: "lead school"
-      }
-    ]
-  } if canAmend
-} %}
-
-{% if record.trainingDetails.employingSchool %}
-  {% set employingSchoolHtml %}
-    <p class="govuk-body">{{record.trainingDetails.employingSchool.schoolName}}</p>
-    <span class="govuk-hint">{{record.trainingDetails.employingSchool | getSchoolHint}}</span>
-  {% endset %}
-{% endif %}
-
-
-{% set employingSchoolRow = {
-  key: {
-    text: "Employing school"
-  },
-  value: {
-    text: employingSchoolHtml | safe or "Not provided"
-  },
-  actions: {
-    items: [
-      {
-        href: recordPath + "/training-details/employing-school" | addReferrer(referrer),
-        text: "Change",
-        visuallyHiddenText: "employing school"
-      }
-    ]
-  } if canAmend
-} %}
-
-
 {% set trainingDetailsRows = [
   traineeIdRow if record | isDraft,
-  traineeStartDateRow if record | isDraft,
-  leadSchoolRow if record | requiresField("leadSchool"),
-  employingSchoolRow if record | requiresField("employingSchool")
+  traineeStartDateRow if record | isDraft
 ] %}
 
 

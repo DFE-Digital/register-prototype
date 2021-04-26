@@ -117,6 +117,15 @@
     }
   } if record | requiresSection("trainingDetails"),
   {
+    text: "Schools",
+    href: "schools" | reviewIfInProgress(record.schools),
+    id: "schools",
+    tag: {
+      classes: record.schools | getStatusText | getStatusClass,
+      text: record.schools | getStatusText
+    }
+  } if record | requiresSection("schools"),
+  {
     text: "Placement details",
     href: "placements/confirm" if (record.placement) else "placements/can-add-placement",
     id: "placement-details",

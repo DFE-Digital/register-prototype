@@ -1,0 +1,98 @@
+
+{# Lead school name #}
+{% if record.schools.leadSchool %}
+  {% set leadSchoolHtml %}
+    <p class="govuk-body">{{record.schools.leadSchool.schoolName}}</p>
+    <span class="govuk-hint">{{record.schools.leadSchool | getSchoolHint}}</span>
+  {% endset %}
+{% endif %}
+
+{% set leadSchoolRow = {
+  key: {
+    text: "Lead school"
+  },
+  value: {
+    text: leadSchoolHtml | safe or "Not provided"
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/schools/lead-school" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "lead school"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% if record.schools.employingSchool %}
+  {% set employingSchoolHtml %}
+    <p class="govuk-body">{{record.schools.employingSchool.schoolName}}</p>
+    <span class="govuk-hint">{{record.schools.employingSchool | getSchoolHint}}</span>
+  {% endset %}
+{% endif %}
+
+{% set employingSchoolRow = {
+  key: {
+    text: "Employing school"
+  },
+  value: {
+    text: employingSchoolHtml | safe or "Not provided"
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/schools/employing-school" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "employing school"
+      }
+    ]
+  } if canAmend
+} %}
+
+
+{% set schoolsRows = [
+  leadSchoolRow if record | requiresField("leadSchool"),
+  employingSchoolRow if record | requiresField("employingSchool")
+] %}
+
+
+{% set schoolsHtml %}
+  {{ govukSummaryList({
+    rows: schoolsRows
+  }) }}
+{% endset %}
+
+
+
+{% set complete = true if (record.schools | sectionIsCompleted ) %}
+{% set status  = record.schools | getStatusText %}
+{% set sectionIsRequired = record | requiresSection("schools") %}
+
+{% if not sectionIsRequired %}
+  {# Section not required #}
+{% elseif showIncomplete and not complete %}
+
+  {% set incompleteType = "warning" if errorList %}
+  {% set incompleteId = "schools" %}
+  {% if status == "In progress" %}
+    {% set incompleteText = "School details not marked as complete" %}
+    {% set incompleteLink = recordPath + "/schools/confirm" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Continue section" %}
+  {% else %}
+    {% set incompleteText = "School details not started" %}
+    {% set incompleteLink = recordPath + "/schools" | addReferrer(referrer) %}
+    {% set incompleteLinkText = "Start section" %}
+  {% endif %}
+
+  {% include "_includes/incomplete.njk" %}
+
+{% else %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    titleText: "Schools",
+    html: schoolsHtml
+  }) }}
+
+{% endif %}

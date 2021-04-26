@@ -69,7 +69,7 @@ seedRecords.push({
         "subject": "Sport and exercise sciences",
         "org": "The University of Manchester",
         "endDate": "2016",
-        "type": "BSc - Bachelor of Science",
+        "type": "Bachelor of Science",
         "grade": "First-class honours",
         "id": "1faf0ae6-4c01-4224-9e49-06beffc0c5d0"
       }

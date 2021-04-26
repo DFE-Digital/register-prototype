@@ -66,6 +66,7 @@ const generateGcse = require('../app/data/generators/gcse')
 const generateEvents = require('../app/data/generators/events')
 const generatePlacement = require('../app/data/generators/placement')
 const generateUndergraduateQualification = require('../app/data/generators/undergraduate-qualifications')
+const generateSchools = require('../app/data/generators/schools')
 const generateSource = require('../app/data/generators/source')
 const generateApplyData = require('../app/data/generators/apply-data')
 
@@ -107,15 +108,23 @@ const generateFakeApplication = (params = {}) => {
   application.events           = generateEvents(application)
 
   application.trainingDetails  = (params.trainingDetails === null) ? undefined : { ...generateTrainingDetails(application), ...params.trainingDetails }
+
+
   // Contact details
   application.isInternationalTrainee = !(application.personalDetails.nationality.includes('British') || application.personalDetails.nationality.includes('Irish'))
   application.contactDetails   = (params.contactDetails === null) ? undefined : { ...generateContactDetails(application), ...params.contactDetails } 
   // Education
   application.gcse             = (params.gcse === null) ? undefined : { ...generateGcse(application.isInternationalTrainee, simpleGcseGrades), ...params.gcse }
+
   // A Levels - not used currently
   // application.gce = (params.gce === null) ? undefined : generateGce(faker, isInternationalTrainee)
   
   let requiredSections = trainingRouteData.trainingRoutes[application.route].sections
+
+  // Lead and employing school
+  if (requiredSections.includes('schools')){
+      application.schools = (params.schools === null) ? undefined : { ...generateSchools(application), ...params.schools }
+  }
 
   // Postgraduate qualification
   if (requiredSections.includes('degree')) {
@@ -274,7 +283,8 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
       status: 'Review'
     },
     placement: null,
-    trainingDetails: null
+    trainingDetails: null,
+    schools: null
   }
 
   stubApplication.pendingTrn = {

@@ -1,0 +1,19 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Confirm schools" %}
+
+{% set gridColumn = 'govuk-grid-column-full' %}
+{% set backLink = referrer or ("/record/" + data.record.id) %}
+{% set backText = "Back to record" %}
+
+{% set formAction = "./update" | addReferrer(referrer) %}
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  {% include "_includes/summary-cards/schools.html" %}
+
+  {{ govukButton({
+    text: "Update record"
+  }) }}
+
+{% endblock %}

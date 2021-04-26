@@ -23,7 +23,7 @@
 
 {% set insetTextHtml %}
   {% if record.courseDetails %}
-    <p class="govuk-body">Trainee enrolled on {{ record.courseDetails | getCourseName }}</p>
+    <p class="govuk-body">Trainee enrolled on {{ record.courseDetails | getCourseName }}, {{record.route}}</p>
   {% else %}
     No data to show
   {% endif %}
@@ -73,10 +73,9 @@
   classes: "govuk-!-margin-bottom-8",
   items: [
     {
-      text: record | getSectionName("trainingDetails"),
       text: "Training details",
       href: "training-details" | reviewIfInProgress(record.trainingDetails) | addReferrer(referrer),
-      hint: 'Start date, trainee ID, schools' if includesSchools else "Start date and trainee ID",
+      hint: "Start date and trainee ID",
       id: "training-details",
       tag: {
         classes: record.trainingDetails | getStatusText | getStatusClass,
@@ -91,7 +90,7 @@
         classes: record.schools | getStatusText | getStatusClass,
         text: record.schools | getStatusText
       }
-    } if record | requiresSection("funding"),
+    } if record | requiresSection("schools"),
     {
       text: "Funding",
       href: "funding" | reviewIfInProgress(record.funding) | addReferrer(referrer),
