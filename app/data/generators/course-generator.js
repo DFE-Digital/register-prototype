@@ -157,17 +157,15 @@ module.exports = (params) => {
     subjects = 'Early years'
   }
   else if (level == 'Primary'){
-    subjects = getPrimarySubjects(weighted.select([1,2],[0.5,0.5]))
+    subjects = getPrimarySubjects(weighted.select([1,2],[0.7,0.3])) // 70% just primary
   }
   else {
     let subjectCount
       if (isPublishCourse){
         subjectCount = weighted.select([1,2],[0.7,0.3])
-        subjectCount = 2
       }
       else {
-        // subjectCount = weighted.select([1,2,3],[0.6,0.3,0.1])
-        subjectCount = weighted.select([2,3],[0.5,0.5])
+        subjectCount = weighted.select([1,2,3],[0.6,0.3,0.1]) // 40% multiple subjects
       }
       subjects = getSecondarySubjects(subjectCount)
   }
