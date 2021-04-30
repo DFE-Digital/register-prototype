@@ -52,7 +52,7 @@
 
     <div>
       <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-1">
-        <span class="govuk-visually-hidden">Course: </span>{{record.courseDetails.subject}}</p>
+        <span class="govuk-visually-hidden">Course: </span>{{record.courseDetails.subjects | prettifySubjects }}</p>
       <p class="govuk-body govuk-!-font-size-16 govuk-hint govuk-!-margin-bottom-0">
         <span class="govuk-visually-hidden">Route: </span>{{record.route}}</p>
     </div>

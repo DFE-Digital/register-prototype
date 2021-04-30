@@ -1,6 +1,6 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-<p class="govuk-body">{{record.courseDetails.subject}} has allocated places for the {{record.route | lower}} route.</p>
+<p class="govuk-body">{{record.courseDetails.subjects | prettifySubjects }} has allocated places for the {{record.route | lower}} route.</p>
 
 <p class="govuk-body">You should not recruit beyond your allocated places for this course.</p>
 

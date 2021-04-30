@@ -7,12 +7,23 @@
   {% endif %}
 {% endif %}
 
-{% set selectItems = [{
+{# First item should either be an empty row or an instruction #}
+{% if params.allowEmpty %}
+  {% set firstItem = {
+    vale: "",
+    text: "",
+    selected: defaultSelected
+  } %}
+  {% else %}
+    {% set firstItem = {
   value: "",
   text: "Please select",
   disabled: true,
   selected: defaultSelected
-}] %}
+} %}
+{% endif %}
+
+{% set selectItems = [firstItem] %}
 
 {% for item in params.items %}
   {% if item | isArray %}

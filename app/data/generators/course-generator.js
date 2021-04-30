@@ -72,6 +72,68 @@ const pickRoute = (isPublishCourse = false) => {
   }
 }
 
+// Return some realistic subjects a primary teacher might train in
+const getPrimarySubjects = subjectCount => {
+  
+  // Assumption that all primary courses have `Primary` as the first subject
+  let subjects = ["Primary"]
+  let primarySpecialisms = ittSubjects.primarySubjects.filter(subject => subject != "Primary")
+
+  if (subjectCount == 2){
+    let specialism = faker.helpers.randomize([
+      faker.helpers.randomize(['Mathematics', "English studies"]), // Lots of primary teachers have these
+      faker.helpers.randomize(ittSubjects.primarySubjects)
+    ])
+    subjects.push(specialism)
+  }
+
+  return subjects
+}
+
+// Return some realistic subjects a secondary teacher might train in
+const getSecondarySubjects = (subjectCount) => {
+  let subjects
+
+  // Shuffle our data so we can get x values from them by slicing
+  let randomisedLanguages = faker.helpers.shuffle(ittSubjects.modernLanguagesSubjects)
+    .filter(subject => subject != 'English as a second or other language') // remove this item
+  let randomisedSecondarySubjects = faker.helpers.shuffle(ittSubjects.secondarySubjects)
+  let randomisedScienceSubjects = faker.helpers.shuffle(['Physics', 'Chemistry', 'Biology'])
+
+  // Bias slightly towards specific subjects but have some random
+  // ones too for good measure
+  if (subjectCount == 1){
+    subjects = faker.helpers.randomize([
+      faker.helpers.randomize(ittSubjects.coreSubjects),
+      faker.helpers.randomize(ittSubjects.secondarySubjects),
+      "Physical education"  // included to test allocations
+    ])
+  }
+
+  // Dual subjects typically have one of a few common sets of subjects
+  if (subjectCount == 2){
+    subjects = faker.helpers.randomize([
+      randomisedLanguages.slice(0,2),                           // Two languages
+      [randomisedSecondarySubjects[0], randomisedLanguages[0]], // One subject and one language
+      randomisedScienceSubjects.slice(0,2),                     // Two sciences
+      randomisedSecondarySubjects.slice(0,2),                   // Two subjects
+      ["Physical education", randomisedScienceSubjects[0]]      // PE with EBacc
+    ])
+
+  }
+
+  // Nearly always languages and sciences
+  if (subjectCount == 3){
+    subjects = faker.helpers.randomize([
+      randomisedLanguages.slice(0,3), // Three languages
+      randomisedScienceSubjects, // Science subjects
+      ["Physical education"].concat(randomisedScienceSubjects.slice(0,2)) // PE with two EBacc subjects
+    ])
+  }
+
+  return subjects
+}
+
 module.exports = (params) => {
 
   const isPublishCourse = (params.isPublishCourse) ? true : false
@@ -89,28 +151,28 @@ module.exports = (params) => {
 
   let ageRange = (Array.isArray(ageRanges)) ? faker.helpers.randomize(ageRanges) : null
 
-  let subject
+  let subjects
 
   if (route.includes('Early years')){
-    subject = 'Early years'
+    subjects = 'Early years'
   }
   else if (level == 'Primary'){
-    subject = faker.helpers.randomize(ittSubjects.primarySubjects)
+    subjects = getPrimarySubjects(weighted.select([1,2],[0.5,0.5]))
   }
   else {
-      // Bias slightly towards specific subjects but have some random
-      // ones too for good measure
-      subject = faker.helpers.randomize([
-      "English",
-      "Maths",
-      "Physics",
-      "Chemistry",
-      "Physical education", // included to test allocations
-      faker.helpers.randomize(ittSubjects.secondarySubjects),
-      faker.helpers.randomize(ittSubjects.secondarySubjects),
-      faker.helpers.randomize(ittSubjects.secondarySubjects),
-    ])
+    let subjectCount
+      if (isPublishCourse){
+        subjectCount = weighted.select([1,2],[0.7,0.3])
+        subjectCount = 2
+      }
+      else {
+        // subjectCount = weighted.select([1,2,3],[0.6,0.3,0.1])
+        subjectCount = weighted.select([2,3],[0.5,0.5])
+      }
+      subjects = getSecondarySubjects(subjectCount)
   }
+
+  subjects = [].concat(subjects) // coerce to array just in case
 
   // This lets all routes except AO have part time courses - unsure if this is right
   const duration = (route == 'Assessment only') ? 1 : parseInt(weighted.select({
@@ -158,7 +220,7 @@ module.exports = (params) => {
 
   // PE only has allocated places
   let allocatedPlace
-  if (trainingRouteData.trainingRoutes[route].hasAllocatedPlaces && subject == "Physical education"){
+  if (trainingRouteData.trainingRoutes[route].hasAllocatedPlaces && subjects[0] == "Physical education"){
     allocatedPlace = true
   }
 
@@ -189,7 +251,7 @@ module.exports = (params) => {
       route,
       startDate,
       studyMode,
-      subject,
+      subjects,
     }
   }
 
@@ -205,7 +267,7 @@ module.exports = (params) => {
       qualificationsSummary,
       route,
       startDate,
-      subject,
+      subjects,
     }
   }
 

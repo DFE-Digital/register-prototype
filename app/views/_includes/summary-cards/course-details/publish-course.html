@@ -47,10 +47,10 @@
   },
   {
     key: {
-      text: "Subject"
+      text: "Subject" | pluralise(record.courseDetails.subjects | toArray | length)
     },
     value: {
-      text: courseDetails.subject or 'Not provided'
+      text: courseDetails.subjects | prettifySubjects or 'Not provided'
     },
     actions: {
       items: [

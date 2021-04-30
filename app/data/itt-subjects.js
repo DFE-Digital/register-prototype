@@ -6,25 +6,42 @@ discontinuedSubjects = [
 ]
 
 modernLanguagesSubjects = [
-  "French",
+  "French language",
   "English as a second or other language",
-  "German",
-  "Italian",
-  "Japanese",
-  "Mandarin",
-  "Russian",
-  "Spanish",
-  "Modern languages (other)"
+  "German language",
+  "Italian language",
+  "Japanese language",
+  "Mandarin language",
+  "Russian language",
+  "Spanish language"
+  // "Modern languages (other)"
 ]
 
+// primarySubjects = [
+//   "Primary",
+//   "Primary with English",
+//   "Primary with geography and history",
+//   "Primary with mathematics",
+//   "Primary with modern languages",
+//   "Primary with physical education",
+//   "Primary with science"
+// ]
+
+// Non exaustive list
+// Just ones commonly seen - good enough for seeds
 primarySubjects = [
   "Primary",
-  "Primary with English",
-  "Primary with geography and history",
-  "Primary with mathematics",
-  "Primary with modern languages",
-  "Primary with physical education",
-  "Primary with science"
+  "English studies",
+  "Mathematics",
+  "Modern languages",
+  "Physical education",
+  "Biology",
+  "Specialist teaching",
+  "Early years teaching",
+  "Sport and exercise sciences",
+  "Spanish language",
+  "German language",
+  "French language",
 ]
 
 secondarySubjects = [
@@ -41,11 +58,12 @@ secondarySubjects = [
   "Design and technology",
   "Drama",
   "Economics",
-  "English",
+  "English studies",
   "Geography",
   "Health and social care",
   "History",
   "Mathematics",
+  "Modern languages",
   "Music",
   "Philosophy",
   "Physical education",
@@ -55,12 +73,23 @@ secondarySubjects = [
   "Social sciences"
 ]
 
+coreSubjects = [
+  "English studies",
+  "Mathematics",
+  "Physics",
+  "Chemistry",
+  "Biology"
+]
+
 furtherEducationSubjects = []
 
 let allSubjects = [...primarySubjects, ...secondarySubjects, ...modernLanguagesSubjects].sort()
 
+allSubjects = [...new Set(allSubjects)]
+
 module.exports = {
   allSubjects,
+  coreSubjects,
   discontinuedSubjects,
   modernLanguagesSubjects,
   primarySubjects,

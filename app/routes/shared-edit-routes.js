@@ -111,8 +111,6 @@ module.exports = router => {
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
 
-    console.log('hello world')
-
     // Input added with js by the autocomplete
     let autocompleteRawValue = req.body?._autocomplete_raw_value_school_picker
 
@@ -465,11 +463,30 @@ module.exports = router => {
 
     let courseDetails = _.get(data, 'record.courseDetails')
     let recordPath = utils.getRecordPath(req)
+
     // No data, return to page
     if (!courseDetails){
       res.redirect(`${recordPath}/course-details`)
     }
-    
+
+    // Check for autocomplete submitted subject
+    let subjectAutocomplete1 = req.body?._autocompleteRawValue_subject_1
+
+    // Special handling for editing your answers to delete subjects.
+    // Autocompletes make it hard to clear a value when used as an enhanced select.
+    // Clearing the answer does not correctly select the empty select item. Instead,
+    // we submit the raw autocomplete values and prefer them if they exist.
+    if (subjectAutocomplete1){
+      let subjectsTemp = [subjectAutocomplete1]
+        .concat(req.body?._autocompleteRawValue_subject_2)
+        .concat(req.body?._autocompleteRawValue_subject_3)
+      record.courseDetails.subjects = subjectsTemp // Replace any existing data
+    }
+
+    // Clean up subjects data
+    // Remove empty and force in to array
+    record.courseDetails.subjects = [].concat(record.courseDetails.subjects.filter(Boolean))
+
     // Merge autocomplete and radio answers
     if (courseDetails.ageRange == 'Other age range'){
       courseDetails.ageRange = courseDetails.ageRangeOther

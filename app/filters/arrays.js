@@ -19,6 +19,14 @@ filters.isArray = arr => {
   return _.isArray(arr)
 }
 
+// Force input to array if it isn't already - easier to iterate through things
+filters.toArray = (input) => {
+  return [].concat(input)
+  // if (_.isArray(input)) return input
+  // if (_.isString(input)) return [input]
+  // else throw "Error in toArray: not string or array", input;
+}
+
 filters.uniq = arr => {
   return [...new Set(arr || [])]
 }
@@ -173,6 +181,13 @@ filters.andSeparate = (items)=> filters.joinArray(items, {delimiter: ' and '})
 
 // A B C D
 filters.spaceSeparate = (items) => filters.joinArray(items, {delimiter:' '})
+
+// A B C D
+filters.withSeparate = (items) => {
+  if (items.length < 2) return items
+  else if (items.length == 2) return filters.joinArray(items, {delimiter: ' with '})
+  else return filters.joinArray(items, {delimiter: ' with ', lastDelimiter: ' and with '})
+}
 
 // A. B. C. D.
 filters.joinAsSentences = (items) => filters.joinArray(items, {delimiter:'. ', append: '.'})

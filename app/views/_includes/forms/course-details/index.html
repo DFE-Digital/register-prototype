@@ -1,6 +1,9 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-{{data.ittSubjects | log}}
+{% set subjects = record.courseDetails.subjects | toArray %}
+{% set firstSubject = subjects | first %}
+{% set remainingSubjects = subjects | removeArrayItem(firstSubject) | removeEmpty %}
+{% set hasMultipleSubjects = remainingSubjects | length > 0 %}
 
 {{ appAutocomplete({
   label: {
@@ -10,16 +13,57 @@
   hint: {
     text: 'Select the closest matching subject'
   },
-  id: 'subject',
+  id: 'subject_1',
   minLength: 2,
   autoSelect: true,
   showAllValues: false,
   classes: "app-!-autocomplete--max-width-two-thirds",
-  name: "record[courseDetails][subject]",
+  name: "record[courseDetails][subjects]",
   items: data.ittSubjects,
-  value: record.courseDetails.subject
+  value: firstSubject
   }
 ) }}
+
+{% set multipleSubjectsHtml %}
+
+  <p class="govuk-body">The first subject is the main one. It represents the bursary or scolarship available if applicable.</p>
+
+  {% for item in [1,2] %}
+    {% if loop.index0 == 0 %}
+      {% set label = "Second subject (optional)" %}
+    {% else %}
+      {% set label = "Third subject (optional)" %}
+    {% endif %}
+
+    {{ appAutocomplete({
+      label: {
+        text: label,
+        classes: "_govuk-label--s"
+      },
+      hint: {
+        text: 'Select the closest matching subject'
+      },
+      id: 'subject_' + (loop.index + 1),
+      minLength: 2,
+      autoSelect: true,
+      showAllValues: false,
+      allowEmpty: true,
+      classes: "app-!-autocomplete--max-width-two-thirds",
+      name: "record[courseDetails][subjects]",
+      items: data.ittSubjects,
+      value: remainingSubjects[loop.index0]
+      }
+    ) }}
+  {% endfor %}
+{% endset %}
+
+{{ govukDetails({
+  summaryText: "Add additional subjects",
+  html: multipleSubjectsHtml,
+  open: true if hasMultipleSubjects
+}) }}
+
+
 
 {# These account for 91% of choices #}
 {% set commonAgeRanges = [
@@ -58,7 +102,7 @@
     }
   ) }}
 {% endset %}
-{{ageRangeExistingValue | log}}
+
 {% set ageRangeRadioItems = ageRangeRadioItems | combineArrays(
   [{
     divider: 'or'
