@@ -73,7 +73,7 @@ exports.render = (path, res, next, ...args) => {
 exports.hasAllocatedPlaces = (record) => {
   let routeHasAllocatedPlaces = (_.get(trainingRoutes, `[${record.route}]hasAllocatedPlaces`) == true)
   let allocatedSubjects = trainingRouteData.allocatedSubjects
-  let subjectIsAllocated = allocatedSubjects.includes(_.get(record, 'courseDetails.subject'))
+  let subjectIsAllocated = allocatedSubjects.includes(_.get(record, 'courseDetails.subjects'))
   return (routeHasAllocatedPlaces && subjectIsAllocated)
 }
 
