@@ -186,7 +186,7 @@ filters.spaceSeparate = (items) => filters.joinArray(items, {delimiter:' '})
 filters.withSeparate = (items) => {
   if (items.length < 2) return items
   else if (items.length == 2) return filters.joinArray(items, {delimiter: ' with '})
-  else return filters.joinArray(items, {delimiter: ' with ', lastDelimiter: ' and with '})
+  else return filters.joinArray(items, {delimiter: ' with ', lastDelimiter: ' and '})
 }
 
 // A. B. C. D.
