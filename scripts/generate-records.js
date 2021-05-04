@@ -176,7 +176,7 @@ const generateFakeApplications = () => {
     yearsToGenerate.forEach((year) => {
       // Years can be ±10% in size
       let traineeCount = getRandomArbitrary((providerSize * 0.9), (providerSize * 1.1))
-      if (provider == "Coventry University") traineeCount = 100
+      if (provider == "Coventry University") traineeCount = 130
       applications = applications.concat(generateFakeApplicationsForProvider(provider, year, traineeCount))
     })
 
@@ -203,7 +203,7 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
   if (year == currentYear){
     targetCounts = {
       draft: 0.01,
-      applyEnrolled: 0.05,
+      applyEnrolled: 0.20,
       pendingTrn: 0.05,
       trnReceived: 0.71,
       qualificationRecommended: 0.05,
