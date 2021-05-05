@@ -91,6 +91,7 @@ module.exports = router => {
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
     let schoolSearchTerm = req.query?._schoolSearch
+    const schools = getSchools()
 
     if (schoolSearchTerm){
       let results = false
@@ -113,7 +114,7 @@ module.exports = router => {
     let record = data.record
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
-    let schools = getSchools()
+    const schools = getSchools()
 
     // Input added with js by the autocomplete
     let autocompleteRawValue = req.body?._autocomplete_raw_value_school_picker
@@ -200,11 +201,12 @@ module.exports = router => {
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
     let schoolSearchTerm = req.query?._schoolSearch
+    const schools = getSchools()
 
     if (schoolSearchTerm){
       let results = false
       let resultsCount = 0
-      let schools = getSchools()
+      
       results = utils.searchSchools(schools, schoolSearchTerm)
       resultsCount = results.length
       results = results.slice(0, 15) // truncate results
@@ -223,7 +225,7 @@ module.exports = router => {
     let record = data.record
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
-    let schools = getSchools()
+    const schools = getSchools()
 
     // Input added with js by the autocomplete
     let autocompleteRawValue = req.body?._autocomplete_raw_value_school_picker
