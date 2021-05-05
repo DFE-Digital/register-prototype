@@ -5,6 +5,7 @@
 </div>
 
 <input name='{{params.name}}' type="hidden" id="school-picker-uuid-input">
+<input name='_autocomplte_result_previous_name' type="hidden" id="school-picker-name">
 
 <script src="/public/javascripts/autocomplete.min.js"></script>
 <script src="https://unpkg.com/lunr/lunr.js"></script>
@@ -104,12 +105,25 @@
 
   var updateInput = (result) => {
     var element = document.querySelector('#school-picker-uuid-input')
+    var previousSchool = document.querySelector('#school-picker-name')
+    var autocompleteString = document.querySelector('input#school-picker').value
+
+    var autocompleteStringMatchesSelected = (autocompleteString && previousSchool && previousSchool.value.startsWith(autocompleteString))
+
     // If they've picked something, save the UUID of the selection
     if (result){
       element.value = result.uuid
+      previousSchool.value = result.name
     }
-    // Autocomplete closed without making a selection - clear any previous selection
-    else element.value = ""
+    // If a user changes their selection / clears it / doesn't pick an answer,
+    // we want to clear the saved uuid. However, the autocomplete component runs onConfirm on blur,
+    // but passes undefined result. So we need to distinguish between an aucotomplete that has 
+    // selected a value and then closed, and one where a value has not been selected. 
+    // To hack around this, we store the name of the school selected, then compare if the current 
+    // value of the autocomplete input matches that name.
+    else if (!autocompleteStringMatchesSelected){
+      element.value = ""
+    }
   }
 
   var inputValue = (result) => {
@@ -138,7 +152,7 @@
     showAllValues: false,
     autoselect: false,
     minLength: 2,
-    defaultValue: '{{params.value}}',
+    defaultValue: `{{params.value}}`,
     name: '_autocomplete_raw_value_school_picker',
     templates: {
       inputValue,

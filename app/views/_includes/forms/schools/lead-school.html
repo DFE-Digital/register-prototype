@@ -18,7 +18,7 @@
 <div class="app-js-only">
   {{ appSchoolAutocomplete({
     name: "_autocomplete_result_uuid",
-    value: record.schools.leadSchool.schoolName,
+    value: (record.schools.leadSchool.schoolName | safe),
     uuid: record.schools.leadSchool.uuid,
     label: {
       text: label
