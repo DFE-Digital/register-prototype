@@ -714,7 +714,8 @@ exports.captureInvalid = function(data){
   if (data.value && data.value.includes("**invalid**")){
     // data.value = data.value.replace("**invalid**", "")
     _.set(this.ctx, 'data.temp.invalidString', data.value)
-    data.value = data.value.replace("**invalid**", "")
+    // data.value = data.value.replace("**invalid**", "")
+    data.value = '' // wipe the value
   }
   return data
 }
