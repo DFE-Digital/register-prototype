@@ -800,16 +800,17 @@ exports.addQueryParam = (existing, param) => {
 // and put the remaining as the next referrer.
 // This lets us support multiple return destinations
 exports.getReferrerDestination = referrer => {
-  if (typeof referrer == 'string'){
-    referrer = referrer.split(",")
+  let referrerCopy = [...referrer]
+  if (typeof referrerCopy == 'string'){
+    referrerCopy = referrerCopy.split(",")
   }
-  if (!referrer) return ''
-  else if (Array.isArray(referrer)){
-    let last = referrer.pop()
-    if (referrer.length) return `${last}?referrer=${referrer}`
+  if (!referrerCopy) return ''
+  else if (Array.isArray(referrerCopy)){
+    let last = referrerCopy.pop()
+    if (referrerCopy.length) return `${last}?referrer=${referrerCopy}`
     else return last
   }
-  else return referrer
+  else return referrerCopy
 }
 
 // Return first part of url to use in redirects
