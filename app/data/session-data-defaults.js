@@ -69,7 +69,10 @@ settings.userActiveProvider = "Coventry University"
 settings.includeTimeline = 'true'
 
 // Enable apply integration
-settings.enableApplyIntegration = false
+settings.enableApplyIntegration = 'true'
+
+// Enable apply integration
+settings.showRequiresAttentionSection = 'true'
 
 // Enable apply integration
 settings.groupApplySections = 'true'

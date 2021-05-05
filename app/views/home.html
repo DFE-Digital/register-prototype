@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% set navActive = "home" %}
-{% set applyDraftCount = 8 %}
+{% set applyDraftCount = data.filteredRecords | where('status', 'Apply draft') | length %}
 {% set recordsToBeReviewedCount = 11 %}
 {% set combinedAlertCount = applyDraftCount + recordsToBeReviewedCount %}
 
@@ -63,7 +63,7 @@
             <div class="app-action-required-item">
               <span class="app-action-required-item__count">{{recordsToBeReviewedCount}}</span>
               <div class="app-action-required-item__content">
-                <a href="#" class="govuk-link app-action-required-item__text">records for review before cycle ends</a>
+                <a href="#" class="govuk-link app-action-required-item__text">Records for review before cycle ends</a>
                 <span class="app-action-required-item__hint-text govuk-hint govuk-!-font-size-16">The cycle ends on August 27 2021</span>
               </div>
             </div>
