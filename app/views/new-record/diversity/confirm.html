@@ -18,7 +18,7 @@
     {% endif %}
   {% endset %}
 
-  {% if not data.settings.groupApplySections %}
+  {% if record | sourceIsManual or not data.settings.groupApplySections %}
     {{ govukCheckboxes({
     idPrefix: "waste",
     name: "record[diversity][status]",

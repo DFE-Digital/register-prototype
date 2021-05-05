@@ -21,7 +21,7 @@
     {% endif %}
   {% endset %}
 
-  {% if not data.settings.groupApplySections %}
+  {% if record | sourceIsManual or not data.settings.groupApplySections %}
     {# Don't show checkbox if there are no degrees #}
     {% if degreeCount > 0 %}
       {{ govukCheckboxes({

@@ -220,7 +220,7 @@ exports.sourceIsApply = record => {
 }
 
 exports.sourceIsManual = record => {
-  return record.source == "Manual"
+  return record.source != "Apply"
 }
 
 // Check if all sections are complete
