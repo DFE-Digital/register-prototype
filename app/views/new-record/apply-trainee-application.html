@@ -52,10 +52,10 @@ of the page. #}
       {% set descriptionText %}
         This trainee data contains {{invalidAnswerCount}} {{ 'answer' | pluralise(invalidAnswerCount)}} that you need to review and amend manually.
       {% endset %}
-      {% for invalidAnswer in data.record.invalidAnswers %}
+      {% for invalidAnswer in data.temp.invalidAnswers %}
         {% set errorListArray = errorListArray | push(
           {
-            text: invalidAnswer.name + " is not recognised",
+            text: invalidAnswer.name,
             href: "#" + invalidAnswer.id
           }) %}
       {% endfor %}
@@ -67,11 +67,15 @@ of the page. #}
         errorList: errorListArray
       }) }}
     {% else %}
+      {# This must come after the summary cards are rendered so that it can show
+      which fields have invalid answers and link to them #}
       {% if hasInvalidAnswers %}
-      {% set invalidAnswerType = "application" %}
-      {% include "_includes/invalidAnswersBanner.njk" %}
+        {% set invalidAnswerType = "application" %}
+        {% include "_includes/invalidAnswersBanner.njk" %}
+      {% endif %}
+      
     {% endif %}
-    {% endif %}
+
 
     {% set draftRecordName %}
       {% if record.personalDetails.shortName %}
@@ -82,12 +86,7 @@ of the page. #}
     <span class="govuk-caption-l">{{'Draft record' + draftRecordName}}</span>
     <h1 class="govuk-heading-l govuk-!-margin-bottom-8">{{pageHeading}}</h1>
 
-    {# This must come after the summary cards are rendered so that it can show
-    which fields have invalid answers and link to them #}
-    {% if hasInvalidAnswers %}
-      {% set invalidAnswerType = "application" %}
-      {# {% include "_includes/invalidAnswersBanner.njk" %} #}
-    {% endif %}
+    
 
     {# Text shown if user belongs to multiple providers #}
     {# {% include "_includes/providerAndRouteInsetText.njk" %} #}
@@ -111,7 +110,7 @@ of the page. #}
     items: [
       {
         value: "Completed",
-        text: "I have reviewed their application",
+        text: "I have reviewed the trainee data",
         checked: checked(record.applyData.status, "Completed")
       }
     ]

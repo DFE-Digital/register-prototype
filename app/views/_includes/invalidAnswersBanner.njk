@@ -3,13 +3,13 @@
 {% set bannerHtml %}
   {# <h2 class="govuk-heading-m">Action required</h2> #}
 
-  <p class="govuk-body">This {{ invalidAnswerType or "section" }} contains {{invalidAnswerCount}} {{ 'answer' | pluralise(invalidAnswerCount)}} that you need to review and amend manually.</p> 
+  <p class="govuk-body">This {{ invalidAnswerType or "section" }} contains {{invalidAnswerCount}} {{ 'answer' | pluralise(invalidAnswerCount)}} that you need to amend. This is because they were entered in a free text format.</p> 
   
-  {% if data.record.invalidAnswers %}
+  {% if data.temp.invalidAnswers %}
     <ul class="govuk-list app-invalid-answer__list">
-      {% for invalidAnswer in data.record.invalidAnswers %}
+      {% for invalidAnswer in data.temp.invalidAnswers %}
         <li>
-          <a href="#{{invalidAnswer.id}}">{{invalidAnswer.name}} is not recognised</a>
+          <a href="#{{invalidAnswer.id}}">{{invalidAnswer.name}}</a>
         </li>
       {% endfor %}
     </ul>

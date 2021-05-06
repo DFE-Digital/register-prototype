@@ -1,13 +1,13 @@
-
+{# 
 {% if data.temp.invalidString and data.settings.highlightInvalidAnswers | falsify %}
-  {% set userValue = data.temp.invalidString | replace("**invalid**", "") %}
+  {% set userValue = data.temp.invalidString %}
   {% set insetContent %}
 
-    <h2 class="govuk-heading-m">Answer not recognised</h2>
+    <h2 class="govuk-heading-m app-inset-text--invalid-answer__heading">Answer not recognised</h2>
 
-    <p class="govuk-body">The applicant’s answer – <span class="govuk-!-font-weight-bold">{{userValue}}</span> – is not a recognised value that can be accepted.</p>
+    <p class="govuk-body">The applicant’s answer was <span class="govuk-!-font-weight-bold">{{userValue}}</span>.</p>
 
-    <p class="govuk-body">Ammend their answer to the closest available match.</p>
+    <p class="govuk-body">Choose the closest available match.</p>
 
     {{params.html | safe}}
     
@@ -18,9 +18,9 @@
     classes: 'app-inset-text--invalid-answer app-inset-text--narrow govuk-!-padding-top-0 govuk-!-padding-bottom-0'
   }) }}
 
-{% else %}
+{% else %} #}
   {{params.html | safe}}
-{% endif %}
+{# {% endif %} #}
 
 
 

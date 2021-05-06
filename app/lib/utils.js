@@ -619,7 +619,7 @@ exports.highlightInvalidRows = function(rows) {
 
   // We need to add to any existing answers from previous times
   // this filter has run on this page
-  let invalidAnswers = ctx.data?.record?.invalidAnswers || []
+  let invalidAnswers = ctx.data?.temp?.invalidAnswers || []
   let featureEnabled = ctx.data?.settings?.highlightInvalidAnswers == "true"
 
   if (rows) {
@@ -649,7 +649,7 @@ exports.highlightInvalidRows = function(rows) {
 
           // Store the row name so it can be used in a summary at 
           // the top of the page
-          invalidAnswers.push({name: key, id})
+          invalidAnswers.push({name: `${key} is not recognised`, id})
           
           // Error message that gets shown
           let messageContent = `${key} is not recognised`
@@ -701,22 +701,39 @@ exports.highlightInvalidRows = function(rows) {
   // Save array back to context
   // using lodash on the rare chance record doesn’t acutally exist yet
   if (invalidAnswers.length){
-    _.set(this.ctx, 'data.record.invalidAnswers', invalidAnswers)
+    _.set(this.ctx, 'data.temp.invalidAnswers', invalidAnswers)
   }
   return rows
 }
 
 exports.captureInvalid = function(data){
   let ctx = Object.assign({}, this.ctx)
+  let invalidAnswers = ctx.data?.temp?.invalidAnswers || []
 
   delete this.ctx.data?.temp?.invalidString // just in case
 
   if (data.value && data.value.includes("**invalid**")){
+    let cleanedValue = data.value.replace("**invalid**", "")
+    let key = data.label.html || data.label.text
+    // let linkText = `${key} - the trainee entered ‘${cleanedValue}’. You need to search for the closest match.`
+    let linkText = `${key} not recognised`
+    invalidAnswers.push({name: linkText, id: data.id})
     // data.value = data.value.replace("**invalid**", "")
-    _.set(this.ctx, 'data.temp.invalidString', data.value)
+    _.set(this.ctx, 'data.temp.invalidString', cleanedValue)
+    
     // data.value = data.value.replace("**invalid**", "")
     data.value = '' // wipe the value
+    data.classes = (data.classes) ? `${data.classes} app-invalid-answer` : 'app-invalid-answer'
+    data.errorMessage = {
+      text: `The trainee entered ‘${cleanedValue}’. You need to search for the closest match.`
+    }
+
+    // Save array back to context
+    // using lodash on the rare chance record doesn’t acutally exist yet
+    _.set(this.ctx, 'data.temp.invalidAnswers', invalidAnswers)
+
   }
+
   return data
 }
 
