@@ -36,21 +36,12 @@
 {# Inset text about the provider and route #}
 {# {% include "_includes/providerAndRouteInsetText.njk" %} #}
 
-<h2 class="govuk-heading-m">Apply application</h2>
+<h2 class="govuk-heading-m">Registration data from Apply</h2>
 <p class="govuk-body">Application submitted on {{ record.applyData.applicationDate | govukDate }}, and recruited in Manage on {{ record.applyData.recruitedDate | govukDate }}</p>
 
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [
-    {
-      text: "Review the trainee’s application",
-      href: "apply-trainee-application" | addReferrer(referrer),
-      id: "application-overview",
-      tag: {
-        classes: record.applyData | getStatusText('Review', 'Review') | getStatusClass,
-        text: record.applyData | getStatusText('Review', 'Review')
-      }
-    },
     {
       text: "Course details",
       href: "course-details" | reviewIfInProgress(record.courseDetails) | addReferrer(referrer),
@@ -59,7 +50,17 @@
         classes: record.courseDetails | getStatusText('Review', 'Review') | getStatusClass,
         text: record.courseDetails | getStatusText('Review', 'Review')
       }
-    } if record | requiresSection("courseDetails")
+    } if record | requiresSection("courseDetails"),
+    {
+      text: "Trainee data",
+      _hint: "Their personal details and education",
+      href: "apply-trainee-application" | addReferrer(referrer),
+      id: "application-overview",
+      tag: {
+        classes: record.applyData | getStatusText('Review', 'Review') | getStatusClass,
+        text: record.applyData | getStatusText('Review', 'Review')
+      }
+    }
   ]
 }) if not closed }}
 
@@ -68,6 +69,15 @@
 {# Conditional hint text #}
 {# Todo: remove this when making schools a separate section #}
 {% set includesSchools = record | requiresField(["leadSchool", "employingSchool"]) %}
+{% if includesSchools %}
+  {% if record | requiresField(["leadSchool", "employingSchool"]) %}
+    {% set schoolSectionLabel = "Lead and employing schools" %}
+  {% elseif record | requiresField(["leadSchool"]) %}
+    {% set schoolSectionLabel = "Lead school" %}
+  {% elseif record | requiresField(["employingSchool"]) %}
+    {% set schoolSectionLabel = "Employing school" %}
+  {% endif %}
+{% endif %}
 
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
@@ -83,7 +93,7 @@
       }
     } if record | requiresSection("trainingDetails"),
     {
-      text: "Schools",
+      text: schoolSectionLabel,
       href: "schools" | reviewIfInProgress(record.schools) | addReferrer(referrer),
       id: "schools-details",
       tag: {

@@ -108,6 +108,35 @@ module.exports = router => {
     else res.render('new-record/overview')
   })
 
+  // Prevent trainee data from being marked as reviewed if it
+  // contains invalid answers
+  router.post('/new-record/apply-trainee-application', (req, res) => {
+    const data = req.session.data
+    let record = _.get(data, 'record') // copy record
+    let referrer = utils.getReferrer(req.query.referrer)
+    
+    // Only validate if they’ve checked the 'reviewed' checkbox
+    if (record?.applyData?.status == 'Completed' && utils.hasInvalidAnswers(record)){
+      console.log('Record has invalid answers, returning to trainee data page')
+      let returnQuery
+      if (referrer){
+        returnQuery = `${referrer}&errors=true`
+      }
+      else returnQuery = "?errors=true"
+      delete record?.applyData?.status // clear the checkbox
+      res.redirect(`/new-record/apply-trainee-application${returnQuery}`)
+    }
+    else {
+      // Send them to the referrer
+      if (referrer){
+        res.redirect(utils.getReferrerDestination(req.query.referrer))
+      }
+      else {
+        res.redirect('/new-record/overview')
+      }
+    }
+  })
+
   // Task list confirmation page - pass errors to page
   // Todo: use flash messages or something to pass real errors in
   router.get('/new-record/check-record', function (req, res) {

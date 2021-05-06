@@ -1,14 +1,15 @@
 {% extends "_templates/_new-record.html" %}
 
-{% set pageHeading = "Trainee’s application" %}
+{% set pageHeading = "Trainee data" %}
 
-{% set formAction = "./overview" | orReferrer(referrer) %}
+{# {% set formAction = "./overview" | orReferrer(referrer) %} #}
 
 {% set hideReturnLink = true %}
 {% set showIncomplete = false %}
 {% set backLink = './overview' %}
 {% set backText = 'Back to draft record' %}
 {% set gridColumn = 'govuk-grid-column-full' %}
+{% set bodyClasses = "app-has-errors" if query.errors %}
 
 {% block formContent %}
 
@@ -41,15 +42,35 @@ of the page. #}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    {% if errorList %}
+    {% if query.errors %}
+      {% set invalidAnswerCount = record | countInvalidAnswers %}
+      {% set errorText %}
+        You must ammend {{invalidAnswerCount}} {{ 'answer' | pluralise(invalidAnswerCount)}} before marking the trainee data as reviewed
+      {% endset %}
+      {% set errorListArray = [] %}
+
+      {% set descriptionText %}
+        This trainee data contains {{invalidAnswerCount}} {{ 'answer' | pluralise(invalidAnswerCount)}} that you need to review and amend manually.
+      {% endset %}
+      {% for invalidAnswer in data.record.invalidAnswers %}
+        {% set errorListArray = errorListArray | push(
+          {
+            text: invalidAnswer.name + " is not recognised",
+            href: "#" + invalidAnswer.id
+          }) %}
+      {% endfor %}
+
+
       {{ govukErrorSummary({
         titleText: "There is a problem",
-        errorList: [
-          {
-            text: "You must complete all sections before submitting for TRN"
-          }
-        ]
+        descriptionText: descriptionText,
+        errorList: errorListArray
       }) }}
+    {% else %}
+      {% if hasInvalidAnswers %}
+      {% set invalidAnswerType = "application" %}
+      {% include "_includes/invalidAnswersBanner.njk" %}
+    {% endif %}
     {% endif %}
 
     {% set draftRecordName %}
@@ -65,7 +86,7 @@ of the page. #}
     which fields have invalid answers and link to them #}
     {% if hasInvalidAnswers %}
       {% set invalidAnswerType = "application" %}
-      {% include "_includes/invalidAnswersBanner.njk" %}
+      {# {% include "_includes/invalidAnswersBanner.njk" %} #}
     {% endif %}
 
     {# Text shown if user belongs to multiple providers #}
@@ -76,14 +97,14 @@ of the page. #}
 
 {{ allSummaryCards | safe }}
 
-{% if hasInvalidAnswers %}
+{# {% if hasInvalidAnswers %}
 
   {{ govukInsetText({
     text: "You need to ammend this record before you can mark it as reviewed."
   }) }}
 
 {% else %}
-
+ #}
   {{ govukCheckboxes({
     idPrefix: "apply-trainee-application-checkbox",
     name: "record[applyData][status]",
@@ -96,7 +117,7 @@ of the page. #}
     ]
   }) }}
 
-{% endif %}
+{# {% endif %} #}
 
 {{ govukButton({
   text: "Continue"

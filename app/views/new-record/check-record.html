@@ -20,7 +20,7 @@
   {# Show a warning if the record isn’t ready to be submitted #}
   {% if not recordIsComplete %}
     {% set insetTextHtml %}
-      <p class="govuk-body">This record is not complete and cannot be submitted for TRN. If you do not have all the required information now, you can <a href="./save-as-draft" class="govuk-link">save as a draft record</a>.</p>
+      <p class="govuk-body">This record is not complete and cannot be submitted for TRN. If you do not have all the required information now, you can <a href="./save-as-draft" class="govuk-link">return to this draft record later</a>.</p>
     {% endset %}
       {{ govukInsetText({
         html: insetTextHtml

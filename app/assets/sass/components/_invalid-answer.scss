@@ -4,6 +4,15 @@ $invalid-colour: $govuk-brand-colour;
   border-color: $invalid-colour;  
 }
 
+.app-has-errors {
+  .app-inset-text--invalid-answer, .app-summary-list__value-inset {
+    border-color: $govuk-error-colour;  
+  }
+  .app-summary-list__message--invalid {
+    color: $govuk-error-colour;
+  }
+}
+
 .app-inset-text--narrow {
   border-width: 5px;
 }

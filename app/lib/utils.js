@@ -662,7 +662,7 @@ exports.highlightInvalidRows = function(rows) {
           // If there’s more than one link (unlikely), do nothing
           if (actionItems && actionItems.length == 1){
             let href = row?.actions?.items[0].href
-            linkHtml = `<br><a class="govuk-link govuk-link--no-visited-state" href="${href}">
+            linkHtml = `<br><a class="govuk-link govuk-link--no-visited-state app-summary-list__link--invalid" href="${href}">
             Review the trainee’s answer<span class="govuk-visually-hidden"> for ${key.toLowerCase()}</span>
             </a>`
             delete row.actions.items
@@ -800,17 +800,17 @@ exports.addQueryParam = (existing, param) => {
 // and put the remaining as the next referrer.
 // This lets us support multiple return destinations
 exports.getReferrerDestination = referrer => {
-  let referrerCopy = [...referrer]
-  if (typeof referrerCopy == 'string'){
-    referrerCopy = referrerCopy.split(",")
+  if (typeof referrer == 'string'){
+    referrer = referrer.split(",")
   }
-  if (!referrerCopy) return ''
-  else if (Array.isArray(referrerCopy)){
+  if (!referrer) return ''
+  else if (Array.isArray(referrer)){
+    let referrerCopy = [...referrer]
     let last = referrerCopy.pop()
     if (referrerCopy.length) return `${last}?referrer=${referrerCopy}`
     else return last
   }
-  else return referrerCopy
+  else return referrer
 }
 
 // Return first part of url to use in redirects

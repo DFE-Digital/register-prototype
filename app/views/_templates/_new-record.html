@@ -47,7 +47,7 @@
   {% include "_includes/app-flash-message.html" %}
 
   {% block beforePageTitle %}{% endblock %}
-  {# {{referrer}} #}
+
   {% set hasReferrer = '' | addReferrer(referrer) | falsify %}
   {% set formActionHtml -%}
   {%- if formAction -%}

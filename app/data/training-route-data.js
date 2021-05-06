@@ -66,7 +66,8 @@ let defaultRouteData = {
     'contactDetails',
     'placement',
     'diversity',
-    'degree'
+    'degree',
+    'placement'
   ]
 }
 
@@ -96,7 +97,8 @@ let baseRouteData = {
       'contactDetails',
       'diversity',
       'degree',
-      'schools'
+      'schools',
+      'placement'
     ],
     fields: [
       "leadSchool",
@@ -113,7 +115,8 @@ let baseRouteData = {
       'contactDetails',
       'diversity',
       'degree',
-      'schools'
+      'schools',
+      'placement'
     ],
     fields: [
       "leadSchool",
