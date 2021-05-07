@@ -2040,7 +2040,7 @@
         },
         {
           "type": "BTech Education",
-          "subject": "**invalid**International Relations",
+          "subject": "**invalid**International Relation",
           "isInternational": "false",
           "org": "Royal Welsh College of Music and Drama",
           "country": "United Kingdom",
@@ -2384,9 +2384,9 @@
       "items": [
         {
           "type": "Bachelor of Science & Engineering",
-          "subject": "**invalid**Psychology",
+          "subject": "**invalid**Maths",
           "isInternational": "false",
-          "org": "**invalid**University College Dublin",
+          "org": "**invalid**University College",
           "country": "United Kingdom",
           "grade": "Merit",
           "predicted": true,
