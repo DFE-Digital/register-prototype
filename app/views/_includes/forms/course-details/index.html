@@ -67,10 +67,10 @@
 
 {# These account for 91% of choices #}
 {% set commonAgeRanges = [
-  "3 to 11 programme",
-  "5 to 11 programme",
-  "11 to 16 programme",
-  "11 to 19 programme"
+  "3 to 11",
+  "5 to 11",
+  "11 to 16",
+  "11 to 19"
   ] %}
 
 {# Create radio items for each #}
@@ -97,6 +97,7 @@
     },
     id: 'age-range',
     name: "record[courseDetails][ageRangeOther]",
+    classes: "app-!-autocomplete--max-width-one-third",
     items: uncommonAgeRanges,
     value: ageRangeExistingValue
     }

@@ -217,9 +217,9 @@ let levels = {
   "Primary": {
     "hint": "ages 3 to 11",
     "ageRanges": [
-      "3 to 7 programme", // 6.51%
-      "3 to 11 programme", // 9.76%
-      "5 to 11 programme", // 40.97%
+      "3 to 7", // 6.51%
+      "3 to 11", // 9.76%
+      "5 to 11", // 40.97%
     ]
   },
   "Middle": {
@@ -229,8 +229,8 @@ let levels = {
   "Secondary": {
     "hint": "ages 11 to 19",
     "ageRanges": [
-      "11 to 16 programme", // 26.42%
-      "11 to 19 programme", // 13.8%
+      "11 to 16", // 26.42%
+      "11 to 19", // 13.8%
     ]
   }
 }
