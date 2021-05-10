@@ -3,7 +3,9 @@
   Trainee records ({{filteredRecords | length}} {{ "record" | pluralise(filteredRecords | length)}})
 {% endset %}
 
-{% set backLink = 'false' %}
+
+{% set backText = "Home" %}
+{% set backLink = '/home' %}
 {% set navActive = "records" %}
 
 {% block skipLink %}
