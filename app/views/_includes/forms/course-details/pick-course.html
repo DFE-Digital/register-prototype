@@ -26,12 +26,22 @@ defer to an id if one exists. #}
   {% set courseItems = [] %}
 
   {% for course in providerCourses %}
+
+    {% set courseHint %}
+      {% if route %}
+        {{ course.qualificationsSummary }}
+      {% else %}
+        {# Not filtered by route, so display the route in addition #}
+        {{ course.qualificationsSummary }}, {{ course.route }}
+      {% endif %}
+    {% endset %}
+
     {% set courseItems = courseItems | push({
       text: course | getCourseName,
       value: course.id,
       checked: checked(selectedCourse, course.id),
       hint: {
-        text: course.qualificationsSummary
+        text: courseHint
       }
     }) %}
   {% endfor %}
@@ -141,7 +151,7 @@ defer to an id if one exists. #}
   <h1 class="govuk-heading-l">No courses found</h1>
   <p class="govuk-body">You shouldn’t be seeing this page</p>
 
-{% elseif providerCourses | length < 25 %}
+{% elseif providerCourses | length < 26 %}
   
   {{ providerHasFewPublishCourses | safe }}
 

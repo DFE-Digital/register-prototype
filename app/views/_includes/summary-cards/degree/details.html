@@ -50,7 +50,7 @@
   <div class="govuk-form-group govuk-!-margin-bottom-0">
     {{ govukButton({
       text: "Add another degree" if degreeCount > 0 else "Add a degree",
-      href: recordPath + "/degree/add",
+      href: recordPath + "/degree/add" | addReferrer(referrer),
       classes: "govuk-button--secondary"
     }) }}
   </div>

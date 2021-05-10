@@ -368,7 +368,7 @@ module.exports = router => {
         // Will only exist if js
         if (selectedCourseRawAutocomplete){
           selectedCourse = providerCourses.find(course => {
-            return `${course.subject} (${course.code})` == req.body._autocompleteRawValue_publishCourse
+            return utils.getCourseName(course) == req.body._autocompleteRawValue_publishCourse
           })?.id
         }
       }

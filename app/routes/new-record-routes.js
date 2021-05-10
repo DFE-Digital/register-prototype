@@ -110,7 +110,7 @@ module.exports = router => {
 
   // Prevent trainee data from being marked as reviewed if it
   // contains invalid answers
-  router.post('/new-record/apply-trainee-application', (req, res) => {
+  router.post('/new-record/apply-trainee-application-answer', (req, res) => {
     const data = req.session.data
     let record = _.get(data, 'record') // copy record
     let referrer = utils.getReferrer(req.query.referrer)

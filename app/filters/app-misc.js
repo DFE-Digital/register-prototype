@@ -67,66 +67,12 @@ filters.getSchoolNamesForAutocomplete = (schools) => {
   })
 }
 
-// Combine multiple subject names together
-// Eg Biology with English, Chemistry with physical education
-// A bit similar to:
-// https://github.com/DFE-Digital/teacher-training-api/blob/045a4b3e97df0ccdb72c38b3611dcb8d094c29cc/app/services/courses/generate_course_name_service.rb#L51
-filters.prettifySubjects = (subjects) => {
-  // No data?
-  if (!subjects || subjects.length == 0) {
-    return ''
-  }
 
-  // A string or just one subject
-  if (typeof subjects === 'string' || subjects.length == 1){
-    return subjects
-  }
-
-  // Shallow copy as we’re about to shift() it
-  // Also do some cleanup on the data
-  let subjectsCopy = [...subjects].map(subject => {
-    return subject
-      .replace('Modern languages', '_modern_lang') // Temporarily rename this
-      .replace(' language', '') // Strip out language from 'English language' etc
-      .replace('English studies', 'English') // Shorten this
-      .replace('_modern_lang', 'Modern languages') // Restore 'Modern languages'
-  })
-
-  // Don’t touch first item
-  let first = subjectsCopy.shift()
-
-  // These things shouldn’t get lowercased
-  let ignoreSubjects = [
-  "English",
-  "French",
-  "German",
-  "Italian",
-  "Japanese",
-  "Mandarin",
-  "Russian",
-  "Spanish"
-  ]
-
-  // Lowercase all the subjects except those starting with words in ignoreSubjects
-  let subjectsLowerCase = subjectsCopy.map(subject => {
-    return ignoreSubjects.some(ignoreSubject => subject.startsWith(ignoreSubject)) ? subject : subject.toLowerCase()
-  })
-  // Combine with the first item again
-  let combinedSubjects = [first].concat(subjectsLowerCase)
-  // Combine as a string
-  let returnString = arrayFilters.withSeparate(combinedSubjects)
-  return returnString
-}
-
-// eg Biology (J482)
-filters.getCourseName = (course) => {
-  return `${filters.prettifySubjects(course.subjects)} (${course.code})`
-}
 
 // Biology (J482)
 filters.getCourseNamesForSelect = (courses) => {
   return courses.map(course => {
-    return [`${filters.getCourseName(course)}`, course.id]
+    return [`${utils.getCourseName(course)}`, course.id]
   })
 }
 
@@ -136,7 +82,7 @@ filters.getCourseNamesForSelect = (courses) => {
 // QTS with PGCE full-time
 filters.getCourseNamesForAutocomplete = (courses) => {
   return courses.map(course => {
-    return [`${filters.getCourseName(course)} | ${course.qualificationsSummary}`, course.id]
+    return [`${utils.getCourseName(course)} | ${course.qualificationsSummary}`, course.id]
   })
 }
 

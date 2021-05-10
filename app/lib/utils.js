@@ -7,6 +7,7 @@ const moment = require('moment')
 const path = require('path')
 const trainingRouteData = require('./../data/training-route-data')
 const trainingRoutes = trainingRouteData.trainingRoutes
+const arrayFilters = require('./../filters/arrays.js').filters
 
 // -------------------------------------------------------------------
 // General
@@ -142,9 +143,7 @@ exports.getQualificationText = record => {
 // Sort by subject, including course code
 exports.sortPublishCourses = courses => {
   let sorted = courses.sort((a, b) => {
-    let aString = `${a.subject} (${a.code})`
-    let bString = `${b.subject} (${b.code})`
-    return exports.sortAlphabetical(aString, bString)
+    return exports.sortAlphabetical(exports.getCourseName(a), exports.getCourseName(b))
   })
   return sorted
 }
@@ -176,6 +175,64 @@ exports.routeHasPublishCourses = function(record){
   let providerCourses = exports.getProviderCourses(data.courses, record?.provider, record.route, data)
   return (providerCourses.length > 0)
 }
+
+
+// Combine multiple subject names together
+// Eg Biology with English, Chemistry with physical education
+// A bit similar to:
+// https://github.com/DFE-Digital/teacher-training-api/blob/045a4b3e97df0ccdb72c38b3611dcb8d094c29cc/app/services/courses/generate_course_name_service.rb#L51
+exports.prettifySubjects = (subjects) => {
+  // No data?
+  if (!subjects || subjects.length == 0) {
+    return ''
+  }
+
+  // A string or just one subject
+  if (typeof subjects === 'string' || subjects.length == 1){
+    return subjects
+  }
+
+  // Shallow copy as we’re about to shift() it
+  // Also do some cleanup on the data
+  let subjectsCopy = [...subjects].map(subject => {
+    return subject
+      .replace('Modern languages', '_modern_lang') // Temporarily rename this
+      .replace(' language', '') // Strip out language from 'English language' etc
+      .replace('English studies', 'English') // Shorten this
+      .replace('_modern_lang', 'Modern languages') // Restore 'Modern languages'
+  })
+
+  // Don’t touch first item
+  let first = subjectsCopy.shift()
+
+  // These things shouldn’t get lowercased
+  let ignoreSubjects = [
+  "English",
+  "French",
+  "German",
+  "Italian",
+  "Japanese",
+  "Mandarin",
+  "Russian",
+  "Spanish"
+  ]
+
+  // Lowercase all the subjects except those starting with words in ignoreSubjects
+  let subjectsLowerCase = subjectsCopy.map(subject => {
+    return ignoreSubjects.some(ignoreSubject => subject.startsWith(ignoreSubject)) ? subject : subject.toLowerCase()
+  })
+  // Combine with the first item again
+  let combinedSubjects = [first].concat(subjectsLowerCase)
+  // Combine as a string
+  let returnString = arrayFilters.withSeparate(combinedSubjects)
+  return returnString
+}
+
+// eg Biology (J482)
+exports.getCourseName = (course) => {
+  return `${exports.prettifySubjects(course.subjects)} (${course.code})`
+}
+
 
 // -------------------------------------------------------------------
 // Records
@@ -583,7 +640,9 @@ exports.filterRecords = (records, data, filters = {}) => {
   }
 
   if (filters.subject && filters.subject != "All subjects"){
-    filteredRecords = filteredRecords.filter(record => record?.courseDetails?.subject == filters.subject)
+    filteredRecords = filteredRecords.filter(record => {
+      return record?.courseDetails?.subjects && record?.courseDetails?.subjects.includes(filters.subject)
+    })
   }
 
   return filteredRecords

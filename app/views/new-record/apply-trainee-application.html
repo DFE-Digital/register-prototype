@@ -2,7 +2,7 @@
 
 {% set pageHeading = "Trainee data" %}
 
-{# {% set formAction = "./overview" | orReferrer(referrer) %} #}
+{% set formAction = "./apply-trainee-application-answer" | addReferrer(referrer) %}
 
 {% set hideReturnLink = true %}
 {% set showIncomplete = false %}
