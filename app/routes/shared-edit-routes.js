@@ -665,9 +665,11 @@ module.exports = router => {
       delete newDegree.typeInt
     }
 
-    // Combine radio and text inputs
+    // Degree grade is collected using a choice of radios or 'other'
+    // if 'other', users can type a degree grade. These are submitted to two different
+    // data items, which we now combine in to a single grade.
     if (newDegree.baseGrade){
-      if (newDegree.baseGrade == "Grade known"){
+      if (newDegree.baseGrade == "Other"){
         newDegree.grade = newDegree.otherGrade
         delete newDegree.baseGrade
         delete newDegree.otherGrade
@@ -686,7 +688,6 @@ module.exports = router => {
     else {
       existingDegrees.push(newDegree)
     }
-
     _.set(data, 'record.degree.items', existingDegrees)
 
     if (existingDegrees?.length > 1){

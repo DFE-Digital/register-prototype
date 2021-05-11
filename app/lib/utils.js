@@ -765,6 +765,12 @@ exports.highlightInvalidRows = function(rows) {
   return rows
 }
 
+// Strip invalid strings from input
+exports.stripInvalidText = input => {
+  if (!input) return ""
+  else return input.replace("**invalid**", "")
+}
+
 exports.captureInvalid = function(data){
   let ctx = Object.assign({}, this.ctx)
   let invalidAnswers = ctx.data?.temp?.invalidAnswers || []

@@ -9,11 +9,22 @@
 
 {% for degree in degrees %}
 
+  {% set hint %}
+    {% if degree.grade %}
+      <p class="govuk-body govuk-hint govuk-!-margin-bottom-1">
+        {{ degree.grade | prettifyDegreeGrade }}
+      </p>
+    {% endif %}
+    <p class="govuk-body govuk-hint">
+      {{degree | getDegreeHint}}
+    </p>
+  {% endset %}
+
   {% set degreeItems = degreeItems | push({
-    text: degree | getDegreeName,
+    text: degree | getDegreeName | stripInvalidText,
     value: degree.id,
     hint: {
-      text: degree | getDegreeHint
+      html: hint | safe
     }
   }) %}
 

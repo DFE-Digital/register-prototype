@@ -49,7 +49,18 @@ filters.getFullName = ({
   return names.filter(Boolean).join(' ')
 }
 
-
+// Prepend with 'Other grade:' if grade isn’t a pre-set type
+filters.prettifyDegreeGrade = grade => {
+  if (!grade) return ""
+  let isOtherGrade = ![
+    "First-class honours",
+    "Upper second-class honours (2:1)",
+    "Lower second-class honours (2:2)",
+    "Third-class honours",
+    "Pass"
+  ].includes(grade)
+  return (isOtherGrade) ? `Other grade: ${grade.toLowerCase()}` : grade
+}
 
 // Metadata about a school as a string
 // URN 1234567, City, Postcode
