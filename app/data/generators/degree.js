@@ -3,6 +3,9 @@ const weighted = require('weighted')
 const degreeData = require('../degree')
 
 module.exports = (params) => {
+
+  const isApplyDraft = (params.source == 'Apply' && params.status == "Apply draft")
+  
   const item = (faker) => {
     let subject = faker.helpers.randomize(degreeData().subjects)
     const predicted = faker.random.boolean()
@@ -10,7 +13,7 @@ module.exports = (params) => {
     const startDate = (parseInt(endDate) - 4).toString()
     const id = faker.random.uuid()
 
-    const isApplyDraft = (params.source == 'Apply' && params.status == "Apply draft")
+    
 
     // Make 1/3rd of subjects be invalid responses for Apply applications
     if (isApplyDraft){
@@ -89,7 +92,7 @@ module.exports = (params) => {
   // Trainees with multiple degrees must have a single degree selected for the
   // purposes of bursaries
   let degreeToBeUsedForBursaries
-  if (items.length > 1){
+  if (items.length > 1 && !isApplyDraft){
     degreeToBeUsedForBursaries = faker.helpers.randomize(items).id
   }
 
