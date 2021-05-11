@@ -23,7 +23,7 @@
 
 {% set insetTextHtml %}
   {% if record.courseDetails %}
-    <p class="govuk-body">Trainee enrolled on {{ record.courseDetails | getCourseName }}, {{record.route}}</p>
+    <p class="govuk-body">Trainee recruited on {{ record.courseDetails | getCourseName }}, {{record.route}}</p>
   {% else %}
     No data to show
   {% endif %}
