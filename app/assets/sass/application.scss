@@ -26,6 +26,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "helpers";
 @import "helpers/field-widths";
 @import "helpers/width-container";
+@import "helpers/show-hide-at-breakpoint";
 
 // Components that aren't in Frontend
 @import "components/application-card";
@@ -35,6 +36,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/banner";
 @import "components/button-as-link";
 @import "components/cookie-banner";
+@import "components/dashboard-header";
 @import "components/invalid-answer";
 @import "components/notice-banner";
 @import "components/record-header";

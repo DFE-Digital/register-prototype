@@ -18,7 +18,7 @@
 }
 
 .app-action-required-item__text {
-  @include govuk-font($size: 24);
+  @include govuk-font($size: 19);
   display: inline-block;
   margin-bottom: govuk-spacing(1);
   font-weight: bold;
@@ -29,7 +29,7 @@
 }
 
 .app-action-required-item__count {
-  @include govuk-font($size: 24);
+  @include govuk-font($size: 19);
   display: flex;
   width: 40px;
   height: 40px;

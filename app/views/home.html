@@ -8,48 +8,43 @@
 {% block content %}
 
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds-from-desktop">
-        <h1 class="govuk-heading-l">{{serviceName}}</h1>
-        <p class="govuk-body-l">Register trainees with the Department for Education and record the outcome of their training.</p>
+      <div class="govuk-grid-column-full app-dashboard-header">
+        <h1 class="govuk-heading-l">Trainee teacher dashboard</h1>
         {{ govukButton({
           text: "Add a trainee",
           href: "./new-record/new",
-          isStartButton: true
+          _isStartButton: true
         }) }}
       </div>
     </div>
-    
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
     <div class="govuk-grid-row">
-
-      <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-m"><a href="/records" class="govuk-link govuk-link--no-visited-state">Trainee records</a></h2>
-        <p class="govuk-body">Review and manage your trainee records.</p>
+      <div class="govuk-grid-column-one-quarter-from-desktop">
+        <h2 class="govuk-!-font-size-19 govuk-!-margin-bottom-1 govuk-!-margin-top-0"><a href="/records" class="govuk-link govuk-link--no-visited-state">Trainee records</a></h2>
+        <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-3">Review and manage your trainee records.</p>
+        {% if data.settings.includeGuidance %}
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-1"><a href="/guidance" class="govuk-link govuk-link--no-visited-state">Guidance</a></h2>
+          <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-3">Service guidance for each route.</p>
+        {% endif %}
+        <h2 class="govuk-!-font-size-19 govuk-!-margin-bottom-1"><a href="#" class="govuk-link govuk-link--no-visited-state">Give feedback</a></h2>
+        <p class="govuk-body  govuk-!-font-size-16 govuk-!-margin-bottom-3">This is a new service. Your views will help us improve it.</p>
+        <h2 class="govuk-!-font-size-19 govuk-!-margin-bottom-1"><a href="/data-requirements" class="govuk-link govuk-link--no-visited-state">Check what data you need</a></h2>
+        <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-3">The data you need to complete a trainee record.</p>
+        {# <div class="app-action-required-item govuk-!-margin-top-1">
+          <div class="app-action-required-item__content">
+            <a href="/notifications" class="govuk-link app-action-required-item__text">Notifications</a>
+          </div>
+          <span class="app-action-required-item__count govuk-!-margin-left-2" style="width: 30px; height: 30px; font-size: 19px">2</span>
+        </div> #}
       </div>
-      {% if data.settings.includeGuidance %}
-        <div class="govuk-grid-column-one-third">
-          <h2 class="govuk-heading-m"><a href="/guidance" class="govuk-link govuk-link--no-visited-state">Guidance</a></h2>
-          <p class="govuk-body">Service guidance for each route.</p>
-        </div>
-      {% endif %}
-      <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-m"><a href="#" class="govuk-link govuk-link--no-visited-state">Give feedback</a></h2>
-        <p class="govuk-body">This is a new service. Your views will help us improve it.</p>
-      </div>
-      <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-m"><a href="/data-requirements" class="govuk-link govuk-link--no-visited-state">Check what data you need</a></h2>
-        <p class="govuk-body">The data you need to complete a trainee record.</p>
-      </div>
+      <div class="govuk-grid-column-three-quarters-from-desktop">
 
-    </div>
+        {# suggesting we move these to a dedicated page #}
+        
+        {% if data.settings.showRequiresAttentionSection and combinedAlertCount > 0 %}
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible hide-from-desktop">
 
-    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
-    {% if data.settings.showRequiresAttentionSection and combinedAlertCount > 0 %}
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds-from-desktop">
-          <h2 class="govuk-heading-m">Requires your attention</h2>
+          <h2 class="govuk-heading-m">Requires your action</h2>
           {% if applyDraftCount > 0 %}
             <div class="app-action-required-item">
               <span class="app-action-required-item__count">{{applyDraftCount}}</span>
@@ -68,85 +63,111 @@
               </div>
             </div>
           {% endif %}
-        </div>
-      </div>
-      
-      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-    {% endif %}
 
-    <h2 class="govuk-heading-m">Your 2020/21 trainees</h2>
-
-    {% set records = data.filteredRecords | filterByYear(data.currentYear)  %}
-
-    {% macro statusCard(records, status) %}
-      <a href="/records?filterStatus={{status}}" class="status-card status-card--{{status | lower | kebabCase }}">
-        {# Special handling for drafts which have two string names #}
-        {% if status == "Draft" %}
-          {% set searchStatus = ["Draft", "Apply draft"] %}
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
         {% else %}
-          {% set searchStatus = status %}
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible hide-from-desktop">
         {% endif %}
-        {% set recordCount = records | where("status", searchStatus) | length %}
-        <span class="status-card__count">{{recordCount}}</span>
-        <span class="status-card__status">{{status}}</span><span class="govuk-visually-hidden"> records. View these records.</span>
-      </a>
-    {% endmacro %}
 
-    <div class="home-statuses">
-      <div class="govuk-grid-row govuk-!-margin-bottom-6">
-        {% set statuses = ['Draft', 'Pending TRN', 'TRN received'] %}
-        {% for status in statuses %}
-          <div class="govuk-grid-column-one-third">
-            {{ statusCard(records, status) }}
-          </div>
-        {% endfor %}
-      </div>
+        <h2 class="govuk-heading-m">Your total trainees</h2>
+        
+        {% set records = data.filteredRecords | filterByYear(data.currentYear)  %}
 
-      {% set eytsCount = records | where("status", ['EYTS recommended', 'EYTS awarded']) | length %}
-      {% set qtsCount = records | where("status", ['QTS recommended', 'QTS awarded']) | length %}
-      
-      {% if eytsCount == 0 %}
-        <div class="govuk-grid-row govuk-!-margin-bottom-6 home-statuses__flex-row">
-          {% set statuses = ['QTS recommended','QTS awarded', 'Deferred', 'Withdrawn'] %}
-          {% for status in statuses %}
-            <div class="govuk-grid-column-one-quarter">
-              {{ statusCard(records, status) }}
-            </div>
-          {% endfor %}
-        </div>
-      {% elseif qtsCount == 0 %}
-        <div class="govuk-grid-row govuk-!-margin-bottom-6 home-statuses__flex-row">
-          {% set statuses = ['EYTS recommended', 'EYTS awarded', 'Deferred', 'Withdrawn'] %}
-          {% for status in statuses %}
-            <div class="govuk-grid-column-one-quarter">
-              {{ statusCard(records, status) }}
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="govuk-grid-row govuk-!-margin-bottom-6 home-statuses__flex-row">
-          <div class="govuk-grid-column-one-quarter">
-            <a href="/records?filterStatus=EYTS recommended&filterStatus=QTS recommended" class="status-card status-card--recommended">
-              {% set recordCount = records | where("status", ['EYTS recommended','QTS recommended']) | length %}
-              <span class="status-card__count">{{recordCount}}</span>
-              <span class="status-card__status">Qualification recommended</span> <span class="govuk-visually-hidden"> records. View these records.</span>
+        {% set nonDraftRecordsCount = records | removeWhere("status", ["Draft", "Apply draft"]) | length %}
+
+        <div class="govuk-grid-row govuk-!-margin-bottom-6">
+          <div class="govuk-grid-column-full">
+            <a href="/records?filterStatus=Pending TRN&filterStatus=TRN received&filterStatus=EYTS recommended&filterStatus=EYTS awarded&filterStatus=QTS recommended&filterStatus=QTS awarded&filterStatus=Deferred&filterStatus=Withdrawn" class="status-card status-card--total">
+                <span class="status-card__count">{{nonDraftRecordsCount}}</span>
+                <span class="status-card__status">Total registered trainees</span> <span class="govuk-visually-hidden"> View these records.</span>
             </a>
           </div>
-          <div class="govuk-grid-column-one-quarter">
-            <a href="/records?filterStatus=EYTS awarded&filterStatus=QTS awarded" class="status-card status-card--awarded">
-              {% set recordCount = records | where("status", ['EYTS awarded','QTS awarded']) | length %}
-              <span class="status-card__count">{{recordCount}}</span>
-              <span class="status-card__status">Qualification awarded</span><span class="govuk-visually-hidden"> records. View these records.</span>
-            </a>
-          </div>
-          {% set statuses = ['Deferred', 'Withdrawn'] %}
-          {% for status in statuses %}
-            <div class="govuk-grid-column-one-quarter">
-              {{ statusCard(records, status) }}
-            </div>
-          {% endfor %}
         </div>
-      {% endif %}
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+        {% macro statusCard(records, status) %}
+          <a href="/records?filterStatus={{status}}" class="status-card status-card--{{status | lower | kebabCase }} status-card--small">
+            {# Special handling for drafts which have two string names #}
+            {% if status == "Draft" %}
+              {% set searchStatus = ["Draft", "Apply draft"] %}
+            {% else %}
+              {% set searchStatus = status %}
+            {% endif %}
+            {% set recordCount = records | where("status", searchStatus) | length %}
+            <span class="status-card__count">{{recordCount}}</span>
+            <span class="status-card__status">{{status}}</span><span class="govuk-visually-hidden"> records. View these records.</span>
+          </a>
+        {% endmacro %}
+
+        <h2 class="govuk-heading-m">Your 2020/21 trainees</h2>
+
+        <div class="home-statuses">
+          <div class="govuk-grid-row govuk-!-margin-bottom-3">
+            {% set statuses = ['Draft', 'Pending TRN', 'TRN received'] %}
+            {% for status in statuses %}
+              <div class="govuk-grid-column-one-third">
+                {{ statusCard(records, status) }}
+              </div>
+            {% endfor %}
+          </div>
+
+          {% set eytsCount = records | where("status", ['EYTS recommended', 'EYTS awarded']) | length %}
+          {% set qtsCount = records | where("status", ['QTS recommended', 'QTS awarded']) | length %}
+          
+          {% if eytsCount == 0 %}
+            <div class="govuk-grid-row govuk-!-margin-bottom-3 home-statuses__flex-row">
+              {% set statuses = ['QTS recommended','QTS awarded'] %}
+              {% for status in statuses %}
+                <div class="govuk-grid-column-one-half">
+                  {{ statusCard(records, status) }}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="govuk-grid-row govuk-!-margin-bottom-3 home-statuses__flex-row">
+              {% set statuses = ['Deferred', 'Withdrawn'] %}
+              {% for status in statuses %}
+                <div class="govuk-grid-column-one-half">
+                  {{ statusCard(records, status) }}
+                </div>
+              {% endfor %}
+            </div>
+          {% elseif qtsCount == 0 %}
+            <div class="govuk-grid-row govuk-!-margin-bottom-3 home-statuses__flex-row">
+              {% set statuses = ['EYTS recommended', 'EYTS awarded', 'Deferred', 'Withdrawn'] %}
+              {% for status in statuses %}
+                <div class="govuk-grid-column-one-half">
+                  {{ statusCard(records, status) }}
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="govuk-grid-row govuk-!-margin-bottom-3 home-statuses__flex-row">
+              <div class="govuk-grid-column-one-half">
+                <a href="/records?filterStatus=EYTS recommended&filterStatus=QTS recommended" class="status-card status-card--recommended">
+                  {% set recordCount = records | where("status", ['EYTS recommended','QTS recommended']) | length %}
+                  <span class="status-card__count">{{recordCount}}</span>
+                  <span class="status-card__status">Qualification recommended</span> <span class="govuk-visually-hidden"> records. View these records.</span>
+                </a>
+              </div>
+              <div class="govuk-grid-column-one-half">
+                <a href="/records?filterStatus=EYTS awarded&filterStatus=QTS awarded" class="status-card status-card--awarded">
+                  {% set recordCount = records | where("status", ['EYTS awarded','QTS awarded']) | length %}
+                  <span class="status-card__count">{{recordCount}}</span>
+                  <span class="status-card__status">Qualification awarded</span><span class="govuk-visually-hidden"> records. View these records.</span>
+                </a>
+              </div>
+              {% set statuses = ['Deferred', 'Withdrawn'] %}
+              {% for status in statuses %}
+                <div class="govuk-grid-column-one-quarter">
+                  {{ statusCard(records, status) }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+        </div>
+      <div>
 
     </div>
 

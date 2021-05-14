@@ -1,0 +1,15 @@
+// Dashboard header section
+
+.app-dashboard-header {
+
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    // Ensure the items stay at opposite ends of this section 
+    justify-content: space-between;
+
+    & > * {
+      margin-bottom: 0 !important;
+    }
+  }
+
+}

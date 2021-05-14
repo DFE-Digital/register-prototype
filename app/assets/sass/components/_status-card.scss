@@ -6,17 +6,33 @@
   text-decoration: none;
 
   @include govuk-font($size: 19);
-
+  
   @include govuk-media-query($from: desktop) {
     padding: govuk-spacing(4);
   }
-
+  
   &:focus, &:link:focus, &:visited:focus {
     color:  $govuk-text-colour;
     background:  $govuk-focus-colour;
   }
 
 }
+
+.status-card--small {
+  @include govuk-font($size: 16);
+
+  .status-card__count {
+    &, &:link, &:visited {
+      @include govuk-font($size: 27, $weight: bold, $tabular: true);
+      display: block;
+    }
+  }
+
+  @include govuk-media-query($from: desktop) {
+    padding: govuk-spacing(2);
+  }
+}
+
 
 .status-card, .status-card:visited {
   color: inherit;
@@ -25,6 +41,11 @@
 // Colours sourced from here: https://github.com/alphagov/govuk-frontend/blob/61aabca3d440edee6bdecdd20ea54a241c7bbdd5/src/govuk/components/tag/_index.scss#L42
 
 $statuses: (
+  "total": (
+    "colour":            govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 30),
+    "background-colour": govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 90),
+    "hover":             govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 80)
+  ),
   "draft": (
     "colour":            govuk-shade(govuk-colour("dark-grey", $legacy: "grey-1"), 30),
     "background-colour": govuk-tint(govuk-colour("dark-grey", $legacy: "grey-1"), 90),

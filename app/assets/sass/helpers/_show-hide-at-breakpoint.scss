@@ -1,0 +1,27 @@
+// Helper classes to show/hide an element based on viewport width
+
+// Specifically leaving out a default `display` property as we don't know if it originally would be have been eg inline/flex/block
+
+.hide-from-tablet {
+  @include govuk-media-query($from: tablet) {
+    display: none;
+  }
+}
+
+.hide-from-desktop {
+  @include govuk-media-query($from: desktop) {
+    display: none;
+  }
+}
+
+.hide-until-tablet {
+  @include govuk-media-query($until: tablet) {
+    display: none;
+  }
+}
+
+.hide-until-desktop {
+  @include govuk-media-query($until: desktop) {
+    display: none;
+  }
+}
