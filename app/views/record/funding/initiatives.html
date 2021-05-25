@@ -1,0 +1,15 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set initiatives = data.trainingRoutes[data.record.route].initiatives %}
+
+{% if initiatives | length == 2 %}
+  {% set pageHeading = "Is the trainee on either of these training initiatives?" %}
+{% else %}
+  {% set pageHeading = "Is the trainee on any of these training initiatives?" %}
+{% endif %}
+
+{# {% set formAction = "./confirm" | addReferrer(referrer) %} #}
+
+{% block formContent %}
+  {% include "_includes/forms/funding/initiatives.html" %}
+{% endblock %}

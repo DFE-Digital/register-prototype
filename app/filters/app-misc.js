@@ -129,7 +129,7 @@ filters.getDegreeName = (degree) => {
   else {
     typeText = degree.type
   }
-  return `${typeText}: ${degree.subject.toLowerCase()}`
+  return `${typeText}: ${degree.subject && degree.subject.toLowerCase()}`
 }
 
 filters.getDegreeHint = (degree) =>{

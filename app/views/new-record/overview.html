@@ -87,6 +87,12 @@
 
 <h2 class="govuk-heading-m">About their teacher training</h2>
 
+{% set fundingHint %}
+  {% if not record | canStartFundingSection %}
+    Complete the degree details section first
+  {% endif %}
+{% endset %}
+
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [{
@@ -133,7 +139,17 @@
       classes: record.placement | getStatusText | getStatusClass,
       text: record.placement | getStatusText
     }
-  } if record | requiresSection("placement") 
+  } if record | requiresSection("placement"),
+  {
+    text: "Funding",
+    href: "funding" | reviewIfInProgress(record.funding) if record | canStartFundingSection,
+    _hint: "Complete the degree details section first" if not record | canStartFundingSection,
+    id: "funding",
+    tag: {
+      classes: record.funding | getStatusText | getStatusClass,
+      text: record.funding | getStatusText("Cannot start yet" if not record | canStartFundingSection)
+    }
+  } if record | requiresSection("funding")
   ]
 }) if not closed }}
 

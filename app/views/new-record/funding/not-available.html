@@ -1,0 +1,20 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Funding section cannot be started yet" %}
+{% set backText = 'Back to draft record' %}
+{% set formAction = "./../overview" | orReferrer(referrer) %}
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+  <p class="govuk-body govuk-!-margin-bottom-8">
+    {% if not record | canStartFundingSection %}
+      You must complete the course details section first as this section requires information from it to be completed.
+    {% endif %}
+  </p>
+  
+
+  {{ govukButton({
+    text: "Return to draft record"
+  }) }}
+{% endblock %}

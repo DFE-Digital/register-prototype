@@ -1,0 +1,42 @@
+<h1 class="govuk-heading-l">{{pageHeading}}</h1>
+{% set bursary = record | getBursary %}
+{{bursary | log}}
+<p class="govuk-body">
+  The course you have selected for this trainee has a bursary available of {{record | getBursaryValue | currency }} for {{ bursary.subject | dynamicLowercase }}.
+</p>
+
+<p class="govuk-body">If you want to apply for a bursary for this trainee you must ensure they meet the eligibility requirements.</p>
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Are you applying for a bursary for this trainee?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      text: "Yes, apply for a bursary",
+      value: "false"
+    },
+    {
+      text: "No, the trainee is self funded or not eligible",
+      value: "true"
+    }
+  ]
+} | decorateAttributes(record, "record.funding.bursary.selfFunded")) }}
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+
+{% set initiatives = data.trainingRoutes[record.route].initiatives %}
+
+{% set radioItems = [] %}
+
+{% for initiative in initiatives %}
+  {% set radioItems = radioItems | push({
+      text: initiative
+  }) %}
+{% endfor %}
+
+{% set radioItems = radioItems | push({
+  divider: "or"
+}) %}
+
+{% set radioItems = radioItems | push({
+  text: 'Not on a training initiative'
+}) %}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: radioItems
+} | decorateAttributes(record, "record.funding.initiative")) }}
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+
+
+
+
+

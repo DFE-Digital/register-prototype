@@ -1,12 +1,14 @@
-{% extends "_templates/_new-record.html" %}
+{% extends "_templates/_record-form.html" %}
 
 {% set degreeCount = data.record.degree.items | length %}
 
 {% set pageHeading = "Which degree relates to the bursary awarded to the student?" %}
 
-{% set formAction = "./confirm" | addReferrer(referrer) %}
+{% set formAction = "./level" | addReferrer(referrer) %}
 
 {% block formContent %}
-  {% include "_includes/forms/degree/bursary-selection.html" %}
+
+  {% include "_includes/forms/funding/bursary-selection.html" %}
+
 {% endblock %}
 

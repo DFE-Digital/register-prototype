@@ -4,7 +4,7 @@
     "items": []
   },
   "provider": "Coventry University",
-  "route": "Assessment only",
+  "route": "Provider-led (postgrad)",
   "personalDetails": {
     "nationality": [
       "Irish",
@@ -64,13 +64,12 @@
         "id": "1faf0ae6-4c01-4224-9e49-06beffc0c5d0"
       }
     ],
-    "degreeToBeUsedForBursaries": "31dc5e93-b521-425c-98d8-dec96eb2388c",
     "status": [
       "Completed"
     ]
   },
   "courseDetails": {
-    "subject": "Business studies",
+    "subjects": ["Physics"],
     "ageRange": "3 to 11 programme",
     "startDate": [
       "1",

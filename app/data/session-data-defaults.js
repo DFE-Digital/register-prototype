@@ -18,7 +18,7 @@ let ugEntryQualifications   = require('./undergraduate-qualifications')
 
 // Assessment only
 let assessmentOnlyAgeRanges = require('./assessmentOnlyAgeRanges')
-let ittSubjects = require('./itt-subjects').allSubjects
+let ittSubjects = require('./itt-subjects').subjectSpecialismsArray
 
 let withdrawalReasons       = require('./withdrawal-reasons')
 let notPassedReasons       = require('./not-passed-reasons')

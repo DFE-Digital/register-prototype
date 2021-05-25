@@ -1,0 +1,9 @@
+{% extends "_templates/_new-record.html" %}
+
+{# {% set pageHeading = "How is the trainee funded?" %} #}
+{% set pageHeading = "Bursary funding" %}
+{# {% set formAction = "./confirm" | addReferrer(referrer) %} #}
+
+{% block formContent %}
+  {% include "_includes/forms/funding/bursary.html" %}
+{% endblock %}

@@ -14,7 +14,7 @@
 
 {% set draftRecordName %}
   {% if record.personalDetails.shortName %}
-   for {{record.personalDetails.shortName}}
+   for {{record.personalDetails.shortName | safe}}
   {% endif %}
 {% endset %}
 
@@ -102,16 +102,6 @@
       }
     } if record | requiresSection("schools"),
     {
-      text: "Funding",
-      href: "funding" | reviewIfInProgress(record.funding) | addReferrer(referrer),
-      hint: 'Bursaries and initiatives',
-      id: "funding-details",
-      tag: {
-        classes: record.funding | getStatusText | getStatusClass,
-        text: record.funding | getStatusText
-      }
-    } if record | requiresSection("funding"),
-    {
       text: "Placement details",
       _href: "placements/confirm" if (record.placement) else "placements/can-add-placement",
       href: "placements/can-add-placement" | reviewIfInProgress(record.placement, "placements") | addReferrer(referrer),
@@ -120,7 +110,17 @@
         classes: record.placement | getStatusText | getStatusClass,
         text: record.placement | getStatusText
       }
-    } if record | requiresSection("placement") 
+    } if record | requiresSection("placement"),
+    {
+    text: "Funding",
+    href: "funding" | reviewIfInProgress(record.funding) if record | canStartFundingSection,
+    _hint: "Complete the degree details section first" if not record | canStartFundingSection,
+    id: "funding",
+    tag: {
+      classes: record.funding | getStatusText | getStatusClass,
+      text: record.funding | getStatusText("Cannot start yet" if not record | canStartFundingSection)
+    }
+  } if record | requiresSection("funding")
   ]
 }) if not closed }}
 

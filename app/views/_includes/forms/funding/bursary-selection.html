@@ -30,14 +30,16 @@
 
 {% endfor %}
 
-{% set degreeItems = degreeItems | push({
+{# Not applicable commented out as you should only see this page if the question is
+relevant #}
+{# {% set degreeItems = degreeItems | push({
   divider: "or"
 }) %}
 
 {% set degreeItems = degreeItems | push({
   text: "Not applicable"
 }) %}
-
+ #}
 
 {{ govukRadios({
   fieldset: {
@@ -51,7 +53,7 @@
     text: ""
   },
   items: degreeItems
-} | decorateAttributes(record, "record.degree.degreeToBeUsedForBursaries")) }}
+} | decorateAttributes(record, "record.funding.bursary.degreeToBeUsedForBursaries")) }}
 
 
 {{ govukButton({

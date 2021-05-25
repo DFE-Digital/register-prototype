@@ -34,8 +34,10 @@ module.exports = (params, application) => {
       console.log(`No courses found for ${application.route} for ${application.provider}. Using all routes`)
       providerCourses = courses[application.provider].courses
     }
-    // Pick a random course
-    courseDetails = faker.helpers.randomize(providerCourses)
+
+    let limitedCourses = providerCourses.slice(0, 12) // to match data.settings.courseLimit
+
+    courseDetails = faker.helpers.randomize(limitedCourses)
   }
   else {
     // Generate some seed data

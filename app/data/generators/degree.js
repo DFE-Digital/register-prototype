@@ -97,7 +97,6 @@ module.exports = (params) => {
   }
 
   return {
-    items: items,
-    degreeToBeUsedForBursaries
+    items: items
   }
 }

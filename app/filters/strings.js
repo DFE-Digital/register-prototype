@@ -61,6 +61,15 @@ filters.prependWithAOrAn = string => {
   }
 }
 
+// Format a number as £x,xxx
+filters.currency = input => {
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  if (input) return `£${numberWithCommas(input)}`
+  else return ''
+}
+
 // -------------------------------------------------------------------
 // keep the following line to return your filters to the app
 // -------------------------------------------------------------------

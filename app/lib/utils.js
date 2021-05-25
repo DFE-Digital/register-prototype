@@ -8,6 +8,7 @@ const path = require('path')
 const trainingRouteData = require('./../data/training-route-data')
 const trainingRoutes = trainingRouteData.trainingRoutes
 const arrayFilters = require('./../filters/arrays.js').filters
+const ittSubjects = require('./../data/itt-subjects')
 
 // -------------------------------------------------------------------
 // General
@@ -106,6 +107,109 @@ exports.requiresSection = (record, sectionNames) => {
   return requiredSections.some(section => sectionNames.includes(section))
 }
 
+// -------------------------------------------------------------------
+// Funding - initiatives and bursaries
+// -------------------------------------------------------------------
+
+exports.hasInitiatives = (record) => {
+  let route = record?.route
+  if (route && trainingRoutes[route].initiatives){
+    return trainingRoutes[route].initiatives.length > 0
+  }
+  else return false
+}
+
+exports.isOnInitiative = record => {
+  return record?.funding?.initiative != 'Not on a training initiative'
+}
+
+exports.subjectToAllocationSubject = subject => {
+  if(!subject){
+    console.log("Err: subject missing")
+    return false
+  }
+  return ittSubjects.subjectSpecialisms[subject].allocationSubject
+}
+
+exports.getAllocationSubject = input => {
+  // Support passing in a course or a record
+  let courseSubject = input?.subjects || input?.courseDetails?.subjects || []
+  if (courseSubject.length == 0){
+    console.log('No course subject available')
+    return false
+  }
+  else {
+    let allocationSubject = exports.subjectToAllocationSubject(courseSubject[0])
+    return allocationSubject
+  }
+}
+
+
+// Internal helper to look up bursary available
+exports.getBursaryByRouteAndSubject = (route, subject) => {
+  let bursary = {}
+
+  if (!route) return false
+  let routeData = trainingRoutes[route]
+
+  if (!subject || !routeData?.bursariesAvailable) return false
+
+  let bursaryMatch = false
+
+  bursary.allSubjects = []
+
+  routeData.bursaries.forEach(bursaryLevel => {
+
+    bursary.allSubjects = bursary.allSubjects.concat(bursaryLevel.subjects)
+
+    if (subject && bursaryLevel.subjects.includes(subject)) {
+      bursary.value = bursaryLevel.value
+      bursary.subjects = bursaryLevel.subjects
+      bursary.subject = subject
+      bursaryMatch = true
+      return
+    }
+  })
+
+  let output = bursaryMatch ? bursary : false
+
+  return output
+}
+
+// Look up available bursary for the current record
+exports.getBursary = record => {
+  if (!record || !record?.courseDetails?.subjects) return false
+  let allocationSubject = exports.getAllocationSubject(record) 
+  return exports.getBursaryByRouteAndSubject(record.route, allocationSubject)
+}
+
+exports.getBursaryValue = record => {
+  return exports.getBursary(record).value || false
+}
+
+exports.routeHasBursaries = route => {
+  if (!route) return false
+  return trainingRoutes[route]?.bursariesAvailable || false
+}
+
+exports.bursariesApply = (record) => {
+  let bursary = exports.getBursary(record)
+  if (bursary) return true
+  else return false
+}
+
+exports.canStartFundingSection = record => {
+  if (!exports.routeHasBursaries(record?.route)) return true
+  else {
+    let courseDetailsComplete = exports.sectionIsComplete(record.courseDetails)
+    // let degreeDetailsComplete = exports.sectionIsComplete(record.degree)
+    // let applyDataComplete = exports.sectionIsComplete(record.applyData)
+    // return (courseDetailsComplete && (applyDataComplete || degreeDetailsComplete))
+    return courseDetailsComplete
+  }
+}
+
+
 // This whole filter is poor and should probably be removed later.
 exports.getSectionName = (record, section) => {
   if (section == 'trainingDetails'){
@@ -176,35 +280,10 @@ exports.routeHasPublishCourses = function(record){
   return (providerCourses.length > 0)
 }
 
-
-// Combine multiple subject names together
-// Eg Biology with English, Chemistry with physical education
-// A bit similar to:
-// https://github.com/DFE-Digital/teacher-training-api/blob/045a4b3e97df0ccdb72c38b3611dcb8d094c29cc/app/services/courses/generate_course_name_service.rb#L51
-exports.prettifySubjects = (subjects) => {
-  // No data?
-  if (!subjects || subjects.length == 0) {
-    return ''
-  }
-
-  // A string or just one subject
-  if (typeof subjects === 'string' || subjects.length == 1){
-    return subjects
-  }
-
-  // Shallow copy as we’re about to shift() it
-  // Also do some cleanup on the data
-  let subjectsCopy = [...subjects].map(subject => {
-    return subject
-      .replace('Modern languages', '_modern_lang') // Temporarily rename this
-      .replace(' language', '') // Strip out language from 'English language' etc
-      .replace('English studies', 'English') // Shorten this
-      .replace('_modern_lang', 'Modern languages') // Restore 'Modern languages'
-  })
-
-  // Don’t touch first item
-  let first = subjectsCopy.shift()
-
+// Lowercase array excluding some proper nouns
+exports.dynamicLowercase = input => {
+  if (!input) return input
+  
   // These things shouldn’t get lowercased
   let ignoreSubjects = [
   "English",
@@ -217,14 +296,62 @@ exports.prettifySubjects = (subjects) => {
   "Spanish"
   ]
 
-  // Lowercase all the subjects except those starting with words in ignoreSubjects
-  let subjectsLowerCase = subjectsCopy.map(subject => {
-    return ignoreSubjects.some(ignoreSubject => subject.startsWith(ignoreSubject)) ? subject : subject.toLowerCase()
+  const makeLowercase = item =>{
+    return ignoreSubjects.some(ignoreSubject => item.startsWith(ignoreSubject)) ? item : item.toLowerCase()
+  }
+
+  if (typeof input === 'string') {
+    return makeLowercase(input)
+  }
+  else {
+    let array = [].concat(input)
+    return array.map(subject => {
+      return makeLowercase(subject)
+    })
+  }
+
+}
+
+// Combine multiple subject names together
+// Eg Biology with English, Chemistry with physical education and physics
+// A bit similar to:
+// https://github.com/DFE-Digital/teacher-training-api/blob/045a4b3e97df0ccdb72c38b3611dcb8d094c29cc/app/services/courses/generate_course_name_service.rb#L51
+exports.prettifySubjects = (subjects, lowercaseFirst=false) => {
+  // No data?
+  if (!subjects || subjects.length == 0) {
+    return ''
+  }
+
+  // A string or just one subject
+  // Return straight away so we don’t shorten the string
+  if (typeof subjects === 'string' || subjects.length == 1){
+    if (lowercaseFirst) return exports.dynamicLowercase(subjects)
+    else return subjects
+  }
+
+  // Shallow copy as we’re about to shift() the first item
+  // Also do some cleanup on the data
+  let subjectsCopy = [...subjects].map(subject => {
+    return subject
+      .replace('Primary teaching', 'Primary')
+      .replace('Modern languages', '_modern_lang') // Temporarily rename this
+      .replace(' language', '') // Strip out language from 'English language' etc
+      .replace('English studies', 'English') // Shorten this
+      .replace('_modern_lang', 'Modern languages') // Restore 'Modern languages'
   })
-  // Combine with the first item again
-  let combinedSubjects = [first].concat(subjectsLowerCase)
-  // Combine as a string
-  let returnString = arrayFilters.withSeparate(combinedSubjects)
+
+  // Lowercase everything
+  if (lowercaseFirst){
+    subjectsCopy = exports.dynamicLowercase(subjectsCopy)
+  }
+  // Lowercase all the subjects except those starting with words in ignoreSubjects
+  else {
+    subjectsCopy = [subjectsCopy.shift()].concat(exports.dynamicLowercase(subjectsCopy))
+  }
+
+  // Join with ‘with’ and ‘and’
+  // ‘a with b’ or ‘a with b and c’
+  let returnString = arrayFilters.withSeparate(subjectsCopy)
   return returnString
 }
 
@@ -273,11 +400,15 @@ exports.isWithdrawn = record => {
 
 // Source types
 exports.sourceIsApply = record => {
-  return record.source == "Apply"
+  return record?.source == "Apply"
 }
 
 exports.sourceIsManual = record => {
-  return record.source != "Apply"
+  return record?.source != "Apply"
+}
+
+exports.sectionIsComplete = section => {
+  return section?.status == "Completed" || (section?.status && section.status.includes("Completed"))
 }
 
 // Check if all sections are complete

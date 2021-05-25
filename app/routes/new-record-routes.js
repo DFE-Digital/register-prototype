@@ -15,7 +15,7 @@ module.exports = router => {
     const data = req.session.data
     utils.deleteTempData(data)
     data.record = require('./../data/direct-add-record.json')
-    res.redirect('/new-record/check-record')
+    res.redirect('/new-record/overview')
   })
 
   // Delete data when starting new

@@ -10,6 +10,8 @@ faker.locale  = 'en_GB'
 const trainingRouteData = require('./../training-route-data')
 
 const ittSubjects = require('./../itt-subjects')
+const peSubjects = ittSubjects.peSubjects
+
 
 let enabledRoutes = {}
 trainingRouteData.enabledTrainingRoutes.forEach(route => {
@@ -76,13 +78,15 @@ const pickRoute = (isPublishCourse = false) => {
 const getPrimarySubjects = subjectCount => {
   
   // Assumption that all primary courses have `Primary` as the first subject
-  let subjects = ["Primary"]
-  let primarySpecialisms = ittSubjects.primarySubjects.filter(subject => subject != "Primary")
+  let subjects = ["Primary teaching"]
+
+  // Other primary specialisms
+  let primarySpecialisms = ittSubjects.commonPrimarySubjects.filter(subject => subject != "Primary teaching")
 
   if (subjectCount == 2){
     let specialism = faker.helpers.randomize([
       faker.helpers.randomize(['Mathematics', "English studies"]), // Lots of primary teachers have these
-      faker.helpers.randomize(ittSubjects.primarySubjects)
+      faker.helpers.randomize(primarySpecialisms)
     ])
     subjects.push(specialism)
   }
@@ -96,17 +100,19 @@ const getSecondarySubjects = (subjectCount) => {
 
   // Shuffle our data so we can get x values from them by slicing
   let randomisedLanguages = faker.helpers.shuffle(ittSubjects.modernLanguagesSubjects)
-    .filter(subject => subject != 'English as a second or other language') // remove this item
-  let randomisedSecondarySubjects = faker.helpers.shuffle(ittSubjects.secondarySubjects)
+  let randomisedSecondarySubjects = faker.helpers.shuffle(ittSubjects.commonSecondarySubjects)
   let randomisedScienceSubjects = faker.helpers.shuffle(['Physics', 'Chemistry', 'Biology'])
+
+  // PE is one of these two
+  let randomPeSubject = faker.helpers.randomize(peSubjects)
 
   // Bias slightly towards specific subjects but have some random
   // ones too for good measure
   if (subjectCount == 1){
     subjects = faker.helpers.randomize([
       faker.helpers.randomize(ittSubjects.coreSubjects),
-      faker.helpers.randomize(ittSubjects.secondarySubjects),
-      "Physical education"  // included to test allocations
+      faker.helpers.randomize(ittSubjects.commonSecondarySubjects),
+      // "Physical education"  // included to test allocations
     ])
   }
 
@@ -117,7 +123,7 @@ const getSecondarySubjects = (subjectCount) => {
       [randomisedSecondarySubjects[0], randomisedLanguages[0]], // One subject and one language
       randomisedScienceSubjects.slice(0,2),                     // Two sciences
       randomisedSecondarySubjects.slice(0,2),                   // Two subjects
-      ["Physical education", randomisedScienceSubjects[0]]      // PE with EBacc
+      [randomPeSubject, randomisedScienceSubjects[0]]      // PE with EBacc
     ])
 
   }
@@ -127,7 +133,7 @@ const getSecondarySubjects = (subjectCount) => {
     subjects = faker.helpers.randomize([
       randomisedLanguages.slice(0,3), // Three languages
       randomisedScienceSubjects, // Science subjects
-      ["Physical education"].concat(randomisedScienceSubjects.slice(0,2)) // PE with two EBacc subjects
+      [randomPeSubject].concat(randomisedScienceSubjects.slice(0,2)) // PE with two EBacc subjects
     ])
   }
 
@@ -145,7 +151,8 @@ module.exports = (params) => {
   if (route.includes('Early years')){
     level = 'Early years'
   }
-  else level = faker.helpers.randomize(['Primary', 'Secondary'])
+  // else level = faker.helpers.randomize(['Primary', 'Secondary'])
+  else level = weighted.select(['Primary', 'Secondary'], [0.3, 0.7])
 
   let ageRanges = trainingRouteData.levels[level].ageRanges
 
@@ -218,7 +225,7 @@ module.exports = (params) => {
 
   // PE only has allocated places
   let allocatedPlace
-  if (trainingRouteData.trainingRoutes[route].hasAllocatedPlaces && subjects[0] == "Physical education"){
+  if (trainingRouteData.trainingRoutes[route].hasAllocatedPlaces && peSubjects.includes(subjects[0])){
     allocatedPlace = true
   }
 
