@@ -522,6 +522,7 @@ module.exports = router => {
   // Diversity branching
   router.post(['/:recordtype/:uuid/diversity/information-disclosed','/:recordtype/diversity/information-disclosed'], function (req, res) {
     const data = req.session.data
+    let record = data.record // copy record
     let diversityDisclosed = _.get(data, 'record.diversity.diversityDisclosed')
     let referrer = utils.getReferrer(req.query.referrer)
     let recordPath = utils.getRecordPath(req)
@@ -533,13 +534,17 @@ module.exports = router => {
       res.redirect(`${recordPath}/diversity/ethnic-group${referrer}`)
     }
     else {
-      res.redirect(`${recordPath}/diversity/confirm${referrer}`)
+      if (utils.isDraft(record) && utils.sourceIsApply(record)){
+        res.redirect(utils.orReferrer(`${recordPath}/overview`, req.query.referrer))
+      }
+      else res.redirect(`${recordPath}/diversity/confirm${referrer}`)
     }
   })
 
   // Ethnic group branching
   router.post(['/:recordtype/:uuid/diversity/ethnic-group','/:recordtype/diversity/ethnic-group'], function (req, res) {
     let data = req.session.data
+    let record = data.record // copy record
     let ethnicGroup = _.get(data, 'record.diversity.ethnicGroup')
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
@@ -558,6 +563,7 @@ module.exports = router => {
   // Disabilities branching
   router.post(['/:recordtype/:uuid/diversity/disabilities','/:recordtype/diversity/disabilities'], function (req, res) {
     let data = req.session.data
+    let record = data.record // copy record
     let disabledAnswer = _.get(data, 'record.diversity.disabledAnswer')
     let hasDisabilities = (disabledAnswer == "They shared that they’re disabled") ? true : false
     let recordPath = utils.getRecordPath(req)
@@ -571,7 +577,10 @@ module.exports = router => {
       res.redirect(`${recordPath}/diversity/trainee-disabilities${referrer}`)
     }
     else {
-      res.redirect(`${recordPath}/diversity/confirm${referrer}`)
+      if (utils.isDraft(record) && utils.sourceIsApply(record)){
+        res.redirect(utils.orReferrer(`${recordPath}/overview`, req.query.referrer))
+      }
+      else res.redirect(`${recordPath}/diversity/confirm${referrer}`)
     }
   })
 
@@ -631,6 +640,7 @@ module.exports = router => {
   // Save degree data from temporary store
   router.post(['/:recordtype/:uuid/degree/:index/confirm','/:recordtype/degree/:index/confirm'], function (req, res) {
     const data = req.session.data
+    let record = data.record
     let newDegree = data.degreeTemp
     delete data.degreeTemp
     let referrer = utils.getReferrer(req.query.referrer)
@@ -694,7 +704,10 @@ module.exports = router => {
       res.redirect(`${recordPath}/degree/bursary-selection${referrer}`)
     }
     else {
-      res.redirect(`${recordPath}/degree/confirm${referrer}`)
+      if (utils.isDraft(record) && utils.sourceIsApply(record)){
+        res.redirect(utils.orReferrer(`${recordPath}/overview`, req.query.referrer))
+      }
+      else res.redirect(`${recordPath}/degree/confirm${referrer}`)
     }
 
   })

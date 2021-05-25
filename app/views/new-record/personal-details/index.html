@@ -2,7 +2,11 @@
 
 {% set pageHeading = "Trainee personal details" %}
 
-{% set formAction = "./personal-details/confirm" | addReferrer(referrer) %}
+{% if data.record | sourceIsApply %}
+  {% set formAction = "./../overview" | orReferrer(referrer) %}
+{% else %}
+  {% set formAction = "./personal-details/confirm" | addReferrer(referrer) %}
+{% endif %}
 
 {% block formContent %}
   {% include "_includes/forms/personal-details.html" %}
