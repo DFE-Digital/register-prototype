@@ -1,4 +1,4 @@
-{% set complete = true if (record.degree | sectionIsCompleted ) %}
+{% set complete = record.degree | sectionIsComplete %}
 {% set status  = record.degree | getStatusText %}
 
 {% set degrees = record.degree.items %}
@@ -13,15 +13,15 @@
   {% set incompleteId = "degree-details" %}
   {% if status == "Review" %}
     {% set incompleteText = "Degree details not reviewed" %}
-    {% set incompleteLink = recordPath + "/degree/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/degree/confirm" %}
     {% set incompleteLinkText = "Review section" %}
   {% elseif status == "In progress" %}
     {% set incompleteText = "Degree details not marked as complete" %}
-    {% set incompleteLink = recordPath + "/degree/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/degree/confirm" %}
     {% set incompleteLinkText = "Complete section" %}
   {% else %}
     {% set incompleteText = "Degree details not started" %}
-    {% set incompleteLink = recordPath + "/degree/add" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/degree/add" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

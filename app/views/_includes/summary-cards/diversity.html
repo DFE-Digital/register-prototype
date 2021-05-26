@@ -127,7 +127,7 @@
 
 
 
-{% set complete = true if (record.diversity | sectionIsCompleted ) %}
+{% set complete = record.diversity | sectionIsComplete %}
 {% set status  = record.diversity | getStatusText %}
 {% set sectionIsRequired = record | requiresSection("diversity") %}
 
@@ -139,15 +139,15 @@
   {% set incompleteId = "diversity-details" %}
   {% if status == "Review" %}
     {% set incompleteText = "Diversity information not reviewed" %}
-    {% set incompleteLink = recordPath + "/diversity/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/diversity/confirm" %}
     {% set incompleteLinkText = "Review section" %}
   {% elseif status == "In progress" %}
     {% set incompleteText = "Diversity information not marked as complete" %}
-    {% set incompleteLink = recordPath + "/diversity/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/diversity/confirm" %}
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "Diversity information not started" %}
-    {% set incompleteLink = recordPath + "/diversity/information-disclosed" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/diversity/information-disclosed" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

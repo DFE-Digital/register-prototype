@@ -81,7 +81,7 @@
   }) }}
 {% endset %}
 
-{% set complete = true if (record.courseDetails | sectionIsCompleted ) %}
+{% set complete = record.courseDetails | sectionIsComplete %}
 {% set status  = record.courseDetails | getStatusText %}
 
 {% if showIncomplete and not complete %}
@@ -90,15 +90,15 @@
   {% set incompleteId = "course-details" %}
   {% if status == "Review" %}
     {% set incompleteText = "Course details not reviewed" %}
-    {% set incompleteLink = recordPath + "/course-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/course-details/confirm" %}
     {% set incompleteLinkText = "Review section" %}
   {% elseif status == "In progress" %}
     {% set incompleteText = "Course details not marked as complete" %}
-    {% set incompleteLink = recordPath + "/course-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/course-details/confirm" %}
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "Course details not started" %}
-    {% set incompleteLink = recordPath + "/course-details" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/course-details" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

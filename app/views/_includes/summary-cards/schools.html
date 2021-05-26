@@ -65,7 +65,7 @@
 
 
 
-{% set complete = true if (record.schools | sectionIsCompleted ) %}
+{% set complete = record.schools | sectionIsComplete %}
 {% set status  = record.schools | getStatusText %}
 {% set sectionIsRequired = record | requiresSection("schools") %}
 
@@ -77,11 +77,11 @@
   {% set incompleteId = "schools" %}
   {% if status == "In progress" %}
     {% set incompleteText = "School details not marked as complete" %}
-    {% set incompleteLink = recordPath + "/schools/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/schools/confirm" %}
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "School details not started" %}
-    {% set incompleteLink = recordPath + "/schools" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/schools" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

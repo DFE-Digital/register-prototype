@@ -81,13 +81,6 @@ filters.sectionIsInProgress = data =>{
   return (data)
 }
 
-filters.sectionIsCompleted = data =>{
-  let status = data?.status
-  // if (status == "Completed" || status == "Review") return true
-  if (status == "Completed") return true
-  else return false
-}
-
 filters.reviewIfInProgress = (url, data, path) => {
   if (!filters.sectionIsInProgress(data)){
     return url

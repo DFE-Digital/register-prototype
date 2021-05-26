@@ -129,7 +129,7 @@
 
 
 
-{% set complete = true if (record.funding | sectionIsCompleted ) %}
+{% set complete = record.funding | sectionIsComplete %}
 {% set status  = record.funding | getStatusText %}
 {% set sectionIsRequired = record | requiresSection("funding") %}
 
@@ -141,15 +141,15 @@
   {% set incompleteId = "funding" %}
   {% if status == "In progress" %}
     {% set incompleteText = "Funding section not marked as complete" %}
-    {% set incompleteLink = recordPath + "/funding/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/funding/confirm" %}
     {% set incompleteLinkText = "Continue section" %}
   {% elseif not record | canStartFundingSection %}
     {% set incompleteText = "Funding section cannot be started yet" %}
-    {% set incompleteLink = recordPath + "/funding" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/funding" %}
     {% set incompleteLinkText = "Review section" %}
   {% else %}
     {% set incompleteText = "Funding section not started" %}
-    {% set incompleteLink = recordPath + "/funding" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/funding" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

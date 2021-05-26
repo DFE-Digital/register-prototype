@@ -42,7 +42,7 @@
   
 {% endset %}
 
-{% set complete = true if (record.contactDetails | sectionIsCompleted ) %}
+{% set complete = record.contactDetails | sectionIsComplete %}
 {% set status  = record.contactDetails | getStatusText %}
 
 {% if showIncomplete and not complete %}
@@ -51,10 +51,10 @@
   {% set incompleteId = "contact-details" %}
   {% if status == "In progress" %}
     {% set incompleteText = "Contact details not marked as complete" %}
-    {% set incompleteLink = recordPath + "/contact-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/contact-details/confirm" %}
   {% else %}
     {% set incompleteText = "Contact details not started" %}
-    {% set incompleteLink = recordPath + "/contact-details" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/contact-details" %}
   {% endif %}
 
   {% include "_includes/incomplete.njk" %}

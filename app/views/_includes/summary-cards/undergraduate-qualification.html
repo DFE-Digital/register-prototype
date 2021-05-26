@@ -34,7 +34,7 @@
   }) }}
 {% endset %}
 
-{% set complete = true if (record.undergraduateQualification | sectionIsCompleted ) %}
+{% set complete = record.undergraduateQualification | sectionIsComplete %}
 {% set status  = record.undergraduateQualification | getStatusText %}
 {% set sectionIsRequired = record | requiresSection("undergraduateQualification") %}
 
@@ -46,11 +46,11 @@
   {% set incompleteId = "undergraduateQualification" %}
   {% if status == "In progress" %}
     {% set incompleteText = "Academic qualification not marked as complete" %}
-    {% set incompleteLink = recordPath + "/undergraduate-qualification/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/undergraduate-qualification/confirm" %}
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "Academic qualification not started" %}
-    {% set incompleteLink = recordPath + "/undergraduate-qualification" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/undergraduate-qualification" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

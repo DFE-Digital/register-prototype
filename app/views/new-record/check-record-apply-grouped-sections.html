@@ -71,7 +71,7 @@
   {% set incompleteType = "warning" if errorList %}
   {% set incompleteId = "trainee-application" %}
   {% set incompleteText = "Trainee data not reviewed" %}
-  {% set incompleteLink = recordPath + "/apply-trainee-application" | addReferrer(referrer) %}
+  {% set incompleteLink = recordPath + "/apply-trainee-application" %}
   {% set incompleteLinkText = "Review their data" %}
   {% include "_includes/incomplete.njk" %}
 

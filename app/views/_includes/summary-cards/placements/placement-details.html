@@ -1,4 +1,4 @@
-{% set complete = true if (record.placement | sectionIsCompleted ) %}
+{% set complete = record.placement | sectionIsComplete %}
 {% set status  = record.placement | getStatusText %}
 
 {% set placements = record.placement.items %}
@@ -14,11 +14,11 @@
   {% set incompleteId = "placement-details" %}
   {% if status == "In progress" %}
     {% set incompleteText = "Placement details not marked as complete" %}
-    {% set incompleteLink = recordPath + "/placements/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/placements/confirm" %}
     {% set incompleteLinkText = "Complete section" %}
   {% else %}
     {% set incompleteText = "Placement details not started" %}
-    {% set incompleteLink = recordPath + "/placements/can-add-placement" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/placements/can-add-placement" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

@@ -70,7 +70,7 @@
   }) }}
 {% endset %}
 
-{% set complete = true if (record.gcse | sectionIsCompleted ) %}
+{% set complete = record.gcse | sectionIsComplete %}
 {% set status  = record.gcse | getStatusText %}
 {% set sectionIsRequired = record | requiresSection("gcseComplex") %}
 
@@ -82,11 +82,11 @@
   {% set incompleteId = "gcse-details" %}
   {% if status == "In progress" %}
     {% set incompleteText = "GCSE details not marked as complete" %}
-    {% set incompleteLink = recordPath + "/gcse/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/gcse/confirm" %}
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "GCSE details not started" %}
-    {% set incompleteLink = recordPath + "/gcse" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/gcse" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

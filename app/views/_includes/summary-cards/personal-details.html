@@ -73,7 +73,7 @@
 {% endset %}
 
 
-{% set complete = true if (record.personalDetails | sectionIsCompleted ) %}
+{% set complete = record.personalDetails | sectionIsComplete %}
 {% set status  = record.personalDetails | getStatusText %}
 {% set sectionIsRequired = record | requiresSection("personalDetails") %}
 
@@ -85,15 +85,15 @@
   {% set incompleteId = "personal-details" %}
   {% if status == "Review" %}
     {% set incompleteText = "Personal details not reviewed" %}
-    {% set incompleteLink = recordPath + "/personal-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/personal-details/confirm" %}
     {% set incompleteLinkText = "Review section" %}
   {% elseif status == "In progress" %}
     {% set incompleteText = "Personal details not marked as complete" %}
-    {% set incompleteLink = recordPath + "/personal-details/confirm" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/personal-details/confirm" %}
     {% set incompleteLinkText = "Continue section" %}
   {% else %}
     {% set incompleteText = "Personal details not started" %}
-    {% set incompleteLink = recordPath + "/personal-details" | addReferrer(referrer) %}
+    {% set incompleteLink = recordPath + "/personal-details" %}
     {% set incompleteLinkText = "Start section" %}
   {% endif %}
 

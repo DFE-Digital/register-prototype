@@ -45,7 +45,7 @@
 
 
 
-{% set complete = true if (record.recordSetup | sectionIsCompleted ) %}
+{% set complete = record.recordSetup | sectionIsComplete %}
 
 {% set status  = record.recordSetup | getStatusText %}
 {% set sectionIsRequired = record | requiresSection("recordSetup") %}
