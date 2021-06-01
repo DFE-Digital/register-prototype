@@ -761,7 +761,7 @@
       "dateOfBirth": "1981-08-17T20:10:49.750Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Pending TRN",
     "updatedDate": "2021-05-27T06:50:56.209Z",
     "submittedDate": "2021-05-27T06:50:56.209Z",
@@ -774,7 +774,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -2086,7 +2086,7 @@
       "dateOfBirth": "1992-10-24T23:22:57.707Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Pending TRN",
     "updatedDate": "2021-05-24T23:02:02.337Z",
     "submittedDate": "2021-05-24T23:02:02.337Z",
@@ -2103,7 +2103,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -3460,7 +3460,7 @@
       "dateOfBirth": "1966-09-20T05:46:49.944Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Pending TRN",
     "updatedDate": "2021-05-21T17:11:31.124Z",
     "submittedDate": "2021-05-21T17:11:31.124Z",
@@ -3473,7 +3473,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -3571,7 +3571,7 @@
       "dateOfBirth": "1970-10-26T09:38:34.135Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Pending TRN",
     "updatedDate": "2021-05-21T14:12:06.508Z",
     "submittedDate": "2021-05-21T14:12:06.508Z",
@@ -3588,7 +3588,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -4105,7 +4105,7 @@
       "status": "Review"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-21T02:46:38.849Z",
     "submittedDate": "2021-03-25T17:00:36.504Z",
@@ -4122,7 +4122,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -4325,7 +4325,7 @@
       "status": "Review"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-21T02:46:38.849Z",
     "submittedDate": "2021-03-19T01:46:21.007Z",
@@ -4342,7 +4342,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -4434,7 +4434,7 @@
       "status": "Review"
     },
     "provider": "Titan Partnership Ltd",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-22T15:15:32.433Z",
     "submittedDate": "2021-03-17T13:09:44.815Z",
@@ -4451,7 +4451,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -4539,7 +4539,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2021-03-17T03:07:13.561Z",
@@ -4556,7 +4556,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -4649,7 +4649,7 @@
       "status": "Review"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-17T06:08:48.795Z",
     "submittedDate": "2021-03-10T08:29:50.732Z",
@@ -4666,7 +4666,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -5313,7 +5313,7 @@
       "status": "Review"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-21T02:46:38.849Z",
     "submittedDate": "2021-02-24T02:36:51.029Z",
@@ -5330,7 +5330,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -5423,7 +5423,7 @@
       "status": "Review"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-12T11:04:13.267Z",
     "submittedDate": "2021-02-16T04:22:17.670Z",
@@ -5440,7 +5440,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -5657,7 +5657,7 @@
       "dateOfBirth": "1966-06-09T22:53:52.435Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-05-13T19:20:55.961Z",
     "submittedDate": "2021-02-10T23:45:25.416Z",
@@ -5675,7 +5675,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -7742,7 +7742,7 @@
       "dateOfBirth": "1959-10-14T15:03:29.577Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-04-17T21:42:20.018Z",
     "submittedDate": "2021-01-08T23:13:10.577Z",
@@ -7756,7 +7756,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -7859,7 +7859,7 @@
       "status": "Review"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T13:06:52.239Z",
     "submittedDate": "2021-01-08T02:20:04.674Z",
@@ -7877,7 +7877,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -8083,7 +8083,7 @@
       "status": "Review"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-17T16:20:48.765Z",
     "submittedDate": "2021-01-07T07:03:12.258Z",
@@ -8100,7 +8100,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -8339,7 +8339,7 @@
       "dateOfBirth": "1992-01-20T22:59:28.490Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-04-18T06:28:55.491Z",
     "submittedDate": "2021-01-04T20:02:10.734Z",
@@ -8353,7 +8353,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -8679,7 +8679,7 @@
       "dateOfBirth": "1965-06-03T20:29:35.438Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-03-03T08:00:15.064Z",
     "submittedDate": "2021-01-02T23:40:40.474Z",
@@ -8693,7 +8693,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -8791,7 +8791,7 @@
       "dateOfBirth": "1984-03-02T13:08:15.751Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-21T09:47:01.681Z",
     "submittedDate": "2021-01-02T10:56:09.074Z",
@@ -8809,7 +8809,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -9895,7 +9895,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2020-12-17T12:25:25.434Z",
@@ -9911,7 +9911,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -10149,7 +10149,7 @@
       "dateOfBirth": "1966-02-07T06:43:30.757Z"
     },
     "provider": "Titan Partnership Ltd",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-04-17T19:01:27.969Z",
     "submittedDate": "2020-12-16T00:46:00.565Z",
@@ -10163,7 +10163,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -10264,7 +10264,7 @@
       "status": "Review"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T13:06:52.239Z",
     "submittedDate": "2020-12-15T15:19:05.282Z",
@@ -10281,7 +10281,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -10858,7 +10858,7 @@
       "dateOfBirth": "1979-06-27T21:39:35.574Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-19T23:06:01.858Z",
     "submittedDate": "2020-12-09T20:34:50.856Z",
@@ -10875,7 +10875,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -10996,7 +10996,7 @@
       "status": "Review"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-14T12:36:45.544Z",
     "submittedDate": "2020-12-09T18:35:18.388Z",
@@ -11013,7 +11013,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -11104,7 +11104,7 @@
       "dateOfBirth": "1989-01-10T01:58:57.015Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-03-22T12:21:24.520Z",
     "submittedDate": "2020-12-08T13:07:53.746Z",
@@ -11122,7 +11122,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -11772,7 +11772,7 @@
       "dateOfBirth": "1979-01-15T16:15:18.556Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-01-26T12:32:48.257Z",
     "submittedDate": "2020-12-05T14:20:59.410Z",
@@ -11791,7 +11791,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -12018,7 +12018,7 @@
       "dateOfBirth": "1962-07-15T02:39:07.995Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-05-24T18:51:22.964Z",
     "submittedDate": "2020-12-05T06:30:27.753Z",
@@ -12036,7 +12036,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -12489,7 +12489,7 @@
       "dateOfBirth": "1981-06-25T19:41:38.663Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-02-05T15:52:11.973Z",
     "submittedDate": "2020-12-02T06:57:09.228Z",
@@ -12507,7 +12507,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -12626,7 +12626,7 @@
       "status": "Review"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-21T02:46:38.849Z",
     "submittedDate": "2020-12-01T13:47:26.873Z",
@@ -12643,7 +12643,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -12851,7 +12851,7 @@
       "dateOfBirth": "1995-08-26T15:27:55.743Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-02-06T13:49:37.784Z",
     "submittedDate": "2020-11-30T04:45:38.999Z",
@@ -12865,7 +12865,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -13326,7 +13326,7 @@
       "dateOfBirth": "1963-11-18T12:17:55.141Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-05-01T19:43:04.227Z",
     "submittedDate": "2020-11-25T16:10:03.626Z",
@@ -13344,7 +13344,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -14039,7 +14039,7 @@
       "dateOfBirth": "1958-01-06T08:03:03.411Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-03-02T10:18:44.210Z",
     "submittedDate": "2020-11-19T20:47:21.974Z",
@@ -14053,7 +14053,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -14288,7 +14288,7 @@
       "dateOfBirth": "1963-07-03T16:42:53.120Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-04-16T00:44:45.143Z",
     "submittedDate": "2020-11-18T04:30:00.042Z",
@@ -14302,7 +14302,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -15334,7 +15334,7 @@
       "status": "Review"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-17T16:20:48.765Z",
     "submittedDate": "2020-11-11T23:25:54.147Z",
@@ -15351,7 +15351,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -15555,7 +15555,7 @@
       "dateOfBirth": "1980-02-26T13:52:45.581Z"
     },
     "provider": "2Schools Consortium",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-03-02T04:25:17.528Z",
     "submittedDate": "2020-11-10T09:15:44.219Z",
@@ -15574,7 +15574,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -15824,7 +15824,7 @@
       "dateOfBirth": "1968-02-10T13:15:11.238Z"
     },
     "provider": "Leeds SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-01-30T08:31:19.940Z",
     "submittedDate": "2020-11-09T22:26:35.668Z",
@@ -15838,7 +15838,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -16582,7 +16582,7 @@
       "status": "Review"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-15T02:11:05.814Z",
     "submittedDate": "2020-11-06T21:23:24.352Z",
@@ -16599,7 +16599,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -17257,7 +17257,7 @@
       "dateOfBirth": "1995-12-17T01:16:22.652Z"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-03-08T02:26:42.778Z",
     "submittedDate": "2020-11-03T08:08:45.840Z",
@@ -17275,7 +17275,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -18408,7 +18408,7 @@
       "status": "Review"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-22T05:33:11.218Z",
     "submittedDate": "2020-10-23T15:37:04.264Z",
@@ -18425,7 +18425,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -18515,7 +18515,7 @@
       "status": "Review"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-19T04:06:05.089Z",
     "submittedDate": "2020-10-22T23:53:30.768Z",
@@ -18532,7 +18532,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -19922,7 +19922,7 @@
       "dateOfBirth": "1993-10-20T14:35:57.318Z"
     },
     "provider": "Leeds SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-05-11T03:05:42.943Z",
     "submittedDate": "2020-10-12T20:18:58.618Z",
@@ -19936,7 +19936,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -20038,7 +20038,7 @@
       "status": "Review"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-21T02:46:38.849Z",
     "submittedDate": "2020-10-12T18:34:52.366Z",
@@ -20055,7 +20055,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -20300,7 +20300,7 @@
       "status": "Review"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-17T06:08:48.795Z",
     "submittedDate": "2020-10-12T06:12:07.524Z",
@@ -20317,7 +20317,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -20528,7 +20528,7 @@
       "dateOfBirth": "1974-12-14T18:23:21.556Z"
     },
     "provider": "Edge Hill University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-12-04T02:51:18.107Z",
     "submittedDate": "2020-10-11T17:13:03.560Z",
@@ -20542,7 +20542,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -21337,7 +21337,7 @@
       "status": "Review"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-15T02:11:05.814Z",
     "submittedDate": "2020-10-09T01:44:21.294Z",
@@ -21354,7 +21354,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -22069,7 +22069,7 @@
       "dateOfBirth": "1979-01-12T08:10:04.070Z"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-01-25T19:55:45.618Z",
     "submittedDate": "2020-10-06T01:28:49.209Z",
@@ -22087,7 +22087,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -22211,7 +22211,7 @@
       "status": "Review"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-14T12:36:45.544Z",
     "submittedDate": "2020-10-04T23:07:50.338Z",
@@ -22228,7 +22228,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -22531,7 +22531,7 @@
       "status": "Review"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-15T02:11:05.814Z",
     "submittedDate": "2020-10-03T13:49:40.278Z",
@@ -22548,7 +22548,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -22768,7 +22768,7 @@
       "dateOfBirth": "1978-12-08T22:26:41.290Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-01-22T10:00:16.190Z",
     "submittedDate": "2020-10-03T05:21:51.215Z",
@@ -22782,7 +22782,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -23103,7 +23103,7 @@
       "dateOfBirth": "1994-07-03T00:49:18.419Z"
     },
     "provider": "Edge Hill University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-12-18T06:04:03.618Z",
     "submittedDate": "2020-10-01T14:46:12.271Z",
@@ -23121,7 +23121,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -23517,7 +23517,7 @@
       "status": "Review"
     },
     "provider": "2Schools Consortium",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-19T03:37:23.338Z",
     "submittedDate": "2020-09-29T13:21:39.769Z",
@@ -23535,7 +23535,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -23631,7 +23631,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2020-09-28T14:53:29.155Z",
@@ -23648,7 +23648,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -23738,7 +23738,7 @@
       "dateOfBirth": "1986-02-03T03:26:08.803Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-11-17T20:18:15.424Z",
     "submittedDate": "2020-09-28T07:48:41.458Z",
@@ -23756,7 +23756,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -24001,7 +24001,7 @@
       "dateOfBirth": "1968-04-08T22:46:43.432Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Deferred",
     "previousStatus": "TRN received",
     "updatedDate": "2021-04-27T12:21:13.416Z",
@@ -24017,7 +24017,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -24125,7 +24125,7 @@
       "status": "Review"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-14T12:36:45.544Z",
     "submittedDate": "2020-09-27T10:39:17.943Z",
@@ -24142,7 +24142,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -25231,7 +25231,7 @@
       "dateOfBirth": "1972-10-09T00:38:17.299Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-12-10T13:14:11.992Z",
     "submittedDate": "2020-09-21T01:34:57.174Z",
@@ -25245,7 +25245,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -25345,7 +25345,7 @@
       "dateOfBirth": "1969-02-06T15:14:30.038Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-02-02T13:53:57.571Z",
     "submittedDate": "2020-09-20T21:48:42.400Z",
@@ -25363,7 +25363,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -25832,7 +25832,7 @@
       "dateOfBirth": "1970-05-15T02:59:39.061Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-02-09T20:21:28.757Z",
     "submittedDate": "2020-09-18T06:20:32.917Z",
@@ -25849,7 +25849,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -26243,7 +26243,7 @@
       "dateOfBirth": "1972-09-08T15:38:14.986Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-11-17T02:30:14.343Z",
     "submittedDate": "2020-09-17T17:34:20.450Z",
@@ -26257,7 +26257,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -26354,7 +26354,7 @@
       "dateOfBirth": "1997-11-28T00:18:41.727Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-12-20T20:25:55.950Z",
     "submittedDate": "2020-09-17T15:41:14.335Z",
@@ -26372,7 +26372,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -26798,7 +26798,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2020-09-15T22:23:27.032Z",
@@ -26815,7 +26815,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -27364,7 +27364,7 @@
       "status": "Review"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-12T11:04:13.267Z",
     "submittedDate": "2020-09-12T12:51:50.360Z",
@@ -27381,7 +27381,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -27969,7 +27969,7 @@
       "dateOfBirth": "1988-01-21T05:44:00.356Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-11-27T14:47:59.106Z",
     "submittedDate": "2020-09-08T19:24:38.589Z",
@@ -27987,7 +27987,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -28229,7 +28229,7 @@
       "dateOfBirth": "1993-11-27T04:07:19.384Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-10-29T13:48:06.426Z",
     "submittedDate": "2020-09-07T20:17:12.213Z",
@@ -28243,7 +28243,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -28437,7 +28437,7 @@
       "dateOfBirth": "1992-10-06T00:08:44.614Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-12-30T01:02:38.686Z",
     "submittedDate": "2020-09-07T13:51:58.941Z",
@@ -28455,7 +28455,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -28578,7 +28578,7 @@
       "dateOfBirth": "1987-03-09T14:51:25.714Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-12-27T02:56:47.702Z",
     "submittedDate": "2020-09-07T06:09:22.311Z",
@@ -28596,7 +28596,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -29074,7 +29074,7 @@
       "dateOfBirth": "1995-04-05T14:49:51.540Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-05-22T05:40:44.698Z",
     "submittedDate": "2020-09-06T02:14:45.354Z",
@@ -29092,7 +29092,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -31037,7 +31037,7 @@
       "dateOfBirth": "1978-11-30T19:29:47.839Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-12-23T16:06:25.728Z",
     "submittedDate": "2020-09-01T14:06:12.834Z",
@@ -31051,7 +31051,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -31148,7 +31148,7 @@
       "dateOfBirth": "1977-08-07T12:38:53.812Z"
     },
     "provider": "Surrey County Council",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-12-27T15:45:31.134Z",
     "submittedDate": "2020-09-01T00:32:31.508Z",
@@ -31162,7 +31162,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -31258,7 +31258,7 @@
       "dateOfBirth": "1961-09-05T06:05:38.745Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-05-17T03:38:51.319Z",
     "submittedDate": "2020-08-31T14:00:51.086Z",
@@ -31276,7 +31276,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -31966,7 +31966,7 @@
       "dateOfBirth": "1962-02-26T17:08:08.772Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-02-13T23:58:38.776Z",
     "submittedDate": "2020-08-29T02:10:24.672Z",
@@ -31980,7 +31980,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -32173,7 +32173,7 @@
       "dateOfBirth": "1989-09-21T00:19:57.408Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-01-04T03:28:13.519Z",
     "submittedDate": "2020-08-27T21:07:34.754Z",
@@ -32187,7 +32187,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -32288,7 +32288,7 @@
       "dateOfBirth": "1975-09-03T17:06:36.737Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Withdrawn",
     "updatedDate": "2021-03-30T18:45:28.242Z",
     "submittedDate": "2020-08-27T04:09:10.767Z",
@@ -32303,7 +32303,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -32528,7 +32528,7 @@
       "dateOfBirth": "1984-04-25T16:02:17.995Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-11-03T14:12:30.681Z",
     "submittedDate": "2020-08-25T19:57:22.110Z",
@@ -32542,7 +32542,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -33026,7 +33026,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2020-08-23T06:05:47.267Z",
@@ -33042,7 +33042,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -33133,7 +33133,7 @@
       "dateOfBirth": "1992-09-01T20:17:27.880Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-01-29T10:09:48.758Z",
     "submittedDate": "2020-08-22T23:15:02.333Z",
@@ -33150,7 +33150,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -34784,7 +34784,7 @@
       "dateOfBirth": "1977-06-06T09:17:07.172Z"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-01-05T15:14:01.196Z",
     "submittedDate": "2020-08-17T17:02:33.718Z",
@@ -34801,7 +34801,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -35549,7 +35549,7 @@
       "dateOfBirth": "1977-02-02T06:20:32.477Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-25T05:20:56.752Z",
     "submittedDate": "2020-08-16T03:57:55.956Z",
@@ -35566,7 +35566,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -35681,7 +35681,7 @@
       "status": "Review"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-21T02:46:38.849Z",
     "submittedDate": "2020-08-16T00:42:46.761Z",
@@ -35698,7 +35698,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -35789,7 +35789,7 @@
       "dateOfBirth": "1997-01-01T11:31:24.939Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-02-23T03:00:42.913Z",
     "submittedDate": "2020-08-15T18:39:05.450Z",
@@ -35803,7 +35803,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -36293,7 +36293,7 @@
       "dateOfBirth": "1994-12-09T04:39:45.417Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-11-11T19:42:00.709Z",
     "submittedDate": "2020-08-15T08:03:22.004Z",
@@ -36307,7 +36307,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -36404,7 +36404,7 @@
       "dateOfBirth": "1964-03-22T20:33:02.502Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-01-18T06:22:36.592Z",
     "submittedDate": "2020-08-15T05:11:37.102Z",
@@ -36418,7 +36418,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -36515,7 +36515,7 @@
       "dateOfBirth": "1980-06-05T18:52:29.515Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-01-21T18:46:33.799Z",
     "submittedDate": "2020-08-15T03:33:50.226Z",
@@ -36533,7 +36533,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -36769,7 +36769,7 @@
       "dateOfBirth": "1986-12-12T01:58:19.469Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-12-03T23:57:36.031Z",
     "submittedDate": "2020-08-14T08:25:20.935Z",
@@ -36787,7 +36787,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -37416,7 +37416,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2020-08-11T16:02:47.486Z",
@@ -37433,7 +37433,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -37642,7 +37642,7 @@
       "dateOfBirth": "1976-11-15T13:15:55.366Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-05-21T03:00:34.557Z",
     "submittedDate": "2020-08-10T17:27:10.540Z",
@@ -37660,7 +37660,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -38245,7 +38245,7 @@
       "dateOfBirth": "1974-09-06T14:17:38.936Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-11-17T20:11:46.052Z",
     "submittedDate": "2020-08-08T16:57:20.975Z",
@@ -38262,7 +38262,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -38486,7 +38486,7 @@
       "dateOfBirth": "1980-06-23T00:25:56.869Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-10-05T08:25:57.574Z",
     "submittedDate": "2020-08-08T05:15:58.299Z",
@@ -38504,7 +38504,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -38628,7 +38628,7 @@
       "status": "Review"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-14T12:29:02.467Z",
     "submittedDate": "2020-08-07T06:49:38.021Z",
@@ -38645,7 +38645,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -38875,7 +38875,7 @@
       "status": "Review"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-12T11:04:13.267Z",
     "submittedDate": "2020-08-06T09:50:38.482Z",
@@ -38891,7 +38891,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -39563,7 +39563,7 @@
       "dateOfBirth": "1969-12-09T20:33:14.639Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-10-23T10:41:11.737Z",
     "submittedDate": "2020-08-04T14:20:53.709Z",
@@ -39577,7 +39577,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -39791,7 +39791,7 @@
       "dateOfBirth": "1976-10-29T22:36:50.301Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-12-12T06:24:37.309Z",
     "submittedDate": "2020-08-04T03:38:40.032Z",
@@ -39809,7 +39809,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -40729,7 +40729,7 @@
       "dateOfBirth": "1990-05-17T21:13:28.795Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-12-20T03:42:45.293Z",
     "submittedDate": "2020-08-03T01:17:14.157Z",
@@ -40743,7 +40743,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -41350,7 +41350,7 @@
       "dateOfBirth": "1962-10-01T01:15:17.785Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-19T23:45:50.867Z",
     "submittedDate": "2020-08-01T06:25:15.384Z",
@@ -41368,7 +41368,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -41493,7 +41493,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2020-07-31T19:28:25.454Z",
@@ -41510,7 +41510,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -42079,7 +42079,7 @@
       "dateOfBirth": "1980-03-18T11:04:02.594Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-12-15T04:22:14.728Z",
     "submittedDate": "2020-07-29T01:02:46.706Z",
@@ -42093,7 +42093,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -42668,7 +42668,7 @@
       "dateOfBirth": "1997-12-05T19:52:43.990Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-01-14T19:54:16.904Z",
     "submittedDate": "2020-07-28T07:09:02.231Z",
@@ -42686,7 +42686,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -43152,7 +43152,7 @@
       "dateOfBirth": "1994-09-23T11:09:53.830Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-09-30T02:27:07.401Z",
     "submittedDate": "2020-07-27T05:36:54.545Z",
@@ -43166,7 +43166,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -43383,7 +43383,7 @@
       "dateOfBirth": "1983-05-31T20:06:40.123Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-19T14:41:13.189Z",
     "submittedDate": "2020-07-26T01:41:27.841Z",
@@ -43401,7 +43401,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -43660,7 +43660,7 @@
       "dateOfBirth": "1967-08-16T00:55:39.572Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-21T13:40:30.545Z",
     "submittedDate": "2020-07-25T09:56:26.757Z",
@@ -43678,7 +43678,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -44712,7 +44712,7 @@
       "dateOfBirth": "1986-11-21T13:04:49.472Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-20T19:23:36.703Z",
     "submittedDate": "2020-07-21T13:29:43.545Z",
@@ -44729,7 +44729,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -45086,7 +45086,7 @@
       "dateOfBirth": "1990-05-14T23:17:58.773Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Deferred",
     "previousStatus": "TRN received",
     "updatedDate": "2021-03-08T18:42:07.881Z",
@@ -45106,7 +45106,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -45600,7 +45600,7 @@
       "dateOfBirth": "1965-01-27T16:57:24.499Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-04-22T09:12:52.119Z",
     "submittedDate": "2020-07-20T03:19:30.239Z",
@@ -45614,7 +45614,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -45946,7 +45946,7 @@
       "dateOfBirth": "1990-05-17T15:42:57.980Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-12-04T22:56:54.378Z",
     "submittedDate": "2020-07-18T17:22:10.412Z",
@@ -45960,7 +45960,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -46400,7 +46400,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2020-07-18T02:33:08.241Z",
@@ -46417,7 +46417,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -46607,7 +46607,7 @@
       "dateOfBirth": "1997-10-12T19:41:44.016Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-20T12:44:38.402Z",
     "submittedDate": "2020-07-17T18:56:27.708Z",
@@ -46625,7 +46625,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -46744,7 +46744,7 @@
       "dateOfBirth": "1975-01-24T08:21:27.313Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-11T16:30:29.838Z",
     "submittedDate": "2020-07-17T14:13:13.752Z",
@@ -46762,7 +46762,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -46889,7 +46889,7 @@
       "dateOfBirth": "1983-08-16T15:27:18.034Z"
     },
     "provider": "Middlesex University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-01-31T09:54:19.078Z",
     "submittedDate": "2020-07-17T09:31:26.594Z",
@@ -46903,7 +46903,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -47000,7 +47000,7 @@
       "dateOfBirth": "1960-05-26T02:40:13.549Z"
     },
     "provider": "Edge Hill University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-03-31T21:34:25.492Z",
     "submittedDate": "2020-07-17T07:04:05.313Z",
@@ -47014,7 +47014,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -47111,7 +47111,7 @@
       "dateOfBirth": "1992-01-21T02:20:03.820Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Withdrawn",
     "updatedDate": "2020-10-09T16:17:05.995Z",
     "submittedDate": "2020-07-17T04:00:26.977Z",
@@ -47130,7 +47130,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -47662,7 +47662,7 @@
       "dateOfBirth": "1986-06-26T06:50:37.186Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-03-15T00:15:03.665Z",
     "submittedDate": "2020-07-16T07:07:10.515Z",
@@ -47680,7 +47680,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -49550,7 +49550,7 @@
       "dateOfBirth": "1994-01-17T14:47:17.824Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-11-13T22:15:18.975Z",
     "submittedDate": "2020-07-13T02:01:08.354Z",
@@ -49564,7 +49564,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -49667,7 +49667,7 @@
       "dateOfBirth": "1994-07-07T07:47:00.426Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-09-06T05:24:17.603Z",
     "submittedDate": "2020-07-13T01:18:46.052Z",
@@ -49685,7 +49685,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -50506,7 +50506,7 @@
       "dateOfBirth": "1987-02-08T08:53:56.729Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-11-16T11:44:45.133Z",
     "submittedDate": "2020-07-11T10:37:20.529Z",
@@ -50520,7 +50520,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -51800,7 +51800,7 @@
       "status": "Review"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-12T11:04:13.267Z",
     "submittedDate": "2020-07-07T20:22:47.316Z",
@@ -51817,7 +51817,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -51907,7 +51907,7 @@
       "dateOfBirth": "1976-11-27T17:46:14.148Z"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-01-27T06:34:22.202Z",
     "submittedDate": "2020-07-07T15:17:36.487Z",
@@ -51925,7 +51925,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -52298,7 +52298,7 @@
       "status": "Review"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-14T12:29:02.467Z",
     "submittedDate": "2020-07-06T20:14:09.475Z",
@@ -52315,7 +52315,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -53938,7 +53938,7 @@
       "dateOfBirth": "1994-04-22T20:25:35.200Z"
     },
     "provider": "Surrey County Council",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-04T09:42:00.978Z",
     "submittedDate": "2020-07-02T09:04:57.421Z",
@@ -53953,7 +53953,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -54326,7 +54326,7 @@
       "dateOfBirth": "1968-11-14T18:17:03.553Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-09-01T14:36:13.359Z",
     "submittedDate": "2020-07-01T18:20:16.673Z",
@@ -54340,7 +54340,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -54921,7 +54921,7 @@
       "dateOfBirth": "1970-05-09T06:02:18.394Z"
     },
     "provider": "Surrey County Council",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-09-01T15:44:24.005Z",
     "submittedDate": "2020-07-01T10:10:38.048Z",
@@ -54935,7 +54935,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -56522,7 +56522,7 @@
       "dateOfBirth": "1963-06-20T20:38:31.140Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-09-05T01:07:38.606Z",
     "submittedDate": "2020-06-27T10:31:16.793Z",
@@ -56540,7 +56540,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -57002,7 +57002,7 @@
       "dateOfBirth": "1966-03-21T16:46:57.387Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-08-25T09:46:12.122Z",
     "submittedDate": "2020-06-26T15:29:09.302Z",
@@ -57020,7 +57020,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -57759,7 +57759,7 @@
       "dateOfBirth": "1958-11-13T19:06:07.501Z"
     },
     "provider": "Leeds SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-10-25T23:33:58.207Z",
     "submittedDate": "2020-06-24T21:50:50.210Z",
@@ -57773,7 +57773,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -58109,7 +58109,7 @@
       "status": "Review"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-20T18:30:03.969Z",
     "submittedDate": "2020-06-23T20:32:37.051Z",
@@ -58125,7 +58125,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -58560,7 +58560,7 @@
       "dateOfBirth": "1958-12-25T00:44:14.135Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-21T16:48:55.571Z",
     "submittedDate": "2020-06-23T06:26:12.516Z",
@@ -58578,7 +58578,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -58935,7 +58935,7 @@
       "status": "Review"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-17T06:08:48.795Z",
     "submittedDate": "2020-06-22T15:15:32.281Z",
@@ -58952,7 +58952,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -59697,7 +59697,7 @@
       "dateOfBirth": "1987-08-18T01:45:49.146Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Withdrawn",
     "updatedDate": "2020-11-09T07:52:54.491Z",
     "submittedDate": "2020-06-20T22:47:32.174Z",
@@ -59712,7 +59712,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -59933,7 +59933,7 @@
       "dateOfBirth": "1982-07-14T11:12:43.581Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2021-04-15T14:41:15.401Z",
     "submittedDate": "2020-06-20T19:50:01.247Z",
@@ -59947,7 +59947,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -60197,7 +60197,7 @@
       "status": "Review"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-17T16:20:48.765Z",
     "submittedDate": "2020-06-20T16:22:22.434Z",
@@ -60214,7 +60214,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -60545,7 +60545,7 @@
       "dateOfBirth": "1961-11-09T21:14:26.920Z"
     },
     "provider": "Edge Hill University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-08-10T03:08:54.229Z",
     "submittedDate": "2020-06-20T02:20:37.369Z",
@@ -60563,7 +60563,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -61724,7 +61724,7 @@
       "dateOfBirth": "1965-04-10T11:55:52.193Z"
     },
     "provider": "Leeds SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-08-22T18:11:59.386Z",
     "submittedDate": "2020-06-19T00:59:33.586Z",
@@ -61738,7 +61738,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -62170,7 +62170,7 @@
       "status": "Review"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-22T05:33:11.218Z",
     "submittedDate": "2020-06-17T22:03:45.426Z",
@@ -62187,7 +62187,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -62512,7 +62512,7 @@
       "dateOfBirth": "1970-05-27T18:04:30.044Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-09T04:22:59.185Z",
     "submittedDate": "2020-06-17T13:18:43.631Z",
@@ -62531,7 +62531,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -63579,7 +63579,7 @@
       "dateOfBirth": "1979-05-06T09:40:56.901Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-11-21T04:55:12.187Z",
     "submittedDate": "2020-06-15T13:27:40.950Z",
@@ -63593,7 +63593,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -63921,7 +63921,7 @@
       "dateOfBirth": "1963-10-23T04:34:14.788Z"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Deferred",
     "previousStatus": "TRN received",
     "updatedDate": "2020-08-11T13:14:02.444Z",
@@ -63937,7 +63937,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -64149,7 +64149,7 @@
       "dateOfBirth": "1984-01-02T09:34:02.603Z"
     },
     "provider": "Middlesex University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-09-04T20:20:35.839Z",
     "submittedDate": "2020-06-14T19:41:24.197Z",
@@ -64168,7 +64168,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -64649,7 +64649,7 @@
       "dateOfBirth": "1975-02-28T12:01:52.321Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2021-04-07T14:19:49.709Z",
     "submittedDate": "2020-06-14T00:29:34.511Z",
@@ -64666,7 +64666,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -65412,7 +65412,7 @@
       "dateOfBirth": "1959-09-03T06:02:59.456Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-08-11T02:43:09.493Z",
     "submittedDate": "2020-06-13T00:27:46.881Z",
@@ -65430,7 +65430,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -65900,7 +65900,7 @@
       "dateOfBirth": "1968-05-24T13:21:55.078Z"
     },
     "provider": "Titan Partnership Ltd",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Withdrawn",
     "updatedDate": "2020-10-06T22:03:43.542Z",
     "submittedDate": "2020-06-12T09:57:47.575Z",
@@ -65915,7 +65915,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -68889,7 +68889,7 @@
       "dateOfBirth": "1962-01-09T09:42:41.379Z"
     },
     "provider": "Edge Hill University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-08-06T07:39:16.227Z",
     "submittedDate": "2020-06-07T07:49:05.241Z",
@@ -68907,7 +68907,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -69468,7 +69468,7 @@
       "dateOfBirth": "1965-07-28T12:24:21.125Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-08-09T23:19:32.856Z",
     "submittedDate": "2020-06-06T23:52:48.155Z",
@@ -69486,7 +69486,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -69720,7 +69720,7 @@
       "status": "Review"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Apply draft",
     "updatedDate": "2021-05-17T06:08:48.795Z",
     "submittedDate": "2020-06-06T11:04:22.422Z",
@@ -69737,7 +69737,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -69825,7 +69825,7 @@
       "dateOfBirth": "1977-07-02T14:59:46.650Z"
     },
     "provider": "Edge Hill University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-12-23T09:08:37.263Z",
     "submittedDate": "2020-06-06T03:44:31.401Z",
@@ -69843,7 +69843,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -70088,7 +70088,7 @@
       "dateOfBirth": "1963-08-15T05:41:18.555Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-08-06T14:07:20.683Z",
     "submittedDate": "2020-06-05T21:28:18.312Z",
@@ -70106,7 +70106,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -70845,7 +70845,7 @@
       "dateOfBirth": "1969-10-30T07:58:46.395Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Withdrawn",
     "updatedDate": "2020-09-15T03:38:05.634Z",
     "submittedDate": "2020-06-04T21:44:55.480Z",
@@ -70860,7 +70860,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -72191,7 +72191,7 @@
       "dateOfBirth": "1989-08-13T18:43:46.434Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-10-27T16:54:20.361Z",
     "submittedDate": "2020-06-03T04:19:06.082Z",
@@ -72205,7 +72205,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -72303,7 +72303,7 @@
       "dateOfBirth": "1991-04-07T04:40:07.552Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "TRN received",
     "updatedDate": "2020-12-13T23:46:54.297Z",
     "submittedDate": "2020-06-03T03:03:39.616Z",
@@ -72317,7 +72317,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2020-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -73230,7 +73230,7 @@
       "dateOfBirth": "1991-07-13T19:55:39.646Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "TRN received",
     "updatedDate": "2020-10-19T01:34:00.860Z",
     "submittedDate": "2020-06-02T11:32:58.673Z",
@@ -73248,7 +73248,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -73597,7 +73597,7 @@
       "dateOfBirth": "1981-02-26T15:06:25.217Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-09T04:05:15.353Z",
     "submittedDate": "2020-05-30T04:12:12.059Z",
@@ -73616,7 +73616,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -74488,7 +74488,7 @@
       "dateOfBirth": "1987-04-11T20:15:04.722Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-26T23:32:40.294Z",
     "submittedDate": "2020-05-22T04:09:05.131Z",
@@ -74507,7 +74507,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -74638,7 +74638,7 @@
       "dateOfBirth": "1988-07-29T22:47:03.753Z"
     },
     "provider": "Edge Hill University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-29T14:45:15.212Z",
     "submittedDate": "2020-05-20T23:12:59.620Z",
@@ -74653,7 +74653,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -74759,7 +74759,7 @@
       "dateOfBirth": "1984-09-20T12:36:26.575Z"
     },
     "provider": "Surrey County Council",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-17T12:39:42.108Z",
     "submittedDate": "2020-05-20T20:49:28.221Z",
@@ -74774,7 +74774,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -75163,7 +75163,7 @@
       "dateOfBirth": "1994-11-13T22:27:55.896Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-29T06:05:41.668Z",
     "submittedDate": "2020-05-16T07:18:35.637Z",
@@ -75178,7 +75178,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -75392,7 +75392,7 @@
       "dateOfBirth": "1973-06-08T12:08:13.094Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-27T12:07:42.666Z",
     "submittedDate": "2020-05-14T04:17:06.396Z",
@@ -75411,7 +75411,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -76587,7 +76587,7 @@
       "dateOfBirth": "1966-07-22T02:02:26.653Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-01T10:07:08.811Z",
     "submittedDate": "2020-05-08T02:14:52.410Z",
@@ -76602,7 +76602,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -77117,7 +77117,7 @@
       "dateOfBirth": "1970-01-12T10:38:33.440Z"
     },
     "provider": "Leeds SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Withdrawn",
     "updatedDate": "2020-08-26T17:58:48.838Z",
     "submittedDate": "2020-05-03T12:44:41.520Z",
@@ -77132,7 +77132,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -77239,7 +77239,7 @@
       "dateOfBirth": "1996-02-29T22:45:09.061Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-18T12:28:25.184Z",
     "submittedDate": "2020-05-02T16:53:37.842Z",
@@ -77254,7 +77254,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -77366,7 +77366,7 @@
       "dateOfBirth": "1996-01-18T22:32:57.998Z"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-23T10:52:45.112Z",
     "submittedDate": "2020-05-02T12:47:34.095Z",
@@ -77385,7 +77385,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -77630,7 +77630,7 @@
       "dateOfBirth": "1988-11-05T00:53:45.556Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-26T20:41:52.448Z",
     "submittedDate": "2020-04-30T14:59:05.906Z",
@@ -77645,7 +77645,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -78165,7 +78165,7 @@
       "dateOfBirth": "1970-09-26T00:26:53.508Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-11T19:03:53.000Z",
     "submittedDate": "2020-04-29T04:32:56.692Z",
@@ -78184,7 +78184,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -78308,7 +78308,7 @@
       "dateOfBirth": "1979-11-16T05:37:12.867Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-10T20:22:01.371Z",
     "submittedDate": "2020-04-29T01:28:13.178Z",
@@ -78323,7 +78323,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -78592,7 +78592,7 @@
       "dateOfBirth": "1969-01-16T21:22:25.768Z"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-29T21:49:15.120Z",
     "submittedDate": "2020-04-28T03:31:08.835Z",
@@ -78611,7 +78611,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -78742,7 +78742,7 @@
       "dateOfBirth": "1993-04-21T07:23:57.756Z"
     },
     "provider": "Middlesex University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-24T18:47:16.299Z",
     "submittedDate": "2020-04-27T20:10:50.151Z",
@@ -78757,7 +78757,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -79342,7 +79342,7 @@
       "dateOfBirth": "1983-03-06T06:16:34.172Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-02T15:39:16.691Z",
     "submittedDate": "2020-04-25T07:07:09.955Z",
@@ -79361,7 +79361,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -79494,7 +79494,7 @@
       "dateOfBirth": "1980-04-21T06:16:26.766Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-15T01:55:04.289Z",
     "submittedDate": "2020-04-23T22:26:38.924Z",
@@ -79513,7 +79513,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -79642,7 +79642,7 @@
       "dateOfBirth": "1970-10-24T01:06:09.519Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-28T18:14:16.485Z",
     "submittedDate": "2020-04-23T19:08:03.769Z",
@@ -79657,7 +79657,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -79768,7 +79768,7 @@
       "dateOfBirth": "1993-12-09T12:38:14.978Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-30T19:14:48.226Z",
     "submittedDate": "2020-04-21T04:52:08.405Z",
@@ -79786,7 +79786,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -80169,7 +80169,7 @@
       "dateOfBirth": "1963-06-08T15:34:22.663Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-07T16:00:09.527Z",
     "submittedDate": "2020-04-17T19:26:09.929Z",
@@ -80184,7 +80184,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -80290,7 +80290,7 @@
       "dateOfBirth": "1996-09-18T16:11:48.957Z"
     },
     "provider": "2Schools Consortium",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-20T04:42:26.449Z",
     "submittedDate": "2020-04-17T16:03:19.542Z",
@@ -80305,7 +80305,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -81233,7 +81233,7 @@
       "dateOfBirth": "1960-09-21T19:14:35.341Z"
     },
     "provider": "Middlesex University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-21T05:09:06.859Z",
     "submittedDate": "2020-04-14T17:06:55.012Z",
@@ -81251,7 +81251,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -81773,7 +81773,7 @@
       "dateOfBirth": "1976-04-26T22:26:53.414Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-04T11:24:36.621Z",
     "submittedDate": "2020-04-11T06:18:12.748Z",
@@ -81792,7 +81792,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -82355,7 +82355,7 @@
       "dateOfBirth": "1970-07-11T22:00:29.987Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-29T14:46:28.388Z",
     "submittedDate": "2020-04-07T06:29:24.896Z",
@@ -82370,7 +82370,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -82475,7 +82475,7 @@
       "dateOfBirth": "1997-03-06T12:08:00.586Z"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-31T00:55:01.596Z",
     "submittedDate": "2020-04-06T11:18:39.090Z",
@@ -82490,7 +82490,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -82596,7 +82596,7 @@
       "dateOfBirth": "1985-01-24T03:51:47.290Z"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-19T03:43:28.859Z",
     "submittedDate": "2020-04-05T01:08:02.488Z",
@@ -82611,7 +82611,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -82821,7 +82821,7 @@
       "dateOfBirth": "1965-06-23T12:20:38.389Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-16T00:43:31.292Z",
     "submittedDate": "2020-04-03T22:27:35.291Z",
@@ -82836,7 +82836,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -82945,7 +82945,7 @@
       "dateOfBirth": "1993-07-04T22:48:46.875Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-13T04:50:53.977Z",
     "submittedDate": "2020-04-03T12:51:07.763Z",
@@ -82960,7 +82960,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -83466,7 +83466,7 @@
       "dateOfBirth": "1987-03-06T19:55:28.120Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-19T14:59:11.016Z",
     "submittedDate": "2020-03-30T21:21:01.100Z",
@@ -83481,7 +83481,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -83721,7 +83721,7 @@
       "dateOfBirth": "1977-02-24T14:46:50.069Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-01T01:44:03.046Z",
     "submittedDate": "2020-03-30T09:38:43.316Z",
@@ -83740,7 +83740,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -84233,7 +84233,7 @@
       "dateOfBirth": "1971-04-03T06:27:34.597Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-02T23:12:26.449Z",
     "submittedDate": "2020-03-29T05:15:13.146Z",
@@ -84252,7 +84252,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -85566,7 +85566,7 @@
       "dateOfBirth": "1960-05-16T04:03:27.226Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Deferred",
     "previousStatus": "TRN received",
     "updatedDate": "2020-09-10T12:54:34.951Z",
@@ -85586,7 +85586,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -86488,7 +86488,7 @@
       "dateOfBirth": "1968-06-29T02:46:44.483Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-02T07:59:18.382Z",
     "submittedDate": "2020-03-18T20:58:31.310Z",
@@ -86507,7 +86507,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -87041,7 +87041,7 @@
       "dateOfBirth": "1965-09-03T15:08:04.505Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-28T03:35:03.935Z",
     "submittedDate": "2020-03-16T08:30:31.448Z",
@@ -87061,7 +87061,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -87193,7 +87193,7 @@
       "dateOfBirth": "1981-01-22T08:20:40.681Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-07T02:23:17.091Z",
     "submittedDate": "2020-03-15T16:02:02.484Z",
@@ -87211,7 +87211,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -87343,7 +87343,7 @@
       "dateOfBirth": "1972-03-23T22:00:38.462Z"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-08T17:47:05.350Z",
     "submittedDate": "2020-03-15T15:36:30.689Z",
@@ -87358,7 +87358,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -87462,7 +87462,7 @@
       "dateOfBirth": "1973-01-10T20:30:31.965Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Deferred",
     "previousStatus": "TRN received",
     "updatedDate": "2020-07-15T16:16:37.492Z",
@@ -87478,7 +87478,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -87586,7 +87586,7 @@
       "dateOfBirth": "1971-06-07T21:22:28.088Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-13T19:30:56.528Z",
     "submittedDate": "2020-03-14T12:27:47.746Z",
@@ -87601,7 +87601,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -88182,7 +88182,7 @@
       "dateOfBirth": "1969-10-30T03:45:27.786Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-13T15:50:32.417Z",
     "submittedDate": "2020-03-11T16:53:49.894Z",
@@ -88201,7 +88201,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -88455,7 +88455,7 @@
       "dateOfBirth": "1988-07-19T10:55:33.717Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-22T19:05:49.659Z",
     "submittedDate": "2020-03-09T16:32:20.671Z",
@@ -88470,7 +88470,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -89074,7 +89074,7 @@
       "dateOfBirth": "1993-04-06T07:59:13.667Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-12T01:31:47.604Z",
     "submittedDate": "2020-03-07T15:16:20.815Z",
@@ -89094,7 +89094,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -89358,7 +89358,7 @@
       "dateOfBirth": "1988-06-17T09:09:19.746Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-16T13:19:17.671Z",
     "submittedDate": "2020-03-05T20:05:56.731Z",
@@ -89373,7 +89373,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -89482,7 +89482,7 @@
       "dateOfBirth": "1985-10-30T12:56:47.046Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-08T21:58:47.751Z",
     "submittedDate": "2020-03-05T17:43:13.868Z",
@@ -89497,7 +89497,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -89615,7 +89615,7 @@
       "dateOfBirth": "1979-01-31T11:56:40.229Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-30T13:27:55.275Z",
     "submittedDate": "2020-03-04T21:38:49.497Z",
@@ -89630,7 +89630,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -90407,7 +90407,7 @@
       "dateOfBirth": "1972-08-28T21:28:25.053Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-08T11:37:47.589Z",
     "submittedDate": "2020-03-01T23:13:46.940Z",
@@ -90422,7 +90422,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -91148,7 +91148,7 @@
       "dateOfBirth": "1992-08-19T16:44:21.442Z"
     },
     "provider": "2Schools Consortium",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-19T21:04:08.964Z",
     "submittedDate": "2020-02-27T14:56:44.402Z",
@@ -91163,7 +91163,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -91893,7 +91893,7 @@
       "dateOfBirth": "1986-09-07T02:28:32.269Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-17T08:35:30.696Z",
     "submittedDate": "2020-02-24T12:06:18.118Z",
@@ -91908,7 +91908,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -92253,7 +92253,7 @@
       "dateOfBirth": "1995-02-23T14:23:41.534Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-27T17:55:31.651Z",
     "submittedDate": "2020-02-22T01:24:50.700Z",
@@ -92271,7 +92271,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -92679,7 +92679,7 @@
       "dateOfBirth": "1995-10-06T19:39:55.561Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-14T04:42:38.856Z",
     "submittedDate": "2020-02-20T18:08:58.460Z",
@@ -92694,7 +92694,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -93877,7 +93877,7 @@
       "dateOfBirth": "1994-09-23T19:15:49.013Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-13T07:59:42.380Z",
     "submittedDate": "2020-02-14T06:19:14.629Z",
@@ -93896,7 +93896,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -94324,7 +94324,7 @@
       "dateOfBirth": "1984-07-23T23:26:31.889Z"
     },
     "provider": "2Schools Consortium",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-13T12:35:16.582Z",
     "submittedDate": "2020-02-11T17:46:03.104Z",
@@ -94339,7 +94339,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -95139,7 +95139,7 @@
       "dateOfBirth": "1972-12-13T13:44:01.748Z"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-07T03:37:14.574Z",
     "submittedDate": "2020-02-07T02:54:36.769Z",
@@ -95154,7 +95154,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -95381,7 +95381,7 @@
       "dateOfBirth": "1969-11-13T04:46:27.215Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-18T19:22:26.730Z",
     "submittedDate": "2020-02-05T22:21:21.531Z",
@@ -95400,7 +95400,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -95787,7 +95787,7 @@
       "dateOfBirth": "1995-10-30T02:41:31.425Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-17T12:53:19.586Z",
     "submittedDate": "2020-02-01T03:21:56.235Z",
@@ -95802,7 +95802,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -96185,7 +96185,7 @@
       "dateOfBirth": "1978-11-29T04:34:38.082Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-07T08:51:17.367Z",
     "submittedDate": "2020-01-26T11:59:30.095Z",
@@ -96200,7 +96200,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -96436,7 +96436,7 @@
       "dateOfBirth": "1986-07-10T10:27:47.714Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-14T09:55:47.717Z",
     "submittedDate": "2020-01-24T12:20:32.881Z",
@@ -96455,7 +96455,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -96855,7 +96855,7 @@
       "dateOfBirth": "1991-10-20T07:36:48.635Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-29T08:50:38.556Z",
     "submittedDate": "2020-01-20T15:52:26.042Z",
@@ -96873,7 +96873,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -97001,7 +97001,7 @@
       "dateOfBirth": "1964-04-23T15:57:06.157Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-20T19:03:27.642Z",
     "submittedDate": "2020-01-20T14:52:48.569Z",
@@ -97016,7 +97016,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -97572,7 +97572,7 @@
       "dateOfBirth": "1985-09-09T09:29:50.517Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-26T02:30:55.449Z",
     "submittedDate": "2020-01-17T03:45:03.231Z",
@@ -97591,7 +97591,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -97717,7 +97717,7 @@
       "dateOfBirth": "1982-03-26T00:54:45.030Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-25T09:01:54.884Z",
     "submittedDate": "2020-01-17T01:30:01.573Z",
@@ -97736,7 +97736,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -98237,7 +98237,7 @@
       "dateOfBirth": "1989-09-11T17:42:57.274Z"
     },
     "provider": "2Schools Consortium",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Withdrawn",
     "updatedDate": "2020-07-13T14:15:30.044Z",
     "submittedDate": "2020-01-15T02:00:58.437Z",
@@ -98252,7 +98252,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -98475,7 +98475,7 @@
       "dateOfBirth": "1996-03-31T15:16:57.465Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-25T11:24:32.162Z",
     "submittedDate": "2020-01-14T06:42:24.429Z",
@@ -98494,7 +98494,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -98621,7 +98621,7 @@
       "dateOfBirth": "1991-05-29T11:43:40.036Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-20T15:50:03.717Z",
     "submittedDate": "2020-01-13T16:12:53.015Z",
@@ -98636,7 +98636,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -98742,7 +98742,7 @@
       "dateOfBirth": "1990-04-25T15:59:34.539Z"
     },
     "provider": "2Schools Consortium",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-21T02:48:13.839Z",
     "submittedDate": "2020-01-13T10:18:59.209Z",
@@ -98761,7 +98761,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -99964,7 +99964,7 @@
       "dateOfBirth": "1992-09-24T14:48:48.377Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-19T04:09:29.251Z",
     "submittedDate": "2020-01-05T07:10:06.696Z",
@@ -99982,7 +99982,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -101112,7 +101112,7 @@
       "dateOfBirth": "1989-06-24T09:01:53.834Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-28T21:08:05.723Z",
     "submittedDate": "2019-12-30T08:15:35.763Z",
@@ -101131,7 +101131,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -101264,7 +101264,7 @@
       "dateOfBirth": "1993-05-29T18:32:25.057Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-03T14:55:44.895Z",
     "submittedDate": "2019-12-30T06:55:38.382Z",
@@ -101279,7 +101279,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -101388,7 +101388,7 @@
       "dateOfBirth": "1990-05-22T17:16:38.156Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Withdrawn",
     "updatedDate": "2020-06-18T08:02:25.800Z",
     "submittedDate": "2019-12-28T05:29:18.013Z",
@@ -101407,7 +101407,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -101655,7 +101655,7 @@
       "dateOfBirth": "1986-06-23T04:00:07.441Z"
     },
     "provider": "Edge Hill University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-07T09:02:44.521Z",
     "submittedDate": "2019-12-27T03:24:56.176Z",
@@ -101674,7 +101674,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -102213,7 +102213,7 @@
       "dateOfBirth": "1990-01-04T20:33:40.874Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-24T00:28:43.792Z",
     "submittedDate": "2019-12-25T07:04:26.426Z",
@@ -102231,7 +102231,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -102587,7 +102587,7 @@
       "dateOfBirth": "1994-09-23T12:24:51.722Z"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Withdrawn",
     "updatedDate": "2020-09-05T16:23:15.929Z",
     "submittedDate": "2019-12-24T21:36:09.659Z",
@@ -102606,7 +102606,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -103639,7 +103639,7 @@
       "dateOfBirth": "1993-01-10T15:16:21.317Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-20T21:34:34.464Z",
     "submittedDate": "2019-12-22T04:31:43.595Z",
@@ -103659,7 +103659,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -104313,7 +104313,7 @@
       "dateOfBirth": "1986-02-23T05:36:57.838Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-22T22:53:30.534Z",
     "submittedDate": "2019-12-18T12:34:58.205Z",
@@ -104328,7 +104328,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -104440,7 +104440,7 @@
       "dateOfBirth": "1984-05-30T00:14:53.869Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-01T03:37:49.498Z",
     "submittedDate": "2019-12-17T16:27:26.505Z",
@@ -104459,7 +104459,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -104722,7 +104722,7 @@
       "dateOfBirth": "1962-10-15T16:15:05.760Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-22T20:42:22.385Z",
     "submittedDate": "2019-12-17T00:30:39.793Z",
@@ -104737,7 +104737,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -105912,7 +105912,7 @@
       "dateOfBirth": "1989-07-04T23:08:45.294Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-02T12:11:09.863Z",
     "submittedDate": "2019-12-09T13:14:41.074Z",
@@ -105931,7 +105931,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -107154,7 +107154,7 @@
       "dateOfBirth": "1978-10-02T02:32:05.923Z"
     },
     "provider": "University of Buckingham",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-12T00:08:24.344Z",
     "submittedDate": "2019-12-04T02:39:15.406Z",
@@ -107169,7 +107169,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -107765,7 +107765,7 @@
       "dateOfBirth": "1965-07-12T18:47:00.784Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-25T01:45:41.659Z",
     "submittedDate": "2019-12-02T09:08:58.401Z",
@@ -107783,7 +107783,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -108040,7 +108040,7 @@
       "dateOfBirth": "1993-09-27T01:28:51.584Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-03T15:44:56.744Z",
     "submittedDate": "2019-12-01T22:47:21.882Z",
@@ -108055,7 +108055,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -108524,7 +108524,7 @@
       "dateOfBirth": "1997-01-21T18:46:33.289Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-04T05:52:15.650Z",
     "submittedDate": "2019-11-29T20:24:56.487Z",
@@ -108544,7 +108544,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -109435,7 +109435,7 @@
       "dateOfBirth": "1965-04-22T18:16:29.966Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-23T03:13:17.928Z",
     "submittedDate": "2019-11-24T19:11:35.438Z",
@@ -109450,7 +109450,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -110472,7 +110472,7 @@
       "dateOfBirth": "1974-09-03T19:40:16.116Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-19T01:55:40.078Z",
     "submittedDate": "2019-11-20T21:42:29.619Z",
@@ -110491,7 +110491,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -110744,7 +110744,7 @@
       "dateOfBirth": "1994-10-09T11:24:19.129Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-03T07:50:03.507Z",
     "submittedDate": "2019-11-20T09:32:57.392Z",
@@ -110759,7 +110759,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -111799,7 +111799,7 @@
       "dateOfBirth": "1966-10-16T13:26:43.404Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-09T11:31:01.516Z",
     "submittedDate": "2019-11-16T16:32:39.739Z",
@@ -111817,7 +111817,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -111947,7 +111947,7 @@
       "dateOfBirth": "1960-11-02T17:20:37.518Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-27T01:17:57.922Z",
     "submittedDate": "2019-11-16T06:41:06.968Z",
@@ -111966,7 +111966,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -112092,7 +112092,7 @@
       "dateOfBirth": "1997-06-19T19:42:05.861Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-14T16:14:28.329Z",
     "submittedDate": "2019-11-14T10:30:37.692Z",
@@ -112111,7 +112111,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -112992,7 +112992,7 @@
       "dateOfBirth": "1961-05-12T10:35:06.298Z"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Withdrawn",
     "updatedDate": "2020-07-21T15:37:10.416Z",
     "submittedDate": "2019-11-10T05:52:29.936Z",
@@ -113011,7 +113011,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -113302,7 +113302,7 @@
       "dateOfBirth": "1963-03-04T00:13:43.003Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-25T05:29:06.300Z",
     "submittedDate": "2019-11-07T19:26:29.908Z",
@@ -113320,7 +113320,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -115915,7 +115915,7 @@
       "dateOfBirth": "1979-09-20T18:04:28.048Z"
     },
     "provider": "Edge Hill University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-20T10:08:31.639Z",
     "submittedDate": "2019-10-30T17:47:57.865Z",
@@ -115934,7 +115934,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -116074,7 +116074,7 @@
       "dateOfBirth": "1984-01-26T15:54:14.548Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Deferred",
     "previousStatus": "TRN received",
     "updatedDate": "2020-06-26T06:35:12.818Z",
@@ -116090,7 +116090,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -116839,7 +116839,7 @@
       "dateOfBirth": "1988-02-10T15:51:49.082Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-16T07:29:17.155Z",
     "submittedDate": "2019-10-22T07:15:38.713Z",
@@ -116857,7 +116857,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -117103,7 +117103,7 @@
       "dateOfBirth": "1960-03-27T02:53:18.090Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-18T11:28:08.154Z",
     "submittedDate": "2019-10-21T02:01:45.306Z",
@@ -117122,7 +117122,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -117391,7 +117391,7 @@
       "dateOfBirth": "1997-11-25T07:38:03.793Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-27T19:10:18.768Z",
     "submittedDate": "2019-10-20T09:00:16.286Z",
@@ -117406,7 +117406,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -117623,7 +117623,7 @@
       "dateOfBirth": "1978-07-11T06:07:54.308Z"
     },
     "provider": "Middlesex University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-03T21:44:12.764Z",
     "submittedDate": "2019-10-20T00:38:46.159Z",
@@ -117638,7 +117638,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -117744,7 +117744,7 @@
       "dateOfBirth": "1960-11-06T12:11:24.900Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-07T14:16:40.286Z",
     "submittedDate": "2019-10-18T21:33:34.186Z",
@@ -117759,7 +117759,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -119165,7 +119165,7 @@
       "dateOfBirth": "1990-05-24T04:02:04.442Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-08T14:06:22.517Z",
     "submittedDate": "2019-10-12T10:51:38.547Z",
@@ -119180,7 +119180,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -119800,7 +119800,7 @@
       "dateOfBirth": "1973-11-01T17:31:40.832Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-11T12:48:22.167Z",
     "submittedDate": "2019-10-11T02:54:55.434Z",
@@ -119815,7 +119815,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -120266,7 +120266,7 @@
       "dateOfBirth": "1996-03-30T08:22:52.221Z"
     },
     "provider": "Surrey County Council",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-05T16:59:00.250Z",
     "submittedDate": "2019-10-10T19:17:46.670Z",
@@ -120281,7 +120281,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -120392,7 +120392,7 @@
       "dateOfBirth": "1987-10-05T19:27:59.816Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-13T03:11:29.063Z",
     "submittedDate": "2019-10-10T06:18:59.372Z",
@@ -120407,7 +120407,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -120515,7 +120515,7 @@
       "dateOfBirth": "1970-08-13T17:42:05.378Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Withdrawn",
     "updatedDate": "2020-09-03T15:47:40.199Z",
     "submittedDate": "2019-10-10T05:41:26.909Z",
@@ -120530,7 +120530,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -120991,7 +120991,7 @@
       "dateOfBirth": "1962-04-18T09:18:41.991Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "Deferred",
     "previousStatus": "TRN received",
     "updatedDate": "2020-08-06T12:33:08.414Z",
@@ -121007,7 +121007,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -121518,7 +121518,7 @@
       "dateOfBirth": "1986-06-14T06:07:02.883Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-04T05:29:51.965Z",
     "submittedDate": "2019-10-03T22:07:06.694Z",
@@ -121533,7 +121533,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -121763,7 +121763,7 @@
       "dateOfBirth": "1997-07-30T20:28:42.325Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-01T01:59:15.095Z",
     "submittedDate": "2019-10-03T02:42:24.238Z",
@@ -121782,7 +121782,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -122631,7 +122631,7 @@
       "dateOfBirth": "1969-01-18T09:04:40.447Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-07T03:56:01.214Z",
     "submittedDate": "2019-10-01T04:01:16.612Z",
@@ -122650,7 +122650,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -124369,7 +124369,7 @@
       "dateOfBirth": "1976-01-03T07:26:24.580Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-24T06:09:17.805Z",
     "submittedDate": "2019-09-23T23:18:28.476Z",
@@ -124387,7 +124387,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -124872,7 +124872,7 @@
       "dateOfBirth": "1975-11-23T05:40:01.030Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-06T16:36:22.975Z",
     "submittedDate": "2019-09-21T13:35:13.402Z",
@@ -124887,7 +124887,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -127560,7 +127560,7 @@
       "dateOfBirth": "1963-11-27T07:52:29.003Z"
     },
     "provider": "Titan Partnership Ltd",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-13T14:25:08.914Z",
     "submittedDate": "2019-09-09T02:27:15.098Z",
@@ -127578,7 +127578,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -128412,7 +128412,7 @@
       "dateOfBirth": "1995-08-31T02:07:16.275Z"
     },
     "provider": "Edge Hill University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-15T19:11:56.442Z",
     "submittedDate": "2019-09-05T18:28:58.109Z",
@@ -128427,7 +128427,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -128710,7 +128710,7 @@
       "dateOfBirth": "1971-11-14T19:26:09.251Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-16T13:19:53.156Z",
     "submittedDate": "2019-09-05T07:01:06.673Z",
@@ -128728,7 +128728,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -129107,7 +129107,7 @@
       "dateOfBirth": "1970-07-23T18:24:50.648Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-14T21:53:15.417Z",
     "submittedDate": "2019-09-02T01:59:40.048Z",
@@ -129126,7 +129126,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -129543,7 +129543,7 @@
       "dateOfBirth": "1992-02-28T05:59:38.138Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-25T23:59:13.896Z",
     "submittedDate": "2019-09-01T14:41:11.546Z",
@@ -129562,7 +129562,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -130096,7 +130096,7 @@
       "dateOfBirth": "1967-08-28T05:39:53.039Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-01T14:57:08.508Z",
     "submittedDate": "2019-08-29T20:04:00.677Z",
@@ -130115,7 +130115,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -130664,7 +130664,7 @@
       "dateOfBirth": "1980-03-16T02:30:16.567Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-04T01:47:27.847Z",
     "submittedDate": "2019-08-27T13:46:07.981Z",
@@ -130683,7 +130683,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -130813,7 +130813,7 @@
       "dateOfBirth": "1980-03-11T00:27:35.897Z"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-22T00:26:55.940Z",
     "submittedDate": "2019-08-27T07:07:33.246Z",
@@ -130828,7 +130828,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -131641,7 +131641,7 @@
       "dateOfBirth": "1967-11-26T10:15:07.721Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-04T21:21:00.506Z",
     "submittedDate": "2019-08-23T15:36:22.649Z",
@@ -131660,7 +131660,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -132695,7 +132695,7 @@
       "dateOfBirth": "1980-12-22T14:31:25.375Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-15T15:09:49.219Z",
     "submittedDate": "2019-08-21T11:47:25.953Z",
@@ -132714,7 +132714,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -133083,7 +133083,7 @@
       "dateOfBirth": "1993-05-28T17:12:15.771Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-29T09:32:57.613Z",
     "submittedDate": "2019-08-19T21:29:05.957Z",
@@ -133101,7 +133101,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -133224,7 +133224,7 @@
       "dateOfBirth": "1981-08-06T17:05:00.357Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Withdrawn",
     "updatedDate": "2020-07-02T05:21:27.666Z",
     "submittedDate": "2019-08-19T09:18:19.570Z",
@@ -133243,7 +133243,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -133668,7 +133668,7 @@
       "dateOfBirth": "1995-10-16T08:29:45.833Z"
     },
     "provider": "Isle of Wight SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-02T20:30:00.088Z",
     "submittedDate": "2019-08-17T11:22:16.342Z",
@@ -133683,7 +133683,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -133791,7 +133791,7 @@
       "dateOfBirth": "1972-06-23T07:10:40.080Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "Withdrawn",
     "updatedDate": "2020-08-12T06:07:36.220Z",
     "submittedDate": "2019-08-17T07:29:09.004Z",
@@ -133810,7 +133810,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -133933,7 +133933,7 @@
       "dateOfBirth": "1990-07-25T08:32:17.496Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-03T23:12:16.807Z",
     "submittedDate": "2019-08-16T13:24:00.353Z",
@@ -133948,7 +133948,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -135874,7 +135874,7 @@
       "dateOfBirth": "1960-01-04T08:18:45.789Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-07-30T09:14:12.690Z",
     "submittedDate": "2019-08-06T06:35:30.235Z",
@@ -135893,7 +135893,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -136018,7 +136018,7 @@
       "dateOfBirth": "1991-05-08T08:15:10.724Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-09T12:07:48.492Z",
     "submittedDate": "2019-08-06T06:05:18.434Z",
@@ -136033,7 +136033,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -136142,7 +136142,7 @@
       "dateOfBirth": "1961-02-27T12:00:21.753Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-12T14:49:32.671Z",
     "submittedDate": "2019-08-06T05:19:52.222Z",
@@ -136157,7 +136157,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -136263,7 +136263,7 @@
       "dateOfBirth": "1967-04-17T05:03:10.278Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-05T19:39:35.293Z",
     "submittedDate": "2019-08-05T18:59:40.831Z",
@@ -136278,7 +136278,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -136389,7 +136389,7 @@
       "dateOfBirth": "1982-12-03T02:26:45.285Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-22T00:55:17.648Z",
     "submittedDate": "2019-08-05T08:05:08.066Z",
@@ -136404,7 +136404,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -136510,7 +136510,7 @@
       "dateOfBirth": "1986-01-20T20:55:08.688Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-17T12:49:59.337Z",
     "submittedDate": "2019-08-04T10:05:05.837Z",
@@ -136528,7 +136528,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS part time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Part time",
       "subjects": [
@@ -136661,7 +136661,7 @@
       "dateOfBirth": "1994-07-27T23:18:59.362Z"
     },
     "provider": "The Learning Institute South West",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-14T07:16:28.061Z",
     "submittedDate": "2019-08-03T16:29:37.622Z",
@@ -136676,7 +136676,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -137446,7 +137446,7 @@
       "dateOfBirth": "1964-06-24T03:20:58.880Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-09-14T19:20:59.006Z",
     "submittedDate": "2019-07-28T22:23:22.283Z",
@@ -137461,7 +137461,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -137691,7 +137691,7 @@
       "dateOfBirth": "1970-06-14T22:06:47.425Z"
     },
     "provider": "South Coast SCITT",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-16T04:26:06.885Z",
     "submittedDate": "2019-07-27T18:40:09.045Z",
@@ -137706,7 +137706,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -138056,7 +138056,7 @@
       "dateOfBirth": "1992-12-06T10:00:57.236Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-19T21:43:54.214Z",
     "submittedDate": "2019-07-24T02:45:32.788Z",
@@ -138074,7 +138074,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -138460,7 +138460,7 @@
       "dateOfBirth": "1965-10-21T04:46:43.634Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-21T06:27:36.969Z",
     "submittedDate": "2019-07-21T20:48:51.895Z",
@@ -138479,7 +138479,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -138856,7 +138856,7 @@
       "dateOfBirth": "1987-06-07T00:39:40.945Z"
     },
     "provider": "Bournemouth Poole",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-22T18:44:09.856Z",
     "submittedDate": "2019-07-19T18:19:17.210Z",
@@ -138874,7 +138874,7 @@
         "QTS"
       ],
       "qualificationsSummary": "QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -139232,7 +139232,7 @@
       "dateOfBirth": "1995-06-05T11:58:47.600Z"
     },
     "provider": "Surrey County Council",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-10T13:02:13.654Z",
     "submittedDate": "2019-07-18T10:05:39.510Z",
@@ -139247,7 +139247,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -139654,7 +139654,7 @@
       "dateOfBirth": "1965-02-05T02:04:35.258Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-06T04:02:49.220Z",
     "submittedDate": "2019-07-16T20:26:25.515Z",
@@ -139673,7 +139673,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -139928,7 +139928,7 @@
       "dateOfBirth": "1972-02-26T04:39:46.042Z"
     },
     "provider": "Prince Henry’s High School & South Worcestershire SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-08T14:30:27.352Z",
     "submittedDate": "2019-07-14T19:13:37.135Z",
@@ -139947,7 +139947,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -140194,7 +140194,7 @@
       "dateOfBirth": "1972-02-23T15:58:52.606Z"
     },
     "provider": "South Coast SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-07T19:33:18.158Z",
     "submittedDate": "2019-07-11T23:10:18.846Z",
@@ -140213,7 +140213,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -140500,7 +140500,7 @@
       "dateOfBirth": "1982-06-28T14:36:11.090Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-05T02:09:47.117Z",
     "submittedDate": "2019-07-07T21:53:42.892Z",
@@ -140515,7 +140515,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -141935,7 +141935,7 @@
       "dateOfBirth": "1979-09-05T20:30:06.769Z"
     },
     "provider": "Surrey County Council",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-13T19:53:12.648Z",
     "submittedDate": "2019-07-01T03:05:28.822Z",
@@ -141950,7 +141950,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -142305,7 +142305,7 @@
       "dateOfBirth": "1979-06-23T14:34:59.164Z"
     },
     "provider": "2Schools Consortium",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-09-05T10:08:51.555Z",
     "submittedDate": "2019-06-28T02:53:08.764Z",
@@ -142324,7 +142324,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -143069,7 +143069,7 @@
       "dateOfBirth": "1970-02-15T08:30:23.569Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-10T04:27:29.173Z",
     "submittedDate": "2019-06-24T07:13:10.187Z",
@@ -143084,7 +143084,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -143885,7 +143885,7 @@
       "dateOfBirth": "1987-12-15T23:56:32.823Z"
     },
     "provider": "Coventry University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-22T00:53:02.608Z",
     "submittedDate": "2019-06-21T02:30:42.197Z",
@@ -143904,7 +143904,7 @@
         "PGDE"
       ],
       "qualificationsSummary": "PGDE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -144833,7 +144833,7 @@
       "dateOfBirth": "1977-07-08T15:57:39.133Z"
     },
     "provider": "Surrey County Council",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-29T21:02:06.519Z",
     "submittedDate": "2019-06-18T16:26:44.995Z",
@@ -144852,7 +144852,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -145092,7 +145092,7 @@
       "dateOfBirth": "1986-07-01T09:45:17.637Z"
     },
     "provider": "Canterbury Christ Church University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-16T11:32:05.177Z",
     "submittedDate": "2019-06-17T13:36:42.106Z",
@@ -145111,7 +145111,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -145355,7 +145355,7 @@
       "dateOfBirth": "1985-09-17T20:33:22.061Z"
     },
     "provider": "Leeds SCITT",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-08-24T10:55:02.478Z",
     "submittedDate": "2019-06-16T22:45:56.188Z",
@@ -145374,7 +145374,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-08-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -145504,7 +145504,7 @@
       "dateOfBirth": "1987-01-11T20:41:56.511Z"
     },
     "provider": "University of Northumbria at Newcastle",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-07-19T17:59:52.937Z",
     "submittedDate": "2019-06-16T18:14:17.239Z",
@@ -145519,7 +145519,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-07-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -145885,7 +145885,7 @@
       "dateOfBirth": "1990-12-20T04:10:15.008Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-29T20:12:57.599Z",
     "submittedDate": "2019-06-14T19:54:15.329Z",
@@ -145904,7 +145904,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-07-31T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [
@@ -146692,7 +146692,7 @@
       "dateOfBirth": "1969-03-18T05:53:37.082Z"
     },
     "provider": "Leeds Trinity University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-06-26T09:58:13.365Z",
     "submittedDate": "2019-06-10T18:10:36.528Z",
@@ -146707,7 +146707,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-09-30T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -147570,7 +147570,7 @@
       "dateOfBirth": "1993-01-18T11:30:48.575Z"
     },
     "provider": "Coventry University",
-    "route": "Early years (graduate placement)",
+    "route": "Early years (salaried)",
     "status": "EYTS awarded",
     "updatedDate": "2020-08-06T06:38:17.372Z",
     "submittedDate": "2019-06-07T02:29:49.433Z",
@@ -147585,7 +147585,7 @@
         "EYTS"
       ],
       "qualificationsSummary": "EYTS full time",
-      "route": "Early years (graduate placement)",
+      "route": "Early years (salaried)",
       "startDate": "2019-08-31T23:00:00.000Z",
       "subjects": [
         "Early years teaching"
@@ -147815,7 +147815,7 @@
       "dateOfBirth": "1970-01-22T16:49:04.591Z"
     },
     "provider": "Dorset Teacher Training Partnership",
-    "route": "School direct (tuition fee)",
+    "route": "School direct (fee funded)",
     "status": "QTS awarded",
     "updatedDate": "2020-06-13T23:11:19.091Z",
     "submittedDate": "2019-06-05T18:36:22.808Z",
@@ -147834,7 +147834,7 @@
         "PGCE"
       ],
       "qualificationsSummary": "PGCE with QTS full time",
-      "route": "School direct (tuition fee)",
+      "route": "School direct (fee funded)",
       "startDate": "2021-09-30T23:00:00.000Z",
       "studyMode": "Full time",
       "subjects": [

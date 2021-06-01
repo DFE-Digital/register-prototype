@@ -12,7 +12,7 @@ let modernLanguages = ittSubjects.modernLanguagesSubjects
 let applyRoutes = [
   'Provider-led (postgrad)',
   'School direct (salaried)',
-  'School direct (tuition fee)',
+  'School direct (fee funded)',
 ]
 
 // Not all these routes will be enabled
@@ -21,7 +21,7 @@ let publishRoutes = [
   'Provider-led (postgrad)',
   'Provider-led (undergrad)',
   'School direct (salaried)',
-  'School direct (tuition fee)',
+  'School direct (fee funded)',
   'Teaching apprenticeship',
 ]
 
@@ -30,7 +30,7 @@ let nonPublishRoutes = [
   'Provider-led (undergrad)',
   'Assessment only',
   'Teach First (postgrad)',
-  'Early years (graduate placement)',
+  'Early years (salaried)',
   'Early years (graduate entry)',
   'Early years (assessment only)',
   'Early years (undergrad)',
@@ -157,7 +157,7 @@ let baseRouteData = {
     ],
     bursariesAvailable: false
   },
-  "School direct (tuition fee)": {
+  "School direct (fee funded)": {
     defaultEnabled: true,
     hasAllocatedPlaces: true,
     sections: [
@@ -223,7 +223,7 @@ let baseRouteData = {
       }
     ]
   },
-  "Early years (graduate placement)": {
+  "Early years (salaried)": {
     defaultEnabled: true,
     sections: [
       'trainingDetails',
