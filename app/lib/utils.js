@@ -298,7 +298,7 @@ exports.dynamicLowercase = input => {
   "Japanese",
   "Latin",
   "Mandarin",
-  "Portugese",
+  "Portuguese",
   "Russian",
   "Spanish",
   "Welsh",
