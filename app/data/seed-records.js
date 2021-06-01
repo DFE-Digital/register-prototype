@@ -287,7 +287,7 @@ seedRecords.push({
   trainingDetails: {
     traineeId: "2020/21-092"
   },
-  route: 'Early years (graduate entry)',
+  route: 'Early years (postgrad)',
   courseDetails: {
     isPublishCourse: false
   },

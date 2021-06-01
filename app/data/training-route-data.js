@@ -31,7 +31,7 @@ let nonPublishRoutes = [
   'Assessment only',
   'Teach First (postgrad)',
   'Early years (salaried)',
-  'Early years (graduate entry)',
+  'Early years (postgrad)',
   'Early years (assessment only)',
   'Early years (undergrad)',
   'Opt-in (undergrad)'
@@ -244,7 +244,7 @@ let baseRouteData = {
     qualificationsSummary: "EYTS full time",
     bursariesAvailable: false
   },
-  "Early years (graduate entry)": {
+  "Early years (postgrad)": {
     defaultEnabled: true,
     sections: [
       'trainingDetails',
