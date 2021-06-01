@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% set navActive = "home" %}
+{% set applyDraftCount = data.filteredRecords | where('status', 'Apply draft') | length %}
+{% set recordsToBeReviewedCount = 11 %}
+{% set combinedAlertCount = applyDraftCount + recordsToBeReviewedCount %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <h1 class="govuk-heading-l">Test page</h1>
+
+
+        {{ "English studies English Greek Studies" | dynamicLowercase}}
+        
+      </div>
+    </div>
+    
+
+
+
+{% endblock %}

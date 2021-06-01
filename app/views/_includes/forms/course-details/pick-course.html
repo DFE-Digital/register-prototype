@@ -51,7 +51,8 @@ defer to an id if one exists. #}
   {# Advance to route selection page #}
   {% set courseItems = courseItems | push({
     value: "Other",
-    text: "Another course not listed",
+    _text: "Another course not listed",
+    text: "Enter course details",
     checked: checked(selectedCourse, "Other")
   }) %}
 

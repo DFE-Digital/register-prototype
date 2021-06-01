@@ -125,7 +125,7 @@
     {
     text: "Funding",
     href: "funding" | reviewIfInProgress(record.funding) if record | canStartFundingSection,
-    hint: "Complete degree details first" if not record | canStartFundingSection,
+    hint: "Complete course details first" if not record | canStartFundingSection,
     id: "funding",
     tag: {
       classes: record.funding | getStatusText | getStatusClass,

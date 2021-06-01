@@ -74,7 +74,7 @@
     {% set records = data.filteredRecords | filterByYear(data.currentYear)  %}
 
     {% macro statusCard(records, status) %}
-      <a href="/records?filterStatus={{status}}" class="status-card status-card--{{status | lower | kebabCase }}">
+      <a href="/records?filterStatus={{status}}" class="status-card status-card--{{ status | lower | kebabCase }}">
         {# Special handling for drafts which have two string names #}
         {% if status == "Draft" %}
           {% set searchStatus = ["Draft", "Apply draft"] %}
@@ -102,7 +102,7 @@
       
       {% if eytsCount == 0 %}
         <div class="govuk-grid-row govuk-!-margin-bottom-6 home-statuses__flex-row">
-          {% set statuses = ['QTS recommended','QTS awarded', 'Deferred', 'Withdrawn'] %}
+          {% set statuses = ['QTS recommended', 'QTS awarded', 'Deferred', 'Withdrawn'] %}
           {% for status in statuses %}
             <div class="govuk-grid-column-one-quarter">
               {{ statusCard(records, status) }}

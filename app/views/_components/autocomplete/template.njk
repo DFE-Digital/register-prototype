@@ -14,17 +14,18 @@
     text: "",
     selected: defaultSelected
   } %}
-  {% else %}
-    {% set firstItem = {
-  value: "",
-  text: "Please select",
-  disabled: true,
-  selected: defaultSelected
-} %}
+{% else %}
+  {% set firstItem = {
+    value: "",
+    text: "Please select",
+    disabled: true,
+    selected: defaultSelected
+  } %}
 {% endif %}
 
 {% set selectItems = [firstItem] %}
 
+{# Support items in a few different formats #}
 {% for item in params.items %}
   {% if item | isArray %}
     {% set selectItems = selectItems | push({
