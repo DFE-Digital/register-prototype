@@ -1,10 +1,9 @@
 {% extends "_templates/_new-record.html" %}
 
-{% set pageHeading = "Register a trainee" %}
 {% if data.record.personalDetails.shortName %}
-  {% set pageHeading %}
-    Register {{data.record.personalDetails.shortName | safe }}
-  {% endset %}
+  {% set pageHeading = data.record.personalDetails.shortName | safe %}
+{% else %}
+  {% set pageHeading = "Add a trainee" %}
 {% endif %}
 
 {% set hideReturnLink = true %}
@@ -24,7 +23,7 @@
 {% endset %}
 
 {# <span class="govuk-caption-l">{{'Apply draft' + draftRecordName}}</span> #}
-<span class="govuk-caption-l">Recruited through Apply</span>
+<span class="govuk-caption-l">Draft record</span>
 <h1 class="govuk-heading-l govuk-!-margin-bottom-8">{{pageHeading}}</h1>
 
 {% set insetTextHtml %}
