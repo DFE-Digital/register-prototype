@@ -26,7 +26,11 @@
     },
     {
       text: "No, the trainee is self funded, not eligible or has a scholarship",
-      value: "true"
+      text: "No, do not apply for bursary",
+      value: "true",
+      hint: {
+        text: "For example, the trainee is not eligible or has applied for scholarship."
+      }
     }
   ]
 } | decorateAttributes(record, "record.funding.bursary.selfFunded")) }}
