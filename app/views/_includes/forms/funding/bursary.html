@@ -2,12 +2,10 @@
 {% set bursary = record | getBursary %}
 
 <p class="govuk-body">
-  The course you have selected has a bursary available of {{record | getBursaryValue | currency }} for {{ bursary.subject | dynamicLowercase }}.
+  The course you have selected has a bursary available of {{record | getBursaryValue | currency }} for {{ bursary.subject | dynamicLowercase }}.You need to check if the trainee is eligible for this bursary.
 </p>
 
-<p class="govuk-body">You need to check if the trainee is eligible for this bursary.</p>
-
-{# <p class="govuk-body"><a href="#" class="govuk-link">Initial teacher training bursaries funding manual: 2021 to 2022 academic year</a></p> #}
+<p class="govuk-body"><a href="https://www.gov.uk/government/publications/initial-teacher-training-itt-bursary-funding-manual/initial-teacher-training-bursaries-funding-manual-2021-to-2022-academic-year#training-bursary-award-and-eligibility" class="govuk-link">DfE bursary guidance for academic year 2021 to 2022</a>.</p>
 
 {# <p class="govuk-body">If you want to apply for a bursary for this trainee you must ensure they meet the eligibility requirements.</p> #}
 
@@ -28,7 +26,7 @@
       value: "false"
     },
     {
-      text: "No, the trainee is self funded or not eligible",
+      text: "No, the trainee is self funded, not eligible or has a scholarship",
       value: "true"
     }
   ]
@@ -38,9 +36,3 @@
 {{ govukButton({
   text: "Continue"
 }) }}
-
-
-
-
-
-
