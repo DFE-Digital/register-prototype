@@ -24,7 +24,7 @@
 
 {% set courseFundingHtml %}
   {% if bursary.selfFunded == 'true' %}
-    Self funded (non bursary)
+    Not bursary funded
   {% elseif bursary.selfFunded == 'false' %}
     Bursary applied for
     <p class="govuk-hint">{{record | getBursaryValue | currency }} estimated bursary</p>
@@ -69,8 +69,8 @@
    {% else %}
      {% set courseFundingRow = false %}
   {% endif %}
-  
-  
+
+
 {% endif %}
 
 
@@ -106,10 +106,10 @@
           visuallyHiddenText: "address"
         }
       ]
-    } if canAmend 
+    } if canAmend
   }
   %}
-  
+
 {% endif %} #}
 
 
