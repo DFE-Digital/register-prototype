@@ -8,7 +8,7 @@ $invalid-colour: $govuk-brand-colour;
   .app-inset-text--invalid-answer, .app-summary-list__value-inset {
     border-color: $govuk-error-colour;  
   }
-  .app-summary-list__message--invalid, .dapp-summary-list__link--invalid {
+  .app-summary-list__message--invalid {
     color: $govuk-error-colour;
   }
 
