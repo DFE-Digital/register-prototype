@@ -8,9 +8,15 @@ $invalid-colour: $govuk-brand-colour;
   .app-inset-text--invalid-answer, .app-summary-list__value-inset {
     border-color: $govuk-error-colour;  
   }
-  .app-summary-list__message--invalid {
+  .app-summary-list__message--invalid, .dapp-summary-list__link--invalid {
     color: $govuk-error-colour;
   }
+
+  // If we want red links
+  // .app-summary-list__link--invalid {
+  //   color: $govuk-error-colour;
+  // }
+
 }
 
 .app-inset-text--narrow {

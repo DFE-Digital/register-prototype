@@ -1098,6 +1098,10 @@ exports.markSummaryRow = function(row, type) {
     message = `${key} is missing`
     delete row.value?.html // if it’s missing, there shouldn’t be a value
     linkText = `Enter ${key.toLowerCase()}`
+    if (this?.ctx?.query?.errors){
+      // Using .apply() to pass on value of 'this'
+      exports.addToErrorArray.apply(this, [{name: message, id}])
+    }
   }
 
   row = styleSummaryRowAsInset(row, {
