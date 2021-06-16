@@ -1090,15 +1090,15 @@ exports.markSummaryRow = function(row, type) {
     message = `${key} is not recognised`
     linkText = "Review the trainee’s answer"
     linkTextAppendHidden = `for ${key.toLowerCase()}`
+
+    // Using .apply() to pass on value of 'this'
+    exports.addToErrorArray.apply(this, [{name: message, id}])
   }
   else if (type == 'missing'){
     message = `${key} is missing`
     delete row.value?.html // if it’s missing, there shouldn’t be a value
     linkText = `Enter ${key.toLowerCase()}`
   }
-
-  // Using .apply() to pass on value of 'this'
-  exports.addToErrorArray.apply(this, [{name: message, id}])
 
   row = styleSummaryRowAsInset(row, {
     id,
@@ -1139,6 +1139,8 @@ exports.markInput = function(data, type){
       text: message
     }
     data.value = valueCleaned
+    // Using .apply() to pass on value of 'this'
+    exports.addToErrorArray.apply(this, [{name: message, id}])
   }
   else if (type == 'invalid'){
     message = `${key} is not recognised`
@@ -1147,6 +1149,8 @@ exports.markInput = function(data, type){
     }
     data.classes = (data.classes) ? `${data.classes} app-invalid-answer` : 'app-invalid-answer'
     delete data.value
+    // Using .apply() to pass on value of 'this'
+    exports.addToErrorArray.apply(this, [{name: message, id}])
   }
   else if (type == 'missing'){
     message = `${key} is missing`
@@ -1159,9 +1163,6 @@ exports.markInput = function(data, type){
   }
 
   data.id = id
-
-  // Using .apply() to pass on value of 'this'
-  exports.addToErrorArray.apply(this, [{name: message, id}])
 
   return data
 }
@@ -1223,7 +1224,7 @@ exports.hasInvalidAnswers = function(record, data=false) {
   // A page can set this temp variable to 'tell' this filter that errors
   // apply - otherwise fall back to counting errors
   let hasErrors
-  if (data?.temp?.hasErrors == "true") hasErrors = true
+  if (data?.temp?.pageHasErrors == "true") hasErrors = true
   return hasErrors || exports.countInvalidAnswers.apply(this, [record]) > 0
 }
 
