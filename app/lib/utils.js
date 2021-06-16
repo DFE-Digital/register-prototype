@@ -522,20 +522,10 @@ exports.hasOutstandingActions = function(record, data = false) {
   return hasOutstandingActions
 }
 
-// Invalid answers have `**invalid**` prepended to them
-// Count how many times this string exists in the record
-// As users edit these answers, this string should get removed
-// so the count should go down
-exports.countInvalidAnswers = record => {
-  let jsonRecord = JSON.stringify(record)
-  let invalidCount = (jsonRecord.match(/\*\*invalid\*\*/g) || []).length
-  return invalidCount
-}
 
-// Whether any data in the record is considered invalid
-exports.hasInvalidAnswers = record => {
-  return exports.countInvalidAnswers(record) > 0
-}
+// -------------------------------------------------------------------
+// Get records
+// -------------------------------------------------------------------
 
 // Look up a record using it’s UUID
 exports.getRecordById = (records, id) => {
@@ -924,7 +914,48 @@ exports.recommendForAward = (record, params) => {
   return true
 }
 
+// -------------------------------------------------------------------
+// Invalid answers / errors
+// -------------------------------------------------------------------
 
+// Push an item to the errorArray
+// Needs the context so if calling from another filter needs to be called with `.apply(this, [args])`
+// Usage: exports.addToErrorArray.apply(this, [{name: message, id}])
+exports.addToErrorArray = function(item){
+  if (!this?.ctx?.data){
+    console.log("Error with addToErrorArray: ctx not passed in")
+    return false
+  } 
+  let errorArray = this.ctx?.data?.temp?.errorArray || []
+  errorArray.push(item)
+  _.set(this.ctx, 'data.temp.errorArray', errorArray)
+}
+
+// Remove placeholder tags that are used to trigger things
+exports.stripPlaceholders = (value, items=false) => {
+  if (!value) return value
+
+  let itemsToStrip = items || [
+    '**invalid**',
+    '**missing**'
+  ]
+
+  const stripStrings = string => {
+    if (!_.isString(string)) return string
+    else itemsToStrip.forEach(item => {
+      string = string.replace(item, "")
+    })
+    return string
+  }
+
+  if (Array.isArray(value)){
+    return value.map(arrayItem => stripStrings(arrayItem))
+  }
+  else if (_.isString(value)){
+    return stripStrings(value)
+  }
+  else return value
+}
 
 /*
 Highlight invalid summary list rows
@@ -932,7 +963,7 @@ Highlight invalid summary list rows
 This is filter patches in the ability to highlight rows on a summary list which
 contain invalid answers. 
 
-We indicate invalid answers by prefacing them with the string **invalid**
+We indicate invalid answers by prefacing them with the string **invalid** or **missing**
 
 This filter loops through each row, looking for this string in value.html or value.text.
 If found, it adds some classes and messaging, and moves the action link within the value.
@@ -949,137 +980,252 @@ This is very hacky - but works. It avoids us needing to know much about the data
 or program errors per field. We just reivew the summary list to decide if something
 is wrong.
 */
-
-// Must be classic function as arrow functions don't provide the Nunjucks context
 exports.highlightInvalidRows = function(rows) {
   let ctx = Object.assign({}, this.ctx)
 
   // We need to add to any existing answers from previous times
   // this filter has run on this page
-  let invalidAnswers = ctx.data?.temp?.invalidAnswers || []
+  // let invalidAnswers = ctx.data?.temp?.invalidAnswers || []
   let featureEnabled = ctx.data?.settings?.highlightInvalidAnswers == "true"
 
   if (rows) {
+    // Loop through each row
     rows.map(row => {
 
       // Values are stored two possible places
       let value = row?.value?.html || row?.value?.text
+      
+      if (featureEnabled){
 
-      // We preface invalid answers with **invalid** but technically it sohuld work anywhere
-      // Probably might not work for dates / values that get transformed before display
-      if (value && value.includes('**invalid**') ){
-
-        // Strip **invalid** so it doesn’t display
-        let userValue = value.replace("**invalid**", "")
-
-        if (featureEnabled){
-
-          // Keys are stored two possible places
-          let key = row?.key?.html || row?.key?.text
-
-          // Generate an id so we can anchor to this row
-          let id = `summary-list--row-invalid-${invalidAnswers.length + 1}`
-
-          // GOVUK summary lists don’t support setting an id on rows
-          // so we wrap the key in a div with our own id
-          row.key.html = `<div id="${id}">${key}</div>`
-
-          // Store the row name so it can be used in a summary at 
-          // the top of the page
-          invalidAnswers.push({name: `${key} is not recognised`, id})
-          
-          // Error message that gets shown
-          let messageContent = `${key} is not recognised`
-          let messageHtml = `<p class="govuk-body app-summary-list__message--invalid govuk-!-margin-bottom-2">${messageContent}</p>`
-
-          // Grab the existing action link and craft a new link
-          let linkHtml = '' // default to no link
-          let actionItems = row?.actions?.items
-
-          // If there’s more than one link (unlikely), do nothing
-          if (actionItems && actionItems.length == 1){
-            let href = row?.actions?.items[0].href
-            linkHtml = `<br><a class="govuk-link govuk-link--no-visited-state app-summary-list__link--invalid" href="${href}">
-            Review the trainee’s answer<span class="govuk-visually-hidden"> for ${key.toLowerCase()}</span>
-            </a>`
-            delete row.actions.items
-          }
-        
-          // Add a class to the row so we can target it
-          row.classes = `${row.classes} app-summary-list__row--invalid`
-
-          // Wrap in a div for styling
-          let userValueHtml = `<div class="app-summary-list__user-value">${userValue}</div>`
-
-          // Entire thing is wrapped in a div so we can style a left border within the padding of the
-          // summary list value box
-          row.value.html = `<div class="app-summary-list__value-inset">${messageHtml}${userValueHtml}${linkHtml}</div>`
-
-          // Key will get saved to key.html, so we don’t need  key.text any more
-          delete row.key?.text
-
+        // We preface invalid answers with **invalid** but technically it sohuld work anywhere
+        // Probably might not work for dates / values that get transformed before display
+        if (value && value.includes('**invalid**')) {
+          // Using .apply() to pass on value of 'this'
+          row = exports.markSummaryRowInvalid.apply(this, [row])
         }
 
-        else row.value.html = userValue
-
-        // Source value might have been stored in text - delete just in case
-        delete row.value?.text
-
-
+        if (value && value.includes('**missing**')) {
+          // Using .apply() to pass on value of 'this'
+          row = exports.markSummaryRowMissing.apply(this, [row])
+        }
 
       }
+      // If feature not enabled, we still need to strip placeholders
+      else {
+        row.value.html = exports.stripPlaceholders(value)
+        delete row.value?.text // not needed any more
+      }
+
       return row
     })
   }
 
-  // Unique our invalid answers just in case
-  invalidAnswers = [...new Set(invalidAnswers)] 
-
-  // Save array back to context
-  // using lodash on the rare chance record doesn’t acutally exist yet
-  if (invalidAnswers.length){
-    _.set(this.ctx, 'data.temp.invalidAnswers', invalidAnswers)
-  }
   return rows
 }
 
-// Strip invalid strings from input
-exports.stripInvalidText = input => {
-  if (!input) return ""
-  else return input.replace("**invalid**", "")
+// Internal utility function to add markup to summary row to show visually inset styles
+const styleSummaryRowAsInset = (row, params) => {
+
+  // Keys are stored two possible places
+  let key = row?.key?.html || row?.key?.text
+
+  // GOVUK summary lists don’t support setting an id on rows
+  // so we wrap the key in a div with our own id
+  row.key.html = (params.id) ? `<div id="${params.id}">${key}</div>` : key
+  delete row.key?.text
+
+  // Message that gets shown in bold
+  let messageHtml = (params.message) ? `<p class="govuk-body app-summary-list__message--invalid govuk-!-margin-bottom-2">${params.message}</p>` : ''
+
+  // Grab the existing action link and craft a new link
+  let linkHtml = '' // default to no link
+  let actionItems = row?.actions?.items
+
+  // If there’s more than one link (unlikely), do nothing
+  if (actionItems && actionItems.length == 1){
+    let href = row?.actions?.items[0].href
+    let hidden = (params.linkTextAppendHidden) ? `<span class="govuk-visually-hidden"> ${params.linkTextAppendHidden}</span>` : ""
+    linkHtml = `<div>
+    <a class="govuk-link govuk-link--no-visited-state app-summary-list__link--invalid" href="${href}">
+    ${params.linkText}${hidden}
+    </a></div>`
+    delete row.actions.items
+  }
+
+  // Add a class to the row so we can target it
+  row.classes = `${row.classes} app-summary-list__row--invalid`
+
+  // Wrap in a div for styling
+  // Values are stored two possible places
+  let value = row?.value?.html || row?.value?.text
+  let userValueHtml = (value) ? `<div class="app-summary-list__user-value">${value}</div>` : ""
+
+  // Entire thing is wrapped in a div so we can style a left border within the padding of the
+  // summary list value box
+
+  row.value.html = `<div class="app-summary-list__value-inset">${messageHtml}${userValueHtml}${linkHtml}</div>`
+  delete row?.value?.text // just in case
+
+  return row
 }
 
-exports.captureInvalid = function(data){
-  let ctx = Object.assign({}, this.ctx)
-  let invalidAnswers = ctx.data?.temp?.invalidAnswers || []
+// Generate messages to be used in inset styling
+// Type can be `invalid` or `missing`
+exports.markSummaryRow = function(row, type) {
 
-  delete this.ctx.data?.temp?.invalidString // just in case
+  // Keys are stored two possible places
+  let key = row?.key?.html || row?.key?.text
 
-  if (data.value && data.value.includes("**invalid**")){
-    let cleanedValue = data.value.replace("**invalid**", "")
-    let key = data.label.html || data.label.text
-    // let linkText = `${key} - the trainee entered ‘${cleanedValue}’. You need to search for the closest match.`
-    let linkText = `${key} not recognised`
-    invalidAnswers.push({name: linkText, id: data.id})
-    // data.value = data.value.replace("**invalid**", "")
-    _.set(this.ctx, 'data.temp.invalidString', cleanedValue)
-    
-    // data.value = data.value.replace("**invalid**", "")
-    data.value = '' // wipe the value
-    data.classes = (data.classes) ? `${data.classes} app-invalid-answer` : 'app-invalid-answer'
+  // Values are stored two possible places
+  let value = row?.value?.html || row?.value?.text
+  delete row?.value?.text // we’ll use row.value.html instead
+  row.value.html = exports.stripPlaceholders(value) // strip any placeholder tags
+
+  // Generate an id so we can anchor to this row
+  let id = `summary-list--row-invalid--${faker.random.uuid()}`
+
+  let message, linkText, linkTextAppendHidden
+
+  if (type == 'invalid'){
+    message = `${key} is not recognised`
+    linkText = "Review the trainee’s answer"
+    linkTextAppendHidden = `for ${key.toLowerCase()}`
+  }
+  else if (type == 'missing'){
+    message = `${key} is missing`
+    delete row.value?.html // if it’s missing, there shouldn’t be a value
+    linkText = `Enter ${key.toLowerCase()}`
+  }
+
+  // Using .apply() to pass on value of 'this'
+  exports.addToErrorArray.apply(this, [{name: message, id}])
+
+  row = styleSummaryRowAsInset(row, {
+    id,
+    message,
+    linkText,
+    linkTextAppendHidden
+  })
+
+  return row
+}
+
+exports.markSummaryRowInvalid = function(row) {
+  // Using .apply() to pass on value of 'this'
+  return exports.markSummaryRow.apply(this, [row, 'invalid'])
+}
+
+exports.markSummaryRowMissing = function(row) {
+  // Using .apply() to pass on value of 'this'
+  return exports.markSummaryRow.apply(this, [row, 'missing'])
+}
+
+
+exports.markInput = function(data, type){
+  // Keys are stored two possible places
+  let key = data?.label?.html || data?.label?.text || data?.fieldset?.legend?.html || data?.fieldset?.legend?.text
+
+  // Values are stored two possible places
+  let valueCleaned = exports.stripPlaceholders(data.value) // strip any placeholder tags
+
+  // Generate an id so we can anchor to this row
+  let id = data?.id || `app-input-invalid--${faker.random.uuid()}`
+
+  let message
+
+  if (type == 'error'){
+    message = `Enter ${key.toLowerCase()}`
     data.errorMessage = {
-      text: `The trainee entered ‘${cleanedValue}’. You need to search for the closest match.`
+      text: message
     }
+    data.value = valueCleaned
+  }
+  else if (type == 'invalid'){
+    message = `${key} is not recognised`
+    data.errorMessage = {
+      text: `The trainee entered ‘${valueCleaned}’. You need to search for the closest match.`
+    }
+    data.classes = (data.classes) ? `${data.classes} app-invalid-answer` : 'app-invalid-answer'
+    delete data.value
+  }
+  else if (type == 'missing'){
+    message = `${key} is missing`
+    
+    data.errorMessage = {
+      text: message
+    }
+    data.classes = (data.classes) ? `${data.classes} app-invalid-answer` : 'app-invalid-answer'
+    delete data.value
+  }
 
-    // Save array back to context
-    // using lodash on the rare chance record doesn’t acutally exist yet
-    _.set(this.ctx, 'data.temp.invalidAnswers', invalidAnswers)
+  data.id = id
 
+  // Using .apply() to pass on value of 'this'
+  exports.addToErrorArray.apply(this, [{name: message, id}])
+
+  return data
+}
+
+exports.markInputError = function(data) {
+  return exports.markInput.apply(this, [data, 'error'])
+} 
+
+exports.markInputInvalid = function(data) {
+  return exports.markInput.apply(this, [data, 'invalid'])
+} 
+
+exports.markInputMissing = function(data) {
+  return exports.markInput.apply(this, [data, 'missing'])
+} 
+// Take in a form object to 
+
+exports.highlightInvalidInputs = function(data){
+
+  let value = data.value
+
+  if (value && value.includes('**invalid**')) {
+    // Using .apply() to pass on value of 'this'
+    data = exports.markInput.apply(this, [data, 'invalid'])
+  }
+
+  if (value && value.includes('**missing**')) {
+    // Using .apply() to pass on value of 'this'
+    data = exports.markInput.apply(this, [data, 'missing'])
   }
 
   return data
 }
 
+// Count invalid or missing answers on a record
+exports.countInvalidAnswers = function(record, data=false) {
+  // Prefer context if available
+  // This will pick up dynamically generated errors, but only
+  // works within a view
+  if (this.ctx){
+    // console.log('Counting invalid answers with CTX')
+    let errorArray = this.ctx?.data.temp?.errorArray || []
+    return errorArray.length
+  }
+  // The context is not available from routes - so use record data as fallback
+  // This count could be wrong if errors have been added dynamically - it can only
+  // pick up records that include the placeholder strings
+  else {
+    // console.log('Counting invalid answers with json')
+    let jsonRecord = JSON.stringify(record)
+    let invalidCount = (jsonRecord.match(/\*\*invalid\*\*/g) || []).length
+    let missingCount = (jsonRecord.match(/\*\*missing\*\*/g) || []).length
+    return (invalidCount + missingCount)
+  }
+}
+
+// Whether any data in the record is considered invalid
+exports.hasInvalidAnswers = function(record, data=false) {
+  // A page can set this temp variable to 'tell' this filter that errors
+  // apply - otherwise fall back to counting errors
+  let hasErrors
+  if (data?.temp?.hasErrors == "true") hasErrors = true
+  return hasErrors || exports.countInvalidAnswers.apply(this, [record]) > 0
+}
 
 // -------------------------------------------------------------------
 // Schools

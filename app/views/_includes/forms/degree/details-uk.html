@@ -1,4 +1,3 @@
-{% set hasInvalidAnswers = degreeTemp | hasInvalidAnswers and data.settings.highlightInvalidAnswers | falsify %}
 
 {% set bodyClasses = "app-has-invalid-answers" %}
 
@@ -16,78 +15,62 @@
 
 
   {# Degree institution #}
-  {% set institutionInputHtml %}
-    {{ appAutocomplete({
-      label: {
-        text: "Institution",
-        classes: "govuk-label--s"
-      },
-      id: 'degree-organisations',
-      name: "degreeTemp[org]",
-      items: data.degreeOrganisations,
-      classes: "app-!-autocomplete--max-width-two-thirds",
-      value: degreeTemp.org,
-      minLength: 2,
-      autoSelect: true,
-      showAllValues: false
-    } | captureInvalid
-  ) }}
-  {% endset %}
-
-  {{ appInvalidAnswer({html: institutionInputHtml})}}
+  {{ appAutocomplete({
+    label: {
+      text: "Institution",
+      classes: "govuk-label--s"
+    },
+    id: 'degree-organisations',
+    name: "degreeTemp[org]",
+    items: data.degreeOrganisations,
+    classes: "app-!-autocomplete--max-width-two-thirds",
+    value: degreeTemp.org,
+    minLength: 2,
+    autoSelect: true,
+    showAllValues: false
+  } | highlightInvalidInputs ) }}
 
   {# Degree subject #}
-  {% set degreeSubjectHtml %}
-    {{ appAutocomplete({
-      label: {
-        text: "Degree subject",
-        classes: "govuk-label--s"
-      },
-      hint: {
-        text: 'Search for the closest matching subject'
-      },
-      id: 'subject',
-      autoSelect: true,
-      showAllValues: false,
-      minLength: 2,
-      name: "degreeTemp[subject]",
-      items: data.subjects,
-      classes: "app-!-autocomplete--max-width-two-thirds",
-      value: degreeTemp.subject
-      } | captureInvalid
-    ) }}
-  {% endset %}
-
-  {{ appInvalidAnswer({html: degreeSubjectHtml})}}
+  {{ appAutocomplete({
+    label: {
+      text: "Degree subject",
+      classes: "govuk-label--s"
+    },
+    hint: {
+      text: 'Search for the closest matching subject'
+    },
+    id: 'subject',
+    autoSelect: true,
+    showAllValues: false,
+    minLength: 2,
+    name: "degreeTemp[subject]",
+    items: data.subjects,
+    classes: "app-!-autocomplete--max-width-two-thirds",
+    value: degreeTemp.subject
+  } | highlightInvalidInputs ) }}
 
   {# Degree types #}
   {% set degreeTypesAutocomplete = data.degreeTypes | getDegreeTypesForAutocomplete | sort(attribute='value') %}
 
-  {% set degreeTypeHtml %}
-    {{ appAutocomplete({
-      label: {
-        text: "Type of degree",
-        classes: "govuk-label--s"
-      },
-      hint: {
-        text: ukHintText
-      },
-      id: 'degreeTypeUK',
-      name: "degreeTemp[typeUK]",
-      items: data.degreeTypesSimple,
-      itemsAutocomplete: degreeTypesAutocomplete,
-      displayStyle: "bold",
-      minLength: 2,
-      autoSelect: true,
-      showAllValues: false,
-      classes: "app-!-autocomplete--max-width-two-thirds",
-      value: (degreeTemp.type or degreeTemp.typeUK) if not isInternational
-      } | captureInvalid
-    ) }}
-  {% endset %}
-
-  {{ appInvalidAnswer({ html: degreeTypeHtml })}}
-
+  {{ appAutocomplete({
+    label: {
+      text: "Type of degree",
+      classes: "govuk-label--s"
+    },
+    hint: {
+      text: ukHintText
+    },
+    id: 'degreeTypeUK',
+    name: "degreeTemp[typeUK]",
+    items: data.degreeTypesSimple,
+    itemsAutocomplete: degreeTypesAutocomplete,
+    displayStyle: "bold",
+    minLength: 2,
+    autoSelect: true,
+    showAllValues: false,
+    classes: "app-!-autocomplete--max-width-two-thirds",
+    value: (degreeTemp.type or degreeTemp.typeUK) if not isInternational
+  } | highlightInvalidInputs ) }}
 
   {# Degree grade #}
   {% set storedGrade = degreeTemp.grade %}
@@ -114,7 +97,7 @@
       classes: "app-!-max-width-one-half",
       name: "degreeTemp[otherGrade]",
       value: degreeTemp.grade if storedGradeOther
-    }| decorateAttributes(degreeTemp, "degreeTemp.grade"))}}
+    } | decorateAttributes(degreeTemp, "degreeTemp.grade"))}}
   {% endset %}
 
   {{ govukRadios({
@@ -160,12 +143,15 @@
       text: "Graduation year",
       classes: "govuk-label--s"
     },
-    id: "degree-start-date",
+    id: "graduation-year",
     name: "degreeTemp[endDate]",
     value: degreeTemp.endDate,
     classes: "app-!-max-width-one-quarter"
   }) }}
 {% endset %}
+
+{% set hasInvalidAnswers = degreeTemp | hasInvalidAnswers and data.settings.highlightInvalidAnswers | falsify %}
+
 
 {% if hasInvalidAnswers %}
   {% set invalidAnswerType = "degree" %}

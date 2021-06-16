@@ -5,11 +5,11 @@
 
   <p class="govuk-body">This {{ invalidAnswerType or "section" }} contains {{invalidAnswerCount}} {{ 'answer' | pluralise(invalidAnswerCount)}} that you need to amend. This is because they were entered in a free text format.</p> 
   
-  {% if data.temp.invalidAnswers %}
+  {% if data.temp.errorArray %}
     <ul class="govuk-list app-invalid-answer__list">
-      {% for invalidAnswer in data.temp.invalidAnswers %}
+      {% for error in data.temp.errorArray %}
         <li>
-          <a href="#{{invalidAnswer.id}}">{{invalidAnswer.name}}</a>
+          <a href="#{{error.id}}">{{error.name}}</a>
         </li>
       {% endfor %}
     </ul>

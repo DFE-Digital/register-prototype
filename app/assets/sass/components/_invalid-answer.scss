@@ -51,3 +51,8 @@ $invalid-colour: $govuk-brand-colour;
 .app-invalid-answer .govuk-form-group--error {
   border-color: $invalid-colour;
 }
+
+
+.app-summary-list__user-value {
+  margin-bottom: 5px;
+}

@@ -46,9 +46,6 @@ router.all('*', function(req, res, next){
   // Also save to locals so that the data is available immediately
   res.locals.data.filteredRecords = data.filteredRecords
 
-  // Delete cashes of invalid answers that should be flushed on each request
-  delete data?.temp
-
   next()
 })
 
@@ -56,7 +53,10 @@ router.all('*', function(req, res, next){
 // This lets us give urls to reserach participants that set up data correctly
 // and have the query string self-delete once done
 router.get('*', function(req, res, next){
+  const data = req.session.data
   let requestedUrl = url.parse(req.url).pathname
+  // Delete cashes of invalid answers that should be flushed on each request
+  delete data?.temp
   if (req?.query?.clearQuery){
     delete req.session.data.clearQuery
     res.redirect(requestedUrl)

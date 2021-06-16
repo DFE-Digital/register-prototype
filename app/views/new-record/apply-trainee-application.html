@@ -16,8 +16,6 @@
 {# Add an extra referrer as this is a compound referral path #}
 {% set referrer = referrer | pushReferrer(recordPath + "/apply-trainee-application") %}
 
-{% set hasInvalidAnswers = record | hasInvalidAnswers and data.settings.highlightInvalidAnswers | falsify %}
-
 {# Summary cards need to be set *first* because in rendering the card we count
 the number of invalid answers, and then use this in a banner at the top
 of the page. #}
@@ -39,6 +37,8 @@ of the page. #}
   {% include "_includes/summary-cards/undergraduate-qualification.html" %}
 {% endset %}
 
+{% set hasInvalidAnswers = record | hasInvalidAnswers and data.settings.highlightInvalidAnswers | falsify %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 
@@ -52,11 +52,11 @@ of the page. #}
       {% set descriptionText %}
         This trainee data contains {{invalidAnswerCount}} {{ 'answer' | pluralise(invalidAnswerCount)}} that you need to review and amend manually.
       {% endset %}
-      {% for invalidAnswer in data.temp.invalidAnswers %}
+      {% for error in data.temp.errorArray %}
         {% set errorListArray = errorListArray | push(
           {
-            text: invalidAnswer.name,
-            href: "#" + invalidAnswer.id
+            text: error.name,
+            href: "#" + error.id
           }) %}
       {% endfor %}
 
@@ -104,6 +104,13 @@ of the page. #}
 
 {% else %}
  #}
+
+ {% if hasInvalidAnswers %}
+    <input name='[temp][pageHasErrors]' type="hidden" id="school-picker-name" value="true">
+ {% endif %}
+
+
+
   {{ govukCheckboxes({
     idPrefix: "apply-trainee-application-checkbox",
     name: "record[applyData][status]",

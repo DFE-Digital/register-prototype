@@ -21,7 +21,7 @@
   {% endset %}
 
   {% set degreeItems = degreeItems | push({
-    text: degree | getDegreeName | stripInvalidText,
+    text: degree | getDegreeName | stripPlaceholders,
     value: degree.id,
     hint: {
       html: hint | safe

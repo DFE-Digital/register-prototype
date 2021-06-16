@@ -134,12 +134,13 @@ module.exports = router => {
   // Prevent trainee data from being marked as reviewed if it
   // contains invalid answers
   router.post('/new-record/apply-trainee-application-answer', (req, res) => {
+
     const data = req.session.data
     let record = _.get(data, 'record') // copy record
     let referrer = utils.getReferrer(req.query.referrer)
-    
+
     // Only validate if they’ve checked the 'reviewed' checkbox
-    if (record?.applyData?.status == 'Completed' && utils.hasInvalidAnswers(record)){
+    if (record?.applyData?.status == 'Completed' && utils.hasInvalidAnswers(record, data)){
       console.log('Record has invalid answers, returning to trainee data page')
       let returnQuery
       if (referrer){

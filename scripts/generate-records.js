@@ -129,7 +129,7 @@ const generateFakeApplication = (params = {}) => {
 
   // Postgraduate qualification
   if (requiredSections.includes('degree')) {
-    application.degree           = (params.degree === null) ? undefined : { ...generateDegree(params?.degree, application), ...params.degree }
+    application.degree           = (params.degree === null) ? undefined : { ...generateDegree(params, application), ...params.degree }
   }
 
   application.funding = (params.funding === null) ? undefined : { ...generateFunding(application), ...params.funding }
