@@ -28,28 +28,26 @@
 ) }}
 
 {# Degree subject #}
-{% set degreeSubjectHtml %}
-  {{ appAutocomplete({
-    label: {
-      text: "Degree subject",
-      classes: "govuk-label--s"
-    },
-    hint: {
-      text: 'Search for the closest matching subject'
-    },
-    id: 'subject',
-    autoSelect: true,
-    showAllValues: false,
-    minLength: 2,
-    name: "degreeTemp[subject]",
-    items: data.subjects,
-    classes: "app-!-autocomplete--max-width-two-thirds",
-    value: degreeTemp.subject
-    } | highlightInvalidInputs
-  ) }}
-{% endset %}
 
-{{ appInvalidAnswer({html: degreeSubjectHtml})}}
+{{ appAutocomplete({
+  label: {
+    text: "Degree subject",
+    classes: "govuk-label--s"
+  },
+  hint: {
+    text: 'Search for the closest matching subject'
+  },
+  id: 'subject',
+  autoSelect: true,
+  showAllValues: false,
+  minLength: 2,
+  name: "degreeTemp[subject]",
+  items: data.subjects,
+  classes: "app-!-autocomplete--max-width-two-thirds",
+  value: degreeTemp.subject
+  } | highlightInvalidInputs
+) }}
+
 
 {# Degree type / ENIC #}
 {% set enicItems = [] %}
