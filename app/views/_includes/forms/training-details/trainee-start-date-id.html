@@ -7,7 +7,7 @@
 {% set commencementStartDateArray = record.trainingDetails.commencementDate | toDateArray %}
 
 {% set commencementDateLabel = "What is the trainee’s start date?" %}
-{% set commencementDateHint = "This the date the trainee starts on the course – not the course start date." %}
+{% set commencementDateHint = "This is the date the trainee starts on the course – not the course start date." %}
 
 
 {% set commencementDateInputHtml %}
@@ -61,9 +61,6 @@
         classes: "govuk-fieldset__legend--s"
       }
     },
-    _hint: {
-      text: "If the trainee has not started yet, you can still submit their record, but will need to provide their start date later"
-    },
     hint: {
       text: "This the date the trainee starts on the course – not the course start date."
     },
@@ -92,12 +89,10 @@
 {# If we don’t have a course start date, just show an input to collect date. This means they don’t
 have to do course details before starting this section. #}
 {% else %}
-
   {{ commencementDateInputHtml | safe }}
-
 {% endif %}
 
-
+{# Trainee ID #}
 {{ govukInput({
   label: {
     text: "Assign a trainee ID",
