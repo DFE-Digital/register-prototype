@@ -1,5 +1,6 @@
 {% set commencementStartDateArray = record.trainingDetails.commencementDate | toDateArray %}
 
+{% set commencementDateHint = "This is the date the trainee starts on the course – not the course start date." %}
 
 {{ govukDateInput({
   id: "commencement-start-date",
@@ -12,7 +13,7 @@
     }
   },
   hint: {
-    html: hintHtml
+    html: commencementDateHint
   },
   items: [
       {

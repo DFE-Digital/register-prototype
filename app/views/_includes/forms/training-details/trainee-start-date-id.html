@@ -1,21 +1,30 @@
-
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+{% set courseStartDate = record.courseDetails.startDate or false %}
+
+{% set startDateNotKnownAllowed = not ( data.settings.requireTraineeStartDate | falsify ) %}
 
 {% set commencementStartDateArray = record.trainingDetails.commencementDate | toDateArray %}
 
+{% set commencementDateLabel = "What is the trainee’s start date?" %}
+{% set commencementDateHint = "This the date the trainee starts on the course – not the course start date." %}
+
 
 {% set commencementDateInputHtml %}
-  {% set hintHtml %}
-    When the trainee started the course. This may be different to your overall programme start date.<br>
 
-    <br>For example, {{ "" | today | toDateArray | spaceSeparate }}<br>
+  {% set hintHtml %}
+    {% if not courseStartDate %}
+      {{commencementDateHint}}<br>
+    {% endif %}
+    For example, {{ today() | toDateArray | spaceSeparate }}
   {% endset %}
+
   {{ govukDateInput({
     id: "commencement-start-date",
     namePrefix: "record[trainingDetails][commencementDate]",
     fieldset: {
       legend: {
-        text: "Date trainee started",
+        text: "Trainee start date" if courseStartDate else commencementDateLabel,
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -42,36 +51,50 @@
   }) }}
 {% endset %}
 
-{% if data.settings.requireTraineeStartDate %}
-
-  {{ commencementDateInputHtml | safe }}
-
-{% else %}
+{# If we have a course start date, offer radio choice betwen that and manual  #}
+{% if courseStartDate %}
 
   {{ govukRadios({
     fieldset: {
       legend: {
-        text: "Has the trainee started the course?",
+        text: commencementDateLabel,
         classes: "govuk-fieldset__legend--s"
       }
     },
-    hint: {
+    _hint: {
       text: "If the trainee has not started yet, you can still submit their record, but will need to provide their start date later"
+    },
+    hint: {
+      text: "This the date the trainee starts on the course – not the course start date."
     },
     items: [
       {
+        value: "use-course-start-date",
+        text: "Use the course start date – " + record.courseDetails.startDate | govukDate
+      } if record.courseDetails.startDate,
+      {
         value: "true",
-        text: "Yes",
+        text: "Enter another date" if record.courseDetails.startDate else "Start date known",
         conditional: {
           html: commencementDateInputHtml
         }
       },
       {
+        divider: "or"
+      } if startDateNotKnownAllowed,
+      {
         value: "false",
-        text: "No, the trainee has not started yet"
-      }
+        text: "Start date not known – provide it later"
+      } if startDateNotKnownAllowed
     ]
   } | decorateAttributes(record, "record.trainingDetails.traineeStarted")) }}
+
+{# If we don’t have a course start date, just show an input to collect date. This means they don’t
+have to do course details before starting this section. #}
+{% else %}
+
+  {{ commencementDateInputHtml | safe }}
+
 {% endif %}
 
 
