@@ -33,7 +33,13 @@ module.exports = (params) => {
 
     bursary.selfFunded = weighted.select(['true', 'false'], [0.1, 0.9])
 
-    let degreeItems = params?.degree?.items
+    // Special handling for Early years (postgrad)
+    if (bursary.selfFunded == 'false' && availableBursary.tiersApply){
+      let selectedTier = faker.helpers.randomize(availableBursary.tiers)
+      bursary.selfFunded = selectedTier.name
+    }
+
+    // let degreeItems = params?.degree?.items
 
     // Commented out for now as we'll dynamically look it up
     // if (bursary.selfFunded == 'false'){
