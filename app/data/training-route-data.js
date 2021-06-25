@@ -261,7 +261,15 @@ let baseRouteData = {
       "EYTS"
     ],
     qualificationsSummary: "EYTS full time",
-    bursariesAvailable: false
+    bursariesAvailable: true,
+    bursaries: [
+      {
+        subjects: [
+          "Early years"
+          ],
+        value: "14000"
+      }
+    ]
   },
   "Early years (postgrad)": {
     defaultEnabled: true,
@@ -278,7 +286,34 @@ let baseRouteData = {
     qualifications: [
       "EYTS"
     ],
-    qualificationsSummary: "EYTS full time"
+    qualificationsSummary: "EYTS full time",
+    bursariesAvailable: true,
+    bursaries: [
+      {
+        subjects: [
+          "Early years"
+          ],
+        value: "",
+        tiersApply: true,
+        tiers: [
+          {
+            name: "Tier 1",
+            hint: "First-class honours degree, doctoral degree, medical masters (distinction)",
+            value: "5000"
+          },
+          {
+            name: "Tier 2",
+            hint: "2:1 honours degree, master’s degree",
+            value: "4000"
+          },
+          {
+            name: "Tier 3",
+            hint: "2:2 honours degree",
+            value: "2000"
+          }
+        ]
+      }
+    ]
   },
   "Early years (assessment only)": {
     defaultEnabled: true,

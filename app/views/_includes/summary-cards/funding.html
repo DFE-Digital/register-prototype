@@ -28,6 +28,13 @@
   {% elseif bursary.selfFunded == 'false' %}
     Bursary applied for
     <p class="govuk-hint">{{record | getBursaryValue | currency }} estimated bursary</p>
+  {% elseif bursary.selfFunded %}
+    {# Do a little dance to look up the tier name #}
+    {# Really we should be storing the actual bursary or level against the trainee  #}
+    {% set bursaryData = record | getBursary %}
+    {% set bursaryTier = bursaryData.tiers | where('name', bursary.selfFunded ) | first %}
+    Applied for {{bursaryTier.name}}
+    <p class="govuk-hint">{{bursaryTier.value | currency }} estimated bursary</p>
   {% else %}
     Not provided
   {% endif %}

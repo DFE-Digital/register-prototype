@@ -1,39 +1,97 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 {% set bursary = record | getBursary %}
 
+{# We might not always have a bursary value at this stage - so conditionally set it #}
+{% set bursaryValue = record | getBursaryValue %}
+{% if bursaryValue | falsify %}
+  {% set bursaryValueText %}
+    of {{ bursaryValue | currency }}
+  {% endset %}
+{% endif %}
+
 <p class="govuk-body">
-  The course you have selected has a bursary available of {{record | getBursaryValue | currency }} for {{ bursary.subject | dynamicLowercase }}. You need to check if the trainee is eligible for this bursary.
+  The course you have selected has a bursary available {{ bursaryValueText }} for {{ bursary.subject | dynamicLowercase }}. You need to check if the trainee is eligible for this bursary.
 </p>
 
 <p class="govuk-body"><a href="https://www.gov.uk/government/publications/initial-teacher-training-itt-bursary-funding-manual/initial-teacher-training-bursaries-funding-manual-2021-to-2022-academic-year#training-bursary-award-and-eligibility" class="govuk-link" rel="noreferrer noopener" target="_blank">DfE bursary guidance for academic year 2021 to 2022 (opens in new tab)</a></p>
 
+{# Tiers apply is just for Early years (postgrad) #}
+{# Will probably want to refactor this section if any other routes have tiers #}
+{% if bursary.tiersApply %}
 
-{{ govukRadios({
-  fieldset: {
-    legend: {
-      text: "Are you applying for a bursary for this trainee?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--m"
-    }
-  },
-  hint: {
-    text: ""
-  },
-  items: [
-    {
-      text: "Yes, apply for a bursary",
-      value: "false"
-    },
-    {
-      text: "No, the trainee is self funded, not eligible or has a scholarship",
-      text: "No, do not apply for a bursary",
-      value: "true",
+  {% set items = [] %}
+  {% for tier in bursary.tiers %}
+
+    {% set bursaryText %}
+      Yes - {{tier.name}} ({{tier.value | currency}})
+    {% endset %}
+    {% set items = items | push({
+      text: bursaryText,
+      value: tier.name,
       hint: {
-        text: "For example, the trainee is not eligible or has applied for a scholarship."
+        text: tier.hint
       }
+    }) %}
+
+  {% endfor %}
+
+  {% set items = items | push({
+    divider: "or"
+  }) %}
+
+  {% set items = items | push({
+    text: "No, do not apply for a bursary",
+    value: "true",
+    hint: {
+      text: "For example, the trainee is not eligible or has applied for a scholarship."
     }
-  ]
-} | decorateAttributes(record, "record.funding.bursary.selfFunded")) }}
+  }) %}
+
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Are you applying for a bursary for this trainee?",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: ""
+    },
+    items: items
+  } | decorateAttributes(record, "record.funding.bursary.selfFunded")) }}
+
+{% else %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Are you applying for a bursary for this trainee?",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: ""
+    },
+    items: [
+      {
+        text: "Yes, apply for a bursary",
+        value: "false"
+      },
+      {
+        text: "No, do not apply for a bursary",
+        value: "true",
+        hint: {
+          text: "For example, the trainee is not eligible or has applied for a scholarship."
+        }
+      }
+    ]
+  } | decorateAttributes(record, "record.funding.bursary.selfFunded")) }}
+  
+{% endif %}
+
 
 
 {{ govukButton({
