@@ -110,7 +110,7 @@ filters.decorateAttributes = (obj, data, value) => {
       return item
     })
 
-    obj.idPrefix = pathParts.join('-')
+    obj.idPrefix = (obj.idPrefix) ? obj.idPrefix : pathParts.join('-')
   } else {
     // Check for undefined because the value may exist and be intentionally blank
     if (typeof obj.value === 'undefined') {

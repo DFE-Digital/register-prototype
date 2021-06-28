@@ -1,0 +1,160 @@
+
+{# Variable to keep track of how many unmapped items we have - as we only want to render the 
+first umampped subject #}
+{% set countOfUnmapped = 0 %}
+
+{# Loop through each subject in the publish subjects #}
+{% for ordinal, subject in record.courseDetails.publishSubjects %}
+
+  {# Publish subjects are stored against an ordinal `first` or `second` #}
+  {% set ordinal = loop.index | getOrdinalName %}
+
+  {#
+  Hacky handling for case where a course is 2 languages and a non-language.
+  normally we check that for each publish subject we have a corresponding subject specialism in the
+  same ordinal slot - so if the first Publish subject is biology, is the first specialism set?.
+  However for languages, they might have picked 2 langauges - so the missing specialism for the
+  non-language is actually in the third slot.
+   #}
+  {% if ordinal == 'second' and record.courseDetails.publishSubjects.first == "Modern languages" and record.courseDetails.third == null %}
+    {# Swap to 'third' as this is where we should be storing the non-language subject specialism #}
+    {% set ordinal = 'third' %}
+  {% endif %}
+
+  {# Does the publish subject map to a specialism? #}
+  {% set subjectMappable = subject | publishSubjectMapsToSpecialism %}
+
+  {# Do we already have a specialism set for this subject? #}
+  {% set ordinalSpecialismIsSet = record.courseDetails.subjects[ordinal] | falsify %}
+  {% set ordinalSpecialismIsMissing = not ordinalSpecialismIsSet %}
+
+  {# 
+  For the *first* unmappable subject we come across, show an input to collect
+  the mapping.
+
+  After this gets set, we’ll loop through this whole paga again to collect any more
+  unmappable subjects
+  #}
+
+  {# Render an input only if we don't have a specialism already - and only the first one #}
+  {% if not subjectMappable and ordinalSpecialismIsMissing and countOfUnmapped < 1 %}
+
+    {# So that we can make sure not to loop through this again #}
+    {% set countOfUnmapped = countOfUnmapped + 1 %}
+
+    {% set items = [] %}
+
+    {% set possibleSpecialisms = subject | publishSubjectToPossibleSpecialisms | sort %}
+
+    {# Special handling for languages, where we want checkboxes rather than radios #}
+    {% if subject == "Modern languages" %}
+
+      {% for specialism in possibleSpecialisms %}
+
+        {# Strip out 'language' from languages - eg Spanish language => Spanish. But don’t touch
+        those that are plural - eg Chinese languages #}
+        {% set shortenedSubject = specialism | replace("languages", "_lang") | replace(" language", "") | replace("_lang", "languages") %}
+
+        {% set items = items | push({
+          text: shortenedSubject,
+          value: specialism
+        }) %}
+      {% endfor %}
+
+      {# TODO: could this be tense-less? #}
+      {% set legendText %}
+        Which language specialisms has the trainee chosen to study?
+        {# Which languages {{ 'will the trainee study?' if record | isDraft else "is the trainee studying?" }} #}
+      {% endset %}
+
+      {# They can select as many languages as they like up to the specialisms limit. If the publish
+      subject only has languages, that means they can pick 3 languages. 
+      If it also has another subject, they can pick 2. In practice courses don't seem to be listed
+      with languages combined with a non language subject. #}
+      {% set hintText %}
+        <p class="govuk-body govuk-hint">These language specialisms are recorded on the trainee’s QTS award.</p>
+        <p class="govuk-body govuk-hint">
+          {% if record.courseDetails.publishSubjects | length > 1 %}
+            choose up to two as specialisms with 
+            {% if ordinal == 'first' %}
+              {{ (record.courseDetails.subjects.second or record.courseDetails.publishSubjects.second) | dynamicLowercase }}
+            {% else %}
+             {{ (record.courseDetails.subjects.first or record.courseDetails.publishSubjects.first) | dynamicLowercase }} 
+            {% endif %}
+          {% else %}
+            Choose up to three
+          {% endif %}
+        </p>
+      {% endset %}
+
+      {# This gets saved to a temp location, as we need to map the subjects to their ordinal
+      locations.
+
+      eg:
+
+      first: French
+      second: Spanish
+
+       #}
+      {{ govukCheckboxes({
+        fieldset: {
+          legend: {
+            text: legendText,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          html: hintText
+        },
+        idPrefix: 'record-courseDetails-subjects-' + loop.index0,
+        items: items
+      } | decorateAttributes(record, "record.courseDetails.subjectsArrayTemp")) }}
+      
+    {% else %}
+
+      {# Sort the specialism to the top of the array #}
+      {% if possibleSpecialisms | includes(subject) %}
+        {% set possibleSpecialisms = possibleSpecialisms | removeArrayItem(subject) %}
+
+        {% set items = items | push({
+          text: subject
+        }) %}
+
+      {% endif %}
+
+      {# All unmappable subjects except languages #}
+      {% for specialism in possibleSpecialisms %}
+        {% set items = items | push({
+          text: specialism
+        }) %}
+      {% endfor %}
+
+      {% set legendText %}
+        Which {{subject | dynamicLowercase }} specialism has the trainee chosen to study?
+        {# {{ 'will the trainee study?' if record | isDraft else "is the trainee studying?" }} #}
+      {% endset %}
+
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: legendText,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "This specialism is what is recorded on the trainee’s QTS award."
+        },
+        idPrefix: 'record-courseDetails-subjects-' + loop.index0,
+        items: items
+      } | decorateAttributes(record, "record.courseDetails.subjects[" + ordinal + "]")) }}
+        
+    {% endif %}
+
+  {% endif %}
+{% endfor %}
+
+{{ govukButton({
+  text: "Continue"
+}) }}

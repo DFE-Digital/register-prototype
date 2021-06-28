@@ -52,9 +52,18 @@
 
     <div>
       <p class="govuk-body govuk-!-font-size-16 govuk-!-margin-bottom-1">
-        <span class="govuk-visually-hidden">Course: </span>{{record.courseDetails.subjects | prettifySubjects }}</p>
+        {# If subject spcialisms are incomplete, prefer course name. Else prefer the specialisms. #}
+        {% set subjects %}
+          {% if record.courseDetails | subjectsAreIncomplete %}
+            {{ record.courseDetails.courseNameShort or record.courseDetails.subjects | prettifySubjects }}
+          {% else %}
+            {{ (record.courseDetails.subjects | prettifySubjects | falsify ) or record.courseDetails.courseNameShort }}
+          {% endif %}
+        {% endset %}
+        
+        <span class="govuk-visually-hidden">Course: </span>{{ subjects }}</p>
       <p class="govuk-body govuk-!-font-size-16 govuk-hint govuk-!-margin-bottom-0">
-        <span class="govuk-visually-hidden">Route: </span>{{record.route}}</p>
+        <span class="govuk-visually-hidden">Route: </span>{{ record.route }}</p>
     </div>
 
   </div>

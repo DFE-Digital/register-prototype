@@ -4,168 +4,191 @@
   {% set expectedDuration = courseDetails.duration + " years" %}
 {% endif %}
 
-{% set courseName %}
-  {{courseDetails | getCourseName}}</br>
-  {{courseDetails.summary}}
-{% endset %}
-
 {# {% set canAmend = false %} #}
 
-{% set courseDetailsRows = [
-  {
-    key: {
-      text: "Route"
-    },
-    value: {
-      text: courseDetails.route | safe or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "route"
-        }
-      ]
-    } if canAmend and false
-  } if record.status !="Draft",
-  {
-    key: {
-      text: "Course details"
-    },
-    value: {
-      text: courseName | safe or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details" | addReferrer(referrer),
-          text: "Change course"
-        }
-      ]
-    } if canAmend
-  },
-  {
-    key: {
-      text: "Subject" | pluralise(record.courseDetails.subjects | toArray | length)
-    },
-    value: {
-      text: courseDetails.subjects | prettifySubjects or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "subject"
-        }
-      ]
-    } if canAmend and false
-  },
-  {
-    key: {
-      text: "Level"
-    },
-    value: {
-      text: courseDetails.level | sentenceCase or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "level"
-        }
-      ]
-    } if canAmend and false
-  },
-  {
-    key: {
-      text: "Age range"
-    },
-    value: {
-      text: courseDetails.ageRange or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "age range"
-        }
-      ]
-    } if canAmend and false
-  },
-  {
-    key: {
-      text: "Start date"
-    },
-    value: {
-      text: courseDetails.startDate | govukDate("MMMM YYYY") or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "programme start date"
-        }
-      ]
-    } if canAmend and false
-  },
-  {
-    key: {
-      text: "End date"
-    },
-    value: {
-      text: courseDetails.endDate | govukDate("MMMM YYYY") or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "programme end date"
-        }
-      ]
-    } if canAmend and false
-  } if false,
-  {
-    key: {
-      text: "Duration"
-    },
-    value: {
-      text: courseDetails.duration + (' year' | pluralise(courseDetails.duration)) or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "duration"
-        }
-      ]
-    } if canAmend and false
-  },
-  {
-    key: {
-      text: "Trainee using an allocated place"
-    },
-    value: {
-      text: courseDetails.allocatedPlace or 'Not provided'
-    },
-    actions: {
-      items: [
-        {
-          href: recordPath + "/course-details/allocated-place" | addReferrer(referrer),
-          text: "Change",
-          visuallyHiddenText: "allocated place"
-        }
-      ]
-    } if canAmend
-  } if record | hasAllocatedPlaces and not hideAllocationRow
-  ] %}
 
+
+{% set courseNameRow = {
+  key: {
+    text: "Course name"
+  },
+  value: {
+    text: courseDetails.courseNameLong | safe or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details" | addReferrer(referrer),
+        text: "Change course"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set routeRow = {
+  key: {
+    text: "Route"
+  },
+  value: {
+    text: courseDetails.route | safe or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "route"
+      }
+    ]
+  } if canAmend and false
+} if record.status !="Draft" %}
+
+{% set subjectsRow = {
+  key: {
+    text: "Subject" | pluralise(record.courseDetails.subjects | length)
+  },
+  value: {
+    text: courseDetails.subjects | prettifySubjects or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "subject"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set levelRow = {
+  key: {
+    text: "Level"
+  },
+  value: {
+    text: courseDetails.level | sentenceCase or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "level"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set ageRangeRow = {
+  key: {
+    text: "Age range"
+  },
+  value: {
+    text: courseDetails.ageRange or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "age range"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set startDateRow = {
+  key: {
+    text: "Start date"
+  },
+  value: {
+    text: courseDetails.startDate | govukDate or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "course start date"
+      }
+    ]
+  } if canAmend
+} %}
+
+{% set endDateRow = {
+  key: {
+    text: "End date"
+  },
+  value: {
+    text: courseDetails.endDate | govukDate("MMMM YYYY") or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "course end date"
+      }
+    ]
+  } if canAmend
+} if false %}
+
+{# {% set durationRow = {
+  key: {
+    text: "Duration"
+  },
+  value: {
+    text: courseDetails.duration + (' year' | pluralise(courseDetails.duration)) or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "duration"
+      }
+    ]
+  } if canAmend
+} %} #}
+
+{% set allocatedPlaceRow = {
+  key: {
+    text: "Trainee using an allocated place"
+  },
+  value: {
+    text: courseDetails.allocatedPlace or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details/allocated-place" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "allocated place"
+      }
+    ]
+  } if canAmend
+} if record | hasAllocatedPlaces and not hideAllocationRow %}
+
+
+{% set courseDetailsRows = [
+  courseNameRow,
+  routeRow,
+  subjectsRow,
+  levelRow,
+  ageRangeRow,
+  startDateRow,
+  endDateRow,
+  durationRow,
+  allocatedPlaceRow
+] %}
+
+{# For apply drafts only - show a very minimal card with details of course #}
+{% if minimalPublishSummary %}
+  {% set courseDetailsRows = [
+  courseNameRow,
+  routeRow
+  ] %}
+{% endif %}
 
 
 {% set courseDetailsHtml %}
@@ -173,9 +196,6 @@
     rows: courseDetailsRows | highlightInvalidRows
   }) }}
 {% endset %}
-
-
-
 
 
 {% set complete = courseDetails | sectionIsComplete %}
@@ -187,7 +207,9 @@
   {% set incompleteId = "course-details" %}
   {% if status == "Review" %}
     {% set incompleteText = "Course details not reviewed" %}
-    {% set incompleteLink = recordPath + "/course-details/confirm" %}
+    {% set courseMissingSpecialisms = courseDetails | subjectsAreIncomplete %}
+    {% set courseDetailsHref = "/course-details/publish-minimal" if courseMissingSpecialisms else "/course-details/confirm" %}
+    {% set incompleteLink = recordPath + courseDetailsHref %}
     {% set incompleteLinkText = "Review section" %}
   {% elseif status == "In progress" %}
     {% set incompleteText = "Course details not marked as complete" %}

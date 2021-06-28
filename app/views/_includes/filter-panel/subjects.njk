@@ -7,8 +7,15 @@
   selected: true if (not query.filterSubject or query.filterSubject ==  "All subjects")
 }) %}
 
+{% set allSubjects = data.allSubjects %}
+
+{# Add in an extra option for core sciences - this will search across biology, chemistry and
+physics for either specialisms or allocation subjects #}
+{% set allSubjects = allSubjects | push("Sciences - biology, chemistry, physics") | sort %}
+
+
 {# Remaining subjects #}
-{% for subject in data.ittSubjects %}
+{% for subject in allSubjects %}
   {% set subjectItems = subjectItems | push({
     value: subject,
     text: subject,

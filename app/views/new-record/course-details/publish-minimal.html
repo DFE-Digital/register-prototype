@@ -1,0 +1,28 @@
+{% extends "_templates/_new-record.html" %}
+
+{% set pageHeading = "Review course" %}
+{# {% set backLink = './../overview' %}
+{% set backText = "Back to draft record" %} #}
+{% set gridColumn = 'govuk-grid-column-full' %}
+
+{# {% set formAction = "./../overview" | orReferrer(referrer) %} #}
+
+{% block formContent %}
+
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+
+  {% set courseDetails = record.courseDetails %}
+
+  {# Don't show allocation row as that question comes later #}
+  {% set hideAllocationRow = true %}
+  {% set minimalPublishSummary = true %}
+  {% include "_includes/summary-cards/course-details/publish-course.html" %}
+
+  {{ govukButton({
+    text: "Select the trainee’s specialisms",
+    href: "./choose-specialisms"
+  }) }}
+  
+
+{% endblock %}
+

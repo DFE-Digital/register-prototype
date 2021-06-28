@@ -41,7 +41,7 @@
   } if record | routeHasPublishCourses,
   {
     key: {
-      text: "Subject" | pluralise(record.courseDetails.subjects | toArray | length)
+      text: "Subject" | pluralise(record.courseDetails.subjects | length)
     },
     value: {
       text: record.courseDetails.subjects | prettifySubjects or 'Not provided'

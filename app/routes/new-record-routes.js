@@ -22,9 +22,12 @@ module.exports = router => {
   router.get(['/new-record/new', '/new-record'], function (req, res) {
     const data = req.session.data
     utils.deleteTempData(data)
-    _.set(data, 'record', { status: 'Draft' })
-    _.set(data, 'record', { source: 'Manual' })
-    _.set(data, 'record.events.items', [])
+
+    let record = {}
+    record.status = "Draft"
+    record.source = "Manual"
+    record.events = { items: []}
+    data.record = record
     // If multiple providers, users must pick one as thier first action
     if (data.signedInProviders.length > 1){
       res.redirect('/new-record/pick-provider')

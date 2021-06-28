@@ -18,6 +18,8 @@ const ittSubjects = require('./../data/itt-subjects')
 // Cooerce falsy inputs to real true and false
 // Needed as Nunjucks doesn't treat all falsy values as false
 exports.falsify = (input) => {
+  if (!input) return false
+  if (input == null) return false
   if (input == undefined) return false
   if (_.isNumber(input)) return input
   else if (input == false) return false
@@ -38,6 +40,41 @@ exports.sortAlphabetical = (x, y) => {
   }
   return x > y ? 1 : (x < y ? -1 : 0);
 }
+
+// first, second, third, etc
+exports.getOrdinalName = integer => {
+  let ordinals = [
+    'zeroth', // shouldn't be possible
+    'first',
+    'second',
+    'third',
+    'fourth',
+    'fifth',
+    'sixth',
+    'seventh',
+    'eighth',
+    'ninth',
+    'tenth'
+  ]
+  
+  if (!_.isNumber(integer) || integer < 1 || integer > 10){
+    console.log("Error in getOrdinalName: input out of bounds")
+    return ""
+  }
+  else {
+    return ordinals[integer]
+  }
+}
+
+// ['Foo', 'Bar', null] => { first: 'Foo', second: 'Bar', third: null }
+exports.arrayToOrdinalObject = array => {
+  let output = {}
+  array.forEach( (item, index) =>{
+    output[exports.getOrdinalName(index + 1)] = item
+  })
+  return output
+}
+
 
 // Loosely copied from /lib/utils
 // Allows a template to live at 'foo/index' and be served from 'foo'
@@ -74,9 +111,12 @@ exports.render = (path, res, next, ...args) => {
 
 // Check if the course has allocated places
 exports.hasAllocatedPlaces = (record) => {
-  let routeHasAllocatedPlaces = (_.get(trainingRoutes, `[${record.route}]hasAllocatedPlaces`) == true)
-  let allocatedSubjects = trainingRouteData.allocatedSubjects
-  let subjectIsAllocated = allocatedSubjects.includes(_.get(record, 'courseDetails.subjects'))
+  let routeHasAllocatedPlaces = trainingRoutes[record.route]?.hasAllocatedPlaces || false
+  let allocatedSubjects = trainingRouteData.allocatedSubjects // Just PE right now
+
+  // Allocations are based off of the 'allocation subject' rather than the specialisms
+  let recordAllocationSubject = exports.getAllocationSubject(record)
+  let subjectIsAllocated = allocatedSubjects.includes(recordAllocationSubject)
   return (routeHasAllocatedPlaces && subjectIsAllocated)
 }
 
@@ -156,15 +196,15 @@ exports.subjectToAllocationSubject = subject => {
   return allocationSubject
 }
 
-exports.getAllocationSubject = input => {
+exports.getAllocationSubject = (input) => {
   // Support passing in a course or a record
-  let courseSubject = input?.subjects || input?.courseDetails?.subjects || []
-  if (courseSubject.length == 0){
+  let courseSubject = input?.subjects?.first || input?.courseDetails?.subjects?.first || false
+  if (!courseSubject){
     console.log('No course subject available')
     return false
   }
   else {
-    let allocationSubject = exports.subjectToAllocationSubject(courseSubject[0])
+    let allocationSubject = exports.subjectToAllocationSubject(courseSubject)
     return allocationSubject
   }
 }
@@ -287,9 +327,10 @@ exports.getQualificationText = record => {
 }
 
 // Sort by subject, including course code
+// TODO: is this filter needed? could we just sort alphabetically?
 exports.sortPublishCourses = courses => {
   let sorted = courses.sort((a, b) => {
-    return exports.sortAlphabetical(exports.getCourseName(a), exports.getCourseName(b))
+    return exports.sortAlphabetical(a.courseNameLong, b.courseNameLong)
   })
   return sorted
 }
@@ -375,8 +416,19 @@ exports.dynamicLowercase = input => {
 // https://github.com/DFE-Digital/teacher-training-api/blob/045a4b3e97df0ccdb72c38b3611dcb8d094c29cc/app/services/courses/generate_course_name_service.rb#L51
 exports.prettifySubjects = (subjects, lowercaseFirst=false) => {
   // No data?
-  if (!subjects || subjects.length == 0) {
+  if (!subjects || Object.values(subjects).length == 0) {
     return ''
+  }
+
+  // Grab the subjects and filter out falsy values
+  subjects = Object.values(subjects).filter(Boolean)
+
+  let isModernLanguagesCourse = (exports.subjectToAllocationSubject(subjects[0]) == "Modern languages")
+
+  // If the first subject is a language, push 'Modern languages' in to the start - this way we'll
+  // get names like 'Modern languages with French' which looks a bit neater.
+  if ( (subjects.length > 1) && isModernLanguagesCourse){
+    subjects = [...new Set(["Modern languages"].concat(subjects))]
   }
 
   // A string or just one subject
@@ -414,10 +466,126 @@ exports.prettifySubjects = (subjects, lowercaseFirst=false) => {
 }
 
 // eg Biology (J482)
-exports.getCourseName = (course) => {
-  return `${exports.prettifySubjects(course.subjects)} (${course.code})`
+// Todo: is this needed any more? should this come from publish?
+// exports.getCourseName = (course) => {
+//   return `${exports.prettifySubjects(course.subjects)} (${course.code})`
+// }
+
+// Get a specialism for a given Publish subject
+exports.publishSubjectToSpecialism = subject => {
+  let publishSubjects = ittSubjects.publishSubjects
+
+  if (!publishSubjects[subject]){
+    console.log(`Error in publishSubjectMapsToSpecialism: subject (${subject}) not found.`)
+    return false
+  }
+  else return publishSubjects[subject].specialism || false
 }
 
+// If a given Publish subject is mappable to a single specialism
+exports.publishSubjectMapsToSpecialism = subject => {
+  return Boolean(exports.publishSubjectToSpecialism(subject))
+}
+
+// Look up possible specialisms for a given Publish subject
+exports.publishSubjectToPossibleSpecialisms = subject => {
+  let publishSubjects = ittSubjects.publishSubjects
+
+  if (!publishSubjects[subject]){
+    console.log(`Error in publishSubjectMapsToSpecialism: subject (${subject}) not found.`)
+    return false
+  }
+  else return publishSubjects[subject].subjectSpecialisms || false
+}
+
+// Map those Publish subjects that can be mapped unambiguously.
+// TODO: this code is nearly identical to setSubjectSpecialisms() in course-details.js - they
+// should probably be combined together
+exports.mapMappablePublishSubjects = course => {
+
+  let publishSubjects = course?.publishSubjects
+  let firstSubject = publishSubjects.first
+
+  if (!publishSubjects) {
+    console.log("Err: mapMappablePublishSubjects missing subjects")
+    return course
+  }
+
+  let subjects = course.subjects || {}
+
+  // Hacky handling for Primary courses. Publish only treats them as having a single 'subject' but
+  // we want to map it to two subjects. For most of them, both subjects can be directly mapped.
+  if (firstSubject.includes("Primary")){
+
+    // The first specialism is always 'Primary teaching' (except for Primary with maths)
+    subjects.first = "Primary teaching"
+    switch(firstSubject){
+      case "Primary with English":
+        subjects.second = "English studies"
+        break
+      case "Primary with physical education":
+        // PE can’t be mapped so add it as a second publish subject and let the UI collect it from
+        // the user
+        course.publishSubjects.second = "Physical education"
+        subjects.second = null
+        break
+      case "Primary with science":
+        subjects.second = "General sciences"
+        break
+      case "Primary with geography and history":
+        subjects.second = "Geography"
+        subjects.third = "History"
+        break
+      case "Primary with mathematics":
+        // Primary with maths is treated specially - override the first subject to set this specific
+        subjects.first = "Specialist teaching (primary with mathematics)"
+        break
+      case "Primary with modern languages":
+        course.publishSubjects.second = "Modern languages"
+        subjects.second = null
+        break
+    }
+  }
+
+  // Secondary courses
+  else {
+    // Loop through each Publish subject and look up the mappable specialism, or else set the
+    // subject to 'null'
+    Object.keys(publishSubjects).forEach(ordinal => {
+
+      // Get the specialism (or null)
+      let mappedPublishSubject = exports.publishSubjectToSpecialism(publishSubjects[ordinal])
+      subjects[ordinal] = subjects?.[ordinal] || mappedPublishSubject || null
+    })
+
+  }
+
+  // Apply the subjects back to the course
+  course.subjects = subjects
+
+  return course
+}
+
+exports.hasUnmappedPublishSubjects = course => {
+
+  let publishSubjects = course?.publishSubjects
+  if (!publishSubjects) {
+    console.log("Err: hasUnmappedPublishSubjects missing subjects")
+    return course
+  }
+
+  // Check that for each publish subject, we have an item in the subjects array
+  return Object.keys(publishSubjects).some(ordinal => {
+    if (!course.subjects) return false
+    else return !course.subjects[ordinal]
+  })
+}
+
+// Similar to hasUnmappedPublishSubjects, but instead check we have no null values in subjects.
+exports.subjectsAreIncomplete = courseDetails => {
+  if (!courseDetails?.subjects) return true
+  return Object.values(courseDetails.subjects).some(subject => subject == null)
+}
 
 // -------------------------------------------------------------------
 // Records
@@ -648,9 +816,48 @@ exports.filterRecords = (records, data, filters = {}) => {
     })
   }
 
+  // Filter by the specialism or allocation subject
+  // Also searches publish subjects where the course’s subjects haven’t been completed
   if (filters.subject && filters.subject != "All subjects"){
+
+    // To array
+    let searchSubjects = [filters.subject]
+
+    // Expand out sciences to three allocation subjects
+    if (filters.subject == "Sciences - biology, chemistry, physics"){
+      searchSubjects = ['Biology', 'Chemistry', 'Physics']
+    }
+
     filteredRecords = filteredRecords.filter(record => {
-      return record?.courseDetails?.subjects && record?.courseDetails?.subjects.includes(filters.subject)
+
+      let traineeSubjects = record?.courseDetails?.subjects
+      let publishSubjects = record?.courseDetails?.publishSubjects
+
+      // If we don’t have any subjects, we can't filter by subject
+      if (!traineeSubjects && !publishSubjects) return false
+
+      // Read values from subject objects
+      traineeSubjects = traineeSubjects && Object.values(traineeSubjects) || []
+      let traineeAllocationSubjects = traineeSubjects.map(subject => subject && exports.subjectToAllocationSubject(subject))
+      publishSubjects = publishSubjects && Object.values(publishSubjects) || []
+      let publishAllocationSubjects = publishSubjects.map(subject => exports.subjectToAllocationSubject(subject))
+
+      // Loop through each search subject to find at least one match
+      return searchSubjects.some(searchSubject => {
+        let specialismsMatch = traineeSubjects.includes(searchSubject)
+        let allocationSubjectsMatch = traineeAllocationSubjects.includes(searchSubject)
+
+        // Search across Publish subjects only where specialisms aren’t set
+        // This should mean that Apply drafts where specialisms aren’t set can still be filtered,
+        // whilst registered trainees then prefer the actual specialisms set
+        let shouldSearchPublish = publishSubjects && exports.subjectsAreIncomplete(record)
+        let publishSubjectsMatch = shouldSearchPublish && publishSubjects.includes(searchSubject)
+        let publishAllocationSubjectsMatch = shouldSearchPublish && publishAllocationSubjects.includes(searchSubject)
+
+        return specialismsMatch || allocationSubjectsMatch || publishSubjectsMatch || publishAllocationSubjectsMatch
+
+      })
+      
     })
   }
 

@@ -18,7 +18,9 @@ let ugEntryQualifications   = require('./undergraduate-qualifications')
 
 // Assessment only
 let assessmentOnlyAgeRanges = require('./assessmentOnlyAgeRanges')
-let ittSubjects = require('./itt-subjects').subjectSpecialismsArray
+let ittSubjectData = require('./itt-subjects')
+let ittSubjects = ittSubjectData.subjectSpecialismsArray
+let allSubjects = ittSubjectData.allSubjects
 
 let withdrawalReasons       = require('./withdrawal-reasons')
 let notPassedReasons       = require('./not-passed-reasons')
@@ -141,6 +143,7 @@ module.exports = {
   degreeTypesSimple,
   ethnicities,
   ittSubjects,
+  allSubjects,
   nationalities,
   notPassedReasons,
   providers,

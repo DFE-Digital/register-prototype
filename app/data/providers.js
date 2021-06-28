@@ -299,11 +299,11 @@ const allProviders = [
 const permProviders = [
   "Coventry University",
   "University of Buckingham",
-  "Leeds SCITT",
-  "Leeds Trinity University",
-  "Bournemouth Poole",
-  "Dorset Teacher Training Partnership",
-  "South Coast SCITT"
+  // "Leeds SCITT",
+  // "Leeds Trinity University",
+  // "Bournemouth Poole",
+  // "Dorset Teacher Training Partnership",
+  // "South Coast SCITT"
 ]
 
 
@@ -311,7 +311,7 @@ const permProviders = [
 const getSelectedProviders = () => {
   // One in 30 providers
   let reducedProviders = allProviders.filter((provider, index) => { 
-    return (index % 30 === 0)
+    return (index % 50 === 0)
   })
   
   reducedProviders = reducedProviders.concat(permProviders).sort()

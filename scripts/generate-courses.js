@@ -69,8 +69,10 @@ const generateFakeCourses = () => {
  */
 const generateCoursesFile = (filePath) => {
   const courses = generateFakeCourses()
-  // console.log(courses)
+
   console.log(`Generated fake courses`)
+  console.log(`Now run "node scripts/generate-records.js"`)
+
   const filedata = JSON.stringify(courses, null, 2)
   fs.writeFile(
     filePath,
@@ -79,7 +81,7 @@ const generateCoursesFile = (filePath) => {
       if (error) {
         console.error(error)
       }
-      console.log(`Course data generated: ${filePath}`)
+      // console.log(`Course data generated: ${filePath}`)
     }
   )
 }

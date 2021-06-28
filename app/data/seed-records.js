@@ -113,9 +113,14 @@ seedRecords.push({
     "route": "Provider-led (postgrad)",
     "startDate": "2021-08-31T23:00:00.000Z",
     "studyMode": "Full time",
-    "subjects": [
-      "Mathematics"
-    ]
+    "courseNameLong": "Mathematics (X348)",
+    "courseNameShort": "Mathematics",
+    "publishSubjects": {
+      first: "Mathematics"
+    },
+    "subjects": {
+      first: null
+    }
   },
   degree: {
     "items": [

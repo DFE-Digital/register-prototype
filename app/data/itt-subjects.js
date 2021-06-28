@@ -1,6 +1,10 @@
 var CSV = require('csv-string')
 const _ = require('lodash')
 
+// -------------------------------------------------------------------
+// Utilities
+// -------------------------------------------------------------------
+
 // Sort two things alphabetically, not case-sensitive
 const sortAlphabetical = (x, y) => {
   if(x.toLowerCase() !== y.toLowerCase()) {
@@ -10,6 +14,8 @@ const sortAlphabetical = (x, y) => {
   return x > y ? 1 : (x < y ? -1 : 0);
 }
 
+// Source data comes in lowercased, but for legacy reasons we want it
+// uppercased
 const upcaseFirstChar = input => {
   const upcaseString = string => {
 
@@ -27,17 +33,17 @@ const upcaseFirstChar = input => {
   else if (_.isArray(input)){
     return input.map(item => upcaseString(item))
   }
-
 }
 
-// const upcaseFirstChar = input => {
-//   if (!input) return '' // avoid printing false to client
-//   if (_.isString(input)){
-//     return input.charAt(0).toUpperCase() + input.slice(1);
-//   }
-//   else return input
-// }
+// -------------------------------------------------------------------
+// CSV of subject data - columns are:
+// Subject specialisms, ebac true/false, Allocation subject
+// 
+// These are the lowest level subjects set on a trainee, to describe
+// what they're studying
+// -------------------------------------------------------------------
 
+// Csv from google doc
 let subjectSpecialismsCsv = 
 `Subect specialism (Register reworded),EBacc Subject,Allocation Subject - (Register reworded)
 product design,No,Art and design
@@ -108,13 +114,14 @@ law,No,Other subjects
 early years teaching,No,Early years ITT
 hospitality,No,Design and technology
 recreation and leisure studies,No,Business studies
-specialist teaching,No,Primary with mathematics
+specialist teaching (primary with mathematics),No,Primary with mathematics
 hair and beauty sciences,No,Other subjects`
 
 let subjectSpecialismsCsvArray = CSV.parse(subjectSpecialismsCsv)
 subjectSpecialismsCsvArray.shift() // remove header row
 
 // Base data structure
+// Todo: would an object be easier
 let subjectsObjectArray = subjectSpecialismsCsvArray.map(specialism => {
   return {
     name: upcaseFirstChar(specialism[0]),
@@ -125,7 +132,6 @@ let subjectsObjectArray = subjectSpecialismsCsvArray.map(specialism => {
 
 // Flat array of specialisms
 let subjectSpecialismsArray = [... new Set(subjectsObjectArray.map(specialism => specialism.name))].sort(sortAlphabetical)
-
 
 // Object keyed by specialism
 // {
@@ -185,15 +191,18 @@ allocationSubjectsArray.forEach(subject => {
   }
 })
 
+// Specialisms and allocations together
+let allSubjects = [...new Set(subjectSpecialismsArray.concat(allocationSubjectsArray).sort())]
+
+// Groups of subjects
 let peSubjects = allocationSubjects['Physical education'].subjectSpecialisms
 let modernLanguagesSubjects = allocationSubjects['Modern languages'].subjectSpecialisms
-
+let designAndTechnologySubjects = allocationSubjects['Design and technology'].subjectSpecialisms
 let ebacSubjects = subjectsObjectArray.filter(specialism => specialism.isEbac).map(specialism => specialism.name).sort(sortAlphabetical)
 
 // Subject subsets used for seed generators
 // Non exaustive list
 // Just ones commonly seen - good enough for seeds
-
 commonPrimarySubjects = upcaseFirstChar([
   "primary teaching",
   "English studies",
@@ -209,6 +218,7 @@ commonPrimarySubjects = upcaseFirstChar([
   "French language",
 ])
 
+// Todo: are these needed any more? should use publish list
 commonSecondarySubjects = upcaseFirstChar([
   "creative arts and design",
   "biology",
@@ -244,15 +254,104 @@ coreSubjects = upcaseFirstChar([
   "biology"
 ])
 
+// -------------------------------------------------------------------
+// CSV of Publish subjects data - columns are:
+// Publish subject, Register allocation subject, Specialism (if mappable)
+// 
+// Publish’s list is a bit different than the dttp list. Most things can map to a specialism, 
+// but not all. All should map to an allocation subject at least.
+// -------------------------------------------------------------------
+let publishSubjectsCsv = `Publish subject,Allocation Subject - (Register reworded),Subect specialism (Register reworded)
+art and design,Art and design,
+biology,Biology,
+business studies,Business studies,
+chemistry,Chemistry,
+citizenship,Other subjects,UK government / Parliamentary studies
+classics,Classics,
+communication and media studies,Other subjects,media and communication studies
+computing,Computing,
+dance,Physical education,dance
+design and technology,Design and technology,
+drama,Drama,
+economics,Economics,economics
+English,English,English studies
+French,Modern languages,French language
+geography,Geography,geography
+German,Modern languages,German language
+health and social care,Other subjects,health and social care
+history,History,history
+Italian,Modern languages,Italian language
+Japanese,Modern languages,modern languages
+Mandarin,Modern languages,Chinese languages
+mathematics,Mathematics,
+modern languages (other),Modern languages,modern languages
+music,Music,music education and teaching
+philosophy,Religious education,philosophy
+physical education,Physical education,
+physics,Physics,
+primary,Primary,primary teaching
+primary with English,Primary,primary teaching,English studies
+primary with physical education,Primary,primary teaching,
+primary with science,Primary,primary teaching,general sciences
+primary with geography and history,Primary,primary teaching,geography,history
+primary with mathematics,Primary,specialist teaching (primary with mathematics),
+primary with modern languages,Primary,primary teaching,modern languages
+psychology,Other subjects,psychology
+religious education,Religious education,religious studies
+Russian,Modern languages,Russian languages
+science,Biology,general sciences
+social sciences,Other subjects,social sciences
+Spanish,Modern languages,Spanish language
+modern languages,Modern languages`
+
+let publishSubjectsCsvArray = CSV.parse(publishSubjectsCsv)
+publishSubjectsCsvArray.shift() // remove header row
+
+// Base data structure
+let publishSubjects = {}
+
+// Convert csv data in to useful form
+publishSubjectsCsvArray.forEach(subject => {
+
+  let name = upcaseFirstChar(subject[0])
+  let allocationSubject = subject[1]
+  let specialism = upcaseFirstChar(subject[2]) || false
+  let subjectSpecialisms = allocationSubjects[allocationSubject].subjectSpecialisms
+
+  publishSubjects[name] = {
+    name: name,
+    allocationSubject,
+    ...( specialism ? { specialism } : {} ), // conditionally return specialism
+    // Specialisms only set if there isn’t a single specialism
+    ...( !specialism ? { subjectSpecialisms } : {} ), // conditionally return specialism
+  }
+})
+
+// console.log({publishSubjects})
+
+corePublishSubjects = upcaseFirstChar([
+  "English",
+  "mathematics",
+  "physics",
+  "chemistry",
+  "biology",
+  "design and technology"
+])
+
+
 module.exports = {
   subjectsObjectArray,
   subjectSpecialisms,
   subjectSpecialismsArray,
   allocationSubjects,
   allocationSubjectsArray,
+  allSubjects, // Specialisms and allocation subjects
   coreSubjects,
   modernLanguagesSubjects,
+  designAndTechnologySubjects,
   peSubjects,
   commonPrimarySubjects,
-  commonSecondarySubjects
+  commonSecondarySubjects,
+  publishSubjects,
+  corePublishSubjects,
 }

@@ -28,7 +28,7 @@
 
 {% set insetTextHtml %}
   {% if record.courseDetails %}
-    <p class="govuk-body">All conditions met and trainee recruited to {{ record.courseDetails | getCourseName }}, {{record.route}}</p>
+    <p class="govuk-body">All conditions met and trainee recruited to {{ record.courseDetails.courseNameLong }}, {{record.route}}</p>
   {% else %}
     No data to show
   {% endif %}
@@ -49,12 +49,16 @@
   Met all conditions on {{ record.applyData.recruitedDate | govukDate }}
 </p>#}
 
+{% set courseMissingSpecialisms = record.courseDetails | subjectsAreIncomplete %}
+
+{% set courseDetailsHref = "course-details/publish-minimal" if courseMissingSpecialisms else "course-details/confirm" %}
+
 {{ appTaskList({
   classes: "govuk-!-margin-bottom-8",
   items: [
     {
       text: "Course details",
-      href: "course-details" | reviewIfInProgress(record.courseDetails) | addReferrer(referrer),
+      href: courseDetailsHref | addReferrer(referrer),
       id: "course-details",
       tag: {
         classes: record.courseDetails | getStatusText('Review', 'Review') | getStatusClass,

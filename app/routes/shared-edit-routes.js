@@ -333,8 +333,11 @@ module.exports = router => {
     let record = data.record
     let recordPath = utils.getRecordPath(req)
     let referrer = utils.getReferrer(req.query.referrer)
+
     let enabledRoutes = data.settings.enabledTrainingRoutes
     let route = record?.route
+
+    // Set route to false so that provider courses doesn’t filter by route
     if (utils.sourceIsApply(record)) route = false
     let providerCourses = utils.getProviderCourses(data.courses, record.provider, route, data)
     let selectedCourse = _.get(data, 'record.selectedCourseTemp')
@@ -347,6 +350,7 @@ module.exports = router => {
     else if (!selectedCourse){
       res.redirect(`${recordPath}/course-details/pick-course${referrer}`)
     }
+    // They’ve chosen to enter details manually
     else if (selectedCourse == "Other"){
       if (_.get(record, 'courseDetails.isPublishCourse')){
         // User has swapped from a publish to a non-publish course. Delete existing data
@@ -371,7 +375,7 @@ module.exports = router => {
         // Will only exist if js
         if (selectedCourseRawAutocomplete){
           selectedCourse = providerCourses.find(course => {
-            return utils.getCourseName(course) == req.body._autocompleteRawValue_publishCourse
+            return course.courseNameLong == req.body._autocompleteRawValue_publishCourse
           })?.id
         }
       }
@@ -384,9 +388,119 @@ module.exports = router => {
       }
       else {
         // Copy over that provider’s course data
-        record.courseDetails = providerCourses[courseIndex]
-        res.redirect(`${recordPath}/course-details/confirm-publish-details${referrer}`)
+        let courseDetails = providerCourses[courseIndex]
+
+        // Fill in specialisms that are mappable
+        record.courseDetails = utils.mapMappablePublishSubjects(courseDetails)
+
+        // For apply records we let them pick a Publish course which 
+        // might have a different route.
+        if (record.route != record.courseDetails.route){
+          console.log(`The selected Publish course’s route does not match the draft’s route. Draft route changed to ${record.courseDetails.route}`)
+          record.route = record.courseDetails.route
+        }
+
+        let isAllocated = utils.hasAllocatedPlaces(record)
+
+        // Not all specialisms are mappable, so for those, send the user to a followup page
+        if (utils.hasUnmappedPublishSubjects(record.courseDetails)){
+          console.log("Course has unmapped subjects")
+          res.redirect(`${recordPath}/course-details/choose-specialisms${referrer}`)
+        }
+        else if (isAllocated) {
+          // After /allocated-place the journey will match other course-details routes
+          res.redirect(`${recordPath}/course-details/allocated-place${referrer}`)
+        }
+        else {
+          res.redirect(`${recordPath}/course-details/confirm${referrer}`)
+        }
+
       }
+    }
+  })
+
+  // This route is here only to redirect the user *away* if there are no unmapped subjects
+  // We do this because they could have chosen specialisms and then clicked back - this catches that
+  // behavour and at least sends them someplace somewhat sensible.
+  router.get(['/:recordtype/:uuid/course-details/choose-specialisms','/:recordtype/course-details/choose-specialisms'], function (req, res) {
+    const data = req.session.data
+    let record = data.record
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+    let isAllocated = utils.hasAllocatedPlaces(record)
+
+    if (utils.hasUnmappedPublishSubjects(record.courseDetails) || utils.subjectsAreIncomplete(record.courseDetails)){
+      res.render(`${req.params.recordtype}/course-details/choose-specialisms`)
+    }
+    else if (isAllocated) {
+      // After /allocated-place the journey will match other course-details routes
+      res.redirect(`${recordPath}/course-details/allocated-place${referrer}`)
+    }
+
+    else res.redirect(`${recordPath}/course-details/confirm${referrer}`)
+  })
+
+  // Deal with specialisms data as it comes in
+  // Users can loop through this page, so if there are remaining unmapped subjects
+  // we send them back to the page to do the next one.
+  router.post(['/:recordtype/:uuid/course-details/choose-specialisms','/:recordtype/course-details/choose-specialisms'], function (req, res) {
+    const data = req.session.data
+    let record = data.record
+    let recordPath = utils.getRecordPath(req)
+    let referrer = utils.getReferrer(req.query.referrer)
+    let isAllocated = utils.hasAllocatedPlaces(record)
+
+    let courseDetails = record?.courseDetails
+
+    // Special handling for languages
+    if (courseDetails.subjectsArrayTemp){
+
+      // Grab first 3 subjects as that’s all we support
+      // In production we’ll throw a validation error if more are picked
+      let subjectsArray = courseDetails.subjectsArrayTemp.slice(0, 3)
+
+
+      // If there are two Publish subjects, that means we can only have
+      // two languages
+      let publishSubjectsCount = Object.keys(courseDetails.publishSubjects).length
+      if (publishSubjectsCount > 1) subjectsArray = subjectsArray.slice(0, 2)
+
+      // If a subject has already been set, add to it
+      // For instance, it could be Biology with two languages - we don't want to overwrite Biology
+      // as the first subject
+      if (courseDetails?.subjects?.first) {
+        subjectsArray = [courseDetails?.subjects?.first].concat(subjectsArray)
+      }
+      // It’s possible a second subject has already been set. If so, just add it to the end.
+      // This means if the provider picked two languages, the existing second subject would get pushed 
+      // to the third slot
+      else if (courseDetails?.subjects?.second) {
+        subjectsArray.push(courseDetails.subjects.second)
+      }
+      // If there's a null entry that means we've got an unmapped Publish subject - add that to the 
+      // end so we don’t forget about it
+      else if (courseDetails?.subjects?.second === null) {
+        subjectsArray.push(null)
+      }
+
+      delete courseDetails.subjectsArrayTemp // No longer needed
+
+      // Convert back to our object data structure
+      courseDetails.subjects = utils.arrayToOrdinalObject(subjectsArray)
+
+    }
+
+    if (utils.hasUnmappedPublishSubjects(record.courseDetails) || utils.subjectsAreIncomplete(record.courseDetails)){
+      console.log("Course has unmapped subjects")
+      res.redirect(`${recordPath}/course-details/choose-specialisms${referrer}`)
+    }
+    else if (isAllocated) {
+      // After /allocated-place the journey will match other course-details routes
+      res.redirect(`${recordPath}/course-details/allocated-place${referrer}`)
+    }
+    else {
+      console.log("Course does not have unmapped subjects")
+      res.redirect(`${recordPath}/course-details/confirm${referrer}`)
     }
   })
 
@@ -395,56 +509,56 @@ module.exports = router => {
   // reviewing from a summary page, or after editing other details.
   // This route is needed because we need to conditionally pass on to /allocated-place if
   // the route and subject match certain conditions.
-  router.post(['/:recordtype/:uuid/course-details/confirm-publish-details','/:recordtype/course-details/confirm-publish-details'], function (req, res) {
-    const data = req.session.data
-    let record = data.record
-    let referrer = utils.getReferrer(req.query.referrer)
-    let recordPath = utils.getRecordPath(req)
-    // Copy route up to higher level
-    delete record.selectedCourseTemp
-    delete record.selectedCourseAutocompleteTemp
+  // router.post(['/:recordtype/:uuid/course-details/confirm-publish-details','/:recordtype/course-details/confirm-publish-details'], function (req, res) {
+  //   const data = req.session.data
+  //   let record = data.record
+  //   let referrer = utils.getReferrer(req.query.referrer)
+  //   let recordPath = utils.getRecordPath(req)
+  //   // Copy route up to higher level
+  //   delete record.selectedCourseTemp
+  //   delete record.selectedCourseAutocompleteTemp
 
-    // For apply records we let them pick a Publish course which 
-    // might have a different route
-    if (record.route != record.courseDetails.route){
-      console.log(`The selected Publish course’s route does not match the draft’s route. Draft route changed to ${record.courseDetails.route}`)
-      record.route = record.courseDetails.route
-    }
+  //   // For apply records we let them pick a Publish course which 
+  //   // might have a different route
+  //   if (record.route != record.courseDetails.route){
+  //     console.log(`The selected Publish course’s route does not match the draft’s route. Draft route changed to ${record.courseDetails.route}`)
+  //     record.route = record.courseDetails.route
+  //   }
 
-    let isAllocated = utils.hasAllocatedPlaces(record)
+  //   let isAllocated = utils.hasAllocatedPlaces(record)
 
-    if (isAllocated) {
-      // After /allocated-place the journey will match other course-details routes
-      res.redirect(`${recordPath}/course-details/allocated-place${referrer}`)
-    }
-    else {
-      if (req.params.recordtype == 'record'){
-        // This is basically the same as the /update route
-        utils.updateRecord(data, record)
-        utils.deleteTempData(data)
-        req.flash('success', 'Trainee record updated')
-        // Referrer or non-referrer probably goes to the same place
-        if (referrer){
-          res.redirect(utils.getReferrerDestination(req.query.referrer))
-        }
-        else {
-          res.redirect(`${recordPath}`)
-        }
-      }
-      else {
-        // Implicitly confirm the section by confirming it
-        record.courseDetails.status = "Completed"
-        if (referrer){
-          // Return to check-record page
-          res.redirect(utils.getReferrerDestination(req.query.referrer))
-        }
-        else {
-          res.redirect(`${recordPath}/overview`)
-        }
-      }
+  //   if (isAllocated) {
+  //     // After /allocated-place the journey will match other course-details routes
+  //     res.redirect(`${recordPath}/course-details/allocated-place${referrer}`)
+  //   }
+  //   else {
+  //     if (req.params.recordtype == 'record'){
+  //       // This is basically the same as the /update route
+  //       utils.updateRecord(data, record)
+  //       utils.deleteTempData(data)
+  //       req.flash('success', 'Trainee record updated')
+  //       // Referrer or non-referrer probably goes to the same place
+  //       if (referrer){
+  //         res.redirect(utils.getReferrerDestination(req.query.referrer))
+  //       }
+  //       else {
+  //         res.redirect(`${recordPath}`)
+  //       }
+  //     }
+  //     else {
+  //       // Implicitly confirm the section by confirming it
+  //       record.courseDetails.status = "Completed"
+  //       if (referrer){
+  //         // Return to check-record page
+  //         res.redirect(utils.getReferrerDestination(req.query.referrer))
+  //       }
+  //       else {
+  //         res.redirect(`${recordPath}/overview`)
+  //       }
+  //     }
 
-    }
-  })
+  //   }
+  // })
 
   // Picking a course
   router.post(['/:recordtype/:uuid/course-details/pick-route','/:recordtype/course-details/pick-route'], function (req, res) {
@@ -484,6 +598,9 @@ module.exports = router => {
     // Check for autocomplete submitted subject
     let subjectAutocomplete1 = req.body?._autocompleteRawValue_subject_1
 
+    // Make an array of subjects data - easier to work with
+    let subjectsArray = Object.values(record.courseDetails.subjects).filter(Boolean)
+
     // Special handling to cope with users deleting values from autocompletes.
     // Autocompletes make it hard to clear a value when used as an enhanced select.
     // Clearing the answer does not correctly select the empty select item. Instead,
@@ -493,10 +610,11 @@ module.exports = router => {
         .concat(req.body?._autocompleteRawValue_subject_2)
         .concat(req.body?._autocompleteRawValue_subject_3)
         .filter(Boolean)
-      // Now need to compare the values we got from the autocompletes with the values from the selects
+      // Now need to compare the values we got from the autocompletes with the values already stored
       // They have different casing, so need to check caselessly
-      if (record?.courseDetails?.subjects){
-        record.courseDetails.subjects = record.courseDetails.subjects.filter(subject => {
+      if (subjectsArray){
+        // Filter subjects for only those that were also present in the autocompletes
+        subjectsArray = subjectsArray.filter(subject => {
           return subjectsTemp.map(autocompleteSubject => autocompleteSubject.toLowerCase()).includes(subject.toLowerCase())
         })
       }
@@ -505,9 +623,9 @@ module.exports = router => {
 
     // Clean up subjects data
     // Remove empty and force in to array
-    if (record?.courseDetails?.subjects){
-      record.courseDetails.subjects = [].concat(record.courseDetails.subjects.filter(Boolean))
-    }
+    subjectsArray = [].concat(subjectsArray.filter(Boolean))
+    // Map back to cardinal object
+    record.courseDetails.subjects = utils.arrayToOrdinalObject(subjectsArray)
 
     // Merge autocomplete and radio answers
     if (courseDetails.ageRange == 'Other age range'){

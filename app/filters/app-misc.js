@@ -83,7 +83,7 @@ filters.getSchoolNamesForAutocomplete = (schools) => {
 // Biology (J482)
 filters.getCourseNamesForSelect = (courses) => {
   return courses.map(course => {
-    return [`${utils.getCourseName(course)}`, course.id]
+    return [course.courseNameLong, course.id]
   })
 }
 
@@ -93,7 +93,7 @@ filters.getCourseNamesForSelect = (courses) => {
 // QTS with PGCE full-time
 filters.getCourseNamesForAutocomplete = (courses) => {
   return courses.map(course => {
-    return [`${utils.getCourseName(course)} | ${course.qualificationsSummary}`, course.id]
+    return [`${course.courseNameLong} | ${course.qualificationsSummary}`, course.id]
   })
 }
 

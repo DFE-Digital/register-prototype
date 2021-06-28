@@ -9,9 +9,14 @@ const faker   = require('faker')
 faker.locale  = 'en_GB'
 const trainingRouteData = require('./../training-route-data')
 
+const utils = require('./../../lib/utils.js')
+
 const ittSubjects = require('./../itt-subjects')
 const peSubjects = ittSubjects.peSubjects
 
+const publishSubjects = ittSubjects.publishSubjects
+
+let primaryPublishSubjects = Object.keys(publishSubjects).filter(subject => subject.includes("Primary"))
 
 let enabledRoutes = {}
 trainingRouteData.enabledTrainingRoutes.forEach(route => {
@@ -75,13 +80,15 @@ const pickRoute = (isPublishCourse = false) => {
 }
 
 // Return some realistic subjects a primary teacher might train in
+// Only used for 'manually added' trainees
 const getPrimarySubjects = subjectCount => {
   
   // Assumption that all primary courses have `Primary` as the first subject
   let subjects = ["Primary teaching"]
 
   // Other primary specialisms
-  let primarySpecialisms = ittSubjects.commonPrimarySubjects.filter(subject => subject != "Primary teaching")
+  let primarySpecialisms = ittSubjects.commonPrimarySubjects
+    .filter(subject => subject != "Primary teaching")
 
   if (subjectCount == 2){
     let specialism = faker.helpers.randomize([
@@ -95,6 +102,8 @@ const getPrimarySubjects = subjectCount => {
 }
 
 // Return some realistic subjects a secondary teacher might train in
+// This is only used or 'manually added' trainees as Publish uses a different set of subjects and so
+// has courses that look a bit different
 const getSecondarySubjects = (subjectCount) => {
   let subjects
 
@@ -125,7 +134,6 @@ const getSecondarySubjects = (subjectCount) => {
       randomisedSecondarySubjects.slice(0,2),                   // Two subjects
       [randomPeSubject, randomisedScienceSubjects[0]]      // PE with EBacc
     ])
-
   }
 
   // Nearly always languages and sciences
@@ -135,6 +143,67 @@ const getSecondarySubjects = (subjectCount) => {
       randomisedScienceSubjects, // Science subjects
       [randomPeSubject].concat(randomisedScienceSubjects.slice(0,2)) // PE with two EBacc subjects
     ])
+  }
+
+  return subjects
+}
+
+// Return some realistic-osh subjects a secondary teacher might train in
+// This uses Publish’s list of subjects which is different than Register and DTTP’s list.
+const getSecondaryPublishSubjects = (subjectCount) => {
+  let subjects
+
+  // Pull out languages (derived from where the allocation subject is Modern languages)
+  let modernLanguagesSubjects = Object.keys(publishSubjects).filter(subject => {
+    return publishSubjects[subject].allocationSubject == "Modern languages"
+  })
+
+  // All subjects that don't include 'Primary' and are not a language
+  let nonPrimaryPublishSubjects = Object.keys(publishSubjects).filter(subject => {
+    return !subject.includes("Primary") && publishSubjects[subject].allocationSubject != "Modern languages"
+  })
+
+  // Shuffle our data so we can get n values from them by slicing
+  let randomisedLanguages = faker.helpers.shuffle(modernLanguagesSubjects)
+  let randomisedSecondarySubjects = faker.helpers.shuffle(nonPrimaryPublishSubjects)
+  let randomisedScienceSubjects = faker.helpers.shuffle(['Physics', 'Chemistry', 'Biology'])
+
+  // Bias slightly towards specific subjects but have some random
+  // ones too for good measure
+  if (subjectCount == 1){
+    subjects = faker.helpers.randomize([
+      faker.helpers.randomize(ittSubjects.corePublishSubjects),
+      faker.helpers.randomize(nonPrimaryPublishSubjects),
+      // In Publish users pick specific languages - this isn't modelled here - instead we just set 
+      // 'Modern languages' and the ui will ask which language. We do include single languages though.
+      "Modern languages",
+      randomisedLanguages.slice(0,1), // One language
+      "Design and technology", // good example with lots of specialisms
+      "Physical education" // common example that should be a specialism
+    ])
+  }
+
+  // Dual subjects typically have one of a few common sets of subjects
+  if (subjectCount == 2){
+    subjects = faker.helpers.randomize([
+      // Multiple languages commented out as we will probably ask our users to specify languages
+      // through the ui
+      // randomisedLanguages.slice(0,2),                        // Two languages
+      // A subject with modern languages isn't likely, but is included as a test case
+      // ["Modern languages", "Biology"],  //
+      // [randomisedSecondarySubjects[0], randomisedLanguages[0]], // One subject and one language
+      randomisedScienceSubjects.slice(0,2),                     // Two sciences
+      [randomisedScienceSubjects[0], randomisedSecondarySubjects[0]], // Science with another subject
+      randomisedSecondarySubjects.slice(0,2),                   // Two subjects
+      ["Physical education", randomisedScienceSubjects[0]]      // PE with EBacc-ish
+    ])
+    // Check for duplicate subjects
+    // Shouldn’t really be possible as we either slice from a unique set or pick from mutually
+    // exclusive sets - just in case though ;)
+    while (subjects[0] == subjects[1]){
+      console.log("Err! both subjects are the same. Choosing a different second subject was:", subjects[0], subjects[1])
+      subjects[1] = faker.helpers.randomize(nonPrimaryPublishSubjects)
+    }
   }
 
   return subjects
@@ -160,26 +229,35 @@ module.exports = (params) => {
 
   let ageRange = (Array.isArray(ageRanges)) ? faker.helpers.randomize(ageRanges) : null
 
-  let subjects
+  let subjects, publishCourseSubjects
 
   if (isEarlyYears){
     // This subject isn’t really used or shown - but matches how DTTP handles it
     subjects = 'Early years teaching'
   }
   else if (level == 'Primary'){
-    subjects = getPrimarySubjects(weighted.select([1,2],[0.7,0.3])) // 70% just primary
+    if (isPublishCourse){
+      publishCourseSubjects = faker.helpers.randomize(primaryPublishSubjects)
+    }
+    else {
+      subjects = getPrimarySubjects(weighted.select([1,2],[0.7,0.3])) // 70% just primary
+    }
+
   }
   else {
     let subjectCount
-      if (isPublishCourse){
-        subjectCount = weighted.select([1,2],[0.7,0.3])
-      }
-      else {
-        subjectCount = weighted.select([1,2,3],[0.6,0.3,0.1]) // 40% multiple subjects
-      }
+    if (isPublishCourse){
+      subjectCount = weighted.select([1,2],[0.7,0.3])
+      publishCourseSubjects = getSecondaryPublishSubjects(subjectCount)
+    }
+    else {
+      subjectCount = weighted.select([1,2,3],[0.6,0.3,0.1]) // 40% multiple subjects
       subjects = getSecondarySubjects(subjectCount)
+    }
+    
   }
 
+  publishCourseSubjects = [].concat(publishCourseSubjects) // coerce to array just in case
   subjects = [].concat(subjects) // coerce to array just in case
 
   // This lets all routes except AO have part time courses - unsure if this is right
@@ -240,11 +318,18 @@ module.exports = (params) => {
   // Assume courses end earlier than they start
   const endDate = moment(startDate).add(duration, 'years').subtract(3, 'months').toDate()
 
-  const code = generateCourseCode()
-
-  const id = faker.random.uuid()
 
   if (isPublishCourse) {
+
+    const code = generateCourseCode() // G568
+
+    const id = faker.random.uuid()
+
+    // English with biology
+    let courseNameShort = `${utils.prettifySubjects(publishCourseSubjects)}`
+    // English with biology (Q483)
+    let courseNameLong = `${courseNameShort} (${code})`
+
     return {
       ...(ageRange ? { ageRange } : {}), // conditionally return age range
       allocatedPlace,
@@ -259,7 +344,9 @@ module.exports = (params) => {
       route,
       startDate,
       studyMode,
-      subjects,
+      publishSubjects: utils.arrayToOrdinalObject(publishCourseSubjects),
+      courseNameShort,
+      courseNameLong
     }
   }
 
@@ -275,7 +362,7 @@ module.exports = (params) => {
       qualificationsSummary,
       route,
       startDate,
-      subjects,
+      subjects: utils.arrayToOrdinalObject(subjects),
     }
   }
 

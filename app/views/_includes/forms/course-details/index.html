@@ -1,9 +1,6 @@
 <h1 class="govuk-heading-l">{{pageHeading}}</h1>
 
-{% set subjects = record.courseDetails.subjects | toArray %}
-{% set firstSubject = subjects | first %}
-{% set remainingSubjects = subjects | removeArrayItem(firstSubject) | removeEmpty %}
-{% set hasMultipleSubjects = remainingSubjects | length > 0 %}
+{% set hasMultipleSubjects = record.courseDetails.subjects | length > 1 %}
 
 {{ appAutocomplete({
   label: {
@@ -18,9 +15,9 @@
   autoSelect: true,
   showAllValues: false,
   classes: "app-!-autocomplete--max-width-two-thirds",
-  name: "record[courseDetails][subjects]",
+  name: "record[courseDetails][subjects][first]",
   items: data.ittSubjects,
-  value: firstSubject
+  value: record.courseDetails.subjects.first
   }
 ) }}
 
@@ -28,12 +25,14 @@
 
   <p class="govuk-body">The first subject is the main one. It represents the bursary or scholarship available if applicable.</p>
 
-  {% for item in [1,2] %}
-    {% if loop.index0 == 0 %}
-      {% set label = "Second subject (optional)" %}
-    {% else %}
-      {% set label = "Third subject (optional)" %}
-    {% endif %}
+  {% for item in [2,3] %}
+
+    {# 'second' or 'third' #}
+    {% set ordinal = item | getOrdinalName %}
+
+    {% set label %}
+      {{ ordinal | sentenceCase }} subject (optional)
+    {% endset %}
 
     {{ appAutocomplete({
       label: {
@@ -49,9 +48,9 @@
       showAllValues: false,
       allowEmpty: true,
       classes: "app-!-autocomplete--max-width-two-thirds",
-      name: "record[courseDetails][subjects]",
+      name: "record[courseDetails][subjects][" + ordinal + "]",
       items: data.ittSubjects,
-      value: remainingSubjects[loop.index0]
+      value: record.courseDetails.subjects[ordinal]
       }
     ) }}
   {% endfor %}
@@ -62,8 +61,6 @@
   html: multipleSubjectsHtml,
   open: true if hasMultipleSubjects
 }) }}
-
-
 
 {# These account for 91% of choices #}
 {% set commonAgeRanges = [

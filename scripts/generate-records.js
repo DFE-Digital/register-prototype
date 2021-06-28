@@ -95,17 +95,18 @@ const generateFakeApplication = (params = {}) => {
   // Training
   application.trn              = (params.trn === null) ? undefined : (params.trn || generateTrn(application))
 
+  application.source          = (params.source) ? params.source : generateSource(application)
+  if (application.source == "Apply"){
+    application.applyData = { ...generateApplyData(application), ...params.applyData}
+    // if (params.applyData) application.applyData = params.applyData
+  }
   application.courseDetails = (params.courseDetails === null) ? undefined : { ...generateCourseDetails(params, application), ...params.courseDetails }
   // There's a slight edge case that programme details might return with a different route - if so save it back up
   if (application?.courseDetails?.route && application.courseDetails.route != application.route){
     console.log("Overwriting route") // hacky, and hopefully doesn’t happen often
     application.route = application.courseDetails.route
   }
-  application.source          = (params.source) ? params.source : generateSource(application)
-  if (application.source == "Apply"){
-    application.applyData = { ...generateApplyData(application), ...params.applyData}
-    // if (params.applyData) application.applyData = params.applyData
-  }
+
   application.events           = generateEvents(application)
 
   application.trainingDetails  = (params.trainingDetails === null) ? undefined : { ...generateTrainingDetails(application), ...params.trainingDetails }
@@ -174,7 +175,7 @@ const generateFakeApplications = () => {
     // Approximate size of provider
     // TODO: store provider size somewhere so it can be used here and
     // by the course generator
-    let providerSize = getRandomInt(50) 
+    let providerSize = getRandomInt(30) 
 
     yearsToGenerate.forEach((year) => {
       // Years can be ±10% in size
