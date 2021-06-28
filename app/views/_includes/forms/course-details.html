@@ -1,4 +1,4 @@
-{% if record.route | includes("Early years") %}
+{% if record | isEarlyYears %}
   {% include "_includes/forms/course-details/early-years.html" %}
 {% else %}
   {% include "_includes/forms/course-details/index.html" %}

@@ -4,7 +4,7 @@
 
 {% if sectionIsRequired %}
   
-  {% if record.route | includes("Early years") %}
+  {% if record | isEarlyYears %}
     {% include "_includes/summary-cards/course-details/early-years-course.html" %}
   {% elseif record.courseDetails.isPublishCourse %}
     {% include "_includes/summary-cards/course-details/publish-course.html" %}

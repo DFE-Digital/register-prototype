@@ -146,9 +146,11 @@ module.exports = (params) => {
 
   const route = params.route || pickRoute(isPublishCourse)
 
+  let isEarlyYears = route.includes('Early years')
+
   let level, qualifications, qualificationsSummary, studyMode
 
-  if (route.includes('Early years')){
+  if (isEarlyYears){
     level = 'Early years'
   }
   // else level = faker.helpers.randomize(['Primary', 'Secondary'])
@@ -160,7 +162,7 @@ module.exports = (params) => {
 
   let subjects
 
-  if (route.includes('Early years')){
+  if (isEarlyYears){
     // This subject isn’t really used or shown - but matches how DTTP handles it
     subjects = 'Early years teaching'
   }
@@ -192,7 +194,7 @@ module.exports = (params) => {
     studyMode = "Full time"
     // If early years or AO, just use route defaults
     // Todo: extend this to add academic qualifications possible for early years
-    if (route.includes('Early years') || route.includes('Assessment only')){
+    if (isEarlyYears || route.includes('Assessment only')){
       qualifications = enabledRoutes[route].qualifications
       qualificationsSummary = enabledRoutes[route].qualificationsSummary
     }
@@ -210,7 +212,7 @@ module.exports = (params) => {
   // Part time
   else {
     studyMode = "Part time"
-    if (route.includes('Early years')){
+    if (isEarlyYears){
       qualifications = enabledRoutes[route].qualifications
       qualificationsSummary = enabledRoutes[route].qualificationsSummary
     }

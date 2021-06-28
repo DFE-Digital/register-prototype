@@ -4,14 +4,21 @@
 {# We might not always have a bursary value at this stage - so conditionally set it #}
 {% set bursaryValue = record | getBursaryValue %}
 {% if bursaryValue | falsify %}
-  {% set bursaryValueText %}
-    of {{ bursaryValue | currency }}
-  {% endset %}
+  {% set bursaryValueText %} of {{ bursaryValue | currency }}{% endset %}
 {% endif %}
 
-<p class="govuk-body">
-  The course you have selected has a bursary available {{ bursaryValueText }} for {{ bursary.subject | dynamicLowercase }}. You need to check if the trainee is eligible for this bursary.
-</p>
+{# Early years either have a bursary or not - it’s not based on subject #}
+{% if record | isEarlyYears %}
+  <p class="govuk-body">
+    {{ record.route }} has a bursary available{{ bursaryValueText }}. You need to check if the trainee is eligible for this bursary.
+  </p>
+
+{# For other courses, bursaries are only available for specific courses #}
+{% else %}
+  <p class="govuk-body">
+    The course you have selected has a bursary available{{ bursaryValueText }} for {{ bursary.subject | dynamicLowercase }}. You need to check if the trainee is eligible for this bursary.
+  </p>
+{% endif %}
 
 <p class="govuk-body"><a href="https://www.gov.uk/government/publications/initial-teacher-training-itt-bursary-funding-manual/initial-teacher-training-bursaries-funding-manual-2021-to-2022-academic-year#training-bursary-award-and-eligibility" class="govuk-link" rel="noreferrer noopener" target="_blank">DfE bursary guidance for academic year 2021 to 2022 (opens in new tab)</a></p>
 
