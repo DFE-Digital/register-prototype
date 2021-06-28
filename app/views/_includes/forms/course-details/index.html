@@ -130,6 +130,26 @@
   items: ageRangeRadioItems
 } | decorateAttributes(record, "record.courseDetails.ageRange")) }}
 
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: "Study mode",
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      text: "Full time"
+    },
+    {
+      text: "Part time"
+    }
+  ]
+} | decorateAttributes(record, "record.courseDetails.studyMode")) }}
+
 {% set programmeStartDateArray = record.courseDetails.startDate | toDateArray %}
 
 {{ govukDateInput({

@@ -75,6 +75,23 @@
   },
   {
     key: {
+      text: "Study mode"
+    },
+    value: {
+      text: record.courseDetails.studyMode or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/course-details/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "age range"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
       text: "Course start date"
     },
     value: {
@@ -85,7 +102,7 @@
         {
           href: recordPath + "/course-details/details" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "programme start date"
+          visuallyHiddenText: "course start date"
         }
       ]
     } if canAmend
@@ -102,7 +119,7 @@
         {
           href: recordPath + "/course-details/details" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "programme end date"
+          visuallyHiddenText: "course end date"
         }
       ]
     } if canAmend
