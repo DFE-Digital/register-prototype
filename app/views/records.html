@@ -185,11 +185,11 @@
     {# This heading set separately than {{pageHeading}} as it uses html #}
     <h1 class="govuk-heading-xl">{{pageBaseName}} ({{filteredRecords | length}}<span class="govuk-visually-hidden"> {{ "record" | pluralise(filteredRecords | length)}}</span>)</h1>
 
-    {# {{ govukButton({
+    {{ govukButton({
       text: "Add a trainee",
       href: "./new-record/new",
       isStartButton: true
-    }) }} #}
+    }) }}
 
   </div>
 
