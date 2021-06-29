@@ -5,7 +5,7 @@
 {% if data.record | sourceIsApply %}
   {% set formAction = "./../overview" | orReferrer(referrer) %}
 {% else %}
-  {% set formAction = "./personal-details/confirm" | addReferrer(referrer) %}
+  {% set formAction = "./contact-details/confirm" | addReferrer(referrer) %}
 {% endif %}
 
 {% block formContent %}

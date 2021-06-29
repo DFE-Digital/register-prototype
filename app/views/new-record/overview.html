@@ -100,7 +100,7 @@
 {# Conditional section label #}
 {% set includesSchools = record | requiresField(["leadSchool", "employingSchool"]) %}
 {% if includesSchools %}
-  {% if record | requiresField(["leadSchool", "employingSchool"]) %}
+  {% if (record | requiresField("leadSchool")) and (record | requiresField("employingSchool")) %}
     {% set schoolSectionLabel = "Lead and employing schools" %}
   {% elseif record | requiresField(["leadSchool"]) %}
     {% set schoolSectionLabel = "Lead school" %}
