@@ -596,7 +596,7 @@ exports.isDraft = record => {
   return record.status == "Draft" || record.status == "Apply draft"
 }
 
-exports.isNotDraft = record => {
+exports.isNonDraft = record => {
   return record.status != "Draft" && record.status != "Apply draft"
 }
 
@@ -771,7 +771,6 @@ exports.filterRecords = (records, data, filters = {}) => {
     filteredRecords = filteredRecords.filter(record => exports.sourceIsManual(record))
   }
 
-
   // Cycle not implimented yet
   // if (filter.cycle){
   //   filteredRecords = filteredRecords.filter(record => filter.cycle.includes(record.cycle))
@@ -792,6 +791,16 @@ exports.filterRecords = (records, data, filters = {}) => {
   // Primary / Secondary etc
   if (filters.level){
     filteredRecords = filteredRecords.filter(record => filters.level.includes(exports.getCourseLevel(record)))
+  }
+
+  // Full time or Part time
+  // Note - some Publish courses are "Full time or part time" until reviewed by a user - this filter
+  // lets those trainees appear in both filters.
+  if (filters.studyMode){
+    filteredRecords = filteredRecords.filter(record => {
+      let courseStudyMode = (record?.courseDetails?.studyMode && record.courseDetails.studyMode.toLowerCase()) || ""
+      return filters.studyMode.some(filter => courseStudyMode.includes(filter.toLowerCase()))
+    })
   }
 
   // List of providers if signed in as multiple

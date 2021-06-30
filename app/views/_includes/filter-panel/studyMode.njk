@@ -1,0 +1,20 @@
+{{ govukCheckboxes({
+  classes: "govuk-checkboxes--small js-auto-submit",
+  fieldset: {
+    legend: {
+      text: "Full or part time",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      text: "Full time",
+      checked: checked(query.filterStudyMode, "Full time")
+    },
+    {
+      text: "Part time",
+      checked: checked(query.filterStudyMode, "Part time")
+    }
+  ]
+} | decorateAttributes(data, "data.filterStudyMode"))}}

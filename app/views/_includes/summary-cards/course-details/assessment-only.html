@@ -58,6 +58,23 @@
   },
   {
     key: {
+      text: "Full or part time"
+    },
+    value: {
+      text: record.courseDetails.studyMode or 'Not provided'
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/course-details/details" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "full or part time"
+        }
+      ]
+    } if canAmend
+  },
+  {
+    key: {
       text: "Course start date"
     },
     value: {

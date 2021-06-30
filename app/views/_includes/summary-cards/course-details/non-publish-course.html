@@ -75,7 +75,7 @@
   },
   {
     key: {
-      text: "Study mode"
+      text: "Full or part time"
     },
     value: {
       text: record.courseDetails.studyMode or 'Not provided'
@@ -85,7 +85,7 @@
         {
           href: recordPath + "/course-details/details" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "age range"
+          visuallyHiddenText: "full or part time"
         }
       ]
     } if canAmend

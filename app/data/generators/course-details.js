@@ -104,9 +104,15 @@ const setSubjectSpecialisms = (courseDetails, pickRandom) => {
 
 module.exports = (params, application) => {
 
+  const isNonDraft = utils.isNonDraft(application)
   const isApplyDraft = (application.source == 'Apply' && application.status == "Apply draft")
-
+  const isManualDraft = (application.source == 'Draft' && application.status == "Draft")
+  
   const sectionIsComplete = (params?.courseDetails?.status == "Completed")
+
+  // Whether to pretend that missing or ambiguous data hase already been set
+  // If something is non draft or complete then implicitly the ambiguous data must have been fixed.
+  let pretendDataIsComplete = ( isNonDraft || isManualDraft || sectionIsComplete )
 
   // Arwkwardly work out if this should be a publish course
   // Todo: could this be rewritten?
@@ -136,16 +142,16 @@ module.exports = (params, application) => {
     // Pick a random course for this trainee
     courseDetails = faker.helpers.randomize(limitedCourses)
 
-    // Whether to pretend that specialisms have already been set
-    // Everything except apply drafts (all other statuses and manual drafts) should have specialisms
-    // set - because by this point the provier user would have had to fill it in.
-    // Apply drafts should only have specialisms set if the section is 'complete' - to simulate
-    // trainees that are 'Ready to register'
-    let pickRandom = ( !isApplyDraft || sectionIsComplete )
+    // For each Publish subject, set course subjects where they’re mappable.
+    // Not all subjects are mappable. Users will use UI to map them. Where we're pretending the data
+    // is complete we pick a random subject - as if the user had preivously picked that.
+    courseDetails = setSubjectSpecialisms(courseDetails, pretendDataIsComplete)
 
-    courseDetails = setSubjectSpecialisms(courseDetails, pickRandom)
-
-
+    // Some Pubish courses are set to `Full time or part time` - when a user adds one of these
+    // courses we’ll assume `Full time` but let the user override it. 
+    if (pretendDataIsComplete && courseDetails.studyMode == "Full time or part time"){
+      courseDetails.studyMode = "Full time"
+    }
 
   }
   else {

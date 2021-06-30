@@ -260,30 +260,49 @@ module.exports = (params) => {
   publishCourseSubjects = [].concat(publishCourseSubjects) // coerce to array just in case
   subjects = [].concat(subjects) // coerce to array just in case
 
-  // This lets all routes except AO have part time courses - unsure if this is right
-  const duration = (route == 'Assessment only') ? 1 : parseInt(weighted.select({
-    '1': 0.8, // assume most courses are 1 year
-    '2': 0.15,
-    '3': 0.05
+  // Duaration in years. Note AO always has a duration of 1 even though it’s only 12 weeks
+  let duration = (route == 'Assessment only') ? 1 : parseInt(weighted.select({
+    '1': 0.8, // 1 year full time or mix - majority of courses are full time
+    '2': 0.15, // 2 yeras part time
+    '3': 0.05 // 3 years par time
   }))
 
-  // Full time
+  // Full time (or mix)
   if (duration == 1){
     studyMode = "Full time"
+
     // If early years or AO, just use route defaults
     // Todo: extend this to add academic qualifications possible for early years
     if (isEarlyYears || route.includes('Assessment only')){
+
       qualifications = enabledRoutes[route].qualifications
       qualificationsSummary = enabledRoutes[route].qualificationsSummary
+
+      // Hack in some part time AO trainees - which would still have duration 1
+      studyMode = weighted.select(["Full time", "Part time"], [0.8,0.2])
+
+      if (studyMode == "Part time"){
+        qualificationsSummary = qualificationsSummary.concat(" part time") // totally hacky
+      }
+
     }
     else {
+
       let selected = weighted.select({
         'one': 0.2,   // QTS
         'two': 0.75,  // QTS with PGCE
         'three': 0.05 // QTS with PGDE
       })
+
       qualifications = qualificationOptions[selected].qualifications
       qualificationsSummary = qualificationOptions[selected].qualificationsSummary
+
+      // Some Publish courses could be set as "Full time or part time - we mostly treat ast full time
+      // but let's have some ambiguity here so the ui can clear it up
+      if (isPublishCourse){
+        studyMode = weighted.select(['Full time','Full time or part time'], [0.7,0.3])
+        qualificationsSummary = qualificationsSummary.concat(" or part time") // totally hacky
+      }
     }
     
   }
@@ -296,7 +315,7 @@ module.exports = (params) => {
     }
     else {
       let selected = weighted.select({
-        'four': 0.2,  // QTS
+        'four': 0.2,  // QTS part time
         'five': 0.8   // QTS with PGDE
       })
       qualifications = qualificationOptions[selected].qualifications
@@ -362,6 +381,7 @@ module.exports = (params) => {
       qualificationsSummary,
       route,
       startDate,
+      studyMode,
       subjects: utils.arrayToOrdinalObject(subjects),
     }
   }

@@ -35,6 +35,7 @@ const getFilters = req => {
   'filterCompleteStatus',
   'filterSource',
   'filterLevel',
+  'filterStudyMode',
   'filterCycle',
   'filterUserProviders',
   'filterTrainingRoutes']
@@ -48,6 +49,7 @@ const getFilters = req => {
     completeStatus: query.filterCompleteStatus,
     cycle: query.filterCycle,
     level: query.filterLevel,
+    studyMode: query.filterStudyMode,
     providers: query.filterUserProviders,
     trainingRoutes: query.filterTrainingRoutes,
     subject: query.filterSubject
@@ -58,7 +60,7 @@ const getFilters = req => {
 
 // Todo: this could probably be simpler
 const getHasFilters = (filters, searchQuery) => {
-  return !!(filters.status) || !!(filters.completeStatus) || !!(filters.source) || !!(filters.level) || !!(searchQuery) || !!(filters.subject && filters.subject != 'All subjects') || !!(filters.cycle) || !!(filters.trainingRoutes) || !!(filters.providers)
+  return !!(filters.status) || !!(filters.completeStatus) || !!(filters.source) || !!(filters.level) || !!(filters.studyMode) || !!(searchQuery) || !!(filters.subject && filters.subject != 'All subjects') || !!(filters.cycle) || !!(filters.trainingRoutes) || !!(filters.providers)
 }
 
 // Make object to hold details of selected filters with appropriate links to clear each one
@@ -155,6 +157,24 @@ const getSelectedFilters = req => {
         newQuery.filterLevel = filters.level.filter(a => a != level)
         return {
           text: level,
+          href: url.format({
+            pathname,
+            query: newQuery,
+          })
+        }
+      })
+    })
+  }
+
+  if (filters.studyMode) {
+    selectedFilters.categories.push({
+      heading: { text: 'Full or part time' },
+      items: filters.studyMode.map((studyMode) => {
+
+        let newQuery = Object.assign({}, query)
+        newQuery.filterLevel = filters.studyMode.filter(a => a != studyMode)
+        return {
+          text: studyMode,
           href: url.format({
             pathname,
             query: newQuery,
