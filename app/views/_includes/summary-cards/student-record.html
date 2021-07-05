@@ -40,6 +40,15 @@
   }
   ] %}
 
+{% set studentRecordRows = studentRecordRows | push({
+    key: {
+      text: "Academic year"
+    },
+    value: {
+      text: record.academicYear or 'Not provided'
+    }
+  }) %}
+
 {% if record.status == "Pending TRN" %}
   {% set submittedAge = record.submittedDate | formatDate('relative') %}
 

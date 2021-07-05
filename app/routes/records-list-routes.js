@@ -271,6 +271,11 @@ module.exports = router => {
 
     // Grab filters and clean them up
     let filters = getFilters(req)
+
+    // If there’s no query string at all, we want to apply some defaults
+    let hasQueryString = Boolean(Object.keys(req.query).length)
+    if (!hasQueryString) filters.cycle = ["2020 to 2021"]
+
     let searchQuery = getSearchQuery(req)
 
     let hasFilters = getHasFilters(filters, searchQuery)
@@ -280,6 +285,8 @@ module.exports = router => {
 
     // Filter records using the filters provided
     let filteredRecords = utils.filterRecords(data.records, data, filters)
+    // console.log(req.query)
+    // if (!hasFilters) filteredRecords = filteredRecords.filter(record => record.academicYear == "2021 to 2022")
 
     // All records except drafts
     filteredRecords = objectFilters.removeWhere(filteredRecords, 'status', ["Draft", "Apply draft"])
@@ -289,8 +296,6 @@ module.exports = router => {
 
     // Sort records by sortOrder, defaulting to updatedDate
     filteredRecords = utils.sortRecordsBy(filteredRecords, (req?.query?.sortOrder || 'updatedDate'))
-
-
 
     res.render('records', {
       filteredRecords,

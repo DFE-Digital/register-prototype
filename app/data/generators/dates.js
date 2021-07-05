@@ -12,7 +12,10 @@ module.exports = ({updatedDate, submittedDate, deferredDate, withdrawalDate, qua
   // console.log(application.academicYear)
   // let updatedDate, submittedDate, deferredDate, withdrawalDate, qtsAwarded
 
-  const yearStartDate = moment(`${application.academicYear}-08-01`).toDate()
+  // Extract the start year
+  let academicYearSimple = parseInt(application.academicYear.substring(0, 4))
+
+  const yearStartDate = moment(`${academicYearSimple}-08-01`).toDate()
 
   let yearEndDate = moment(yearStartDate).add(1, 'years').toDate()
 

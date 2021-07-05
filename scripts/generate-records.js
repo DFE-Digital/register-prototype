@@ -22,8 +22,8 @@ const providers         = providerData.selectedProviders
 // Settings
 let simpleGcseGrades    = true //output pass/fail rather than full detail
 
-// const yearsToGenerate   = [2016, 2017, 2018, 2019, 2020]
-const yearsToGenerate = [2019, 2020]
+// Todo: get this from the years.js file?
+const yearsToGenerate = [2019, 2020, 2021]
 const currentYear     = 2020
 
 const sortBySubmittedDate = (x, y) => {
@@ -76,7 +76,12 @@ const generateFakeApplication = (params = {}) => {
 
   let application = {}
 
-  application.academicYear    = params.academicYear || currentYear
+  application.academicYear    = params.academicYear
+  if (!application.academicYear){
+    let startYear = params.academicYearSimple || currentYear
+    application.academicYear  = `${startYear} to ${startYear + 1}`
+  }
+
   application.diversity       = (params.diversity === null) ? undefined : { ...generateDiversity(), ...params.diversity }
   application.id              = params.id || faker.random.uuid()
   application.personalDetails = (params.personalDetails === null) ? undefined : { ...generatePersonalDetails(), ...params.personalDetails }
@@ -164,7 +169,7 @@ const generateFakeApplications = () => {
     // Todo - apply these back to seed records?
     let seed = {...seedRecord, ...{
       provider: "Coventry University",
-      academicYear: currentYear
+      academicYearSimple: currentYear
     }}
     applications.push(generateFakeApplication(seed))
   })
@@ -204,10 +209,22 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
   let targetCounts
 
   // Current year should be mostly trn recieved
-  if (year == currentYear){
+  if (year > currentYear){
+    targetCounts = {
+      draft: 0.5,
+      applyEnrolled: 0.5,
+      pendingTrn: 0.00,
+      trnReceived: 0.0,
+      qualificationRecommended: 0.00,
+      qualificationAwarded: 0.00,
+      deferred: 0.00,
+      withdrawn: 0.00,
+    }
+  }
+  else if (year == currentYear){
     targetCounts = {
       draft: 0.05,
-      applyEnrolled: 0.15,
+      applyEnrolled: 0.0,
       pendingTrn: 0.05,
       trnReceived: 0.71,
       qualificationRecommended: 0.05,
@@ -281,7 +298,7 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
     degree: {
       status: 'Review'
     },
-    academicYear: currentYear,
+    academicYearSimple: currentYear,
     courseDetails: {
       isPublishCourse: true,
       status: 'Review'
@@ -325,7 +342,7 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
     let selectedStub = {
       ...{
         provider,
-        academicYear: year
+        academicYearSimple: year
       }, 
       ...stubApplication[statusPick]
     }

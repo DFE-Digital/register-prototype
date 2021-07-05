@@ -335,6 +335,8 @@ module.exports = (params) => {
   let startMonth = faker.helpers.randomize([8,9,10]) // August, September, October
   let startYear = params.startYear || new Date().getFullYear() // Current year
   let startDate = moment(`${startYear}-${startMonth}-01`, "YYYY-MM-DD").toDate()
+
+  let academicYear = `${startYear} to ${startYear + 1}`
   
   // Assume courses end earlier than they start
   const endDate = moment(startDate).add(duration, 'years').subtract(3, 'months').toDate()
@@ -364,6 +366,7 @@ module.exports = (params) => {
       qualificationsSummary,
       route,
       startDate,
+      academicYear,
       studyMode,
       publishSubjects: utils.arrayToOrdinalObject(publishCourseSubjects),
       courseNameShort,
@@ -383,6 +386,7 @@ module.exports = (params) => {
       qualificationsSummary,
       route,
       startDate,
+      academicYear,
       studyMode,
       subjects: utils.arrayToOrdinalObject(subjects),
     }

@@ -771,10 +771,9 @@ exports.filterRecords = (records, data, filters = {}) => {
     filteredRecords = filteredRecords.filter(record => exports.sourceIsManual(record))
   }
 
-  // Cycle not implimented yet
-  // if (filter.cycle){
-  //   filteredRecords = filteredRecords.filter(record => filter.cycle.includes(record.cycle))
-  // }
+  if (filters.cycle){
+    filteredRecords = filteredRecords.filter(record => filters.cycle.includes(record.academicYear))
+  }
 
   if (filters.completeStatus){
     filteredRecords = filteredRecords.filter(record => {

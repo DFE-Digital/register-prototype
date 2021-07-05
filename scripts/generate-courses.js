@@ -15,6 +15,11 @@ const providers = providerData.selectedProviders
 
 const generateCourseDetails = require('../app/data/generators/course-generator')
 
+// Publish is generally a year ahead - courses are registered for the next academic year
+// Todo: grab these from the years.js file?
+const yearsToGenerate = [2019, 2020, 2021, 2022]
+const currentYear     = 2020
+
 // Volumes loosely based on number of courses per provider as seen on Publish
 // Most have 1-3, but then about 1/3 have up to 80
 const generateCourseCount = () => {
@@ -49,7 +54,12 @@ const generateFakeCourses = () => {
     if (provider == "Coventry University" || provider == "University of Buckingham") courseCount = 100
 
     for (var i = 0; i < courseCount; i++){
-      providerCourses.push(generateCourseDetails({isPublishCourse: true}))
+      yearsToGenerate.forEach(year => {
+        providerCourses.push(generateCourseDetails({
+          startYear: year,
+          isPublishCourse: true
+        }))
+      })
     }
     courses[provider] = {
       name: provider,
@@ -70,7 +80,11 @@ const generateFakeCourses = () => {
 const generateCoursesFile = (filePath) => {
   const courses = generateFakeCourses()
 
-  console.log(`Generated fake courses`)
+  let courseCount = Object.values(courses).reduce( (acc, cur) => {
+    return acc += cur.courses.length
+  }, 0)
+
+  console.log(`Generated ${courseCount} fake courses`)
   console.log(`Now run "node scripts/generate-records.js"`)
 
   const filedata = JSON.stringify(courses, null, 2)

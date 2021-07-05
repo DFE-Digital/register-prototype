@@ -127,17 +127,22 @@ module.exports = (params, application) => {
   // If a publish course, pick from seed courses
   if (isPublishCourse) {
 
+    // Narrow down to just a single year’s courses
+    let providerCoursesByYear = courses[application.provider].courses.filter(course => course.academicYear == application.academicYear)
+
+    // console.log('length:', providerCoursesByYear.length, application.academicYear)
+
     // Grab course details from seed courses
-    let providerCourses = courses[application.provider].courses.filter(course => course.route == application.route)
+    let routeCourses = providerCoursesByYear.filter(course => course.route == application.route)
 
     // Todo: seed courses for a provider might not align with selected or enabled routes. 
     // Think of a better way of handling this
-    if (!providerCourses.length) {
+    if (!routeCourses.length) {
       console.log(`No courses found for ${application.route} for ${application.provider}. Using all routes`)
-      providerCourses = courses[application.provider].courses
+      routeCourses = providerCoursesByYear.courses
     }
 
-    let limitedCourses = providerCourses.slice(0, 12) // to match data.settings.courseLimit
+    let limitedCourses = routeCourses.slice(0, 12) // to match data.settings.courseLimit
 
     // Pick a random course for this trainee
     courseDetails = faker.helpers.randomize(limitedCourses)
@@ -157,8 +162,9 @@ module.exports = (params, application) => {
   else {
     // Generate some seed data
     let courseDetailsOptions = {
-      route: application.route, 
-      startYear: application.academicYear,
+      route: application.route,
+      startYear: parseInt(application.academicYear.substring(0, 4)),
+      // startYear: application.academicYear,
       isPublishCourse // Implicitly false
     }
 

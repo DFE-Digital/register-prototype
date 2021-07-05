@@ -43,7 +43,7 @@ let providerData            = require('./providers.js')
 let providers               = providerData.selectedProviders
 let allProviders            = providerData.allProviders
 
-let currentYear             = 2020
+let years                   = require('./years')
 
 // =============================================================================
 // Settings - things that can be changed from /admin
@@ -137,7 +137,6 @@ module.exports = {
   awards,
   countries,
   courses,
-  currentYear,
   degreeOrganisations,
   degreeTypes,
   degreeTypesSimple,
@@ -160,5 +159,6 @@ module.exports = {
   nonPublishRoutes,
   ukComparableDegrees,
   withdrawalReasons,
-  ugEntryQualifications
+  ugEntryQualifications,
+  years
 }
