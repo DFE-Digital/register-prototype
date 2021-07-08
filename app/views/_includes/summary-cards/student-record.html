@@ -42,11 +42,20 @@
 
 {% set studentRecordRows = studentRecordRows | push({
     key: {
-      text: "Academic year"
+      text: "Training year"
     },
     value: {
       text: record.academicYear or 'Not provided'
-    }
+    },
+    actions: {
+      items: [
+        {
+          href: recordPath + "/training-year" | addReferrer(referrer),
+          text: "Change",
+          visuallyHiddenText: "training year"
+        }
+      ]
+    } if canAmend
   }) %}
 
 {% if record.status == "Pending TRN" %}

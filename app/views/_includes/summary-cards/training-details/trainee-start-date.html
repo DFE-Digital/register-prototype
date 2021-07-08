@@ -1,6 +1,4 @@
 {% set traineeStarted = record.trainingDetails.traineeStarted | falsify %}
-{{traineeStarted | log}}
-{{record | log}}
 
 {% set commencementDateLabel %}
   {% if traineeStarted %}

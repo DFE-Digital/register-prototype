@@ -636,6 +636,9 @@ module.exports = router => {
     // Save back to record
     record.courseDetails = courseDetails
 
+    // Set qualification and duration as per selected route
+    record = utils.setCourseDefaults(record)
+
     let isAllocated = utils.hasAllocatedPlaces(record)
 
     if (isAllocated) {

@@ -96,7 +96,7 @@ const getSelectedFilters = req => {
 
   if (filters.cycle) {
     selectedFilters.categories.push({
-      heading: { text: 'Cycle' },
+      heading: { text: 'Training year' },
       items: filters.cycle.map((cycle) => {
 
         let newQuery = Object.assign({}, query)

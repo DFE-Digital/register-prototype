@@ -1,0 +1,20 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Confirm training year" %}
+
+
+{% set gridColumn = 'govuk-grid-column-full' %}
+{% set backLink = ("/record/" + data.record.id) | orReferrer(referrer) %}
+{% set backText = "Back to record" %}
+
+{% set formAction = "./update" | addReferrer(referrer) %}
+
+{% block formContent %}
+  <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+  {% include "_includes/summary-cards/training-details/training-year.html" %}
+
+  {{ govukButton({
+    text: "Update record"
+  }) }}
+
+{% endblock %}

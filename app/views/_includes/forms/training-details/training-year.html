@@ -1,0 +1,24 @@
+{% set years = [] %}
+
+{% for year in data.years.academicYears %}
+  {% set years = years | push({
+    text: year
+    }) %}
+{% endfor %}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: pageHeading,
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: years
+} | decorateAttributes(record, "record.academicYear"))}}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+

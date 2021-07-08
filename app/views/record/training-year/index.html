@@ -1,0 +1,9 @@
+{% extends "_templates/_record-form.html" %}
+
+{% set pageHeading = "Training year" %}
+
+{% set formAction = "./training-year/confirm" | addReferrer(referrer) %}
+
+{% block formContent %}
+  {% include "_includes/forms/training-details/training-year.html" %}
+{% endblock %}
