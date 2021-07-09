@@ -147,6 +147,13 @@ module.exports = (params, application) => {
     // is complete we pick a random subject - as if the user had preivously picked that.
     courseDetails = setSubjectSpecialisms(courseDetails, pretendDataIsComplete)
 
+    // The ITT bit of apprenticeship training happens a bit after the apprenticeship starts
+    // When users pick a course we'll ask them for the ITT start date. Here we just assume it’s
+    // 2 months after the apprenticeship started
+    if (pretendDataIsComplete && courseDetails.route == "Teaching apprenticeship (postgrad)"){
+      courseDetails.startDate = moment(courseDetails.apprenticeshipStartDate).add(2, 'months').toDate()
+    }
+
     // Some Pubish courses are set to `Full time or part time` - when a user adds one of these
     // courses we’ll assume `Full time` but let the user override it. 
     if (pretendDataIsComplete && courseDetails.studyMode == "Full time or part time"){

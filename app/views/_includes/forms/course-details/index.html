@@ -147,6 +147,43 @@
   ]
 } | decorateAttributes(record, "record.courseDetails.studyMode")) }}
 
+{% if record | requiresField("apprenticeshipStartDate") %}
+
+  {% set apprenticeshipStartDateArray = record.courseDetails.startDate | toDateArray %}
+
+  {{ govukDateInput({
+    id: "apprenticeship-start-date",
+    namePrefix: "record[courseDetails][apprenticeshipStartDate]",
+    fieldset: {
+      legend: {
+        text: "Apprenticeship start date",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    hint: {
+      text: "For example, " + "" | today | toDateArray | spaceSeparate
+    },
+    items: [
+        {
+          name: "day",
+          classes: "govuk-input--width-2",
+          value: apprenticeshipStartDateArray["0"]
+        },
+        {
+          name: "month",
+          classes: "govuk-input--width-2",
+          value: apprenticeshipStartDateArray["1"]
+        },
+        {
+          name: "year",
+          classes: "govuk-input--width-4",
+          value: apprenticeshipStartDateArray["2"]
+        }
+      ]
+  }) }}
+
+{% endif %}
+
 {% set programmeStartDateArray = record.courseDetails.startDate | toDateArray %}
 
 {{ govukDateInput({
