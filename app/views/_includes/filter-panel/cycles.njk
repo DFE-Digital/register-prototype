@@ -2,25 +2,18 @@
 
 {% for year in data.years.academicYears %}
 
-  {# Hacky code to have only one year checked by default. Would probably be better
-  if this was done off of an array of years to default check #}
-  {% if year == data.years.currentAcademicYear and filterCycleCurrentYearDefault %}
-    {% set isChecked = checked(query.filterCycle, year) if query.filterCycle else filterCycleCurrentYearDefault %}
+  {% if showDefaultVisibleYears and year in data.years.defaultVisibleYears %}
+    {% set isChecked = checked(query.filterCycle, year) if query.filterCycle else 'checked' %}
   {% else %}
     {% set isChecked = checked(query.filterCycle, year) %}
   {% endif %}
 
-
-
   {% set years = years | push({
     text: year,
     checked: isChecked
-    }) %}
-
+  }) %}
 
 {% endfor %}
-
-
 
 
 {{ govukCheckboxes({

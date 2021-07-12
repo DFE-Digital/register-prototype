@@ -2,6 +2,7 @@ const url = require('url')
 const _ = require('lodash')
 const utils = require('./../lib/utils')
 const objectFilters = require('./../filters/objects.js').filters
+const years = require('./../data/years.js')
 
 // Work around a bug where occasionally _unchecked would appear
 // Also coerce to array to be easier to work with
@@ -94,23 +95,23 @@ const getSelectedFilters = req => {
     })
   }
 
-  if (filters.cycle) {
-    selectedFilters.categories.push({
-      heading: { text: 'Training year' },
-      items: filters.cycle.map((cycle) => {
+  // if (filters.cycle) {
+  //   selectedFilters.categories.push({
+  //     heading: { text: 'Training year' },
+  //     items: filters.cycle.map((cycle) => {
 
-        let newQuery = Object.assign({}, query)
-        newQuery.filterCycle = filters.cycle.filter(a => a != cycle)
-        return {
-          text: cycle,
-          href: url.format({
-            pathname,
-            query: newQuery,
-          })
-        }
-      })
-    })
-  }
+  //       let newQuery = Object.assign({}, query)
+  //       newQuery.filterCycle = filters.cycle.filter(a => a != cycle)
+  //       return {
+  //         text: cycle,
+  //         href: url.format({
+  //           pathname,
+  //           query: newQuery,
+  //         })
+  //       }
+  //     })
+  //   })
+  // }
 
   if (filters.completeStatus) {
     selectedFilters.categories.push({
@@ -274,7 +275,8 @@ module.exports = router => {
 
     // If there’s no query string at all, we want to apply some defaults
     let hasQueryString = Boolean(Object.keys(req.query).length)
-    if (!hasQueryString) filters.cycle = ["2020 to 2021"]
+    // if (!hasQueryString) filters.cycle = ["2020 to 2021"]
+    if (!hasQueryString) filters.cycle = years.defaultVisibleYears
 
     let searchQuery = getSearchQuery(req)
 
