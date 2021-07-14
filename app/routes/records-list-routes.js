@@ -61,7 +61,21 @@ const getFilters = req => {
 
 // Todo: this could probably be simpler
 const getHasFilters = (filters, searchQuery) => {
-  return !!(filters.status) || !!(filters.completeStatus) || !!(filters.source) || !!(filters.level) || !!(filters.studyMode) || !!(searchQuery) || !!(filters.subject && filters.subject != 'All subjects') || !!(filters.cycle) || !!(filters.trainingRoutes) || !!(filters.providers)
+  return !!(filters.status) 
+  || !!(filters.completeStatus)
+  || !!(filters.source)
+  || !!(filters.level)
+  || !!(filters.studyMode)
+  || !!(searchQuery)
+  || !!(filters.subject && filters.subject != 'All subjects')
+
+  // Cycles / start year disabled as we default select specific years if no filters are selected
+  // This means that 'historic' trainees are excluded by default. With this 'default' state it looked
+  // weird to have the 'selected' area on by default.
+  // || !!(filters.cycle)
+
+  || !!(filters.trainingRoutes)
+  || !!(filters.providers)
 }
 
 // Make object to hold details of selected filters with appropriate links to clear each one

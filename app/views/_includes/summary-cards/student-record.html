@@ -42,7 +42,7 @@
 
 {% set studentRecordRows = studentRecordRows | push({
     key: {
-      text: "Training year"
+      text: "Start year"
     },
     value: {
       text: record.academicYear or 'Not provided'
@@ -52,7 +52,7 @@
         {
           href: recordPath + "/training-year" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "training year"
+          visuallyHiddenText: "start year"
         }
       ]
     } if canAmend and false
