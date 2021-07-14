@@ -1,6 +1,6 @@
 
 {% set diversityInformationDisclosed = (record.diversity.diversityDisclosed | falsify) %}
-{% set diversityDisclosedText = 'Information disclosed' if diversityInformationDisclosed else 'Not shared' %}
+{% set diversityDisclosedText = 'Information shared' if diversityInformationDisclosed else 'Not shared' %}
 
 {% set diversityRows = [
   {
