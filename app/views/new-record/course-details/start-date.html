@@ -1,0 +1,15 @@
+{% extends "_templates/_new-record.html" %}
+
+{% if data.record | isApprenticeship %}
+  {% set pageHeading = "ITT start date" %}
+{% else %}
+  {% set pageHeading = "Course start date" %}
+{% endif %}
+
+
+{# {% set formAction = "./confirm" %} #}
+
+{% block formContent %}
+  {% include "_includes/forms/course-details/start-date.html" %}
+{% endblock %}
+

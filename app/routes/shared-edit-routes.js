@@ -409,7 +409,7 @@ module.exports = router => {
           res.redirect(`${recordPath}/course-details/choose-specialisms${referrer}`)
         }
         else if (isMissingStartDate){
-          res.redirect(`${recordPath}/course-details/course-start-date${referrer}`)
+          res.redirect(`${recordPath}/course-details/start-date${referrer}`)
         }
         else if (isAllocated) {
           // After /allocated-place the journey will match other course-details routes
@@ -438,7 +438,7 @@ module.exports = router => {
       res.render(`${req.params.recordtype}/course-details/choose-specialisms`)
     }
     else if (isMissingStartDate){
-      res.redirect(`${recordPath}/course-details/course-start-date${referrer}`)
+      res.redirect(`${recordPath}/course-details/start-date${referrer}`)
     }
     else if (isAllocated) {
       // After /allocated-place the journey will match other course-details routes
@@ -504,7 +504,7 @@ module.exports = router => {
       res.redirect(`${recordPath}/course-details/choose-specialisms${referrer}`)
     }
     else if (isMissingStartDate){
-      res.redirect(`${recordPath}/course-details/course-start-date${referrer}`)
+      res.redirect(`${recordPath}/course-details/start-date${referrer}`)
     }
     else if (isAllocated) {
       // After /allocated-place the journey will match other course-details routes
@@ -573,7 +573,7 @@ module.exports = router => {
   // })
 
   // Choose between allocated place page and confirm page
-  router.post(['/:recordtype/:uuid/course-details/course-start-date','/:recordtype/course-details/course-start-date'], function (req, res) {
+  router.post(['/:recordtype/:uuid/course-details/start-date','/:recordtype/course-details/start-date'], function (req, res) {
     const data = req.session.data
     let record = data.record
     let recordPath = utils.getRecordPath(req)
@@ -584,7 +584,7 @@ module.exports = router => {
 
 
     if (isMissingStartDate){
-      res.redirect(`${recordPath}/course-details/course-start-date${referrer}`)
+      res.redirect(`${recordPath}/course-details/start-date${referrer}`)
     }
     else if (isAllocated) {
       // After /allocated-place the journey will match other course-details routes

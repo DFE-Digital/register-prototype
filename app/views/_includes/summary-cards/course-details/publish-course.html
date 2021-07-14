@@ -135,7 +135,7 @@
 
 {% set startDateRow = {
   key: {
-    text: "Start date"
+    text: "Start date" if not record | isApprenticeship else "ITT start date"
   },
   value: {
     text: courseDetails.startDate | govukDate or 'Not provided'
@@ -145,7 +145,7 @@
       {
         href: recordPath + "/course-details/details" | addReferrer(referrer),
         text: "Change",
-        visuallyHiddenText: "course start date"
+        visuallyHiddenText: "course start date" if not record | isApprenticeship else "ITT start date"
       }
     ]
   } if canAmend
@@ -153,7 +153,7 @@
 
 {% set endDateRow = {
   key: {
-    text: "End date"
+    text: "End date" if not record | isApprenticeship else "ITT end date"
   },
   value: {
     text: courseDetails.endDate | govukDate("MMMM YYYY") or 'Not provided'
@@ -163,7 +163,7 @@
       {
         href: recordPath + "/course-details/details" | addReferrer(referrer),
         text: "Change",
-        visuallyHiddenText: "course end date"
+        visuallyHiddenText: "course end date" if not record | isApprenticeship else "ITT end date"
       }
     ]
   } if canAmend

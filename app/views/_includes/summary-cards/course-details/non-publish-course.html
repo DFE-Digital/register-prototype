@@ -92,7 +92,7 @@
   },
   {
     key: {
-      text: "Course start date"
+      text: "Course start date" if not record | isApprenticeship else "ITT start date"
     },
     value: {
       text: record.courseDetails.startDate | govukDate or 'Not provided'
@@ -102,14 +102,14 @@
         {
           href: recordPath + "/course-details/details" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "course start date"
+          visuallyHiddenText: "course start date" if not record | isApprenticeship else "ITT start date"
         }
       ]
     } if canAmend
   },
   {
     key: {
-      text: "Course end date"
+      text: "Course end date" if not record | isApprenticeship else "ITT end date"
     },
     value: {
       text: record.courseDetails.endDate | govukDate or 'Not provided'
@@ -119,7 +119,7 @@
         {
           href: recordPath + "/course-details/details" | addReferrer(referrer),
           text: "Change",
-          visuallyHiddenText: "course end date"
+          visuallyHiddenText: "course end date" if not record | isApprenticeship else "ITT end date"
         }
       ]
     } if canAmend

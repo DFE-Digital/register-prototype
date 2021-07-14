@@ -186,17 +186,36 @@
 
 {% set programmeStartDateArray = record.courseDetails.startDate | toDateArray %}
 
+{% set startDateHint = "For example, " + "" | today | toDateArray | spaceSeparate %}
+
+{% if record | isApprenticeship %}
+  {% set startDateLabel = "ITT start date" %}
+{% else %}
+  {% set startDateLabel = "Course start date" %}
+{% endif %}
+
+{% if record | isApprenticeship %}
+  {% set startDateHint %}
+    <p class="govuk-body govuk-hint">
+      The start date of the Initial Teacher Training portion of their course.
+    </p>
+    <p class="govuk-body govuk-hint">
+      {{startDateHint | safe }}
+    </p>
+  {% endset %}
+{% endif %}
+
 {{ govukDateInput({
   id: "programme-start-date",
   namePrefix: "record[courseDetails][startDate]",
   fieldset: {
     legend: {
-      text: "Course start date",
+      text: startDateLabel,
       classes: "govuk-fieldset__legend--s"
     }
   },
   hint: {
-    text: "For example, " + "" | today | toDateArray | spaceSeparate
+    html: startDateHint
   },
   items: [
       {
@@ -218,17 +237,37 @@
 }) }}
 
 {% set programmeEndDateArray = record.courseDetails.endDate | toDateArray %}
+
+{% set endDateHint = "For example, " + "" | today | moment('add', 1, 'years') | toDateArray | spaceSeparate %}
+
+{% if record | isApprenticeship %}
+  {% set endDateLabel = "ITT end date" %}
+{% else %}
+  {% set endDateLabel = "Course end date" %}
+{% endif %}
+
+{% if record | isApprenticeship %}
+  {% set endDateHint %}
+    <p class="govuk-body govuk-hint">
+      The end date of the Initial Teacher Training portion of their course.
+    </p>
+    <p class="govuk-body govuk-hint">
+      {{ endDateHint | safe }}
+    </p>
+  {% endset %}
+{% endif %}
+
 {{ govukDateInput({
   id: "programme-end-date",
   namePrefix: "record[courseDetails][endDate]",
   fieldset: {
     legend: {
-      text: "Course end date",
+      text: endDateLabel,
       classes: "govuk-fieldset__legend--s"
     }
   },
   hint: {
-    text: "For example, " + "" | today | moment('add', 1, 'years') | toDateArray | spaceSeparate
+    html: endDateHint
   },
   items: [
       {

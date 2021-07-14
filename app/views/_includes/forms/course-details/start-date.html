@@ -1,5 +1,18 @@
 {% set startStartDateArray = record.courseDetails.startDate | toDateArray %}
 
+{% set startDateHint = "For example, " + "" | today | toDateArray | spaceSeparate %}
+
+{% if record | isApprenticeship %}
+  {% set startDateHint %}
+    <p class="govuk-body govuk-hint">
+      The start date of the Initial Teacher Training portion of their course.
+    </p>
+    <p class="govuk-body govuk-hint">
+      {{startDateHint | safe }}
+    </p>
+  {% endset %}
+{% endif %}
+
 {{ govukDateInput({
   id: "start-start-date",
   namePrefix: "record[courseDetails][startDate]",

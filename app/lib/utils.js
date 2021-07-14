@@ -633,6 +633,10 @@ exports.sourceIsManual = record => {
   return record?.source != "Apply"
 }
 
+exports.isApprenticeship = record => {
+  return record?.route == "Teaching apprenticeship (postgrad)"
+}
+
 // Levels
 
 // Unlike the other levels, this is probably reliable - as it checcks the route rather than the age
