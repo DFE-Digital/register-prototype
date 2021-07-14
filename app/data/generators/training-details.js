@@ -30,7 +30,7 @@ module.exports = (params) => {
 
   // Some statuses implicitly *must* have a commencement date
   if (statusesWhereTraineesMustHaveStarted.includes(params?.status)){
-    traineeStarted = true
+    traineeStarted = "true"
   }
   else {
     traineeStarted = params?.traineeStarted || weighted.select({

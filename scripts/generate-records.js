@@ -79,6 +79,7 @@ const generateFakeApplication = (params = {}) => {
   application.academicYear    = params.academicYear
   if (!application.academicYear){
     let startYear = params.academicYearSimple || currentYear
+    // Convert year to longer string form `2020 to 2021`
     application.academicYear  = `${startYear} to ${startYear + 1}`
   }
 
