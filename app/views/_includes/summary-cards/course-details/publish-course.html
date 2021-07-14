@@ -115,6 +115,24 @@
   } if canAmend
 } %}
 
+{% set apprenticeshipStartDateRow = {
+  key: {
+    text: "Apprenticeship start date"
+  },
+  value: {
+    text: courseDetails.apprenticeshipStartDate | govukDate or 'Not provided'
+  },
+  actions: {
+    items: [
+      {
+        href: recordPath + "/course-details/details" | addReferrer(referrer),
+        text: "Change",
+        visuallyHiddenText: "apprenticeship start date"
+      }
+    ]
+  } if canAmend
+} if record | requiresField("apprenticeshipStartDate") %}
+
 {% set startDateRow = {
   key: {
     text: "Start date"
@@ -195,6 +213,7 @@
   levelRow,
   ageRangeRow,
   studyModeRow,
+  apprenticeshipStartDateRow,
   startDateRow,
   endDateRow,
   durationRow,

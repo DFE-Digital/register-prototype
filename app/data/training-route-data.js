@@ -247,7 +247,8 @@ let baseRouteData = {
     ],
     fields: [
       "leadSchool",
-      'employingSchool'
+      'employingSchool',
+      // "apprenticeshipStartDate"
     ],
     initiatives: [
       "Now teach",

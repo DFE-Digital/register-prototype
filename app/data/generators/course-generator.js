@@ -336,7 +336,16 @@ module.exports = (params) => {
   let startYear = params.startYear || new Date().getFullYear() // Current year
   let startDate = moment(`${startYear}-${startMonth}-01`, "YYYY-MM-DD").toDate()
 
+
   let academicYear = `${startYear} to ${startYear + 1}`
+
+  // Start dates for Publish teaching apprenticeships refer to when the apprenticeship starts, not
+  // when the ITT training starts
+  let apprenticeshipStartDate
+  if (route == "Teaching apprenticeship (postgrad)"){
+    apprenticeshipStartDate = startDate
+    startDate = null
+  }
   
   // Assume courses end earlier than they start
   const endDate = moment(startDate).add(duration, 'years').subtract(3, 'months').toDate()
@@ -367,6 +376,7 @@ module.exports = (params) => {
       route,
       startDate,
       academicYear,
+      ...(apprenticeshipStartDate ? { apprenticeshipStartDate } : {}), // conditionally return
       studyMode,
       publishSubjects: utils.arrayToOrdinalObject(publishCourseSubjects),
       courseNameShort,
