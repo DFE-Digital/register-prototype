@@ -963,7 +963,6 @@ exports.filterByStatus = (records, array, invert) => {
   if (array.includes('Draft')){
     array.push("Apply draft")
   }
-  console.log(array, invert)
   return exports.filterRecordsBy(records, 'status', array, invert)
 }
 

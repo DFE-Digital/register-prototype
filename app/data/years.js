@@ -15,8 +15,6 @@ let yearIndex = academicYears.findIndex(year => year == currentAcademicYear)
 let nextAcademicYear = academicYears[yearIndex - 1]
 let previousAcademicYear = academicYears[yearIndex + 1]
 
-console.log(nextAcademicYear)
-
 module.exports = {
     academicYears,
     defaultVisibleYears,
