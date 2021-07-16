@@ -33,7 +33,7 @@
         <span class="govuk-caption-l">{{ data.signedInProviders | andSeparate }}</span>
         <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
 
-        <h2 class="govuk-heading-m">Draft trainees</h2>
+        <h2 class="govuk-heading-l">Draft trainees</h2>
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
           {% if totalDraftCount != applyDraftCount %}
             <li><a href="/drafts">See all draft trainees ({{ totalDraftCount }})</a></li>
@@ -45,10 +45,21 @@
         </ul>
       </div>
       <div class="govuk-grid-column-full">
-        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
       </div>
       <div class="govuk-grid-column-two-thirds-from-desktop">
-        <h2 class="govuk-heading-m">2020 to 2021 trainees</h2>
+        <h2 class="govuk-heading-l">Registered trainees</h2>
+        <p class="govuk-body">
+          {# TO DO – Figure out how to give number of records here #}
+          <a href="/records">See all registered trainees ({{ data.filteredRecords | where('filterByYear', ["2020 to 2021", "2021 to 2022"])  | length}})</a>
+        </p>
+        <h3 class="govuk-heading-m">
+          2020 to 2021 trainees
+          <span class="govuk-body">
+          {# TO DO – add number of records here #}
+             –  <a href="/records?filterCycle=2020+to+2021">see all<span class="govuk-visually-hidden"> 2020 to 2021 trainees</span> (XX)</a>
+          </span>
+        </h3>
       </div>
       <div class="govuk-grid-column-full">
         <div class="home-statuses">
@@ -110,8 +121,8 @@
           </div>
 
 
-    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-    <h2 class="govuk-heading-m">Guidance</h2>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <h2 class="govuk-heading-l">Guidance</h2>
     {# We need to split these pages #}
     <ul class="govuk-list govuk-list--spaced">
       <li><a href="/guidance">Check what data you need</a></li>

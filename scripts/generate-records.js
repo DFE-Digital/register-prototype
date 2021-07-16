@@ -211,6 +211,10 @@ const generateFakeApplicationsForProvider = (provider, year, count) => {
 
   // Current year should be mostly trn recieved
   if (year > currentYear){
+    // Limit no more than 30 future draft trainees
+    if (count > 30) {
+      count = 30 
+    }
     targetCounts = {
       draft: 0.5,
       applyEnrolled: 0.5,
