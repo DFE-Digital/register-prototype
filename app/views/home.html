@@ -7,7 +7,7 @@
 {% set combinedAlertCount = applyDraftCount + recordsToBeReviewedCount %}
 {% set pageHeading = "Your trainee teachers" %}
 
-{% set records = data.filteredRecords | filterByYear(data.currentYear)  %}
+{% set records = data.filteredRecords | filterByYear(data.years.currentAcademicYear) %}
 
 {% macro statusCard(records, status) %}
   {# Special handling for drafts which have two string names #}
@@ -42,8 +42,8 @@
           <li class="govuk-!-margin-bottom-0"><a href="/new-record/new">Add a new trainee</a></li>
         </ul>
       </div>
-    </div>
-
+      <div class="govuk-grid-column-full">
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
       </div>
       <div class="govuk-grid-column-two-thirds-from-desktop">
         <h2 class="govuk-heading-m">2020 to 2021 trainees</h2>
