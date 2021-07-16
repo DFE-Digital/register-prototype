@@ -35,11 +35,13 @@
 
         <h2 class="govuk-heading-m">Draft trainees</h2>
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          <li><a href="/drafts">See all draft trainees ({{ totalDraftCount }})</a></li>
+          {% if totalDraftCount != applyDraftCount %}
+            <li><a href="/drafts">See all draft trainees ({{ totalDraftCount }})</a></li>
+          {%  endif %}
           {% if applyDraftCount > 0 %}
             <li><a href="/drafts?filterSource=Apply">See trainees imported from Apply ({{applyDraftCount}})</a></li>
           {% endif %}
-          <li class="govuk-!-margin-bottom-0"><a href="/new-record/new">Add a new trainee</a></li>
+          <li class="govuk-!-margin-bottom-1"><a href="/new-record/new">Add a trainee</a></li>
         </ul>
       </div>
       <div class="govuk-grid-column-full">
@@ -51,6 +53,7 @@
       <div class="govuk-grid-column-full">
         <div class="home-statuses">
           <div class="govuk-grid-row govuk-!-margin-bottom-6">
+
             {% set statuses = ['Pending TRN', 'TRN received'] %}
             {% for status in statuses %}
               <div class="govuk-grid-column-one-half">
